@@ -1,4 +1,4 @@
-package com.example.demo.AnnualTrainingPlan;
+package com.example.demo.Model;
 
 import com.sun.javafx.beans.IDProperty;
 

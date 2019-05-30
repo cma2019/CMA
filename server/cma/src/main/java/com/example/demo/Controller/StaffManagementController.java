@@ -1,5 +1,6 @@
-package com.example.demo.StaffManagement;
+package com.example.demo.Controller;
 
+import com.example.demo.Repository.StaffManagementRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +17,7 @@ import java.util.List;
 
 import net.minidev.json.JSONObject;
 
-import com.example.demo.StaffManagement.StaffManagement;
+import com.example.demo.Model.StaffManagement;
 @Controller
 @RequestMapping(path="/cma/StaffManagement")
 public class StaffManagementController {
