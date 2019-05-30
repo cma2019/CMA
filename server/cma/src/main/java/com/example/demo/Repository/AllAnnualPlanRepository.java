@@ -1,5 +1,6 @@
-package com.example.demo.AnnualTrainingPlan;
+package com.example.demo.Repository;
 
+import com.example.demo.Model.AllAnnualPlan;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AllAnnualPlanRepository extends JpaRepository<AllAnnualPlan,Long> {

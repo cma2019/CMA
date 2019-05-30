@@ -1,5 +1,4 @@
-package com.example.demo.StaffManagement;
-import lombok.Data;
+package com.example.demo.Model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,7 +6,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.text.DateFormat;
 import java.util.Date;
-import java.text.SimpleDateFormat;
 
 @Entity
 public class StaffManagement {
