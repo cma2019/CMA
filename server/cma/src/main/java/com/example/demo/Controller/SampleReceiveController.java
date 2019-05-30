@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import net.sf.json.JSONObject;
 import net.sf.json.JSONArray;
-
+import com.example.demo.Model.SampleReceive;
 import java.util.List;
 import java.sql.Date;
 
