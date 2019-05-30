@@ -1,0 +1,39 @@
+<!--page_SampleIo/ioAddone/ioAddone.wxml-->
+<view>
+  <form bindsubmit='SampleReceive_addone'>
+    <view class="section">
+      <input name="sampleNumber" placeholder="input sampleNumber" width="160px" style="display:inline" />
+    </view>
+    <view class="section">
+      <input name="sampleName" placeholder="input sampleName" width="160px" style="display:inline"/>
+    </view>
+    <view class="section">
+      <input name="sampleAmount" placeholder="input sampleAmount" width="160px" style="display:inline" />
+    </view>
+    <view class="section">
+      <input name="sampleState" placeholder="input sampleState" width="160px" style="display:inline" />
+    </view>
+    <view class="section">
+      <input name="sender" placeholder="input sender" width="160px" style="display:inline" />
+    </view>
+    <view class="section">
+      <input name="receiver" placeholder="input receiver" width="160px" style="display:inline" />
+    </view>
+    <view class="section">
+      <input name="sendDate" placeholder="input sendDate" width="160px" style="display:inline"/>
+    </view>
+    <view class="section">
+      <input name="obtainer" placeholder="input obtainer" width="160px" style="display:inline"/>
+    </view>
+    <view class="section">
+      <input name="obtainDate" placeholder="input obtainDate" width="160px" style="display:inline"/>
+    </view>
+    <view class="section">
+      <input name="note" placeholder="input note" width="160px" style="display:inline"/>
+    </view>
+    <view>
+      <button formType='submit'>添加信息</button>
+    </view>
+  </form>
+</view>
+<button bindtap="goback">取消</button>
