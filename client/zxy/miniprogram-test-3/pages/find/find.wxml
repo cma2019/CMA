@@ -1,0 +1,4 @@
+<scroll-view scroll-y>
+  <navigator url="/pages/new/new">add new</navigator>
+  <button bindtap='viewDetail' data-id="{{item.id}}" data-name="{{item.name}}" data-model="{{item.model}}" data-manufacturer="{{item.manufacturer}}" data-receive_situation="{{item.receive_situation}}" data-recipient="{{item.recipient}}" data-receive_date="{{item.receive_date}}" data-equipment_situation="{{item.equipment_situation}}" data-acceptance="{{item.acceptance}}" data-acceptance_person="{{item.acceptance_person}}" data-acceptance_date="{{item.acceptance_date}}" wx:for="{{array}}">{{index}}:{{item.id}},{{item.name}},{{item.model}},{{item.manufacturer}},{{item.receive_situation}},{{item.recipient}},{{item.receive_date}},{{item.equipment_situation}},{{item.acceptance}},{{item.acceptance_person}},{{item.acceptance_date}}</button>
+</scroll-view>
