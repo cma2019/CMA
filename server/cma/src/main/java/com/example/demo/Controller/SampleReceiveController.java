@@ -16,7 +16,7 @@ import java.util.List;
 import java.sql.Date;
 
 @Controller
-@RequestMapping(path="/SampleReceive")
+@RequestMapping(path="/cma/SampleReceive")
 public class SampleReceiveController {
     @Autowired
     private SampleReceiveRepository sampleReceiveRepository;

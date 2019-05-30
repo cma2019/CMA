@@ -14,7 +14,7 @@ import com.example.demo.Model.SampleIO;
 import java.util.List;
 
 @Controller
-@RequestMapping(path="/SampleIo")
+@RequestMapping(path="/cma/SampleIo")
 public class SampleIoController {
     @Autowired
     private SampleIoRepository SampleIoRepository;
