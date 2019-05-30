@@ -20,7 +20,13 @@
     "pages/TrainingApplication/ModifyApplication/ModifyApplication",
     "pages/TrainingApplication/AddApplication/AddApplication",
     "pages/Management/Management",
-    "pages/TrainingApplication/ApproveOneApplication/ApproveOneApplication"
+    "pages/TrainingApplication/ApproveOneApplication/ApproveOneApplication",
+    "pages/find/find",
+    "pages/new/new",
+    "pages/view/view",
+    "pages/find2/find2",
+    "pages/new2/new2",
+    "pages/view2/view2"
   ],
   "window": {
     "backgroundTextStyle": "light",
