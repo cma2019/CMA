@@ -1,0 +1,129 @@
+<!--pages/StaffManagement/PrintAllStaff/PrintAllStaff.wxml-->
+<!--
+<form>
+<view>{{post.name}}</view>
+</form>
+-->
+
+<view wx:if="{{books}}" class='container'>
+       <view class='title'>
+          <text>人员列表</text>
+       </view>
+       <view class='label'>
+          <text>id</text>
+          <text>name</text>
+          <text>gender</text>
+       </view>
+      <block wx:for="{{books}}"  wx:key="unique">
+            <view class='content'>
+              <text>{{item[0].id}}</text>
+              <text>{{item[0].name}}</text>
+              <text>{{item[0].gender}}</text>
+              <text>\n</text>
+              <text>{{item[1].id}}</text>
+              <text>{{item[1].name}}</text>
+              <text>{{item[1].gender}}</text>
+              <text>\n</text>
+              <text>{{item[2].id}}</text>
+              <text>{{item[2].name}}</text>
+              <text>{{item[2].gender}}</text>
+          </view>
+      </block>
+</view>
+<view wx:else="{{books}}" class='none'>
+      <text >暂时没有图书！</text>
+</view>
+<!--
+<view wx:for="{{staffInfo}}" wx:key="unique">
+<view class="receipt-address-list clearfix">
+<view class="address-list-main">
+  <view class="clearfix"><text>收货地址{{item.id}}           </text><text>1km</text></view>
+<view class="staffId">id{{item.id}}</view>
+<view class="staffName">name{{item.name}}</view>
+</view>
+</view>
+</view>
+-->
+<!--
+<view class="container">
+    <view class="table">
+        <view class="tr">
+            <view class="th">id |</view>
+            <view class="th">name |</view>
+            <view class="th">gender |</view>
+            <view class="th">deparment |</view>
+            <view class="th">position |</view>
+            <view class="th">title |</view>
+            <view class="th">degreee |</view>
+            <view class="th">graduationSchool |</view>
+            <view class="th">graduationMajor |</view>
+            <view class="th">graduationDate |</view>
+            <view class="th">workingYears </view>
+        </view>
+        <view class="tr" wx:for="{{list}}" wx:for-item="item" wx:key="{{list}}">
+            <view class="td">{{item.staffId}}</view>
+            <view class="td">{{item.staffName}}</view>
+            <view class="td">{{item.staffGender}}</view>
+            <view class="td">{{item.staffDeparment}}</view>
+            <view class="td">{{item.staffPosition}}</view>
+            <view class="td">{{item.staffTitle}}</view>
+            <view class="td">{{item.staffDegree}}</view>
+            <view class="td">{{item.staffGraduationSchool}}</view>
+            <view class="td">{{item.staffGraduationMajor}}</view>
+            <view class="td">{{item.staffGraduationDate}}</view>
+            <view class="td">{{item.staffWorkingYears}}</view>
+        </view>
+    </view>
+</view>
+
+-->
+<!-- 紫色框，可上下滑动的 scroll-view-->
+<!--
+  <scroll-view class="quotation-wrapper" style="height:{{wHeight}}px;" scroll-y="true" bindscroll="scroll" bindscrolltoupper="scrolltoupper" bindscrolltolower="scrolltolower">
+-->
+    <!-- 蓝色部分-固定 -->
+    <!--
+    <view class="left-wrapper">
+      <view class="left-th" style="{{leftThStyle}}">名称</view>
+      <view wx:for="{{text}}" wx:key="{{item.rank}}">
+        <view class="left-item"><view class="rank">{{item.rank}}</view>{{item.symbol}}</view>
+      </view>
+    </view>
+-->
+    <!-- 粉色部分，可左右滑动的 scroll-view -->
+    <!--
+    <scroll-view class="right-wrapper" scroll-x="true">
+      <view class="right-th" style="{{thStyle}}">
+        <view class="right-td">流通市值</view>
+        <view class="right-td">价格</view>
+        <view class="right-td">流通数量</view>
+        <view class="right-td">成交额</view>
+        <view class="right-td">涨幅(24h)</view>
+        <view class="right-td">涨幅(7d)</view>
+      </view>
+      <block wx:for="{{text}}" wx:key="{{item.rank}}">
+        <view class="right-item">
+          <view class="right-item-prop">{{filter.format8(item.marketCapType)}}</view>
+          <view class="right-item-prop">{{filter.formatUndefined(item.priceType)}}</view>
+          <view class="right-item-prop">{{filter.format4(item.availableSupply)}}</view>
+          <view class="right-item-prop">{{filter.format4(item.data24hVolumeType)}}</view>
+
+          <view wx:if="{{item.percentChange24h > 0}}" class="right-item-prop" style="color:green;">+{{item.percentChange24h}}</view>
+          <view wx:if="{{item.percentChange24h < 0}}" class="right-item-prop" style="color:red;">{{item.percentChange24h}}</view>
+
+          <view wx:if="{{item.percentChange7d > 0}}" class="right-item-prop" style="color:green;">+{{item.percentChange7d}}</view>
+          <view wx:if="{{item.percentChange7d < 0}}" class="right-item-prop" style="color:red;">{{item.percentChange7d}}</view>
+        </view>
+      </block>
+    </scroll-view>
+  </scroll-view>
+  -->
+
+  <!--
+  <text style='font-size:15px;padding:10px;'>横向滑动列表>>21312354123453246534723462346123462546q242</text>
+<scroll-view scroll-x class="scroll-x">
+  <view wx:for="{{list}}" wx:key="{{index}}" class="view-parent">
+    <view class="view-item">{{item.txt}}</view>
+  </view>
+</scroll-view>
+-->

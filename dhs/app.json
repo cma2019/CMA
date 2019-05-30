@@ -1,0 +1,31 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/login/login",
+    "pages/register/register",
+    "pages/StaffManagement_old/StaffManagement",
+    "pages/StaffManagement_old/AddStaff/AddStaff",
+    "pages/StaffManagement_old/DeleteStaff/DeleteStaff",
+    "pages/StaffManagement_old/ModifyStaff/ModifyStaff",
+    "pages/StaffManagement_old/PrintAllStaff/PrintAllStaff",
+    "pages/StaffManagement_old/PrintOneStaff/PrintOneStaff",
+    "pages/StaffManagement/StaffManagement",
+    "pages/StaffManagement/AddStaff/AddStaff",
+    "pages/StaffManagement/PrintOneStaff/PrintOneStaff",
+    "pages/StaffManagement/ModifyStaff/ModifyStaff",
+    "pages/TrainingApplication/TrainingApplication",
+    "pages/TrainingApplication/PrintOneApplication/PrintOneApplication",
+    "pages/TrainingApplication/ModifyApplication/ModifyApplication",
+    "pages/TrainingApplication/AddApplication/AddApplication",
+    "pages/Management/Management",
+    "pages/TrainingApplication/ApproveOneApplication/ApproveOneApplication"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
+}

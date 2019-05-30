@@ -1,0 +1,9 @@
+<!--pages/StaffManagement/StaffManagement.wxml-->
+<view>
+  <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
+    <button bindtap='gotoOne' id='{{item.id}}'>
+        {{item.name}} : {{item.department}}
+    </button>
+  </view>
+</view>
+<button bindtap="gotoAdd">AddStaff</button>
