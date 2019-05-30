@@ -1,0 +1,4 @@
+/* pages/IntermediateCheck/IntermediateCheck.wxss */
+.index{
+  color: green;
+}

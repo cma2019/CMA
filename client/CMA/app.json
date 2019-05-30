@@ -1,0 +1,32 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/IntermediateCheck/IntermediateCheck/IntermediateCheck",
+    "pages/IntermediateCheck/IntermediateCheck/IntermediateCheckAddone/IntermediateCheckAddone",
+    "pages/IntermediateCheck/IntermediateCheck/IntermediateCheckGetone/IntermediateCheckGetone",
+    "pages/IntermediateCheck/IntermediateCheck/IntermediateCheckModify/IntermediateCheckModify",
+    "pages/IntermediateCheck/IntermediateChecksRecord/IntermediateChecksRecord",
+    "pages/IntermediateCheck/IntermediateChecksRecord/IntermediateChecksRecordAddone/IntermediateChecksRecordAddone",
+    "pages/IntermediateCheck/IntermediateChecksRecord/IntermediateChecksRecordGetone/IntermediateChecksRecordGetone",
+    "pages/IntermediateCheck/IntermediateChecksRecord/IntermediateChecksRecordModify/IntermediateChecksRecordModify",
+    "pages/IntermediateCheck/IntermediateCheckMenu/IntermediateCheckMenu",
+    "pages/StaffManagement/StaffManagement",
+    "pages/StaffManagement/AddStaff/AddStaff",
+    "pages/StaffManagement/PrintOneStaff/PrintOneStaff",
+    "pages/StaffManagement/ModifyStaff/ModifyStaff",
+    "pages/TrainingApplication/TrainingApplication",
+    "pages/TrainingApplication/PrintOneApplication/PrintOneApplication",
+    "pages/TrainingApplication/ModifyApplication/ModifyApplication",
+    "pages/TrainingApplication/AddApplication/AddApplication",
+    "pages/Management/Management",
+    "pages/TrainingApplication/ApproveOneApplication/ApproveOneApplication"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
+}
