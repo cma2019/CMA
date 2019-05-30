@@ -1,0 +1,3 @@
+<!--pages/IntermediateCheckMenu/IntermediateCheckMenu.wxml-->
+<button bindtap='gotoCheck'>go to check</button>
+<button bindtap='gotoRecord'>go to record</button>

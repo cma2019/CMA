@@ -1,0 +1,32 @@
+<!--page_SampleIo/SampleIo/SampleIo.wxml-->
+<view>
+  <view class='itemView'>
+    <input class="input" placeholder="请输入需要查询的信息标识编号" bindinput="sampleIoIdInput"></input>
+  </view>
+  <view class="viewName"style="display:flex;margin-top:30px;" >
+    <button  class='btn_geteone' bindtap='btnClick_getone'>查询</button>
+    <button  class='btn_deleteeone' bindtap='btnClick_deleteone'>删除</button>
+  </view>
+  <view>
+    <button  class='btn_addone' bindtap='gotoAddOne'>添加</button>
+  </view>
+  <view>
+    <button  class='btn_modifyone' bindtap='gotoModifyOne'>修改</button>
+  </view>
+  <button class='btn_goback' bindtap="goback">返回</button>
+
+  <scroll-view scroll-y="true" style="height: 200px;">
+    <view wx:for="{{sampleIoInfo}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
+       sampleIoId:{{item.sampleIoId}} 
+       sampleNumber:{{item.sampleNumber}}  
+       sampleName:{{item.sampleName}}  
+       sampleAmount:{{item.sampleAmount}}  
+       sampleState:{{item.sampleState}}  
+       requester:{{item.requester}}
+       receiver:{{item.receiver}}
+       receiveDate:{{item.receiveDate}} 
+       obtainer:{{item.obtainer}} 
+       obtainDate:{{item.obtainDate}}
+    </view>
+  </scroll-view>
+</view>

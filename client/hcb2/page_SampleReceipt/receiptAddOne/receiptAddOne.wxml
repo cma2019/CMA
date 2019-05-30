@@ -1,0 +1,46 @@
+<!--page_SampleReceipt/receiptAddOne/receiptAddOne.wxml-->
+<view>
+  <form bindsubmit='SampleReceive_addone'>
+    <view class="section">
+      <input name="sampleId" placeholder="input sampleId" width="160px" style="display:inline" />
+    </view>
+    <view class="section">
+      <input name="applicationUnit" placeholder="input applicationUnit" width="160px" style="display:inline"/>
+    </view>
+    <view class="section">
+      <input name="version" placeholder="input version" width="160px" style="display:inline" />
+    </view>
+    <view class="section">
+      <input name="contractId" placeholder="input contractId" width="160px" style="display:inline" />
+    </view>
+    <view class="section">
+      <input name="testType" placeholder="input testType" width="160px" style="display:inline" />
+    </view>
+    <view class="section">
+      <input name="electronicMedia" placeholder="input electronicMedia" width="160px" style="display:inline" />
+    </view>
+    <view class="section">
+      <input name="materialList" placeholder="input materialList" width="160px" style="display:inline"/>
+    </view>
+    <view class="section">
+      <input name="softwareType" placeholder="input softwareType" width="160px" style="display:inline"/>
+    </view>
+    <view class="section">
+      <input name="receiveUnit" placeholder="input receiveUnit" width="160px" style="display:inline"/>
+    </view>
+     <view class="section">
+      <input name="receiveDate" placeholder="input receiveDate" width="160px" style="display:inline"/>
+    </view>
+     <view class="section">
+      <input name="sender" placeholder="input sender" width="160px" style="display:inline"/>
+    </view>
+     <view class="section">
+      <input name="reciever" placeholder="input reciever" width="160px" style="display:inline"/>
+    </view>
+    <view>
+      <button formType='submit'>添加信息</button>
+    </view>
+  </form>
+</view>
+<button bindtap="goback">取消</button>
+

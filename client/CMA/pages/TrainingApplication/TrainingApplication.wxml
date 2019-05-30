@@ -1,0 +1,9 @@
+<!--pages/TrainingApplication/TrainingApplication.wxml-->
+<view>
+  <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
+    <button bindtap='gotoOne' id='{{item.id}}'>
+        {{item.name}} : {{item.people}}
+    </button>
+  </view>
+</view>
+<button bindtap="gotoAdd">增加培训申请</button>

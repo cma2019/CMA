@@ -1,0 +1,42 @@
+<!--pages/TrainingApplication/AddApplication/AddApplication.wxml-->
+<view>
+  <form bindsubmit='ApplicationAdd'>
+  
+    <view class="section">
+      <view class="section__title">name</view>
+      <input name="name" placeholder="input name" />
+    </view>
+    <view class="section">
+      <view class="section__title">people</view>
+      <input name="people" placeholder="input people" />
+    </view>
+    <view class="section">
+      <view class="section__title">trainingUnit</view>
+      <input name="trainingUnit" placeholder="input trainingUnit" />
+    </view>
+    <view class="section">
+      <view class="section__title">expense</view>
+      <input name="expense" placeholder="input expense" />
+    </view>
+    <view class="section">
+      <view class="section__title">reason</view>
+      <input name="reason" placeholder="input reason" />
+    </view>
+    <view class="section">
+      <view class="section__title">department</view>
+      <input name="department" placeholder="input department" />
+    </view>
+    
+    <view class="section">
+      <view class="section__title">select date</view>
+        <picker name = 'date' mode='date' value='{{date}}' bindchange='bindDateChange'>
+          <view class='picker'>date: {{date}}</view>
+        </picker>
+    </view>
+    <view>
+      <button formType='submit'>添加培训申请</button>
+    </view>
+  </form>
+</view>
+<button bindtap="goback">返回</button>
+

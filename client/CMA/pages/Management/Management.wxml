@@ -1,0 +1,3 @@
+<!--pages/Management/Management.wxml-->
+<button bindtap="goStaffManagement">StaffManagement</button>
+<button bindtap="goTrainingApplication">TrainingApplication</button>
