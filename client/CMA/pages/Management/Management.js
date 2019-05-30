@@ -72,5 +72,25 @@ Page({
     wx.navigateTo({
       url: '../TrainingApplication/TrainingApplication',
     })
+  },
+  gotoInterCheck:function(){
+    wx.navigateTo({
+      url: '../IntermediateCheck/IntermediateCheckMenu/IntermediateCheckMenu',
+    })
+  },
+  gotoEquipment1:function(){
+    wx.navigateTo({
+      url: '../find/find',
+    })
+  },
+  gotoEquipment2: function () {
+    wx.navigateTo({
+      url: '../find2/find2',
+    })
+  },
+  gotoSampleChoose:function(){
+    wx.navigateTo({
+      url: '../Sample_choose/Sample_choose',
+    })
   }
 })

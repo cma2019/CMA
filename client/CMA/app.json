@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/Management/Management",
+    "pages/IntermediateCheck/IntermediateCheckMenu/IntermediateCheckMenu",
     "pages/index/index",
     "pages/logs/logs",
     "pages/IntermediateCheck/IntermediateCheck/IntermediateCheck",
@@ -10,7 +12,6 @@
     "pages/IntermediateCheck/IntermediateChecksRecord/IntermediateChecksRecordAddone/IntermediateChecksRecordAddone",
     "pages/IntermediateCheck/IntermediateChecksRecord/IntermediateChecksRecordGetone/IntermediateChecksRecordGetone",
     "pages/IntermediateCheck/IntermediateChecksRecord/IntermediateChecksRecordModify/IntermediateChecksRecordModify",
-    "pages/IntermediateCheck/IntermediateCheckMenu/IntermediateCheckMenu",
     "pages/StaffManagement/StaffManagement",
     "pages/StaffManagement/AddStaff/AddStaff",
     "pages/StaffManagement/PrintOneStaff/PrintOneStaff",
@@ -19,7 +20,6 @@
     "pages/TrainingApplication/PrintOneApplication/PrintOneApplication",
     "pages/TrainingApplication/ModifyApplication/ModifyApplication",
     "pages/TrainingApplication/AddApplication/AddApplication",
-    "pages/Management/Management",
     "pages/TrainingApplication/ApproveOneApplication/ApproveOneApplication",
     "pages/find/find",
     "pages/new/new",

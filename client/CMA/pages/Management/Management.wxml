@@ -1,3 +1,7 @@
 <!--pages/Management/Management.wxml-->
 <button bindtap="goStaffManagement">StaffManagement</button>
 <button bindtap="goTrainingApplication">TrainingApplication</button>
+<button bindtap="gotoInterCheck">IntermediateCheck</button>
+<button bindtap="gotoEquipment1">Equipment1</button>
+<button bindtap="gotoEquipment2">Equipment2</button>
+<button bindtap='gotoSampleChoose'>SampleChoose</button>
