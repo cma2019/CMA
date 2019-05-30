@@ -16,7 +16,8 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.LinkedHashMap;
 import java.util.List;
-import com.example.cma.IntermediateChecksRecord;
+import com.example.demo.Model.IntermediateChecksRecord;
+import com.example.demo.Repository.RecordRepository;
 @Controller//Controller
 @RequestMapping(path="/cma/IntermediateChecksRecord")
 public class IntermediateChecksRecordController {

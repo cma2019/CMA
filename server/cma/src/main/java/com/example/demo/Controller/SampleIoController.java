@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.Controller;
 //import com.fasterxml.jackson.databind.util.JSONPObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import net.sf.json.JSONObject;
 import net.sf.json.JSONArray;
-
+import com.example.demo.Repository.SampleIoRepository;
+import com.example.demo.Model.SampleIO;
 import java.util.List;
 
 @Controller

@@ -29,7 +29,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import com.example.cma.IntermediateChecksPlan;
+import com.example.demo.Model.IntermediateChecksPlan;
+import com.example.demo.Repository.PlanRepository;
 
 @Controller//Controller
 @RequestMapping(path="/cma/IntermediateChecksPlan")
