@@ -1,0 +1,53 @@
+<!--pages/StaffManagement/ModifyStaff/ModifyStaff.wxml-->
+<view>
+  <form bindsubmit='StaffModify'>
+  <view class="section">
+      <view class="section__title">id</view>
+      <input name="id" placeholder="input id" />
+    </view>
+    <view class="section">
+      <view class="section__title">name</view>
+      <input name="name" placeholder="input name" />
+    </view>
+    <view class="section">
+      <view class="section__title">gender</view>
+      <input name="gender" placeholder="input gender" />
+    </view>
+    <view class="section">
+      <view class="section__title">department</view>
+      <input name="department" placeholder="input department" />
+    </view>
+    <view class="section">
+      <view class="section__title">position</view>
+      <input name="position" placeholder="input position" />
+    </view>
+    <view class="section">
+      <view class="section__title">title</view>
+      <input name="title" placeholder="input title" />
+    </view>
+    <view class="section">
+      <view class="section__title">degree</view>
+      <input name="degree" placeholder="input degree" />
+    </view>
+    <view class="section">
+      <view class="section__title">graduationSchool</view>
+      <input name="graduationSchool" placeholder="input graduationSchool" />
+    </view>
+    <view class="section">
+      <view class="section__title">graduationMajor</view>
+      <input name="graduationMajor" placeholder="input graduationMajor" />
+    </view>
+    <view class="section">
+      <view class="section__title">graduationDate</view>
+      <input name="graduationDate" placeholder="input graduationDate" />
+    </view>
+    <view class="section">
+      <view class="section__title">workingYears</view>
+      <input name="workingYears" placeholder="input workingYears" />
+    </view>
+    <view>
+      <button formType='submit'>修改人员信息</button>
+    </view>
+  </form>
+</view>
+<button bindtap="goback">返回</button>

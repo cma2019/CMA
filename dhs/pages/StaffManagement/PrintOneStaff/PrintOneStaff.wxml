@@ -1,0 +1,46 @@
+<!--pages/StaffManagement/PrintOneStaff/PrintOneStaff.wxml-->
+<view>
+  
+  <view class="section">
+    <view class="section__title">name</view>
+      <text>{{name}}</text>
+  </view>
+  <view class="section">
+    <view class="section__title">gender</view>
+      <text>{{gender}}</text>
+  </view>
+  <view class="section">
+    <view class="section__title">department</view>
+      <text>{{department}}</text>
+  </view>
+  <view class="section">
+    <view class="section__title">position</view>
+      <text>{{position}}</text>
+  </view>
+  <view class="section">
+    <view class="section__title">title</view>
+      <text>{{title}}</text>
+  </view>
+  <view class="section">
+    <view class="section__title">degree</view>
+      <text>{{degree}}</text>
+  </view>
+  <view class="section">
+    <view class="section__title">graduationSchool</view>
+      <text>{{graduationSchool}}</text>
+  </view>
+  <view class="section">
+    <view class="section__title">graduationMajor</view>
+      <text>{{graduationMajor}}</text>
+  </view>
+  <view class="section">
+    <view class="section__title">graduationDate</view>
+      <text>{{grauationDate}}</text>
+  </view>
+  <view class="section">
+    <view class="section__title">workingYears</view>
+      <text>{{workingYears}}</text>
+  </view>
+</view>
+<button bindtap="ModifyStaff">Modify</button>
+<button bindtap="DeleteStaff">Delete</button>
