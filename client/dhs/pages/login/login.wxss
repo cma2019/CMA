@@ -1,0 +1,5 @@
+.user_mes{
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 40rpx;
+}

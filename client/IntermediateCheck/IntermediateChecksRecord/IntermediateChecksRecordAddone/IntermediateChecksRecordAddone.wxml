@@ -1,0 +1,55 @@
+<!--pages/IntermediateCheck/IntermediateCheck.wxml-->
+<view>
+  <form bindsubmit='InterCheckRegister'>
+    <view class="section">
+      <view class="section__title">planId</view>
+      <input name="planId" placeholder="input planId" />
+    </view>
+    <view class="section">
+      <view class="section__title">object</view>
+      <input name="object" placeholder="input object name" />
+    </view>
+    <view class="section">
+      <view class="section__title">select checkDate</view>
+        <picker name = 'checkDate' mode='date' value='{{checkDate}}' bindchange='bindCheckDateChange'>
+          <view class='picker'>checkDate: {{checkDate}}</view>
+        </picker>
+    </view>
+    <view class="section">
+      <view class="section__title">processRecord</view>
+      <input name="processRecord" placeholder="input processRecord" />
+    </view>
+    <view class="section">
+      <view class="section__title">processRecordPerson</view>
+      <input name="processRecordPerson" placeholder="input processRecordPerson" />
+    </view>
+    <view class="section">
+      <view class="section__title">select processRecordDate</view>
+        <picker name = 'processRecordDate' mode='date' value='{{processRecordDate}}' bindchange='bindDateChange1'>
+          <view class='picker'>processRecordDate: {{processRecordDate}}</view>
+        </picker>
+    </view>
+    <view class="section">
+      <view class="section__title">resultRecord</view>
+      <input name="resultRecord" placeholder="input resultRecord" />
+    </view>
+    <view class="section">
+      <view class="section__title">resultRecordPerson</view>
+      <input name="resultRecordPerson" placeholder="input resultRecordPerson" />
+    </view>
+    <view class="section">
+      <view class="section__title">select resultRecordDate</view>
+        <picker name = 'resultRecordDate' mode='date' value='{{resultRecordDate}}' bindchange='bindDateChange2'>
+          <view class='picker'>resultRecordDate: {{resultRecordDate}}</view>
+        </picker>
+    </view>
+    <view class="section">
+      <view class="section__title">note</view>
+      <input name="note" placeholder="input note" />
+    </view>
+    <view>
+      <button formType='submit'>register</button>
+    </view>
+  </form>
+</view>
+<button bindtap="gotologin">go back</button>

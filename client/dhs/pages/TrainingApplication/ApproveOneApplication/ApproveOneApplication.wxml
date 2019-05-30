@@ -1,0 +1,27 @@
+<!--pages/TrainingApplication/ApproveOneApplication/ApproveOneApplication.wxml-->
+<view>
+  <form bindsubmit='intercheckmodify'>
+    <view class="section">
+      <view class="section__title">id</view>
+      <input name="id" value='{{id}}' placeholder="input id" />
+    </view>
+    <view class="section">
+      <view class="section__title">situation</view>
+      <input name="situation" value='{{situation}}' placeholder="input situation" />
+    </view>
+    <view class="section">
+      <view class="section__title">approver</view>
+      <input name="approver" value='{{approver}}' placeholder="input approver" />
+    </view>
+    <view class="section">
+      <view class="section__title">approveDate</view>
+        <picker name = 'date' mode='date' value='{{approveDate}}' bindchange='bindDateChange'>
+          <view class='picker'>date: {{approveDate}}</view>
+        </picker>
+    </view>
+    <view>
+      <button formType='submit'>提交</button>
+    </view>
+  </form>
+</view>
+<button bindtap="goback">返回</button>
