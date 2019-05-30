@@ -1,0 +1,31 @@
+<scroll-view scroll-y>
+  <form bindsubmit='newEquipment'>
+    <view class="section">
+      <view class="section__title">name</view>
+      <input name="name" placeholder="input name" />
+    </view>
+    <view class="section">
+      <view class="section__title">model</view>
+      <input name="model" placeholder="input model" />
+    </view>
+    <view class="section">
+      <view class="section__title">cpu</view>
+      <input name="cpu" placeholder="input cpu" />
+    </view>
+    <view class="section">
+      <view class="section__title">memory</view>
+      <input name="memory" placeholder="input memory" />
+    </view>
+    <view class="section">
+      <view class="section__title">application</view>
+      <input name="application" placeholder="input application" />
+    </view>
+    <view class="section">
+      <view class="section__title">state</view>
+      <input name="state" placeholder="input state" />
+    </view>
+    <view>
+      <button formType='submit'>new equipment</button>
+    </view>
+  </form>
+</scroll-view>

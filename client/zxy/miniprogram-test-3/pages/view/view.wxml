@@ -1,0 +1,50 @@
+<scroll-view scroll-y>
+  <form bindsubmit='mytest'>
+    <view class="section">
+      <view class="section__title">name</view>
+      <input name="name" placeholder="input name" value='{{equipment.name}}' />
+    </view>
+    <view class="section">
+      <view class="section__title">model</view>
+      <input name="model" placeholder="input model" value='{{equipment.model}}'/>
+    </view>
+    <view class="section">
+      <view class="section__title">manufacturer</view>
+      <input name="manufacturer" placeholder="input manufacturer" value='{{equipment.manufacturer}}'/>
+    </view>
+    <view class="section">
+      <view class="section__title">receive_situation</view>
+      <input name="receive_situation" placeholder="input receive_situation" value='{{equipment.receive_situation}}'/>
+    </view>
+    <view class="section">
+      <view class="section__title">recipient</view>
+      <input name="recipient" placeholder="input recipient" value='{{equipment.recipient}}'/>
+    </view>
+    <view class="section">
+      <view class="section__title">receive_date</view>
+      <input name="receive_date" placeholder="input receive_date" value='{{equipment.receive_date}}'/>
+    </view>
+    <view class="section">
+      <view class="section__title">equipment_situation</view>
+      <input name="equipment_situation" placeholder="input equipment_situation" value='{{equipment.equipment_situation}}'/>
+    </view>
+    <view class="section">
+      <view class="section__title">acceptance</view>
+      <input name="acceptance" placeholder="input acceptance" value='{{equipment.acceptance}}'/>
+    </view>
+    <view class="section">
+      <view class="section__title">acceptance_person</view>
+      <input name="acceptance_person" placeholder="input acceptance_person" value='{{equipment.acceptance_person}}'/>
+    </view>
+    <view class="section">
+      <view class="section__title">acceptance_date</view>
+      <input name="acceptance_date" placeholder="input acceptance_date" value='{{equipment.acceptance_date}}'/>
+    </view>
+    <view>
+      <button formType='submit'>edit</button>
+    </view>
+  </form>
+  <view>
+      <button bindtap='mydelete'>delete</button>
+  </view>
+</scroll-view>
