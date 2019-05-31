@@ -1,4 +1,10 @@
 <!--pages/Management/Management.wxml-->
+<van-button type="default" size='large'>it is a button</van-button>
+<van-button type="primary" size='normal'>it is a button</van-button>
+<van-button type="info" size='small'>it is a button</van-button>
+<van-button type="warning" size='mini'>it is a button</van-button>
+<van-button type="danger" size='mini'>it is a button</van-button>
+
 <button bindtap="goStaffManagement">StaffManagement</button>
 <button bindtap="goTrainingApplication">TrainingApplication</button>
 <button bindtap="gotoInterCheck">IntermediateCheck</button>
