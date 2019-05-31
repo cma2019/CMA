@@ -96,4 +96,14 @@ public class AnnualTrainingPlan {
     public void setTrainProject(String trainProject) {
         this.trainProject = trainProject;
     }
+
+    public boolean Equals(AnnualTrainingPlan annualTrainingPlan){
+        if(annualTrainingPlan.getYear()==this.year&&annualTrainingPlan.getPeople().equals(this.people)&&annualTrainingPlan.getTrainProject().equals(this.trainProject)&&
+        annualTrainingPlan.getMethod().equals(this.method)&&annualTrainingPlan.getTrainingTime()==this.trainingTime&&annualTrainingPlan.getStratTime().equals(this.getStratTime())
+        &&annualTrainingPlan.getEndTime().equals(this.getEndTime())){
+            return true;
+        }
+        else
+            return false;
+    }
 }
