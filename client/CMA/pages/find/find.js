@@ -5,16 +5,33 @@ Page({
    */
   data: {
     array: [{
-      "test":1
+      "id":1,
+      "name":1,
+      "model":1,
+      "cpu":1,
+      "memory":1,
+      "application":1,
+      "state":1
     },
     {
-      "test":2
+      "id": 2,
+      "name": 2,
+      "model": 2,
+      "cpu": 2,
+      "memory": 2,
+      "application": 2,
+      "state": 2
     }]
   },
   viewDetail: function(e){
     console.log(e.currentTarget.dataset)
     wx.redirectTo({
       url: '/pages/view/view?id=' + e.currentTarget.dataset.id + "&name=" + e.currentTarget.dataset.name + "&model=" + e.currentTarget.dataset.model + "&cpu=" + e.currentTarget.dataset.cpu + "&memory=" + e.currentTarget.dataset.memory + "&application=" + e.currentTarget.dataset.application + "&state=" + e.currentTarget.dataset.state,
+    })
+  },
+  gotoAdd: function(e){
+    wx.redirectTo({
+      url: '/pages/new/new',
     })
   },
   /**
