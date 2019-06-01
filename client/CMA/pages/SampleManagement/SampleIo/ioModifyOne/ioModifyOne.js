@@ -15,8 +15,8 @@ Page({
   onLoad: function (options) {
 
   },
-  SampleReceive_modifyone: function (e) {
-    console.log('SampleReceive发生了modifyone事件，携带数据为：', e.detail.value)
+  SampleIo_modifyone: function (e) {
+    console.log('SampleIo发生了modifyone事件，携带数据为：', e.detail.value)
     wx.request({
       url: app.globalData.url+ 'SampleIo/modifyOne',
       method: 'POST',

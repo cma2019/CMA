@@ -19,17 +19,17 @@ Page({
 
   gotoSampleReceive: function(){
     wx.navigateTo({
-      url: '../page_samplereceive/SampleReceive/SampleReceive',
+      url: '../SampleReceive/SampleReceive',
     })
   },
   gotoSampleIo:function(){
     wx.navigateTo({
-      url: '../page_SampleIo/SampleIo/SampleIo',
+      url: '../SampleIo/SampleIo',
     })
   },
   gotoSampleReceipt: function () {
     wx.navigateTo({
-      url: '../page_SampleReceipt/SampleReceipt/SampleReceipt',
+      url: '../SampleReceipt/SampleReceipt',
     })
   }
 })

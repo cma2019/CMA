@@ -1,0 +1,29 @@
+<!--page_SampleIo/ioModifyOne/ioModifyOne.wxml-->
+<view>
+ <form bindsubmit='SampleIo_modifyone'>
+    <van-cell-group title="SampleIo_modifyone">
+      <van-field v-model="sampleNumber"  required clearable label="样品编号" placeholder="请输入样品编号" :error-message="errorMessage.NumberInput"/>
+
+      <van-field v-model="sampleName"  required clearable label="样品名称" placeholder="请输入样品名称" :error-message="errorMessage.NameInput"/>
+
+      <van-field v-model="sampleAmount"  required clearable label="样品数量" placeholder="请输入样品数量"/>
+      <van-field v-model="sampleState"  required clearable label="样品状态" placeholder="请输入样品状态" />
+
+      <van-field v-model="sender"  required clearable label="送样人" placeholder="请输入送样人姓名":error-message="errorMessage.senderInput"/>
+
+      <van-field v-model="receiver"  required clearable label="接收人" placeholder="请输入接收人姓名" :error-message="errorMessage.receiverInput"/>
+
+      <van-field v-model="receiverDate"  required clearable label="接收日期" placeholder="请输入接收日期" />
+
+      <van-field v-model="obtainer"  required clearable label="领取人" placeholder="请输入领取人姓名" :error-message="errorMessage.obtainerInput"/>
+
+      <van-field v-model="obtainerDate"  required clearable label="领取日期" placeholder="请输入领取日期" />
+
+      <van-field v-model="note"   clearable label="备注" placeholder="请输入备注" rows="1" autosize />
+    </van-cell-group>
+    <view>
+      <button formType='submit'>完成</button>
+    </view>
+  </form>
+</view>
+<button bindtap="goback">取消</button>
