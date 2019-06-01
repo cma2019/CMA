@@ -28,7 +28,8 @@
     "pages/find2/find2",
     "pages/new2/new2",
     "pages/view2/view2",
-    "pages/user/user"
+    "pages/user/user",
+    "pages/display/display"
   ],
   "window": {
     "backgroundTextStyle": "light",
