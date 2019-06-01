@@ -1,79 +1,3 @@
-<<<<<<< HEAD
-{
-  "pages": [
-    "pages/home/home",
-    "pages/Management/Management",
-    "pages/IntermediateCheck/IntermediateCheckMenu/IntermediateCheckMenu",
-    "pages/index/index",
-    "pages/logs/logs",
-    "pages/IntermediateCheck/IntermediateCheck/IntermediateCheck",
-    "pages/IntermediateCheck/IntermediateCheck/IntermediateCheckAddone/IntermediateCheckAddone",
-    "pages/IntermediateCheck/IntermediateCheck/IntermediateCheckGetone/IntermediateCheckGetone",
-    "pages/IntermediateCheck/IntermediateCheck/IntermediateCheckModify/IntermediateCheckModify",
-    "pages/IntermediateCheck/IntermediateChecksRecord/IntermediateChecksRecord",
-    "pages/IntermediateCheck/IntermediateChecksRecord/IntermediateChecksRecordAddone/IntermediateChecksRecordAddone",
-    "pages/IntermediateCheck/IntermediateChecksRecord/IntermediateChecksRecordGetone/IntermediateChecksRecordGetone",
-    "pages/IntermediateCheck/IntermediateChecksRecord/IntermediateChecksRecordModify/IntermediateChecksRecordModify",
-    "pages/StaffManagement/StaffManagement",
-    "pages/StaffManagement/AddStaff/AddStaff",
-    "pages/StaffManagement/PrintOneStaff/PrintOneStaff",
-    "pages/StaffManagement/ModifyStaff/ModifyStaff",
-    "pages/SampleManagement/SampleManagementMenu/SampleManagementMenu",
-    "pages/SampleManagement/SampleIo/SampleIo",
-    "pages/SampleManagement/SampleIo/ioAddOne/ioAddOne",
-    "pages/SampleManagement/SampleIo/ioGetOne/ioGetOne",
-    "pages/SampleManagement/SampleIo/ioModifyOne/ioModifyOne",
-    "pages/TrainingApplication/TrainingApplication",
-    "pages/TrainingApplication/PrintOneApplication/PrintOneApplication",
-    "pages/TrainingApplication/ModifyApplication/ModifyApplication",
-    "pages/TrainingApplication/AddApplication/AddApplication",
-    "pages/TrainingApplication/ApproveOneApplication/ApproveOneApplication",
-    "pages/find/find",
-    "pages/new/new",
-    "pages/view/view",
-    "pages/find2/find2",
-    "pages/new2/new2",
-    "pages/view2/view2",
-    "pages/user/user"
-  ],
-  "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
-  },
-  "sitemapLocation": "sitemap.json",
-  "tabBar": {
-    "color": "#8a8a8a",
-    "selectedColor": "#1296db",
-    "list": [
-      {
-        "iconPath": "icons/block/block_grey.png",
-        "selectedIconPath": "/icons/block/block_blue.png",
-        "pagePath": "pages/Management/Management",
-        "text": "功能"
-      },
-      {
-        "iconPath": "icons/home/home_grey.png",
-        "selectedIconPath": "/icons/home/home_blue.png",
-        "pagePath": "pages/home/home",
-        "text": "首页"
-      },
-      {
-        "iconPath": "/icons/user/user_grey.png",
-        "selectedIconPath": "/icons/user/user_blue.png",
-        "pagePath": "pages/user/user",
-        "text": "接口"
-      }
-    ]
-  },
-  "usingComponents": {
-    "van-button": "../../dist/button/index",
-    "van-cell": "../../dist/cell/index",
-    "van-cell-group": "../../dist/cell-group/index",
-    "van-field": "../../dist/field/index"
-  }
-=======
 {
   "pages": [
     "pages/home/home",
@@ -144,5 +68,4 @@
     "van-cell-group": "../../dist/cell-group/index",
     "van-field": "../../dist/field/index"
   }
->>>>>>> 287669398fc589f9eb2b1355ff1104795064a107
 }
