@@ -5,14 +5,44 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    equipment: {}
   },
-
+  mydelete: function (e) {
+    var that = this
+    wx.request({
+      url: 'http://192.168.1.115:8004/Equipment/deleteOne/' + that.data.equipment.id,
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'Accept': 'application/json'
+      },
+      success(res) {
+        //console.log(res.data)
+      },
+      fail(err) {
+        console.log(err)
+      }
+    })
+    wx.redirectTo({
+      url: '/pages/find/find',
+    })
+  },
+  viewDetail: function (e) {
+    console.log("display -> view")
+    var that = this
+    wx.redirectTo({
+      url: '/pages/view/view?id=' + that.data.equipment.id + "&name=" + that.data.equipment.name + "&model=" + that.data.equipment.model + "&cpu=" + that.data.equipment.cpu + "&memory=" + that.data.equipment.memory + "&application=" + that.data.equipment.application + "&state=" + that.data.equipment.state,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad: function (option) {
+    var that = this;
+    console.log(option)
+    that.setData({
+      equipment: option
+    })
   },
 
   /**

@@ -1,2 +1,16 @@
 <!--pages/display/display.wxml-->
-<text>pages/display/display.wxml</text>
+<scroll-view scroll-y>
+  <van-cell>
+    <view slot="title">
+      <view>id : {{equipment.id}}</view>
+      <view>name : {{equipment.name}}</view>
+      <view>model : {{equipment.model}}</view>
+      <view>cpu : {{equipment.cpu}}</view>
+      <view>memory : {{equipment.memory}}</view>
+      <view>application : {{equipment.application}}</view>
+      <view>state : {{equipment.state}}</view>
+    </view>
+  </van-cell>
+  <van-button type="info" size="small" bindtap="viewDetail">Modify</van-button>
+  <van-button type="info" size="small" bindtap="myDelete">Delete</van-button>
+</scroll-view>

@@ -23,12 +23,6 @@ Page({
       "state": 2
     }]
   },
-  viewDetail: function(e){
-    console.log(e.currentTarget.dataset)
-    wx.redirectTo({
-      url: '/pages/view/view?id=' + e.currentTarget.dataset.id + "&name=" + e.currentTarget.dataset.name + "&model=" + e.currentTarget.dataset.model + "&cpu=" + e.currentTarget.dataset.cpu + "&memory=" + e.currentTarget.dataset.memory + "&application=" + e.currentTarget.dataset.application + "&state=" + e.currentTarget.dataset.state,
-    })
-  },
   gotoAdd: function(e){
     wx.redirectTo({
       url: '/pages/new/new',

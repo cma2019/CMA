@@ -27,10 +27,19 @@ Page({
       url: '/pages/find/find',
     })
   },
+  submit: function(e){
+    var that = this
+    console.log(that.data)
+  },
+  myChange: function(e){
+    console.log("change")
+    console.log(e)
+  },
   mytest: function(e){
     var that = this
     
-    //console.log(e.detail.value)
+    console.log("Modify")
+    console.log(e.detail.value)
     
     wx.request({
       url: 'http://192.168.1.115:8004/Equipment/modifyOne/' + that.data.equipment.id,

@@ -1,34 +1,25 @@
 <scroll-view scroll-y>
   <form bindsubmit='mytest'>
     <view class="section">
-      <view class="section__title">name</view>
-      <input name="name" placeholder="input name" value='{{equipment.name}}' />
+      <van-field value="{{equipment.name}}" required clearable label="name" placeholder="input name" bind:change="myChange"></van-field>
     </view>
     <view class="section">
-      <view class="section__title">model</view>
-      <input name="model" placeholder="input model" value='{{equipment.model}}'/>
+      <van-field value="{{equipment.model}}" required clearable label="model" placeholder="input model" bind:change="myChange"></van-field>
     </view>
     <view class="section">
-      <view class="section__title">cpu</view>
-      <input name="cpu" placeholder="input cpu" value='{{equipment.cpu}}'/>
+      <van-field value="{{equipment.cpu}}" required clearable label="cpu" placeholder="input cpu"></van-field>
     </view>
     <view class="section">
-      <view class="section__title">memory</view>
-      <input name="memory" placeholder="input memory" value='{{equipment.memory}}'/>
+      <van-field value="{{equipment.memory}}" required clearable label="memory" placeholder="input memory"></van-field>
     </view>
     <view class="section">
-      <view class="section__title">application</view>
-      <input name="application" placeholder="input application" value='{{equipment.application}}'/>
+      <van-field value="{{equipment.application}}" required clearable label="application" placeholder="input application"></van-field>
     </view>
     <view class="section">
-      <view class="section__title">state</view>
-      <input name="state" placeholder="input state" value='{{equipment.state}}'/>
+      <van-field value="{{equipment.state}}" required clearable label="state" placeholder="input state"></van-field>
     </view>
     <view>
-      <button formType='submit'>edit</button>
+      <button formType='submit'>Modify</button>
     </view>
   </form>
-  <view>
-      <button bindtap='mydelete'>delete</button>
-  </view>
 </scroll-view>
