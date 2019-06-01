@@ -19,7 +19,7 @@
       <van-field value="{{equipment.state}}" required clearable label="state" placeholder="input state"></van-field>
     </view>
     <view>
-      <button formType='submit'>Modify</button>
+      <van-button type="info" size="small" formType='submit'>Modify</van-button>
     </view>
   </form>
 </scroll-view>
