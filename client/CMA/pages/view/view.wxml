@@ -22,4 +22,3 @@
       <van-button type="info" size="small" formType='submit'>Modify</van-button>
     </view>
   </form>
-</scroll-view>

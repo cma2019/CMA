@@ -17,11 +17,6 @@
     "pages/StaffManagement/AddStaff/AddStaff",
     "pages/StaffManagement/PrintOneStaff/PrintOneStaff",
     "pages/StaffManagement/ModifyStaff/ModifyStaff",
-    "pages/SampleManagement/SampleManagementMenu/SampleManagementMenu",
-    "pages/SampleManagement/SampleIo/SampleIo",
-    "pages/SampleManagement/SampleIo/ioAddOne/ioAddOne",
-    "pages/SampleManagement/SampleIo/ioGetOne/ioGetOne",
-    "pages/SampleManagement/SampleIo/ioModifyOne/ioModifyOne",
     "pages/TrainingApplication/TrainingApplication",
     "pages/TrainingApplication/PrintOneApplication/PrintOneApplication",
     "pages/TrainingApplication/ModifyApplication/ModifyApplication",
@@ -33,7 +28,8 @@
     "pages/find2/find2",
     "pages/new2/new2",
     "pages/view2/view2",
-    "pages/user/user"
+    "pages/user/user",
+    "pages/display/display"
   ],
   "window": {
     "backgroundTextStyle": "light",
