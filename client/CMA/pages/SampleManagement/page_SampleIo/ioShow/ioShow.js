@@ -1,20 +1,35 @@
-// pages/user/user.js
+// page_SampleIo/ioShow/ioShow.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    info: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
 
+  onLoad: function () {
+    var that = this
+    wx.getStorage({
+      key: 'info',
+      success: function (res) {
+        console.log(res)
+        that.setData({
+          info: res.data
+        })
+      }
+    })
+    console.log(that)
   },
-
+  goback: function () {
+    wx.navigateBack({
+      delta: 1
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

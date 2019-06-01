@@ -1,0 +1,10 @@
+<text>choose a function</text>
+<view>
+  <button bindtap='gotoSampleReceive'>样品接收登记</button>
+</view>
+<view>
+  <button bindtap='gotoSampleIo'>样品室样品进出登记</button>
+</view>
+<view>
+  <button bindtap='gotoSampleReceipt'>样品接收单</button>
+</view>
