@@ -1,4 +1,3 @@
-<text>choose a function</text>
 <view>
   <button bindtap='gotoSampleReceive'>样品接收登记</button>
 </view>

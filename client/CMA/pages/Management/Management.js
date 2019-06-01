@@ -88,9 +88,9 @@ Page({
       url: '../find2/find2',
     })
   },
-  gotoSampleChoose:function(){
+  gotoSampleManagement:function(){
     wx.navigateTo({
-      url: '../Sample_choose/Sample_choose',
+      url: '../SampleManagement/SampleManagementMenu/SampleManagementMenu',
     })
   }
 })

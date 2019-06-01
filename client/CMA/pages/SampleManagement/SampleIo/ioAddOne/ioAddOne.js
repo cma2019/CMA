@@ -6,7 +6,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    errorMessage: 
+    { 
+      numberInput: "", 
+      nameInput: "", 
+      senderInput: "",
+      receiverInput:"",
+      obtainerInput:""
+    }
   },
 
   /**
@@ -15,7 +22,8 @@ Page({
   onLoad: function (options) {
 
   },
-  SampleReceive_addone: function (e) {
+  
+  SampleIo_addone: function (e) {
     if (e.detail.value.sampleNumber == "" || e.detail.value.sampleName == "" || e.detail.value.sampleAmount == "" || e.detail.value.sampleState == "" || e.detail.value.sender == "" || e.detail.value.receiver == "" || e.detail.value.sendDate == "" || e.detail.value.obtainer == "" || e.detail.value.obtainDate == "") {
       wx.showToast({
         title: '错误（空白输入）',
@@ -54,7 +62,7 @@ Page({
               duration: 1500
             })
             wx.navigateTo({
-              url: '../SampleIo/SampleIo'
+              url: '../SampleIo'
             })
           }
           else if (res.data.code == 512) {
@@ -64,7 +72,7 @@ Page({
             })
             console.log('添加失败，样品编号已存在')
           }
-          else  if(rees.data.code == 513){
+          else  if(res.data.code == 513){
             wx.showToast({
               title: '添加失败，某项数据错误',
               duration: 1500

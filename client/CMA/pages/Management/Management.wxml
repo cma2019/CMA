@@ -10,4 +10,4 @@
 <button bindtap="gotoInterCheck">IntermediateCheck</button>
 <button bindtap="gotoEquipment1">Equipment1</button>
 <button bindtap="gotoEquipment2">Equipment2</button>
-<button bindtap='gotoSampleChoose'>SampleChoose</button>
+<button bindtap='gotoSampleManagement'>SampleManagement</button>
