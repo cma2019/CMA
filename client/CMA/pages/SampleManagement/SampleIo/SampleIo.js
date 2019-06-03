@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    "mess":null,
     tmp: [{
       "sampleIoId": 2,
       "sampleNumber": "20180602",
@@ -35,29 +36,32 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    var thispage = this
-    wx.request({
-      url: app.globalData.url +'SampleIo/getAll',
-      method: 'GET',
-      data: {
-      },
-      header: {
-        'content-type': 'application/json',
-        'Accept': 'application/json'
-      },
-      success(res) {
-        console.log(res.data.data)
-        console.log(res.data.code)
-        console.log(res.data.msg)
-        thispage.setData({ sampleIoInfo: res.data.data })
-        if (res.data.code != 200) {
-          thispage.setData({ sampleIoInfo: 'null' })
-        }
-      },
-      fail(err) {
-        console.log('no data')
-      }
+  onShow: function (options) {
+    let url = app.globalData.url + 'SampleIo/getAll'
+    let postdata = ''
+    console.log(url)
+    console.log(postdata)
+    app.wxRequest(url, 'GET', postdata, (res) => {
+      //console.log('success')
+      console.log(res)
+      console.log('success')
+     // console.log(res.code)
+      //console.log(res.msg)
+     // console.log(res.data)
+      //var temp = res.data
+      //this.temp = temp
+      this.setData({
+        mess: res.data
+      })
+
+      console.log(this.mess)
+    }, (err) => {
+      //console.err('getone error')
+      wx.showToast({
+        title: 'getone error',
+        duration: 1500
+      })
+      console.log('getone error')
     })
   },
   gotoOne: function (e) {
@@ -65,6 +69,7 @@ Page({
     let target = e.currentTarget.id
     console.log('getone id')
     console.log(target)
+    console.log("dfdsfs")
     wx.navigateTo({
       url: 'ioGetOne/ioGetOne?id=' + target
     })

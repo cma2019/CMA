@@ -31,5 +31,10 @@ Page({
     wx.navigateTo({
       url: '../SampleReceipt/SampleReceipt',
     })
+  },
+  goback:function(){
+    wx.navigateBack({
+      delta: 1
+    })
   }
 })

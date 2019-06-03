@@ -1,8 +1,8 @@
 <!--page_SampleIo/SampleIo/SampleIo.wxml-->
 <view>
   <van-cell-group title="SampleIo">
-  <view wx:for="{{tmp}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
-    <van-cell value="详情" bindtap='gotoOne' is-link>
+  <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
+    <van-cell value="详情" bindtap='gotoOne' id='{{item.sampleIoId}}' is-link>
       <view slot="title">
         <view>样品编号:{{item.sampleNumber}}  </view>
         <view>样品名称:{{item.sampleName}}  </view>

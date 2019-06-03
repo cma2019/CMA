@@ -1,4 +1,5 @@
 // page_SampleIo/ioShow/ioShow.js
+const app = getApp()
 Page({
 
   /**
@@ -12,7 +13,7 @@ Page({
     "sampleState": "null",
     "sender": "null",
     "receiver": "null",
-    "receiveDate": "null",
+    "sendDate": "null",
     "obtainer": "null",
     "obtainDate": "null",
     tmp: [{
@@ -23,7 +24,7 @@ Page({
       "sampleState": 0,
       "sender": "张三",
       "receiver": "李四",
-      "receiveDate": "2018-06-16",
+      "sendDate": "2018-06-16",
       "obtainer": "王五",
       "obtainDate": "2018-06-17"
     }]
@@ -37,6 +38,8 @@ Page({
     this.setData({
       sampleIoId: options.id
     })
+    console.log("fsdgdf")
+    console.log(this.data.sampleIoId)
   },
 
   /**
@@ -64,14 +67,13 @@ Page({
       success(res) {
         if (res.data.code == 200) {
           thispage.setData({ 
-            sampleIoId: res.data.data.sampleIoId,
             sampleNumber: res.data.data.sampleNumber,
             sampleName: res.data.data.sampleName,
             sampleAmount: res.data.data.sampleAmount,
             sampleState: res.data.data.sampleState,
             sender: res.data.data.sender,
             receiver: res.data.data.receiver,
-            receiveDate: res.data.data.receiveDate,
+            sendDate: res.data.data.sendDate,
             obtainer: res.data.data.obtainer,
             obtainDate: res.data.data.obtainDate
           })
@@ -103,9 +105,10 @@ Page({
   modifyData: function(e) {
     console.log(e)
     let target = this.data.sampleIoId
+    console.log("dfdg")
     console.log(target)
     wx.navigateTo({
-      url: '../ioModifyOne/ioModifyOne?sampleIoId=' + target
+      url: '../ioModifyOne/ioModifyOne?id=' + target
     })
   },
 

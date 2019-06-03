@@ -39,41 +39,39 @@
     </van-collapse-item>
     <van-collapse-item title="样品管理" name="10">
       <van-cell-group>
-        <van-cell title="SampleReceive" boarder="{{false}}" is-link  center="{{true}}" url="../IntermediateCheck/IntermediateCheck/IntermediateCheck"></van-cell>
-        <van-cell title="InterCheckPlan" boarder="{{false}}" is-link  center="{{true}}" url="../IntermediateCheck/IntermediateChecksRecord/IntermediateChecksRecord"></van-cell>
+        <van-cell title="SampleReceive" boarder="{{false}}" is-link  center="{{true}}" url="../SampleManagement/SampleReceive/SampleReceive"></van-cell>
+        <van-cell title="SampleIo" boarder="{{false}}" is-link  center="{{true}}" url="../SampleManagement/SampleIo/SampleIo"></van-cell>
+        <van-cell title="SampleReceipt" boarder="{{false}}" is-link  center="{{true}}" url="../SampleManagement/SampleReceipt/SampleReceipt"></van-cell>
       </van-cell-group>
     </van-collapse-item>
     <van-collapse-item title="设备管理" name="11">
       
     </van-collapse-item>
-    <van-collapse-item title="样品管理" name="12">
+    <van-collapse-item title="人员管理" name="12">
       
     </van-collapse-item>
-    <van-collapse-item title="人员管理" name="13">
+    <van-collapse-item title="授权签字人管理" name="13">
       
     </van-collapse-item>
-    <van-collapse-item title="授权签字人管理" name="14">
+    <van-collapse-item title="检测检验能力管理" name="14">
       
     </van-collapse-item>
-    <van-collapse-item title="检测检验能力管理" name="15">
+    <van-collapse-item title="能力验证管理" name="15">
       
     </van-collapse-item>
-    <van-collapse-item title="能力验证管理" name="16">
+    <van-collapse-item title="客户意见与投诉管理" name="16">
       
     </van-collapse-item>
-    <van-collapse-item title="客户意见与投诉管理" name="17">
+    <van-collapse-item title="标准管理" name="17">
       
     </van-collapse-item>
-    <van-collapse-item title="标准管理" name="18">
+    <van-collapse-item title="外部评审与上报管理" name="18">
       
     </van-collapse-item>
-    <van-collapse-item title="外部评审与上报管理" name="19">
+    <van-collapse-item title="检测机构管理" name="19">
       
     </van-collapse-item>
-    <van-collapse-item title="检测机构管理" name="20">
-      
-    </van-collapse-item>
-    <van-collapse-item title="系统管理" name="21">
+    <van-collapse-item title="系统管理" name="20">
       
     </van-collapse-item>
   </van-collapse>

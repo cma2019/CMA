@@ -2,7 +2,6 @@
 <view>
   <van-cell>
       <view slot="title">
-        <text>sampleIoId: {{sampleIoId}}\n</text>
         <text>sampleNumber: {{sampleNumber}}\n</text>
         <text>sampleName: {{sampleName}}\n</text>
         <text>sampleAmount: {{sampleAmount}}\n</text>

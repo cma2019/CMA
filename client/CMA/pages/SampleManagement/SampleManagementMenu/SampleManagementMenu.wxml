@@ -7,3 +7,4 @@
 <view>
   <button bindtap='gotoSampleReceipt'>样品接收单</button>
 </view>
+<button bindtap='goback'>返回</button>
