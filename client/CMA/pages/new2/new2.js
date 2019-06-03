@@ -10,7 +10,7 @@ Page({
   {
     console.log(e.detail.value)
     wx.request({
-      url: 'http://192.168.1.113:8004/EquipmentReceive/add',
+      url: 'http://192.168.1.108:8004/EquipmentReceive/add',
       method: 'POST',
       data:{
         "name": e.detail.value.name,
