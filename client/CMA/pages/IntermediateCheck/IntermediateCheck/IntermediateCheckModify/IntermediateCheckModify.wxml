@@ -1,31 +1,45 @@
 <!--pages/IntermediateCheck/IntermediateCheck.wxml-->
 <view>
-  <form bindsubmit='intercheckmodify'>
-    <view class="section">
-      <view class="section__title">object</view>
-      <input name="object" value='{{object}}' placeholder="input object name" />
-    </view>
-    <view class="section">
-      <view class="section__title">content</view>
-      <input name="content" value='{{content}}'placeholder="input content" />
-    </view>
-    <view class="section">
-      <view class="section__title">select date</view>
-        <picker name = 'date' mode='date' value='{{checkDate}}' bindchange='bindDateChange'>
-          <view class='picker'>date: {{checkDate}}</view>
-        </picker>
-    </view>
-    <view class="section">
-      <view class="section__title">personInCharge</view>
-      <input name="personInCharge" value='{{personInCharge}}' placeholder="input Person In Charge" />
-    </view>
-    <view class="section">
-      <view class="section__title">state</view>
-      <input name="state" value='{{state}}' placeholder="input Person In Charge" />
-    </view>
+  <form bindsubmit='InterCheckRegister'>
+    <van-cell-group title="input message">
+      <van-field 
+        name="object"
+        label="my object"
+        placeholder="input object" 
+        required
+        clearable
+      />
+      <van-field 
+        name="content"
+        label="my content"
+        placeholder="input content" 
+        required
+        clearable
+      />
+        <picker name = 'date' mode='date' value='{{date}}' bindchange='bindDateChange'>
+          <view class='picker'>
+            <van-field 
+              name="date"
+              label="my date"
+              value='{{date}}'
+              placeholder="input date" 
+              required
+              clearable
+            />
+          </view>
+        </picker>      
+      <van-field
+        name="personInCharge"
+        label="my personInCharge"
+        placeholder="input personInCharge"
+        required
+        clearable
+        border = "{{false}}"
+      />
+    </van-cell-group>
     <view>
-      <button formType='submit'>register</button>
+      <button class='van-button--info' formType='submit'>register</button>
     </view>
   </form>
 </view>
-<button bindtap="gotologin">go back</button>
+<button class='van-button--info' bindtap="gotologin">go back</button>

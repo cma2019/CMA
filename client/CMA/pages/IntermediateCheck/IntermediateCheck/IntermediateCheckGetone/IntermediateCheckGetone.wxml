@@ -1,32 +1,12 @@
 <!--pages/IntermediateCheck/IntermediateCheckGetone/IntermediateCheckGetone.wxml-->
 <view>
-  <view class="section">
-    <view class="section__title">object</view>
-      <text>{{object}}</text>
-  </view>
-  <view class="section">
-    <view class="section__title">content</view>
-      <text>{{content}}</text>
-  </view>
-  <view class="section">
-    <view class="section__title">checkDate</view>
-      <text>{{checkDate}}</text>
-  </view>
-  <view class="section">
-    <view class="section__title">personInCharge</view>
-      <text>{{personInCharge}}</text>
-  </view>
-  <view class="section">
-    <view class="section__title">state</view>
-      <text>{{state}}</text>
-  </view>
-  <van-cell>
-      <view slot="title">
-        <view> data1 : 1</view>
-        <view> data1 : 2</view>
-        <view> data1 : 3</view>
-      </view>
-  </van-cell>
+<van-cell-group title='message of {{planId}}'>
+    <van-cell value="{{object}}"title="object"border="{{ false }}"/>
+    <van-cell value="{{content}}"title="content"border="{{ false }}"/>
+    <van-cell value="{{checkDate}}"title="checkDate"border="{{ false }}"/>
+    <van-cell value="{{personInCharge}}"title="personInCharge"border="{{ false }}"/>
+    <van-cell value="{{state}}"title="state"/>
+</van-cell-group>
 </view>
-<button bindtap="modifyData">modify</button>
-<button bindtap="deleteData">delete</button>
+<button class='van-button--info' bindtap="modifyData">modify</button>
+<button class='van-button--info' bindtap="deleteData">delete</button>
