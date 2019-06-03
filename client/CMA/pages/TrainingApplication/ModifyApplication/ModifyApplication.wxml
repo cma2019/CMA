@@ -1,6 +1,76 @@
 <!--pages/TrainingApplication/ModifyApplication/ModifyApplication.wxml-->
 <view>
   <form bindsubmit='intercheckmodify'>
+  <van-cell-group>
+      <van-field 
+        name="name"
+        label="name"
+        value='{{name}}'
+        placeholder="input name" 
+        required
+        clearable
+      />
+      <van-field 
+        name="people"
+        label="people"
+        value='{{people}}'
+        placeholder="input people" 
+        required
+        clearable
+      />
+      <van-field 
+        name="trainingUnit"
+        label="trainingUnit"
+        value='{{trainingUnit}}'
+        placeholder="input trainingUnit" 
+        required
+        clearable
+      />
+      <van-field 
+        name="expense"
+        label="expense"
+        value='{{expense}}'
+        placeholder="input expense" 
+        required
+        clearable
+      />
+      <van-field 
+        name="reason"
+        label="reason"
+        value='{{reason}}'
+        placeholder="input reason" 
+        required
+        clearable
+      />
+      <van-field 
+        name="department"
+        label="department"
+        value='{{department}}'
+        placeholder="input department" 
+        required
+        clearable
+      />
+      <view class="section">
+        <picker name = 'date' mode='date' value='{{date}}' bindchange='bindDateChange'>
+        <view class='picker'>
+        <van-field 
+        label="date"
+        value='{{createDate}}'
+        required
+      />
+      </view>
+        </picker>
+    </view>
+    </van-cell-group>
+     <van-field 
+        name="situation"
+        label="situation"
+        value='{{situation}}'
+        clearable
+        readonly
+      />
+
+  <!--
     <view class="section">
       <view class="section__title">id</view>
       <input name="id" value='{{id}}' placeholder="input id" />
@@ -36,9 +106,11 @@
           <view class='picker'>date: {{createDate}}</view>
         </picker>
     </view>
+    -->
     <view>
-      <button formType='submit'>Modify Application</button>
+      <button class='van-button--info' formType='submit'>Modify Application</button>
     </view>
   </form>
 </view>
-<button bindtap="goback">go back</button>
+<van-button type="info" size="small" bindtap="goback">go back</van-button> 
+

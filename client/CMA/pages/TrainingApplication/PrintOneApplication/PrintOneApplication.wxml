@@ -1,5 +1,20 @@
 <!--pages/TrainingApplication/PringOneApplication/PrintOneApplication.wxml-->
 <view>
+  <van-cell-group>
+  <van-cell title="name" value="{{name}}" />
+  <van-cell title="people" value="{{people}}" />
+  <van-cell title="trainingUnit" value="{{trainingUnit}}" />
+  <van-cell title="expense" value="{{expense}}" />
+  <van-cell title="reason" value="{{reason}}" />
+  <van-cell title="situation" value="{{situation}}" />
+  <van-cell title="department" value="{{department}}" />
+  <van-cell title="createDate" value="{{createDate}}" />
+  <van-cell title="approver" value="{{approver}}" />
+  <van-cell title="approveDate" value="{{approveDate}}" />
+  </van-cell-group>
+</view>
+<!--
+<view>
   <view class="section">
     <view class="section__title">name</view>
       <text>{{name}}</text>
@@ -41,6 +56,13 @@
       <text>{{approveDate}}</text>
   </view>
 </view>
+-->
+ <van-button type="info" size="small" bindtap="ModifyStaff">Modify</van-button> 
+ <van-button type="info" size="small" bindtap="DeleteStaff">Delete</van-button> 
+ <van-button type="info" size="small" bindtap="ApproveStaff">Approve</van-button> 
+
+<!--
 <button bindtap="ModifyStaff">Modify</button>
 <button bindtap="DeleteStaff">Delete</button>
 <button bindtap="ApproveStaff">Approve</button>
+-->

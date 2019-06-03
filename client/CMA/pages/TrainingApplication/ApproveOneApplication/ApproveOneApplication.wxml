@@ -1,6 +1,45 @@
 <!--pages/TrainingApplication/ApproveOneApplication/ApproveOneApplication.wxml-->
 <view>
   <form bindsubmit='intercheckmodify'>
+  <van-cell-group>
+  <van-field 
+        name="id"
+        label="id"
+        value='{{id}}'
+        clearable
+        readonly
+      />
+      
+    <van-field 
+        name="situation"
+        label="situation"
+        value='{{situation}}'
+        placeholder="input situation" 
+        required
+        clearable
+        
+      />
+      <van-field 
+        name="approver"
+        label="approver"
+        value='{{approver}}'
+        placeholder="input approver" 
+        required
+        clearable
+      />
+      <view class="section">
+        <picker name = 'date' mode='date' value='{{approveDate}}' bindchange='bindDateChange'>
+          <view class='picker'>
+        <van-field 
+        label="date"
+        value='{{approveDate}}'
+        required
+      />
+      </view>
+        </picker>
+    </view>
+    </van-cell-group>
+    <!--
     <view class="section">
       <view class="section__title">id</view>
       <input name="id" value='{{id}}' placeholder="input id" />
@@ -19,9 +58,10 @@
           <view class='picker'>date: {{approveDate}}</view>
         </picker>
     </view>
+    -->
     <view>
-      <button formType='submit'>提交</button>
+      <button class='van-button--info'  formType='submit'>submit</button>
     </view>
   </form>
 </view>
-<button bindtap="goback">返回</button>
+ <van-button type="info" size="small" bindtap="goback">go back</van-button> 

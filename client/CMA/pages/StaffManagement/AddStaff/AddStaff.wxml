@@ -1,7 +1,91 @@
 <!--pages/StaffManagement/AddStaff/AddStaff.wxml-->
 <view>
   <form bindsubmit='StaffAdd'>
-  
+   <van-cell-group>
+      <van-field 
+        name="name"
+        label="name"
+        placeholder="input name" 
+        required
+        clearable
+      />
+      <van-field 
+        name="gender"
+        label="gender"
+        placeholder="input gender" 
+        required
+        clearable
+      />
+      <van-field 
+        name="department"
+        label="department"
+        placeholder="input department" 
+        required
+        clearable
+      />
+      <van-field 
+        name="position"
+        label="position"
+        placeholder="input position" 
+        required
+        clearable
+      />
+      <van-field 
+        name="title"
+        label="title"
+        placeholder="input title" 
+        required
+        clearable
+      />
+      <van-field 
+        name="degree"
+        label="degree"
+        placeholder="input degree" 
+        required
+        clearable
+      />
+      <van-field 
+        name="graduationSchool"
+        label="school"
+        placeholder="input graduationSchool" 
+        required
+        clearable
+      />
+      <van-field 
+        name="graduationMajor"
+        label="major"
+        placeholder="input graduationMajor" 
+        required
+        clearable
+      />
+      <view class="section">
+        <picker name = 'date' mode='date' value='{{date}}' bindchange='bindDateChange'>
+          <view class='picker'>
+        <van-field 
+        label="date"
+        value='{{date}}'
+        required
+      />
+      </view>
+        </picker>
+    </view>
+      <van-field 
+        name="workingYears"
+        label="workingYears"
+        placeholder="input workingYears" 
+        required
+        clearable
+        
+      />      
+    </van-cell-group>
+    <view>
+      <button class='van-button--info'  formType='submit'>Add</button>
+    </view>
+  </form>
+</view>
+
+ <van-button type="info" size="small" bindtap="goback">go back</van-button> 
+<!--
     <view class="section">
       <view class="section__title">name</view>
       <input name="name" placeholder="input name" />
@@ -34,12 +118,6 @@
       <view class="section__title">graduationMajor</view>
       <input name="graduationMajor" placeholder="input graduationMajor" />
     </view>
-    <!--
-    <view class="section">
-      <view class="section__title">graduationDate</view>
-      <input name="graduationDate" placeholder="input graduationDate" />
-    </view>
-    -->
     <view class="section">
       <view class="section__title">select date</view>
         <picker name = 'date' mode='date' value='{{date}}' bindchange='bindDateChange'>
@@ -56,4 +134,4 @@
   </form>
 </view>
 <button bindtap="goback">返回</button>
-
+-->
