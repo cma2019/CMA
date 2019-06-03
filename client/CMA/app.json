@@ -29,7 +29,8 @@
     "pages/new2/new2",
     "pages/view2/view2",
     "pages/user/user",
-    "pages/display/display"
+    "pages/display/display",
+    "pages/display2/display2"
   ],
   "window": {
     "backgroundTextStyle": "light",

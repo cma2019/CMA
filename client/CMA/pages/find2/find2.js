@@ -37,6 +37,11 @@ Page({
       url: '/pages/view2/view2?id=' + e.currentTarget.dataset.id + "&name=" + e.currentTarget.dataset.name + "&model=" + e.currentTarget.dataset.model + "&manufacturer=" + e.currentTarget.dataset.manufacturer + "&receive_situation=" + e.currentTarget.dataset.receive_situation + "&recipient=" + e.currentTarget.dataset.recipient + "&receive_date=" + e.currentTarget.dataset.receive_date + "&equipment_situation=" + e.currentTarget.dataset.equipment_situation + "&acceptance=" + e.currentTarget.dataset.acceptance + "&acceptance_person=" + e.currentTarget.dataset.acceptance_person + "&acceptance_date=" + e.currentTarget.dataset.acceptance_date,
     })
   },
+  gotoAdd: function (e) {
+    wx.redirectTo({
+      url: '/pages/new2/new2',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -44,7 +49,7 @@ Page({
     //console.log(this.data.array)
     var that = this
     wx.request({
-      url: 'http://192.168.1.113:8004/EquipmentReceive/getAll',
+      url: 'http://192.168.1.108:8004/EquipmentReceive/getAll',
       method:'GET',
       header: {
         'content-type': 'application/x-www-form-urlencoded',
@@ -78,7 +83,7 @@ Page({
   onShow: function () {
     var that = this
     wx.request({
-      url: 'http://192.168.1.113:8004/EquipmentReceive/getAll',
+      url: 'http://192.168.1.108:8004/EquipmentReceive/getAll',
       method: 'GET',
       header: {
         'content-type': 'application/x-www-form-urlencoded',

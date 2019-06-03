@@ -8,11 +8,15 @@ Page({
   onLoad: function (options) {
 
   },
+  onShow: function (options) {
+
+  },
   bindDateChange(e) {
     this.setData({
       date: e.detail.value
     })
   },
+  
   ApplicationAdd: function (e) {
 
     /*if (e.detail.value.name == ""

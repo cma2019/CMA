@@ -25,11 +25,11 @@ public class AnnualTrainingPlanController {
     private AnnualTrainingPlanRepository annualTrainingPlanRepository;
 
     @GetMapping(path = "getAll")
-    public @ResponseBody JSONObject getAll(){
+    public @ResponseBody JSONObject getAll(@RequestParam(value = "year",required = false)long year){
         JSONObject json=new JSONObject();
         json.put("code",200);
         json.put("msg","成功");
-        json.put("data",annualTrainingPlanRepository.findAll());
+        json.put("data",annualTrainingPlanRepository.findAllByYear(year));
         return json;
     }
 

@@ -35,6 +35,34 @@ Page({
       console.err('get one error')
     })
   },
+  /*
+  onShow: function (options) {
+    this.setData({
+      id: options.id
+    })
+    console.log(this.data.id)
+    let url = app.globalData.url + 'TrainingApplication/getOne'
+    let postdata = {
+      "id": this.data.id
+    }
+    console.log(url)
+    console.log(postdata)
+    app.wxRequest(url, 'GET', postdata, (res) => {
+      console.log("data modify")
+      console.log(res.data.name)
+      this.setData({
+        
+        id: res.data.id,
+        situation: res.data.situation,
+        approver: res.data.approver,
+        approveDate: res.data.approveDate
+
+
+      })
+    }, (err) => {
+      console.err('get one error')
+    })
+  },*/
   bindDateChange: function (e) {
     console.log("date")
     console.log(e.detail.value)

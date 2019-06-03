@@ -8,6 +8,9 @@ Page({
   onLoad: function (options) {
 
   },
+  onShow: function (options) {
+
+  },
   bindDateChange(e) {
     this.setData({
       date: e.detail.value

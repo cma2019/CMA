@@ -1,6 +1,93 @@
 <!--pages/StaffManagement/ModifyStaff/ModifyStaff.wxml-->
 <view>
   <form bindsubmit='intercheckmodify'>
+   <van-cell-group>
+      <van-field 
+        name="id"
+        label="id"
+        value='{{id}}'
+        readonly
+        clearable
+      />
+      <van-field 
+        name="name"
+        label="name"
+        value='{{name}}'
+        placeholder="input name" 
+        clearable
+      />
+      <van-field 
+        name="gender"
+        label="gender"
+        value='{{gender}}'
+        placeholder="input gender" 
+        clearable
+      />
+      <van-field 
+        name="department"
+        label="department"
+        value='{{department}}'
+        placeholder="input department" 
+        clearable
+      />
+      <van-field 
+        name="position"
+        label="position"
+        value='{{position}}'
+        placeholder="input position" 
+        clearable
+      />
+      <van-field 
+        name="title"
+        label="title"
+        value='{{title}}'
+        placeholder="input title" 
+        clearable
+      />
+      <van-field 
+        name="degree"
+        label="degree"
+        value='{{degree}}'
+        placeholder="input degree" 
+        clearable
+      />
+      <van-field 
+        name="graduationSchool"
+        label="school"
+        value='{{graduationSchool}}'
+        placeholder="input graduationSchool" 
+        clearable
+      />
+      <van-field 
+        name="graduationMajor"
+        label="major"
+        value='{{graduationMajor}}'
+        placeholder="input graduationMajor" 
+        clearable
+      />
+      <view class="section">
+      
+        <picker name = 'date' mode='date' value='{{graduationDate}}' bindchange='bindDateChange'>
+          <view class='picker'>
+        <van-field 
+        label="date"
+        value='{{graduationDate}}'
+       
+      />
+      </view>
+        </picker>
+    </view>
+      <van-field 
+        name="workingYears"
+        label="workingYears"
+        value='{{workingYears}}'
+        placeholder="input workingYears" 
+        clearable
+        
+      />      
+    </van-cell-group>
+
+<!--
     <view class="section">
       <view class="section__title">id</view>
       <input name="id" value='{{id}}' placeholder="input id" />
@@ -47,9 +134,10 @@
       <view class="section__title">workingYears</view>
       <input name="workingYears" value='{{workingYears}}' placeholder="input workingYears" />
     </view>
+    -->
     <view>
-      <button formType='submit'>Modify Staff</button>
+      <button class='van-button--info' formType='submit'>Modify Staff</button>
     </view>
   </form>
 </view>
-<button bindtap="goback">go back</button>
+<van-button type="info" size="small" bindtap="goback">go back</van-button>

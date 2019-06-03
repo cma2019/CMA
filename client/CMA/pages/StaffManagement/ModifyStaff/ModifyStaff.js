@@ -58,6 +58,39 @@ Page({
       console.err('getone error')
     })
   },
+  /*
+  onShow: function (options) {
+    this.setData({
+      id: options.id
+    })
+    console.log(this.data.id)
+    let url = app.globalData.url + 'StaffManagement/getOne'
+    let postdata = {
+      "id": this.data.id
+    }
+    console.log(url)
+    console.log(postdata)
+    app.wxRequest(url, 'GET', postdata, (res) => {
+      console.log("data modify")
+      console.log(res.data.name)
+      this.setData({
+       
+        id: res.data.id,
+        name: res.data.name,
+        gender: res.data.gender,
+        department: res.data.department,
+        position: res.data.position,
+        title: res.data.title,
+        degree: res.data.degree,
+        graduationSchool: res.data.graduationSchool,
+        graduationMajor: res.data.graduationMajor,
+        graduationDate: res.data.graduationDate,
+        workingYears: res.data.workingYears
+      })
+    }, (err) => {
+      console.err('getone error')
+    })
+  },*/
   bindDateChange: function (e) {
     console.log("date")
     console.log(e.detail.value)
