@@ -4,9 +4,9 @@
   <view wx:for="{{temp}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
     <van-cell value="详情" bindtap='gotoOne' is-link>
       <view slot="title">
-        <view>{{item.object}} : {{item.content}}</view>
-        <view>{{item.object}} : {{item.content}}</view>
-        <view>{{item.object}} : {{item.content}}</view>
+        <view>object : {{item.object}}</view>
+        <view>content : {{item.content}}</view>
+        <view>checkDate : {{item.checkDate}}</view>
       </view>
     </van-cell>
   </view>

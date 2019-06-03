@@ -1,24 +1,37 @@
 <!--pages/IntermediateCheck/IntermediateCheck.wxml-->
 <view>
   <form bindsubmit='InterCheckRegister'>
-    <view class="section">
-      <view class="section__title">object</view>
-      <input name="object" placeholder="input object name" />
-    </view>
-    <view class="section">
-      <view class="section__title">content</view>
-      <input name="content" placeholder="input content" />
-    </view>
-    <view class="section">
-      <view class="section__title">select date</view>
-        <picker name = 'date' mode='date' value='{{date}}' bindchange='bindDateChange'>
-          <view class='picker'>date: {{date}}</view>
-        </picker>
-    </view>
-    <view class="section">
-      <view class="section__title">personInCharge</view>
-      <input name="personInCharge" placeholder="input Person In Charge" />
-    </view>
+    <van-cell-group title="input message">
+      <van-field 
+        name="object"
+        label="my object"
+        placeholder="input object" 
+        required
+        clearable
+      />
+      <van-field 
+        name="content"
+        label="my content"
+        placeholder="input content" 
+        required
+        clearable
+      />
+      <van-field
+        name="date"
+        required
+        clearable
+        label="my checkDate"
+        placeholder="input checkDate"
+      />
+      <van-field
+        name="personInCharge"
+        label="my personInCharge"
+        placeholder="input personInCharge"
+        required
+        clearable
+        border = "{{false}}"
+      />
+    </van-cell-group>
     <view>
       <button formType='submit'>register</button>
     </view>
