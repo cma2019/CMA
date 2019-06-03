@@ -1,4 +1,9 @@
 {
   "usingComponents": {
+    "van-badge": "../../../dist/badge/index",
+    "van-badge-group": "../../../dist/badge-group/index",
+    "van-action-sheet": "../../../dist/action-sheet/index",
+    "van-collapse": "../../../dist/collapse/index",
+    "van-collapse-item": "../../../dist/collapse-item/index"
   }
 }
