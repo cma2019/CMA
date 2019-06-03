@@ -39,7 +39,7 @@ Page({
     var that = this
     
     console.log("Modify")
-    console.log(e.detail.value)
+    console.log(e)
     
     wx.request({
       url: 'http://192.168.1.115:8004/Equipment/modifyOne/' + that.data.equipment.id,
