@@ -38,7 +38,7 @@ Page({
   },
 
   onShow: function (options){
-    let url = app.globalData.url + 'cma/IntermediateChecksRecord/getAll'
+    let url = app.globalData.url + 'IntermediateChecksRecord/getAll'
     let postdata = ''
     console.log(url)
     console.log(postdata)

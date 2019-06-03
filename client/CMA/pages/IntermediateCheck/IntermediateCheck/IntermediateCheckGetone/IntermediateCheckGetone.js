@@ -15,6 +15,8 @@ Page({
   },
 
   onLoad: function (options) {
+    console.log('getone options')
+    console.log(options)
     this.setData({
       planId : options.id
     })
@@ -25,6 +27,8 @@ Page({
     let postdata = {
       "planId": this.data.planId
     }
+    console.log(url)
+    console.log(postdata)
     app.wxRequest(url, 'GET', postdata, (res) => {
       console.log(res)
       console.log('plan getone success')

@@ -52,6 +52,7 @@ Page({
   },
   intercheckmodify:function(e){
     console.log('modify modify')
+    /*
     if(e.detail.value.object ==""||e.detail.value.content==""||
        e.detail.value.date == ""||e.detail.value.personInCharge==""||e.detail.value.state==""){
         wx.showToast({
@@ -61,6 +62,7 @@ Page({
       console.log('wrong message')
     }
     else{
+    */
     console.log('modify，携带数据为：', e.detail.value)
     console.log('modify，携带数据为：', e.detail.value.object)
 
@@ -90,7 +92,7 @@ Page({
       console.log('fail modify')
     })
   }
-  }
+  //}
 })
 
 

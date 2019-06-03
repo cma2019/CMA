@@ -1,46 +1,18 @@
 <!--pages/IntermediateCheck/IntermediateCheckGetone/IntermediateCheckGetone.wxml-->
 <view>
-  <view class="section">
-    <view class="section__title">planId</view>
-      <text>{{planId}}</text>
-  </view>
-  <view class="section">
-    <view class="section__title">object</view>
-      <text>{{object}}</text>
-  </view>
-  <view class="section">
-    <view class="section__title">checkDate</view>
-      <text>{{checkDate}}</text>
-  </view>
-  <view class="section">
-    <view class="section__title">processRecord</view>
-      <text>{{processRecord}}</text>
-  </view>
-  <view class="section">
-    <view class="section__title">processRecordPerson</view>
-      <text>{{processRecordPerson}}</text>
-  </view>
-  <view class="section">
-    <view class="section__title">processRecordDate</view>
-      <text>{{processRecordDate}}</text>
-  </view>
+<van-cell-group title='message of {{recordId}}'>
+    <van-cell value="{{planId}}"title="planId"border="{{ false }}"/>
+    <van-cell value="{{object}}"title="object"border="{{ false }}"/>
+    <van-cell value="{{checkDate}}"title="checkDate"border="{{ false }}"/>
+    <van-cell value="{{processRecord}}"title="processRecord"border="{{ false }}"/>
+    <van-cell value="{{processRecordPerson}}"title="processRecordPerson"border="{{ false }}"/>
+    <van-cell value="{{processRecordDate}}"title="processRecordDate"border="{{ false }}"/>
+    <van-cell value="{{resultRecord}}"title="resultRecord"border="{{ false }}"/>
+    <van-cell value="{{resultRecordPerson}}"title="resultRecordPerson"border="{{ false }}"/>
+    <van-cell value="{{resultRecordDate}}"title="resultRecordDate"border="{{ false }}"/>
+    <van-cell value="{{note}}"title="note"/>
 
-  <view class="section">
-    <view class="section__title">resultRecord</view>
-      <text>{{resultRecord}}</text>
-  </view>
-  <view class="section">
-    <view class="section__title">resultRecordPerson</view>
-      <text>{{resultRecordPerson}}</text>
-  </view>
-  <view class="section">
-    <view class="section__title">resultRecordDate</view>
-      <text>{{resultRecordDate}}</text>
-  </view>
-  <view class="section">
-    <view class="section__title">note</view>
-      <text>{{note}}</text>
-  </view>
+</van-cell-group>
 </view>
-<button bindtap="modifyData">modify</button>
-<button bindtap="deleteData">delete</button>
+<button class='van-button--info'bindtap="modifyData">modify</button>
+<button class='van-button--info'bindtap="deleteData">delete</button>

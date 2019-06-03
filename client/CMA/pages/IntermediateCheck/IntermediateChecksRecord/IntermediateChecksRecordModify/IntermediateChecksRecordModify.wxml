@@ -1,55 +1,104 @@
 <!--pages/IntermediateCheck/IntermediateCheck.wxml-->
 <view>
   <form bindsubmit='intercheckmodify'>
-    <view class="section">
-      <view class="section__title">planId</view>
-      <input name="planId" value='{{planId}}' placeholder="input planId" />
-    </view>
-    <view class="section">
-      <view class="section__title">object</view>
-      <input name="object" value='{{object}}' placeholder="input object name" />
-    </view>
-    <view class="section">
-      <view class="section__title">select checkDate</view>
-        <picker name = 'checkDate' mode='date' value='{{checkDate}}' bindchange='bindCheckDateChange'>
-          <view class='picker'>checkDate: {{checkDate}}</view>
-        </picker>
-    </view>
-    <view class="section">
-      <view class="section__title">processRecord</view>
-      <input name="processRecord" value='{{processRecord}}' placeholder="input processRecord" />
-    </view>
-    <view class="section">
-      <view class="section__title">processRecordPerson</view>
-      <input name="processRecordPerson" value='{{processRecordPerson}}' placeholder="input processRecordPerson" />
-    </view>
-    <view class="section">
-      <view class="section__title">select processRecordDate</view>
-        <picker name = 'processRecordDate' mode='date' value='{{processRecordDate}}' bindchange='bindDateChange1'>
-          <view class='picker'>processRecordDate: {{processRecordDate}}</view>
-        </picker>
-    </view>
-    <view class="section">
-      <view class="section__title">resultRecord</view>
-      <input name="resultRecord" value='{{resultRecord}}' placeholder="input resultRecord" />
-    </view>
-    <view class="section">
-      <view class="section__title">resultRecordPerson</view>
-      <input name="resultRecordPerson" value='{{resultRecordPerson}}' placeholder="input resultRecordPerson" />
-    </view>
-    <view class="section">
-      <view class="section__title">select resultRecordDate</view>
-        <picker name = 'resultRecordDate' mode='date' value='{{resultRecordDate}}' bindchange='bindDateChange2'>
-          <view class='picker'>resultRecordDate: {{resultRecordDate}}</view>
-        </picker>
-    </view>
-    <view class="section">
-      <view class="section__title">note</view>
-      <input name="note" value='{{note}}' placeholder="input note" />
-    </view>
+    <van-cell-group title="input message">
+      <van-field 
+        name="planId"
+        label="my planId"
+        value='{{planId}}'
+        type='number'
+        placeholder="input planId" 
+        required
+        clearable
+      />
+      <van-field 
+        name="object"
+        label="my object"
+        value='{{object}}'
+        placeholder="input object" 
+        required
+        clearable
+      />
+      <picker name = 'checkDate' mode='date' value='{{checkDate}}' bindchange='bindCheckDateChange'>
+        <view class='picker'>
+          <van-field 
+            name="checkDate"
+            label="my checkDate"
+            value='{{checkDate}}'
+            placeholder="input checkDate" 
+            required
+            clearable
+          />
+        </view>
+      </picker> 
+      <van-field 
+        name="processRecord"
+        label="my processRecord"
+        value='{{processRecord}}'
+        placeholder="input processRecord" 
+        required
+        clearable
+      />
+      <van-field 
+        name="processRecordPerson"
+        label="my processRecordPerson"
+        value='{{processRecordPerson}}'
+        placeholder="input processRecordPerson" 
+        required
+        clearable
+      />
+      <picker name = 'processRecordDate' mode='date' value='{{processRecordDate}}' bindchange='bindDateChange1'>
+        <view class='picker'>
+          <van-field 
+            name="processRecordDate"
+            label="my processRecordDate"
+            value='{{processRecordDate}}'
+            placeholder="input processRecordDate" 
+            required
+            clearable
+          />
+        </view>
+      </picker>  
+      <van-field 
+        name="resultRecord"
+        label="my resultRecord"
+        value='{{resultRecord}}'
+        placeholder="input resultRecord" 
+        required
+        clearable
+      />
+      <van-field 
+        name="resultRecordPerson"
+        label="my resultRecordPerson"
+        value='{{resultRecordPerson}}'
+        placeholder="input resultRecordPerson" 
+        required
+        clearable
+      />
+      <picker name = 'resultRecordDate' mode='date' value='{{resultRecordDate}}' bindchange='bindDateChange2'>
+        <view class='picker'>
+          <van-field 
+            name="resultRecordDate"
+            label="my resultRecordDate"
+            value='{{resultRecordDate}}'
+            placeholder="input resultRecordDate" 
+            required
+            clearable
+          />
+        </view>
+      </picker>  
+      <van-field 
+        name="note"
+        label="my note"
+        value='{{note}}'
+        placeholder="input note" 
+        required
+        clearable
+      />
+    </van-cell-group>
     <view>
-      <button formType='submit'>register</button>
+      <button class='van-button--info' formType='submit'>register</button>
     </view>
   </form>
 </view>
-<button bindtap="gotologin">go back</button>
+<button class='van-button--info' bindtap="gotologin">go back</button>

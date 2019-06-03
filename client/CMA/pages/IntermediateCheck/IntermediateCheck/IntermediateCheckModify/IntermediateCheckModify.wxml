@@ -1,10 +1,11 @@
 <!--pages/IntermediateCheck/IntermediateCheck.wxml-->
 <view>
-  <form bindsubmit='InterCheckRegister'>
+  <form bindsubmit='intercheckmodify'>
     <van-cell-group title="input message">
       <van-field 
         name="object"
         label="my object"
+        value='{{object}}'
         placeholder="input object" 
         required
         clearable
@@ -12,16 +13,17 @@
       <van-field 
         name="content"
         label="my content"
+        value='{{content}}'
         placeholder="input content" 
         required
         clearable
       />
-        <picker name = 'date' mode='date' value='{{date}}' bindchange='bindDateChange'>
+        <picker name = 'date' mode='date' value='{{checkDate}}' bindchange='bindDateChange'>
           <view class='picker'>
             <van-field 
               name="date"
               label="my date"
-              value='{{date}}'
+              value='{{checkDate}}'
               placeholder="input date" 
               required
               clearable
@@ -32,6 +34,16 @@
         name="personInCharge"
         label="my personInCharge"
         placeholder="input personInCharge"
+        value='{{personInCharge}}'
+        required
+        clearable
+        border = "{{false}}"
+      />
+      <van-field
+        name="state"
+        label="my state"
+        placeholder="input state"
+        value='{{state}}'
         required
         clearable
         border = "{{false}}"
