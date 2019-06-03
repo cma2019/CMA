@@ -1,47 +1,37 @@
 <scroll-view scroll-y>
   <form bindsubmit='newEquipment'>
     <view class="section">
-      <view class="section__title">name</view>
-      <input name="name" placeholder="input name" />
+      <van-field name="name" value="{{equipment.name}}" required clearable label="name" placeholder="input name"></van-field>
     </view>
     <view class="section">
-      <view class="section__title">model</view>
-      <input name="model" placeholder="input model" />
+      <van-field name="model" value="{{equipment.model}}" required clearable label="model" placeholder="input model"></van-field>
     </view>
     <view class="section">
-      <view class="section__title">manufacturer</view>
-      <input name="manufacturer" placeholder="input manufacturer" />
+      <van-field name="manufacturer" value="{{equipment.manufacturer}}" required clearable label="manufacturer" placeholder="input manufacturer"></van-field>
     </view>
     <view class="section">
-      <view class="section__title">receive_situation</view>
-      <input name="receive_situation" placeholder="input receive_situation" />
+      <van-field name="receive_situation" value="{{equipment.receive_situation}}" required clearable label="receive_situation" placeholder="input receive_situation"></van-field>
     </view>
     <view class="section">
-      <view class="section__title">recipient</view>
-      <input name="recipient" placeholder="input recipient" />
+      <van-field name="recipient" value="{{equipment.recipient}}" required clearable label="recipient" placeholder="input recipient"></van-field>
     </view>
     <view class="section">
-      <view class="section__title">receive_date</view>
-      <input name="receive_date" placeholder="input receive_date" />
+      <van-field name="receive_date" value="{{equipment.receive_date}}" required clearable label="receive_date" placeholder="input receive_date"></van-field>
     </view>
     <view class="section">
-      <view class="section__title">equipment_situation</view>
-      <input name="equipment_situation" placeholder="input equipment_situation" />
+      <van-field name="equipment_situation" value="{{equipment.equipment_situation}}" required clearable label="equipment_situation" placeholder="input equipment_situation"></van-field>
     </view>
     <view class="section">
-      <view class="section__title">acceptance</view>
-      <input name="acceptance" placeholder="input acceptance" />
+      <van-field name="acceptance" value="{{equipment.acceptance}}" required clearable label="acceptance" placeholder="input acceptance"></van-field>
     </view>
     <view class="section">
-      <view class="section__title">acceptance_person</view>
-      <input name="acceptance_person" placeholder="input acceptance_person" />
+      <van-field name="acceptance_person" value="{{equipment.acceptance_person}}" required clearable label="acceptance_person" placeholder="input acceptance_person"></van-field>
     </view>
     <view class="section">
-      <view class="section__title">acceptance_date</view>
-      <input name="acceptance_date" placeholder="input acceptance_date" />
+      <van-field name="acceptance_date" value="{{equipment.acceptance_date}}" required clearable label="acceptance_date" placeholder="input acceptance_date"></van-field>
     </view>
     <view>
-      <button formType='submit'>new equipment</button>
+      <button class='van-button--info' formType='submit'>new equipment accept</button>
     </view>
   </form>
 </scroll-view>

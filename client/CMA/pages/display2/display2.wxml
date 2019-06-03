@@ -1,2 +1,20 @@
 <!--pages/display2/display2.wxml-->
-<text>pages/display2/display2.wxml</text>
+<scroll-view scroll-y>
+  <van-cell>
+    <view slot="title">
+      <view>id : {{equipment.id}}</view>
+      <view>name : {{equipment.name}}</view>
+      <view>model : {{equipment.model}}</view>
+      <view>manufacturer : {{equipment.manufacturer}}</view>
+      <view>receive_situation : {{equipment.receive_situation}}</view>
+      <view>recipient : {{equipment.recipient}}</view>
+      <view>receive_date : {{equipment.receive_date}}</view>
+      <view>equipment_situation : {{equipment.equipment_situation}}</view>
+      <view>acceptance : {{equipment.acceptance}}</view>
+      <view>acceptance_person : {{equipment.acceptance_person}}</view>
+      <view>acceptance_date : {{equipment.acceptance_date}}</view>
+    </view>
+  </van-cell>
+  <van-button type="info" size="small" bindtap="viewDetail">Modify</van-button>
+  <van-button type="info" size="small" bindtap="myDelete">Delete</van-button>
+</scroll-view>

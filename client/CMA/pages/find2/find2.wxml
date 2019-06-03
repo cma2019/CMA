@@ -1,4 +1,14 @@
 <scroll-view scroll-y>
-  <navigator url="/pages/new/new">add new</navigator>
-  <button bindtap='viewDetail' data-id="{{item.id}}" data-name="{{item.name}}" data-model="{{item.model}}" data-manufacturer="{{item.manufacturer}}" data-receive_situation="{{item.receive_situation}}" data-recipient="{{item.recipient}}" data-receive_date="{{item.receive_date}}" data-equipment_situation="{{item.equipment_situation}}" data-acceptance="{{item.acceptance}}" data-acceptance_person="{{item.acceptance_person}}" data-acceptance_date="{{item.acceptance_date}}" wx:for="{{array}}">{{index}}:{{item.id}},{{item.name}},{{item.model}},{{item.manufacturer}},{{item.receive_situation}},{{item.recipient}},{{item.receive_date}},{{item.equipment_situation}},{{item.acceptance}},{{item.acceptance_person}},{{item.acceptance_date}}</button>
+  <van-cell-group title="Equipment Accept Management">
+  <view wx:for="{{array}}" data-id="{{item.id}}" data-name="{{item.name}}" data-model="{{item.model}}" data-manufacturer="{{item.manufacturer}}" data-receive_situation="{{item.receive_situation}}"  data-recipient="{{item.recipient}}" data-receive_date="{{item.receive_date}}" data-equipment_situation="{{item.equipment_situation}}" data-acceptance="{{item.acceptance}}" data-acceptance_person="{{item.acceptance_person}}" data-acceptance_date="{{item.acceptance_date}}">
+    <van-cell value="详情" is-link url='/pages/display2/display2?id={{item.id}}&name={{item.name}}&model={{item.model}}&manufacturer={{item.manufacturer}}&receive_situation={{item.receive_situation}}&recipient={{item.recipient}}&receive_date={{item.receive_date}}&equipment_situation={{item.equipment_situation}}&acceptance={{item.acceptance}}&acceptance_person={{item.acceptance_person}}&acceptance_date={{item.acceptance_date}}' link-type='redirectTo'>
+      <view slot="title">
+        <view>id : {{item.id}}</view>
+        <view>name : {{item.name}}</view>
+        <view>model : {{item.model}}</view>
+      </view>
+    </van-cell>
+  </view>
+  </van-cell-group>
+  <van-button type="info" size="small" bindtap="gotoAdd">Add an equipment accept</van-button>
 </scroll-view>
