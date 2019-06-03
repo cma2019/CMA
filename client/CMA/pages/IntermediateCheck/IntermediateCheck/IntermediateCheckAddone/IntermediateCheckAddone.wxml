@@ -16,13 +16,18 @@
         required
         clearable
       />
+        <picker name = 'date' mode='date' value='{{checkDate}}' bindchange='bindDateChange'>
+          <view class='picker'>date: {{checkDate}}</view>
+        </picker>      
       <van-field
         name="date"
         required
         clearable
         label="my checkDate"
         placeholder="input checkDate"
-      />
+      >
+      
+      </van-field>
       <van-field
         name="personInCharge"
         label="my personInCharge"
@@ -33,7 +38,7 @@
       />
     </van-cell-group>
     <view>
-      <button formType='submit'>register</button>
+      <button class='van-button--info' formType='submit'>register</button>
     </view>
   </form>
 </view>

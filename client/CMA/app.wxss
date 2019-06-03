@@ -7,4 +7,6 @@
   justify-content: space-between;
   padding: 200rpx 0;
   box-sizing: border-box;
-} 
+}
+.van-button--info{color:#fff;background-color:#1989fa;border:1px solid #1989fa;
+position:relative;display:inline-block;height:30px;min-width:60px;padding:0 8px;font-size:12px;line-height:28px}
