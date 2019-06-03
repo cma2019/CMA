@@ -49,7 +49,7 @@ Page({
     //console.log(this.data.array)
     var that = this
     wx.request({
-      url: 'http://192.168.1.113:8004/EquipmentReceive/getAll',
+      url: 'http://192.168.1.108:8004/EquipmentReceive/getAll',
       method:'GET',
       header: {
         'content-type': 'application/x-www-form-urlencoded',
@@ -83,7 +83,7 @@ Page({
   onShow: function () {
     var that = this
     wx.request({
-      url: 'http://192.168.1.113:8004/EquipmentReceive/getAll',
+      url: 'http://192.168.1.108:8004/EquipmentReceive/getAll',
       method: 'GET',
       header: {
         'content-type': 'application/x-www-form-urlencoded',

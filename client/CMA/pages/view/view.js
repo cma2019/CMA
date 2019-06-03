@@ -10,7 +10,7 @@ Page({
   {
     var that = this
     wx.request({
-      url: 'http://192.168.1.115:8004/Equipment/deleteOne/' + that.data.equipment.id,
+      url: 'http://192.168.1.108:8004/Equipment/deleteOne/' + that.data.equipment.id,
       method: 'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded',
@@ -42,7 +42,7 @@ Page({
     console.log(e)
     
     wx.request({
-      url: 'http://192.168.1.115:8004/Equipment/modifyOne/' + that.data.equipment.id,
+      url: 'http://192.168.1.108:8004/Equipment/modifyOne/' + that.data.equipment.id,
       method: 'POST',
       data: {
         "name": e.detail.value.name,
