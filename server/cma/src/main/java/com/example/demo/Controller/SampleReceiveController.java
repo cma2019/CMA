@@ -2,6 +2,8 @@ package com.example.demo.Controller;
 
 //import com.fasterxml.jackson.databind.util.JSONPObject;
 import  com.example.demo.Repository.SampleReceiveRepository ;
+import net.minidev.json.JSONArray;
+import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,8 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import net.sf.json.JSONObject;
-import net.sf.json.JSONArray;
 import com.example.demo.Model.SampleReceive;
 import java.util.List;
 import java.sql.Date;
@@ -22,10 +22,11 @@ public class SampleReceiveController {
     private SampleReceiveRepository sampleReceiveRepository;
     private static long ID=0;
     @PostMapping(path="/addOne")
-    public @ResponseBody JSONObject addReceive(@RequestParam(value = "sampleNumber", required = false)String sampleNumber,@RequestParam(value = "sampleName", required = false) String sampleName,
-                                               @RequestParam(value = "sampleAmount", required = false) String sampleAmount,@RequestParam(value = "sampleState", required = false) String sampleState,
-                                               @RequestParam(value="requester",required = false) String requester, @RequestParam(value="receiver",required = false)String receiver,
-                                               @RequestParam(value="receiveDate",required = false) String receiveDate,@RequestParam(value="obtainer",required = false)String obtainer,@RequestParam(value = "obtainDate",required = false)String obtainDate){
+    public @ResponseBody
+    JSONObject addReceive(@RequestParam(value = "sampleNumber", required = false)String sampleNumber, @RequestParam(value = "sampleName", required = false) String sampleName,
+                          @RequestParam(value = "sampleAmount", required = false) String sampleAmount, @RequestParam(value = "sampleState", required = false) String sampleState,
+                          @RequestParam(value="requester",required = false) String requester, @RequestParam(value="receiver",required = false)String receiver,
+                          @RequestParam(value="receiveDate",required = false) String receiveDate, @RequestParam(value="obtainer",required = false)String obtainer, @RequestParam(value = "obtainDate",required = false)String obtainDate){
         System.out.println(sampleNumber);
         System.out.println(obtainer);
         JSONObject js=new JSONObject();

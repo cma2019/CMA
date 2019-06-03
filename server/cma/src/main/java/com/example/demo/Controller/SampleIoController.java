@@ -1,5 +1,7 @@
 package com.example.demo.Controller;
 //import com.fasterxml.jackson.databind.util.JSONPObject;
+import net.minidev.json.JSONArray;
+import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,8 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import net.sf.json.JSONObject;
-import net.sf.json.JSONArray;
 import com.example.demo.Repository.SampleIoRepository;
 import com.example.demo.Model.SampleIO;
 import java.util.List;
@@ -20,10 +20,11 @@ public class SampleIoController {
     private SampleIoRepository SampleIoRepository;
     private static long ID=0;
     @PostMapping(path="/addOne")
-    public @ResponseBody JSONObject addReceive(@RequestParam(value = "sampleNumber", required = false)String sampleNumber,@RequestParam(value = "sampleName", required = false) String sampleName,
-                                               @RequestParam(value = "sampleAmount", required = false) String sampleAmount, @RequestParam(value = "sampleState", required = false) String sampleState,
-                                               @RequestParam(value="sender",required = false) String sender, @RequestParam(value="receiver",required = false)String receiver,@RequestParam(value="note",required = false) String note,
-                                               @RequestParam(value="obtainer",required = false)String obtainer,@RequestParam(value = "obtainDate",required = false)String obtainDate,@RequestParam(value="sendDate",required = false) String sendDate){
+    public @ResponseBody
+    JSONObject addReceive(@RequestParam(value = "sampleNumber", required = false)String sampleNumber, @RequestParam(value = "sampleName", required = false) String sampleName,
+                          @RequestParam(value = "sampleAmount", required = false) String sampleAmount, @RequestParam(value = "sampleState", required = false) String sampleState,
+                          @RequestParam(value="sender",required = false) String sender, @RequestParam(value="receiver",required = false)String receiver, @RequestParam(value="note",required = false) String note,
+                          @RequestParam(value="obtainer",required = false)String obtainer, @RequestParam(value = "obtainDate",required = false)String obtainDate, @RequestParam(value="sendDate",required = false) String sendDate){
         System.out.println(sampleNumber);
         System.out.println(sampleName);
         System.out.println(sender);
