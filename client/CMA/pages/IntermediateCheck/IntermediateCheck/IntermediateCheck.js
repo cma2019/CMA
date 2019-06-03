@@ -1,16 +1,5 @@
 // pages/IntermediateCheck/IntermediateCheck.js
 const app = getApp()
-/*
-Component({
-  properties:{
-    prop:{
-      type:String,
-      value:'index.properties'
-    },
-  },
-})
-*/
-
 Page({
 
   data: {

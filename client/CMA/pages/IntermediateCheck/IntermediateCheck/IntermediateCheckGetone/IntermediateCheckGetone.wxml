@@ -20,6 +20,13 @@
     <view class="section__title">state</view>
       <text>{{state}}</text>
   </view>
+  <van-cell>
+      <view slot="title">
+        <view> data1 : 1</view>
+        <view> data1 : 2</view>
+        <view> data1 : 3</view>
+      </view>
+  </van-cell>
 </view>
 <button bindtap="modifyData">modify</button>
 <button bindtap="deleteData">delete</button>

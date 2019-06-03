@@ -5,10 +5,30 @@ Page({
    */
   data: {
     array: [{
-      "test":1
+      "id":1,
+      "name": 1,
+      "model": 1,
+      "manufacturer": 1,
+      "receive_situation": 1,
+      "recipient": 1,
+      "receive_date": 1,
+      "equipment_situation": 1,
+      "acceptance": 1,
+      "acceptance_person": 1,
+      "acceptance_date": 1
     },
     {
-      "test":2
+      "id": 2,
+      "name": 2,
+      "model": 2,
+      "manufacturer": 2,
+      "receive_situation": 2,
+      "recipient": 2,
+      "receive_date": 2,
+      "equipment_situation": 2,
+      "acceptance": 2,
+      "acceptance_person": 2,
+      "acceptance_date": 2
     }]
   },
   viewDetail: function(e){

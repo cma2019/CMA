@@ -35,6 +35,7 @@ Page({
         "checkDate": e.detail.value.date,
         "personInCharge": e.detail.value.personInCharge
       }
+      console.log(e)
       console.log(url)
       console.log(data)
       app.wxRequest(url, 'POST', data, (res) => {

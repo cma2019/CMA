@@ -1,9 +1,15 @@
 <!--pages/IntermediateCheck/IntermediateCheck.wxml-->
 <view>
-  <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
-    <button bindtap='gotoOne' id='{{item.planId}}'>
-        {{item.object}} : {{item.content}}
-    </button>
+  <van-cell-group title="IntermediateCheck">
+  <view wx:for="{{temp}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
+    <van-cell value="详情" bindtap='gotoOne' is-link>
+      <view slot="title">
+        <view>object : {{item.object}}</view>
+        <view>content : {{item.content}}</view>
+        <view>checkDate : {{item.checkDate}}</view>
+      </view>
+    </van-cell>
   </view>
+  </van-cell-group>
 </view>
-<button bindtap="gotoAdd">Add an intermediate Check</button>
+<van-button type="info" size="small" bindtap="gotoAdd">Add an intermediate Check</van-button>
