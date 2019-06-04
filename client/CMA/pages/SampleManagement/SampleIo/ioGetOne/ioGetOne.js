@@ -148,6 +148,9 @@ Page({
           })
           console.log('数据不存在')
         }
+        wx.navigateBack({
+          delta: 1
+        })
       },
       fail(err) {
         console.log('fail deleteone')
@@ -156,6 +159,7 @@ Page({
         console.log('final deleteone')
       }
     })
+
   },
 
   goback: function () {

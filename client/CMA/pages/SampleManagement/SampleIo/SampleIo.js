@@ -7,6 +7,7 @@ Page({
    */
   data: {
     "mess":null,
+    "flag":0,
     tmp: [{
       "sampleIoId": 2,
       "sampleNumber": "20180602",
@@ -50,11 +51,19 @@ Page({
      // console.log(res.data)
       //var temp = res.data
       //this.temp = temp
+      if(res.code == 522){
+        this.setData({
+          mess : ""
+        })
+      }
+      else{
       this.setData({
-        mess: res.data
+        mess: res.data,
+        flag: 1
       })
-
-      console.log(this.mess)
+      }
+      
+      //console.log(this.mess)
     }, (err) => {
       //console.err('getone error')
       wx.showToast({

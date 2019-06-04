@@ -36,7 +36,7 @@ Page({
       obtainDate: e.detail.value
     })
   },
-  SampleIo_addone: function (e) {
+  SampleReceive_addone: function (e) {
     if (e.detail.value.sampleNumber == "" || e.detail.value.sampleName == "" || e.detail.value.sampleAmount == "" || e.detail.value.sampleState == "" || e.detail.value.requester == "" || e.detail.value.receiver == "" || e.detail.value.receiveDate == "" || e.detail.value.obtainer == "" || e.detail.value.obtainDate == "") {
       wx.showToast({
         title: '错误（空白输入）',

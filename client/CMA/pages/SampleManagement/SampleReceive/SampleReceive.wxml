@@ -2,15 +2,20 @@
 <!--page_SampleIo/SampleIo/SampleIo.wxml-->
 <view>
   <van-cell-group title="SampleReceive">
-  <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
-    <van-cell value="详情" bindtap='gotoOne' id='{{item.sampleId}}' is-link>
-      <view slot="title">
-        <view>样品编号:{{item.sampleNumber}}  </view>
-        <view>样品名称:{{item.sampleName}}  </view>
-        <view>数量：{{item.sampleAmount}}</view>
+    <view wx:if="{{ flag == 1 }}">
+      <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
+        <van-cell value="详情" bindtap='gotoOne' id='{{item.sampleId}}' is-link>
+            <view slot="title">
+              <view>sampleNumber:{{item.sampleNumber}}  </view>
+              <view>sampleName:{{item.sampleName}}  </view>
+              <view>sampleAmount：{{item.sampleAmount}}</view>
+            </view>
+        </van-cell>
       </view>
-    </van-cell>
-  </view>
+    </view>
+    <view wx:else>
+      <text>not have a SampleReceive yet</text>
+    </view>
   </van-cell-group>
 </view>
 <van-button type="info" size="small" bindtap="gotoAdd">Add a samplereceive</van-button>

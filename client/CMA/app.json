@@ -13,6 +13,12 @@
     "pages/IntermediateCheck/IntermediateChecksRecord/IntermediateChecksRecordAddone/IntermediateChecksRecordAddone",
     "pages/IntermediateCheck/IntermediateChecksRecord/IntermediateChecksRecordGetone/IntermediateChecksRecordGetone",
     "pages/IntermediateCheck/IntermediateChecksRecord/IntermediateChecksRecordModify/IntermediateChecksRecordModify",
+
+    "pages/SampleManagement/SampleIo/SampleIo",
+    "pages/SampleManagement/SampleIo/ioAddOne/ioAddOne",
+    "pages/SampleManagement/SampleIo/ioGetOne/ioGetOne",
+    "pages/SampleManagement/SampleIo/ioModifyOne/ioModifyOne",
+
     "pages/StaffManagement/StaffManagement",
     "pages/StaffManagement/AddStaff/AddStaff",
     "pages/StaffManagement/PrintOneStaff/PrintOneStaff",

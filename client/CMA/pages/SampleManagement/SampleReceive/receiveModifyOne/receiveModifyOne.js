@@ -1,4 +1,4 @@
-// page_samplereceive/receiveModifyOne/receiveModifyOne.js
+// page_SampleIo/ioModifyOne/ioModifyOne.js
 const app = getApp()
 Page({
 
@@ -16,7 +16,17 @@ Page({
     "receiver": "",
     "receiveDate": "",
     "obtainer": "",
-    "obtainDate": ""
+    "obtainDate": "",
+  
+    "sampleNumberinfo": "",
+    "sampleNameinfo": "",
+    "sampleAmountinfo": "",
+    "sampleStateinfo": "",
+    "requesterinfo": "",
+    "receiverinfo": "",
+    "receiveDateinfo": "",
+    "obtainerinfo": "",
+    "obtainDateinfo": ""
   },
 
   /**
@@ -26,7 +36,7 @@ Page({
     this.setData({
       sampleId: options.id
     })
-    console.log(this.data.sampleId)
+   // console.log(this.data.sampleId)
     console.log("fdsf")
   },
 
@@ -48,7 +58,7 @@ Page({
    */
   onShow: function () {
     var thispage = this
-    //console.log('getone发生了事件，携带数据为：', this.data.sampleId)
+    console.log('getone发生了事件，携带数据为：', this.data)
     wx.request({
       url: app.globalData.url + 'SampleReceive/getOne',
       method: 'GET',
@@ -62,15 +72,15 @@ Page({
       success(res) {
         if (res.data.code == 200) {
           thispage.setData({
-            sampleNumber: res.data.data.sampleNumber,
-            sampleName: res.data.data.sampleName,
-            sampleAmount: res.data.data.sampleAmount,
-            sampleState: res.data.data.sampleState,
-            requester: res.data.data.requester,
-            receiver: res.data.data.receiver,
-            receiveDate: res.data.data.receiveDate,
-            obtainer: res.data.data.obtainer,
-            obtainDate: res.data.data.obtainDate
+            sampleNumberinfo: res.data.data.sampleNumber,
+            sampleNameinfo: res.data.data.sampleName,
+            sampleAmountinfo: res.data.data.sampleAmount,
+            sampleStateinfo: res.data.data.sampleState,
+            requesterinfo: res.data.data.requester,
+            receiverinfo: res.data.data.receiver,
+            receiveDateinfo: res.data.data.receiveDate,
+            obtainerinfo: res.data.data.obtainer,
+            obtainDateinfo: res.data.data.obtainDate
           })
         }
         else if (res.data.code == 521) {
@@ -99,6 +109,54 @@ Page({
 
   SampleReceive_modifyone: function (e) {
     console.log('SampleReceive发生了modifyone事件，携带数据为：', e.detail.value)
+    console.log(this.data)
+    if (e.detail.value.sampleNumber != null && e.detail.value.sampleNumber!=""){
+      this.setData({
+        sampleNumberinfo:e.detail.value.sampleNumber
+      })
+    }
+    if (e.detail.value.sampleName != null && e.detail.value.sampleName != "") {
+      this.setData({
+        sampleNameinfo: e.detail.value.sampleName
+      })
+    }
+    if (e.detail.value.sampleAmount != null &&e.detail.value.sampleAmount != "") {
+      this.setData({
+        sampleAmountinfo: e.detail.value.sampleAmount
+      })
+    }
+    if (e.detail.value.sampleState != null&&e.detail.value.sampleState != "") {
+      this.setData({
+        sampleStateinfo: e.detail.value.sampleState
+      })
+    }
+    if (e.detail.value.requester != null&&e.detail.value.requester != "") {
+      this.setData({
+        requesterinfo: e.detail.value.requester
+      })
+    }
+    if (e.detail.value.receiver != null&&e.detail.value.receiver != "") {
+      this.setData({
+        receiverinfo: e.detail.value.receiver
+      })
+    }
+    if (e.detail.value.receiveDate != null&&e.detail.value.receiveDate != "") {
+      this.setData({
+        receiveDateinfo: e.detail.value.receiveDate
+      })
+    }
+    if (e.detail.value.obtainer != null&&e.detail.value.obtainer != "") {
+      this.setData({
+        obtainerinfo: e.detail.value.obtainer
+      })
+    }
+    if (e.detail.value.obtainDate != null&&e.detail.value.obtainDate != "") {
+      this.setData({
+        obtainDateinfo: e.detail.value.obtainDate
+      })
+    }
+    console.log("dfg")
+    console.log(this.data)
     wx.request({
       url: app.globalData.url + 'SampleReceive/modifyOne',
       method: 'POST',
@@ -108,15 +166,15 @@ Page({
       },
       data: {
         "sampleId": this.data.sampleId,
-        "sampleNumber": e.detail.value.sampleNumber,
-        "sampleName": e.detail.value.sampleName,
-        "sampleAmount": e.detail.value.sampleAmount,
-        "sampleState": e.detail.value.sampleState,
-        "requester": e.detail.value.requester,
-        "receiver": e.detail.value.receiver,
-        "receiveDate": e.detail.value.receiveDate,
-        "obtainer": e.detail.value.obtainer,
-        "obtainDate": e.detail.value.obtainDate
+        "sampleNumber": this.data.sampleNumberinfo,
+        "sampleName": this.data.sampleNameinfo,
+        "sampleAmount": this.data.sampleAmountinfo,
+        "sampleState": this.data.sampleStateinfo,
+        "requester": this.data.requesterinfo,
+        "receiver": this.data.receiverinfo,
+        "receiveDate": this.data.receiveDateinfo,
+        "obtainer": this.data.obtainerinfo,
+        "obtainDate": this.data.obtainDateinfo
       },
       success(res) {
         console.log(res)
@@ -126,7 +184,7 @@ Page({
             duration: 1500
           })
           wx.navigateTo({
-            url: '../SampleIo'
+            url: '../SampleReceive'
           })
         }
         else if (res.data.code == 531) {
@@ -179,57 +237,7 @@ Page({
 
   },
 
-  modifyData: function (e) {
-    console.log(e)
-    let target = this.data.sampleId
-    console.log(target)
-    wx.navigateTo({
-      url: '../receiveModifyOne/receiveModifyOne?id=' + target
-    })
-  },
 
-  deleteData: function (e) {
-    const deleteoneRequest = wx.request({
-      url: app.globalData.url + 'SampleReceive/deleteOne',
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json'
-      },
-      data: {
-        "sampleId": this.data.sampleId
-      },
-      success(res) {
-        console.log(res)
-        if (res.data.code == 200) {
-          wx.showToast({
-            title: '删除成功',
-            duration: 1500
-          })
-        }
-        else if (res.data.code == 521) {
-          wx.showToast({
-            title: '未收到标识编号',
-            duration: 1500
-          })
-          console.log('未收到标识编号')
-        }
-        else {
-          wx.showToast({
-            title: '数据不存在',
-            duration: 1500
-          })
-          console.log('数据不存在')
-        }
-      },
-      fail(err) {
-        console.log('fail deleteone')
-      },
-      complete(fin) {
-        console.log('final deleteone')
-      }
-    })
-  },
 
   /**
    * 生命周期函数--监听页面隐藏

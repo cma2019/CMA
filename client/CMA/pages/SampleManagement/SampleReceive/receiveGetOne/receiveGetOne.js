@@ -22,7 +22,7 @@ Page({
       "sampleName": "天猫超市",
       "sampleAmount": 1,
       "sampleState": 0,
-      "requester": "张三",
+      "requster": "张三",
       "receiver": "李四",
       "receiveDate": "2018-06-16",
       "obtainer": "王五",
@@ -145,6 +145,9 @@ Page({
           })
           console.log('数据不存在')
         }
+        wx.navigateBack({
+          delta: 1
+        })
       },
       fail(err) {
         console.log('fail deleteone')
@@ -153,6 +156,7 @@ Page({
         console.log('final deleteone')
       }
     })
+
   },
 
   goback: function () {
