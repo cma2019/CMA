@@ -1,11 +1,20 @@
-// page_SampleReceipt/receiptAddOne/receiptAddOne.js
+// page_SampleIo/ioAddone/ioAddone.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    receiveDate:"",
+    errorMessage: 
+    { 
+      numberInput: "", 
+      nameInput: "", 
+      senderInput: "",
+      receiverInput:"",
+      obtainerInput:""
+    }
   },
 
   /**
@@ -14,7 +23,14 @@ Page({
   onLoad: function (options) {
 
   },
-  SampleReceive_addone: function (e) {
+
+  bindreceiveDateChange(e) {
+    this.setData({
+      receiveDate: e.detail.value
+    })
+  },
+
+  SampleReceipt_addone: function (e) {
     if (e.detail.value.sampleId == "" || e.detail.value.applicationUnit == "" || e.detail.value.version == "" || e.detail.value.contractId == "" || e.detail.value.testType == "" || e.detail.value.electronicMedia == "" || e.detail.value.materialList == "" || e.detail.value.softwareType == "" || e.detail.value.receiveUnit == "" || e.detail.value.receiveDate == "" || e.detail.value.sender == "" || e.detail.value.reciever == "") {
       wx.showToast({
         title: '错误（空白输入）',
@@ -26,7 +42,7 @@ Page({
     else {
       console.log('SampleReceipt发生了addone事件，携带数据为：', e.detail.value)
       wx.request({
-        url: urlinfo + 'SampleReceipt/addOne',
+        url: app.globalData.url + 'SampleReceipt/addOne',
         method: 'POST',
         header: {
           'content-type': 'application/x-www-form-urlencoded',
@@ -54,18 +70,18 @@ Page({
               icon: 'none',
               duration: 1500
             })
-            wx.reLaunch({
-              url: '../SampleReceipt/SampleReceipt'
+            wx.navigateTo({
+              url: '../SampleReceipt'
             })
           }
-          else if (res.data.code == 512) {
+          else if (res.data.code == 511) {
             wx.showToast({
-              title: '添加失败，样品编号已存在',
+              title: '添加失败，缺少请求参数',
               duration: 1500
             })
-            console.log('添加失败，样品编号已存在')
+            console.log('添加失败，缺少请求参数')
           }
-          else {
+          else  {//513
             wx.showToast({
               title: '添加失败，某项数据错误',
               duration: 1500

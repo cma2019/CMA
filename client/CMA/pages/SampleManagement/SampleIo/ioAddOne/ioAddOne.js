@@ -7,15 +7,7 @@ Page({
    */
   data: {
     sendDate:"",
-    obtainDate:"",
-    errorMessage: 
-    { 
-      numberInput: "", 
-      nameInput: "", 
-      senderInput: "",
-      receiverInput:"",
-      obtainerInput:""
-    }
+    obtainDate:""
   },
 
   /**

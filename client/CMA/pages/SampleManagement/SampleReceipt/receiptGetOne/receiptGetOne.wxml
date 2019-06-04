@@ -1,0 +1,28 @@
+<!--page_SampleIo/ioShow/ioShow.wxml-->
+<view>
+  <van-cell>
+      <view slot="title">
+        <text>sampleName: {{sampleName}}</text>
+        <text>applicationUnit: {{applicationUnit}}\n</text>
+        <text>version: {{version}}\n</text>
+        <text>contractId: {{contractId}}\n</text>
+        <text>testType: {{testType}}\n</text>
+        <text>electronicMedia: {{electronicMedia}}\n</text>
+        <text>materialList: {{materialList}}\n</text>
+        <text>softwareType: {{softwareType}}\n</text>
+        <text>receiveUnit: {{receiveUnit}}\n</text>
+        <text>receiveDate: {{receiveDate}}\n</text>
+        <text>sender: {{sender}}\n</text>
+        <text>reciever: {{reciever}}\n</text>
+      </view>
+  </van-cell>
+</view>
+<view>
+  <van-button type="info" size="small" bindtap="modifyData">modify</van-button>
+</view>
+<view>
+  <van-button type="info" size="small" bindtap="deleteData">delete</van-button>
+</view>
+<view>
+  <van-button type="info" size="small" bindtap="goback">返回</van-button>
+</view>

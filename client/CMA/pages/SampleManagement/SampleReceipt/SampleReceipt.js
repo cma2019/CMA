@@ -1,153 +1,145 @@
-// page_SampleReceipt/SampleReceipt/SampleReceipt.js
+// page_SampleIo/SampleIo/SampleIo.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    //dataObj:{},
-    'sampleIdN': '',
-    infoMess: '',
-    "samplereceiveInfo": "fghjnk"
+    "mess":null,
+    "flag":0,
+    tmp: [{
+      "sampleId": 2,
+      "applicationUnit": "阿里巴巴责任有限公司",
+      "version": "V1.0",
+      "contractId": "2487955568",
+      "testType": 0,
+      "electronicMedia": "光盘1张",
+      "materialList": [{
+                "materialId": 1,
+                "materialType": 1
+              },
+              {
+                "materialId": 2,
+                "materialType": 1
+              },
+              {
+                "materialId": 3,
+                "materialType": 1
+              },
+              {
+                "materialId": 4,
+                "materialType": 1
+              },
+              {
+                "materialId": 6,
+                "materialType": 2
+              },
+              {
+                "materialId": 9,
+                "materialType": 3,
+                "materialName": "《附加材料》"
+              }],
+      "softwareType": 1,
+      "receiveUnit": "南大测试中心",
+      "receiveDate": "2018-06-15",
+      "sender": "张三",
+      "reciever": "李四"
+      },
+      {
+        "sampleId": 3,
+        "applicationUnit": "百度责任有限公司",
+        "version": "V1.5",
+        "contractId": "34855568",
+        "testType": 0,
+        "electronicMedia": "光盘8张",
+        "materialList": [{
+                  "materialId": 1,
+                  "materialType": 1
+                },
+                {
+                  "materialId": 2,
+                  "materialType": 1
+                },
+                {
+                  "materialId": 3,
+                  "materialType": 1
+                },
+                {
+                  "materialId": 4,
+                  "materialType": 1
+                },
+                {
+                  "materialId": 6,
+                  "materialType": 2
+                },
+                {
+                  "materialId": 9,
+                  "materialType": 3,
+                  "materialName": "《附加材料》"
+                }],
+        "softwareType": 1,
+        "receiveUnit": "测试中心",
+        "receiveDate": "2018-06-15",
+        "sender": "三",
+        "reciever": "四"
+    }]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function () {
+  onShow: function (options) {
+    
+    let url = app.globalData.url + 'SampleReceipt/getAll'
+    let postdata = ''
+    console.log(url)
+    console.log(postdata)
+    app.wxRequest(url, 'GET', postdata, (res) => {
+      //console.log('success')
+      console.log(res)
+      console.log('success')
+     // console.log(res.code)
+      //console.log(res.msg)
+     // console.log(res.data)
+      //var temp = res.data
+      //this.temp = temp
+      if(res.code == 522){
+        this.setData({
+          mess : ""
+        })
+      }
+      else{
+      this.setData({
+        mess: res.data,
+        flag: 1
+      })
+      }
+      
+      //console.log(this.mess)
+    }, (err) => {
+      //console.err('getone error')
+      wx.showToast({
+        title: 'getone error',
+        duration: 1500
+      })
+      console.log('getone error')
+    })
     
   },
-  sampleIdInput: function (e) {
-    var that = this
-    that.setData({
-      sampleIdN: e.detail.value
+  gotoOne: function (e) {
+    console.log(e)
+    let target = e.currentTarget.id
+    console.log('getone id')
+    console.log(target)
+    console.log("dfdsfs")
+    wx.navigateTo({
+      url: 'receiptGetOne/receiptGetOne?id=' + target
     })
   },
-  btnClick_getone: function () {
-    this.setData({
-      infoMess: '',
-
+  gotoAdd: function () {
+    wx.navigateTo({
+      url: 'receiptAddOne/receiptAddOne',
     })
-    console.log('getone发生了Click事件，携带数据为：', this.data.sampleIdN)
-    var tmp = this
-    const getoneRequest = wx.request({
-      url: urlinfo + 'SampleReceipt/getOne',
-      method: 'GET',
-      data: {
-        "sampleId": tmp.data.sampleIdN
-      },
-      header: {
-        'content-type': 'application/json',
-        'Accept': 'application/json'
-      },
-      success(res) {
-        if (res.data.code == 200) {
-          var info = res.data.data
-          wx.setStorage({
-            key: 'info',
-            data: info,
-            success: function (res) {
-              wx.navigateTo({
-                url: '../receiptShow/receiptShow'
-              })
-            }
-          })
-          /*console.log('zxfcgvhjk,')
-          console.log(res.data.msg)
-          tmp.setData({
-            dataObj: res.data.data
-          })
-          console.log(tmp.data.dataObj)
-          wx.navigateTo({
-            url: '../show/show?obtainDate='+ tmp.data.dataObj.obtainDate,
-          })*/
-        }
-        else if (res.data.code == 521) {
-          console.log(res.data.msg)
-          wx.showToast({
-            title: '查询失败\n未收到标识编号',
-            duration: 1500
-          })
-          console.log('查询失败，未收到标识编号')
-        }
-        else {//522
-          console.log(res.data.msg)
-          console.log("12")
-          wx.showToast({
-            title: '查询失败\n数据不存在',
-            duration: 1500
-          })
-          console.log('查询失败，数据不存在')
-        }
-      },
-      fail(err) {
-        console.log(err)
-        console.log('fail getone')
-      },
-      complete(fin) {
-        console.log('final getone')
-      }
-    })
-  },
-  btnClick_deleteone: function () {
-    this.setData({
-      infoMess: '',
-    })
-    console.log('deleteone发生了Click事件，携带数据为：', this.data.sampleIdN)
-    const deleteoneRequest = wx.request({
-      url: urlinfo + 'SampleReceipt/deleteOne',
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json'
-      },
-      data: {
-        "sampleId": this.data.sampleIdN
-      },
-      success(res) {
-        console.log(res)
-        if (res.data.code == 200) {
-          wx.showToast({
-            title: '删除成功',
-            duration: 1500
-          })
-        }
-        else if (res.data.code == 521) {
-          wx.showToast({
-            title: '删除失败，未收到标识编号',
-            duration: 1500
-          })
-          console.log('删除失败，未收到标识编号')
-        }
-        else {
-          wx.showToast({
-            title: '删除失败，数据不存在',
-            duration: 1500
-          })
-          console.log('删除失败，数据不存在')
-        }
-      },
-      fail(err) {
-        console.log('fail deleteone')
-      },
-      complete(fin) {
-        console.log('final deleteone')
-      }
-    })
-  },
-  gotoAddOne: function () {
-    wx.reLaunch({
-      url: '../receiptAddOne/receiptAddOne',
-    })
-  },
-  gotoModifyOne: function () {
-    wx.reLaunch({
-      url: '../receiptModifyOne/receiptModifyOne',
-    })
-  },
-  goback: function () {
-    wx.reLaunch({
-      url: '/pages/Sample_choose/Sample_choose',
-    })
-  },
+  }
 })
