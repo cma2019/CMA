@@ -1,0 +1,26 @@
+<!--page_samplereceive/samplereceiveShow/samplereceiveShow.wxml-->
+<!--page_SampleIo/ioShow/ioShow.wxml-->
+<view>
+  <van-cell>
+      <view slot="title">
+        <text>sampleNumber: {{sampleNumber}}\n</text>
+        <text>sampleName: {{sampleName}}\n</text>
+        <text>sampleAmount: {{sampleAmount}}\n</text>
+        <text>sampleState: {{sampleState}}\n</text>
+        <text>requester: {{requester}}\n</text>
+        <text>receiver: {{receiver}}\n</text>
+        <text>receiveDate: {{receiveDate}}\n</text>
+        <text>obtainer: {{obtainer}}\n</text>
+        <text>obtainDate: {{obtainDate}}\n</text>
+      </view>
+  </van-cell>
+</view>
+<view>
+  <van-button type="info" size="small" bindtap="modifyData">modify</van-button>
+</view>
+<view>
+  <van-button type="info" size="small" bindtap="deleteData">delete</van-button>
+</view>
+<view>
+  <van-button type="info" size="small" bindtap="goback">返回</van-button>
+</view>

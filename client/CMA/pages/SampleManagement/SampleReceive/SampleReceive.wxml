@@ -1,23 +1,16 @@
 <!--page_samplereceive/SampleReceive/SampleReceive.wxml-->
+<!--page_SampleIo/SampleIo/SampleIo.wxml-->
 <view>
-  <view class='itemView'>
-    <input class="input" placeholder="请输入需要查询的信息标识编号" bindinput="sampleIdInput"></input>
+  <van-cell-group title="SampleReceive">
+  <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
+    <van-cell value="详情" bindtap='gotoOne' id='{{item.sampleId}}' is-link>
+      <view slot="title">
+        <view>样品编号:{{item.sampleNumber}}  </view>
+        <view>样品名称:{{item.sampleName}}  </view>
+        <view>数量：{{item.sampleAmount}}</view>
+      </view>
+    </van-cell>
   </view>
-  <view class="viewName"style="display:flex;margin-top:30px;" >
-    <button  class='btn_geteone' bindtap='btnClick_getone'>查询</button>
-    <button  class='btn_deleteeone' bindtap='btnClick_deleteone'>删除</button>
-  </view>
-  <view>
-    <button  class='btn_addone' bindtap='gotoAddOne'>添加</button>
-  </view>
-  <view>
-    <button  class='btn_modifyone' bindtap='gotoModifyOne'>修改</button>
-  </view>
-  <button class='btn_goback' bindtap="goback">返回</button>
-
-  <scroll-view scroll-y="true" style="height: 200px;">
-    <view wx:for="{{samplereceiveInfo}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
-       {{item.sampleId}}+{{item.sampleNumber}}+{{item.sampleName}}+{{item.sampleAmount}}
-    </view>
-  </scroll-view>
+  </van-cell-group>
 </view>
+<van-button type="info" size="small" bindtap="gotoAdd">Add a samplereceive</van-button>

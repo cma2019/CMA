@@ -6,6 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    sendDate:"",
+    obtainDate:"",
     errorMessage: 
     { 
       numberInput: "", 
@@ -22,7 +24,18 @@ Page({
   onLoad: function (options) {
 
   },
-  
+
+  bindsendDateChange(e) {
+    this.setData({
+      sendDate: e.detail.value
+    })
+  },
+
+  bindobtainDateChange(e) {
+    this.setData({
+      obtainDate: e.detail.value
+    })
+  },
   SampleIo_addone: function (e) {
     if (e.detail.value.sampleNumber == "" || e.detail.value.sampleName == "" || e.detail.value.sampleAmount == "" || e.detail.value.sampleState == "" || e.detail.value.sender == "" || e.detail.value.receiver == "" || e.detail.value.sendDate == "" || e.detail.value.obtainer == "" || e.detail.value.obtainDate == "") {
       wx.showToast({

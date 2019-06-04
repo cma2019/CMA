@@ -1,54 +1,59 @@
-// page_samplereceive/receiveModifyOne/receiveModifyOne.js
+// page_SampleIo/ioShow/ioShow.js
 const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
-
   data: {
-    "sampleId": "",
-    "sampleNumber": "",
-    "sampleName": "",
-    "sampleAmount": "",
-    "sampleState": "",
-    "requester": "",
-    "receiver": "",
-    "receiveDate": "",
-    "obtainer": "",
-    "obtainDate": ""
+    "sampleId": "null",
+    "sampleNumber": "null",
+    "sampleName": "null",
+    "sampleAmount": "null",
+    "sampleState": "null",
+    "requester": "null",
+    "receiver": "null",
+    "receiveDate": "null",
+    "obtainer": "null",
+    "obtainDate": "null",
+    tmp: [{
+      "sampleId": 2,
+      "sampleNumber": "20180602",
+      "sampleName": "天猫超市",
+      "sampleAmount": 1,
+      "sampleState": 0,
+      "requester": "张三",
+      "receiver": "李四",
+      "receiveDate": "2018-06-16",
+      "obtainer": "王五",
+      "obtainDate": "2018-06-17"
+    }]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
+
   onLoad: function (options) {
     this.setData({
       sampleId: options.id
     })
+    console.log("fsdgdf")
     console.log(this.data.sampleId)
-    console.log("fdsf")
   },
 
-  bindreceiveDateChange(e) {
-    console.log(e.detail.value)
-    this.setData({
-      receiveDate: e.detail.value
-    })
-    console.log(this.receiveDate)
-  },
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
 
-  bindobtainDateChange(e) {
-    this.setData({
-      obtainDate: e.detail.value
-    })
   },
   /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
+     * 生命周期函数--监听页面显示
+     */
+  onShow: function (options) {
     var thispage = this
-    //console.log('getone发生了事件，携带数据为：', this.data.sampleId)
+    console.log('getone发生了事件，携带数据为：', this.data.sampleId)
     wx.request({
       url: app.globalData.url + 'SampleReceive/getOne',
       method: 'GET',
@@ -97,91 +102,10 @@ Page({
     })
   },
 
-  SampleReceive_modifyone: function (e) {
-    console.log('SampleReceive发生了modifyone事件，携带数据为：', e.detail.value)
-    wx.request({
-      url: app.globalData.url + 'SampleReceive/modifyOne',
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json'
-      },
-      data: {
-        "sampleId": this.data.sampleId,
-        "sampleNumber": e.detail.value.sampleNumber,
-        "sampleName": e.detail.value.sampleName,
-        "sampleAmount": e.detail.value.sampleAmount,
-        "sampleState": e.detail.value.sampleState,
-        "requester": e.detail.value.requester,
-        "receiver": e.detail.value.receiver,
-        "receiveDate": e.detail.value.receiveDate,
-        "obtainer": e.detail.value.obtainer,
-        "obtainDate": e.detail.value.obtainDate
-      },
-      success(res) {
-        console.log(res)
-        if (res.data.code == 200) {
-          wx.showToast({
-            title: '修改成功',
-            duration: 1500
-          })
-          wx.navigateTo({
-            url: '../SampleIo'
-          })
-        }
-        else if (res.data.code == 531) {
-          wx.showToast({
-            title: '未收到标识编号',
-            duration: 1500
-          })
-          console.log('未收到标识编号')
-        }
-        else if (res.data.code == 532) {
-          wx.showToast({
-            title: '数据不存在',
-            duration: 1500
-          })
-          console.log('数据不存在')
-        }
-        else if (res.data.code == 533) {
-          wx.showToast({
-            title: '修改后数据错误',
-            duration: 1500
-          })
-          console.log('修改后数据错误')
-        }
-        else {
-          wx.showToast({
-            title: '修改后数据不合法',
-            duration: 1500
-          })
-          console.log('修改后数据不合法')
-        }
-      },
-      fail(err) {
-        console.log('fail modifyone')
-      },
-      complete(fin) {
-        console.log('final modifyone')
-      }
-    })
-
-  },
-  goback: function () {
-    wx.navigateBack({
-      delta: 1
-    })
-  },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
   modifyData: function (e) {
     console.log(e)
     let target = this.data.sampleId
+    console.log("dfdg")
     console.log(target)
     wx.navigateTo({
       url: '../receiveModifyOne/receiveModifyOne?id=' + target
@@ -231,6 +155,11 @@ Page({
     })
   },
 
+  goback: function () {
+    wx.navigateBack({
+      delta: 1
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

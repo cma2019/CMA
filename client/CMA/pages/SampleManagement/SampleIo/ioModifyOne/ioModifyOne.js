@@ -5,17 +5,18 @@ Page({
   /**
    * 页面的初始数据
    */
+
   data: {
-    "sampleIoId": "0",
-    "sampleNumber": "20180602",
-    "sampleName": "天猫超市",
-    "sampleAmount": 1,
-    "sampleState": 0,
-    "sender": "张三",
-    "receiver": "李四",
-    "sendDate": "2018-06-16",
-    "obtainer": "王五",
-    "obtainDate": "2018-06-17"
+    "sampleIoId": "",
+    "sampleNumber": "",
+    "sampleName": "",
+    "sampleAmount": "",
+    "sampleState": "",
+    "sender": "",
+    "receiver": "",
+    "sendDate": "",
+    "obtainer": "",
+    "obtainDate": ""
   },
 
   /**
@@ -29,6 +30,19 @@ Page({
     console.log("fdsf")
   },
 
+  bindsendDateChange(e) {
+    console.log(e.detail.value)
+    this.setData({
+      sendDate: e.detail.value
+    })
+    console.log(this.sendDate)
+  },
+
+  bindobtainDateChange(e) {
+    this.setData({
+      obtainDate: e.detail.value
+    })
+  },
   /**
    * 生命周期函数--监听页面显示
    */

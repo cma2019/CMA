@@ -16,6 +16,7 @@ Page({
     "sendDate": "null",
     "obtainer": "null",
     "obtainDate": "null",
+    "note":"null",
     tmp: [{
       "sampleIoId": 2,
       "sampleNumber": "20180602",
@@ -26,7 +27,8 @@ Page({
       "receiver": "李四",
       "sendDate": "2018-06-16",
       "obtainer": "王五",
-      "obtainDate": "2018-06-17"
+      "obtainDate": "2018-06-17",
+      "note":"fdgsfg"
     }]
   },
 
@@ -75,7 +77,8 @@ Page({
             receiver: res.data.data.receiver,
             sendDate: res.data.data.sendDate,
             obtainer: res.data.data.obtainer,
-            obtainDate: res.data.data.obtainDate
+            obtainDate: res.data.data.obtainDate,
+            note:res.data.data.note
           })
         }
         else if (res.data.code == 521) {
