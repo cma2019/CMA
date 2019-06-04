@@ -2,13 +2,10 @@ package com.example.demo.Controller;
 
 import com.example.demo.Model.EquipmentReceive;
 import com.example.demo.Repository.EquipmentReceiveReporsitory;
-import com.example.demo.Repository.EquipmentRepository;
-import com.example.demo.Model.Equipment;
 import com.example.demo.framework.Response;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.alibaba.fastjson.JSON;
 
 import java.util.Date;
 import java.util.List;
@@ -27,7 +24,7 @@ import org.springframework.web.bind.annotation.*;
  */
 
 @Controller
-@RequestMapping(path="/EquipmentReceive")
+@RequestMapping(path="/cma/EquipmentReceive")
 public class EquipmentReceiveController {
     @Autowired
     private EquipmentReceiveReporsitory ERRepository;
@@ -39,12 +36,12 @@ public class EquipmentReceiveController {
             @RequestParam (value="name",required=false)String name,
             @RequestParam (value="model",required=false)String model,
             @RequestParam (value="manufacturer",required=false)String manufacturer,
-            @RequestParam (value="receive_situation",required=false)String receive_situation,
-            @RequestParam (value="receive_date",required=false) String receive_date,
-            @RequestParam (value="equipment_situation",required=false)String equipment_situation,
+            @RequestParam (value="receiveSituation",required=false)String receiveSituation,
+            @RequestParam (value="receiveDate",required=false) Date receiveDate,
+            @RequestParam (value="equipmentSituation",required=false)String equipmentSituation,
             @RequestParam (value="acceptance",required=false)String acceptance,
-            @RequestParam (value="acceptance_person",required=false)String  acceptance_person,
-            @RequestParam (value="acceptance_date",required=false)String  acceptance_date,
+            @RequestParam (value="acceptancePerson",required=false)String  acceptancePerson,
+            @RequestParam (value="acceptanceDate",required=false)Date  acceptanceDate,
             @RequestParam (value="recipient",required=false)String  recipient
             ){
         Response response=new Response();
@@ -52,14 +49,13 @@ public class EquipmentReceiveController {
         equipment.setName(name);
         equipment.setModel(model);
         equipment.setAcceptance(acceptance);
-        equipment.setAcceptance_date(acceptance_date);
-        equipment.setAcceptance_person(acceptance_person);
+        equipment.setAcceptanceDate(acceptanceDate);
+        equipment.setAcceptancePerson(acceptancePerson);
         equipment.setManufacturer(manufacturer);
-        equipment.setReceive_situation(receive_situation);
-        equipment.setReceive_date(receive_date);
-        //equipment.setReceive_situation(equipment_situation);
+        equipment.setReceiveSituation(receiveSituation);
+        equipment.setReceiveDate(receiveDate);
         equipment.setRecipient(recipient);
-        equipment.setEquipment_situation(equipment_situation);
+        equipment.setEquipmentSituation(equipmentSituation);
 
         ERRepository.save(equipment);
         System.out.println(equipment.getId());
@@ -127,12 +123,12 @@ public class EquipmentReceiveController {
             @RequestParam (value="name",required=false)String name,
             @RequestParam (value="model",required=false)String model,
             @RequestParam (value="manufacturer",required=false)String manufacturer,
-            @RequestParam (value="receive_situation",required=false)String receive_situation,
-            @RequestParam (value="receive_date",required=false) String receive_date,
-            @RequestParam (value="equipment_situation",required=false)String equipment_situation,
+            @RequestParam (value="receiveSituation",required=false)String receiveSituation,
+            @RequestParam (value="receiveDate",required=false) Date receiveDate,
+            @RequestParam (value="equipmentSituation",required=false)String equipmentSituation,
             @RequestParam (value="acceptance",required=false)String acceptance,
-            @RequestParam (value="acceptance_person",required=false)String  acceptance_person,
-            @RequestParam (value="acceptance_date",required=false)String  acceptance_date,
+            @RequestParam (value="acceptancePerson",required=false)String  acceptancePerson,
+            @RequestParam (value="acceptanceDate",required=false)Date  acceptanceDate,
             @RequestParam (value="recipient",required=false)String  recipient
             ){
         Response response=new Response();
@@ -140,15 +136,15 @@ public class EquipmentReceiveController {
             if(ERRepository.findById(id)==null)
                 throw new Exception("Equipment ID:"+id+" doesn't exist");
             EquipmentReceive equipmentReceive=ERRepository.findById(id);
-            equipmentReceive.setReceive_situation(receive_situation);
-            equipmentReceive.setReceive_date(receive_date);
+            equipmentReceive.setReceiveSituation(receiveSituation);
+            equipmentReceive.setReceiveDate(receiveDate);
             equipmentReceive.setManufacturer(manufacturer);
-            equipmentReceive.setAcceptance_person(acceptance_person);
+            equipmentReceive.setAcceptancePerson(acceptancePerson);
             equipmentReceive.setName(name);
             equipmentReceive.setModel(model);
-            equipmentReceive.setEquipment_situation(equipment_situation);
+            equipmentReceive.setEquipmentSituation(equipmentSituation);
             equipmentReceive.setAcceptance(acceptance);
-            equipmentReceive.setAcceptance_date(acceptance_date);
+            equipmentReceive.setAcceptanceDate(acceptanceDate);
             equipmentReceive.setRecipient(recipient);
             JSONObject ejson = JSONObject.parseObject(JSONObject.toJSONString(equipmentReceive));
             ERRepository.save(equipmentReceive);
