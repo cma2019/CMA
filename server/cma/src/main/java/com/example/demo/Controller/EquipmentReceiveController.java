@@ -7,13 +7,16 @@ import com.example.demo.framework.Response;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.multipart.MultipartFile;
 
 
 /**
@@ -28,7 +31,7 @@ import org.springframework.web.bind.annotation.*;
 public class EquipmentReceiveController {
     @Autowired
     private EquipmentReceiveReporsitory ERRepository;
-
+    private int attachment_Id=0;
 
     @RequestMapping(path="add",method=RequestMethod.POST)
     @ResponseBody
@@ -169,6 +172,7 @@ public class EquipmentReceiveController {
     public Response deleteOne(@PathVariable("id") long id)
     {
         Response response=new Response();
+
         try{
             if(ERRepository.findById(id)==null)
                 throw new Exception("Equipment ID:"+id+" doesn't exist");
@@ -183,5 +187,53 @@ public class EquipmentReceiveController {
             response.msg=e.getMessage();
         }
         return response;
+    }
+    @RequestMapping(path="/Attachment/{id}",method=RequestMethod.POST)
+    @ResponseBody
+    public Response addAttachment(
+            @PathVariable("id") long id,
+            MultipartFile attachment
+    ){
+        Response response=new Response();
+        JSONObject js=new JSONObject();
+        try{
+            if(ERRepository.findById(id)==null)
+                throw new Exception("EquipmentReceive ID:"+id+" doesn't exist");
+            EquipmentReceive equipmentReceive=ERRepository.findById(id);
+            equipmentReceive.setAttachment(MfiletoFile(attachment));
+            String name=attachment.getName();
+            long receivedId=id;
+            js.put("attachmentid",attachment_Id++);
+            js.put("name",name);
+            js.put("receivedId",receivedId);
+            response.data=js;
+            response.msg="成功";
+            response.code=200;
+
+        }catch(Exception e){
+            e.printStackTrace();
+            response.code=500;
+            response.msg=e.getMessage();
+        }
+        return response;
+    }
+    public File MfiletoFile(MultipartFile multipartFile)throws Exception{
+        String path = "F:\\Attachment\\";
+        File file = new File(path,"demo.txt");
+        multipartFile.transferTo(file);
+        // 读取文件第一行
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+        System.out.println(bufferedReader.readLine());
+        // 输出绝对路径
+        System.out.println(file.getAbsolutePath());
+        bufferedReader.close();
+        // 操作完上的文件 需要删除在根目录下生成的文件
+        if (file.delete()){
+            System.out.println("删除成功");
+        }else {
+            System.out.println("删除失败");
+
+        }
+        return file;
     }
 }

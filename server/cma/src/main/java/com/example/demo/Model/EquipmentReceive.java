@@ -4,9 +4,12 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.util.Date;
 import com.example.demo.framework.DateJsonTypeConvert;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table(name = "EQUIPMENT_RECEIVE_INFO")
@@ -25,7 +28,7 @@ public class EquipmentReceive {
     private String acceptance;           //验收情况
     private String acceptancePerson;     //验收人
     private Date acceptanceDate;         //验收日期
-    private String attachment;		     //附属文件
+    private File attachment;		     //附属文件
 
     public void setId(long id){this.id=id;}
     public long getId(){return this.id;}
@@ -57,12 +60,14 @@ public class EquipmentReceive {
     @JsonSerialize(using=DateJsonTypeConvert.class)
     public Date getReceiveDate(){return this.receiveDate; }
 
-    public void setAttachment(String attachment) { this.attachment = attachment; }
-    public String getAttachment(){return this.attachment;}
+    public void setAttachment(File attachment) { this.attachment = attachment; }
+    public File getAttachment(){return this.attachment;}
 
     public void setEquipmentSituation(String equipmentSituation) {this.equipmentSituation = equipmentSituation; }
     public String getEquipmentSituation(){return this.equipmentSituation;}
 
     public void setRecipient(String recipient) { this.recipient = recipient; }
     public String getRecipient(){ return this.recipient; }
+
+
 }
