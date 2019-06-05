@@ -70,12 +70,12 @@ Page({
   },
   goStaffManagement: function () {
     wx.navigateTo({
-      url: '../StaffManagement/StaffManagement',
+      url: '../StaffManagement/StaffManagement/StaffManagement',
     })
   },
   goTrainingApplication: function () {
     wx.navigateTo({
-      url: '../TrainingApplication/TrainingApplication',
+      url: '../TrainingManagement/TrainingApplication/TrainingApplication',
     })
   },
   gotoInterCheck:function(){
