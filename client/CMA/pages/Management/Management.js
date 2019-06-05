@@ -70,12 +70,12 @@ Page({
   },
   goStaffManagement: function () {
     wx.navigateTo({
-      url: '../StaffManagement/StaffManagement',
+      url: '../StaffManagement/StaffManagement/StaffManagement',
     })
   },
   goTrainingApplication: function () {
     wx.navigateTo({
-      url: '../TrainingApplication/TrainingApplication',
+      url: '../TrainingManagement/TrainingApplication/TrainingApplication',
     })
   },
   gotoInterCheck:function(){
@@ -85,12 +85,12 @@ Page({
   },
   gotoEquipment1:function(){
     wx.navigateTo({
-      url: '../find/find',
+      url: '../Equipment/EquipmentManagement/EquipmentManagement',
     })
   },
   gotoEquipment2: function () {
     wx.navigateTo({
-      url: '../find2/find2',
+      url: '../Equipment/EquipmentAccept/EquipmentAccept',
     })
   },
   gotoSampleManagement:function(){

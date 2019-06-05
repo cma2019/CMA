@@ -32,7 +32,7 @@ Page({
       }
     })
     wx.redirectTo({
-      url: '/pages/find/find',
+      url: '/pages/Equipment/EquipmentManagement/EquipmentManagement',
     })
   },
   /**

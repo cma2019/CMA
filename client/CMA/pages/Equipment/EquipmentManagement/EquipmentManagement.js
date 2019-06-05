@@ -25,7 +25,7 @@ Page({
   },
   gotoAdd: function(e){
     wx.redirectTo({
-      url: '/pages/new/new',
+      url: '/pages/Equipment/EquipmentManagement/EquipmentManagementAddOne/EquipmentManagementAddOne',
     })
   },
   /**

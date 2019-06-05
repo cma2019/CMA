@@ -1,3 +1,4 @@
+const app = getApp()
 Page({
 
   /**
@@ -8,29 +9,21 @@ Page({
   },
   mydelete: function (e) {
     var that = this
-    wx.request({
-      url: 'http://192.168.1.108:8004/EquipmentReceive/deleteOne/' + that.data.equipment.id,
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json'
-      },
-      success(res) {
-        //console.log(res.data)
-      },
-      fail(err) {
-        console.log(err)
-      }
+    myurl = app.globalData.url + 'EquipmentReceive/deleteOne/' + that.data.equipment.id;
+    app.wxRequest(myurl, 'POST', null, (res) => {
+      console.log(res)
+    }, (err) => {
+      console.log(err)
     })
     wx.redirectTo({
-      url: '/pages/find2/find2',
+      url: '/pages/Equipment/EquipmentAccept/EquipmentAccept',
     })
   },
   viewDetail: function (e) {
     console.log("display -> view")
     var that = this
     wx.redirectTo({
-      url: '/pages/view2/view2?id=' + that.data.equipment.id + "&name=" + that.data.equipment.name + "&model=" + that.data.equipment.model + "&manufacturer=" + that.data.equipment.manufacturer + "&receive_situation=" + that.data.equipment.receive_situation + "&recipient=" + that.data.equipment.recipient + "&receive_date=" + that.data.equipment.receive_date + "&equipment_situation=" + that.data.equipment.equipment_situation + "&acceptance=" + that.data.equipment.acceptance + "&acceptance_person=" + that.data.equipment.acceptance_person + "&acceptance_date=" + that.data.equipment.acceptance_date,
+      url: '/pages/Equipment/EquipmentAccept/EquipmentAcceptModify/EquipmentAcceptModify?id=' + that.data.equipment.id + "&name=" + that.data.equipment.name + "&model=" + that.data.equipment.model + "&manufacturer=" + that.data.equipment.manufacturer + "&receive_situation=" + that.data.equipment.receive_situation + "&recipient=" + that.data.equipment.recipient + "&receive_date=" + that.data.equipment.receive_date + "&equipment_situation=" + that.data.equipment.equipment_situation + "&acceptance=" + that.data.equipment.acceptance + "&acceptance_person=" + that.data.equipment.acceptance_person + "&acceptance_date=" + that.data.equipment.acceptance_date,
     })
   },
   /**

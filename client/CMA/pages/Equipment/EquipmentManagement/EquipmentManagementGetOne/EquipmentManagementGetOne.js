@@ -1,13 +1,13 @@
+// pages/display/display.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    equipment:{}
+    equipment: {}
   },
-  mydelete:function(e)
-  {
+  mydelete: function (e) {
     var that = this
     wx.request({
       url: 'http://192.168.1.108:8004/Equipment/deleteOne/' + that.data.equipment.id,
@@ -24,49 +24,15 @@ Page({
       }
     })
     wx.redirectTo({
-      url: '/pages/find/find',
+      url: '/pages/Equipment/EquipmentManagement/EquipmentManagement',
     })
   },
-  submit: function(e){
+  viewDetail: function (e) {
+    console.log("display -> view")
     var that = this
-    console.log(that.data)
-  },
-  myChange: function(e){
-    console.log("change")
-    console.log(e)
-  },
-  mytest: function(e){
-    var that = this
-    
-    console.log("Modify")
-    console.log(e)
-    
-    wx.request({
-      url: 'http://192.168.1.108:8004/Equipment/modifyOne/' + that.data.equipment.id,
-      method: 'POST',
-      data: {
-        "name": e.detail.value.name,
-        "model": e.detail.value.model,
-        "cpu": e.detail.value.cpu,
-        "memory": e.detail.value.memory,
-        "application": e.detail.value.application,
-        "state": e.detail.value.state
-      },
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json'
-      },
-      success(res) {
-        console.log(res.data)
-      },
-      fail(err) {
-        console.log(err)
-      }
-    })
     wx.redirectTo({
-      url: '/pages/find/find',
+      url: '/pages/Equipment/EquipmentManagement/EquipmentManagementModify/EquipmentManagementModify?id=' + that.data.equipment.id + "&name=" + that.data.equipment.name + "&model=" + that.data.equipment.model + "&cpu=" + that.data.equipment.cpu + "&memory=" + that.data.equipment.memory + "&application=" + that.data.equipment.application + "&state=" + that.data.equipment.state,
     })
-    
   },
   /**
    * 生命周期函数--监听页面加载
@@ -75,7 +41,7 @@ Page({
     var that = this;
     console.log(option)
     that.setData({
-      equipment:option
+      equipment: option
     })
   },
 
@@ -83,48 +49,48 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    
+
   }
 })

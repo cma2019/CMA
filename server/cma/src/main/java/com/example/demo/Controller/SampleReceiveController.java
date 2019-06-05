@@ -23,10 +23,15 @@ public class SampleReceiveController {
     private static long ID=0;
     @PostMapping(path="/addOne")
     public @ResponseBody
-    JSONObject addReceive(@RequestParam(value = "sampleNumber", required = false)String sampleNumber, @RequestParam(value = "sampleName", required = false) String sampleName,
-                          @RequestParam(value = "sampleAmount", required = false) String sampleAmount, @RequestParam(value = "sampleState", required = false) String sampleState,
-                          @RequestParam(value="requester",required = false) String requester, @RequestParam(value="receiver",required = false)String receiver,
-                          @RequestParam(value="receiveDate",required = false) String receiveDate, @RequestParam(value="obtainer",required = false)String obtainer, @RequestParam(value = "obtainDate",required = false)String obtainDate){
+    JSONObject addOne(@RequestParam(value = "sampleNumber", required = false)String sampleNumber,
+                          @RequestParam(value = "sampleName", required = false) String sampleName,
+                          @RequestParam(value = "sampleAmount", required = false) String sampleAmount,
+                          @RequestParam(value = "sampleState", required = false) String sampleState,
+                          @RequestParam(value="requester",required = false) String requester,
+                          @RequestParam(value="receiver",required = false)String receiver,
+                          @RequestParam(value="receiveDate",required = false) String receiveDate,
+                          @RequestParam(value="obtainer",required = false)String obtainer,
+                          @RequestParam(value = "obtainDate",required = false)String obtainDate){
         System.out.println(sampleNumber);
         System.out.println(obtainer);
         JSONObject js=new JSONObject();
@@ -166,7 +171,7 @@ public class SampleReceiveController {
         }
     }
     @GetMapping(path="/getOne")
-    public @ResponseBody JSONObject findReceiveId(@RequestParam(value = "sampleId",required = false) String  sampleId)
+    public @ResponseBody JSONObject findOne(@RequestParam(value = "sampleId",required = false) String  sampleId)
     {
             JSONObject json=new JSONObject();
             int code=200;
@@ -208,10 +213,16 @@ public class SampleReceiveController {
         }
     }
     @PostMapping(path="/modifyOne")
-    public @ResponseBody JSONObject modify(@RequestParam(value = "sampleId",required = false)String sampleId,@RequestParam(value = "sampleNumber", required = false)String sampleNumber,@RequestParam(value = "sampleName", required = false) String sampleName,
-                                           @RequestParam(value = "sampleAmount", required = false) String sampleAmount,@RequestParam(value = "sampleState", required = false) String sampleState,@RequestParam(value="requester",required = false) String requester,
-                                           @RequestParam(value="receiver",required = false)String receiver,@RequestParam(value="receiveDate",required = false) String receiveDate,
-                                           @RequestParam(value="obtainer",required = false)String obtainer,@RequestParam(value = "obtainDate",required = false)String obtainDate)
+    public @ResponseBody JSONObject modify(@RequestParam(value = "sampleId",required = false)String sampleId,
+                                           @RequestParam(value = "sampleNumber", required = false)String sampleNumber,
+                                           @RequestParam(value = "sampleName", required = false) String sampleName,
+                                           @RequestParam(value = "sampleAmount", required = false) String sampleAmount,
+                                           @RequestParam(value = "sampleState", required = false) String sampleState,
+                                           @RequestParam(value="requester",required = false) String requester,
+                                           @RequestParam(value="receiver",required = false)String receiver,
+                                           @RequestParam(value="receiveDate",required = false) String receiveDate,
+                                           @RequestParam(value="obtainer",required = false)String obtainer,
+                                           @RequestParam(value = "obtainDate",required = false)String obtainDate)
     {
         JSONObject js=new JSONObject();
         int code=200;
@@ -233,7 +244,7 @@ public class SampleReceiveController {
             js.put("msg",msg);
             //js.put("data",data);
         };
-        if(sampleId==null||!sampleId.equals(""))
+        if(sampleId==null||sampleId.equals(""))
         {
             code=531;
             msg="未收到标识编号";
@@ -249,7 +260,7 @@ public class SampleReceiveController {
             js.put("msg",msg);
             //js.put("data",data);
         }
-        else if(sampleNumber!=null&& sampleReceiveRepository.findBySampleNumber(sampleNumber)!=null)
+        else if(sampleNumber!= sampleReceiveRepository.findBySampleId(Integer.parseInt(sampleId)).getSampleNumber()&&sampleReceiveRepository.findBySampleNumber(sampleNumber)!=null)
         {
             code =533;
             msg="修改后数据错误";
