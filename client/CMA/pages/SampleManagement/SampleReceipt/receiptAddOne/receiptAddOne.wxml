@@ -11,10 +11,47 @@
 
       <van-field v-model="testType"  name="testType" required clearable label="检测类型" placeholder="请输入检测类型"/>
 
-      <van-field v-model="electronicMedia" name="electronicMedia" required clearable label="接收人电子媒介" placeholder="请输入电子媒介" />
+      <van-field v-model="electronicMedia" name="electronicMedia" required clearable label="电子媒介" placeholder="请输入电子媒介" />
 
-      <van-field v-model="materialList" name="materialList"required clearable label="领取人提交材料与类型" placeholder="请输入提交材料与类型"/>
-
+      <van-collapse value="{{ activeNames }}" bind:change="onChange">
+        <van-collapse-item title="提交材料与类型">
+          <van-cell-group>
+            <van-cell title="姓名">
+              <div>
+                    <input type="text"></input>
+                    </div>
+            </van-cell>
+            <van-collapse-item title="《用户手册》">
+              <van-field v-model="materialType1"  clearable placeholder="请输入materialType"  input="oninput1"/>
+            </van-collapse-item>
+            <van-collapse-item title="《计算机软件产品登记检测申请表》">
+             <van-field v-model="materialType2" clearable placeholder="请输入materialType" />
+            </van-collapse-item>
+            <van-collapse-item title="《材料交接单》">
+             <van-field v-model="materialType3" clearable placeholder="请输入materialType" />
+            </van-collapse-item>
+            <van-collapse-item title="《软件产品功能列表》">
+             <van-field v-model="materialType4" clearable placeholder="请输入materialType" />
+            </van-collapse-item>
+            <van-collapse-item title="《软件名称与版本号确认单》">
+             <van-field v-model="materialType5" clearable placeholder="请输入materialType" />
+            </van-collapse-item>
+            <van-collapse-item title="《受测软件产品简介》">
+             <van-field v-model="materialType6" clearable placeholder="请输入materialType" />
+            </van-collapse-item>
+            <van-collapse-item title="《自主产权保证书》">
+             <van-field v-model="materialType7" clearable placeholder="请输入materialType" />
+            </van-collapse-item>
+            <van-collapse-item title="软件样品">
+             <van-field v-model="materialType8" clearable placeholder="请输入materialType" />
+            </van-collapse-item>
+            <van-collapse-item title="其它">
+             <van-field v-model="materialType9" clearable placeholder="请输入materialType" />
+             <van-field v-model="materialName" clearable placeholder="请输入materialName" />
+            </van-collapse-item>
+          </van-cell-group>
+        </van-collapse-item>
+      </van-collapse>
       <van-field v-model="softwareType" name="softwareType"required clearable label="软件类型" placeholder="请输入软件类型"/>
 
       <van-field v-model="receiveUnit" name="receiveUnit"required clearable label="接收单位名称" placeholder="请输入接收单位名称"/>

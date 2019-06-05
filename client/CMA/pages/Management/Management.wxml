@@ -34,7 +34,7 @@
         <van-cell title="TrainingApplication" boarder="{{false}}" is-link  center="{{true}}" bindtap="goTrainingApplication"></van-cell>
       </van-cell-group>
     </van-collapse-item>
-    <van-collapse-item title="样品管理" name="10">
+    <van-collapse-item title="样品管理"  name="10">
       <van-cell-group>
         <van-cell title="SampleReceive" boarder="{{false}}" is-link  center="{{true}}" url="../SampleManagement/SampleReceive/SampleReceive"></van-cell>
         <van-cell title="SampleIo" boarder="{{false}}" is-link  center="{{true}}" url="../SampleManagement/SampleIo/SampleIo"></van-cell>

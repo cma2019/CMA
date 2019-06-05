@@ -90,7 +90,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onShow: function (options) {
-    
+    /*
     let url = app.globalData.url + 'SampleReceipt/getAll'
     let postdata = ''
     console.log(url)
@@ -125,7 +125,7 @@ Page({
       })
       console.log('getone error')
     })
-    
+    */
   },
   gotoOne: function (e) {
     console.log(e)

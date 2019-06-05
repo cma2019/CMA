@@ -7,6 +7,16 @@ Page({
    */
   data: {
     receiveDate:"",
+    materialType1:'0',
+    materialType2: "0",
+    materialType3: "0",
+    materialType4: "0",
+    materialType5: "0",
+    materialType6: "0",
+    materialType7: "0",
+    materialType8: "0",
+    materialType9: "0",
+    materialName:"",
     errorMessage: 
     { 
       numberInput: "", 
@@ -14,9 +24,22 @@ Page({
       senderInput: "",
       receiverInput:"",
       obtainerInput:""
-    }
+    },
+    activeNames: ['0']
   },
-
+  onChange(event) {
+    this.setData({
+      activeNames: event.detail
+    })
+  },
+  onchange1(event){
+    console.log("123456")
+    console.log(event)
+    this.setData({
+      materialType1:event.value
+    }),
+    console.log(this.data.materialType1)
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -31,7 +54,8 @@ Page({
   },
 
   SampleReceipt_addone: function (e) {
-    if (e.detail.value.sampleId == "" || e.detail.value.applicationUnit == "" || e.detail.value.version == "" || e.detail.value.contractId == "" || e.detail.value.testType == "" || e.detail.value.electronicMedia == "" || e.detail.value.materialList == "" || e.detail.value.softwareType == "" || e.detail.value.receiveUnit == "" || e.detail.value.receiveDate == "" || e.detail.value.sender == "" || e.detail.value.reciever == "") {
+    console.log(e)
+    if (e.detail.value.sampleId == "" || e.detail.value.applicationUnit == "" || e.detail.value.version == "" || e.detail.value.contractId == "" || e.detail.value.testType == "" || e.detail.value.electronicMedia == "" || e.detail.value.softwareType == "" || e.detail.value.receiveUnit == "" || e.detail.value.receiveDate == "" || e.detail.value.sender == "" || e.detail.value.reciever == "") {
       wx.showToast({
         title: '错误（空白输入）',
         icon: 'none',
@@ -40,6 +64,52 @@ Page({
       console.log('错误（空白输入）')
     }
     else {
+      if(e.detail.value.materialType1 != ""){
+        this.setData({
+          materialType1: e.detail.value.materialType1
+        })
+      }
+      if (e.detail.value.materialType2 != "") {
+        this.setData({
+          materialType2: e.detail.value.materialType2
+        })
+      }
+      if (e.detail.value.materialType3 != "") {
+        this.setData({
+          materialType3: e.detail.value.materialType3
+        })
+      }
+      if (e.detail.value.materialType4 != "") {
+        this.setData({
+          materialType4: e.detail.value.materialType4
+        })
+      }
+      if (e.detail.value.materialType5 != "") {
+        this.setData({
+          materialType5: e.detail.value.materialType5
+        })
+      }
+      if (e.detail.value.materialType6 != "") {
+        this.setData({
+          materialType6: e.detail.value.materialType6
+        })
+      }
+      if (e.detail.value.materialType7 != "") {
+        this.setData({
+          materialType7: e.detail.value.materialType7
+        })
+      }
+      if (e.detail.value.materialType8 != "") {
+        this.setData({
+          materialType8: e.detail.value.materialType8
+        })
+      }
+      if (e.detail.value.materialType9 != "") {
+        this.setData({
+          materialType9: e.detail.value.materialType9,
+          materialName: e.detail.value.materialName
+        })
+      }
       console.log('SampleReceipt发生了addone事件，携带数据为：', e.detail.value)
       wx.request({
         url: app.globalData.url + 'SampleReceipt/addOne',
@@ -55,7 +125,43 @@ Page({
           "contractId": e.detail.value.contractId,
           "testType": e.detail.value.testType,
           "electronicMedia": e.detail.value.electronicMedia,
-          "materialList": e.detail.value.materialList,
+          "materialList": [{
+                        "materialId": 1,
+                        "materialType": this.data.materialType1
+                      },
+                      {
+                        "materialId": 2,
+                        "materialType": this.data.materialType2
+                      },
+                      {
+                        "materialId": 3,
+                        "materialType": this.data.materialType3
+                      },
+                      {
+                        "materialId": 4,
+                        "materialType": this.data.materialType4
+                      },
+                      {
+                        "materialId": 5,
+                        "materialType": this.data.materialType5
+                      },
+                      {
+                        "materialId": 6,
+                        "materialType": this.data.materialType6
+                      },
+                      {
+                        "materialId": 7,
+                        "materialType": this.data.materialType7
+                      },
+                      {
+                        "materialId": 8,
+                        "materialType": this.data.materialType8
+                      },
+                      {
+                        "materialId": 9,
+                        "materialType": this.data.materialType9,
+                        "materialName": this.data.materialName
+                      }],
           "softwareType": e.detail.value.softwareType,
           "receiveUnit": e.detail.value.receiveUnit,
           "receiveDate": e.detail.value.receiveDate,
