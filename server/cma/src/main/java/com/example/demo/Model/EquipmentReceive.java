@@ -1,32 +1,33 @@
 package com.example.demo.Model;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.io.BufferedReader;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.File;
-import java.io.FileReader;
+import java.text.SimpleDateFormat;
 import java.util.Date;
-import com.example.demo.framework.DateJsonTypeConvert;
-import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table(name = "EQUIPMENT_RECEIVE_INFO")
 public class EquipmentReceive {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    @DateTimeFormat(pattern="yyyy-MM-dd")
     private long id;
     private String name;             //设备名称
     private String model;            //型号
     private String manufacturer;              //厂家
     private String receiveSituation;           //接收情况
     private String recipient;         //接收人
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date receiveDate;  //接受日期
     private String equipmentSituation;   //安装调试情况
     private String acceptance;           //验收情况
     private String acceptancePerson;     //验收人
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date acceptanceDate;         //验收日期
     private File attachment;		     //附属文件
 
@@ -49,16 +50,14 @@ public class EquipmentReceive {
     public String getAcceptance(){return this.acceptance;}
 
     public void setAcceptanceDate(Date acceptanceDate) { this.acceptanceDate = acceptanceDate; }
-    @JsonSerialize(using=DateJsonTypeConvert.class)
-    public Date getAcceptance_date(){return this.acceptanceDate;}
+
+    public String getAcceptance_date(){return dateToStr(this.acceptanceDate);}
 
     public void setAcceptancePerson(String acceptancePerson) { this.acceptancePerson = acceptancePerson; }
     public String getAcceptance_person(){return this.acceptancePerson;}
 
-    public void setReceiveDate(Date receive_date) { this.receiveDate = receiveDate; }
-
-    @JsonSerialize(using=DateJsonTypeConvert.class)
-    public Date getReceiveDate(){return this.receiveDate; }
+    public void setReceiveDate(Date receiveDate) { this.receiveDate = receiveDate; }
+    public String getReceiveDate(){return dateToStr(this.receiveDate); }
 
     public void setAttachment(File attachment) { this.attachment = attachment; }
     public File getAttachment(){return this.attachment;}
@@ -69,5 +68,9 @@ public class EquipmentReceive {
     public void setRecipient(String recipient) { this.recipient = recipient; }
     public String getRecipient(){ return this.recipient; }
 
-
+    public static String dateToStr(java.util.Date dateDate) {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String dateString = formatter.format(dateDate);
+        return dateString;
+    }
 }

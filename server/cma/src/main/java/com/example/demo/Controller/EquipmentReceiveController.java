@@ -7,16 +7,26 @@ import com.example.demo.framework.Response;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
+
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.ServletRequestDataBinder;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletRequest;
+
 
 
 /**
@@ -81,8 +91,10 @@ public class EquipmentReceiveController {
         System.out.println("finfbyid:"+id);
         try {
             if (ERRepository.findById(id) == null) {
+                System.out.println("finfbyid1:"+id);
                 throw new Exception("ID:"+id+" does not exist");
             }
+            System.out.println("finfbyid2:"+id);
             EquipmentReceive equipmentReceive = ERRepository.findById(id);
             JSONObject ejson = JSONObject.parseObject(JSONObject.toJSONString(equipmentReceive));
             response.code=200;
@@ -188,7 +200,7 @@ public class EquipmentReceiveController {
         }
         return response;
     }
-    @RequestMapping(path="/Attachment/{id}",method=RequestMethod.POST)
+   /* @RequestMapping(path="/Attachment/{id}",method=RequestMethod.POST)
     @ResponseBody
     public Response addAttachment(
             @PathVariable("id") long id,
@@ -216,8 +228,20 @@ public class EquipmentReceiveController {
             response.msg=e.getMessage();
         }
         return response;
+    }*/
+    @RequestMapping(value="/deleteAll",method = RequestMethod.POST)
+    @ResponseBody
+    public Response deleteAll()
+    {
+        Response response=new Response();
+
+        ERRepository.deleteAll();
+        response.data=null;
+        response.msg="成功";
+        response.code=200;
+        return response;
     }
-    public File MfiletoFile(MultipartFile multipartFile)throws Exception{
+   /* public File MfiletoFile(MultipartFile multipartFile)throws Exception{
         String path = "F:\\Attachment\\";
         File file = new File(path,"demo.txt");
         multipartFile.transferTo(file);
@@ -235,5 +259,11 @@ public class EquipmentReceiveController {
 
         }
         return file;
+    }*/
+    @InitBinder
+    protected void init(HttpServletRequest request, ServletRequestDataBinder binder) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        dateFormat.setLenient(false);
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
     }
 }

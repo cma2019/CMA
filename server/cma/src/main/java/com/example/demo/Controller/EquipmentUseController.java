@@ -97,10 +97,12 @@ public class EquipmentUseController {
     public Response getAll(){
         Response response=new Response();
         JSONObject alljson=new JSONObject();
+      //  System.out.println("11111111111111111");
         Iterable<EquipmentUse> list=EURepository.findAll();
         JSONArray jsons=new JSONArray();
         for(int i = 0; i<((List<EquipmentUse>) list).size(); i++)
         {
+         //   System.out.println("2222222222222");
             JSONObject ejson = JSONObject.parseObject(JSONObject.toJSONString(((List<EquipmentUse>) list).get(i)));
             jsons.add(ejson);
         }
@@ -177,6 +179,18 @@ public class EquipmentUseController {
             response.code=500;
             response.msg=e.getMessage();
         }
+        return response;
+    }
+    @RequestMapping(value="/deleteAll",method = RequestMethod.POST)
+    @ResponseBody
+    public Response deleteAll()
+    {
+        Response response=new Response();
+
+            EURepository.deleteAll();
+            response.data=null;
+            response.msg="成功";
+            response.code=200;
         return response;
     }
     @RequestMapping(value="/getAllByEquipmentId/{id}",method = RequestMethod.GET)
