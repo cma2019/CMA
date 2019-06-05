@@ -85,12 +85,12 @@ Page({
   },
   gotoEquipment1:function(){
     wx.navigateTo({
-      url: '../find/find',
+      url: '../Equipment/EquipmentManagement/EquipmentManagement',
     })
   },
   gotoEquipment2: function () {
     wx.navigateTo({
-      url: '../find2/find2',
+      url: '../Equipment/EquipmentAccept/EquipmentAccept',
     })
   },
   gotoSampleManagement:function(){

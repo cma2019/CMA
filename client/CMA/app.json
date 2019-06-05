@@ -22,15 +22,13 @@
     "pages/TrainingManagement/TrainingApplication/ModifyApplication/ModifyApplication",
     "pages/TrainingManagement/TrainingApplication/AddApplication/AddApplication",
     "pages/TrainingManagement/TrainingApplication/ApproveOneApplication/ApproveOneApplication",
-    "pages/find/find",
-    "pages/new/new",
-    "pages/view/view",
-    "pages/find2/find2",
-    "pages/new2/new2",
-    "pages/view2/view2",
     "pages/user/user",
-    "pages/display/display",
-    "pages/display2/display2"
+    "pages/Equipment/EquipmentManagement/EquipmentManagement",
+    "pages/Equipment/EquipmentManagement/EquipmentManagementGetOne/EquipmentManagementGetOne","pages/Equipment/EquipmentManagement/EquipmentManagementAddOne/EquipmentManagementAddOne","pages/Equipment/EquipmentManagement/EquipmentManagementModify/EquipmentManagementModify",
+    "pages/Equipment/EquipmentAccept/EquipmentAccept",
+    "pages/Equipment/EquipmentAccept/EquipmentAcceptAddOne/EquipmentAcceptAddOne",
+    "pages/Equipment/EquipmentAccept/EquipmentAcceptGetOne/EquipmentAcceptGetOne",
+    "pages/Equipment/EquipmentAccept/EquipmentAcceptModify/EquipmentAcceptModify"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -68,7 +66,7 @@
     "van-cell": "../../dist/cell/index",
     "van-cell-group": "../../dist/cell-group/index",
     "van-field": "../../dist/field/index",
-    "van-datetime-picker": "../../dist/datetime-picker/index",   
+    "van-datetime-picker": "../../dist/datetime-picker/index",
     "van-collapse": "../../dist/collapse/index",
     "van-collapse-item": "../../dist/collapse-item/index"
   }

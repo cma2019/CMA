@@ -34,12 +34,12 @@ Page({
   viewDetail: function(e){
     console.log(e.currentTarget.dataset)
     wx.redirectTo({
-      url: '/pages/view2/view2?id=' + e.currentTarget.dataset.id + "&name=" + e.currentTarget.dataset.name + "&model=" + e.currentTarget.dataset.model + "&manufacturer=" + e.currentTarget.dataset.manufacturer + "&receive_situation=" + e.currentTarget.dataset.receive_situation + "&recipient=" + e.currentTarget.dataset.recipient + "&receive_date=" + e.currentTarget.dataset.receive_date + "&equipment_situation=" + e.currentTarget.dataset.equipment_situation + "&acceptance=" + e.currentTarget.dataset.acceptance + "&acceptance_person=" + e.currentTarget.dataset.acceptance_person + "&acceptance_date=" + e.currentTarget.dataset.acceptance_date,
+      url: '/pages/Equipment/EquipmentAccept/EquipmentAcceptGetOne/EquipmentAcceptGetOne2?id=' + e.currentTarget.dataset.id + "&name=" + e.currentTarget.dataset.name + "&model=" + e.currentTarget.dataset.model + "&manufacturer=" + e.currentTarget.dataset.manufacturer + "&receive_situation=" + e.currentTarget.dataset.receive_situation + "&recipient=" + e.currentTarget.dataset.recipient + "&receive_date=" + e.currentTarget.dataset.receive_date + "&equipment_situation=" + e.currentTarget.dataset.equipment_situation + "&acceptance=" + e.currentTarget.dataset.acceptance + "&acceptance_person=" + e.currentTarget.dataset.acceptance_person + "&acceptance_date=" + e.currentTarget.dataset.acceptance_date,
     })
   },
   gotoAdd: function (e) {
     wx.redirectTo({
-      url: '/pages/new2/new2',
+      url: '/pages/Equipment/EquipmentAccept/EquipmentAcceptAddOne/EquipmentAcceptAddOne',
     })
   },
   /**

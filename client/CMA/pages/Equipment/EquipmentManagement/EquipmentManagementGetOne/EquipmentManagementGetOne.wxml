@@ -1,25 +1,16 @@
+<!--pages/display/display.wxml-->
 <scroll-view scroll-y>
-  <form bindsubmit='mytest'>
-    <view class="section">
-      <van-field name="name" value="{{equipment.name}}" required clearable label="name" placeholder="input name"></van-field>
+  <van-cell>
+    <view slot="title">
+      <view>id : {{equipment.id}}</view>
+      <view>name : {{equipment.name}}</view>
+      <view>model : {{equipment.model}}</view>
+      <view>cpu : {{equipment.cpu}}</view>
+      <view>memory : {{equipment.memory}}</view>
+      <view>application : {{equipment.application}}</view>
+      <view>state : {{equipment.state}}</view>
     </view>
-    <view class="section">
-      <van-field name="model" value="{{equipment.model}}" required clearable label="model" placeholder="input model"></van-field>
-    </view>
-    <view class="section">
-      <van-field name="cpu" value="{{equipment.cpu}}" required clearable label="cpu" placeholder="input cpu"></van-field>
-    </view>
-    <view class="section">
-      <van-field name="memory" value="{{equipment.memory}}" required clearable label="memory" placeholder="input memory"></van-field>
-    </view>
-    <view class="section">
-      <van-field name="application" value="{{equipment.application}}" required clearable label="application" placeholder="input application"></van-field>
-    </view>
-    <view class="section">
-      <van-field name="state" value="{{equipment.state}}" required clearable label="state" placeholder="input state"></van-field>
-    </view>
-    <view>
-      <button class='van-button--info' form-type='submit'>Modify</button>
-    </view>
-  </form>
+  </van-cell>
+  <van-button type="info" size="small" bindtap="viewDetail">Modify</van-button>
+  <van-button type="info" size="small" bindtap="mydelete">Delete</van-button>
 </scroll-view>

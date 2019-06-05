@@ -1,7 +1,7 @@
 <scroll-view scroll-y>
   <van-cell-group title="Equipment Management">
   <view wx:for="{{array}}" data-id="{{item.id}}" data-name="{{item.name}}" data-model="{{item.model}}" data-cpu="{{item.cpu}}" data-memory="{{item.memory}}"  data-application="{{item.application}}" data-state="{{item.state}}">
-    <van-cell value="详情" is-link url='/pages/display/display?id={{item.id}}&name={{item.name}}&model={{item.model}}&cpu={{item.cpu}}&memory={{item.memory}}&application={{item.application}}&state={{item.state}}' link-type='redirectTo'>
+    <van-cell value="详情" is-link url='/pages/Equipment/EquipmentManagement/EquipmentManagementGetOne/EquipmentManagementGetOne?id={{item.id}}&name={{item.name}}&model={{item.model}}&cpu={{item.cpu}}&memory={{item.memory}}&application={{item.application}}&state={{item.state}}' link-type='redirectTo'>
       <view slot="title">
         <view>id : {{item.id}}</view>
         <view>name : {{item.name}}</view>

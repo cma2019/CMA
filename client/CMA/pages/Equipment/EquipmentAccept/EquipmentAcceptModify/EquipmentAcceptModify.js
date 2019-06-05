@@ -4,15 +4,38 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+    equipment:{}
   },
-  newEquipment:function(e)
+  mydelete:function(e)
   {
-    console.log(e.detail.value)
+    var that = this
     wx.request({
-      url: 'http://192.168.1.108:8004/EquipmentReceive/add',
+      url: 'http://192.168.1.108:8004/EquipmentReceive/deleteOne/' + that.data.equipment.id,
       method: 'POST',
-      data:{
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'Accept': 'application/json'
+      },
+      success(res) {
+        console.log(res)
+      },
+      fail(err) {
+        console.log(err)
+      }
+    })
+    wx.redirectTo({
+      url: '/pages/Equipment/EquipmentAccept/EquipmentAccept',
+    })
+  },
+  mytest: function(e){
+    var that = this
+    
+    //console.log(e.detail.value)
+    
+    wx.request({
+      url: 'http://192.168.1.108:8004/EquipmentReceive/modifyOne/' + that.data.equipment.id,
+      method: 'POST',
+      data: {
         "name": e.detail.value.name,
         "model": e.detail.value.model,
         "manufacturer": e.detail.value.manufacturer,
@@ -29,22 +52,26 @@ Page({
         'Accept': 'application/json'
       },
       success(res) {
-        console.log("add")
-        console.log(res)
+        console.log(res.data)
       },
       fail(err) {
         console.log(err)
       }
     })
     wx.redirectTo({
-      url: '/pages/find2/find2',
+      url: '/pages/Equipment/EquipmentAccept/EquipmentAccept',
     })
+    
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    
+  onLoad: function (option) {
+    var that = this;
+    console.log(option)
+    that.setData({
+      equipment:option
+    })
   },
 
   /**
