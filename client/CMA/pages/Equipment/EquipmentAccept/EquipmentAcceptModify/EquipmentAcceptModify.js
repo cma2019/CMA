@@ -1,3 +1,4 @@
+const app = getApp()
 Page({
 
   /**
@@ -9,19 +10,11 @@ Page({
   mydelete:function(e)
   {
     var that = this
-    wx.request({
-      url: 'http://192.168.1.108:8004/EquipmentReceive/deleteOne/' + that.data.equipment.id,
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json'
-      },
-      success(res) {
-        console.log(res)
-      },
-      fail(err) {
-        console.log(err)
-      }
+    myurl = app.globalData.url + 'EquipmentReceive/deleteOne/' + that.data.equipment.id;
+    app.wxRequest(myurl, 'POST', null, (res) => {
+      console.log(res)
+    }, (err) => {
+      console.log(err)
     })
     wx.redirectTo({
       url: '/pages/Equipment/EquipmentAccept/EquipmentAccept',
@@ -31,32 +24,23 @@ Page({
     var that = this
     
     //console.log(e.detail.value)
-    
-    wx.request({
-      url: 'http://192.168.1.108:8004/EquipmentReceive/modifyOne/' + that.data.equipment.id,
-      method: 'POST',
-      data: {
-        "name": e.detail.value.name,
-        "model": e.detail.value.model,
-        "manufacturer": e.detail.value.manufacturer,
-        "receive_situation": e.detail.value.receive_situation,
-        "recipient": e.detail.value.recipient,
-        "receive_date": e.detail.value.receive_date,
-        "equipment_situation": e.detail.value.equipment_situation,
-        "acceptance": e.detail.value.acceptance,
-        "acceptance_person": e.detail.value.acceptance_person,
-        "acceptance_date": e.detail.value.acceptance_date
-      },
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json'
-      },
-      success(res) {
-        console.log(res.data)
-      },
-      fail(err) {
-        console.log(err)
-      }
+    myurl = app.globalData.url + 'EquipmentReceive/modifyOne/' + that.data.equipment.id;
+    mydata = {
+      "name": e.detail.value.name,
+      "model": e.detail.value.model,
+      "manufacturer": e.detail.value.manufacturer,
+      "receive_situation": e.detail.value.receive_situation,
+      "recipient": e.detail.value.recipient,
+      "receive_date": e.detail.value.receive_date,
+      "equipment_situation": e.detail.value.equipment_situation,
+      "acceptance": e.detail.value.acceptance,
+      "acceptance_person": e.detail.value.acceptance_person,
+      "acceptance_date": e.detail.value.acceptance_date
+    };
+    app.wxRequest(myurl, 'POST', mydata, (res) => {
+      console.log(res.data)
+    }, (err) => {
+      console.log(err)
     })
     wx.redirectTo({
       url: '/pages/Equipment/EquipmentAccept/EquipmentAccept',

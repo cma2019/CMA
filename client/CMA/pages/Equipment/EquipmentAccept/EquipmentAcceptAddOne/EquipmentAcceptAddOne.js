@@ -1,40 +1,50 @@
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
+      "id": null,
+      "name": null,
+    "model": null,
+    "manufacturer": null,
+    "receiveSituation": null,
+    "recipient": null,
+    "receiveDate": null,
+    "equipmentSituation": null,
+    "acceptance": null,
+    "acceptancePerson": null,
+    "acceptanceDate": null
+  },
+  bindDateChange: function (e) {
+    console.log("date")
+    console.log(e.detail.value)
+    this.setData({
+      'receiveDate':e.detail.value
+    })
   },
   newEquipment:function(e)
   {
     console.log(e.detail.value)
-    wx.request({
-      url: 'http://192.168.1.108:8004/EquipmentReceive/add',
-      method: 'POST',
-      data:{
-        "name": e.detail.value.name,
-        "model": e.detail.value.model,
-        "manufacturer": e.detail.value.manufacturer,
-        "receive_situation": e.detail.value.receive_situation,
-        "recipient": e.detail.value.recipient,
-        "receive_date": e.detail.value.receive_date,
-        "equipment_situation": e.detail.value.equipment_situation,
-        "acceptance": e.detail.value.acceptance,
-        "acceptance_person": e.detail.value.acceptance_person,
-        "acceptance_date": e.detail.value.acceptance_date
-      },
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json'
-      },
-      success(res) {
-        console.log("add")
-        console.log(res)
-      },
-      fail(err) {
-        console.log(err)
-      }
+    var myurl = app.globalData.url + 'EquipmentReceive/add';
+    var mydata = {
+      "name": e.detail.value.name,
+      "model": e.detail.value.model,
+      "manufacturer": e.detail.value.manufacturer,
+      "receiveSituation": e.detail.value.receiveSituation,
+      "recipient": e.detail.value.recipient,
+      "receiveDate": e.detail.value.receiveDate,
+      "equipmentSituation": e.detail.value.equipmentSituation,
+      "acceptance": e.detail.value.acceptance,
+      "acceptancePerson": e.detail.value.acceptancePerson,
+      "acceptanceDate": e.detail.value.acceptanceDate
+    };
+    app.wxRequest(myurl, 'POST', mydata, (res) => {
+      console.log("add")
+      console.log(res)
+    }, (err) => {
+      console.log(err)
     })
     wx.redirectTo({
       url: '/pages/Equipment/EquipmentAccept/EquipmentAccept',

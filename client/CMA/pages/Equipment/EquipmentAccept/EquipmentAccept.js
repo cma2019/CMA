@@ -1,3 +1,5 @@
+
+const app = getApp()
 Page({
 
   /**
@@ -9,32 +11,32 @@ Page({
       "name": 1,
       "model": 1,
       "manufacturer": 1,
-      "receive_situation": 1,
+      "receiveSituation": 1,
       "recipient": 1,
-      "receive_date": 1,
-      "equipment_situation": 1,
+      "receiveDate": 1,
+      "equipmentSituation": 1,
       "acceptance": 1,
-      "acceptance_person": 1,
-      "acceptance_date": 1
+      "acceptancePerson": 1,
+      "acceptanceDate": 1
     },
     {
       "id": 2,
       "name": 2,
       "model": 2,
       "manufacturer": 2,
-      "receive_situation": 2,
+      "receiveSituation": 2,
       "recipient": 2,
       "receive_date": 2,
-      "equipment_situation": 2,
+      "equipmentSituation": 2,
       "acceptance": 2,
-      "acceptance_person": 2,
-      "acceptance_date": 2
+      "acceptancePerson": 2,
+      "acceptanceDate": 2
     }]
   },
   viewDetail: function(e){
     console.log(e.currentTarget.dataset)
     wx.redirectTo({
-      url: '/pages/Equipment/EquipmentAccept/EquipmentAcceptGetOne/EquipmentAcceptGetOne2?id=' + e.currentTarget.dataset.id + "&name=" + e.currentTarget.dataset.name + "&model=" + e.currentTarget.dataset.model + "&manufacturer=" + e.currentTarget.dataset.manufacturer + "&receive_situation=" + e.currentTarget.dataset.receive_situation + "&recipient=" + e.currentTarget.dataset.recipient + "&receive_date=" + e.currentTarget.dataset.receive_date + "&equipment_situation=" + e.currentTarget.dataset.equipment_situation + "&acceptance=" + e.currentTarget.dataset.acceptance + "&acceptance_person=" + e.currentTarget.dataset.acceptance_person + "&acceptance_date=" + e.currentTarget.dataset.acceptance_date,
+      url: '/pages/Equipment/EquipmentAccept/EquipmentAcceptGetOne/EquipmentAcceptGetOne2?id=' + e.currentTarget.dataset.id + "&name=" + e.currentTarget.dataset.name + "&model=" + e.currentTarget.dataset.model + "&manufacturer=" + e.currentTarget.dataset.manufacturer + "&receiveSituation=" + e.currentTarget.dataset.receiveSituation + "&recipient=" + e.currentTarget.dataset.recipient + "&receiveDate=" + e.currentTarget.dataset.receiveDate + "&equipmentSituation=" + e.currentTarget.dataset.equipmentSituation + "&acceptance=" + e.currentTarget.dataset.acceptance + "&acceptancePerson=" + e.currentTarget.dataset.acceptancePerson + "&acceptanceDate=" + e.currentTarget.dataset.acceptanceDate,
     })
   },
   gotoAdd: function (e) {
@@ -48,24 +50,15 @@ Page({
   onLoad: function () {
     //console.log(this.data.array)
     var that = this
-    wx.request({
-      url: 'http://192.168.1.108:8004/EquipmentReceive/getAll',
-      method:'GET',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json'
-      },
-      success(res){
-        //console.log(res)
-        //console.log(res.data.data.Equipments)
-        that.setData({
-          array: res.data.data.Equipments
-        })
-        console.log(that.data.array)
-      },
-      fail(err) {
-        console.log(err)
-      }
+    var myurl = app.globalData.url + 'EquipmentReceive/getAll';
+    app.wxRequest(myurl, 'GET', null, (res) => {
+      console.log(res)
+      that.setData({
+        array: res.data.Equipments
+      })
+      console.log(that.data.array)
+    }, (err) => {
+      console.log(err)
     })
     //console.log(that.data.array)
   },
@@ -82,24 +75,14 @@ Page({
    */
   onShow: function () {
     var that = this
-    wx.request({
-      url: 'http://192.168.1.108:8004/EquipmentReceive/getAll',
-      method: 'GET',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json'
-      },
-      success(res) {
-        //console.log(res)
-        //console.log(res.data.data.Equipments)
-        that.setData({
-          array: res.data.data.Equipments
-        })
-        console.log(that.data.array)
-      },
-      fail(err) {
-        console.log(err)
-      }
+    myurl = app.globalData.url + 'EquipmentReceive/getAll';
+    app.wxRequest(myurl, 'GET', null, (res) => {
+      that.setData({
+        array: res.data.data.Equipments
+      })
+      console.log(that.data.array)
+    }, (err) => {
+      console.log(err)
     })
   },
 

@@ -1,3 +1,4 @@
+const app = getApp()
 Page({
 
   /**
@@ -8,19 +9,11 @@ Page({
   },
   mydelete: function (e) {
     var that = this
-    wx.request({
-      url: 'http://192.168.1.108:8004/EquipmentReceive/deleteOne/' + that.data.equipment.id,
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json'
-      },
-      success(res) {
-        //console.log(res.data)
-      },
-      fail(err) {
-        console.log(err)
-      }
+    myurl = app.globalData.url + 'EquipmentReceive/deleteOne/' + that.data.equipment.id;
+    app.wxRequest(myurl, 'POST', null, (res) => {
+      console.log(res)
+    }, (err) => {
+      console.log(err)
     })
     wx.redirectTo({
       url: '/pages/Equipment/EquipmentAccept/EquipmentAccept',
