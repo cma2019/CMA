@@ -75,10 +75,10 @@ Page({
    */
   onShow: function () {
     var that = this
-    myurl = app.globalData.url + 'EquipmentReceive/getAll';
+    var myurl = app.globalData.url + 'EquipmentReceive/getAll';
     app.wxRequest(myurl, 'GET', null, (res) => {
       that.setData({
-        array: res.data.data.Equipments
+        array: res.data.Equipments
       })
       console.log(that.data.array)
     }, (err) => {

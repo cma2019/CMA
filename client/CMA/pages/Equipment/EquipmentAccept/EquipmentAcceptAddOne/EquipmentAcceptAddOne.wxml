@@ -39,7 +39,18 @@
       <van-field name="acceptancePerson" value="{{acceptancePerson}}" required clearable label="acceptancePerson" placeholder="input acceptancePerson"></van-field>
     </view>
     <view class="section">
-      <van-field name="acceptanceDate" value="{{acceptanceDate}}" required clearable label="acceptanceDate" placeholder="input acceptanceDate"></van-field>
+      <picker name = 'acceptanceDate' mode='date' value='{{acceptanceDate}}' bindchange='bindDateChange2'>
+          <view class='picker'>
+            <van-field 
+              name="acceptanceDate"
+              label="acceptanceDate"
+              value='{{acceptanceDate}}'
+              placeholder="input acceptanceDate" 
+              required
+              clearable
+            />
+          </view>
+      </picker>
     </view>
     <view>
       <button class='van-button--info' formType='submit'>new equipment accept</button>

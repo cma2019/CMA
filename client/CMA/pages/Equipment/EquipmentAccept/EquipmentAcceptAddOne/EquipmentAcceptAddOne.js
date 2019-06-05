@@ -24,6 +24,13 @@ Page({
       'receiveDate':e.detail.value
     })
   },
+  bindDateChange2: function (e) {
+    console.log("date2")
+    console.log(e.detail.value)
+    this.setData({
+      'acceptanceDate': e.detail.value
+    })
+  },
   newEquipment:function(e)
   {
     console.log(e.detail.value)
