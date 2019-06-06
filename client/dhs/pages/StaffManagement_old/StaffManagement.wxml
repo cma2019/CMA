@@ -1,6 +1,0 @@
-<!--pages/StaffManagement/StaffManagement.wxml-->
-<button bindtap="GotoPrintOneStaff">个人信息查看</button>
-<button bindtap="GotoPrintAllStaff">全部人员信息查看</button>
-<button bindtap="GotoAddStaff">人员添加</button>
-<button bindtap="GotoDeleteStaff">人员删除</button>
-<button bindtap="GotoModifyStaff">人员信息修改</button>
