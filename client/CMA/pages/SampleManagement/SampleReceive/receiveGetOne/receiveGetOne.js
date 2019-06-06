@@ -7,7 +7,7 @@ Page({
    */
   data: {
     "sampleId": "null",
-    "sampleNumber": "null",
+    /*"sampleNumber": "null",
     "sampleName": "null",
     "sampleAmount": "null",
     "sampleState": "null",
@@ -15,7 +15,8 @@ Page({
     "receiver": "null",
     "receiveDate": "null",
     "obtainer": "null",
-    "obtainDate": "null",
+    "obtainDate": "null",*/
+    "info":{},
     tmp: [{
       "sampleId": 2,
       "sampleNumber": "20180602",
@@ -66,7 +67,7 @@ Page({
       },
       success(res) {
         if (res.data.code == 200) {
-          thispage.setData({
+          /*thispage.setData({
             sampleNumber: res.data.data.sampleNumber,
             sampleName: res.data.data.sampleName,
             sampleAmount: res.data.data.sampleAmount,
@@ -76,7 +77,22 @@ Page({
             receiveDate: res.data.data.receiveDate,
             obtainer: res.data.data.obtainer,
             obtainDate: res.data.data.obtainDate
+          })*/
+          thispage.setData({
+            info : res.data.data
           })
+          wx.setStorage({
+            key:'receiveGetOneinfo',
+            data:res.data.data
+          })/*,
+          wx.removeStorage({
+            key: 'receiveGetOneinfo',
+            success: function (res) {
+              console.log(res)
+            }
+          })
+          */
+          //console.log(info)
         }
         else if (res.data.code == 521) {
           console.log(res.data.msg)
@@ -105,10 +121,10 @@ Page({
   modifyData: function (e) {
     console.log(e)
     let target = this.data.sampleId
-    console.log("dfdg")
-    console.log(target)
+    //console.log("dfdg")
+    //console.log(target)
     wx.navigateTo({
-      url: '../receiveModifyOne/receiveModifyOne?id=' + target
+      url: '../receiveModifyOne/receiveModifyOne?id='+target
     })
   },
 
@@ -126,6 +142,12 @@ Page({
       success(res) {
         console.log(res)
         if (res.data.code == 200) {
+          wx.removeStorage({
+            key: 'receiveGetOneinfo',
+            success: function (res) {
+              console.log(res)
+            }
+          }),
           wx.showToast({
             title: '删除成功',
             duration: 1500
@@ -160,6 +182,12 @@ Page({
   },
 
   goback: function () {
+    wx.removeStorage({
+      key: 'receiveGetOneinfo',
+      success: function(res) {
+        console.log(res)
+      }
+    })
     wx.navigateBack({
       delta: 1
     })
