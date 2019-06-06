@@ -1,3 +1,4 @@
+const app = getApp()
 Page({
 
   /**
@@ -9,27 +10,21 @@ Page({
   newEquipment:function(e)
   {
     console.log(e.detail.value)
-    wx.request({
-      url: 'http://192.168.1.108:8004/Equipment/add',
-      method: 'POST',
-      data:{
-        "name": e.detail.value.name,
-        "model": e.detail.value.model,
-        "cpu": e.detail.value.cpu,
-        "memory": e.detail.value.memory,
-        "application": e.detail.value.application,
-        "state": e.detail.value.state
-      },
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json'
-      },
-      success(res) {
-        console.log(res.data)
-      },
-      fail(err) {
-        console.log(err)
-      }
+    var myurl = app.globalData.url + 'Equipment/add';
+    var mydata = {
+      "name": e.detail.value.name,
+      "model": e.detail.value.model,
+      "cpu": e.detail.value.cpu,
+      "memory": e.detail.value.memory,
+      "hardDisk": e.detail.value.hardDisk,
+      "equipmentNumber": e.detail.value.equipmentNumber,
+      "application": e.detail.value.application,
+      "state": e.detail.value.state
+    };
+    app.wxRequest(myurl, 'POST', mydata, (res) => {
+      console.log(res)
+    }, (err) => {
+      console.log(err)
     })
     wx.redirectTo({
       url: '/pages/Equipment/EquipmentManagement/EquipmentManagement',

@@ -6,13 +6,13 @@
       <view>name : {{equipment.name}}</view>
       <view>model : {{equipment.model}}</view>
       <view>manufacturer : {{equipment.manufacturer}}</view>
-      <view>receive_situation : {{equipment.receive_situation}}</view>
+      <view>receiveSituation : {{equipment.receiveSituation}}</view>
       <view>recipient : {{equipment.recipient}}</view>
-      <view>receive_date : {{equipment.receive_date}}</view>
-      <view>equipment_situation : {{equipment.equipment_situation}}</view>
+      <view>receiveDate : {{equipment.receiveDate}}</view>
+      <view>equipmentSituation : {{equipment.equipmentSituation}}</view>
       <view>acceptance : {{equipment.acceptance}}</view>
-      <view>acceptance_person : {{equipment.acceptance_person}}</view>
-      <view>acceptance_date : {{equipment.acceptance_date}}</view>
+      <view>acceptancePerson : {{equipment.acceptancePerson}}</view>
+      <view>acceptanceDate : {{equipment.acceptanceDate}}</view>
     </view>
   </van-cell>
   <van-button type="info" size="small" bindtap="viewDetail">Modify</van-button>

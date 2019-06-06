@@ -1,3 +1,5 @@
+
+const app = getApp()
 Page({
 
   /**
@@ -10,6 +12,8 @@ Page({
       "model":1,
       "cpu":1,
       "memory":1,
+      "hardDisk":1,
+      "equipmentNumber":1,
       "application":1,
       "state":1
     },
@@ -19,6 +23,8 @@ Page({
       "model": 2,
       "cpu": 2,
       "memory": 2,
+      "hardDisk": 2,
+      "equipmentNumber": 2,
       "application": 2,
       "state": 2
     }]
@@ -34,24 +40,15 @@ Page({
   onLoad: function () {
     //console.log(this.data.array)
     var that = this
-    wx.request({
-      url: 'http://192.168.1.108:8004/Equipment/getAll',
-      method:'GET',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json'
-      },
-      success(res){
-        //console.log(res)
-        //console.log(res.data.data.Equipments)
-        that.setData({
-          array: res.data.data.Equipments
-        })
-        console.log(that.data.array)
-      },
-      fail(err) {
-        console.log(err)
-      }
+    var myurl = app.globalData.url + 'Equipment/getAll';
+    app.wxRequest(myurl, 'GET', null, (res) => {
+      console.log(res)
+      that.setData({
+        array: res.data.Equipments
+      })
+      console.log(that.data.array)
+    }, (err) => {
+      console.log(err)
     })
     //console.log(that.data.array)
   },
@@ -68,24 +65,15 @@ Page({
    */
   onShow: function () {
     var that = this
-    wx.request({
-      url: 'http://192.168.1.108:8004/Equipment/getAll',
-      method: 'GET',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json'
-      },
-      success(res) {
-        //console.log(res)
-        //console.log(res.data.data.Equipments)
-        that.setData({
-          array: res.data.data.Equipments
-        })
-        console.log(that.data.array)
-      },
-      fail(err) {
-        console.log(err)
-      }
+    var myurl = app.globalData.url + 'Equipment/getAll';
+    app.wxRequest(myurl, 'GET', null, (res) => {
+      console.log(res)
+      that.setData({
+        array: res.data.Equipments
+      })
+      console.log(that.data.array)
+    }, (err) => {
+      console.log(err)
     })
   },
 

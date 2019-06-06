@@ -10,7 +10,7 @@ Page({
   mydelete:function(e)
   {
     var that = this
-    myurl = app.globalData.url + 'EquipmentReceive/deleteOne/' + that.data.equipment.id;
+    var myurl = app.globalData.url + 'EquipmentReceive/deleteOne/' + that.data.equipment.id;
     app.wxRequest(myurl, 'POST', null, (res) => {
       console.log(res)
     }, (err) => {
@@ -24,18 +24,18 @@ Page({
     var that = this
     
     //console.log(e.detail.value)
-    myurl = app.globalData.url + 'EquipmentReceive/modifyOne/' + that.data.equipment.id;
-    mydata = {
+    var myurl = app.globalData.url + 'EquipmentReceive/modifyOne/' + that.data.equipment.id;
+    var mydata = {
       "name": e.detail.value.name,
       "model": e.detail.value.model,
       "manufacturer": e.detail.value.manufacturer,
-      "receive_situation": e.detail.value.receive_situation,
+      "receiveSituation": e.detail.value.receiveSituation,
       "recipient": e.detail.value.recipient,
-      "receive_date": e.detail.value.receive_date,
-      "equipment_situation": e.detail.value.equipment_situation,
+      "receiveDate": e.detail.value.receiveDate,
+      "equipmentSituation": e.detail.value.equipmentSituation,
       "acceptance": e.detail.value.acceptance,
-      "acceptance_person": e.detail.value.acceptance_person,
-      "acceptance_date": e.detail.value.acceptance_date
+      "acceptancePerson": e.detail.value.acceptancePerson,
+      "acceptanceDate": e.detail.value.acceptanceDate
     };
     app.wxRequest(myurl, 'POST', mydata, (res) => {
       console.log(res.data)

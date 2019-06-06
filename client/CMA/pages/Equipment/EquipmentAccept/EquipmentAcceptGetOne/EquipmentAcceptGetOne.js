@@ -9,7 +9,7 @@ Page({
   },
   mydelete: function (e) {
     var that = this
-    myurl = app.globalData.url + 'EquipmentReceive/deleteOne/' + that.data.equipment.id;
+    var myurl = app.globalData.url + 'EquipmentReceive/deleteOne/' + that.data.equipment.id;
     app.wxRequest(myurl, 'POST', null, (res) => {
       console.log(res)
     }, (err) => {
@@ -23,7 +23,7 @@ Page({
     console.log("display -> view")
     var that = this
     wx.redirectTo({
-      url: '/pages/Equipment/EquipmentAccept/EquipmentAcceptModify/EquipmentAcceptModify?id=' + that.data.equipment.id + "&name=" + that.data.equipment.name + "&model=" + that.data.equipment.model + "&manufacturer=" + that.data.equipment.manufacturer + "&receive_situation=" + that.data.equipment.receive_situation + "&recipient=" + that.data.equipment.recipient + "&receive_date=" + that.data.equipment.receive_date + "&equipment_situation=" + that.data.equipment.equipment_situation + "&acceptance=" + that.data.equipment.acceptance + "&acceptance_person=" + that.data.equipment.acceptance_person + "&acceptance_date=" + that.data.equipment.acceptance_date,
+      url: '/pages/Equipment/EquipmentAccept/EquipmentAcceptModify/EquipmentAcceptModify?id=' + that.data.equipment.id + "&name=" + that.data.equipment.name + "&model=" + that.data.equipment.model + "&manufacturer=" + that.data.equipment.manufacturer + "&receiveSituation=" + that.data.equipment.receiveSituation + "&recipient=" + that.data.equipment.recipient + "&receiveDate=" + that.data.equipment.receiveDate + "&equipmentSituation=" + that.data.equipment.equipmentSituation + "&acceptance=" + that.data.equipment.acceptance + "&acceptancePerson=" + that.data.equipment.acceptancePerson + "&acceptanceDate=" + that.data.equipment.acceptanceDate,
     })
   },
   /**
