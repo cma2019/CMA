@@ -7,7 +7,7 @@ Page({
    */
   data: {
     "sampleIoId":"null",
-    "sampleNumber": "null",
+    /*"sampleNumber": "null",
     "sampleName": "null",
     "sampleAmount": "null",
     "sampleState": "null",
@@ -16,7 +16,8 @@ Page({
     "sendDate": "null",
     "obtainer": "null",
     "obtainDate": "null",
-    "note":"null",
+    "note":"null",*/
+    "info":{},
     tmp: [{
       "sampleIoId": 2,
       "sampleNumber": "20180602",
@@ -68,7 +69,7 @@ Page({
       },
       success(res) {
         if (res.data.code == 200) {
-          thispage.setData({ 
+         /* thispage.setData({ 
             sampleNumber: res.data.data.sampleNumber,
             sampleName: res.data.data.sampleName,
             sampleAmount: res.data.data.sampleAmount,
@@ -79,6 +80,13 @@ Page({
             obtainer: res.data.data.obtainer,
             obtainDate: res.data.data.obtainDate,
             note:res.data.data.note
+          })*/
+          thispage.setData({
+            info : res.data.data
+          })
+          wx.setStorage({
+            key:'ioGetOneinfo',
+            data:res.data.data
           })
         }
         else if (res.data.code == 521) {
@@ -108,8 +116,8 @@ Page({
   modifyData: function(e) {
     console.log(e)
     let target = this.data.sampleIoId
-    console.log("dfdg")
-    console.log(target)
+    //console.log("dfdg")
+    //console.log(target)
     wx.navigateTo({
       url: '../ioModifyOne/ioModifyOne?id=' + target
     })
@@ -163,6 +171,12 @@ Page({
   },
 
   goback: function () {
+    wx.removeStorage({
+      key: 'ioGetOneinfo',
+      success: function (res) {
+        console.log(res)
+      }
+    })
     wx.navigateBack({
       delta: 1
     })

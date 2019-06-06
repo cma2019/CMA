@@ -2,16 +2,16 @@
 <view>
   <van-cell>
       <view slot="title">
-        <text>sampleNumber: {{sampleNumber}}\n</text>
-        <text>sampleName: {{sampleName}}\n</text>
-        <text>sampleAmount: {{sampleAmount}}\n</text>
-        <text>sampleState: {{sampleState}}\n</text>
-        <text>sender: {{sender}}\n</text>
-        <text>receiver: {{receiver}}\n</text>
-        <text>sendDate: {{sendDate}}\n</text>
-        <text>obtainer: {{obtainer}}\n</text>
-        <text>obtainDate: {{obtainDate}}\n</text>
-        <text>note: {{note}}\n</text>
+        <text>sampleNumber: {{info.sampleNumber}}\n</text>
+        <text>sampleName: {{info.sampleName}}\n</text>
+        <text>sampleAmount: {{info.sampleAmount}}\n</text>
+        <text>sampleState: {{info.sampleState}}\n</text>
+        <text>sender: {{info.sender}}\n</text>
+        <text>receiver: {{info.receiver}}\n</text>
+        <text>sendDate: {{info.sendDate}}\n</text>
+        <text>obtainer: {{info.obtainer}}\n</text>
+        <text>obtainDate: {{info.obtainDate}}\n</text>
+        <text>note: {{info.note}}\n</text>
       </view>
   </van-cell>
 </view>
