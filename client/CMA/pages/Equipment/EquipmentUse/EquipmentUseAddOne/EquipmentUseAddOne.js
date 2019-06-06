@@ -1,11 +1,68 @@
 // pages/Equipment/EquipmentUse/EquipmentUseAddOne/EquipmentUseAddOne.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    "id": null,
+    "equipmentId": null,
+    "useDate": null,
+    "openDate": null,
+    "clostDate": null,
+    "sampleNumber": null,
+    "testProject": null,
+    "beforeUse": null,
+    "afterUse": null,
+    "user": null,
+    "remark": null
+  },
+  bindDateChange: function (e) {
+    console.log("date")
+    console.log(e.detail.value)
+    this.setData({
+      'useDate': e.detail.value
+    })
+  },
+  bindDateChange2: function (e) {
+    console.log("date2")
+    console.log(e.detail.value)
+    this.setData({
+      'openDate': e.detail.value
+    })
+  },
+  bindDateChange3: function (e) {
+    console.log("date3")
+    console.log(e.detail.value)
+    this.setData({
+      'clostDate': e.detail.value
+    })
+  },
+  newEquipment: function (e) {
+    console.log(e.detail.value)
+    var myurl = app.globalData.url + 'EquipmentUse/add';
+    var mydata = {
+      "equipmentId": e.detail.value.equipmentId,
+      "useDate": e.detail.value.useDate,
+      "openDate": e.detail.value.openDate,
+      "clostDate": e.detail.value.clostDate,
+      "sampleNumber": e.detail.value.sampleNumber,
+      "testProject": e.detail.value.testProject,
+      "beforeUse": e.detail.value.beforeUse,
+      "afterUse": e.detail.value.afterUse,
+      "user": e.detail.value.user,
+      "remark": e.detail.value.remark
+    };
+    app.wxRequest(myurl, 'POST', mydata, (res) => {
+      console.log("add")
+      console.log(res)
+    }, (err) => {
+      console.log(err)
+    })
+    wx.redirectTo({
+      url: '/pages/Equipment/EquipmentUse/EquipmentUse',
+    })
   },
 
   /**

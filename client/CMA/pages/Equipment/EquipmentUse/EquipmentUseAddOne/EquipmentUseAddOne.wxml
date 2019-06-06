@@ -1,2 +1,71 @@
 <!--pages/Equipment/EquipmentUse/EquipmentUseAddOne/EquipmentUseAddOne.wxml-->
-<text>pages/Equipment/EquipmentUse/EquipmentUseAddOne/EquipmentUseAddOne.wxml</text>
+<scroll-view scroll-y>
+  <form bindsubmit='newEquipment'>
+    <view class="section">
+      <van-field name="equipmentId" value="{{equipmentId}}" required clearable label="equipmentId" placeholder="input equipmentId"></van-field>
+    </view>
+    <view class="section">
+      <picker name = 'useDate' mode='date' value='{{useDate}}' bindchange='bindDateChange'>
+          <view class='picker'>
+            <van-field 
+              name="useDate"
+              label="useDate"
+              value='{{useDate}}'
+              placeholder="input useDate" 
+              required
+              clearable
+            />
+          </view>
+      </picker> 
+    </view>
+    <view class="section">
+      <picker name = 'openDate' mode='date' value='{{openDate}}' bindchange='bindDateChange2'>
+          <view class='picker'>
+            <van-field 
+              name="openDate"
+              label="openDate"
+              value='{{openDate}}'
+              placeholder="input openDate" 
+              required
+              clearable
+            />
+          </view>
+      </picker> 
+    </view>
+    <view class="section">
+      <picker name = 'clostDate' mode='date' value='{{clostDate}}' bindchange='bindDateChange3'>
+          <view class='picker'>
+            <van-field 
+              name="clostDate"
+              label="clostDate"
+              value='{{clostDate}}'
+              placeholder="input clostDate" 
+              required
+              clearable
+            />
+          </view>
+      </picker> 
+    </view>
+    <view class="section">
+      <van-field name="sampleNumber" value="{{sampleNumber}}" required clearable label="sampleNumber" placeholder="input sampleNumber"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="testProject" value="{{testProject}}" required clearable label="testProject" placeholder="input testProject"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="beforeUse" value="{{beforeUse}}" required clearable label="beforeUse" placeholder="input beforeUse"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="afterUse" value="{{afterUse}}" required clearable label="afterUse" placeholder="input afterUse"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="user" value="{{user}}" required clearable label="user" placeholder="input user"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="remark" value="{{remark}}" required clearable label="remark" placeholder="input remark"></van-field>
+    </view>
+    <view>
+      <button class='van-button--info' formType='submit'>new equipment use</button>
+    </view>
+  </form>
+</scroll-view>

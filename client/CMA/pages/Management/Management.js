@@ -98,6 +98,11 @@ Page({
       url: '../Equipment/EquipmentAccept/EquipmentAccept',
     })
   },
+  gotoEquipment3: function () {
+    wx.navigateTo({
+      url: '../Equipment/EquipmentUse/EquipmentUse',
+    })
+  },
   gotoSampleManagement:function(){
     wx.navigateTo({
       url: '../SampleManagement/SampleManagementMenu/SampleManagementMenu',

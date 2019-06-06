@@ -1,10 +1,38 @@
 // pages/Equipment/EquipmentUse/EquipmentUseModify/EquipmentUseModify.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    equipment: {}
+  },
+  mytest: function (e) {
+    var that = this
+
+    //console.log(e.detail.value)
+    var myurl = app.globalData.url + 'EquipmentUse/modifyOne/' + that.data.equipment.id;
+    var mydata = {
+      "equipmentId": e.detail.value.equipmentId,
+      "useDate": e.detail.value.useDate,
+      "openDate": e.detail.value.openDate,
+      "clostDate": e.detail.value.clostDate,
+      "sampleNumber": e.detail.value.sampleNumber,
+      "testProject": e.detail.value.testProject,
+      "beforeUse": e.detail.value.beforeUse,
+      "afterUse": e.detail.value.afterUse,
+      "user": e.detail.value.user,
+      "remark": e.detail.value.remark
+    };
+    app.wxRequest(myurl, 'POST', mydata, (res) => {
+      console.log(res.data)
+    }, (err) => {
+      console.log(err)
+    })
+    wx.redirectTo({
+      url: '/pages/Equipment/EquipmentUse/EquipmentUse',
+    })
 
   },
 
