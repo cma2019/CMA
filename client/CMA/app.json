@@ -72,7 +72,7 @@
         "iconPath": "/icons/user/user_grey.png",
         "selectedIconPath": "/icons/user/user_blue.png",
         "pagePath": "pages/user/user",
-        "text": "接口"
+        "text": "用户"
       }
     ]
   },
