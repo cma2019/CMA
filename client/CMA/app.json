@@ -45,7 +45,9 @@
     "pages/Equipment/EquipmentAccept/EquipmentAcceptModify/EquipmentAcceptModify",
     "pages/TrainingManagement/AnnualTrainingPlan/AnnualTrainingPlan",
     "pages/Equipment/EquipmentUse/EquipmentUse",
-    "pages/Equipment/EquipmentUse/EquipmentUseGetOne/EquipmentUseGetOne"
+    "pages/Equipment/EquipmentUse/EquipmentUseGetOne/EquipmentUseGetOne",
+    "pages/Equipment/EquipmentUse/EquipmentUseModify/EquipmentUseModify",
+    "pages/Equipment/EquipmentUse/EquipmentUseAddOne/EquipmentUseAddOne"
   ],
   "window": {
     "backgroundTextStyle": "light",
