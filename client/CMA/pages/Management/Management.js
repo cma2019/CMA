@@ -78,6 +78,11 @@ Page({
       url: '../TrainingManagement/TrainingApplication/TrainingApplication',
     })
   },
+  goAnnualTrainingPlan: function () {
+    wx.navigateTo({
+      url: '../TrainingManagement/AnnualTrainingPlan/AnnualTrainingPlan',
+    })
+  },
   gotoInterCheck:function(){
     wx.navigateTo({
       url: '../IntermediateCheck/IntermediateCheckMenu/IntermediateCheckMenu',

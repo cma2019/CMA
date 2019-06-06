@@ -32,6 +32,7 @@
     <van-collapse-item title="培训管理" name="9">
       <van-cell-group>
         <van-cell title="TrainingApplication" boarder="{{false}}" is-link  center="{{true}}" bindtap="goTrainingApplication"></van-cell>
+        <van-cell title="AnnualTrainingPlan" boarder="{{false}}" is-link  center="{{true}}" bindtap="goAnnualTrainingPlan"></van-cell>
       </van-cell-group>
     </van-collapse-item>
     <van-collapse-item title="样品管理"  name="10">

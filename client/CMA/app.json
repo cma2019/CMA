@@ -42,7 +42,8 @@
     "pages/Equipment/EquipmentAccept/EquipmentAccept",
     "pages/Equipment/EquipmentAccept/EquipmentAcceptAddOne/EquipmentAcceptAddOne",
     "pages/Equipment/EquipmentAccept/EquipmentAcceptGetOne/EquipmentAcceptGetOne",
-    "pages/Equipment/EquipmentAccept/EquipmentAcceptModify/EquipmentAcceptModify"
+    "pages/Equipment/EquipmentAccept/EquipmentAcceptModify/EquipmentAcceptModify",
+    "pages/TrainingManagement/AnnualTrainingPlan/AnnualTrainingPlan"
   ],
   "window": {
     "backgroundTextStyle": "light",
