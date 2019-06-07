@@ -1,0 +1,14 @@
+<scroll-view scroll-y>
+  <van-cell-group title="Equipment Use Management">
+  <view wx:for="{{array}}" data-id="{{item.id}}" data-equipmentId="{{item.equipmentId}}" data-useDate="{{item.useDate}}" data-openDate="{{item.openDate}}" data-clostDate="{{item.clostDate}}" data-sampleNumber="{{item.sampleNumber}}" data-testProject="{{item.testProject}}"  data-beforeUse="{{item.beforeUse}}" data-afterUse="{{item.afterUse}}" data-user="{{item.user}}" data-remark="{{item.remark}}">
+    <van-cell value="详情" is-link url='/pages/Equipment/EquipmentUse/EquipmentUseGetOne/EquipmentUseGetOne?id={{item.id}}&equipmentId={{item.equipmentId}}&useDate={{item.useDate}}&openDate={{item.openDate}}&clostDate={{item.clostDate}}&sampleNumber={{item.sampleNumber}}&testProject={{item.testProject}}&beforeUse={{item.beforeUse}}&afterUse={{item.afterUse}}&user={{item.user}}&remark={{item.remark}}' link-type='redirectTo'>
+      <view slot="title">
+        <view>id : {{item.id}}</view>
+        <view>name : {{item.equipmentId}}</view>
+        <view>model : {{item.useDate}}</view>
+      </view>
+    </van-cell>
+  </view>
+  </van-cell-group>
+  <van-button type="info" size="small" bindtap="gotoAdd">Add an equipment</van-button>
+</scroll-view>

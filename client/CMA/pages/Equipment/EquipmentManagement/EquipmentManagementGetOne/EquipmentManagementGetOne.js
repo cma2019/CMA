@@ -1,4 +1,5 @@
 // pages/display/display.js
+const app = getApp()
 Page({
 
   /**
@@ -9,19 +10,11 @@ Page({
   },
   mydelete: function (e) {
     var that = this
-    wx.request({
-      url: 'http://192.168.1.108:8004/Equipment/deleteOne/' + that.data.equipment.id,
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json'
-      },
-      success(res) {
-        //console.log(res.data)
-      },
-      fail(err) {
-        console.log(err)
-      }
+    var myurl = app.globalData.url + 'Equipment/deleteOne/' + that.data.equipment.id;
+    app.wxRequest(myurl, 'POST', null, (res) => {
+      console.log(res)
+    }, (err) => {
+      console.log(err)
     })
     wx.redirectTo({
       url: '/pages/Equipment/EquipmentManagement/EquipmentManagement',
@@ -31,7 +24,7 @@ Page({
     console.log("display -> view")
     var that = this
     wx.redirectTo({
-      url: '/pages/Equipment/EquipmentManagement/EquipmentManagementModify/EquipmentManagementModify?id=' + that.data.equipment.id + "&name=" + that.data.equipment.name + "&model=" + that.data.equipment.model + "&cpu=" + that.data.equipment.cpu + "&memory=" + that.data.equipment.memory + "&application=" + that.data.equipment.application + "&state=" + that.data.equipment.state,
+      url: '/pages/Equipment/EquipmentManagement/EquipmentManagementModify/EquipmentManagementModify?id=' + that.data.equipment.id + "&name=" + that.data.equipment.name + "&model=" + that.data.equipment.model + "&cpu=" + that.data.equipment.cpu + "&memory=" + that.data.equipment.memory + "&hardDisk=" + that.data.equipment.hardDisk + "&equipmentNumber=" + that.data.equipment.equipmentNumber+ "&application=" + that.data.equipment.application + "&state=" + that.data.equipment.state,
     })
   },
   /**

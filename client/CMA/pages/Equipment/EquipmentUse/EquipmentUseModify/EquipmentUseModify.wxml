@@ -1,0 +1,37 @@
+<scroll-view scroll-y>
+  <form bindsubmit='mytest'>
+    <view class="section">
+      <van-field name="equipmentId" value="{{equipment.equipmentId}}" required clearable label="equipmentId" placeholder="input equipmentId"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="useDate" value="{{equipment.useDate}}" required clearable label="useDate" placeholder="input useDate"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="openDate" value="{{equipment.openDate}}" required clearable label="openDate" placeholder="input openDate"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="clostDate" value="{{equipment.clostDate}}" required clearable label="clostDate" placeholder="input clostDate"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="sampleNumber" value="{{equipment.sampleNumber}}" required clearable label="sampleNumber" placeholder="input sampleNumber"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="testProject" value="{{equipment.testProject}}" required clearable label="testProject" placeholder="input testProject"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="beforeUse" value="{{equipment.beforeUse}}" required clearable label="beforeUse" placeholder="input beforeUse"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="afterUse" value="{{equipment.afterUse}}" required clearable label="afterUse" placeholder="input afterUse"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="user" value="{{equipment.user}}" required clearable label="user" placeholder="input user"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="remark" value="{{equipment.remark}}" required clearable label="remark" placeholder="input remark"></van-field>
+    </view>
+    <view>
+      <button class='van-button--info' form-type='submit'>Modify</button>
+    </view>
+  </form>
+</scroll-view>

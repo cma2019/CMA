@@ -8,16 +8,17 @@ Page({
 
   data: {
     "sampleIoId": "",
-    "sampleNumber": "",
+    /*"sampleNumber": "",
     "sampleName": "",
     "sampleAmount": "",
     "sampleState": "",
     "sender": "",
     "receiver": "",
-    "sendDate": "",
+    
     "obtainer": "",
-    "obtainDate": "",
+    
     "note": "",
+
 
     "sampleNumberinfo": "",
     "sampleNameinfo": "",
@@ -28,7 +29,10 @@ Page({
     "sendDateinfo": "",
     "obtainerinfo": "",
     "obtainDateinfo": "",
-    "noteinfo": "",
+    "noteinfo": "",*/
+    "origindata":{},
+    "sendDate": "",
+    "obtainDate": ""
   },
 
   /**
@@ -38,7 +42,7 @@ Page({
     this.setData({
       sampleIoId: options.id
     })
-    console.log(this.data.sampleIoId)
+    //console.log(this.data.sampleIoId)
     console.log("fdsf")
   },
 
@@ -59,7 +63,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var thispage = this
+    /*var thispage = this
     //console.log('getone发生了事件，携带数据为：', this.data.sampleIoId)
     wx.request({
       url: app.globalData.url + 'SampleIo/getOne',
@@ -107,61 +111,54 @@ Page({
       fail(err) {
         console.log('no data')
       }
-    })
+    })*/
+    var that = this
+    wx.getStorage({
+      key: 'ioGetOneinfo',
+      success: function (res) {
+        that.setData({
+          'origindata': res.data
+        })
+      }
+    }),
+    console.log(this.data)
+    console.log("456789")
   },
 
   SampleIo_modifyone: function (e) {
+    var mod = this.data.origindata
+    console.log(mod)
     console.log('SampleIo发生了modifyone事件，携带数据为：', e.detail.value)
     console.log(this.data)
     if (e.detail.value.sampleNumber != null && e.detail.value.sampleNumber != "") {
-      this.setData({
-        sampleNumberinfo: e.detail.value.sampleNumber
-      })
+        mod.sampleNumber = e.detail.value.sampleNumber
     }
     if (e.detail.value.sampleName != null && e.detail.value.sampleName != "") {
-      this.setData({
-        sampleNameinfo: e.detail.value.sampleName
-      })
+        mod.sampleName = e.detail.value.sampleName
     }
     if (e.detail.value.sampleAmount != null && e.detail.value.sampleAmount != "") {
-      this.setData({
-        sampleAmountinfo: e.detail.value.sampleAmount
-      })
+        mod.sampleAmount =  e.detail.value.sampleAmount
     }
     if (e.detail.value.sampleState != null && e.detail.value.sampleState != "") {
-      this.setData({
-        sampleStateinfo: e.detail.value.sampleState
-      })
+        mod.sampleState = e.detail.value.sampleState
     }
     if (e.detail.value.sender != null && e.detail.value.sender != "") {
-      this.setData({
-        senderinfo: e.detail.value.sender
-      })
+        mod.sender = e.detail.value.sender
     }
     if (e.detail.value.receiver != null && e.detail.value.receiver != "") {
-      this.setData({
-        receiverinfo: e.detail.value.receiver
-      })
+        mod.receiver = e.detail.value.receiver
     }
     if (e.detail.value.sendDate != null && e.detail.value.sendDate != "") {
-      this.setData({
-        sendDateinfo: e.detail.value.sendDate
-      })
+        mod.sendDate =  e.detail.value.sendDate
     }
     if (e.detail.value.obtainer != null && e.detail.value.obtainer != "") {
-      this.setData({
-        obtainerinfo: e.detail.value.obtainer
-      })
+        mod.obtainer = e.detail.value.obtainer
     }
     if (e.detail.value.obtainDate != null && e.detail.value.obtainDate != "") {
-      this.setData({
-        obtainDateinfo: e.detail.value.obtainDate
-      })
+        mod.obtainDate =  e.detail.value.obtainDate
     }
     if (e.detail.value.note != null && e.detail.value.note != "") {
-      this.setData({
-        noteinfo: e.detail.value.note
-      })
+        mod.note =  e.detail.value.note
     }
     console.log("dfg")
     console.log(this.data)
@@ -174,16 +171,16 @@ Page({
       },
       data: {
         "sampleIoId": this.data.sampleIoId,
-        "sampleNumber": this.data.sampleNumberinfo,
-        "sampleName": this.data.sampleNameinfo,
-        "sampleAmount": this.data.sampleAmountinfo,
-        "sampleState": this.data.sampleStateinfo,
-        "sender": this.data.senderinfo,
-        "receiver": this.data.receiverinfo,
-        "sendDate": this.data.sendDateinfo,
-        "obtainer": this.data.obtainerinfo,
-        "obtainDate": this.data.obtainDateinfo,
-        "note": this.data.noteinfo
+        "sampleNumber": mod.sampleNumber,
+        "sampleName":mod.sampleName,
+        "sampleAmount": mod.sampleAmount,
+        "sampleState": mod.sampleState,
+        "sender": mod.sender,
+        "receiver": mod.receive,
+        "sendDate": mod.sendDate,
+        "obtainer": mod.obtainer,
+        "obtainDate": mod.obtainDate,
+        "note": mod.note
       },
       success(res) {
         console.log(res)
@@ -191,6 +188,12 @@ Page({
           wx.showToast({
             title: '修改成功',
             duration: 1500
+          })
+          wx.removeStorage({
+            key: 'ioGetOneinfo',
+            success: function (res) {
+              console.log(res)
+            }
           })
           wx.navigateTo({
             url: '../SampleIo'

@@ -1,3 +1,4 @@
+// pages/Equipment/EquipmentUse/EquipmentUseGetOne/EquipmentUseGetOne.js
 const app = getApp()
 Page({
 
@@ -9,23 +10,24 @@ Page({
   },
   mydelete: function (e) {
     var that = this
-    var myurl = app.globalData.url + 'EquipmentReceive/deleteOne/' + that.data.equipment.id;
+    var myurl = app.globalData.url + 'Equipment/deleteOne/' + that.data.equipment.id;
     app.wxRequest(myurl, 'POST', null, (res) => {
       console.log(res)
     }, (err) => {
       console.log(err)
     })
     wx.redirectTo({
-      url: '/pages/Equipment/EquipmentAccept/EquipmentAccept',
+      url: '/pages/Equipment/EquipmentUse/EquipmentUse',
     })
   },
   viewDetail: function (e) {
     console.log("display -> view")
     var that = this
     wx.redirectTo({
-      url: '/pages/Equipment/EquipmentAccept/EquipmentAcceptModify/EquipmentAcceptModify?id=' + that.data.equipment.id + "&name=" + that.data.equipment.name + "&model=" + that.data.equipment.model + "&manufacturer=" + that.data.equipment.manufacturer + "&receiveSituation=" + that.data.equipment.receiveSituation + "&recipient=" + that.data.equipment.recipient + "&receiveDate=" + that.data.equipment.receiveDate + "&equipmentSituation=" + that.data.equipment.equipmentSituation + "&acceptance=" + that.data.equipment.acceptance + "&acceptancePerson=" + that.data.equipment.acceptancePerson + "&acceptanceDate=" + that.data.equipment.acceptanceDate,
+      url: '/pages/Equipment/EquipmentUse/EquipmentUseModify/EquipmentUseModify?id=' + that.data.equipment.id + "&equipmentId=" + that.data.equipment.equipmentId + "&useDate=" + that.data.equipment.useDate + "&openDate=" + that.data.equipment.openDate + "&clostDate=" + that.data.equipment.clostDate + "&sampleNumber=" + that.data.equipment.sampleNumber + "&testProject=" + that.data.equipment.testProject + "&beforeUse=" + that.data.equipment.beforeUse + "&afterUse=" + that.data.equipment.afterUse + "&user=" + that.data.equipment.user + "&remark=" + that.data.equipment.remark,
     })
   },
+
   /**
    * 生命周期函数--监听页面加载
    */

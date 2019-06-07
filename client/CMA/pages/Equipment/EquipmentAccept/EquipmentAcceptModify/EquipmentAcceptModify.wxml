@@ -10,25 +10,25 @@
       <van-field name="manufacturer" value="{{equipment.manufacturer}}" required clearable label="manufacturer" placeholder="input manufacturer"></van-field>
     </view>
     <view class="section">
-      <van-field name="receive_situation" value="{{equipment.receive_situation}}" required clearable label="receive_situation" placeholder="input receive_situation"></van-field>
+      <van-field name="receiveSituation" value="{{equipment.receiveSituation}}" required clearable label="receiveSituation" placeholder="input receiveSituation"></van-field>
     </view>
     <view class="section">
       <van-field name="recipient" value="{{equipment.recipient}}" required clearable label="recipient" placeholder="input recipient"></van-field>
     </view>
     <view class="section">
-      <van-field name="receive_date" value="{{equipment.receive_date}}" required clearable label="receive_date" placeholder="input receive_date"></van-field>
+      <van-field name="receiveDate" value="{{equipment.receiveDate}}" required clearable label="receiveDate" placeholder="input receiveDate"></van-field>
     </view>
     <view class="section">
-      <van-field name="equipment_situation" value="{{equipment.equipment_situation}}" required clearable label="equipment_situation" placeholder="input equipment_situation"></van-field>
+      <van-field name="equipmentSituation" value="{{equipment.equipmentSituation}}" required clearable label="equipmentSituation" placeholder="input equipmentSituation"></van-field>
     </view>
     <view class="section">
       <van-field name="acceptance" value="{{equipment.acceptance}}" required clearable label="acceptance" placeholder="input acceptance"></van-field>
     </view>
     <view class="section">
-      <van-field name="acceptance_person" value="{{equipment.acceptance_person}}" required clearable label="acceptance_person" placeholder="input acceptance_person"></van-field>
+      <van-field name="acceptancePerson" value="{{equipment.acceptancePerson}}" required clearable label="acceptancePerson" placeholder="input acceptancePerson"></van-field>
     </view>
     <view class="section">
-      <van-field name="acceptance_date" value="{{equipment.acceptance_date}}" required clearable label="acceptance_date" placeholder="input acceptance_date"></van-field>
+      <van-field name="acceptanceDate" value="{{equipment.acceptanceDate}}" required clearable label="acceptanceDate" placeholder="input acceptanceDate"></van-field>
     </view>
     <view>
       <button class='van-button--info' form-type='submit'>Modify</button>

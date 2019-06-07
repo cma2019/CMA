@@ -1,9 +1,0 @@
-<!--pages/IntermediateCheck/IntermediateCheck.wxml-->
-<view>
-  <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
-    <button bindtap='gotoOne' id='{{item.planId}}'>
-        {{item.object}} : {{item.content}}
-    </button>
-  </view>
-</view>
-<button bindtap="gotoAdd">Add an intermediate Check</button>

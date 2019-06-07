@@ -42,7 +42,12 @@
     "pages/Equipment/EquipmentAccept/EquipmentAccept",
     "pages/Equipment/EquipmentAccept/EquipmentAcceptAddOne/EquipmentAcceptAddOne",
     "pages/Equipment/EquipmentAccept/EquipmentAcceptGetOne/EquipmentAcceptGetOne",
-    "pages/Equipment/EquipmentAccept/EquipmentAcceptModify/EquipmentAcceptModify"
+    "pages/Equipment/EquipmentAccept/EquipmentAcceptModify/EquipmentAcceptModify",
+    "pages/TrainingManagement/AnnualTrainingPlan/AnnualTrainingPlan",
+    "pages/Equipment/EquipmentUse/EquipmentUse",
+    "pages/Equipment/EquipmentUse/EquipmentUseGetOne/EquipmentUseGetOne",
+    "pages/Equipment/EquipmentUse/EquipmentUseModify/EquipmentUseModify",
+    "pages/Equipment/EquipmentUse/EquipmentUseAddOne/EquipmentUseAddOne"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -71,7 +76,7 @@
         "iconPath": "/icons/user/user_grey.png",
         "selectedIconPath": "/icons/user/user_blue.png",
         "pagePath": "pages/user/user",
-        "text": "接口"
+        "text": "用户"
       }
     ]
   },

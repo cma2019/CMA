@@ -1,3 +1,4 @@
+const app = getApp()
 Page({
 
   /**
@@ -9,19 +10,11 @@ Page({
   mydelete:function(e)
   {
     var that = this
-    wx.request({
-      url: 'http://192.168.1.108:8004/Equipment/deleteOne/' + that.data.equipment.id,
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json'
-      },
-      success(res) {
-        //console.log(res.data)
-      },
-      fail(err) {
-        console.log(err)
-      }
+    var myurl = app.globalData.url + 'Equipment/deleteOne/' + that.data.equipment.id;
+    app.wxRequest(myurl, 'POST', null, (res) => {
+      console.log(res)
+    }, (err) => {
+      console.log(err)
     })
     wx.redirectTo({
       url: '/pages/Equipment/EquipmentManagement/EquipmentManagement',
@@ -40,28 +33,22 @@ Page({
     
     console.log("Modify")
     console.log(e)
-    
-    wx.request({
-      url: 'http://192.168.1.108:8004/Equipment/modifyOne/' + that.data.equipment.id,
-      method: 'POST',
-      data: {
-        "name": e.detail.value.name,
-        "model": e.detail.value.model,
-        "cpu": e.detail.value.cpu,
-        "memory": e.detail.value.memory,
-        "application": e.detail.value.application,
-        "state": e.detail.value.state
-      },
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json'
-      },
-      success(res) {
-        console.log(res.data)
-      },
-      fail(err) {
-        console.log(err)
-      }
+
+    var myurl = app.globalData.url + 'Equipment/modifyOne/' + that.data.equipment.id;
+    var mydata = {
+      "name": e.detail.value.name,
+      "model": e.detail.value.model,
+      "cpu": e.detail.value.cpu,
+      "memory": e.detail.value.memory,
+      "hardDisk": e.detail.value.hardDisk,
+      "equipmentNumber": e.detail.value.equipmentNumber,
+      "application": e.detail.value.application,
+      "state": e.detail.value.state
+    }
+    app.wxRequest(myurl, 'POST', mydata, (res) => {
+      console.log(res)
+    }, (err) => {
+      console.log(err)
     })
     wx.redirectTo({
       url: '/pages/Equipment/EquipmentManagement/EquipmentManagement',

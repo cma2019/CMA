@@ -7,6 +7,8 @@
       <view>model : {{equipment.model}}</view>
       <view>cpu : {{equipment.cpu}}</view>
       <view>memory : {{equipment.memory}}</view>
+      <view>hardDisk : {{equipment.hardDisk}}</view>
+      <view>equipmentNumber : {{equipment.equipmentNumber}}</view>
       <view>application : {{equipment.application}}</view>
       <view>state : {{equipment.state}}</view>
     </view>

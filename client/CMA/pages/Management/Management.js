@@ -78,6 +78,11 @@ Page({
       url: '../TrainingManagement/TrainingApplication/TrainingApplication',
     })
   },
+  goAnnualTrainingPlan: function () {
+    wx.navigateTo({
+      url: '../TrainingManagement/AnnualTrainingPlan/AnnualTrainingPlan',
+    })
+  },
   gotoInterCheck:function(){
     wx.navigateTo({
       url: '../IntermediateCheck/IntermediateCheckMenu/IntermediateCheckMenu',
@@ -91,6 +96,11 @@ Page({
   gotoEquipment2: function () {
     wx.navigateTo({
       url: '../Equipment/EquipmentAccept/EquipmentAccept',
+    })
+  },
+  gotoEquipment3: function () {
+    wx.navigateTo({
+      url: '../Equipment/EquipmentUse/EquipmentUse',
     })
   },
   gotoSampleManagement:function(){
