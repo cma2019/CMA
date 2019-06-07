@@ -131,7 +131,7 @@ public class TrainingApplicationController {
         JSONObject json=new JSONObject();
         if(trainingApplicationRepository.existsById(id)==false){
             json.put("code",210);
-            json.put("msg","失败,无法找到");
+            json.put("msg","失败，无法找到");
             json.put("data",null);
         }
         else{
