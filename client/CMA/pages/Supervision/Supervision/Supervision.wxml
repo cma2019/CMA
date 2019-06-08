@@ -1,2 +1,20 @@
-<!--pages/Supervision/Supervision/Supervision.wxml-->
-<text>2019-6-8</text>
+<view>
+  <van-cell-group title="Supervision">
+    <view wx:if="{{flag == 1}}">
+      <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
+        <van-cell value="详情" bindtap='gotoOne' id='{{item.id}}' is-link>
+          <view slot="title">
+            <view>编制人:{{item.author}}  </view>
+            <view>编制日期:{{item.createDate}}  </view>
+            <view>批准人：{{item.approver}}</view>
+            <view>批准日期：{{item.approveDate}}</view>
+          </view>
+        </van-cell>
+      </view>
+    </view>
+    <view wx:else>
+     <text>not have a Supervision yet</text>
+    </view>
+  </van-cell-group>
+</view>
+<van-button type="info" size="small" bindtap="gotoAdd">Add a supervision</van-button>
