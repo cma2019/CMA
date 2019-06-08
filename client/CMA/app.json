@@ -47,7 +47,8 @@
     "pages/Equipment/EquipmentUse/EquipmentUse",
     "pages/Equipment/EquipmentUse/EquipmentUseGetOne/EquipmentUseGetOne",
     "pages/Equipment/EquipmentUse/EquipmentUseModify/EquipmentUseModify",
-    "pages/Equipment/EquipmentUse/EquipmentUseAddOne/EquipmentUseAddOne"
+    "pages/Equipment/EquipmentUse/EquipmentUseAddOne/EquipmentUseAddOne",
+    "pages/Supervision/Supervision/Supervision"
   ],
   "window": {
     "backgroundTextStyle": "light",
