@@ -6,7 +6,7 @@
       <view>equipmentId : {{equipment.equipmentId}}</view>
       <view>useDate : {{equipment.useDate}}</view>
       <view>openDate : {{equipment.openDate}}</view>
-      <view>clostDate : {{equipment.clostDate}}</view>
+      <view>closeDate : {{equipment.closeDate}}</view>
       <view>sampleNumber : {{equipment.sampleNumber}}</view>
       <view>testProject : {{equipment.testProject}}</view>
       <view>beforeUse : {{equipment.beforeUse}}</view>

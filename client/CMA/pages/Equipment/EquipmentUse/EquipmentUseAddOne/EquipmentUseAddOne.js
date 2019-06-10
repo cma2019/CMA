@@ -10,7 +10,7 @@ Page({
     "equipmentId": null,
     "useDate": null,
     "openDate": null,
-    "clostDate": null,
+    "closeDate": null,
     "sampleNumber": null,
     "testProject": null,
     "beforeUse": null,
@@ -36,7 +36,7 @@ Page({
     console.log("date3")
     console.log(e.detail.value)
     this.setData({
-      'clostDate': e.detail.value
+      'closeDate': e.detail.value
     })
   },
   newEquipment: function (e) {
@@ -46,7 +46,7 @@ Page({
       "equipmentId": e.detail.value.equipmentId,
       "useDate": e.detail.value.useDate,
       "openDate": e.detail.value.openDate,
-      "clostDate": e.detail.value.clostDate,
+      "closeDate": e.detail.value.closeDate,
       "sampleNumber": e.detail.value.sampleNumber,
       "testProject": e.detail.value.testProject,
       "beforeUse": e.detail.value.beforeUse,
