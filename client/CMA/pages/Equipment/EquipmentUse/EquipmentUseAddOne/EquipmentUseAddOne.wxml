@@ -33,13 +33,13 @@
       </picker> 
     </view>
     <view class="section">
-      <picker name = 'clostDate' mode='date' value='{{clostDate}}' bindchange='bindDateChange3'>
+      <picker name = 'closeDate' mode='date' value='{{closeDate}}' bindchange='bindDateChange3'>
           <view class='picker'>
             <van-field 
-              name="clostDate"
-              label="clostDate"
-              value='{{clostDate}}'
-              placeholder="input clostDate" 
+              name="closeDate"
+              label="closeDate"
+              value='{{closeDate}}'
+              placeholder="input closeDate" 
               required
               clearable
             />

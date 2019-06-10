@@ -10,7 +10,7 @@
       <van-field name="openDate" value="{{equipment.openDate}}" required clearable label="openDate" placeholder="input openDate"></van-field>
     </view>
     <view class="section">
-      <van-field name="clostDate" value="{{equipment.clostDate}}" required clearable label="clostDate" placeholder="input clostDate"></van-field>
+      <van-field name="closeDate" value="{{equipment.closeDate}}" required clearable label="closeDate" placeholder="input closeDate"></van-field>
     </view>
     <view class="section">
       <van-field name="sampleNumber" value="{{equipment.sampleNumber}}" required clearable label="sampleNumber" placeholder="input sampleNumber"></van-field>
