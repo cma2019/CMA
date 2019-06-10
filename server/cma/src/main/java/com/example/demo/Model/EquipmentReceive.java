@@ -51,10 +51,10 @@ public class EquipmentReceive {
 
     public void setAcceptanceDate(Date acceptanceDate) { this.acceptanceDate = acceptanceDate; }
 
-    public String getAcceptance_date(){return dateToStr(this.acceptanceDate);}
+    public String getAcceptanceDate(){return dateToStr(this.acceptanceDate);}
 
     public void setAcceptancePerson(String acceptancePerson) { this.acceptancePerson = acceptancePerson; }
-    public String getAcceptance_person(){return this.acceptancePerson;}
+    public String getAcceptancePerson(){return this.acceptancePerson;}
 
     public void setReceiveDate(Date receiveDate) { this.receiveDate = receiveDate; }
     public String getReceiveDate(){return dateToStr(this.receiveDate); }
