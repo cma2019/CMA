@@ -12,7 +12,7 @@
       <van-field 
         name="content"
         label="my content"
-        placeholder="input content" 
+        placeholder="input content"
         required
         clearable
       />
