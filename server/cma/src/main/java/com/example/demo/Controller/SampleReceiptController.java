@@ -12,16 +12,15 @@ import org.springframework.web.bind.annotation.*;
 import net.sf.json.JSONObject;
 import java.sql.Date;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping(path="/cma/SampleReceipt")
 public class SampleReceiptController {
     @Autowired
     private SampleReceiptRepository SampleReceiptRepository;
-    @PostMapping(path="/addOne")
-    //@RequestMapping(value="/addOne",method = RequestMethod.POST)
-    public @ResponseBody  JSONObject addOne(@RequestParam(value = "samplereceipt",required = false)String samplereceipt){
-
+    @PostMapping(path="/addOne",consumes="application/json",produces="application/json")
+    public @ResponseBody  JSONObject addOne(@RequestBody Map<String,String> samplereceipt){
         JSONObject js= new JSONObject();
         int code=200;
         String msg="成功";
@@ -29,7 +28,6 @@ public class SampleReceiptController {
         System.out.println(samplereceipt);
         System.out.println("?");
         JSONObject data=JSONObject.fromObject(samplereceipt);
-        System.out.println(data);
         String idstr=data.getString("sampleId");
         System.out.println(idstr);
         String testtypestr=data.getString("testType");
