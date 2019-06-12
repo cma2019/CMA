@@ -70,7 +70,8 @@
     "pages/CapacityVerification/CapacityVerificationRecord/deleteOneRecord/deleteOneRecord",
     "pages/CapacityVerification/CapacityVerificationRecord/getOneRecord/getOneRecord",
     "pages/CapacityVerification/CapacityVerificationRecord/getRecordByProjectId/getRecordByProjectId",
-    "pages/CapacityVerification/CapacityVerificationRecord/modifyOneRecord/modifyOneRecord"
+    "pages/CapacityVerification/CapacityVerificationRecord/modifyOneRecord/modifyOneRecord",
+    "pages/CapacityVerification/CapacityVerificationRecord/CapacityVerificationRecord"
   ],
   "window": {
     "backgroundTextStyle": "light",
