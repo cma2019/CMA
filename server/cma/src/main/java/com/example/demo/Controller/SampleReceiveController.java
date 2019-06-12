@@ -227,10 +227,10 @@ public class SampleReceiveController {
         JSONObject js=new JSONObject();
         int code=200;
         String msg="成功";
-        System.out.println(sampleNumber);
+        /*System.out.println(sampleNumber);
         System.out.println(sampleName);
         System.out.println(sampleId);
-        System.out.println(sampleState);
+        System.out.println(sampleState);*/
         try{
             Integer.parseInt(sampleAmount);
             Integer.parseInt(sampleState);
@@ -262,10 +262,12 @@ public class SampleReceiveController {
             js.put("msg",msg);
             //js.put("data",data);
         }
-        else if(sampleNumber!= sampleReceiveRepository.findBySampleId(Integer.parseInt(sampleId)).getSampleNumber()&&sampleReceiveRepository.findBySampleNumber(sampleNumber)!=null)
+        else if(!sampleNumber.equals( sampleReceiveRepository.findBySampleId(Integer.parseInt(sampleId)).getSampleNumber())&&sampleReceiveRepository.findBySampleNumber(sampleNumber)!=null)
         {
             code =533;
             msg="修改后数据错误";
+            System.out.println(sampleId);
+            System.out.println(sampleReceiveRepository.findBySampleId(Integer.parseInt(sampleId)).getSampleNumber());
             js.put("code",code);
             js.put("msg",msg);
             //js.put("data",data);
@@ -282,43 +284,43 @@ public class SampleReceiveController {
         else
         {
             SampleReceive recv= sampleReceiveRepository.findBySampleId(Integer.parseInt(sampleId));
-            if(obtainDate!=null&&!obtainDate.equals(""))
+            //if(obtainDate!=null&&!obtainDate.equals(""))
                 recv.setObtainDate(java.sql.Date.valueOf(obtainDate));
-            else
-                recv.setObtainDate(recv.getObtainDate());
-            if(receiveDate!=null&&!receiveDate.equals(""))
+            //else
+                //recv.setObtainDate(recv.getObtainDate());
+            //if(receiveDate!=null&&!receiveDate.equals(""))
                 recv.setObtainDate(java.sql.Date.valueOf(receiveDate));
-            else
-                recv.setObtainDate(recv.getObtainDate());
-            if(sampleState!=null&&!sampleState.equals(("")))
+            //else
+                //recv.setObtainDate(recv.getObtainDate());
+            //if(sampleState!=null&&!sampleState.equals(("")))
                 recv.setSampleState(Integer.parseInt(sampleState));
-            else
-                recv.setSampleState(recv.getSampleState());
-            if(!sampleAmount.equals(("")))
+            //else
+                //recv.setSampleState(recv.getSampleState());
+            //if(!sampleAmount.equals(("")))
                 recv.setSampleAmount(Integer.parseInt(sampleAmount));
-            else
-                recv.setSampleAmount(recv.getSampleAmount());
+            //else
+                //recv.setSampleAmount(recv.getSampleAmount());
             recv.setSampleId(Integer.parseInt(sampleId));
-            if(obtainer!=null&&!obtainer.equals(""))
+            //if(obtainer!=null&&!obtainer.equals(""))
                 recv.setObtainer(obtainer);
-            else
-                recv.setObtainer(recv.getObtainer());
-            if(receiver!=null&&!receiver.equals(""))
+            //else
+                //recv.setObtainer(recv.getObtainer());
+            //if(receiver!=null&&!receiver.equals(""))
                 recv.setReceiver(receiver);
-            else
-                recv.setReceiver(recv.getReceiver());
-            if(requester!=null&&!requester.equals(""))
+            //else
+                //recv.setReceiver(recv.getReceiver());
+            //if(requester!=null&&!requester.equals(""))
                 recv.setRequester(requester);
-            else
-                recv.setRequester(recv.getRequester());
-            if(sampleNumber!=null&&!sampleNumber.equals(""))
+            //else
+                //recv.setRequester(recv.getRequester());
+            //if(sampleNumber!=null&&!sampleNumber.equals(""))
                 recv.setSampleNumber(sampleNumber);
-            else
-                recv.setSampleNumber(recv.getSampleNumber());
-            if(sampleName!=null&&!sampleName.equals(""))
+            //else
+                //recv.setSampleNumber(recv.getSampleNumber());
+            //if(sampleName!=null&&!sampleName.equals(""))
                 recv.setSampleName(sampleName);
-            else
-                recv.setSampleName(recv.getSampleName());
+            //else
+                //recv.setSampleName(recv.getSampleName());
             sampleReceiveRepository.saveAndFlush(recv);
             js.put("code",code);
             js.put("msg",msg);
