@@ -234,7 +234,6 @@ public class SampleReceiveController {
         try{
             Integer.parseInt(sampleAmount);
             Integer.parseInt(sampleState);
-            Long.parseLong(sampleId);
             java.sql.Date.valueOf(receiveDate);
             java.sql.Date.valueOf(obtainDate);
         }catch(NumberFormatException e){
@@ -244,15 +243,18 @@ public class SampleReceiveController {
             js.put("msg",msg);
             //js.put("data",data);
         };
-        if(sampleId==null||sampleId.equals(""))
+        /*if(sampleId.equals(""))
         {
             code=531;
             msg="未收到标识编号";
             js.put("code",code);
             js.put("msg",msg);
             //js.put("data",data);
-        }
-        else if(sampleReceiveRepository.findBySampleId(Integer.parseInt(sampleId))==null)
+            System.out.println(sampleId);
+            System.out.println("?");
+        }*/
+        System.out.println(sampleId.equals(""));
+        if(sampleReceiveRepository.findBySampleId(Integer.parseInt(sampleId))==null)
         {
             code=532;
             msg="数据不存在";
