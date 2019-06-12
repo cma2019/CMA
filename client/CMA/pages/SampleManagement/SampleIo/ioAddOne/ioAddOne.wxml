@@ -2,24 +2,24 @@
 <view>
  <form bindsubmit='SampleIo_addone'>
     <van-cell-group title="SampleIo_addone">
-      <van-field v-model="sampleNumber" name="sampleNumber" required clearable label="样品编号" placeholder="请输入样品编号" />
+      <van-field v-model="sampleNumber" name="sampleNumber" required clearable label="样品编号" placeholder="请输入样品编号" error-message="{{sampleNumberMessage}}" bind:change="sampleNumberChange"/>
 
-      <van-field v-model="sampleName"  name="sampleName" required clearable label="样品名称" placeholder="请输入样品名称" />
+      <van-field v-model="sampleName"  name="sampleName" required clearable label="样品名称" placeholder="请输入样品名称" error-message="{{sampleNameMessage}}" bind:change="sampleNameChange"/>
 
       <van-field v-model="sampleAmount" name="sampleAmount" required clearable label="样品数量" placeholder="请输入样品数量"/>
       <van-field v-model="sampleState"  name="sampleState" required clearable label="样品状态" placeholder="请输入样品状态" />
 
-      <van-field v-model="sender"  name="sender" required clearable label="送样人" placeholder="请输入送样人姓名"/>
+      <van-field v-model="sender"  name="sender" required clearable label="送样人" placeholder="请输入送样人姓名"error-message="{{senderMessage}}" bind:change="senderChange"/>
 
-      <van-field v-model="receiver" name="receiver" required clearable label="接收人" placeholder="请输入接收人姓名" />
+      <van-field v-model="receiver" name="receiver" required clearable label="接收人" placeholder="请输入接收人姓名" error-message="{{receiverMessage}}" bind:change="receiverChange"/>
 
       <picker name = 'sendDate' mode='date' value='{{sendDate}}' bindchange='bindsendDateChange'>
         <view class='picker'>
-          <van-field  name="sendDate" label="送样日期" value='{{sendDate}}' placeholder="请输入送样日期" required clearable />
+          <van-field  name="sendDate" label="送样日期" value='{{sendDate}}' placeholder="请输入送样日期" required clearable error-message="{{sendDateMessage}}"/>
         </view>
       </picker>   
 
-      <van-field v-model="obtainer" name="obtainer"required clearable label="领取人" placeholder="请输入领取人姓名"/>
+      <van-field v-model="obtainer" name="obtainer"required clearable label="领取人" placeholder="请输入领取人姓名"error-message="{{obtainerMessage}}" bind:change="obtainerChange"/>
 
       <picker name = 'obtainDate' mode='date' value='{{obtainDate}}' bindchange='bindobtainDateChange'>
         <view class='picker'>
@@ -30,8 +30,8 @@
       <van-field v-model="note" name="note"  clearable label="备注" placeholder="请输入备注" rows="1" autosize />
     </van-cell-group>
     <view>
-      <button formType='submit'>完成</button>
+      <button class="van-button--info" formType="submit">完成</button>
     </view>
   </form>
 </view>
-<button bindtap="goback">取消</button>
+<button class="van-button--info" bindtap="goback">取消</button>

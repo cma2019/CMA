@@ -7,7 +7,14 @@ Page({
    */
   data: {
     sendDate:"",
-    obtainDate:""
+    obtainDate:"",
+    sampleNumberMessage: "您输入的样品编号不能为空",
+    sampleNameMessage: "您输入的样品名称不能为空",
+    senderMessage: "您输入的送样人不能为空",
+    receiverMessage: "您输入的接收人不能为空",
+    obtainerMessage: "您输入的领取人不能为空",
+    sendDateMessage:"",
+    dis: "false"
   },
 
   /**
@@ -16,11 +23,142 @@ Page({
   onLoad: function (options) {
 
   },
-
+  sampleNumberChange: function (event) {
+    const no = event.detail
+    let message = ''
+    let disable = false
+    if (no.length == 0 || no.length > 10) {
+      if (no.length == 0) {
+        message = '您输入的样品编号不能为空'
+        disable = true
+      } else {
+        message = '您输入的样品编号长度有误'
+        disable = true
+      }
+    }
+    this.setData({
+      sampleNumberMessage: message,
+      dis: disable
+    })
+    if (this.data.dis == true) {
+      return false;
+    } else {
+      return true;
+    }
+  },
+  sampleNameChange: function (event) {
+    const no = event.detail
+    let message = ''
+    let disable = false
+    if (no.length == 0 || no.length > 20) {
+      if (no.length == 0) {
+        message = '您输入的样品名称不能为空'
+        disable = true
+      } else {
+        message = '您输入的样品名称长度有误'
+        disable = true
+      }
+    }
+    this.setData({
+      sampleNameMessage: message,
+      dis: disable
+    })
+    if (this.data.dis == true) {
+      return false;
+    } else {
+      return true;
+    }
+  },
+  senderChange: function (event) {
+    const no = event.detail
+    let message = ''
+    let disable = false
+    if (no.length == 0 || no.length > 20) {
+      if (no.length == 0) {
+        message = '您输入的送样人不能为空'
+        disable = true
+      } else {
+        message = '您输入的送样人长度有误'
+        disable = true
+      }
+    }
+    this.setData({
+      senderMessage: message,
+      dis: disable
+    })
+    if (this.data.dis == true) {
+      return false;
+    } else {
+      return true;
+    }
+  },
+  receiverChange: function (event) {
+    const no = event.detail
+    let message = ''
+    let disable = false
+    if (no.length == 0 || no.length > 20) {
+      if (no.length == 0) {
+        message = '您输入的接收人不能为空'
+        disable = true
+      } else {
+        message = '您输入的接收人长度有误'
+        disable = true
+      }
+    }
+    this.setData({
+      receiverMessage: message,
+      dis: disable
+    })
+    if (this.data.dis == true) {
+      return false;
+    } else {
+      return true;
+    }
+  },
+  obtainerChange: function (event) {
+    const no = event.detail
+    let message = ''
+    let disable = false
+    if (no.length == 0 || no.length > 20) {
+      if (no.length == 0) {
+        message = '您输入的领取人不能为空'
+        disable = true
+      } else {
+        message = '您输入的领取人长度有误'
+        disable = true
+      }
+    }
+    this.setData({
+      obtainerMessage: message,
+      dis: disable
+    })
+    if (this.data.dis == true) {
+      return false;
+    } else {
+      return true;
+    }
+  },
   bindsendDateChange(e) {
+    /*console.log(e)
+    const no = e.detail.value
+    let message = ''
+    let disable = false
+    if (no.length == 0) {
+      if (no.length == 0) {
+        message = '您输入的样品名称不能为空'
+        disable = true
+      }
+    }*/
     this.setData({
       sendDate: e.detail.value
+     // sendDateMessage: message,
+     // dis: disable
     })
+    /*if (this.data.dis == true) {
+      return false;
+    } else {
+      return true;
+    }*/
   },
 
   bindobtainDateChange(e) {
@@ -29,7 +167,8 @@ Page({
     })
   },
   SampleIo_addone: function (e) {
-    if (e.detail.value.sampleNumber == "" || e.detail.value.sampleName == "" || e.detail.value.sampleAmount == "" || e.detail.value.sampleState == "" || e.detail.value.sender == "" || e.detail.value.receiver == "" || e.detail.value.sendDate == "" || e.detail.value.obtainer == "" || e.detail.value.obtainDate == "") {
+    console.log(this.data.dis)
+    if (this.data.dis == true|| e.detail.value.obtainDate == "") {
       wx.showToast({
         title: '错误（空白输入）',
         icon: 'none',

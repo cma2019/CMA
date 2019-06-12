@@ -1,16 +1,14 @@
 package com.example.demo.Controller;
 //import com.fasterxml.jackson.databind.util.JSONPObject;
+//import com.alibaba.fastjson.JSON;
 import com.example.demo.Model.SampleReceipt;
 import com.example.demo.Repository.SampleReceiptRepository;
 import net.minidev.json.JSONArray;
 //import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import net.sf.json.JSONObject;
 import java.sql.Date;
 import java.util.List;
@@ -21,17 +19,21 @@ public class SampleReceiptController {
     @Autowired
     private SampleReceiptRepository SampleReceiptRepository;
     @PostMapping(path="/addOne")
-    public @ResponseBody
-    JSONObject addone(@RequestParam(value="data",required = false)JSONObject data){
+    //@RequestMapping(value="/addOne",method = RequestMethod.POST)
+    public @ResponseBody  JSONObject addOne(@RequestParam(value = "samplereceipt",required = false)String samplereceipt){
 
-        JSONObject js=new JSONObject();
+        JSONObject js= new JSONObject();
         int code=200;
         String msg="成功";
         JSONObject d=new JSONObject();
+        System.out.println(samplereceipt);
+        System.out.println("?");
+        JSONObject data=JSONObject.fromObject(samplereceipt);
         System.out.println(data);
         String idstr=data.getString("sampleId");
-        System.out.println(data);
+        System.out.println(idstr);
         String testtypestr=data.getString("testType");
+        System.out.println(testtypestr);
         String sofwwaretypestr=data.getString("softwareType");
         String datestr=data.getString("receiveDate");
         try {

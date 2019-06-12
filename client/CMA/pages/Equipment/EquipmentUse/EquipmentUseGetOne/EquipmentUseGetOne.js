@@ -10,7 +10,7 @@ Page({
   },
   mydelete: function (e) {
     var that = this
-    var myurl = app.globalData.url + 'Equipment/deleteOne/' + that.data.equipment.id;
+    var myurl = app.globalData.url + 'EquipmentUse/deleteOne/' + that.data.equipment.id;
     app.wxRequest(myurl, 'POST', null, (res) => {
       console.log(res)
     }, (err) => {
@@ -24,7 +24,7 @@ Page({
     console.log("display -> view")
     var that = this
     wx.redirectTo({
-      url: '/pages/Equipment/EquipmentUse/EquipmentUseModify/EquipmentUseModify?id=' + that.data.equipment.id + "&equipmentId=" + that.data.equipment.equipmentId + "&useDate=" + that.data.equipment.useDate + "&openDate=" + that.data.equipment.openDate + "&clostDate=" + that.data.equipment.clostDate + "&sampleNumber=" + that.data.equipment.sampleNumber + "&testProject=" + that.data.equipment.testProject + "&beforeUse=" + that.data.equipment.beforeUse + "&afterUse=" + that.data.equipment.afterUse + "&user=" + that.data.equipment.user + "&remark=" + that.data.equipment.remark,
+      url: '/pages/Equipment/EquipmentUse/EquipmentUseModify/EquipmentUseModify?id=' + that.data.equipment.id + "&equipmentId=" + that.data.equipment.equipmentId + "&useDate=" + that.data.equipment.useDate + "&openDate=" + that.data.equipment.openDate + "&closeDate=" + that.data.equipment.closeDate + "&sampleNumber=" + that.data.equipment.sampleNumber + "&testProject=" + that.data.equipment.testProject + "&beforeUse=" + that.data.equipment.beforeUse + "&afterUse=" + that.data.equipment.afterUse + "&user=" + that.data.equipment.user + "&remark=" + that.data.equipment.remark,
     })
   },
 

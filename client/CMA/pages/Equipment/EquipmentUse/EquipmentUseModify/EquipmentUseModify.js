@@ -17,7 +17,7 @@ Page({
       "equipmentId": e.detail.value.equipmentId,
       "useDate": e.detail.value.useDate,
       "openDate": e.detail.value.openDate,
-      "clostDate": e.detail.value.clostDate,
+      "closeDate": e.detail.value.closeDate,
       "sampleNumber": e.detail.value.sampleNumber,
       "testProject": e.detail.value.testProject,
       "beforeUse": e.detail.value.beforeUse,
@@ -39,8 +39,12 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad: function (option) {
+    var that = this;
+    console.log(option)
+    that.setData({
+      equipment: option
+    })
   },
 
   /**

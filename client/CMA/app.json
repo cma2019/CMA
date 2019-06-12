@@ -47,7 +47,11 @@
     "pages/Equipment/EquipmentUse/EquipmentUse",
     "pages/Equipment/EquipmentUse/EquipmentUseGetOne/EquipmentUseGetOne",
     "pages/Equipment/EquipmentUse/EquipmentUseModify/EquipmentUseModify",
-    "pages/Equipment/EquipmentUse/EquipmentUseAddOne/EquipmentUseAddOne"
+    "pages/Equipment/EquipmentUse/EquipmentUseAddOne/EquipmentUseAddOne",
+    "pages/Supervision/Supervision/Supervision",
+    "pages/TrainingManagement/AnnualTrainingPlan/AddAnnualTrainingPlan/AddAnnualTrainingPlan",
+    "pages/TrainingManagement/AnnualTrainingPlan/ModifyAnnualTrainingPlan/ModifyAnnualTrainingPlan",
+    "pages/TrainingManagement/AnnualTrainingPlan/PrintOneAnnualTrainingPlan/PrintOneAnnualTrainingPlan"
   ],
   "window": {
     "backgroundTextStyle": "light",

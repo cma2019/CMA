@@ -102,10 +102,5 @@ Page({
     wx.navigateTo({
       url: '../Equipment/EquipmentUse/EquipmentUse',
     })
-  },
-  gotoSampleManagement:function(){
-    wx.navigateTo({
-      url: '../SampleManagement/SampleManagementMenu/SampleManagementMenu',
-    })
   }
 })
