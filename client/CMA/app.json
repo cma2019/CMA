@@ -111,6 +111,8 @@
     "van-field": "../../dist/field/index",
     "van-datetime-picker": "../../dist/datetime-picker/index",
     "van-collapse": "../../dist/collapse/index",
-    "van-collapse-item": "../../dist/collapse-item/index"
+    "van-collapse-item": "../../dist/collapse-item/index",
+    "van-checkbox":"../../dist/checkbox/index",
+    "van-checkbox-group":"../../dist/checkbox-group/index"
   }
 }

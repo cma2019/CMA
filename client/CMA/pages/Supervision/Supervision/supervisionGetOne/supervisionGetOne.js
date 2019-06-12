@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    "sampleIoId":"null",
+    "id":"null",
     /*"sampleNumber": "null",
     "sampleName": "null",
     "sampleAmount": "null",
@@ -19,17 +19,13 @@ Page({
     "note":"null",*/
     "info":{},
     tmp: [{
-      "sampleIoId": 2,
-      "sampleNumber": "20180602",
-      "sampleName": "天猫超市",
-      "sampleAmount": 1,
-      "sampleState": 0,
-      "sender": "张三",
-      "receiver": "李四",
-      "sendDate": "2018-06-16",
-      "obtainer": "王五",
-      "obtainDate": "2018-06-17",
-      "note":"fdgsfg"
+      "id": 1,
+      "situation ": 2,
+      "author": "老王",
+      "createDate": "2018-05-08",
+      "approver": "老李",
+      "approveDate": "2018-06-08",
+      "remark ": "无",
     }]
   },
 
@@ -39,10 +35,10 @@ Page({
 
   onLoad: function (options) {
     this.setData({
-      sampleIoId: options.id
+      id: options.id
     })
     console.log("fsdgdf")
-    console.log(this.data.sampleIoId)
+    console.log(this.data.id)
   },
 
   /**
@@ -56,12 +52,12 @@ Page({
      */
   onShow: function (options) {
     var thispage = this
-    console.log('getone发生了事件，携带数据为：', this.data.sampleIoId)
+    console.log('getone发生了事件，携带数据为：', this.data.id)
     wx.request({
-      url: app.globalData.url + 'SampleIo/getOne',
+      url: app.globalData.url + 'Supervision/getOne',
       method: 'GET',
       data: {
-        "sampleIoId": this.data.sampleIoId
+        "id": this.data.id
       },
       header: {
         'content-type': 'application/json',
@@ -85,7 +81,7 @@ Page({
             info : res.data.data
           })
           wx.setStorage({
-            key:'ioGetOneinfo',
+            key:'supervisionGetOneinfo',
             data:res.data.data
           })
         }
@@ -115,24 +111,24 @@ Page({
 
   modifyData: function(e) {
     console.log(e)
-    let target = this.data.sampleIoId
+    let target = this.data.id
     //console.log("dfdg")
     //console.log(target)
     wx.navigateTo({
-      url: '../ioModifyOne/ioModifyOne?id=' + target
+      url: '../supervisionModifyOne/supervisionModifyOne?id=' + target
     })
   },
 
   deleteData: function(e) {
     const deleteoneRequest = wx.request({
-      url: app.globalData.url + 'SampleIo/deleteOne',
+      url: app.globalData.url + 'Supervision/deleteOne',
       method: 'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded',
         'Accept': 'application/json'
       },
       data: {
-        "sampleIoId": this.data.sampleIoId
+        "id": this.data.id
       },
       success(res) {
         console.log(res)
@@ -172,7 +168,7 @@ Page({
 
   goback: function () {
     wx.removeStorage({
-      key: 'ioGetOneinfo',
+      key: 'supervisionGetOneinfo',
       success: function (res) {
         console.log(res)
       }

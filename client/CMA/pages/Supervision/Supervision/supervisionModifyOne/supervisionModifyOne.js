@@ -7,7 +7,7 @@ Page({
    */
 
   data: {
-    "sampleIoId": "",
+    "id": "",
     /*"sampleNumber": "",
     "sampleName": "",
     "sampleAmount": "",
@@ -30,9 +30,7 @@ Page({
     "obtainerinfo": "",
     "obtainDateinfo": "",
     "noteinfo": "",*/
-    "origindata":{},
-    "sendDate": "",
-    "obtainDate": ""
+    "origindata":{}
   },
 
   /**
@@ -40,25 +38,12 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      sampleIoId: options.id
+      id: options.id
     })
     //console.log(this.data.sampleIoId)
     console.log("fdsf")
   },
 
-  bindsendDateChange(e) {
-    console.log(e.detail.value)
-    this.setData({
-      sendDate: e.detail.value
-    })
-    console.log(this.sendDate)
-  },
-
-  bindobtainDateChange(e) {
-    this.setData({
-      obtainDate: e.detail.value
-    })
-  },
   /**
    * 生命周期函数--监听页面显示
    */
@@ -114,7 +99,7 @@ Page({
     })*/
     var that = this
     wx.getStorage({
-      key: 'ioGetOneinfo',
+      key: 'supervisionGetOneinfo',
       success: function (res) {
         that.setData({
           'origindata': res.data
@@ -125,62 +110,29 @@ Page({
     console.log("456789")
   },
 
-  SampleIo_modifyone: function (e) {
+  Supervision_modifyone: function (e) {
     var mod = this.data.origindata
     console.log(mod)
-    console.log('SampleIo发生了modifyone事件，携带数据为：', e.detail.value)
+    console.log('Supervision发生了modifyone事件，携带数据为：', e.detail.value)
     console.log(this.data)
-    if (e.detail.value.sampleNumber != null && e.detail.value.sampleNumber != "") {
-        mod.sampleNumber = e.detail.value.sampleNumber
+    if (e.detail.value.id != null && e.detail.value.id != "") {
+      mod.id = e.detail.value.id
     }
-    if (e.detail.value.sampleName != null && e.detail.value.sampleName != "") {
-        mod.sampleName = e.detail.value.sampleName
-    }
-    if (e.detail.value.sampleAmount != null && e.detail.value.sampleAmount != "") {
-        mod.sampleAmount =  e.detail.value.sampleAmount
-    }
-    if (e.detail.value.sampleState != null && e.detail.value.sampleState != "") {
-        mod.sampleState = e.detail.value.sampleState
-    }
-    if (e.detail.value.sender != null && e.detail.value.sender != "") {
-        mod.sender = e.detail.value.sender
-    }
-    if (e.detail.value.receiver != null && e.detail.value.receiver != "") {
-        mod.receiver = e.detail.value.receiver
-    }
-    if (e.detail.value.sendDate != null && e.detail.value.sendDate != "") {
-        mod.sendDate =  e.detail.value.sendDate
-    }
-    if (e.detail.value.obtainer != null && e.detail.value.obtainer != "") {
-        mod.obtainer = e.detail.value.obtainer
-    }
-    if (e.detail.value.obtainDate != null && e.detail.value.obtainDate != "") {
-        mod.obtainDate =  e.detail.value.obtainDate
-    }
-    if (e.detail.value.note != null && e.detail.value.note != "") {
-        mod.note =  e.detail.value.note
+    if (e.detail.value.remark != null && e.detail.value.remark != "") {
+      mod.remark = e.detail.value.remark
     }
     console.log("dfg")
     console.log(this.data)
     wx.request({
-      url: app.globalData.url+ 'SampleIo/modifyOne',
+      url: app.globalData.url+ 'Supervision/modifyOne',
       method: 'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded',
         'Accept': 'application/json'
       },
       data: {
-        "sampleIoId": this.data.sampleIoId,
-        "sampleNumber": mod.sampleNumber,
-        "sampleName":mod.sampleName,
-        "sampleAmount": mod.sampleAmount,
-        "sampleState": mod.sampleState,
-        "sender": mod.sender,
-        "receiver": mod.receive,
-        "sendDate": mod.sendDate,
-        "obtainer": mod.obtainer,
-        "obtainDate": mod.obtainDate,
-        "note": mod.note
+        "id": this.data.id,
+        "remark": mod.remark
       },
       success(res) {
         console.log(res)
@@ -190,13 +142,13 @@ Page({
             duration: 1500
           })
           wx.removeStorage({
-            key: 'ioGetOneinfo',
+            key: 'supervisionGetOneinfo',
             success: function (res) {
               console.log(res)
             }
           })
           wx.navigateTo({
-            url: '../SampleIo'
+            url: '../Supervision'
           })
         }
         else if (res.data.code == 531) {
