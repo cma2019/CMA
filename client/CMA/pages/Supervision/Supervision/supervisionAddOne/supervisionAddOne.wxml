@@ -4,12 +4,13 @@
       <van-field v-model="author" name="author" required clearable label="编制人" placeholder="请输入编制人" />
       
       <van-field v-model="remark" name="remark"  clearable label="备注" placeholder="请输入备注" rows="1" autosize />
-
+<!-->
       <picker name = 'createDate' mode='date' value='{{createDate}}' bindchange='bindcreateDateChange'>
         <view class='picker'>
           <van-field  name="createDate" label="送样日期" value='{{createDate}}' placeholder="请输入送样日期" required clearable/>
         </view>
       </picker>  
+<-->
     </van-cell-group>
     <view>
       <button class="van-button--info" formType="submit">完成</button>

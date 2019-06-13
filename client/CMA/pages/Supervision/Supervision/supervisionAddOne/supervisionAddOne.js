@@ -1,24 +1,30 @@
 const app = getApp()
+var util = require('../../../../utils/util.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    createDate:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var TIME = util.formatDate(new Date())
+    this.setData({
+      createDate:TIME
+    })
+    console.log(this.data)
   },
-
+/*
   bindcreateDateChange(e) {
     this.setData({
       createDate: e.detail.value
     })
-  },
+  },*/
   
   Supervision_addone: function (e) {
     console.log('Supervision发生了addone事件，携带数据为：', e.detail.value)
@@ -32,7 +38,7 @@ Page({
       data: {
         "author": e.detail.value.author,
         "remark": e.detail.value.remark,
-        "createDate": e.detail.value.createDate
+        "createDate": this.data.createDate
       },
       success(res) {
         console.log(res.data)

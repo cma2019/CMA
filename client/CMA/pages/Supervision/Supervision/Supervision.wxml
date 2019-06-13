@@ -1,7 +1,7 @@
 <view>
   <van-cell-group title="Supervision">
     <view wx:if="{{flag == 1}}">
-      <view wx:for="{{tmp}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
+      <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
         <van-cell value="详情" bindtap='gotoOne' id='{{item.id}}' is-link>
           <view slot="title">
             <view>编制人:{{item.author}}  </view>
