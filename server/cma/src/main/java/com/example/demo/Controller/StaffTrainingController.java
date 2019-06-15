@@ -5,7 +5,6 @@ import com.example.demo.Model.StaffTraining;
 import com.example.demo.Repository.StaffManagementRepository;
 import com.example.demo.Repository.StaffTrainingRepository;
 import net.minidev.json.JSONObject;
-import net.sf.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
