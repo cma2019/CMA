@@ -176,7 +176,7 @@ Page({
         "sampleAmount": mod.sampleAmount,
         "sampleState": mod.sampleState,
         "sender": mod.sender,
-        "receiver": mod.receive,
+        "receiver": mod.receiver,
         "sendDate": mod.sendDate,
         "obtainer": mod.obtainer,
         "obtainDate": mod.obtainDate,

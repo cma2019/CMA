@@ -61,7 +61,11 @@
       
     </van-collapse-item>
     <van-collapse-item title="能力验证管理" name="15">
-      
+      <van-cell-group>
+        <van-cell title="能力验证计划管理" boarder="{{false}}" is-link  center="{{true}}" url="../CapacityVerification/CapacityVerificationPlan/CapacityVerificationPlan"></van-cell>
+        <van-cell title="能力验证项目管理" boarder="{{false}}" is-link  center="{{true}}" url="../CapacityVerification/CapacityVerificationProject/CapacityVerificationProject"></van-cell>
+        <van-cell title="能力验证记录管理" boarder="{{false}}" is-link  center="{{true}}" url="../CapacityVerification/CapacityVerificationRecord/CapacityVerificationRecord"></van-cell>
+      </van-cell-group>
     </van-collapse-item>
     <van-collapse-item title="客户意见与投诉管理" name="16">
       

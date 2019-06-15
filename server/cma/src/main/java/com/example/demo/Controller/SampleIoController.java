@@ -31,11 +31,11 @@ public class SampleIoController {
                           @RequestParam(value="obtainer",required = false)String obtainer,
                           @RequestParam(value = "obtainDate",required = false)String obtainDate,
                           @RequestParam(value="sendDate",required = false) String sendDate){
-        System.out.println(sampleNumber);
+        /*System.out.println(sampleNumber);
         System.out.println(sampleName);
         System.out.println(sender);
         System.out.println(receiver);
-        System.out.println(obtainer);
+        System.out.println(obtainer);*/
         JSONObject js=new JSONObject();
         int code=200;
         String msg="成功";
@@ -235,11 +235,11 @@ public class SampleIoController {
         int code=200;
         String msg="成功";
         //JSONObject data=null;
-        System.out.println(sampleNumber);
+        /*System.out.println(sampleNumber);
         System.out.println(sampleName);
         System.out.println(sampleIoId);
         System.out.println(sampleState);
-        System.out.println(obtainDate);
+        System.out.println(obtainDate);*/
         try {
             Integer.parseInt(sampleState);
             Integer.parseInt(sampleAmount);
@@ -269,8 +269,11 @@ public class SampleIoController {
             js.put("msg",msg);
             //js.put("data",data);
         }
-        else if(sampleNumber!=SampleIoRepository.findBySampleIoId(Long.parseLong(sampleIoId)).getSampleNumber()&&SampleIoRepository.findBySampleNumber(sampleNumber)!=null)
+        else if(!sampleNumber.equals(SampleIoRepository.findBySampleIoId(Long.parseLong(sampleIoId)).getSampleNumber())&&SampleIoRepository.findBySampleNumber(sampleNumber)!=null)
         {
+            System.out.println(sampleNumber);
+            System.out.println(SampleIoRepository.findBySampleIoId(Long.parseLong(sampleIoId)).getSampleNumber());
+            System.out.println(receiver);
             code =533;
             msg="修改后数据错误";
             js.put("code",code);
@@ -289,51 +292,22 @@ public class SampleIoController {
         else
         {
             SampleIO recv= SampleIoRepository.findBySampleIoId(Long.parseLong(sampleIoId));
-            if(!obtainDate.equals(""))
-                recv.setObtainDate(java.sql.Date.valueOf(obtainDate));
-            else
-                recv.setObtainDate(recv.getObtainDate());
-            if(!sendDate.equals(""))
-                recv.setSendDate(java.sql.Date.valueOf(sendDate));
-            else
-                recv.setSendDate(recv.getSendDate());
-            if(!sampleAmount.equals(""))
-                recv.setSampleAmount(Integer.parseInt(sampleAmount));
-            else
-                recv.setSampleAmount(recv.getSampleAmount());
-            if(!sampleState.equals(""))
-                recv.setSampleState(Integer.parseInt(sampleState));
-            else
-                recv.setSampleAmount(recv.getSampleAmount());
-            if(!note.equals(""))
-                recv.setNote(note);
-            else
-                recv.setNote(recv.getNote());
+            recv.setObtainDate(java.sql.Date.valueOf(obtainDate));
+            recv.setSendDate(java.sql.Date.valueOf(sendDate));
+            recv.setSampleAmount(Integer.parseInt(sampleAmount));
+            recv.setSampleState(Integer.parseInt(sampleState));
+            recv.setNote(note);
             recv.setSampleIoId(Long.parseLong(sampleIoId));
-            if(!obtainer.equals(""))
-                recv.setObtainer(obtainer);
-            else
-                recv.setObtainer(recv.getObtainer());
-            if(!receiver.equals(""))
-                recv.setReceiver(receiver);
-            else
-                recv.setReceiver(recv.getReceiver());
-            if(!sender.equals(""))
-                recv.setSender(sender);
-            else
-                recv.setSender(recv.getSender());
-            if(!sampleNumber.equals(""))
-                recv.setSampleNumber(sampleNumber);
-            else
-                recv.setSampleNumber(recv.getSampleNumber());
-            if(!sampleName.equals(""))
-                recv.setSampleName(sampleName);
-            else
-                recv.setSampleName(recv.getSampleName());
+            recv.setObtainer(obtainer);
+            recv.setReceiver(receiver);
+            recv.setReceiver(recv.getReceiver());
+            recv.setSender(sender);
+            recv.setSampleNumber(sampleNumber);
+            recv.setSampleName(sampleName);
             SampleIoRepository.saveAndFlush(recv);
+            System.out.println(receiver);
             js.put("code",code);
             js.put("msg",msg);
-            //js.put("data",data);
         }
         return js;
     }

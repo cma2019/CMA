@@ -6,8 +6,19 @@
           <view slot="title">
             <view>编制人:{{item.author}}  </view>
             <view>编制日期:{{item.createDate}}  </view>
-            <view>批准人：{{item.approver}}</view>
-            <view>批准日期：{{item.approveDate}}</view>
+            <view>批准人:{{item.approver}}</view>
+            <view>批准日期:{{item.approveDate}}</view>
+            <view>
+              <view wx:if="{{item.situation == 0}}">
+                <view>计划状态:未批准</view>
+              </view>
+              <view wx:elif="{{item.situation == 1}}">
+                <view>计划状态:已批准</view>
+              </view>
+              <view wx:else>
+                <view>计划状态:已执行</view>
+              </view>
+            </view>
           </view>
         </van-cell>
       </view>
@@ -18,3 +29,12 @@
   </van-cell-group>
 </view>
 <van-button type="info" size="small" bindtap="gotoAdd">Add a supervision</van-button>
+<!-->
+<van-checkbox-group v-model="result">
+  <van-cell-group>
+    <van-cell v-for="(item, index) in list" clickable :key="item"  :title="`复选框 ${item}`" click="toggle(index)">
+      <van-checkbox :name="item" ref="checkboxes" />
+      <view>happy</view>
+    </van-cell>
+  </van-cell-group>
+</van-checkbox-group>
