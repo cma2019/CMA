@@ -20,6 +20,7 @@
     <van-collapse-item title="监督" name="6">
       <van-cell-group>
         <van-cell title="Supervision" boarder="{{false}}" is-link  center="{{true}}" url="../Supervision/Supervision/Supervision"></van-cell>
+        <van-cell title="Supervisionapprove" boarder="{{false}}" is-link  center="{{true}}" url="../Supervision/SupervisionApprove/SupervisionApprove"></van-cell>
       </van-cell-group>
     </van-collapse-item>
     <van-collapse-item title="期间核查" name="7">

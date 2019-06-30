@@ -7,6 +7,7 @@
       <van-field v-model="sampleName"  name="sampleName" required clearable label="样品名称" placeholder="请输入样品名称" error-message="{{sampleNameMessage}}" bind:change="sampleNameChange"/>
 
       <van-field v-model="sampleAmount" name="sampleAmount" required clearable label="样品数量" placeholder="请输入样品数量"/>
+  
       <van-field v-model="sampleState"  name="sampleState" required clearable label="样品状态" placeholder="请输入样品状态" />
 
       <van-field v-model="requester"  name="requester" required clearable label="委托单位" placeholder="请输入委托单位"error-message="{{requesterMessage}}" bind:change="requesterChange"/>

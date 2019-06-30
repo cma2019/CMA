@@ -1,3 +1,4 @@
+
 # -*- encoding=utf8 -*-
 __author__ = "Administrator"
 
@@ -45,6 +46,7 @@ touch(Template(r"tpl1560392541103.png", record_pos=(-0.421, 0.346), resolution=(
 
 
 poco(text="go back ").click()
+
 
 
 

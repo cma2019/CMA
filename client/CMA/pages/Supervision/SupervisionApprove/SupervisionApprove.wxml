@@ -1,0 +1,25 @@
+<view>
+    <view wx:if="{{flag == 1}}">
+      <view class="approve-box">
+        <view class="approve-list" wx:for="{{mess}}" wx:key="{{index}}">
+          <view wx:if="{{item.situation == 0}}">
+            <icon wx:if="{{select[index] == true}}" type="success" color="red" data-index="{{index}}" class="approve-pro-select" bindtap="selectList"/>
+            <icon wx:else type="circle" class="approve-pro-select" data-index="{{index}}" bindtap="selectList"/>
+            <van-cell value="详情" bindtap='gotoOne' id='{{item.id}}' is-link>
+              <view slot="title">
+               <view>
+                <text class="approve-pro-author">编制人:{{item.author}}</text>
+                <text class="approve-pro-createDate">编制日期:{{item.createDate}}</text>
+                <text class="approve-pro-situation">计划状态:未批准</text>
+               </view>
+             </view>
+            </van-cell>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view wx:else>
+     <text>not have a unapproved Supervision yet</text>
+    </view>
+</view>
+<van-button type="info" size="small" bindtap="gotoApprove">Approve a supervision</van-button>

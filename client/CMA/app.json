@@ -71,7 +71,8 @@
     "pages/CapacityVerification/CapacityVerificationRecord/getOneRecord/getOneRecord",
     "pages/CapacityVerification/CapacityVerificationRecord/getRecordByProjectId/getRecordByProjectId",
     "pages/CapacityVerification/CapacityVerificationRecord/modifyOneRecord/modifyOneRecord",
-    "pages/CapacityVerification/CapacityVerificationRecord/CapacityVerificationRecord"
+    "pages/CapacityVerification/CapacityVerificationRecord/CapacityVerificationRecord",
+    "pages/Supervision/SupervisionApprove/SupervisionApprove"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -112,7 +113,7 @@
     "van-datetime-picker": "../../dist/datetime-picker/index",
     "van-collapse": "../../dist/collapse/index",
     "van-collapse-item": "../../dist/collapse-item/index",
-    "van-checkbox":"../../dist/checkbox/index",
-    "van-checkbox-group":"../../dist/checkbox-group/index"
+    "van-checkbox": "../../dist/checkbox/index",
+    "van-checkbox-group": "../../dist/checkbox-group/index"
   }
 }

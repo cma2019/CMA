@@ -46,6 +46,7 @@ Page({
           mess: res.data,
           flag: 1
         })
+        console.log(this.data.mess)
       }
     }, (err) => {
       wx.showToast({
