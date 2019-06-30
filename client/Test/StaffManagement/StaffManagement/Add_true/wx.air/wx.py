@@ -1,6 +1,6 @@
-
+﻿
 # -*- encoding=utf8 -*-
-__author__ = "Administrator"
+__author__ = "diaohanshun"
 
 from airtest.core.api import *
 
