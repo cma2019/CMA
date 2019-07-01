@@ -1,66 +1,42 @@
-// pages/TestAbility/addOne/addOne.js
+// pages/IntermediateCheck/IntermediateCheck.js
+const app = getApp()
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
 
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
 
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  InterCheckRegister(e) {
+    if (e.detail.value.year == "" ||
+      e.detail.value.fileName == "" ||
+      e.detail.value.file == "") {
+      console.log("message error")
+      console.log(e.detail.value.year)
+      console.log(e.detail.value.fileName)
+      console.log(e.detail.value.file)
+    }
+    else {
+      let url = app.globalData.url + 'TestAbility/addOne'
+      let data = {
+        "year": e.detail.value.year,
+        "fileName": e.detail.value.fileName,
+        "file": e.detail.value.file
+      }
+      console.log(e)
+      console.log(url)
+      console.log(data)
+      app.wxRequest(url, 'POST', data, (res) => {
+        console.log('add ability test successfully')
+        console.log(res)
+        console.log(res.msg)
+        console.log(res.code)
+      }, (err) => {
+        console.log('fail intermediate check register')
+      })
+    }
   }
 })

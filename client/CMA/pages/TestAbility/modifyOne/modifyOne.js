@@ -1,66 +1,66 @@
-// pages/TestAbility/modifyOne/modifyOne.js
+// pages/IntermediateCheck/IntermediateCheckModify/IntermediateCheckModify.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    year: 5,
+    fileName: null,
+    file: null,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      year: options.id
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  onShow: function (options) {
+    
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
+  modifyTestAbility: function (e) {
+    console.log('modify modify')
+    if (e.detail.value.year == "" || e.detail.value.fileName == "" ||
+      e.detail.value.file == "") {
+      wx.showToast({
+        title: 'wrong message',
+        duration: 2000
+      })
+      console.log('wrong message')
+    }
+    else {
+      console.log('modify，携带数据为：', e.detail.value)
+      console.log('modify，携带数据为：', e.detail.value.year)
 
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+      let url = app.globalData.url + 'TestAbility/modifyOne';
+      console.log(url)
+      let data = {
+        "year": e.detail.value.year,
+        "fileName": e.detail.value.fileName,
+        "file": e.detail.value.file
+      };
+      console.log(data)
+      app.wxRequest(url, 'POST', data, (res) => {
+        console.log('modify message successfully')
+        console.log(res)
+        /*
+        if (res.data == "modify successfully.") {
+          wx.navigateBack({
+            delta: 1
+          })
+        }
+        */
+      }, (err) => {
+        console.log('fail modify')
+      })
+    }
   }
 })
+
+
