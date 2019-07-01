@@ -48,7 +48,7 @@ Page({
     console.log('add one test ability id')
     console.log(target)
     wx.navigateTo({
-      url: 'addOneItem/addOneItem?id=' + target,
+      url: '../addOneItem/addOneItem?id=' + target,
     })
   },
 
@@ -58,7 +58,7 @@ Page({
     console.log('getone id')
     console.log(target)
     wx.navigateTo({
-      url: 'getOneItem/getOneItem?id=' + target
+      url: '../getOneItem/getOneItem?id=' + target
     })
   },
   gotoModify(e){
@@ -66,7 +66,7 @@ Page({
     console.log('modify one test ability id')
     console.log(target)
     wx.navigateTo({
-      url: 'modifyOne/modifyOne?id=' + target,
+      url: '../modifyOne/modifyOne?id=' + target,
     })
   }
 })

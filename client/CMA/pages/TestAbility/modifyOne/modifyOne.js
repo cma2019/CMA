@@ -6,9 +6,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    year: 5,
-    fileName: null,
-    file: null,
+    "year": 5,
+    "fileName": 112,
+    "file": 213,
   },
 
   /**

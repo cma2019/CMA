@@ -6,6 +6,7 @@
         name="projectId"
         label="my projectId"
         placeholder="input projectId" 
+        value='{{projectId}}'
         required
         clearable
       />
@@ -25,6 +26,7 @@
         name="methodId"
         label="my methodId"
         placeholder="input methodId" 
+        value='{{methodId}}'
         required
         clearable
       />
@@ -32,6 +34,7 @@
         name="equipmentName"
         label="my equipmentName"
         placeholder="input equipmentName"
+        value='{{equipmentName}}'
         required
         clearable
       />
@@ -39,6 +42,7 @@
         name="equipmentId"
         label="my equipmentId"
         placeholder="input equipmentId"
+        value='{{equipmentId}}'
         required
         clearable
       />
@@ -46,6 +50,7 @@
         name="experimenter"
         label="my experimenter"
         placeholder="input experimenter"
+        value='{{experimenter}}'
         required
         clearable
       />
@@ -53,6 +58,7 @@
         name="result"
         label="my result"
         placeholder="input result"
+        value='{{result}}'
         required
         clearable
       />
@@ -60,6 +66,7 @@
         name="resultDeal"
         label="my resultDeal"
         placeholder="input resultDeal"
+        value='{{resultDeal}}'
         required
         clearable
       />
@@ -67,6 +74,7 @@
         name="note"
         label="my note"
         placeholder="input note"
+        value='{{note}}'
         required
         clearable
       />    
