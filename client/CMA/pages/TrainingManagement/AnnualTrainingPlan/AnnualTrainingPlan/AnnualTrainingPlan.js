@@ -8,7 +8,7 @@ Page({
 
   onLoad: function (options) {
     //console.log(this.data.planId)
-    let url = app.globalData.url + 'AnnualTrainingPlan/getAll'
+    let url = app.globalData.url + 'AnnualTrainingPlan/getAll?year=2018'
     let postdata = ''
     console.log(url)
     console.log(postdata)
@@ -36,7 +36,7 @@ Page({
     })
   },
   onShow: function (options) {
-    let url = app.globalData.url + 'AnnualTrainingPlan/getAll'
+    let url = app.globalData.url + 'AnnualTrainingPlan/getAll?year=2018'
     let postdata = ''
     console.log(url)
     console.log(postdata)
@@ -76,7 +76,7 @@ Page({
     console.log('getone id')
     console.log(target)
     wx.navigateTo({
-      url: 'PrintOneAnnualTrainingPlan/PrintOneAnnualTrainingPlan?id=' + target
+      url: 'PrintOneAnnualTrainingPlan/PrintOneAnnualTrainingPlan?planId=' + target
     })
   }
 })

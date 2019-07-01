@@ -1,4 +1,4 @@
-// pages/TrainingManagement/AnnualTrainingPlan/AddAnnualTrainingPlan/AddAnnualTrainingPlan.js
+// pages/TrainingManagement/AnnualTrainingPlan/AllAnnualPlan/AddAnnualPlan/AddAnnualPlan.js
 Page({
 
   /**
