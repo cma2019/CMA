@@ -80,7 +80,7 @@
     "pages/TrainingManagement/AnnualTrainingPlan/AllAnnualPlan/AddAnnualPlan/AddAnnualPlan",
     "pages/TrainingManagement/AnnualTrainingPlan/AllAnnualPlan/ApproveAnnualPlan/ApproveAnnualPlan",
     "pages/TrainingManagement/AnnualTrainingPlan/AllAnnualPlan/GetAnnualPlan/GetAnnualPlan",
-    "pages/TrainingManagement/AnnualTrainingPlan/ChooseAnnualPlan"
+    "pages/TrainingManagement/AnnualTrainingPlan/AnnualTrainingPlan"
   ],
   "window": {
     "backgroundTextStyle": "light",
