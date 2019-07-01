@@ -1,66 +1,44 @@
-// pages/TrainingManagement/AnnualTrainingPlan/AnnualTrainingPlan.js
+const app = getApp()
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
 
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  onShow: function (options) {
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  ApplicationAdd: function (e)
+  {
+    if (e.detail.value.year == null)
+      {
+      wx.showToast({
+        title: '错误(空白输入)',
+        icon: 'none',
+        duration: 2000
+      })
+      console.log('错误(空白输入)')
+    }
+    else
+    {console.log(e)
+    let target = e.detail.value.year
+    console.log(e.detail.value)
+    console.log('getall id')
+    console.log(target)
+    wx.navigateTo({
+      url: 'AnnualTrainingPlan/AnnualTrainingPlan?year=' + target
+    })
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  gotwo: function () {
+    wx.navigateTo({
+      url:'AllAnnualPlan/AllAnnualPlan'
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  goback: function () {
+    wx.navigateBack({
+      delta: 1
+    })
   }
 })

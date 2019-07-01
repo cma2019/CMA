@@ -2,9 +2,16 @@
   <form bindsubmit='ApplicationAdd'>
   <van-cell-group>
       <van-field 
-        name="name"
-        label="name"
-        placeholder="input name" 
+        name="year"
+        label="year"
+        placeholder="input year" 
+        required
+        clearable
+      />
+      <van-field 
+        name="trainProject"
+        label="trainProject"
+        placeholder="input trainProject" 
         required
         clearable
       />
@@ -16,44 +23,48 @@
         clearable
       />
       <van-field 
-        name="trainingUnit"
-        label="trainingUnit"
-        placeholder="input trainingUnit" 
+        name="method"
+        label="method"
+        placeholder="input method" 
         required
         clearable
       />
       <van-field 
-        name="expense"
-        label="expense"
-        placeholder="input expense" 
-        required
-        clearable
-      />
-      <van-field 
-        name="reason"
-        label="reason"
-        placeholder="input reason" 
-        required
-        clearable
-      />
-      <van-field 
-        name="department"
-        label="department"
-        placeholder="input department" 
+        name="trainingTime"
+        label="trainingTime"
+        placeholder="input trainingTime" 
         required
         clearable
       />
       <view class="section">
-        <picker name = 'date' mode='date' value='{{date}}' bindchange='bindDateChange'>
+        <picker name = 'startTime' mode='date' value='{{startTime}}' bindchange='bindDateChange1'>
           <view class='picker'>
         <van-field 
-        label="date"
-        value='{{date}}'
+        label="startTime"
+        value='{{startTime}}'
         required
       />
       </view>
         </picker>
     </view>
+    <view class="section">
+        <picker name = 'endTime' mode='date' value='{{endTime}}' bindchange='bindDateChange2'>
+          <view class='picker'>
+        <van-field 
+        label="endTime"
+        value='{{endTime}}'
+        required
+      />
+      </view>
+        </picker>
+    </view>
+    <van-field 
+        name="note"
+        label="note"
+        placeholder="input note" 
+        required
+        clearable
+      />
     </van-cell-group>
     <view>
       <button class='van-button--info'formType = 'submit'>Add           </button>

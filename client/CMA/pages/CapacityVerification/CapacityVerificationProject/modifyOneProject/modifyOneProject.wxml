@@ -6,7 +6,7 @@
         name="name"
         label="my name"
         value='{{name}}'
-        placeholder="input name" 
+        placeholder="input name"
         required
         clearable
       />

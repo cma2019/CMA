@@ -11,29 +11,34 @@ Page({
   onShow: function (options) {
 
   },
-  bindDateChange(e) {
+  bindDateChange1(e) {
     this.setData({
-      date: e.detail.value
+      startTime: e.detail.value
     })
   },
-
+  bindDateChange2(e) {
+    this.setData({
+      endTime: e.detail.value
+    })
+  },
   ApplicationAdd: function (e) {
 {
       console.log('form发生了add事件，携带数据为：', e.detail.value)
-      let url = app.globalData.url + 'TrainingApplication/addOne'
+      let url = app.globalData.url + 'AnnualTrainingPlan/addOne'
       let data = {
-        "name": e.detail.value.name,
+        "year": e.detail.value.year,
+        "trainProject": e.detail.value.trainProject,
         "people": e.detail.value.people,
-        "department": e.detail.value.department,
-        "trainingUnit": e.detail.value.trainingUnit,
-        "expense": e.detail.value.expense,
-        "reason": e.detail.value.reason,
-        "createDate": e.detail.value.date
+        "method": e.detail.value.method,
+        "trainingTime": e.detail.value.trainingTime,
+        "note": e.detail.value.note,
+        "startTime": e.detail.value.startTime,
+        "endTime":e.detail.value.endTime
       }
       console.log(url)
       console.log(data)
       app.wxRequest(url, 'POST', data, (res) => {
-        console.log('send intermediate check message successfully')
+        console.log('successfully')
         console.log(res)
         console.log(res.msg)
         console.log(res.code)
