@@ -1,66 +1,52 @@
-// pages/TestAbility/getOneItem/getOneItem.js
+// pages/IntermediateCheck/IntermediateCheckGetone/IntermediateCheckGetone.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    "year": "null",
+    "id": "null",
+    "productionName": "null",
+    "ability": "null",
+    "referrence": "null",
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-
+    this.setData({
+      year: options.id
+    })
+  },
+  onShow: function (options) {
+    let url = app.globalData.url + 'TestAbility/getOneItem'
+    let postdata = {
+      "year": this.data.year
+    }
+    app.wxRequest(url, 'GET', postdata, (res) => {
+      console.log('test ability getone success')
+      console.log(res)
+      this.setData({
+        id: res.data[0].id,
+        productionName: res.data[0].productionName,
+        ability: res.data[0].ability,
+        referrence: res.data[0].referrence,
+      })
+    }, (err) => {
+      console.err('getone error')
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  deleteData(e) {
+    let url = app.globalData.url + 'TestAbility/deleteOneItem'
+    let data = {
+      "id": this.data.id
+    }
+    app.wxRequest(url, 'POST', data, (res) => {
+      console.log('delete successfully')
+    }, (err) => {
+      console.log('delete failed')
+    })
   }
+
 })

@@ -45,7 +45,7 @@ Page({
     console.log('getone id')
     console.log(target)
     wx.navigateTo({
-      url: 'modifyOne/modifyOne?year=' + target
+      url: 'getAllItem/getAllItem?id=' + target
     })
   }
 })

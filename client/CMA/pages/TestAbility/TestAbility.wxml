@@ -2,7 +2,7 @@
 <view>
   <van-cell-group title="IntermediateCheck">
   <view wx:for="{{temp}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
-    <van-cell value="详情" bindtap='gotoOne' id='{{item.planId}}' is-link>
+    <van-cell value="详情" bindtap='gotoOne' id='{{item.year}}' is-link>
       <view slot="title">
         <view>year : {{item.year}}</view>
         <view>fileName : {{item.fileName}}</view>

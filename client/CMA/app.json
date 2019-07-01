@@ -90,7 +90,7 @@
     "pages/TestAbility/modifyOne/modifyOne",
     "pages/TestAbility/getAnnex/getAnnex",
     "pages/TestAbility/getAllItem/getAllItem",
-    "pages/TestAbility/addOneItem /addOneItem ",
+    "pages/TestAbility/addOneItem/addOneItem",
     "pages/TestAbility/getOneItem/getOneItem",
     "pages/TestingInstitutionManagement/Certificate/Certificate",
     "pages/TestingInstitutionManagement/TestingInstitutionResource/TestingInstitutionResource",
