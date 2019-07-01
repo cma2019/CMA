@@ -1,2 +1,14 @@
-<!--pages/StaffManagement/StaffAuthorization/GetOneStaffAuthorization/GetOneStaffAuthorization.wxml-->
-<text>pages/StaffManagement/StaffAuthorization/GetOneStaffAuthorization/GetOneStaffAuthorization.wxml</text>
+<!--pages/TrainingApplication/PringOneApplication/PrintOneApplication.wxml-->
+<view>
+  <van-cell-group>
+  <van-cell title="name" value="{{name}}" />
+  <van-cell title="department" value="{{department}}" />
+  <van-cell title="position" value="{{position}}" />
+  <van-cell title="authorizerId" value="{{authorizerId}}" />
+  <van-cell title="content" value="{{content}}" />
+  <van-cell title="authorizerName" value="{{authorizerName}}" />
+  <van-cell title="authorizerDate" value="{{authorizerDate}}" />
+  </van-cell-group>
+</view>
+  <van-button type="info" size="small" bindtap="ModifyStaff">Modify</van-button> 
+  <van-button type="info" size="small" bindtap="DeleteStaff">Delete</van-button> 
