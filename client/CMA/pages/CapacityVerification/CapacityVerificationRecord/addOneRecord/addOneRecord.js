@@ -1,66 +1,54 @@
-// pages/CapacityVerification/CapacityVerificationRecord/addOneRecord/addOneRecord.js
+// pages/IntermediateCheck/IntermediateCheck.js
+const app = getApp()
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    "projectId": null,
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-
+    this.setData({
+      projectId: options.id
+    })
+  },
+  bindDateChange(e) {
+    this.setData({
+      date: e.detail.value
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  AddNewRecord(e) {
+    if (e.detail.value.date == "" ||
+      e.detail.value.methodId == "" ||
+      e.detail.value.equipmentName == ""||
+      e.detail.value.equipmentId == "" ||
+      e.detail.value.experimenter == "" ||
+      e.detail.value.result == "" ||
+      e.detail.value.resultDeal == "" ||
+      e.detail.value.note == "") {
+      console.log("message error")
+    }
+    else {
+      let url = app.globalData.url + 'CapacityVerification/addOneRecord'
+      console.log("add one record id")
+      console.log(data.projectId)
+      let data = {
+        "projectId": this.data.projectId,
+        "date": e.detail.value.date,
+        "methodId": e.detail.value.methodId,
+        "equipmentName": e.detail.value.equipmentName,
+        "equipmentId": e.detail.value.equipmentId,
+        "experimenter": e.detail.value.experimenter,
+        "result": e.detail.value.result,
+        "resultDeal": e.detail.value.resultDeal,
+        "note": e.detail.value.note
+      }
+      console.log(data)
+      app.wxRequest(url, 'POST', data, (res) => {
+        console.log('send CapacityVerificationPlan message successfully')
+      }, (err) => {
+        console.log('fail CapacityVerificationPlan register')
+      })
+    }
   }
 })

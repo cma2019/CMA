@@ -3,9 +3,9 @@
   <form bindsubmit='GetProjects'>
     <van-cell-group title="input message">
       <van-field 
-        name="id"
-        label="my plan id"
-        placeholder="input plan iid"
+        name="planId"
+        label="my planId"
+        placeholder="input planId"
         required
         clearable
       />

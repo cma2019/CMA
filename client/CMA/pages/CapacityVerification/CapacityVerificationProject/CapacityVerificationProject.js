@@ -3,7 +3,7 @@ const app = getApp()
 Page({
 
   data: {
-
+    "planId":null
   },
 
   onLoad: function (options) {
