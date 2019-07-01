@@ -19,7 +19,7 @@ public class AnnualTrainingPlan {
     private String people;       //培训对象
     private String method;       //培训方式
     private long trainingTime;   //培训课时
-    private Date stratTime;      //培训开始时间
+    private Date startTime;      //培训开始时间
     private Date endTime;        //培训结束时间
     private String note;         //备注
 
@@ -47,9 +47,9 @@ public class AnnualTrainingPlan {
         return trainingTime;
     }
 
-    public String getStratTime() {
+    public String getStartTime() {
         DateFormat df=DateFormat.getDateInstance();
-        return df.format(this.stratTime);
+        return df.format(this.startTime);
     }
 
     public String getEndTime() {
@@ -89,8 +89,8 @@ public class AnnualTrainingPlan {
         this.trainingTime = trainingTime;
     }
 
-    public void setStratTime(Date stratTime) {
-        this.stratTime = stratTime;
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
     }
 
     public void setTrainProject(String trainProject) {
@@ -99,7 +99,7 @@ public class AnnualTrainingPlan {
 
     public boolean Equals(AnnualTrainingPlan annualTrainingPlan){
         if(annualTrainingPlan.getYear()==this.year&&annualTrainingPlan.getPeople().equals(this.people)&&annualTrainingPlan.getTrainProject().equals(this.trainProject)&&
-        annualTrainingPlan.getMethod().equals(this.method)&&annualTrainingPlan.getTrainingTime()==this.trainingTime&&annualTrainingPlan.getStratTime().equals(this.getStratTime())
+        annualTrainingPlan.getMethod().equals(this.method)&&annualTrainingPlan.getTrainingTime()==this.trainingTime&&annualTrainingPlan.getStartTime().equals(this.getStartTime())
         &&annualTrainingPlan.getEndTime().equals(this.getEndTime())){
             return true;
         }

@@ -4,11 +4,11 @@
     <van-cell value="详情" is-link url='/pages/Equipment/EquipmentUse/EquipmentUseGetOne/EquipmentUseGetOne?id={{item.id}}&equipmentId={{item.equipmentId}}&useDate={{item.useDate}}&openDate={{item.openDate}}&closeDate={{item.closeDate}}&sampleNumber={{item.sampleNumber}}&testProject={{item.testProject}}&beforeUse={{item.beforeUse}}&afterUse={{item.afterUse}}&user={{item.user}}&remark={{item.remark}}' link-type='redirectTo'>
       <view slot="title">
         <view>id : {{item.id}}</view>
-        <view>name : {{item.equipmentId}}</view>
-        <view>model : {{item.useDate}}</view>
+        <view>equipmentId : {{item.equipmentId}}</view>
+        <view>useDate : {{item.useDate}}</view>
       </view>
     </van-cell>
   </view>
   </van-cell-group>
-  <van-button type="info" size="small" bindtap="gotoAdd">Add an equipment</van-button>
+  <van-button type="info" size="small" bindtap="gotoAdd">Add an equipment use</van-button>
 </scroll-view>

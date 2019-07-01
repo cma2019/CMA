@@ -1,2 +1,32 @@
-<!--pages/CapacityVerification/CapacityVerificationProject/addOneProject/addOneProject.wxml-->
-<text>pages/CapacityVerification/CapacityVerificationProject/addOneProject/addOneProject.wxml</text>
+<!--pages/IntermediateCheck/IntermediateCheck.wxml-->
+<view>
+  <form bindsubmit='AddNewProject'>
+    <van-cell-group title="input message">
+      <van-field 
+        name="name"
+        label="my name"
+        placeholder="input name" 
+        required
+        clearable
+      />
+      <van-field 
+        name="method"
+        label="my method"
+        placeholder="input method"
+        required
+        clearable
+      />
+      <van-field 
+        name="note"
+        label="my note"
+        placeholder="input note"
+        required
+        clearable
+      />
+    </van-cell-group>
+    <view>
+      <button class='van-button--info' formType='submit'>register</button>
+    </view>
+  </form>
+</view>
+<button class='van-button--info' bindtap="goback">go back</button>

@@ -1,2 +1,61 @@
-<!--pages/CapacityVerification/CapacityVerificationPlan/modifyOne/modifyOne.wxml-->
-<text>pages/CapacityVerification/CapacityVerificationPlan/modifyOne/modifyOne.wxml</text>
+<!--pages/IntermediateCheck/IntermediateCheck.wxml-->
+<view>
+  <form bindsubmit='capacityplanmodify'>
+    <van-cell-group title="input message">
+      <van-field 
+        name="name"
+        label="my name"
+        value='{{name}}'
+        placeholder="input name" 
+        required
+        clearable
+      />
+      <van-field 
+        name="organizer"
+        label="my organizer"
+        value='{{organizer}}'
+        placeholder="input organizer" 
+        required
+        clearable
+      />
+      <van-field 
+        name="state"
+        label="my state"
+        value='{{state}}'
+        placeholder="input state" 
+        required
+        clearable
+      />   
+      <van-field 
+        name="year"
+        label="my year"
+        value='{{year}}'
+        placeholder="input year" 
+        type='number'
+        required
+        clearable
+      />   
+      <van-field 
+        name="note"
+        label="my note"
+        value='{{note}}'
+        placeholder="input note" 
+        required
+        clearable
+      />    
+      <van-field
+        name="analysis"
+        label="my analysis"
+        placeholder="input analysis"
+        value='{{analysis}}'
+        required
+        clearable
+        border = "{{false}}"
+      />
+    </van-cell-group>
+    <view>
+      <button class='van-button--info' formType='submit'>register</button>
+    </view>
+  </form>
+</view>
+<button class='van-button--info' bindtap="gotologin">go back</button>

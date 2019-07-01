@@ -1,0 +1,37 @@
+<!--pages/IntermediateCheck/IntermediateCheck.wxml-->
+<view>
+  <form bindsubmit='modifyTestAbility'>
+    <van-cell-group title="input message">
+      <van-field 
+        name="year"
+        label="my year"
+        placeholder="input year"
+        value='{{year}}'
+        type='number'
+        required
+        clearable
+      />
+      <van-field 
+        name="fileName"
+        label="my fileName"
+        placeholder="input fileName"
+        value='{{fileName}}'
+        required
+        clearable
+      />    
+      <van-field
+        name="file"
+        label="my file"
+        placeholder="input file"
+        value='{{file}}'
+        required
+        clearable
+        border = "{{false}}"
+      />
+    </van-cell-group>
+    <view>
+      <button class='van-button--info' formType='submit'>register</button>
+    </view>
+  </form>
+</view>
+<button class='van-button--info' bindtap="gotologin">go back</button>

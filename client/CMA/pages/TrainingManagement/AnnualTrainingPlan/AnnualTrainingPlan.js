@@ -1,82 +1,44 @@
-// pages/StaffManagement/StaffManagement.js
 const app = getApp()
 Page({
 
   data: {
-    "mess": null
+
   },
 
   onLoad: function (options) {
-    //console.log(this.data.planId)
-    let url = app.globalData.url + 'AnnualTrainingPlan/getAll'
-    let postdata = ''
-    console.log(url)
-    console.log(postdata)
-    app.wxRequest(url, 'GET', postdata, (res) => {
-      //console.log('success')
-      console.log(res)
-      console.log('success')
-      console.log(res.code)
-      //console.log(res.msg)
-      console.log(res.data)
-      //var temp = res.data
-      //this.temp = temp
-      this.setData({
-        mess: res.data
-      })
-
-      console.log(this.mess)
-    }, (err) => {
-      //console.err('getone error')
-      wx.showToast({
-        title: 'getone error',
-        duration: 1500
-      })
-      console.log('getone error')
-    })
   },
   onShow: function (options) {
-    let url = app.globalData.url + 'AnnualTrainingPlan/getAll'
-    let postdata = ''
-    console.log(url)
-    console.log(postdata)
-    app.wxRequest(url, 'GET', postdata, (res) => {
-      //console.log('success')
-      console.log(res)
-      console.log('success')
-      console.log(res.code)
-      //console.log(res.msg)
-      console.log(res.data)
-      //var temp = res.data
-      //this.temp = temp
-      this.setData({
-        mess: res.data
-      })
-
-      console.log(this.mess)
-    }, (err) => {
-      //console.err('getone error')
+  },
+  ApplicationAdd: function (e)
+  {
+    if (e.detail.value.year == null)
+      {
       wx.showToast({
-        title: 'getone error',
-        duration: 1500
+        title: '错误(空白输入)',
+        icon: 'none',
+        duration: 2000
       })
-      console.log('getone error')
-    })
-  },
-
-  gotoAdd(e) {
-    wx.navigateTo({
-      url: 'AddAnnualTrainingPlan/AddAnnualTrainingPlan',
-    })
-  },
-
-  gotoOne(e) {
-    console.log(e)
-    let target = e.currentTarget.id
-    console.log('getone id')
+      console.log('错误(空白输入)')
+    }
+    else
+    {console.log(e)
+    let target = e.detail.value.year
+    console.log(e.detail.value)
+    console.log('getall id')
     console.log(target)
     wx.navigateTo({
-      url: 'PrintOneAnnualTrainingPlan/PrintOneAnnualTrainingPlan?id=' + target
+      url: 'AnnualTrainingPlan/AnnualTrainingPlan?year=' + target
+    })
+    }
+  },
+  gotwo: function () {
+    wx.navigateTo({
+      url:'AllAnnualPlan/AllAnnualPlan'
+    })
+  },
+  goback: function () {
+    wx.navigateBack({
+      delta: 1
     })
   }
 })

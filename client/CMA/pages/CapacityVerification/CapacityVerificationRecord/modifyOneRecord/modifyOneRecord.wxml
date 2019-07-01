@@ -1,2 +1,87 @@
-<!--pages/CapacityVerification/CapacityVerificationRecord/modifyOneRecord/modifyOneRecord.wxml-->
-<text>pages/CapacityVerification/CapacityVerificationRecord/modifyOneRecord/modifyOneRecord.wxml</text>
+<!--pages/IntermediateCheck/IntermediateCheck.wxml-->
+<view>
+  <form bindsubmit='capacityrecordmodify'>
+    <van-cell-group title="input message">
+      <van-field 
+        name="projectId"
+        label="my projectId"
+        placeholder="input projectId" 
+        value='{{projectId}}'
+        required
+        clearable
+      />
+      <picker name = 'date' mode='date' value='{{date}}' bindchange='bindDateChange'>
+          <view class='picker'>
+            <van-field 
+              name="date"
+              label="my date"
+              value='{{date}}'
+              placeholder="input date" 
+              required
+              clearable
+            />
+          </view>
+      </picker>
+      <van-field 
+        name="methodId"
+        label="my methodId"
+        placeholder="input methodId" 
+        value='{{methodId}}'
+        required
+        clearable
+      />
+      <van-field 
+        name="equipmentName"
+        label="my equipmentName"
+        placeholder="input equipmentName"
+        value='{{equipmentName}}'
+        required
+        clearable
+      />
+      <van-field 
+        name="equipmentId"
+        label="my equipmentId"
+        placeholder="input equipmentId"
+        value='{{equipmentId}}'
+        required
+        clearable
+      />
+      <van-field 
+        name="experimenter"
+        label="my experimenter"
+        placeholder="input experimenter"
+        value='{{experimenter}}'
+        required
+        clearable
+      />
+      <van-field 
+        name="result"
+        label="my result"
+        placeholder="input result"
+        value='{{result}}'
+        required
+        clearable
+      />
+      <van-field 
+        name="resultDeal"
+        label="my resultDeal"
+        placeholder="input resultDeal"
+        value='{{resultDeal}}'
+        required
+        clearable
+      />
+      <van-field 
+        name="note"
+        label="my note"
+        placeholder="input note"
+        value='{{note}}'
+        required
+        clearable
+      />    
+    </van-cell-group>
+    <view>
+      <button class='van-button--info' formType='submit'>register</button>
+    </view>
+  </form>
+</view>
+<button class='van-button--info' bindtap="gotologin">go back</button>

@@ -13,50 +13,6 @@
   <van-cell title="approveDate" value="{{approveDate}}" />
   </van-cell-group>
 </view>
-<!--
-<view>
-  <view class="section">
-    <view class="section__title">name</view>
-      <text>{{name}}</text>
-  </view>
-  <view class="section">
-    <view class="section__title">people</view>
-      <text>{{people}}</text>
-  </view>
-  <view class="section">
-    <view class="section__title">trainingUnit</view>
-      <text>{{trainingUnit}}</text>
-  </view>
-  <view class="section">
-    <view class="section__title">expense</view>
-      <text>{{expense}}</text>
-  </view>
-  <view class="section">
-    <view class="section__title">reason</view>
-      <text>{{reason}}</text>
-  </view>
-  <view class="section">
-    <view class="section__title">situation</view>
-      <text>{{situation}}</text>
-  </view>
-  <view class="section">
-    <view class="section__title">department</view>
-      <text>{{department}}</text>
-  </view>
-   <view class="section">
-    <view class="section__title">createDate</view>
-      <text>{{createDate}}</text>
-  </view>
-  <view class="section">
-    <view class="section__title">approver</view>
-      <text>{{approver}}</text>
-  </view>
-  <view class="section">
-    <view class="section__title">approveDate</view>
-      <text>{{approveDate}}</text>
-  </view>
-</view>
--->
  <van-button type="info" size="small" bindtap="ModifyStaff">Modify</van-button> 
  <van-button type="info" size="small" bindtap="DeleteStaff">Delete</van-button> 
  <van-button type="info" size="small" bindtap="ApproveStaff">Approve</van-button> 

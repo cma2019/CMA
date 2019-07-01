@@ -1,66 +1,59 @@
-// pages/CapacityVerification/CapacityVerificationPlan/CapacityVerificationPlan.js
+// pages/IntermediateCheck/IntermediateCheck.js
+const app = getApp()
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    "mess": null,
+    "temp":
+      [{
+        "planId": 1,
+        "name": "namename",
+        "organizer": "organizer",
+        "state": "22",
+        "year": "2000",
+        "note": "note",
+        "analysis": "analysis"
+      },
+      {
+        "planId": 3,
+        "name": "name2",
+        "organizer": "2organizer",
+        "state": "322",
+        "year": "2030",
+        "note": "note2",
+        "analysis": "11analysis"
+      }]
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  onShow: function (options) {
+    let url = app.globalData.url + 'CapacityVerification/getAll'
+    let postdata = ''
+    app.wxRequest(url, 'GET', postdata, (res) => {
+      this.setData({
+        mess: res.data
+      })
+      console.log('plan get all success')
+    }, (err) => {
+      console.err('getone error')
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  gotoAdd(e) {
+    wx.navigateTo({
+      url: 'addOne/addOne',
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  gotoOne(e) {
+    console.log(e)
+    let target = e.currentTarget.id
+    console.log('getone id')
+    console.log(target)
+    wx.navigateTo({
+      url: 'getOne/getOne?id=' + target
+    })
   }
 })

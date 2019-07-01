@@ -1,14 +1,24 @@
+<!--pages/TrainingApplication/AddApplication/AddApplication.wxml-->
 <view>
-  <van-cell-group title="AnnualTrainingPlan">
-  <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
-  <van-cell value="详情" bindtap='gotoOne' id='{{item.planId}}' is-link>
-      <view slot="title">
-        <view>year : {{item.year}}</view>
-        <view>trainProject : {{item.trainProject}}</view>
-        <view>people : {{item.people}}</view>
-      </view>
-  </van-cell>
+  <form bindsubmit='ApplicationAdd'>
+  <van-cell-group>
+      <van-field 
+        name="year"
+        label="year"
+        placeholder="input year" 
+        required
+        clearable
+      />
+    </van-cell-group>
+     <view>
+      <button class='van-button--info'formType = 'submit'>go to AnnualTrainingPlan</button>
+    </view>
+  </form>
 </view>
-  </van-cell-group>
+<view>
+<van-button type="info" size="small" bindtap="gotwo">go to AllAnuallPlan</van-button> 
 </view>
-    <van-button type="info" size="small" bindtap="gotoAdd">Add AnnualTrainingPlan</van-button> 
+<view>
+ <van-button type="info" size="small" bindtap="goback">go back</van-button> 
+ </view>
+
