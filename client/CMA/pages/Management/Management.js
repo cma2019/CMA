@@ -112,5 +112,20 @@ Page({
     wx.navigateTo({
       url: '../Equipment/EquipmentApplication/EquipmentApplication',
     })
+  },
+  gotoTestInstitution1: function () {
+    wx.navigateTo({
+      url: '../TestingInstitutionManagement/TestingInstitutionInformation/TestingInstitutionInformation',
+    })
+  },
+  gotoTestInstitution2: function () {
+    wx.navigateTo({
+      url: '../TestingInstitutionManagement/TestingInstitutionResource/TestingInstitutionResource',
+    })
+  },
+  gotoTestInstitution3: function () {
+    wx.navigateTo({
+      url: '../TestingInstitutionManagement/Certificate/Certificate',
+    })
   }
 })
