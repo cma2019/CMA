@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="651ff98d-c157-4ecc-9e40-c378665378ef" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ca_jimr_gae_mini_profiler_2_0_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_appengine_appengine_api_labs_1_9_26.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_servlet_api_2_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Repository/IntermediateChecksPlanRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Repository/IntermediateChecksRecordRepository.java" afterDir="false" />
+    <list default="true" id="651ff98d-c157-4ecc-9e40-c378665378ef" name="Default Changelist" comment="1">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_json_lib_json_lib_2_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_json_lib_json_lib_JDK15_2_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Controller/CapacityVerificationPlanController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Controller/CapacityVerificationProjectController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Controller/CapacityVerificationRecordController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Model/CapacityVerificationPlan.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Model/CapacityVerificationProject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Model/CapacityVerificationRecord.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Repository/CapacityVerificationPlanRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Repository/CapacityVerificationProjectRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Repository/CapacityVerificationRecordRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Controller/IntermediateChecksPlanController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Controller/IntermediateChecksPlanController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Controller/IntermediateChecksRecordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Controller/IntermediateChecksRecordController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Repository/PlanRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Repository/RecordRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/cma/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/server/cma/src/main/resources/application.properties" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/server/cma/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,11 +29,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Controller/CapacityVerificationPlanController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
+            <state relative-caret-position="3179">
+              <caret line="187" column="13" selection-start-line="187" selection-start-column="13" selection-end-line="187" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -38,19 +42,79 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/cma/src/test/java/com/example/demo/Controller/CapacityVerificationPlanControllerTest.java">
+        <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Controller/CapacityVerificationProjectController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
+            <state relative-caret-position="2329">
+              <caret line="146" column="20" selection-start-line="146" selection-start-column="20" selection-end-line="146" selection-end-column="20" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Repository/CapacityVerificationPlanRepository.java">
+        <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Controller/IntermediateChecksRecordController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="43" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
+            <state relative-caret-position="1254">
+              <caret line="81" lean-forward="true" selection-start-line="81" selection-end-line="81" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Model/CapacityVerificationProject.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="356">
+              <caret line="49" column="57" lean-forward="true" selection-start-line="49" selection-start-column="57" selection-end-line="49" selection-end-column="57" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Controller/CapacityVerificationRecordController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="24" column="65" selection-start-line="24" selection-start-column="65" selection-end-line="24" selection-end-column="65" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/cma/src/main/resources/application.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="33" selection-start-line="3" selection-start-column="33" selection-end-line="3" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Model/CapacityVerificationRecord.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="237">
+              <caret line="82" column="30" selection-start-line="82" selection-start-column="30" selection-end-line="82" selection-end-column="30" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Repository/CapacityVerificationRecordRepository.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="13" column="63" selection-start-line="13" selection-start-column="63" selection-end-line="13" selection-end-column="63" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -61,8 +125,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Model/CapacityVerificationPlan.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+            <state relative-caret-position="-55">
+              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -115,8 +179,24 @@
         <option value="$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Controller/SupervisionController.java" />
         <option value="$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Controller/SampleReceiveController.java" />
         <option value="$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Controller/SampleIoController.java" />
+        <option value="$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Model/CapacityVerificationPlan.java" />
+        <option value="$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Controller/CapacityVerificationPlanController.java" />
+        <option value="$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Repository/CapacityVerificationPlanRepository.java" />
+        <option value="$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Repository/CapacityVerificationProjectRepository.java" />
+        <option value="$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Controller/CapacityVerificationProjectController.java" />
+        <option value="$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Model/CapacityVerificationRecord.java" />
+        <option value="$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Repository/CapacityVerificationRecordRepository.java" />
+        <option value="$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Controller/CapacityVerificationRecordController.java" />
         <option value="$PROJECT_DIR$/server/cma/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Model/CapacityVerificationProject.java" />
       </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
     </option>
   </component>
   <component name="MavenProjectNavigator">
@@ -148,15 +228,17 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="5" />
-    <option name="width" value="980" />
-    <option name="height" value="1040" />
+    <option name="x" value="-183" />
+    <option name="y" value="21" />
+    <option name="width" value="1345" />
+    <option name="height" value="1035" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -259,6 +341,15 @@
               <item name="server" type="462c0819:PsiDirectoryNode" />
               <item name="cma" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CMA" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CMA" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="cma" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -295,7 +386,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -364,6 +454,7 @@
       <workItem from="1560321482446" duration="637000" />
       <workItem from="1560322312995" duration="11239000" />
       <workItem from="1560345880010" duration="2500000" />
+      <workItem from="1561959124493" duration="13601000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1559222367771</created>
@@ -386,11 +477,18 @@
       <option name="project" value="LOCAL" />
       <updated>1560327750226</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="1">
+      <created>1561947711438</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1561947711438</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28263000" />
+    <option name="totallyTimeSpent" value="45662000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -404,7 +502,7 @@
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24932976" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25268096" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -414,7 +512,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32974428" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32974428" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932975" weight="0.3286119" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39973083" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -422,11 +520,11 @@
       <window_info anchor="bottom" id="Spring" order="7" weight="0.32974428" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="11" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50067025" side_tool="true" weight="0.3286119" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.3286119" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" />
       <window_info anchor="bottom" id="Database Changes" order="13" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="14" visible="true" weight="0.32577905" />
+      <window_info anchor="bottom" id="Version Control" order="14" weight="0.32857144" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -500,71 +598,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Model/TrainingApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Repository/AllAnnualPlanRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Repository/EquipmentRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Repository/StaffManagementRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Repository/TrainingApplicationRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Repository/RecordRepository.java" />
-    <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Repository/PlanRepository.java" />
-    <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Repository/AnnualTrainingPlanRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Repository/SampleReceiveRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Repository/UserRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/CMA/pages/view/view.wxml" />
     <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/framework/DateJsonTypeConvert.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
@@ -643,54 +676,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-380">
           <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Controller/StaffTrainingController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-266">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Controller/StaffManagementController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-380">
-          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Controller/StaffFileController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-551">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Controller/IntermediateChecksRecordController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2090">
-          <caret line="24" column="46" selection-start-line="24" selection-start-column="46" selection-end-line="24" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Controller/IntermediateChecksPlanController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-364">
-          <caret line="52" column="37" selection-start-line="52" selection-start-column="37" selection-end-line="52" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -874,13 +859,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/cma/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/cma/src/test/java/com/example/demo/Controller/AnnualTrainingPlanControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-156">
@@ -895,6 +873,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Repository/IntermediateChecksPlanRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="15" column="18" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Controller/IntermediateChecksPlanController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1343">
+          <caret line="102" column="11" selection-start-line="102" selection-start-column="11" selection-end-line="102" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Controller/StaffFileController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-911">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Controller/StaffManagementController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Controller/StaffTrainingController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/server/cma/src/test/java/com/example/demo/Controller/CapacityVerificationPlanControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
@@ -902,10 +925,121 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-jpa/2.1.6.RELEASE/spring-data-jpa-2.1.6.RELEASE-sources.jar!/org/springframework/data/jpa/repository/JpaRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="41" column="12" selection-start-line="41" selection-start-column="12" selection-end-line="41" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/cma/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="33" selection-start-line="3" selection-start-column="33" selection-end-line="3" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Repository/IntermediateChecksRecordRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Repository/CapacityVerificationRecordRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="63" selection-start-line="13" selection-start-column="63" selection-end-line="13" selection-end-column="63" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Repository/CapacityVerificationProjectRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Repository/CapacityVerificationPlanRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="19" column="43" lean-forward="true" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Controller/IntermediateChecksRecordController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1254">
+          <caret line="81" lean-forward="true" selection-start-line="81" selection-end-line="81" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Model/CapacityVerificationPlan.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-55">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Model/CapacityVerificationProject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="49" column="57" lean-forward="true" selection-start-line="49" selection-start-column="57" selection-end-line="49" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Model/CapacityVerificationRecord.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="82" column="30" selection-start-line="82" selection-start-column="30" selection-end-line="82" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Controller/CapacityVerificationProjectController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2329">
+          <caret line="146" column="20" selection-start-line="146" selection-start-column="20" selection-end-line="146" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Controller/CapacityVerificationPlanController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
+        <state relative-caret-position="3179">
+          <caret line="187" column="13" selection-start-line="187" selection-start-column="13" selection-end-line="187" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Controller/CapacityVerificationRecordController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="24" column="65" selection-start-line="24" selection-start-column="65" selection-end-line="24" selection-end-column="65" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
