@@ -64,5 +64,13 @@ Page({
     }, (err) => {
       console.log('delete failed')
     })
+  },
+  getPlans(e) {
+    console.log("get projects")
+    let target = this.data.projectId
+    console.log(target)
+    wx.navigateTo({
+      url: '../../CapacityVerificationRecord/getRecordByProjectId/getRecordByProjectId?id=' + target
+    })
   }
 })

@@ -1,2 +1,34 @@
 <!--pages/Equipment/EquipmentMaintenance/EquipmentMaintenanceModify/EquipmentMaintenanceModify.wxml-->
-<text>pages/Equipment/EquipmentMaintenance/EquipmentMaintenanceModify/EquipmentMaintenanceModify.wxml</text>
+<scroll-view scroll-y>
+  <form bindsubmit='mytest'>
+    <view class="section">
+      <van-field name="equipmentId" value="{{equipmentId}}" required clearable label="equipmentId" placeholder="input equipmentId"></van-field>
+    </view>
+    <view class="section">
+      <picker name = 'maintenanceDate' mode='date' value='{{maintenanceDate}}' bindchange='bindDateChange'>
+          <view class='picker'>
+            <van-field 
+              name="maintenanceDate"
+              label="maintenanceDate"
+              value='{{maintenanceDate}}'
+              placeholder="input maintenanceDate" 
+              required
+              clearable
+            />
+          </view>
+      </picker> 
+    </view>
+    <view class="section">
+      <van-field name="maintenanceContent" value="{{maintenanceContent}}" required clearable label="maintenanceContent" placeholder="input maintenanceContent"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="maintenancePerson" value="{{maintenancePerson}}" required clearable label="maintenancePerson" placeholder="input maintenancePerson"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="confirmer" value="{{confirmer}}" required clearable label="confirmer" placeholder="input confirmer"></van-field>
+    </view>
+    <view>
+      <button class='van-button--info' form-type='submit'>Modify</button>
+    </view>
+  </form>
+</scroll-view>

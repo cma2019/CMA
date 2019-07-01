@@ -12,7 +12,7 @@ Page({
         "name": "namename",
         "method": "22",
         "state": "2000",
-        "note": "note",
+        "note": "note"
       },
       {
         "projectId": 5,
@@ -20,7 +20,7 @@ Page({
         "name": "organizer",
         "method": "22",
         "state": "2000",
-        "note": "note",
+        "note": "note"
       }]
   },
 
@@ -33,7 +33,7 @@ Page({
   onShow: function (options) {  
     let url = app.globalData.url + 'CapacityVerification/getAllProject'
     let data = {
-     "planId": e.detail.value.id,
+     "planId": this.data.planId,
     }
     console.log(data)
     app.wxRequest(url, 'GET', data, (res) => {
@@ -52,7 +52,7 @@ Page({
     console.log('getone id')
     console.log(target)
     wx.navigateTo({
-      url: 'addOneProject/addOneProject?id=' + target,
+      url: '../addOneProject/addOneProject?id=' + target,
     })
   },
 
@@ -62,7 +62,7 @@ Page({
     console.log('getone id')
     console.log(target)
     wx.navigateTo({
-      url: 'getOneProject/getOneProject?id=' + target
+      url: '../getOneProject/getOneProject?id=' + target
     })
   }
 })

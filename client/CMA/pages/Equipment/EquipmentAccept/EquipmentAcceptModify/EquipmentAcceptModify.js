@@ -5,12 +5,25 @@ Page({
    * 页面的初始数据
    */
   data: {
-    equipment:{}
+  },
+  bindDateChange: function (e) {
+    console.log("date")
+    console.log(e.detail.value)
+    this.setData({
+      'receiveDate': e.detail.value
+    })
+  },
+  bindDateChange2: function (e) {
+    console.log("date")
+    console.log(e.detail.value)
+    this.setData({
+      'acceptanceDate': e.detail.value
+    })
   },
   mydelete:function(e)
   {
     var that = this
-    var myurl = app.globalData.url + 'EquipmentReceive/deleteOne/' + that.data.equipment.id;
+    var myurl = app.globalData.url + 'EquipmentReceive/deleteOne/' + that.data.id;
     app.wxRequest(myurl, 'POST', null, (res) => {
       console.log(res)
     }, (err) => {
@@ -24,7 +37,7 @@ Page({
     var that = this
     
     //console.log(e.detail.value)
-    var myurl = app.globalData.url + 'EquipmentReceive/modifyOne/' + that.data.equipment.id;
+    var myurl = app.globalData.url + 'EquipmentReceive/modifyOne/' + that.data.id;
     var mydata = {
       "name": e.detail.value.name,
       "model": e.detail.value.model,
@@ -54,7 +67,17 @@ Page({
     var that = this;
     console.log(option)
     that.setData({
-      equipment:option
+      "id": option.id,
+      "name": option.name,
+      "model": option.model,
+      "manufacturer": option.manufacturer,
+      "receiveSituation": option.receiveSituation,
+      "recipient": option.recipient,
+      "receiveDate": option.receiveDate,
+      "equipmentSituation": option.equipmentSituation,
+      "acceptance": option.acceptance,
+      "acceptancePerson": option.acceptancePerson,
+      "acceptanceDate": option.acceptanceDate
     })
   },
 

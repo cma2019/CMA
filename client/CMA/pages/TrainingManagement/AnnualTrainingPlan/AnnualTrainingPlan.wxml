@@ -1,14 +1,2 @@
-<view>
-  <van-cell-group title="AnnualTrainingPlan">
-  <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
-  <van-cell value="详情" bindtap='gotoOne' id='{{item.planId}}' is-link>
-      <view slot="title">
-        <view>year : {{item.year}}</view>
-        <view>trainProject : {{item.trainProject}}</view>
-        <view>people : {{item.people}}</view>
-      </view>
-  </van-cell>
-</view>
-  </van-cell-group>
-</view>
-    <van-button type="info" size="small" bindtap="gotoAdd">Add AnnualTrainingPlan</van-button> 
+<!--pages/TrainingManagement/AnnualTrainingPlan/AnnualTrainingPlan.wxml-->
+<text>pages/TrainingManagement/AnnualTrainingPlan/AnnualTrainingPlan.wxml</text>
