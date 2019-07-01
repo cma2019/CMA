@@ -60,7 +60,7 @@ public class AnnualTrainingPlanController {
         annualTrainingPlan.setMethod(method);
         annualTrainingPlan.setTrainingTime(trainingTime);
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-        annualTrainingPlan.setStratTime(sdf.parse(startTime));
+        annualTrainingPlan.setStartTime(sdf.parse(startTime));
         annualTrainingPlan.setEndTime(sdf.parse(endTime));
         annualTrainingPlan.setNote(note);
         JSONObject json=new JSONObject();
@@ -121,7 +121,7 @@ public class AnnualTrainingPlanController {
             if (!trainingTime.equals(""))
                 annualTrainingPlan.setTrainingTime(Long.parseLong(trainingTime));
             if (!startTime.equals("")) {
-                annualTrainingPlan.setStratTime(sdf.parse(startTime));
+                annualTrainingPlan.setStartTime(sdf.parse(startTime));
             }
             if (!endTime.equals(""))
                 annualTrainingPlan.setEndTime(sdf.parse(endTime));
