@@ -91,7 +91,10 @@
     "pages/TestAbility/getAnnex/getAnnex",
     "pages/TestAbility/getAllItem/getAllItem",
     "pages/TestAbility/addOneItem /addOneItem ",
-    "pages/TestAbility/getOneItem/getOneItem"
+    "pages/TestAbility/getOneItem/getOneItem",
+    "pages/TestingInstitutionManagement/Certificate/Certificate",
+    "pages/TestingInstitutionManagement/TestingInstitutionResource/TestingInstitutionResource",
+    "pages/TestingInstitutionManagement/TestingInstitutionInformation/TestingInstitutionInformation"
   ],
   "window": {
     "backgroundTextStyle": "light",
