@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.example.demo.Model.IntermediateChecksRecord;
 import java.sql.Date;
 @Transactional
-public interface RecordRepository extends JpaRepository<IntermediateChecksRecord,Long>{
+public interface IntermediateChecksRecordRepository extends JpaRepository<IntermediateChecksRecord,Long>{
     IntermediateChecksRecord findByPlanId(Long planId);
 
     @Modifying
