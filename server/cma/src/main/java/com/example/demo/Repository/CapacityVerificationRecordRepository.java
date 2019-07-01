@@ -19,7 +19,7 @@ public interface CapacityVerificationRecordRepository extends JpaRepository<Capa
             "date = :date," +
             "method_id = :methodId," +
             "equipment_name = :equipmentName," +
-            "equipment_id = :equipmentid," +
+            "equipment_id = :equipmentId," +
             "experimenter = :experimenter," +
             "result = :result," +
             "result_deal = :resultDeal," +
