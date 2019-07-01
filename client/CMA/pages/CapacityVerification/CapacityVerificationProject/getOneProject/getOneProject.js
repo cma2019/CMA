@@ -1,66 +1,76 @@
-// pages/CapacityVerification/CapacityVerificationProject/getOneProject/getOneProject.js
+// pages/IntermediateCheck/IntermediateCheckGetone/IntermediateCheckGetone.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    "id": "null",
+    "projectId": "null",
+    "planId": "null",
+    "name": "null",
+    "method": "null",
+    "state": "null",
+    "note": "null"
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-
+    console.log('getone options')
+    console.log(options)
+    this.setData({
+      id: options.id
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  onShow: function (options) {
+    let url = app.globalData.url + 'CapacityVerification/getOne'
+    let postdata = {
+      "id": this.data.id
+    }
+    console.log(url)
+    console.log(postdata)
+    app.wxRequest(url, 'GET', postdata, (res) => {
+      console.log(res)
+      console.log('plan get one project success')
+      this.setData({
+        projectId: res.data[0].projectId,
+        planId: res.data[0].planId,
+        name: res.data[0].name,
+        method: res.data[0].method,
+        state: res.data[0].state,
+        note: res.data[0].note
+      })
+    }, (err) => {
+      console.err('get one project error')
+    })
+  },
+  modifyData(e) {
+    console.log(e)
+    let target = this.data.id
+    console.log(target)
+    wx.navigateTo({
+      url: '../modifyOneProject/modifyOneProject?id=' + target
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  deleteData(e) {
+    let url = app.globalData.url + 'CapacityVerification/deleteOneProject'
+    let data = {
+      "id": this.data.id
+    }
+    app.wxRequest(url, 'POST', data, (res) => {
+      console.log('delete successfully')
+    }, (err) => {
+      console.log('delete failed')
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  getPlans(e) {
+    console.log("get projects")
+    let target = this.data.projectId
+    console.log(target)
+    wx.navigateTo({
+      url: '../../CapacityVerificationRecord/getRecordByProjectId/getRecordByProjectId?id=' + target
+    })
   }
 })

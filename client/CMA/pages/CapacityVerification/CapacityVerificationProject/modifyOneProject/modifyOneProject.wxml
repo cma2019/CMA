@@ -1,2 +1,43 @@
-<!--pages/CapacityVerification/CapacityVerificationProject/modifyOneProject/modifyOneProject.wxml-->
-<text>pages/CapacityVerification/CapacityVerificationProject/modifyOneProject/modifyOneProject.wxml</text>
+<!--pages/IntermediateCheck/IntermediateCheck.wxml-->
+<view>
+  <form bindsubmit='capacityprojectmodify'>
+    <van-cell-group title="input message">
+      <van-field 
+        name="name"
+        label="my name"
+        value='{{name}}'
+        placeholder="input name"
+        required
+        clearable
+      />
+      <van-field 
+        name="method"
+        label="my method"
+        value='{{method}}'
+        placeholder="input method" 
+        required
+        clearable
+      />
+      <van-field 
+        name="state"
+        label="my state"
+        value='{{state}}'
+        placeholder="input state" 
+        required
+        clearable
+      />   
+      <van-field 
+        name="note"
+        label="my note"
+        value='{{note}}'
+        placeholder="input note" 
+        required
+        clearable
+      />    
+    </van-cell-group>
+    <view>
+      <button class='van-button--info' formType='submit'>register</button>
+    </view>
+  </form>
+</view>
+<button class='van-button--info' bindtap="gotologin">go back</button>

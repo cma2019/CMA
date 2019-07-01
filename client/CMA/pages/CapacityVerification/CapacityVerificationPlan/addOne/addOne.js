@@ -1,66 +1,44 @@
-// pages/CapacityVerification/CapacityVerificationPlan/addOne/addOne.js
+// pages/IntermediateCheck/IntermediateCheck.js
+const app = getApp()
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
 
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
 
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  bindDateChange(e) {
+    this.setData({
+      date: e.detail.value
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  AddNewPlan(e) {
+    if (e.detail.value.object == "" ||
+      e.detail.value.date == "" ||
+      e.detail.value.content == "" ||
+      e.detail.value.personInCharge == "") {
+      console.log("message error")
+    }
+    else {
+      let url = app.globalData.url + 'CapacityVerification/addOne'
+      let data = {
+        "name": e.detail.value.name,
+        "organizer": e.detail.value.organizer,
+        "state": e.detail.value.state,
+        "year": e.detail.value.year,
+        "note": e.detail.value.note,
+        "analysis": e.detail.value.analysis
+      }
+      console.log(data)
+      app.wxRequest(url, 'POST', data, (res) => {
+        console.log('send CapacityVerificationPlan message successfully')
+      }, (err) => {
+        console.log('fail CapacityVerificationPlan register')
+      })
+    }
   }
 })

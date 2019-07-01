@@ -1,2 +1,16 @@
-<!--pages/CapacityVerification/CapacityVerificationRecord/getOneRecord/getOneRecord.wxml-->
-<text>pages/CapacityVerification/CapacityVerificationRecord/getOneRecord/getOneRecord.wxml</text>
+<!--pages/IntermediateCheck/IntermediateCheckGetone/IntermediateCheckGetone.wxml-->
+<view>
+<van-cell-group title='message of {{recordId}}'>
+    <van-cell value="{{projectId}}"title="projectId"border="{{ false }}"/>
+    <van-cell value="{{date}}"title="date"border="{{ false }}"/>
+    <van-cell value="{{methodId}}"title="methodId"border="{{ false }}"/>
+    <van-cell value="{{equipmentName}}"title="equipmentName"border="{{ false }}"/>
+    <van-cell value="{{equipmentId}}"title="equipmentId"border="{{ false }}"/>
+    <van-cell value="{{experimenter}}"title="experimenter"border="{{ false }}"/>
+    <van-cell value="{{result}}"title="result"border="{{ false }}"/>
+    <van-cell value="{{resultDeal}}"title="resultDeal"border="{{ false }}"/>
+    <van-cell value="{{note}}"title="note"/>
+</van-cell-group>
+</view>
+<button class='van-button--info' bindtap="modifyData">modify</button>
+<button class='van-button--info' bindtap="deleteData">delete</button>

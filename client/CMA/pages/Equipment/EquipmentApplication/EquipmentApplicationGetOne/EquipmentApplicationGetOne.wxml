@@ -1,0 +1,19 @@
+<!--pages/Equipment/EquipmentApplication/EquipmentApplicationGetOne/EquipmentApplicationGetOne.wxml-->
+<scroll-view scroll-y>
+  <van-cell>
+    <view slot="title">
+      <view>id : {{equipment.id}}</view>
+      <view>applicant : {{equipment.applicant}}</view>
+      <view>applicationDate : {{equipment.applicationDate}}</view>
+      <view>applicationPurpose : {{equipment.applicationPurpose}}</view>
+      <view>equipmentUse : {{equipment.equipmentUse}}</view>
+      <view>equipmentNumber : {{equipment.equipmentNumber}}</view>
+      <view>softwareInfo : {{equipment.softwareInfo}}</view>
+      <view>auditor : {{equipment.auditor}}</view>
+      <view>auditDate : {{equipment.auditDate}}</view>
+      <view>auditOpinion : {{equipment.auditOpinion}}</view>
+    </view>
+  </van-cell>
+  <van-button type="info" size="small" bindtap="viewDetail">Modify</van-button>
+  <van-button type="info" size="small" bindtap="mydelete">Delete</van-button>
+</scroll-view>

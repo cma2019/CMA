@@ -1,0 +1,17 @@
+<!--pages/Equipment/EquipmentMaintenance/EquipmentMaintenanceGetOne/EquipmentMaintenanceGetOne.wxml-->
+<scroll-view scroll-y>
+  <van-cell>
+    <view slot="title">
+      <view>id : {{equipment.id}}</view>
+      <view>equipmentId : {{equipment.equipmentId}}</view>
+      <view>maintenanceDate : {{equipment.maintenanceDate}}</view>
+      <view>maintenanceContent : {{equipment.maintenanceContent}}</view>
+      <view>maintenancePerson : {{equipment.maintenancePerson}}</view>
+      <view>confirmer : {{equipment.confirmer}}</view>
+    </view>
+  </van-cell>
+  <van-button type="info" size="small" bindtap="viewDetail">Modify</van-button>
+  <van-button type="info" size="small" bindtap="mydelete">Delete</van-button>
+  <van-button type="info" size="small" bindtap="getAllById">Get All By Equipment Id</van-button>
+</scroll-view>
+

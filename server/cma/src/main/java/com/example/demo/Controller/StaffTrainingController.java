@@ -120,7 +120,7 @@ public class StaffTrainingController {
         return json;
     }
 
-    /*@PostMapping(path = "addTrainingPeople")
+    @PostMapping(path = "addTrainingPeople")
     public @ResponseBody JSONObject addTrainingPeople(@RequestParam(value = "data",required = false)JSONObject data){
         JSONObject json=new JSONObject();
         String string=data.getAsString("trainingId");
@@ -139,5 +139,5 @@ public class StaffTrainingController {
             json.put("data",null);
         }
         return json;
-    }*/
+    }
 }

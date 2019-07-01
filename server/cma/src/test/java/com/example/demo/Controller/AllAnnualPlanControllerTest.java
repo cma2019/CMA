@@ -75,7 +75,7 @@ public void testAddAnnualPlan() throws Exception {
     //JSONObject json=mvcResult.getResponse().get
     String res=mvcResult.getResponse().getContentAsString();
     int code=Integer.parseInt(res.substring(19,22));
-    Assert.assertEquals(200,code);
+    Assert.assertEquals(210,code);
 } 
 
 /** 
@@ -85,7 +85,19 @@ public void testAddAnnualPlan() throws Exception {
 */ 
 @Test
 public void testApprove() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    String url="/cma/AnnualTrainingPlan/approveAnnualPlan?year=2018&approver=aha&approveDate=2018-6-6";
+    MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post(url))
+            .andExpect(MockMvcResultMatchers.status().isOk())
+            .andDo(MockMvcResultHandlers.print())
+            .andReturn();
+
+    //int status=mvcResult.getResponse().getStatus();
+    //Assert.assertEquals(200,status);
+    //JSONObject json=mvcResult.getResponse().get
+    String res=mvcResult.getResponse().getContentAsString();
+    int code=Integer.parseInt(res.substring(19,22));
+    Assert.assertEquals(200,code);
 } 
 
 /** 
@@ -95,7 +107,18 @@ public void testApprove() throws Exception {
 */ 
 @Test
 public void testGetOne() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    String url="/cma/AnnualTrainingPlan/getAnnualPlan?year=2018";
+    MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(url))
+            .andExpect(MockMvcResultMatchers.status().isOk())
+            .andDo(MockMvcResultHandlers.print())
+            .andReturn();
+
+    //int status=mvcResult.getResponse().getStatus();
+    //Assert.assertEquals(200,status);
+    String res=mvcResult.getResponse().getContentAsString();
+    int code=Integer.parseInt(res.substring(19,22));
+    Assert.assertEquals(200,code);
 } 
 
 /** 
