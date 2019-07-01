@@ -27,6 +27,13 @@ Page({
       url: '/pages/Equipment/EquipmentMaintenance/EquipmentMaintenanceModify/EquipmentMaintenanceModify?id=' + that.data.equipment.id + "&equipmentId=" + that.data.equipment.equipmentId + "&maintenanceDate=" + that.data.equipment.maintenanceDate + "&maintenanceContent=" + that.data.equipment.maintenanceContent + "&maintenancePerson=" + that.data.equipment.maintenancePerson + "&confirmer=" + that.data.equipment.confirmer,
     })
   },
+  getAllById: function(e){
+    console.log("getAllById")
+    var that = this
+    wx.redirectTo({
+      url: '/pages/Equipment/EquipmentMaintenance/EquipmentMaintenanceGetAllByID/EquipmentMaintenanceGetAllByID?id=' + that.data.equipment.id,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
