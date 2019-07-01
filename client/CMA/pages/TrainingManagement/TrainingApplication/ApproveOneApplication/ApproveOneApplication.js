@@ -19,17 +19,10 @@ Page({
       console.log("data modify")
       console.log(res.data.name)
       this.setData({
-        /*object: res.data[0].object,
-        content: res.data[0].content,
-        checkDate: res.data[0].checkDate,
-        personInCharge: res.data[0].personInCharge,
-        state: res.data[0].state*/
         id: res.data.id,
         situation:res.data.situation,
         approver:res.data.approver,
         approveDate: res.data.approveDate
-
-
       })
     }, (err) => {
       console.err('get one error')

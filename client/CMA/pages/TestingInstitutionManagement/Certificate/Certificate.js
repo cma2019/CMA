@@ -1,4 +1,4 @@
-// pages/TrainingManagement/AnnualTrainingPlan/AllAnnualPlan/AddAnnualPlan/AddAnnualPlan.js
+// pages/TestingInstitutionManagement/Certificate/Certificate.js
 Page({
 
   /**
