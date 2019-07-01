@@ -1,4 +1,5 @@
 // pages/Equipment/EquipmentApplication/EquipmentApplicationModify/EquipmentApplicationModify.js
+const app = getApp()
 Page({
 
   /**
@@ -7,12 +8,65 @@ Page({
   data: {
 
   },
+  bindDateChange: function (e) {
+    console.log("date")
+    console.log(e.detail.value)
+    this.setData({
+      'applicationDate': e.detail.value
+    })
+  },
+  bindDateChange2: function (e) {
+    console.log("date2")
+    console.log(e.detail.value)
+    this.setData({
+      'auditDate': e.detail.value
+    })
+  },
+  mytest: function (e) {
+    var that = this
+
+    //console.log(e.detail.value)
+    var myurl = app.globalData.url + 'EquipmentApplication/modifyOne/' + that.data.id;
+    var mydata = {
+      "applicant": e.detail.value.applicant,
+      "applicationDate": e.detail.value.applicationDate,
+      "applicationPurpose": e.detail.value.applicationPurpose,
+      "equipmentUse": e.detail.value.equipmentUse,
+      "equipmentNumber": e.detail.value.equipmentNumber,
+      "softwareInfo": e.detail.value.softwareInfo,
+      "auditor": e.detail.value.auditor,
+      "auditDate": e.detail.value.auditDate,
+      "auditOpinion": e.detail.value.auditOpinion,
+    };
+    app.wxRequest(myurl, 'POST', mydata, (res) => {
+      console.log(res.data)
+    }, (err) => {
+      console.log(err)
+    })
+    wx.redirectTo({
+      url: '/pages/Equipment/EquipmentUse/EquipmentUse',
+    })
+
+  },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad: function (option) {
+    var that = this;
+    console.log(option)
+    that.setData({
+      "id": option.id,
+      "applicant": option.applicant,
+      "applicationDate": option.applicationDate,
+      "applicationPurpose": option.applicationPurpose,
+      "equipmentUse": option.equipmentUse,
+      "equipmentNumber": option.equipmentNumber,
+      "softwareInfo": option.softwareInfo,
+      "auditor": option.auditor,
+      "auditDate": option.auditDate,
+      "auditOpinion": option.auditOpinion
+    })
   },
 
   /**

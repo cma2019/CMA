@@ -1,2 +1,58 @@
 <!--pages/Equipment/EquipmentApplication/EquipmentApplicationAddOne/EquipmentApplicationAddOne.wxml-->
-<text>pages/Equipment/EquipmentApplication/EquipmentApplicationAddOne/EquipmentApplicationAddOne.wxml</text>
+<scroll-view scroll-y>
+  <form bindsubmit='newEquipment'>
+    <view class="section">
+      <van-field name="applicant" value="{{applicant}}" required clearable label="applicant" placeholder="input applicant"></van-field>
+    </view>
+    <view class="section">
+      <picker name = 'applicationDate' mode='date' value='{{applicationDate}}' bindchange='bindDateChange'>
+          <view class='picker'>
+            <van-field 
+              name="applicationDate"
+              label="applicationDate"
+              value='{{applicationDate}}'
+              placeholder="input applicationDate" 
+              required
+              clearable
+            />
+          </view>
+      </picker> 
+    </view>
+    <view class="section">
+      <van-field name="applicationPurpose" value="{{applicationPurpose}}" required clearable label="applicationPurpose" placeholder="input applicationPurpose"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="equipmentUse" value="{{equipmentUse}}" required clearable label="equipmentUse" placeholder="input equipmentUse"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="equipmentNumber" value="{{equipmentNumber}}" required clearable label="equipmentNumber" placeholder="input equipmentNumber"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="softwareInfo" value="{{softwareInfo}}" required clearable label="softwareInfo" placeholder="input softwareInfo"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="auditor" value="{{auditor}}" required clearable label="auditor" placeholder="input auditor"></van-field>
+    </view>
+    <view class="section">
+      <picker name = 'auditDate' mode='date' value='{{auditDate}}' bindchange='bindDateChange2'>
+          <view class='picker'>
+            <van-field 
+              name="auditDate"
+              label="auditDate"
+              value='{{auditDate}}'
+              placeholder="input auditDate" 
+              required
+              clearable
+            />
+          </view>
+      </picker> 
+    </view>
+    <view class="section">
+      <van-field name="auditOpinion" value="{{auditOpinion}}" required clearable label="auditOpinion" placeholder="input auditOpinion"></van-field>
+    </view>
+    <view>
+      <button class='van-button--info' formType='submit'>new equipment use</button>
+    </view>
+  </form>
+</scroll-view>
+

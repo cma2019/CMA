@@ -1,11 +1,59 @@
 // pages/Equipment/EquipmentApplication/EquipmentApplicationAddOne/EquipmentApplicationAddOne.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    "id": null,
+    "applicant": null,
+    "applicationDate": null,
+    "applicationPurpose": null,
+    "equipmentUse": null,
+    "equipmentNumber": null,
+    "softwareInfo": null,
+    "auditor": null,
+    "auditDate": null,
+    "auditOpinion": null
+  },
+  bindDateChange: function (e) {
+    console.log("date")
+    console.log(e.detail.value)
+    this.setData({
+      'applicationDate': e.detail.value
+    })
+  },
+  bindDateChange2: function (e) {
+    console.log("date2")
+    console.log(e.detail.value)
+    this.setData({
+      'auditDate': e.detail.value
+    })
+  },
+  newEquipment: function (e) {
+    console.log(e.detail.value)
+    var myurl = app.globalData.url + 'EquipmentApplication/add';
+    var mydata = {
+      "applicant": e.detail.value.applicant,
+      "applicationDate": e.detail.value.applicationDate,
+      "applicationPurpose": e.detail.value.applicationPurpose,
+      "equipmentUse": e.detail.value.equipmentUse,
+      "equipmentNumber": e.detail.value.equipmentNumber,
+      "softwareInfo": e.detail.value.softwareInfo,
+      "auditor": e.detail.value.auditor,
+      "auditDate": e.detail.value.auditDate,
+      "auditOpinion": e.detail.value.auditOpinion
+    };
+    app.wxRequest(myurl, 'POST', mydata, (res) => {
+      console.log("add")
+      console.log(res)
+    }, (err) => {
+      console.log(err)
+    })
+    wx.redirectTo({
+      url: '/pages/Equipment/EquipmentApplication/EquipmentApplication',
+    })
   },
 
   /**
