@@ -80,7 +80,11 @@
     "pages/TrainingManagement/AnnualTrainingPlan/AllAnnualPlan/AddAnnualPlan/AddAnnualPlan",
     "pages/TrainingManagement/AnnualTrainingPlan/AllAnnualPlan/ApproveAnnualPlan/ApproveAnnualPlan",
     "pages/TrainingManagement/AnnualTrainingPlan/AllAnnualPlan/GetAnnualPlan/GetAnnualPlan",
-    "pages/TrainingManagement/AnnualTrainingPlan/AnnualTrainingPlan"
+    "pages/TrainingManagement/AnnualTrainingPlan/AnnualTrainingPlan",
+    "pages/Equipment/EquipmentApplication/EquipmentApplication",
+    "pages/Equipment/EquipmentApplication/EquipmentApplicationModify/EquipmentApplicationModify",
+    "pages/Equipment/EquipmentApplication/EquipmentApplicationGetOne/EquipmentApplicationGetOne",
+    "pages/Equipment/EquipmentApplication/EquipmentApplicationAddOne/EquipmentApplicationAddOne"
   ],
   "window": {
     "backgroundTextStyle": "light",
