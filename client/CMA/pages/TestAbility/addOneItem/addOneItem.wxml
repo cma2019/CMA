@@ -1,0 +1,33 @@
+<!--pages/IntermediateCheck/IntermediateCheck.wxml-->
+<view>
+  <form bindsubmit='AddoneTestItem'>
+    <van-cell-group title="input message">
+      <van-field 
+        name="productionName"
+        label="my productionName"
+        placeholder="input productionName"
+        required
+        clearable
+      />
+      <van-field 
+        name="ability"
+        label="my ability"
+        placeholder="input ability"
+        required
+        clearable
+      />    
+      <van-field
+        name="referrence"
+        label="my referrence"
+        placeholder="input referrence"
+        required
+        clearable
+        border = "{{false}}"
+      />
+    </van-cell-group>
+    <view>
+      <button class='van-button--info' formType='submit'>register</button>
+    </view>
+  </form>
+</view>
+<button class='van-button--info' bindtap="gotologin">go back</button>

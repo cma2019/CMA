@@ -90,7 +90,11 @@
     "pages/TestAbility/modifyOne/modifyOne",
     "pages/TestAbility/getAnnex/getAnnex",
     "pages/TestAbility/getAllItem/getAllItem",
+<<<<<<< HEAD
     "pages/TestAbility/addOneItem /addOneItem ",
+=======
+    "pages/TestAbility/addOneItem/addOneItem",
+>>>>>>> 83d7b2d741731358cf1f7a8d93f09d00b8c07072
     "pages/TestAbility/getOneItem/getOneItem",
     "pages/TestingInstitutionManagement/Certificate/Certificate",
     "pages/TestingInstitutionManagement/TestingInstitutionResource/TestingInstitutionResource",

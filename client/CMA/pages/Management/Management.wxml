@@ -61,7 +61,9 @@
       
     </van-collapse-item>
     <van-collapse-item title="检测检验能力管理" name="14">
-      
+      <van-cell-group>
+        <van-cell title="获取年度信息" boarder="{{false}}" is-link  center="{{true}}" url="../TestAbility/TestAbility"></van-cell>
+      </van-cell-group>
     </van-collapse-item>
     <van-collapse-item title="能力验证管理" name="15">
       <van-cell-group>

@@ -1,2 +1,15 @@
+<<<<<<< HEAD
 <!--pages/TestAbility/getOneItem/getOneItem.wxml-->
 <text>pages/TestAbility/getOneItem/getOneItem.wxml</text>
+=======
+<!--pages/IntermediateCheck/IntermediateCheckGetone/IntermediateCheckGetone.wxml-->
+<view>
+<van-cell-group title='message of {{year}}'>
+    <van-cell value="{{id}}"title="id"border="{{ false }}"/>
+    <van-cell value="{{productionName}}"title="productionName"border="{{ false }}"/>
+    <van-cell value="{{ability}}"title="ability"border="{{ false }}"/>
+    <van-cell value="{{referrence}}"title="referrence"border="{{ false }}"/>
+</van-cell-group>
+</view>
+<button class='van-button--info'bindtap="deleteData">delete</button>
+>>>>>>> 83d7b2d741731358cf1f7a8d93f09d00b8c07072
