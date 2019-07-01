@@ -6,13 +6,33 @@ Page({
    * 页面的初始数据
    */
   data: {
-    equipment: {}
+  },
+  bindDateChange: function (e) {
+    console.log("date")
+    console.log(e.detail.value)
+    this.setData({
+      'useDate': e.detail.value
+    })
+  },
+  bindDateChange2: function (e) {
+    console.log("date2")
+    console.log(e.detail.value)
+    this.setData({
+      'openDate': e.detail.value
+    })
+  },
+  bindDateChange3: function (e) {
+    console.log("date3")
+    console.log(e.detail.value)
+    this.setData({
+      'closeDate': e.detail.value
+    })
   },
   mytest: function (e) {
     var that = this
 
     //console.log(e.detail.value)
-    var myurl = app.globalData.url + 'EquipmentUse/modifyOne/' + that.data.equipment.id;
+    var myurl = app.globalData.url + 'EquipmentUse/modifyOne/' + that.data.id;
     var mydata = {
       "equipmentId": e.detail.value.equipmentId,
       "useDate": e.detail.value.useDate,
@@ -43,7 +63,17 @@ Page({
     var that = this;
     console.log(option)
     that.setData({
-      equipment: option
+      "id": option.id,
+      "equipmentId": option.equipmentId,
+      "useDate": option.useDate,
+      "openDate": option.openDate,
+      "closeDate": option.closeDate,
+      "sampleNumber": option.sampleNumber,
+      "testProject": option.testProject,
+      "beforeUse": option.beforeUse,
+      "afterUse": option.afterUse,
+      "user": option.user,
+      "remark": option.remark
     })
   },
 

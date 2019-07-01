@@ -1,18 +1,41 @@
 // pages/Equipment/EquipmentMaintenance/EquipmentMaintenanceGetOne/EquipmentMaintenanceGetOne.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    equipment: {}
   },
-
+  mydelete: function (e) {
+    var that = this
+    var myurl = app.globalData.url + 'EquipmentMaintenance/deleteOne/' + that.data.equipment.id;
+    app.wxRequest(myurl, 'POST', null, (res) => {
+      console.log(res)
+    }, (err) => {
+      console.log(err)
+    })
+    wx.redirectTo({
+      url: '/pages/Equipment/EquipmentMaintenance/EquipmentMaintenance',
+    })
+  },
+  viewDetail: function (e) {
+    console.log("display -> view")
+    var that = this
+    wx.redirectTo({
+      url: '/pages/Equipment/EquipmentMaintenance/EquipmentMaintenanceModify/EquipmentMaintenanceModify?id=' + that.data.equipment.id + "&equipmentId=" + that.data.equipment.equipmentId + "&maintenanceDate=" + that.data.equipment.maintenanceDate + "&maintenanceContent=" + that.data.equipment.maintenanceContent + "&maintenancePerson=" + that.data.equipment.maintenancePerson + "&confirmer=" + that.data.equipment.confirmer,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad: function (option) {
+    var that = this;
+    console.log(option)
+    that.setData({
+      equipment: option
+    })
   },
 
   /**

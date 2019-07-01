@@ -1,13 +1,45 @@
 // pages/Equipment/EquipmentMaintenance/EquipmentMaintenanceAddOne/EquipmentMaintenanceAddOne.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    "id": null,
+    "equipmentId": null,
+    "maintenanceDate": null,
+    "maintenanceContent": null,
+    "maintenancePerson": null,
+    "confirmer": null
   },
-
+  bindDateChange: function (e) {
+    console.log("date")
+    console.log(e.detail.value)
+    this.setData({
+      'maintenanceDate': e.detail.value
+    })
+  },
+  newEquipment: function (e) {
+    console.log(e.detail.value)
+    var myurl = app.globalData.url + 'EquipmentMaintenance/add';
+    var mydata = {
+      "equipmentId": e.detail.value.equipmentId,
+      "maintenanceDate": e.detail.value.maintenanceDate,
+      "maintenanceContent": e.detail.value.maintenanceContent,
+      "maintenancePerson": e.detail.value.maintenancePerson,
+      "confirmer": e.detail.value.confirmer
+    };
+    app.wxRequest(myurl, 'POST', mydata, (res) => {
+      console.log("add")
+      console.log(res)
+    }, (err) => {
+      console.log(err)
+    })
+    wx.redirectTo({
+      url: '/pages/Equipment/EquipmentMaintenance/EquipmentMaintenance',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
