@@ -1,2 +1,15 @@
-<!--pages/CapacityVerification/CapacityVerificationProject/CapacityVerificationProject.wxml-->
-<text>pages/CapacityVerification/CapacityVerificationProject/CapacityVerificationProject.wxml</text>
+<!--pages/IntermediateCheck/IntermediateCheck.wxml-->
+<view>
+  <form bindsubmit='GetProjects'>
+    <van-cell-group title="input message">
+      <van-field 
+        name="id"
+        label="my plan id"
+        placeholder="input plan iid"
+        required
+        clearable
+      />
+    </van-cell-group>
+    <button class='van-button--info' formType='submit'>register</button>
+  </form>
+</view>

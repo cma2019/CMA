@@ -1,2 +1,13 @@
-<!--pages/CapacityVerification/CapacityVerificationProject/getOneProject/getOneProject.wxml-->
-<text>pages/CapacityVerification/CapacityVerificationProject/getOneProject/getOneProject.wxml</text>
+<!--pages/IntermediateCheck/IntermediateCheckGetone/IntermediateCheckGetone.wxml-->
+<view>
+<van-cell-group title='message of {{id}}'>
+    <van-cell value="{{projectId}}"title="projectId"border="{{ false }}"/>
+    <van-cell value="{{planId}}"title="planId"border="{{ false }}"/>
+    <van-cell value="{{name}}"title="name"border="{{ false }}"/>
+    <van-cell value="{{method}}"title="method"border="{{ false }}"/>
+    <van-cell value="{{state}}"title="state"border="{{ false }}"/>
+    <van-cell value="{{note}}"title="note"/>
+</van-cell-group>
+</view>
+<button class='van-button--info' bindtap="modifyData">modify</button>
+<button class='van-button--info' bindtap="deleteData">delete</button>

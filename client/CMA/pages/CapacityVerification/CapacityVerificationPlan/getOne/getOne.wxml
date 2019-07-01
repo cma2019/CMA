@@ -1,2 +1,14 @@
-<!--pages/CapacityVerification/CapacityVerificationPlan/getOne/getOne.wxml-->
-<text>pages/CapacityVerification/CapacityVerificationPlan/getOne/getOne.wxml</text>
+<!--pages/IntermediateCheck/IntermediateCheckGetone/IntermediateCheckGetone.wxml-->
+<view>
+<van-cell-group title='message of {{planId}}'>
+    <van-cell value="{{name}}"title="name"border="{{ false }}"/>
+    <van-cell value="{{organizer}}"title="organizer"border="{{ false }}"/>
+    <van-cell value="{{state}}"title="state"border="{{ false }}"/>
+    <van-cell value="{{year}}"title="year"border="{{ false }}"/>
+    <van-cell value="{{note}}"title="note"border="{{ false }}"/>
+    <van-cell value="{{analysis}}"title="analysis"/>
+</van-cell-group>
+</view>
+<button class='van-button--info' bindtap="modifyData">modify</button>
+<button class='van-button--info' bindtap="deleteData">delete</button>
+<button class='van-button--info' bindtap="getProject">get projects</button>
