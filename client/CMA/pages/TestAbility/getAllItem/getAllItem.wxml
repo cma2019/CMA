@@ -2,15 +2,26 @@
 <view>
   <van-cell-group title="IntermediateCheck">
   <view wx:for="{{temp}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
+<<<<<<< HEAD
+    <van-cell value="详情" bindtap='gotoOne' id='{{item.planId}}' is-link>
+      <view slot="title">
+        <view>year : {{item.year}}</view>
+        <view>fileName : {{item.fileName}}</view>
+        <view>file : {{item.file}}</view>
+=======
     <van-cell value="详情" bindtap='gotoOne' id='{{item.id}}' is-link>
       <view slot="title">
         <view>year : {{item.year}}</view>
         <view>id : {{item.id}}</view>
         <view>productionName : {{item.productionName}}</view>
+>>>>>>> 83d7b2d741731358cf1f7a8d93f09d00b8c07072
       </view>
     </van-cell>
   </view>
   </van-cell-group>
 </view>
 <van-button type="info" size="small" bindtap="gotoAdd">Add an test ability</van-button>
+<<<<<<< HEAD
+=======
 <van-button type="info" size="small" bindtap="gotoModify">Modify year message</van-button>
+>>>>>>> 83d7b2d741731358cf1f7a8d93f09d00b8c07072

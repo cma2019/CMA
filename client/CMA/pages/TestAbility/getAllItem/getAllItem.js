@@ -8,6 +8,13 @@ Page({
     "temp":
       [{
         "year": 1,
+        "fileName": "222",
+        "file": "content1",
+      },
+      {
+        "year": 1,
+        "fileName": "333",
+        "file": "content2",
         "id": "222",
         "productionName": "content1",
         "ability": "cont21",
@@ -23,6 +30,11 @@ Page({
   },
 
   onLoad: function (options) {
+  },
+
+  onShow: function (options) {
+    let url = app.globalData.url + 'TestAbility/getAll'
+    let postdata = ''
     this.setData({
       year: options.id
     })
@@ -37,6 +49,9 @@ Page({
       this.setData({
         mess: res.data
       })
+      console.log('plan get all success')
+    }, (err) => {
+      console.err('getone error')
       console.log('get all item success')
     }, (err) => {
       console.err('get all item error')

@@ -45,7 +45,11 @@ Page({
     console.log('getone id')
     console.log(target)
     wx.navigateTo({
+<<<<<<< HEAD
+      url: 'modifyOne/modifyOne?year=' + target
+=======
       url: 'getAllItem/getAllItem?id=' + target
+>>>>>>> 83d7b2d741731358cf1f7a8d93f09d00b8c07072
     })
   }
 })
