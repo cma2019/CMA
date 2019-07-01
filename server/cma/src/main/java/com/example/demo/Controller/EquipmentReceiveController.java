@@ -69,7 +69,8 @@ public class EquipmentReceiveController {
         equipment.setReceiveDate(receiveDate);
         equipment.setRecipient(recipient);
         equipment.setEquipmentSituation(equipmentSituation);
-
+        System.out.println(acceptanceDate);
+        System.out.println(equipment.getAcceptanceDate());
         ERRepository.save(equipment);
         System.out.println(equipment.getId());
         // JSONObject ejson = JSONObject.parseObject(JSONObject.toJSONString(equipment));
