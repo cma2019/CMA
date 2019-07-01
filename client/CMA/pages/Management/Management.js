@@ -108,7 +108,7 @@ Page({
       url: '../Equipment/EquipmentMaintenance/EquipmentMaintenance',
     })
   },
-  gotoEquipment4: function () {
+  gotoEquipment5: function () {
     wx.navigateTo({
       url: '../Equipment/EquipmentApplication/EquipmentApplication',
     })
