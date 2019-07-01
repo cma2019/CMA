@@ -11,3 +11,4 @@
 </view>
 <button class='van-button--info' bindtap="modifyData">modify</button>
 <button class='van-button--info' bindtap="deleteData">delete</button>
+<button class='van-button--info' bindtap="getPlans">get plans</button>

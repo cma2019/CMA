@@ -16,7 +16,7 @@
         required
         clearable
       />
-        <picker name = 'date' mode='date' value='{{date}}' bindchange='bindDateChange'>
+      <picker name = 'date' mode='date' value='{{date}}' bindchange='bindDateChange'>
           <view class='picker'>
             <van-field 
               name="date"
@@ -27,7 +27,7 @@
               clearable
             />
           </view>
-        </picker>      
+      </picker>      
       <van-field
         name="personInCharge"
         label="my personInCharge"

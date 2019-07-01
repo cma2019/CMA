@@ -66,12 +66,12 @@ Page({
     })
   },
 
-  getProject(e){
+  getProjects(e){
     console.log("get projects")
     let target = this.data.planId
     console.log(target)
     wx.navigateTo({
-      url: '../../CapacityVerificationProject/showProjects?id=' + target
+      url: '../../CapacityVerificationProject/showProjects/showProjects?id=' + target
     })
   }
 })

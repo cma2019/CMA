@@ -1,4 +1,4 @@
-// pages/CapacityVerification/CapacityVerificationPlan/deleteOne/deleteOne.js
+// pages/TestAbility/getAllItem/getAllItem.js
 Page({
 
   /**

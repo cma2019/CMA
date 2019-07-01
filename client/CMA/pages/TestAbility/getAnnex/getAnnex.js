@@ -1,4 +1,4 @@
-// pages/CapacityVerification/CapacityVerificationRecord/deleteOneRecord/deleteOneRecord.js
+// pages/TestAbility/getAnnex/getAnnex.js
 Page({
 
   /**

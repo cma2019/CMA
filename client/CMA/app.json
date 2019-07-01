@@ -84,7 +84,13 @@
     "pages/Equipment/EquipmentApplication/EquipmentApplication",
     "pages/Equipment/EquipmentApplication/EquipmentApplicationModify/EquipmentApplicationModify",
     "pages/Equipment/EquipmentApplication/EquipmentApplicationGetOne/EquipmentApplicationGetOne",
-    "pages/Equipment/EquipmentApplication/EquipmentApplicationAddOne/EquipmentApplicationAddOne"
+    "pages/Equipment/EquipmentApplication/EquipmentApplicationAddOne/EquipmentApplicationAddOne",
+    "pages/TestAbility/TestAbility",
+    "pages/TestAbility/addOne/addOne",
+    "pages/TestAbility/modifyOne/modifyOne",
+    "pages/TestAbility/getAnnex/getAnnex",
+    "pages/TestAbility/getAllItem/getAllItem",
+    "pages/TestAbility/addOneItem /addOneItem "
   ],
   "window": {
     "backgroundTextStyle": "light",

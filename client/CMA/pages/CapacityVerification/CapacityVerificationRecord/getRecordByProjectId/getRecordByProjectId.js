@@ -1,66 +1,74 @@
-// pages/CapacityVerification/CapacityVerificationRecord/getRecordByProjectId/getRecordByProjectId.js
+// pages/IntermediateCheck/IntermediateCheck.js
+const app = getApp()
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    "projectId": null,
+    "mess": null,
+    "temp":
+      [{
+        "recordId": 3,
+        "date": "2",
+        "methodId": "namename",
+        "equipmentName": "22",
+        "equipmentId": "2000",
+        "experimenter": "note",
+        "result": "note",
+        "resultDeal": "note",
+        "note": "note"
+      },
+      {
+        "recordId": 5,
+        "date": "33",
+        "methodId": "methodIdmethodId",
+        "equipmentName": "2321",
+        "equipmentId": "232",
+        "experimenter": "noeate",
+        "result": "notdsade",
+        "resultDeal": "noasaste",
+        "note": "nodsaste"
+      }]
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-
+    this.setData({
+      projectId: options.id
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  onShow: function (options) {
+    let url = app.globalData.url + 'CapacityVerification/getRecordByProjectId'
+    let data = {
+      "projectId": this.data.projectId,
+    }
+    console.log(data)
+    app.wxRequest(url, 'GET', data, (res) => {
+      this.setData({
+        mess: res.data
+      })
+      console.log('get projects from planid')
+    }, (err) => {
+      console.log('fail projects from planid')
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  gotoAdd(e) {
+    console.log(e)
+    let target = e.currentTarget.projectId
+    console.log('getone id')
+    console.log(target)
+    wx.navigateTo({
+      url: '../addOneRecord/addOneRecord?id=' + target,
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  gotoOne(e) {
+    console.log(e)
+    let target = e.currentTarget.recordId
+    console.log('getone id')
+    console.log(target)
+    wx.navigateTo({
+      url: '../getOneRecord/getOneRecord?id=' + target
+    })
   }
 })
