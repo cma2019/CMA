@@ -57,30 +57,25 @@
     "pages/CapacityVerification/CapacityVerificationProject/CapacityVerificationProject",
     "pages/CapacityVerification/CapacityVerificationPlan/addOne/addOne",
     "pages/CapacityVerification/CapacityVerificationPlan/deleteAnalysis/deleteAnalysis",
-    "pages/CapacityVerification/CapacityVerificationPlan/deleteOne/deleteOne",
     "pages/CapacityVerification/CapacityVerificationPlan/downloadAnalysis/downloadAnalysis",
     "pages/CapacityVerification/CapacityVerificationPlan/getOne/getOne",
     "pages/CapacityVerification/CapacityVerificationPlan/modifyOne/modifyOne",
     "pages/CapacityVerification/CapacityVerificationPlan/uploadAnalysis/uploadAnalysis",
     "pages/CapacityVerification/CapacityVerificationProject/addOneProject/addOneProject",
-    "pages/CapacityVerification/CapacityVerificationProject/deleteOneProject/deleteOneProject",
     "pages/CapacityVerification/CapacityVerificationProject/getOneProject/getOneProject",
     "pages/CapacityVerification/CapacityVerificationProject/modifyOneProject/modifyOneProject",
+    "pages/CapacityVerification/CapacityVerificationProject/showProjects/showProjects",
     "pages/CapacityVerification/CapacityVerificationRecord/addOneRecord/addOneRecord",
-    "pages/CapacityVerification/CapacityVerificationRecord/deleteOneRecord/deleteOneRecord",
     "pages/CapacityVerification/CapacityVerificationRecord/getOneRecord/getOneRecord",
     "pages/CapacityVerification/CapacityVerificationRecord/getRecordByProjectId/getRecordByProjectId",
     "pages/CapacityVerification/CapacityVerificationRecord/modifyOneRecord/modifyOneRecord",
     "pages/CapacityVerification/CapacityVerificationRecord/CapacityVerificationRecord",
     "pages/Supervision/SupervisionApprove/SupervisionApprove",
-<<<<<<< HEAD
-=======
     "pages/Equipment/EquipmentMaintenance/EquipmentMaintenance",
     "pages/Equipment/EquipmentMaintenance/EquipmentMaintenanceAddOne/EquipmentMaintenanceAddOne",
     "pages/Equipment/EquipmentMaintenance/EquipmentMaintenanceGetOne/EquipmentMaintenanceGetOne",
     "pages/Equipment/EquipmentMaintenance/EquipmentMaintenanceModify/EquipmentMaintenanceModify",
     "pages/Equipment/EquipmentMaintenance/EquipmentMaintenanceGetAllByID/EquipmentMaintenanceGetAllByID"
->>>>>>> b0dd920c27a1d3a565b5e3bdde0a24e51eb47af5
   ],
   "window": {
     "backgroundTextStyle": "light",
