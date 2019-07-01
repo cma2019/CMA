@@ -1,4 +1,6 @@
 //app.js
+const CryptoJS = require("/utils/cryptojs.js")
+
 App({
 
   globalData: {
@@ -7,6 +9,7 @@ App({
   },
 
   wxRequest(url, method, data, callback, errfun) {
+    //data = CryptoJS.Encrypt(data)
     wx.request({
       url: url,
       method: method,
@@ -16,6 +19,8 @@ App({
         'Accept': 'application/json'
       },
       success: function (res) {
+        //var resdata = CryptoJS.Decrypt(res.data)
+        //callback(resdata)
         callback(res.data);
       },
       fail: function (err) {
