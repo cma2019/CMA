@@ -76,7 +76,8 @@
     "pages/Equipment/EquipmentMaintenance/EquipmentMaintenance",
     "pages/Equipment/EquipmentMaintenance/EquipmentMaintenanceAddOne/EquipmentMaintenanceAddOne",
     "pages/Equipment/EquipmentMaintenance/EquipmentMaintenanceGetOne/EquipmentMaintenanceGetOne",
-    "pages/Equipment/EquipmentMaintenance/EquipmentMaintenanceModify/EquipmentMaintenanceModify"
+    "pages/Equipment/EquipmentMaintenance/EquipmentMaintenanceModify/EquipmentMaintenanceModify",
+    "pages/Equipment/EquipmentMaintenance/EquipmentMaintenanceGetAllByID/EquipmentMaintenanceGetAllByID"
   ],
   "window": {
     "backgroundTextStyle": "light",
