@@ -1,2 +1,53 @@
-<!--pages/TrainingManagement/AnnualTrainingPlan/AllAnnualPlan/ApproveAnnualPlan/ApproveAnnualPlan.wxml-->
-<text>pages/TrainingManagement/AnnualTrainingPlan/AllAnnualPlan/ApproveAnnualPlan/ApproveAnnualPlan.wxml</text>
+<!--pages/TrainingApplication/ModifyApplication/ModifyApplication.wxml-->
+<view>
+  <form bindsubmit='intercheckmodify'>
+  <van-cell-group>
+      <van-field 
+        name="year"
+        label="year"
+        value='{{year}}'
+        readonly
+        required
+        clearable
+      />
+      <van-field 
+        name="author"
+        label="author"
+        value='{{author}}' 
+        readonly
+        clearable
+      />
+      <van-field 
+        name="createDate"
+        label="createDate"
+        value='{{createDate}}' 
+        readonly
+        clearable
+      />
+      <van-field 
+        name="approver"
+        label="approver"
+        value='{{approver}}'
+        
+        required
+        clearable
+      />
+    <view class="section">
+        <picker name = 'approveDate' mode='date' value='{{approveDate}}' bindchange='bindDateChange'>
+        <view class='picker'>
+        <van-field 
+        label="approveDate"
+        value='{{approveDate}}'
+        />
+        </view>
+        </picker>
+    </view>
+    </van-cell-group>
+    
+
+    <view>
+      <button class='van-button--info' formType='submit'>ApproveAnnualPlan</button>
+    </view>
+  </form>
+</view>
+<van-button type="info" size="small" bindtap="goback">go back</van-button> 

@@ -1,2 +1,14 @@
-<!--pages/TrainingManagement/AnnualTrainingPlan/AllAnnualPlan/AllAnnualPlan.wxml-->
-<text>pages/TrainingManagement/AnnualTrainingPlan/AllAnnualPlan/AllAnnualPlan.wxml</text>
+<view>
+  <van-cell-group title="AllAnnualPlan">
+  <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
+  <van-cell value="详情" bindtap='gotoOne' id='{{item.year}}' is-link>
+      <view slot="title">
+        <view>year : {{item.year}}</view>
+        <view>author : {{item.author}}</view>
+        <view>approver : {{item.approver}}</view>
+      </view>
+  </van-cell>
+</view>
+  </van-cell-group>
+</view>
+    <van-button type="info" size="small" bindtap="gotoAdd">Add AllAnnualPlan</van-button> 

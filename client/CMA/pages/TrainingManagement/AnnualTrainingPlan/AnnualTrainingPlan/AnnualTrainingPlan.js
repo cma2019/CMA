@@ -56,7 +56,7 @@ Page({
     console.log('getone id')
     console.log(target)
     wx.navigateTo({
-      url: 'PrintOneApplication/PrintOneApplication?planId=' + target
+      url: 'PrintOneAnnualTrainingPlan/PrintOneAnnualTrainingPlan?id=' + target
     })
   }
 })

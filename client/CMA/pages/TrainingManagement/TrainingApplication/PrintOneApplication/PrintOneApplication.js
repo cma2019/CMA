@@ -31,7 +31,7 @@ Page({
         department: res.data.department,
         createDate: res.data.createDate,
         approver: res.data.approver,
-        approveDate: res.data.approveDate
+        approveDate: (res.data.approver=="")?res.data.approver:res.data.approveDate
       })
     }, (err) => {
       console.err('get one error')

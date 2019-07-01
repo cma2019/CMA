@@ -1,2 +1,16 @@
-<!--pages/TrainingManagement/AnnualTrainingPlan/PrintOneAnnualTrainingPlan/PrintOneAnnualTrainingPlan.wxml-->
-<text>pages/TrainingManagement/AnnualTrainingPlan/PrintOneAnnualTrainingPlan/PrintOneAnnualTrainingPlan.wxml</text>
+<!--pages/TrainingApplication/PringOneApplication/PrintOneApplication.wxml-->
+<view>
+  <van-cell-group>
+  <van-cell title="year" value="{{year}}" />
+  <van-cell title="planId" value="{{planId}}" />
+  <van-cell title="trainProject" value="{{trainProject}}" />
+  <van-cell title="people" value="{{people}}" />
+  <van-cell title="method" value="{{method}}" />
+  <van-cell title="trainingTime" value="{{trainingTime}}" />
+  <van-cell title="startTime" value="{{startTime}}" />
+  <van-cell title="endTime" value="{{endTime}}" />
+  <van-cell title="note" value="{{note}}" />
+  </van-cell-group>
+</view>
+ <van-button type="info" size="small" bindtap="ModifyStaff">Modify</van-button> 
+ <van-button type="info" size="small" bindtap="DeleteStaff">Delete</van-button> 

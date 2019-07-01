@@ -1,66 +1,89 @@
-// pages/TrainingManagement/AnnualTrainingPlan/ModifyAnnualTrainingPlan/ModifyAnnualTrainingPlan.js
+// pages/StaffManagement/ModifyStaff/ModifyStaff.js
+const app = getApp()
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-
+    this.setData({
+      id: options.id
+    })
+    console.log(this.data.id)
+    let url = app.globalData.url + 'AnnualTrainingPlan/getOne'
+    let postdata = {
+      "planId": this.data.id
+    }
+    console.log(url)
+    console.log(postdata)
+    app.wxRequest(url, 'GET', postdata, (res) => {
+      console.log("data modify")
+      console.log(res.data.trainProject)
+      this.setData({
+        planId: res.data.planId,
+        trainProject: res.data.trainProject,
+        people: res.data.people,
+        method: res.data.method,
+        trainingTime: res.data.trainingTime,
+        startTime: res.data.startTime,
+        endTime: res.data.endTime,
+        note: res.data.note
+      })
+    }, (err) => {
+      console.err('get one error')
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  bindDateChange1: function (e) {
+    console.log("date")
+    console.log(e.detail.value)
+    this.setData({
+      startTime: e.detail.value
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  bindDateChange2: function (e) {
+    console.log("date")
+    console.log(e.detail.value)
+    this.setData({
+      endTime: e.detail.value
+    })
   },
+  intercheckmodify: function (e) {
+    console.log('modify modify')
+    {
+      let url = app.globalData.url + 'AnnualTrainingPlan/modifyOne';
+      console.log(url)
+      console.log(this.data.planId)
+      let data = {
+        //"id ":this.data.id,
+        "planId": e.detail.value.planId,
+        "trainProject": e.detail.value.trainProject,
+        "people": e.detail.value.people,
+        "method": e.detail.value.method,
+        "trainingTime": e.detail.value.trainingTime,
+        "startTime": e.detail.value.startTime,
+        "endTime": e.detail.value.endTime,
+        "note": e.detail.value.note,
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
 
+      };
+      console.log(data)
+      app.wxRequest(url, 'POST', data, (res) => {
+        console.log('modify message successfully')
+        console.log(res)
+        /*
+        if (res.data == "modify successfully.") {
+          wx.navigateBack({
+            delta: 1
+          })
+        }
+        */
+      }, (err) => {
+        console.log('fail modify')
+      })
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  goback: function () {
+    wx.navigateBack({
+      delta: 1
+    })
   }
 })

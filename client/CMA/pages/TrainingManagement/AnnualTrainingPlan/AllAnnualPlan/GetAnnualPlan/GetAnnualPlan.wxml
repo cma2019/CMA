@@ -1,2 +1,11 @@
-<!--pages/TrainingManagement/AnnualTrainingPlan/AllAnnualPlan/GetAnnualPlan/GetAnnualPlan.wxml-->
-<text>pages/TrainingManagement/AnnualTrainingPlan/AllAnnualPlan/GetAnnualPlan/GetAnnualPlan.wxml</text>
+<!--pages/TrainingApplication/PringOneApplication/PrintOneApplication.wxml-->
+<view>
+  <van-cell-group>
+  <van-cell title="year" value="{{year}}" />
+  <van-cell title="author" value="{{author}}" />
+  <van-cell title="createDate" value="{{createDate}}" />
+  <van-cell title="approver" value="{{approver}}" />
+  <van-cell title="approveDate" value="{{approveDate}}" />
+  </van-cell-group>
+</view>
+  <van-button type="info" size="small" bindtap="ApproveStaff">Approve</van-button> 
