@@ -22,6 +22,7 @@
     "pages/SampleManagement/SampleIo/ioAddOne/ioAddOne",
     "pages/SampleManagement/SampleIo/ioGetOne/ioGetOne",
     "pages/SampleManagement/SampleIo/ioModifyOne/ioModifyOne",
+    "pages/SampleManagement/SampleIo/ioReceiptDetail/ioReceiptDetail",
     "pages/SampleManagement/SampleReceipt/SampleReceipt",
     "pages/SampleManagement/SampleReceipt/receiptAddOne/receiptAddOne",
     "pages/SampleManagement/SampleReceipt/receiptGetOne/receiptGetOne",
