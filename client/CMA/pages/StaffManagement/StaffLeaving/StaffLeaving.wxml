@@ -1,7 +1,7 @@
 <view>
   <van-cell-group title="StaffLeaving">
   <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
-  <van-cell value="详情" bindtap='gotoOne' id='{{item.id}}' is-link>
+  <van-cell  bindtap='gotoOne' id='{{item.id}}' >
       <view slot="title">
         <view>name : {{item.name}}</view>
         <view>department : {{item.department}}</view>
