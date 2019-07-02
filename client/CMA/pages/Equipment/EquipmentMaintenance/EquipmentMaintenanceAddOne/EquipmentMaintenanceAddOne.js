@@ -22,7 +22,7 @@ Page({
   },
   newEquipment: function (e) {
     console.log(e.detail.value)
-    var myurl = app.globalData.url + 'EquipmentMaintenance/add';
+    var myurl = app.globalData.url + 'EquipmentMaintenance/addOne';
     var mydata = {
       "equipmentId": e.detail.value.equipmentId,
       "maintenanceDate": e.detail.value.maintenanceDate,

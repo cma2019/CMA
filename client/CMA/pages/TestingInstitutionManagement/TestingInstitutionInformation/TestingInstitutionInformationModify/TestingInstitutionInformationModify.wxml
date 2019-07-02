@@ -1,0 +1,89 @@
+<!--pages/TestingInstitutionManagement/TestingInstitutionInformation/TestingInstitutionInformationModify/TestingInstitutionInformationModify.wxml-->
+<scroll-view scroll-y>
+  <form bindsubmit='mytest'>
+    <view class="section">
+      <van-field name="testingInstitutionName" value="{{testingInstitutionName}}" required clearable label="testingInstitutionName" placeholder="input testingInstitutionName"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="testingInstitutionAddress" value="{{testingInstitutionAddress}}" required clearable label="testingInstitutionAddress" placeholder="input testingInstitutionAddress"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="postcode" value="{{postcode}}" required clearable label="postcode" placeholder="input postcode"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="fax" value="{{fax}}" required clearable label="fax" placeholder="input fax"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="email" value="{{email}}" required clearable label="email" placeholder="input email"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="tiPeopleInCharge" value="{{tiPeopleInCharge}}" required clearable label="tiPeopleInCharge" placeholder="input tiPeopleInCharge"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="tiPicPosition" value="{{tiPicPosition}}" required clearable label="tiPicPosition" placeholder="input tiPicPosition"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="tiPicTelephone" value="{{tiPicTelephone}}" required clearable label="tiPicTelephone" placeholder="input tiPicTelephone"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="tiPicMobilephone" value="{{tiPicMobilephone}}" required clearable label="tiPicMobilephone" placeholder="input tiPicMobilephone"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="liaison" value="{{liaison}}" required clearable label="liaison" placeholder="input liaison"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="liaisonPosition" value="{{liaisonPosition}}" required clearable label="liaisonPosition" placeholder="input liaisonPosition"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="liaisonTelephone" value="{{liaisonTelephone}}" required clearable label="liaisonTelephone" placeholder="input liaisonTelephone"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="liaisonMobilephone" value="{{liaisonMobilephone}}" required clearable label="liaisonMobilephone" placeholder="input liaisonMobilephone"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="socialCreditCode" value="{{socialCreditCode}}" required clearable label="socialCreditCode" placeholder="input socialCreditCode"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="legalEntityBelongedName" value="{{legalEntityBelongedName}}" required clearable label="legalEntityBelongedName" placeholder="input legalEntityBelongedName"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="legalEntityBelongedAddress" value="{{legalEntityBelongedAddress}}" required clearable label="legalEntityBelongedAddress" placeholder="input legalEntityBelongedAddress"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="lebPeopelInCharge" value="{{lebPeopelInCharge}}" required clearable label="lebPeopelInCharge" placeholder="input lebPeopelInCharge"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="lebPicPosition" value="{{lebPicPosition}}" required clearable label="lebPicPosition" placeholder="input lebPicPosition"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="lebPicTelephone" value="{{lebPicTelephone}}" required clearable label="lebPicTelephone" placeholder="input lebPicTelephone"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="lebSocialCreditCode" value="{{lebSocialCreditCode}}" required clearable label="lebSocialCreditCode" placeholder="input lebSocialCreditCode"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="competentDepartmentName" value="{{competentDepartmentName}}" required clearable label="competentDepartmentName" placeholder="input competentDepartmentName"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="competentDepartmentAddress" value="{{competentDepartmentAddress}}" required clearable label="competentDepartmentAddress" placeholder="input competentDepartmentAddress"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="cdPeopelInCharge" value="{{cdPeopelInCharge}}" required clearable label="cdPeopelInCharge" placeholder="input cdPeopelInCharge"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="cdPicPosition" value="{{cdPicPosition}}" required clearable label="cdPicPosition" placeholder="input cdPicPosition"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="cdPicTelephone" value="{{cdPicTelephone}}" required clearable label="cdPicTelephone" placeholder="input cdPicTelephone"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="characteristic" value="{{characteristic}}" required clearable label="characteristic" placeholder="input characteristic"></van-field>
+    </view>
+    <view class="section">
+      <van-field name="legalEntity" value="{{legalEntity}}" required clearable label="legalEntity" placeholder="input legalEntity"></van-field>
+    </view>
+    <view>
+      <button class='van-button--info' form-type='submit'>Modify</button>
+    </view>
+  </form>
+</scroll-view>
