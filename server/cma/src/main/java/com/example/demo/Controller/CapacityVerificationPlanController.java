@@ -45,7 +45,7 @@ public class CapacityVerificationPlanController {
                 json.put("code",200);
                 json.put("msg","获取成功");
 
-                json.put("data:",CapacityVerificationPlanRepository.findAll());
+                json.put("data",CapacityVerificationPlanRepository.findAll());
             }catch (JSONException e){
                 e.printStackTrace();
             }

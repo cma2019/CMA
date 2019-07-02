@@ -39,7 +39,7 @@ public class CapacityVerificationProjectController {
             try {
                 json.put("code", 200);
                 json.put("msg", "获取成功");
-                json.put("data:",CapacityVerificationProjectRepository.findAllByPlanId(planId));
+                json.put("data",CapacityVerificationProjectRepository.findAllByPlanId(planId));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
