@@ -54,7 +54,7 @@ Page({
     var thispage = this
     console.log('getone发生了事件，携带数据为：', this.data.id)
     wx.request({
-      url: app.globalData.url + 'Supervision/getOne',
+      url: app.globalData.url + 'SupervisionPlan/getAll',
       method: 'GET',
       data: {
         "id": this.data.id
@@ -77,6 +77,7 @@ Page({
             obtainDate: res.data.data.obtainDate,
             note:res.data.data.note
           })*/
+          console.log(res.data)
           thispage.setData({
             info : res.data.data
           })
@@ -86,7 +87,7 @@ Page({
           })
         }
         else if (res.data.code == 521) {
-          console.log(res.data.msg)
+          console.log(res)
           wx.showToast({
             title: '未收到标识编号',
             duration: 1500
@@ -94,7 +95,7 @@ Page({
           console.log('未收到标识编号')
         }
         else {//522
-          console.log(res.data.msg)
+          console.log(res)
           console.log("12")
           wx.showToast({
             title: '数据不存在',

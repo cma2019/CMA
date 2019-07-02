@@ -10,7 +10,7 @@ import com.example.demo.Model.IntermediateChecksPlan;
 import java.sql.Date;
 
 @Transactional
-public interface PlanRepository extends JpaRepository<IntermediateChecksPlan,Long> {
+public interface IntermediateChecksPlanRepository extends JpaRepository<IntermediateChecksPlan,Long> {
         @Modifying
 
     @Query(value="update Intermediate_Checks_Plan set object = :object,content = :content,check_Date = :checkDate,person_In_Charge = :personInCharge,state = :state where planid=:planid",nativeQuery=true)

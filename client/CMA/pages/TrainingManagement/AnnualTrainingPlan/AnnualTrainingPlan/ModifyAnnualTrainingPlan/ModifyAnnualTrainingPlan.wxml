@@ -1,2 +1,83 @@
-<!--pages/TrainingManagement/AnnualTrainingPlan/ModifyAnnualTrainingPlan/ModifyAnnualTrainingPlan.wxml-->
-<text>pages/TrainingManagement/AnnualTrainingPlan/ModifyAnnualTrainingPlan/ModifyAnnualTrainingPlan.wxml</text>
+<!--pages/TrainingApplication/ModifyApplication/ModifyApplication.wxml-->
+<view>
+  <form bindsubmit='intercheckmodify'>
+  <van-cell-group>
+      <van-field 
+        name="planId"
+        label="planId"
+        value='{{planId}}'
+        readonly
+        required
+        clearable
+      />
+      <van-field 
+        name="trainProject"
+        label="trainProject"
+        value='{{trainProject}}'
+        placeholder="input trainProject" 
+   
+        clearable
+      />
+      <van-field 
+        name="people"
+        label="people"
+        value='{{people}}'
+        placeholder="input people" 
+       
+        clearable
+      />
+      <van-field 
+        name="method"
+        label="method"
+        value='{{method}}'
+        placeholder="input method" 
+        
+        clearable
+      />
+      <van-field 
+        name="trainingTime"
+        label="trainingTime"
+        value='{{trainingTime}}'
+        placeholder="input trainingTime" 
+       
+        clearable
+      />
+      <view class="section">
+        <picker name = 'startTime' mode='date' value='{{startTime}}' bindchange='bindDateChange1'>
+        <view class='picker'>
+        <van-field 
+        label="startTime"
+        value='{{startTime}}'
+        />
+        </view>
+        </picker>
+    </view>
+    <view class="section">
+        <picker name = 'endTime' mode='date' value='{{endTime}}' bindchange='bindDateChange2'>
+        <view class='picker'>
+        <van-field 
+        label="endTime"
+        value='{{endTime}}'
+        />
+        </view>
+        </picker>
+    </view>
+      <van-field 
+        name="note"
+        label="note"
+        value='{{note}}'
+        placeholder="input note" 
+       
+        clearable
+      />
+      
+    </van-cell-group>
+    
+
+    <view>
+      <button class='van-button--info' formType='submit'>Modify AnnualTrainingPlan</button>
+    </view>
+  </form>
+</view>
+<van-button type="info" size="small" bindtap="goback">go back</van-button> 
+

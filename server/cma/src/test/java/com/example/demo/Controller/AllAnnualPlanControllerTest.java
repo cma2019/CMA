@@ -1,9 +1,10 @@
 package com.example.demo.Controller;
 
 import com.example.demo.DemoApplication;
-import com.example.demo.Model.AllAnnualPlan;
-import com.example.demo.Repository.AllAnnualPlanRepository;
-import net.minidev.json.JSONObject;
+import com.example.demo.Model.Equipment;
+import com.example.demo.Repository.EquipmentRepository;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import org.codehaus.jackson.JsonProcessingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.After;

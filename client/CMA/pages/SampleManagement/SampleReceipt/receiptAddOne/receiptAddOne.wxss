@@ -1,1 +1,13 @@
 /* page_SampleIo/ioAddone/ioAddone.wxss */
+.addone-icon{
+    position: absolute;
+    right: 45rpx;
+    top: 25rpx;
+    width: 45rpx;
+    height: 45rpx;
+}
+.addone-icon image{
+  display: block;
+  width: 45rpx;
+  height: 45rpx;
+}

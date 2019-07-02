@@ -1,5 +1,6 @@
 // pages/IntermediateCheck/IntermediateCheck.js
 const app = getApp()
+const CryptoJS = require("../../utils/cryptojs.js")
 Page({
 
   data: {
@@ -18,6 +19,15 @@ Page({
   },
 
   onLoad: function (options) {
+    /*
+    var word = "131656511"
+    var re = CryptoJS.Encrypt(word)
+    console.log("secret")
+    console.log(re)
+    var re2 = CryptoJS.Decrypt(re)
+    console.log("secret")
+    console.log(re2)
+    */
   },
 
   onShow: function (options) {

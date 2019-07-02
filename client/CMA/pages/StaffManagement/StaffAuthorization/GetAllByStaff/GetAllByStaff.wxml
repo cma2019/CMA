@@ -1,0 +1,19 @@
+<view>
+  <van-cell-group title="AnnualTrainingPlan">
+  <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
+  <van-cell value="详情" id='{{item.id}}'>
+      <view slot="title">
+        <view>name : {{item.name}}</view>
+        <view>department : {{item.department}}</view>
+        <view>position : {{item.position}}</view>
+        <view>authorizationId : {{item.authorizationId}}</view>
+        <view>authorizerId : {{item.authorizerId}}</view>
+        <view>content : {{item.content}}</view>
+        <view>authorizerName : {{item.authorizerName}}</view>
+        <view>authorizerDate : {{item.authorizerDate}}</view>
+      </view>
+  </van-cell>
+</view>
+  </van-cell-group>
+</view>
+<van-button type="info" size="small" bindtap="goback">go back</van-button> 

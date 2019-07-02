@@ -1,1 +1,17 @@
 /* page_SampleIo/SampleIo/SampleIo.wxss */
+.search{
+    padding: 30rpx;
+}
+.search-text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60rpx;
+    color: #aaa;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 20rpx;
+}
+.search-text icon{
+    margin-right: 10rpx;
+}

@@ -1,0 +1,11 @@
+<!--pages/SampleManagement/SampleReceipt/receiptAddOne/receiptTypeAdd.wxml-->
+<view>
+  <block wx:for="{{receiptType}}" wx:key="{{index}}">
+    <picker name = 'receiptType' range="{{array}}" value='{{index}}' bindchange='bindreceiptTypeChange'>
+      <view class='picker'>
+        <van-field  name="receiptType" label="类型" value='{{objectArray[receiptType[index]].name}}' placeholder="请选择提交材料的类型"  required clearable />
+      </view>
+    </picker>
+  </block>
+  <button class="van-button--info" bindtap="receiptTypeAdd">添加</button>
+</view>
