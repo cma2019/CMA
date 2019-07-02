@@ -95,7 +95,17 @@
     "pages/TestingInstitutionManagement/Certificate/Certificate",
     "pages/TestingInstitutionManagement/TestingInstitutionResource/TestingInstitutionResource",
     "pages/TestingInstitutionManagement/TestingInstitutionInformation/TestingInstitutionInformation",
+<<<<<<< HEAD
     "pages/SampleManagement/SampleReceipt/receiptAddOne/receiptTypeAdd"
+=======
+    "pages/StaffManagement/StaffAuthorization/StaffAuthorization",
+    "pages/StaffManagement/StaffAuthorization/AddOneStaffAuthorization/AddOneStaffAuthorization",
+    "pages/StaffManagement/StaffAuthorization/ModifyOneStaffAuthorization/ModifyOneStaffAuthorization",
+    "pages/StaffManagement/StaffAuthorization/GetAllByStaff/GetAllByStaff",
+    "pages/StaffManagement/StaffAuthorization/GetOneStaffAuthorization/GetOneStaffAuthorization",
+    "pages/StaffManagement/StaffLeaving/StaffLeaving",
+    "pages/StaffManagement/StaffLeaving/AddOneStaffLeaving/AddOneStaffLeaving"
+>>>>>>> d924e9bb92a1eca4e512de0c6fb95ee299b1b39f
   ],
   "window": {
     "backgroundTextStyle": "light",
