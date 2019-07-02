@@ -16,12 +16,11 @@ public interface CapacityVerificationProjectRepository extends JpaRepository<Cap
 
     @Modifying
 
-    @Query(value="update Capacity_Verification_Project set project_id=:projectid," +
-            "plan_id=:planid,"+
+    @Query(value="update Capacity_Verification_Project set plan_id=:planid,"+
             "name = :name," +
             "method = :method," +
             "state = :state," +
-            "note=:note,",nativeQuery=true)
+            "note=:note where project_id=:projectid",nativeQuery=true)
     void updateById(@Param("projectid")Long projectid,
                     @Param("planid")Long planid,
                     @Param("name")String name,

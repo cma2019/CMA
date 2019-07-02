@@ -14,8 +14,7 @@ public interface CapacityVerificationRecordRepository extends JpaRepository<Capa
     CapacityVerificationRecord findByProjectId(Long projectId);
     @Modifying
 
-    @Query(value="update Capacity_Verification_Record set record_id=:recordid," +
-            "project_id=:projectid,"+
+    @Query(value="update Capacity_Verification_Record set project_id=:projectid,"+
             "date = :date," +
             "method_id = :methodId," +
             "equipment_name = :equipmentName," +
@@ -23,7 +22,7 @@ public interface CapacityVerificationRecordRepository extends JpaRepository<Capa
             "experimenter = :experimenter," +
             "result = :result," +
             "result_deal = :resultDeal," +
-            "note=:note,",nativeQuery=true)
+            "note=:note where record_id=:recordid",nativeQuery=true)
     void updateById(@Param("recordid")Long recordid,
                     @Param("projectid")Long projectid,
                     @Param("date") Date date,
