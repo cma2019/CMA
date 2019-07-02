@@ -29,9 +29,16 @@ Page({
       console.log(data)
       app.wxRequest(url, 'POST', data, (res) => {
         console.log('successfully')
-        console.log(res)
-        console.log(res.msg)
-        console.log(res.code)
+        console.log("data"+data)
+        console.log("msg"+res.msg)
+        if (res.msg =="不存在员工")
+        {
+          wx.showToast({
+            title: 'id不存在',
+            icon: 'none',
+            duration: 1500
+          })
+        }
       }, (err) => {
         console.log('fail intermediate check register')
       })
