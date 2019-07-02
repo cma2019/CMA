@@ -53,7 +53,20 @@ public class StaffAuthorizationController {
     public @ResponseBody JSONObject addOne(@RequestParam(value = "id",required = false) long id,@RequestParam(value = "authorizerId",required = false)long authorizerId,
                                            @RequestParam(value = "content",required = false)String content,@RequestParam(value = "authorizerDate",required = false)String authorizerDate) throws ParseException {
         StaffAuthorization staffAuthorization=new StaffAuthorization();
+        JSONObject json=new JSONObject();
+        if(staffManagementRepository.existsById(id)==false){
+            json.put("code",210);
+            json.put("msg","被授权人不存在");
+            json.put("data",null);
+            return json;
+        }
         StaffManagement staffManagement=staffManagementRepository.getOne(id);
+        if(staffManagementRepository.existsById(authorizerId)==false){
+            json.put("code",210);
+            json.put("msg","授权人不存在");
+            json.put("data",null);
+            return json;
+        }
         StaffManagement authorizer=staffManagementRepository.getOne(authorizerId);
         staffAuthorization.setId(id);
         staffAuthorization.setName(staffManagement.getName());
@@ -64,7 +77,6 @@ public class StaffAuthorizationController {
         staffAuthorization.setContent(content);
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
         staffAuthorization.setAuthorizerDate(sdf.parse(authorizerDate));
-        JSONObject json=new JSONObject();
         staffAuthorizationRepository.save(staffAuthorization);
         json.put("code",200);
         json.put("msg","成功");
