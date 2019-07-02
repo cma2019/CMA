@@ -31,7 +31,7 @@ Page({
         {
           console.log("fsaf")
           wx.navigateTo({
-            url: '../../home/home',
+            url: '../home/home',
           })
           console.log("asdsad")
         }
