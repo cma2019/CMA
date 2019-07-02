@@ -11,7 +11,7 @@ import java.sql.Date;
 
 @Transactional
 public interface CapacityVerificationRecordRepository extends JpaRepository<CapacityVerificationRecord,Long> {
-    CapacityVerificationRecord findByProjectId(Long projectId);
+    CapacityVerificationRecord findAllByProjectId(Long projectId);
     @Modifying
 
     @Query(value="update Capacity_Verification_Record set project_id=:projectid,"+

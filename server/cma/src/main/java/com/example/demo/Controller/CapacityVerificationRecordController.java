@@ -173,7 +173,7 @@ public class CapacityVerificationRecordController {
     public @ResponseBody JSONObject getOneByPlanId(@RequestParam(value="projectId",required=false)Long projectId)throws IOException{
         JSONObject json=new JSONObject(new LinkedHashMap());
         CapacityVerificationRecord record=new CapacityVerificationRecord();
-        if(CapacityVerificationRecordRepository.findByProjectId(projectId)==null)
+        if(CapacityVerificationRecordRepository.findAllByProjectId(projectId)==null)
         {
             try{
                 json.put("code",500);
@@ -184,7 +184,9 @@ public class CapacityVerificationRecordController {
         }
         else
         {
-            json.put("data",CapacityVerificationRecordRepository.findByProjectId(projectId));
+            json.put("code",200);
+            json.put("msg","获取成功");
+            json.put("data",CapacityVerificationRecordRepository.findAllByProjectId(projectId));
             /*record= CapacityVerificationRecordRepository.findByProjectId(projectId);
             JSONObject data=new JSONObject(new LinkedHashMap());
             JSONArray array=new JSONArray();
