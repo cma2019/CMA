@@ -31,7 +31,7 @@ Page({
     console.log("getAllById")
     var that = this
     wx.redirectTo({
-      url: '/pages/Equipment/EquipmentMaintenance/EquipmentMaintenanceGetAllByID/EquipmentMaintenanceGetAllByID?id=' + that.data.equipment.id,
+      url: '/pages/Equipment/EquipmentMaintenance/EquipmentMaintenanceGetAllByID/EquipmentMaintenanceGetAllByID?equipmentId=' + that.data.equipment.equipmentId,
     })
   },
   /**
