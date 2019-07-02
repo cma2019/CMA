@@ -20,7 +20,6 @@ import java.sql.Date;
 public class SampleReceiveController {
     @Autowired
     private SampleReceiveRepository sampleReceiveRepository;
-    private static long ID=0;
     @PostMapping(path="/addOne")
     public @ResponseBody
     JSONObject addOne(@RequestParam(value = "sampleNumber", required = false)String sampleNumber,
@@ -37,7 +36,6 @@ public class SampleReceiveController {
         JSONObject js=new JSONObject();
         int code=200;
         String msg="成功";
-        //JSONObject data=null;
         try{
             Integer.parseInt(sampleAmount);
             Integer.parseInt(sampleState);
@@ -46,41 +44,26 @@ public class SampleReceiveController {
         }catch(NumberFormatException e){
             code=513;
             msg="某项数据错误";
-            js.put("code",code);
-            js.put("msg",msg);
-            //js.put("data","null");
-            return js;
         };
         if(sampleNumber==""||sampleName==null||requester==null||receiver==null||obtainer==null)
         {
             code=511;
             msg="缺少请求参数";
-            js.put("code",code);
-            js.put("msg",msg);
-            //js.put("data","null");
-            return js;
         }
-        else if(ID>0&& sampleReceiveRepository.findBySampleNumber(sampleNumber)!=null)
+        else if(sampleReceiveRepository.findBySampleNumber(sampleNumber)!=null)
         {
             code=512;
             msg="样品编号已存在";
-            js.put("code",code);
-            js.put("msg",msg);
-            //js.put("data","null");
-            return js;
         }
         else if(sampleNumber.length()>10||sampleName.length()>20||
                 requester.length()>45||receiver.length()>20||obtainer.length()>20||(Integer.parseInt(sampleState)!=0&&Integer.parseInt(sampleState)!=1&&Integer.parseInt(sampleState)!=2))
         {
             code=513;
             msg="某项数据错误";
-            js.put("code",code);
-            js.put("msg",msg);
-            //js.put("data","null");
-            return js;
         }
+        else
+        {
             SampleReceive receive=new SampleReceive();
-            receive.setSampleId(ID);
             receive.setSampleNumber(sampleNumber);
             receive.setSampleName(sampleName);
             receive.setSampleAmount(Integer.parseInt(sampleAmount));
@@ -91,11 +74,11 @@ public class SampleReceiveController {
             receive.setObtainer(obtainer);
             receive.setObtainDate(java.sql.Date.valueOf(obtainDate));
             sampleReceiveRepository.saveAndFlush(receive);
-            js.put("code",code);
-            js.put("msg",msg);
-            //js.put("data","null");
-            ID++;
-            return js;
+        }
+        js.put("code",code);
+        js.put("msg",msg);
+        js.put("data",null);
+        return js;
     }
     @PostMapping (path="/deleteOne")
     public @ResponseBody JSONObject deleteOne(@RequestParam(value="sampleId",required = false) String sampleId)
@@ -103,30 +86,23 @@ public class SampleReceiveController {
         JSONObject json=new JSONObject();
         int code=200;
         String msg="成功";
-        //JSONObject data=null;
-        System.out.println(sampleId);
         if(sampleId=="")
         {
             code=521;
             msg="未收到标识编号";
-            json.put("code",code);
-            json.put("msg",msg);
         }
         else if(sampleReceiveRepository.findBySampleId(Long.parseLong(sampleId))==null) //此样品接收登记的id不在表中
         {
             code=522;
             msg="数据不存在";
-            json.put("code",code);
-            json.put("msg",msg);
-            //json.put("data",data);
         }
         else
         {
             sampleReceiveRepository.deleteById(Long.parseLong(sampleId));
-            json.put("code",code);
-            json.put("msg",msg);
-            //json.put("data",data);
         }
+        json.put("code",code);
+        json.put("msg",msg);
+        json.put("data",null);
         return json;
     }
     @GetMapping(path="/getAll")
@@ -154,21 +130,16 @@ public class SampleReceiveController {
                 tmp.put("obtainDate",res.get(i).getObtainDate().toString());
                 data.add(tmp);
             }
-            js.put("code",code);
-            js.put("msg",msg);
-            js.put("data",data);
-            return js;
         }
         else
         {
             code=522;
             msg="数据不存在";
-            //data=null;
-            js.put("code",code);
-            js.put("msg",msg);
-            //js.put("data",data);
-            return js;
         }
+        js.put("code",code);
+        js.put("msg",msg);
+        js.put("data",data);
+        return js;
     }
     @GetMapping(path="/getOne")
     public @ResponseBody JSONObject findOne(@RequestParam(value = "sampleId",required = false) String  sampleId)
@@ -181,21 +152,13 @@ public class SampleReceiveController {
             {
                 code=521;
                 msg="未收到标识编号";
-                json.put("code",code);
-                json.put("msg",msg);
-                return json;
             }
             else if(sampleReceiveRepository.findBySampleId(Long.parseLong(sampleId))==null) {   //此样品接收登记的id不存在；
 
-            code=522;
-            msg="数据不存在";
-            //data=null;
-            json.put("code",code);
-            json.put("msg",msg);
-            //json.put("data",data);
-            return json;
-        }
-        else{
+                code=522;
+                msg="数据不存在";
+            }
+            else {
             SampleReceive recv= sampleReceiveRepository.findBySampleId(Long.parseLong(sampleId));
             data.put("sampleNumber",recv.getSampleNumber());
             data.put("sampleName",recv.getSampleName());
@@ -206,11 +169,11 @@ public class SampleReceiveController {
             data.put("receiveDate",recv.getReceiveDate().toString());
             data.put("obtainer",recv.getObtainer());
             data.put("obtainDate",recv.getObtainDate().toString());
-            json.put("code",code);
-            json.put("msg",msg);
-            json.put("data",data);
-            return json;
         }
+        json.put("code",code);
+        json.put("msg",msg);
+        json.put("data",data);
+        return json;
     }
     @PostMapping(path="/modifyOne")
     public @ResponseBody JSONObject modify(@RequestParam(value = "sampleId",required = false)String sampleId,
@@ -227,10 +190,6 @@ public class SampleReceiveController {
         JSONObject js=new JSONObject();
         int code=200;
         String msg="成功";
-        /*System.out.println(sampleNumber);
-        System.out.println(sampleName);
-        System.out.println(sampleId);
-        System.out.println(sampleState);*/
         try{
             Integer.parseInt(sampleAmount);
             Integer.parseInt(sampleState);
@@ -239,47 +198,23 @@ public class SampleReceiveController {
         }catch(NumberFormatException e){
             code =533;
             msg="修改后数据错误";
-            js.put("code",code);
-            js.put("msg",msg);
-            //js.put("data",data);
-        };
-        /*if(sampleId.equals(""))
-        {
-            code=531;
-            msg="未收到标识编号";
-            js.put("code",code);
-            js.put("msg",msg);
-            //js.put("data",data);
-            System.out.println(sampleId);
-            System.out.println("?");
-        }*/
+        }
         System.out.println(sampleId.equals(""));
         if(sampleReceiveRepository.findBySampleId(Integer.parseInt(sampleId))==null)
         {
             code=532;
             msg="数据不存在";
-            js.put("code",code);
-            js.put("msg",msg);
-            //js.put("data",data);
         }
         else if(!sampleNumber.equals( sampleReceiveRepository.findBySampleId(Integer.parseInt(sampleId)).getSampleNumber())&&sampleReceiveRepository.findBySampleNumber(sampleNumber)!=null)
         {
             code =533;
             msg="修改后数据错误";
-            System.out.println(sampleId);
-            System.out.println(sampleReceiveRepository.findBySampleId(Integer.parseInt(sampleId)).getSampleNumber());
-            js.put("code",code);
-            js.put("msg",msg);
-            //js.put("data",data);
         }
-        else if((sampleNumber!=null&&sampleNumber.length()>10)||(sampleName!=null&&sampleName.length()>20)||(requester!=null&&requester.length()>45)
+        else if((sampleNumber.length()>10)||(sampleName!=null&&sampleName.length()>20)||(requester!=null&&requester.length()>45)
                 ||(receiver!=null&&receiver.length()>20)||(obtainer!=null&&obtainer.length()>20)||(Integer.parseInt(sampleState)!=2)&&(Integer.parseInt(sampleState)!=0&&Integer.parseInt(sampleState)!=1))
         {
             code=534;
             msg="修改后数据不合法";
-            js.put("code",code);
-            js.put("msg",msg);
-            //js.put("data",data);
         }
         else
         {
@@ -322,11 +257,10 @@ public class SampleReceiveController {
             //else
                 //recv.setSampleName(recv.getSampleName());
             sampleReceiveRepository.saveAndFlush(recv);
-            js.put("code",code);
-            js.put("msg",msg);
-            //js.put("data",data);
         }
+        js.put("code",code);
+        js.put("msg",msg);
+        js.put("data",null);
         return js;
     }
 }
-//select * from sample_receive;
