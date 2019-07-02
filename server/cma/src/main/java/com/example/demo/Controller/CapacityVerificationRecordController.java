@@ -172,7 +172,7 @@ public class CapacityVerificationRecordController {
     }
 
     @GetMapping(path="/getRecordByProjectId")
-    public @ResponseBody JSONObject getOneByPlanId(@RequestParam(value="projectId",required=false)Long projectId)throws IOException{
+    public @ResponseBody JSONObject getRecordByProjectId(@RequestParam(value="projectId",required=false)Long projectId)throws IOException{
         JSONObject json=new JSONObject(new LinkedHashMap());
         CapacityVerificationRecord record=new CapacityVerificationRecord();
         if(CapacityVerificationRecordRepository.findAllByProjectId(projectId)==null)
