@@ -24,7 +24,7 @@ public class SampleReceive {
     public void setSampleId(long id){
         this.sampleId=id;
     }
-    public long getSampleId(){
+    public Long getSampleId(){
         return this.sampleId;
     }
     public void setSampleNumber(String sampleNumber){

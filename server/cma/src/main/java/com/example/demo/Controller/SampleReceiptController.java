@@ -93,75 +93,26 @@ public class SampleReceiptController {
         JSONObject json=new JSONObject();
         int code=200;
         String msg="成功";
-        JSONObject data=null;
         System.out.println(sampleId);
         if(sampleId==null||sampleId.equals(""))
         {
             code=521;
             msg="未收到标识编号";
-            json.put("code",code);
-            json.put("msg",msg);
-            json.put("data",data);
         }
         else if(SampleReceiptRepository.findBySampleId(Long.parseLong(sampleId))==null) //此样品接收登记的id不在表中
         {
             code=522;
             msg="数据不存在";
-            json.put("code",code);
-            json.put("msg",msg);
-            json.put("data",data);
         }
         else
         {
             SampleReceiptRepository.deleteById(Long.parseLong(sampleId));
-            json.put("code",code);
-            json.put("msg",msg);
-            json.put("data",data);
         }
+        json.put("code",code);
+        json.put("msg",msg);
+        json.put("data",null);
         return json;
     }
-    /*@GetMapping(path="/getAll")
-    public @ResponseBody JSONObject findALL()
-    {
-        List<SampleIO> res= SampleIoRepository.findAll();
-        JSONObject js=new JSONObject();
-        JSONArray data=new JSONArray();
-        int code=200;
-        String msg="成功";
-        if(res.size()>0)
-        {
-            for (int i=0;i<res.size();i++)
-            {
-                JSONObject tmp=new JSONObject();
-                tmp.put("sampleIoId",res.get(i).getSampleIoId());
-                tmp.put("sampleNumber",res.get(i).getSampleNumber());
-                tmp.put("sampleName",res.get(i).getSampleName());
-                tmp.put("sampleAmount",res.get(i).getSampleAmount());
-                tmp.put("sampleState",res.get(i).getSampleState());
-                tmp.put("sender",res.get(i).getSender());
-                tmp.put("receiver",res.get(i).getReceiver());
-                tmp.put("sendDate",res.get(i).getSendDate().toString());
-                tmp.put("obtainer",res.get(i).getObtainer());
-                tmp.put("obtainDate",res.get(i).getObtainDate().toString());
-                tmp.put("note",res.get(i).getNote());
-                data.add(tmp);
-            }
-            js.put("code",code);
-            js.put("msg",msg);
-            js.put("data",data);
-            return js;
-        }
-        else
-        {
-            code=522;
-            msg="数据不存在";
-            //data=null;
-            js.put("code",code);
-            js.put("msg",msg);
-            //js.put("data",data);
-            return js;
-        }
-    }*/
     @GetMapping(path="/getOne")
     public @ResponseBody JSONObject findOne(@RequestParam(value = "sampleId",required = false) String sampleId)
     {
@@ -173,20 +124,11 @@ public class SampleReceiptController {
         {
             code=521;
             msg="未收到标识编号";
-            json.put("code",code);
-            json.put("msg",msg);
-            json.put("data",data);
-            return json;
         }
         else if(SampleReceiptRepository.findBySampleId(Long.parseLong(sampleId))==null) {   //此样品接收登记的id不存在；
 
             code=522;
             msg="数据不存在";
-            //data=null;
-            json.put("code",code);
-            json.put("msg",msg);
-            json.put("data",data);
-            return json;
         }
         else{
             SampleReceipt s= SampleReceiptRepository.findBySampleId(Long.parseLong(sampleId));
@@ -209,14 +151,14 @@ public class SampleReceiptController {
                         tmp.put("materialName",s.getOthers());
                     }
                      list.add(tmp);
+                    data.put("data",list);
                 }
             }
-            data.put("data",list);
-            json.put("code",code);
-            json.put("msg",msg);
-            json.put("data",data);
-            return json;
         }
+        json.put("code",code);
+        json.put("msg",msg);
+        json.put("data",data);
+        return json;
     }
     @PostMapping(path="/modifyOne")
     public @ResponseBody JSONObject modify(@RequestParam(value = "data",required = false) JSONObject data)
@@ -224,8 +166,7 @@ public class SampleReceiptController {
         JSONObject js=new JSONObject();
         int code=200;
         String msg="成功";
-        JSONObject d=new JSONObject();
-        d=null;
+        JSONObject d= new JSONObject();
         String idstr=data.getString("sampleId");
         String testtypestr=data.getString("testType");
         String sofwwaretypestr=data.getString("softwareType");
@@ -242,7 +183,7 @@ public class SampleReceiptController {
             js.put("data",d);
             return js;
         }
-        if(idstr==""||idstr==null)
+        if(idstr=="")
         {
             code=531;
             msg="未收到标识编号";
@@ -310,4 +251,3 @@ public class SampleReceiptController {
         return js;
     }
 }
-//select * from sampleio;

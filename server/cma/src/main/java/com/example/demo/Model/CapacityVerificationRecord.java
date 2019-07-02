@@ -26,15 +26,15 @@ public class CapacityVerificationRecord {
     private String resultDeal;//能力验证结果处理状况
     private String note;//结果的备注
 
-    public void setrecordID(long id){
+    public void setrecordId(long id){
         this.recordId=id;
     }
-    public long getrecordID(){ return this.recordId; }
+    public long getrecordId(){ return this.recordId; }
 
-    public void setprojectID(long id){
+    public void setprojectId(long id){
         this.projectId=id;
     }
-    public long getprojectID(){
+    public long getprojectId(){
         return this.projectId;
     }
 
