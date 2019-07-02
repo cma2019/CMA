@@ -9,27 +9,29 @@ import org.json.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.transaction.Transactional;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.LinkedHashMap;
 import java.util.List;
 import com.example.demo.Model.IntermediateChecksRecord;
-import com.example.demo.Repository.RecordRepository;
+import com.example.demo.Repository.IntermediateChecksRecordRepository;
+
+/**
+ * @author lyt
+ *
+ */
 @Controller//Controller
 @RequestMapping(path="/cma/IntermediateChecksRecord")
 public class IntermediateChecksRecordController {
     @Autowired
-    private RecordRepository RecordRepository;
+    private IntermediateChecksRecordRepository IntermediateChecksRecordRepository;
 
     @GetMapping(path="/getAll")
     /*public @ResponseBody String getAll(){
         return "Hello,World";*/
     public @ResponseBody void getAllRecord(HttpServletRequest request,HttpServletResponse response) throws IOException, JSONException {
         JSONObject json=new JSONObject(new LinkedHashMap());
-        if(RecordRepository.findAll()==null)
+        if(IntermediateChecksRecordRepository.findAll()==null)
         {
             try{
                 json.put("code",100);
@@ -43,12 +45,12 @@ public class IntermediateChecksRecordController {
             try{
                 json.put("code",200);
                 json.put("msg","获取成功");
-                //json.put("data:",PlanRepository.findAll());
+                //json.put("data:",IntermediateChecksPlanRepository.findAll());
             }catch (JSONException e){
                 e.printStackTrace();
             }
 
-            List<IntermediateChecksRecord> recordList=RecordRepository.findAll();
+            List<IntermediateChecksRecord> recordList= IntermediateChecksRecordRepository.findAll();
             JSONObject data=new JSONObject();
             JSONArray array=new JSONArray();
             for(IntermediateChecksRecord record:recordList){
@@ -83,7 +85,7 @@ public class IntermediateChecksRecordController {
                                      @RequestParam(value="recordId",required=false)Long recordId)throws IOException{
         JSONObject json=new JSONObject(new LinkedHashMap());
         IntermediateChecksRecord record=new IntermediateChecksRecord();
-        if(RecordRepository.findById(recordId)==null)
+        if(IntermediateChecksRecordRepository.findById(recordId)==null)
         {
             try{
                 json.put("code",100);
@@ -94,7 +96,7 @@ public class IntermediateChecksRecordController {
         }
         else
         {
-            record=RecordRepository.getOne(recordId);
+            record= IntermediateChecksRecordRepository.getOne(recordId);
             JSONObject data=new JSONObject(new LinkedHashMap());
             JSONArray array=new JSONArray();
             try{
@@ -153,7 +155,7 @@ public class IntermediateChecksRecordController {
         newRecord.setResultRecordPerson(resultRecordPerson);
         newRecord.setResultRecordDate(resultRecordDate);
         newRecord.setNote(note);
-        RecordRepository.save(newRecord);
+        IntermediateChecksRecordRepository.save(newRecord);
 
         JSONObject json = new JSONObject(new LinkedHashMap());
         try {
@@ -170,7 +172,7 @@ public class IntermediateChecksRecordController {
     public @ResponseBody void deleteRecord(HttpServletRequest request,HttpServletResponse response,
                                          @RequestParam(value="recordId",required=false)Long recordId)throws IOException{
         JSONObject json=new JSONObject(new LinkedHashMap());
-        if(RecordRepository.findById(recordId)==null)
+        if(IntermediateChecksRecordRepository.findById(recordId)==null)
         {
             try{
                 json.put("code",100);
@@ -181,7 +183,7 @@ public class IntermediateChecksRecordController {
         }
         else
         {
-            RecordRepository.deleteById(recordId);
+            IntermediateChecksRecordRepository.deleteById(recordId);
             try{
                 json.put("code",200);
                 json.put("msg","删除成功");
@@ -208,7 +210,7 @@ public class IntermediateChecksRecordController {
                                          @RequestParam(value = "resultRecordDate", required = false) Date resultRecordDate,
                                          @RequestParam(value = "note", required = false) String note)throws IOException{
         JSONObject json=new JSONObject(new LinkedHashMap());
-        if(RecordRepository.findById(recordId)==null)
+        if(IntermediateChecksRecordRepository.findById(recordId)==null)
         {
             try{
                 json.put("code",100);
@@ -219,7 +221,7 @@ public class IntermediateChecksRecordController {
         }
         else
         {
-            RecordRepository.updateById(recordId,planId,object,checkDate,processRecord,processRecordPerson,processRecordDate,resultRecord,resultRecordPerson,resultRecordDate,note);
+            IntermediateChecksRecordRepository.updateById(recordId,planId,object,checkDate,processRecord,processRecordPerson,processRecordDate,resultRecord,resultRecordPerson,resultRecordDate,note);
             //content,checkDate,personInCharge,state
             //System.out.println("changed object");
             try{
@@ -240,7 +242,7 @@ public class IntermediateChecksRecordController {
                                      @RequestParam(value="planId",required=false)Long planId)throws IOException{
         JSONObject json=new JSONObject(new LinkedHashMap());
         IntermediateChecksRecord record=new IntermediateChecksRecord();
-        if(RecordRepository.findByPlanId(planId)==null)
+        if(IntermediateChecksRecordRepository.findByPlanId(planId)==null)
         {
             try{
                 json.put("code",100);
@@ -251,7 +253,7 @@ public class IntermediateChecksRecordController {
         }
         else
         {
-            record=RecordRepository.findByPlanId(planId);
+            record= IntermediateChecksRecordRepository.findByPlanId(planId);
             JSONObject data=new JSONObject(new LinkedHashMap());
             JSONArray array=new JSONArray();
             try{

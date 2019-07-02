@@ -7,24 +7,8 @@ Page({
    */
   data: {
     receiveDate:"",
-    materialType1:'0',
-    materialType2: "0",
-    materialType3: "0",
-    materialType4: "0",
-    materialType5: "0",
-    materialType6: "0",
-    materialType7: "0",
-    materialType8: "0",
-    materialType9: "0",
+    materialType:[],
     materialName:"",
-    errorMessage: 
-    { 
-      numberInput: "", 
-      nameInput: "", 
-      senderInput: "",
-      receiverInput:"",
-      obtainerInput:""
-    },
     activeNames: ['0']
   },
   onChange(event) {
@@ -52,8 +36,72 @@ Page({
       receiveDate: e.detail.value
     })
   },
-
+  receiptTypeAdd:function(){
+    var materialType = this.data.materialType
+    var newData = {}
+    materialType.push(newData)
+    this.setData({
+      materialType: materialType
+    })
+    console.log(this.data.materialType)
+  },
   SampleReceipt_addone: function (e) {
+    /*wx.request({
+      url: app.globalData.url + 'SampleReceipt/addOne',
+      method: 'POST',
+      header: {
+        'content-type': 'application/json',
+        'Accept': 'application/json'
+      },
+      data: {
+        "sampleId": 2,
+        "applicationUnit": "阿里巴巴责任有限公司",
+        "version": "V1.0",
+        "contractId": "2487955568",
+        "testType": 0,
+        "electronicMedia": "光盘1张",
+        "materialList": [{
+          "materialId": 1,
+          "materialType": 1
+        },
+        {
+          "materialId": 2,
+          "materialType": 1
+        },
+        {
+          "materialId": 3,
+          "materialType": 1
+        },
+        {
+          "materialId": 4,
+          "materialType": 1
+        },
+        {
+          "materialId": 6,
+          "materialType": 2
+        },
+        {
+          "materialId": 9,
+          "materialType": 3,
+          "materialName": "《附加材料》"
+        }],
+        "softwareType": 1,
+        "receiveUnit": "南大测试中心",
+        "receiveDate": "2018-06-15",
+        "sender": "张三",
+        "receiver": "李四"
+      },
+      success(res) {
+      
+      },
+      fail(err) {
+        console.log('fail addone')
+      },
+      complete(fin) {
+        console.log('final addone')
+      }
+    })*/
+    
     console.log(e)
     if (e.detail.value.sampleId == "" || e.detail.value.applicationUnit == "" || e.detail.value.version == "" || e.detail.value.contractId == "" || e.detail.value.testType == "" || e.detail.value.electronicMedia == "" || e.detail.value.softwareType == "" || e.detail.value.receiveUnit == "" || e.detail.value.receiveDate == "" || e.detail.value.sender == "" || e.detail.value.reciever == "") {
       wx.showToast({
@@ -64,52 +112,6 @@ Page({
       console.log('错误（空白输入）')
     }
     else {
-      if(e.detail.value.materialType1 != ""){
-        this.setData({
-          materialType1: e.detail.value.materialType1
-        })
-      }
-      if (e.detail.value.materialType2 != "") {
-        this.setData({
-          materialType2: e.detail.value.materialType2
-        })
-      }
-      if (e.detail.value.materialType3 != "") {
-        this.setData({
-          materialType3: e.detail.value.materialType3
-        })
-      }
-      if (e.detail.value.materialType4 != "") {
-        this.setData({
-          materialType4: e.detail.value.materialType4
-        })
-      }
-      if (e.detail.value.materialType5 != "") {
-        this.setData({
-          materialType5: e.detail.value.materialType5
-        })
-      }
-      if (e.detail.value.materialType6 != "") {
-        this.setData({
-          materialType6: e.detail.value.materialType6
-        })
-      }
-      if (e.detail.value.materialType7 != "") {
-        this.setData({
-          materialType7: e.detail.value.materialType7
-        })
-      }
-      if (e.detail.value.materialType8 != "") {
-        this.setData({
-          materialType8: e.detail.value.materialType8
-        })
-      }
-      if (e.detail.value.materialType9 != "") {
-        this.setData({
-          materialType9: e.detail.value.materialType9,
-          materialName: e.detail.value.materialName
-        })
-      }
       console.log('SampleReceipt发生了addone事件，携带数据为：', e.detail.value)
       wx.request({
         url: app.globalData.url + 'SampleReceipt/addOne',

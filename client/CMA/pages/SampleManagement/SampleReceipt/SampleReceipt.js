@@ -96,24 +96,18 @@ Page({
     console.log(url)
     console.log(postdata)
     app.wxRequest(url, 'GET', postdata, (res) => {
-      //console.log('success')
       console.log(res)
       console.log('success')
-     // console.log(res.code)
-      //console.log(res.msg)
-     // console.log(res.data)
-      //var temp = res.data
-      //this.temp = temp
       if(res.code == 522){
         this.setData({
           mess : ""
         })
       }
       else{
-      this.setData({
-        mess: res.data,
-        flag: 1
-      })
+        this.setData({
+          mess: res.data,
+          flag: 1
+        })
       }
       
       //console.log(this.mess)
@@ -124,8 +118,7 @@ Page({
         duration: 1500
       })
       console.log('getone error')
-    })
-    */
+    })*/
   },
   gotoOne: function (e) {
     console.log(e)

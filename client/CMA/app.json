@@ -25,6 +25,7 @@
     "pages/SampleManagement/SampleReceipt/receiptAddOne/receiptAddOne",
     "pages/SampleManagement/SampleReceipt/receiptGetOne/receiptGetOne",
     "pages/SampleManagement/SampleReceipt/receiptModifyOne/receiptModifyOne",
+    "pages/SampleManagement/SampleReceipt/receiptAddOne/receiptTypeAdd",
     "pages/SampleManagement/SampleReceive/SampleReceive",
     "pages/SampleManagement/SampleReceive/receiveAddOne/receiveAddOne",
     "pages/SampleManagement/SampleReceive/receiveGetOne/receiveGetOne",
@@ -94,7 +95,15 @@
     "pages/TestAbility/getOneItem/getOneItem",
     "pages/TestingInstitutionManagement/Certificate/Certificate",
     "pages/TestingInstitutionManagement/TestingInstitutionResource/TestingInstitutionResource",
-    "pages/TestingInstitutionManagement/TestingInstitutionInformation/TestingInstitutionInformation"
+    "pages/TestingInstitutionManagement/TestingInstitutionInformation/TestingInstitutionInformation",
+
+    "pages/StaffManagement/StaffAuthorization/StaffAuthorization",
+    "pages/StaffManagement/StaffAuthorization/AddOneStaffAuthorization/AddOneStaffAuthorization",
+    "pages/StaffManagement/StaffAuthorization/ModifyOneStaffAuthorization/ModifyOneStaffAuthorization",
+    "pages/StaffManagement/StaffAuthorization/GetAllByStaff/GetAllByStaff",
+    "pages/StaffManagement/StaffAuthorization/GetOneStaffAuthorization/GetOneStaffAuthorization",
+    "pages/StaffManagement/StaffLeaving/StaffLeaving",
+    "pages/StaffManagement/StaffLeaving/AddOneStaffLeaving/AddOneStaffLeaving"
   ],
   "window": {
     "backgroundTextStyle": "light",

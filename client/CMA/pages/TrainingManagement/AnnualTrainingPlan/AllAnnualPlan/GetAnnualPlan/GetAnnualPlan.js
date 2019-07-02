@@ -1,66 +1,45 @@
-// pages/TrainingManagement/AnnualTrainingPlan/AllAnnualPlan/GetAnnualPlan/GetAnnualPlan.js
+// pages/StaffManagement/PrintOneStaff/PrintOneStaff.js
+const app = getApp()
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
+    console.log(options)
+    this.setData({
 
+      year: options.id
+    })
+    console.log('getone year')
+    console.log(this.data.year)
+    let url = app.globalData.url + 'AnnualTrainingPlan/getAnnualPlan'
+    let postdata = {
+      "year": this.data.year
+    }
+    console.log(url)
+    console.log(postdata)
+    app.wxRequest(url, 'GET', postdata, (res) => {
+      console.log(res)
+      console.log(res.data)
+      //console.log(res.data[0].id)
+      this.setData({
+        year: res.data.year,
+        author: res.data.author,
+        createDate: res.data.createDate,
+        approver: res.data.approver,
+        approveDate: (res.data.approver == "") ? res.data.approver:res.data.approveDate
+      })
+    }, (err) => {
+      console.err('get one error')
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  ApproveStaff(e) {
+    console.log(e)
+    let target = this.data.year
+    console.log(target)
+    wx.navigateTo({
+      url: '../ApproveAnnualPlan/ApproveAnnualPlan?id=' + target
+    })
   }
+
 })

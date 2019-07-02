@@ -1,0 +1,30 @@
+<view>
+  <van-cell-group title="AllAnnualPlan">
+  <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
+  <van-cell value="详情" bindtap='gotoOne' id='{{item.authorizationId}}' is-link>
+      <view slot="title">
+        <view>name : {{item.name}}</view>
+        <view>department : {{item.department}}</view>
+        <view>position : {{item.position}}</view>
+      </view>
+  </van-cell>
+</view>
+  </van-cell-group>
+</view>
+    <van-button type="info" size="small" bindtap="gotoAdd">Add AllAnnualPlan</van-button> 
+<view>
+  <form bindsubmit='ApplicationAdd'>
+  <van-cell-group>
+      <van-field 
+        name="id"
+        label="id"
+        placeholder="input id" 
+        required
+        clearable
+      />
+    </van-cell-group>
+     <view>
+      <button class='van-button--info'formType = 'submit'>get all by staff</button>
+    </view>
+  </form>
+</view>

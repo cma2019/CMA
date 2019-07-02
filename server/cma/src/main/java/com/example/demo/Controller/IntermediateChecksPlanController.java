@@ -20,23 +20,19 @@ import org.json.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.transaction.Transactional;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+
 import com.example.demo.Model.IntermediateChecksPlan;
-import com.example.demo.Repository.PlanRepository;
+import com.example.demo.Repository.IntermediateChecksPlanRepository;
 
 @Controller//Controller
 @RequestMapping(path="/cma/IntermediateChecksPlan")
 public class IntermediateChecksPlanController {
     @Autowired
-    private PlanRepository PlanRepository;
+    private IntermediateChecksPlanRepository IntermediateChecksPlanRepository;
 
     @PostMapping(path="/addOne")
     public @ResponseBody void addPlan(HttpServletRequest request,HttpServletResponse response,
@@ -50,7 +46,7 @@ public class IntermediateChecksPlanController {
         newPlan.setDate(checkDate);
         newPlan.setPersonInCharge(personInCharge);
         newPlan.setState(0);
-        PlanRepository.save(newPlan);
+        IntermediateChecksPlanRepository.save(newPlan);
 
         JSONObject json=new JSONObject(new LinkedHashMap());
         try{
@@ -71,7 +67,7 @@ public class IntermediateChecksPlanController {
     public @ResponseBody void deletePlan(HttpServletRequest request,HttpServletResponse response,
                                                @RequestParam(value="planId",required=false)Long planId)throws IOException{
         JSONObject json=new JSONObject(new LinkedHashMap());
-        if(PlanRepository.findById(planId)==null)
+        if(IntermediateChecksPlanRepository.findById(planId)==null)
         {
             try{
                 json.put("code",100);
@@ -82,7 +78,7 @@ public class IntermediateChecksPlanController {
         }
         else
         {
-            PlanRepository.deleteById(planId);
+            IntermediateChecksPlanRepository.deleteById(planId);
             try{
                 json.put("code",200);
                 json.put("msg","删除成功");
@@ -104,7 +100,7 @@ public class IntermediateChecksPlanController {
                                          @RequestParam(value="personInCharge",required=false)String personInCharge,
                                          @RequestParam(value="state",required=false)byte state)throws IOException{
         JSONObject json=new JSONObject(new LinkedHashMap());
-        if(PlanRepository.findById(planId)==null)
+        if(IntermediateChecksPlanRepository.findById(planId)==null)
         {
             try{
                 json.put("code",100);
@@ -115,17 +111,17 @@ public class IntermediateChecksPlanController {
         }
         else
         {
-            /*if(object!=PlanRepository.getOne(planId).getObject())
-                PlanRepository.updateobjectById(planId,object);
-            if(content!=PlanRepository.getOne(planId).getContent())
-                PlanRepository.updatecontentById(planId,content);
-            if(checkDate!=PlanRepository.getOne(planId).getDate())
-                PlanRepository.updateDateById(planId,checkDate);//
-            if(personInCharge!=PlanRepository.getOne(planId).getPersonInCharge())
-                PlanRepository.updatePersonById(planId,personInCharge);
-            if(state!=PlanRepository.getOne(planId).getState())
-                PlanRepository.updateStateById(planId,state);*/
-                PlanRepository.updateById(planId,object,content,checkDate,personInCharge,state);
+            /*if(object!=IntermediateChecksPlanRepository.getOne(planId).getObject())
+                IntermediateChecksPlanRepository.updateobjectById(planId,object);
+            if(content!=IntermediateChecksPlanRepository.getOne(planId).getContent())
+                IntermediateChecksPlanRepository.updatecontentById(planId,content);
+            if(checkDate!=IntermediateChecksPlanRepository.getOne(planId).getDate())
+                IntermediateChecksPlanRepository.updateDateById(planId,checkDate);//
+            if(personInCharge!=IntermediateChecksPlanRepository.getOne(planId).getPersonInCharge())
+                IntermediateChecksPlanRepository.updatePersonById(planId,personInCharge);
+            if(state!=IntermediateChecksPlanRepository.getOne(planId).getState())
+                IntermediateChecksPlanRepository.updateStateById(planId,state);*/
+                IntermediateChecksPlanRepository.updateById(planId,object,content,checkDate,personInCharge,state);
             //content,checkDate,personInCharge,state
             //System.out.println("changed object");
             try{
@@ -145,7 +141,7 @@ public class IntermediateChecksPlanController {
                                      @RequestParam(value="planId",required=false)Long planId)throws IOException{
         JSONObject json=new JSONObject(new LinkedHashMap());
         IntermediateChecksPlan plan=new IntermediateChecksPlan();
-        if(PlanRepository.findById(planId)==null)
+        if(IntermediateChecksPlanRepository.findById(planId)==null)
         {
             try{
                 json.put("code",100);
@@ -156,7 +152,7 @@ public class IntermediateChecksPlanController {
         }
         else
         {
-            plan=PlanRepository.getOne(planId);
+            plan= IntermediateChecksPlanRepository.getOne(planId);
             JSONObject data=new JSONObject(new LinkedHashMap());
             JSONArray array=new JSONArray();
             try{
@@ -189,7 +185,7 @@ public class IntermediateChecksPlanController {
         return "Hello,World";*/
     public @ResponseBody void getAll(HttpServletRequest request,HttpServletResponse response) throws IOException, JSONException {
         JSONObject json=new JSONObject(new LinkedHashMap());
-        if(PlanRepository.findAll()==null)
+        if(IntermediateChecksPlanRepository.findAll()==null)
         {
             try{
                 json.put("code",100);
@@ -203,12 +199,12 @@ public class IntermediateChecksPlanController {
             try{
                 json.put("code",200);
                 json.put("msg","获取成功");
-                //json.put("data:",PlanRepository.findAll());
+                //json.put("data:",IntermediateChecksPlanRepository.findAll());
             }catch (JSONException e){
                 e.printStackTrace();
             }
 
-            List<IntermediateChecksPlan> planList=PlanRepository.findAll();
+            List<IntermediateChecksPlan> planList= IntermediateChecksPlanRepository.findAll();
             JSONObject data=new JSONObject();
             JSONArray array=new JSONArray();
             for(IntermediateChecksPlan plan:planList){

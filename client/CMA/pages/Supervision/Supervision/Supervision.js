@@ -47,6 +47,7 @@ Page({
           flag: 1
         })
         console.log(this.data.mess)
+        console.log("abcdefg")
       }
     }, (err) => {
       wx.showToast({
