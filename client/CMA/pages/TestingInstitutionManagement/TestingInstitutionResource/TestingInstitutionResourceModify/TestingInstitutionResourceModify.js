@@ -1,4 +1,5 @@
 // pages/TestingInstitutionManagement/TestingInstitutionResource/TestingInstitutionResourceModify/TestingInstitutionResourceModify.js
+const app = getApp()
 Page({
 
   /**
@@ -7,12 +8,54 @@ Page({
   data: {
 
   },
+  mytest: function (e) {
+    var that = this
+
+    //console.log(e.detail.value)
+    var myurl = app.globalData.url + 'TestingInstitutionResource/modify';
+    var mydata = {
+      "totalNumber": e.detail.value.totalNumber,
+      "seniorProfessionalTitle": e.detail.value.seniorProfessionalTitle,
+      "intermediateProfessionalTitle": e.detail.value.intermediateProfessionalTitle,
+      "primaryProfessionalTitle": e.detail.value.primaryProfessionalTitle,
+      "fixedAssets": e.detail.value.fixedAssets,
+      "equipmentNumber": e.detail.value.equipmentNumber,
+      "floorSpace": e.detail.value.floorSpace,
+      "stableArea": e.detail.value.stableArea,
+      "outdoorsArea": e.detail.value.outdoorsArea,
+      "nameAndAddress": e.detail.value.nameAndAddress,
+      "newPlace": e.detail.value.newPlace
+    };
+    app.wxRequest(myurl, 'POST', mydata, (res) => {
+      console.log(res.data)
+    }, (err) => {
+      console.log(err)
+    })
+    wx.redirectTo({
+      url: '/pages/TestingInstitutionManagement/TestingInstitutionResource/TestingInstitutionResource',
+    })
+
+  },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad: function (option) {
+    var that = this;
+    console.log(option)
+    that.setData({
+      "totalNumber": option.totalNumber,
+      "seniorProfessionalTitle": option.seniorProfessionalTitle,
+      "intermediateProfessionalTitle": option.intermediateProfessionalTitle,
+      "primaryProfessionalTitle": option.primaryProfessionalTitle,
+      "fixedAssets": option.fixedAssets,
+      "equipmentNumber": option.equipmentNumber,
+      "floorSpace": option.floorSpace,
+      "stableArea": option.stableArea,
+      "outdoorsArea": option.outdoorsArea,
+      "nameAndAddress": option.nameAndAddress,
+      "newPlace": option.newPlace
+    })
   },
 
   /**
