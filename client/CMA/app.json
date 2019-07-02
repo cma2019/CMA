@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/login/login/login",
     "pages/home/home",
     "pages/Management/Management",
     "pages/IntermediateCheck/IntermediateCheckMenu/IntermediateCheckMenu",
@@ -105,7 +106,7 @@
     "pages/StaffManagement/StaffLeaving/AddOneStaffLeaving/AddOneStaffLeaving",
     "pages/TestingInstitutionManagement/TestingInstitutionInformation/TestingInstitutionInformationModify/TestingInstitutionInformationModify",
     "pages/TestingInstitutionManagement/TestingInstitutionResource/TestingInstitutionResourceModify/TestingInstitutionResourceModify",
-    "pages/login/login/login",
+    
     "pages/login/register/register"
   ],
   "window": {
