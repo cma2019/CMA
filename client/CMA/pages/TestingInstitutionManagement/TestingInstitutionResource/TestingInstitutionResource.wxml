@@ -1,2 +1,19 @@
 <!--pages/TestingInstitutionManagement/TestingInstitutionResource/TestingInstitutionResource.wxml-->
-<text>pages/TestingInstitutionManagement/TestingInstitutionResource/TestingInstitutionResource.wxml</text>
+<scroll-view scroll-y>
+  <van-cell>
+    <view slot="title">
+      <view>totalNumber : {{totalNumber}}</view>
+      <view>seniorProfessionalTitle : {{seniorProfessionalTitle}}</view>
+      <view>intermediateProfessionalTitle : {{intermediateProfessionalTitle}}</view>
+      <view>primaryProfessionalTitle : {{primaryProfessionalTitle}}</view>
+      <view>fixedAssets : {{fixedAssets}}</view>
+      <view>equipmentNumber : {{equipmentNumber}}</view>
+      <view>floorSpace : {{floorSpace}}</view>
+      <view>stableArea : {{stableArea}}</view>
+      <view>outdoorsArea : {{outdoorsArea}}</view>
+      <view>nameAndAddress : {{nameAndAddress}}</view>
+      <view>newPlace : {{newPlace}}</view>
+    </view>
+  </van-cell>
+  <van-button type="info" size="small" bindtap="viewDetail">Modify</van-button>
+</scroll-view>

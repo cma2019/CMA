@@ -1,15 +1,13 @@
 package com.example.demo.Controller;
-//import com.fasterxml.jackson.databind.util.JSONPObject;
-//import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.JSONArray;
 import com.example.demo.Model.SampleReceipt;
 import com.example.demo.Repository.SampleReceiptRepository;
-import net.minidev.json.JSONArray;
-//import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import net.sf.json.JSONObject;
 import java.sql.Date;
 import java.util.List;
 import java.util.Map;
@@ -20,15 +18,15 @@ public class SampleReceiptController {
     @Autowired
     private SampleReceiptRepository SampleReceiptRepository;
     @PostMapping(path="/addOne",consumes="application/json",produces="application/json")
-    public @ResponseBody  JSONObject addOne(@RequestBody Map<String,String> samplereceipt){
+    public @ResponseBody  JSONObject addOne(@RequestBody JSONObject data){
         JSONObject js= new JSONObject();
+
         int code=200;
         String msg="成功";
         JSONObject d=new JSONObject();
-        System.out.println(samplereceipt);
+        System.out.println(data);
         System.out.println("?");
-        JSONObject data=JSONObject.fromObject(samplereceipt);
-        String idstr=data.getString("sampleId");
+        String idstr=(String)data.get("sampleId");
         System.out.println(idstr);
         String testtypestr=data.getString("testType");
         System.out.println(testtypestr);
@@ -41,10 +39,6 @@ public class SampleReceiptController {
         }catch (NumberFormatException e){
             code=513;
             msg="某项数据错误";
-            js.put("code",code);
-            js.put("msg",msg);
-            js.put("data",d);
-            return js;
         }
         Long sampleId=Long.parseLong(idstr);
         String applicationUnit=data.getString("applicationUnit");
@@ -54,7 +48,7 @@ public class SampleReceiptController {
         String electronicMedia=data.getString("electronicMedia");
         int softwareType=Integer.parseInt(sofwwaretypestr);
         String receiveUnit=data.getString("receiveUnit");
-        Date receiveDate=java.sql.Date.valueOf(datestr);
+        Date receiveDate= Date.valueOf(datestr);
         String sender=data.getString("sender");
         String receiver=data.getString("receiver");
         JSONArray list =(JSONArray)data.get("materialList");
@@ -64,10 +58,6 @@ public class SampleReceiptController {
         {
             code=511;
             msg="缺少请求参数";
-            js.put("code",code);
-            js.put("msg",msg);
-            js.put("data",d);
-            return js;
         }
         else
         {
@@ -86,16 +76,16 @@ public class SampleReceiptController {
              int basems=0;
              for(int i=0;i<list.size()-1;i++)
              {
-                    JSONObject tmp=JSONObject.fromObject(list.get(i));
-                    basems=basems*10+Integer.parseInt(tmp.getString("materialType"));
+                    JSONObject tmp=(JSONObject)list.get(i);
+                    basems+=(int)(Integer.parseInt(tmp.getString("materialType"))*Math.pow(10,Integer.parseInt(tmp.getString("materialId"))));
              }
             s.setBaseMs(basems+"");
             SampleReceiptRepository.saveAndFlush(s);
-            js.put("code",code);
-            js.put("msg",msg);
-            js.put("data",d);
-            return js;
         }
+        js.put("code",code);
+        js.put("msg",msg);
+        js.put("data",d);
+        return js;
     }
     @PostMapping (path="/deleteOne")
     public @ResponseBody JSONObject deleteOne(@RequestParam(value="sampleId",required = false) String sampleId)
@@ -287,10 +277,6 @@ public class SampleReceiptController {
         {
             code=532;
             msg="数据不存在";
-            js.put("code",code);
-            js.put("msg",msg);
-            js.put("data",d);
-            return js;
         }
         else
         {
@@ -311,17 +297,17 @@ public class SampleReceiptController {
             {
                 for(int i=0;i<list.size();i++)
                 {
-                    JSONObject tmp=JSONObject.fromObject(list.get(i));
-                    basems+=basems*10+Integer.parseInt(tmp.getString("materialType"));
+                    JSONObject tmp=(JSONObject)list.get(i);
+                    basems+=(int)(Integer.parseInt(tmp.getString("materialType"))*Math.pow(10,Integer.parseInt(tmp.getString("materialId"))));
                 }
             }
             s.setBaseMs(basems+"");
             SampleReceiptRepository.saveAndFlush(s);
-            js.put("code",code);
-            js.put("msg",msg);
-            js.put("data",d);
-            return js;
     }
+        js.put("code",code);
+        js.put("msg",msg);
+        js.put("data",d);
+        return js;
     }
 }
 //select * from sampleio;

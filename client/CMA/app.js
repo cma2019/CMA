@@ -5,7 +5,7 @@ App({
 
   globalData: {
     userInfo: null,
-    url: 'http://192.168.1.103:8004/cma/'
+    url: 'http://192.168.1.115:8004/cma/'
   },
 
   wxRequest(url, method, data, callback, errfun) {

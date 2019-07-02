@@ -38,7 +38,7 @@ Page({
     app.wxRequest(myurl, 'GET', null, (res) => {
       console.log(res)
       that.setData({
-        array: res.data.data
+        array: res.data.Equipments
       })
       console.log(that.data.array)
     }, (err) => {
@@ -62,7 +62,7 @@ Page({
     app.wxRequest(myurl, 'GET', null, (res) => {
       console.log(res)
       that.setData({
-        array: res.data.data
+        array: res.data.Equipments
       })
       console.log(that.data.array)
     }, (err) => {

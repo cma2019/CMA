@@ -34,7 +34,7 @@ Page({
    */
   onLoad: function (option) {
     var that = this
-    var myurl = app.globalData.url + 'EquipmentMaintenance/getAllByEquipmentId?equipmentId=' + option.id;
+    var myurl = app.globalData.url + 'EquipmentMaintenance/getAllByEquipmentId/' + option.equipmentId;
     app.wxRequest(myurl, 'GET', null, (res) => {
       console.log(res)
       that.setData({
