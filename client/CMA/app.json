@@ -104,7 +104,9 @@
     "pages/StaffManagement/StaffLeaving/StaffLeaving",
     "pages/StaffManagement/StaffLeaving/AddOneStaffLeaving/AddOneStaffLeaving",
     "pages/TestingInstitutionManagement/TestingInstitutionInformation/TestingInstitutionInformationModify/TestingInstitutionInformationModify",
-    "pages/TestingInstitutionManagement/TestingInstitutionResource/TestingInstitutionResourceModify/TestingInstitutionResourceModify"
+    "pages/TestingInstitutionManagement/TestingInstitutionResource/TestingInstitutionResourceModify/TestingInstitutionResourceModify",
+    "pages/login/login/login",
+    "pages/login/register/register"
   ],
   "window": {
     "backgroundTextStyle": "light",
