@@ -237,7 +237,6 @@ public class SampleIoController {
             recv.setSampleAmount(Integer.parseInt(sampleAmount));
             recv.setSampleState(Integer.parseInt(sampleState));
             recv.setNote(note);
-            recv.setSampleIoId(Long.parseLong(sampleIoId));
             recv.setObtainer(obtainer);
             recv.setReceiver(receiver);
             recv.setReceiver(recv.getReceiver());

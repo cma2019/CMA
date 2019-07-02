@@ -22,14 +22,9 @@ public class SampleIO {
     private Date obtainDate;         //领取日期
     private String note;             //备注
 
-    public void setSampleIoId(long id) {
-        this.sampleIoId = id;
-    }
-
-    public long getSampleIoId() {
+    public Long getSampleIoId() {
         return this.sampleIoId;
     }
-
     public void setSampleNumber(String sampleNumber) {
         this.sampleNumber = sampleNumber;
     }
