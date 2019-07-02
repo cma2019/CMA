@@ -7,13 +7,35 @@ Page({
   data: {
     "mess": null,
     "flag": 0,
-    select:[]
+    //"flag":1,/* */
+    select:[],
+   //select: [false, false],/* */
+    selectAllStatus: false,
+    tmp: [{/* */
+      "id": 1,
+      "situation ": 0,
+      "author": "老王",
+      "createDate": "2018-05-08",
+      "approver": "老李",
+      "approveDate": "2018-06-08",
+      "remark ": "无",
+    },
+    {
+      "id": 3,
+      "situation ": 0,
+      "author": "老块",
+      "createDate": "2016-06-08",
+      "approver": "老八",
+      "approveDate": "2018-07-08",
+      "remark ": "happy",
+    }]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onShow: function (options) {
+  onLoad: function (options) {
+    console.log(this.data.mess)
     let url = app.globalData.url + 'Supervision/getAll'
     let postdata = ''
     console.log(url)
@@ -60,6 +82,21 @@ Page({
     })
     console.log("abcd")
     console.log(this.data)
+  },
+  selectAll(e) {
+    let selectAllStatus = this.data.selectAllStatus;
+    selectAllStatus = !selectAllStatus;
+    let select = this.data.select;
+
+    for (let i = 0; i < select.length; i++) {
+      select[i] = selectAllStatus;
+    }
+    this.setData({
+      selectAllStatus: selectAllStatus,
+      select: select
+    })
+    console.log("qwert")
+    console.log(this.data.select)
   },
   gotoOne: function (e) {
     console.log(e)
@@ -112,8 +149,6 @@ Page({
         duration: 1500
       })
     }
-    wx.navigateTo({
-      url: '../Supervision/SupervisionApprove'
-    })
+    this.onLoad()
   }
 })

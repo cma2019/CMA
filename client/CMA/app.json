@@ -94,7 +94,8 @@
     "pages/TestAbility/getOneItem/getOneItem",
     "pages/TestingInstitutionManagement/Certificate/Certificate",
     "pages/TestingInstitutionManagement/TestingInstitutionResource/TestingInstitutionResource",
-    "pages/TestingInstitutionManagement/TestingInstitutionInformation/TestingInstitutionInformation"
+    "pages/TestingInstitutionManagement/TestingInstitutionInformation/TestingInstitutionInformation",
+    "pages/SampleManagement/SampleReceipt/receiptAddOne/receiptTypeAdd"
   ],
   "window": {
     "backgroundTextStyle": "light",

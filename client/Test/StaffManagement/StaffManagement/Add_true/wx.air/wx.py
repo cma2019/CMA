@@ -1,6 +1,5 @@
-﻿
 # -*- encoding=utf8 -*-
-__author__ = "diaohanshun"
+__author__ = "adminstrator"
 
 from airtest.core.api import *
 
@@ -12,6 +11,7 @@ poco("android.widget.LinearLayout").offspring("com.tencent.mm:id/d88").child("an
 
 poco(text="用户管理").click()
 touch(Template(r"tpl1560392244116.png", record_pos=(-0.017, -0.594), resolution=(1080, 2160)))
+
 
 
 poco("android.widget.Button").click()
@@ -46,11 +46,3 @@ touch(Template(r"tpl1560392541103.png", record_pos=(-0.421, 0.346), resolution=(
 
 
 poco(text="go back ").click()
-
-
-
-
-
-
-
-
