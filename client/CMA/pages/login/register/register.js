@@ -17,8 +17,9 @@ Page({
       console.log('form发生了add事件，携带数据为：', e.detail.value)
       let url = app.globalData.url + 'user/add'
       let data = {
-        "user": e.detail.value.user,
-        "password": e.detail.value.password
+        "username": e.detail.value.username,
+        "password": e.detail.value.password,
+        "password2": e.detail.value.password2
       }
       console.log(url)
       console.log(data)
