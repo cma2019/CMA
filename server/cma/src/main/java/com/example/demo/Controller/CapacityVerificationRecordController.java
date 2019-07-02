@@ -38,7 +38,7 @@ public class CapacityVerificationRecordController {
         CapacityVerificationRecord newRecord = new CapacityVerificationRecord();
         newRecord.setprojectId(projectId);
         newRecord.setDate(date);
-        newRecord.setMethodID(methodId);
+        newRecord.setMethodId(methodId);
         newRecord.setEquipmentName(equipmentName);
         newRecord.setEquipmentId(equipmentId);
         newRecord.setExperimenter(experimenter);
