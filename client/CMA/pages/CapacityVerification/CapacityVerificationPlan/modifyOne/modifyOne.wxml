@@ -42,16 +42,8 @@
         placeholder="input note" 
         required
         clearable
-      />    
-      <van-field
-        name="analysis"
-        label="my analysis"
-        placeholder="input analysis"
-        value='{{analysis}}'
-        required
-        clearable
         border = "{{false}}"
-      />
+      />    
     </van-cell-group>
     <view>
       <button class='van-button--info' formType='submit'>register</button>

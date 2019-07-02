@@ -24,7 +24,7 @@ Page({
   },
 
   onShow: function (options) {
-    let url = app.globalData.url + 'CapacityVerification/getOne'
+    let url = app.globalData.url + 'CapacityVerification/getOneProject'
     let postdata = {
       "id": this.data.id
     }
@@ -34,12 +34,12 @@ Page({
       console.log(res)
       console.log('plan get one project success')
       this.setData({
-        projectId: res.data[0].projectId,
-        planId: res.data[0].planId,
-        name: res.data[0].name,
-        method: res.data[0].method,
-        state: res.data[0].state,
-        note: res.data[0].note
+        projectId: res.data.projectId,
+        planId: res.data.planId,
+        name: res.data.name,
+        method: res.data.method,
+        state: res.data.state,
+        note: res.data.note
       })
     }, (err) => {
       console.err('get one project error')

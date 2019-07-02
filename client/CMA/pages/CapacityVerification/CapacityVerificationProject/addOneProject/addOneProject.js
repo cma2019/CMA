@@ -21,7 +21,7 @@ Page({
     else {
       let url = app.globalData.url + 'CapacityVerification/addOneProject'
       console.log("add one project id")
-      console.log(data.planId)
+      console.log(this.data.planId)
       let data = {
         "planId": this.data.planId,
         "name": e.detail.value.name,

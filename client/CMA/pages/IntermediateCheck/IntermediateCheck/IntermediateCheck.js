@@ -29,7 +29,10 @@ Page({
   onShow:function(options){
     let url = app.globalData.url + 'IntermediateChecksPlan/getAll'
     let postdata = ''
+    
     app.wxRequest(url, 'GET', postdata, (res) => {
+      console.log(res)
+      console.log(res.data)
       this.setData({
         mess: res.data
       })
