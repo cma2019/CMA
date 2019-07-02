@@ -1,5 +1,5 @@
-# -*- encoding=utf8 -*-
-__author__ = "adminstrator"
+﻿# -*- encoding=utf8 -*-
+__author__ = "diaohanshun"
 
 from airtest.core.api import *
 
