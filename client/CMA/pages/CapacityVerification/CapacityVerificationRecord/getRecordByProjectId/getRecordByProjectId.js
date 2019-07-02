@@ -37,6 +37,7 @@ Page({
   },
 
   onShow: function (options) {
+    console.log("record list")
     let url = app.globalData.url + 'CapacityVerification/getRecordByProjectId'
     let data = {
       "projectId": this.data.projectId,
@@ -46,6 +47,8 @@ Page({
       this.setData({
         mess: res.data
       })
+      console.log(res)
+      console.log(this.data.mess)
       console.log('get projects from planid')
     }, (err) => {
       console.log('fail projects from planid')
@@ -54,7 +57,7 @@ Page({
 
   gotoAdd(e) {
     console.log(e)
-    let target = e.currentTarget.projectId
+    let target = this.data.projectId
     console.log('getone id')
     console.log(target)
     wx.navigateTo({
@@ -64,8 +67,8 @@ Page({
 
   gotoOne(e) {
     console.log(e)
-    let target = e.currentTarget.recordId
-    console.log('getone id')
+    let target = e.currentTarget.id
+    console.log('getone record id')
     console.log(target)
     wx.navigateTo({
       url: '../getOneRecord/getOneRecord?id=' + target

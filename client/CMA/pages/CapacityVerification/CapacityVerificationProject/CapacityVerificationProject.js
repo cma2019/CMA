@@ -3,7 +3,7 @@ const app = getApp()
 Page({
 
   data: {
-    "planId":null
+    
   },
 
   onLoad: function (options) {
@@ -12,7 +12,7 @@ Page({
 
   GetProjects(e) {
     console.log("get projects")
-    let target = this.data.planId
+    let target = e.detail.value.planId
     console.log(target)
     wx.navigateTo({
       url: 'showProjects/showProjects?id=' + target

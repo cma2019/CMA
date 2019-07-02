@@ -26,7 +26,7 @@ Page({
   onShow: function (options) {
     let url = app.globalData.url + 'CapacityVerification/getOne'
     let postdata = {
-      "planId": this.data.planId
+      "id": this.data.planId
     }
     console.log(url)
     console.log(postdata)
@@ -34,12 +34,12 @@ Page({
       console.log(res)
       console.log('plan getone success')
       this.setData({
-        name: res.data[0].name,
-        organizer: res.data[0].organizer,
-        state: res.data[0].state,
-        year: res.data[0].year,
-        note: res.data[0].note,
-        analysis: res.data[0].analysis
+        name: res.data.name,
+        organizer: res.data.organizer,
+        state: res.data.state,
+        year: res.data.year,
+        note: res.data.note,
+        analysis: res.data.analysis
       })
     }, (err) => {
       console.err('getone error')
@@ -57,7 +57,7 @@ Page({
   deleteData(e) {
     let url = app.globalData.url + 'CapacityVerification/deleteOne'
     let data = {
-      "planId": this.data.planId
+      "id": this.data.planId
     }
     app.wxRequest(url, 'POST', data, (res) => {
       console.log('delete successfully')

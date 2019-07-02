@@ -1,66 +1,84 @@
-// pages/StaffManagement/StaffAuthorization/ModifyOneStaffAuthorization/ModifyOneStaffAuthorization.js
+// pages/StaffManagement/ModifyStaff/ModifyStaff.js
+const app = getApp()
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-
+    this.setData({
+      id: options.id
+    })
+    console.log(this.data.id)
+    let url = app.globalData.url + 'StaffAuthorization/getOne'
+    let postdata = {
+      "authorizationId": this.data.id
+    }
+    console.log(url)
+    console.log(postdata)
+    app.wxRequest(url, 'GET', postdata, (res) => {
+      console.log("data modify")
+      console.log(res.data.id)
+      this.setData({
+        authorizationId: res.data.authorizationId,
+        id: res.data.id,
+        authorizerId: res.data.authorizerId,
+        content: res.data.content,
+        authorizerDate: res.data.authorizerDate
+      })
+    }, (err) => {
+      console.err('get one error')
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  bindDateChange: function (e) {
+    console.log("date")
+    console.log(e.detail.value)
+    this.setData({
+      authorizerDate: e.detail.value
+    })
   },
+  intercheckmodify: function (e) {
+    console.log('modify modify')
+   /* if (e.detail.value.object == "" || e.detail.value.content == "" ||
+      e.detail.value.date == "" || e.detail.value.personInCharge == "" || e.detail.value.state == "") {
+      wx.showToast({
+        title: 'wrong message',
+        duration: 2000
+      })
+      console.log('wrong message')
+    }
+    else */{
+      console.log('modify，携带数据为：', e.detail.value)
+      console.log('modify，携带数据为：', e.detail.value.object)
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+      let url = app.globalData.url + 'StaffAuthorization/modifyOne';
+      console.log(url)
+      let data = {
+        //"id ":this.data.id,
+        "authorizationId": e.detail.value.authorizationId,
+        "id": e.detail.value.id,
+        "authorizerId": e.detail.value.authorizerId,
+        "content": e.detail.value.content,
+        "authorizerDate": e.detail.value.authorizerDate,
+      };
+      console.log(data)
+      app.wxRequest(url, 'POST', data, (res) => {
+        console.log('modify message successfully')
+        console.log(res)
+        /*
+        if (res.data == "modify successfully.") {
+          wx.navigateBack({
+            delta: 1
+          })
+        }
+        */
+      }, (err) => {
+        console.log('fail modify')
+      })
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  goback: function () {
+    wx.navigateBack({
+      delta: 1
+    })
   }
 })

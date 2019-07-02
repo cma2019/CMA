@@ -32,6 +32,9 @@ Page({
     let url = app.globalData.url + 'CapacityVerification/getAll'
     let postdata = ''
     app.wxRequest(url, 'GET', postdata, (res) => {
+      console.log(res)
+      console.log(res.code)
+      console.log(res.data)
       this.setData({
         mess: res.data
       })
@@ -50,6 +53,7 @@ Page({
   gotoOne(e) {
     console.log(e)
     let target = e.currentTarget.id
+    console.log(e.currentTarget)
     console.log('getone id')
     console.log(target)
     wx.navigateTo({

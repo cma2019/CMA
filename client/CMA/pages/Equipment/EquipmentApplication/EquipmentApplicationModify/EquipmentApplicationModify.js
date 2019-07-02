@@ -44,7 +44,7 @@ Page({
       console.log(err)
     })
     wx.redirectTo({
-      url: '/pages/Equipment/EquipmentUse/EquipmentUse',
+      url: '/pages/Equipment/EquipmentApplication/EquipmentApplication',
     })
 
   },

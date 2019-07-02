@@ -1,2 +1,52 @@
-<!--pages/StaffManagement/StaffAuthorization/ModifyOneStaffAuthorization/ModifyOneStaffAuthorization.wxml-->
-<text>pages/StaffManagement/StaffAuthorization/ModifyOneStaffAuthorization/ModifyOneStaffAuthorization.wxml</text>
+<!--pages/TrainingApplication/ModifyApplication/ModifyApplication.wxml-->
+<view>
+  <form bindsubmit='intercheckmodify'>
+  <van-cell-group>
+      <van-field 
+        name="authorizationId"
+        label="authorizationId"
+        value='{{authorizationId}}'
+        placeholder="input authorizationId" 
+        required
+        clearable
+      />
+      <van-field 
+        name="id"
+        label="id"
+        value='{{id}}'
+        placeholder="input id" 
+        clearable
+      />
+      <van-field 
+        name="authorizerId"
+        label="authorizerId"
+        value='{{authorizerId}}'
+        placeholder="input authorizerId" 
+        clearable
+      />
+      <van-field 
+        name="content"
+        label="content"
+        value='{{content}}'
+        placeholder="input content" 
+        clearable
+      />
+      <view class="section">
+        <picker name = 'authorizerDate' mode='date' value='{{authorizerDate}}' bindchange='bindDateChange'>
+        <view class='picker'>
+        <van-field 
+        label="authorizerDate"
+        value='{{authorizerDate}}'
+        required
+      />
+      </view>
+        </picker>
+    </view>
+    </van-cell-group>
+    <view>
+      <button class='van-button--info' formType='submit'>Modify Application</button>
+    </view>
+  </form>
+</view>
+<van-button type="info" size="small" bindtap="goback">go back</van-button> 
+

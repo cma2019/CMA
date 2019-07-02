@@ -43,6 +43,26 @@ Page({
       url: 'AddOneStaffAuthorization/AddOneStaffAuthorization',
     })
   },
+  ApplicationAdd: function (e) {
+    if (e.detail.value.id == null) {
+      wx.showToast({
+        title: '错误(空白输入)',
+        icon: 'none',
+        duration: 2000
+      })
+      console.log('错误(空白输入)')
+    }
+    else {
+      console.log(e)
+      let target = e.detail.value.id
+      console.log(e.detail.value)
+      console.log('getall id')
+      console.log(target)
+      wx.navigateTo({
+        url: 'GetAllByStaff/GetAllByStaff?id=' + target
+      })
+    }
+  },
 
   gotoOne(e) {
     console.log(e)

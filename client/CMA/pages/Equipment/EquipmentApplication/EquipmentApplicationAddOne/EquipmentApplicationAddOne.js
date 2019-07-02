@@ -33,7 +33,7 @@ Page({
   },
   newEquipment: function (e) {
     console.log(e.detail.value)
-    var myurl = app.globalData.url + 'EquipmentApplication/add';
+    var myurl = app.globalData.url + 'EquipmentApplication/addOne';
     var mydata = {
       "applicant": e.detail.value.applicant,
       "applicationDate": e.detail.value.applicationDate,

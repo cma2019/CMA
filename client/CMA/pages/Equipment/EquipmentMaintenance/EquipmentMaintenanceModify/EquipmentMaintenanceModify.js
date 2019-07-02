@@ -17,7 +17,7 @@ Page({
   mytest: function (e) {
     var that = this
 
-    //console.log(e.detail.value)
+    console.log(that.data)
     var myurl = app.globalData.url + 'EquipmentMaintenance/modifyOne/' + that.data.id;
     var mydata = {
       "equipmentId": e.detail.value.equipmentId,
@@ -27,7 +27,7 @@ Page({
       "confirmer": e.detail.value.confirmer
     };
     app.wxRequest(myurl, 'POST', mydata, (res) => {
-      console.log(res.data)
+      console.log(res)
     }, (err) => {
       console.log(err)
     })
@@ -44,6 +44,7 @@ Page({
     var that = this;
     console.log(option)
     that.setData({
+      "id": option.id,
       "equipmentId": option.equipmentId,
       "maintenanceDate": option.maintenanceDate,
       "maintenanceContent": option.maintenanceContent,

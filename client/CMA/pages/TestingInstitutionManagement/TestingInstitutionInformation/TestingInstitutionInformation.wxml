@@ -1,2 +1,36 @@
 <!--pages/TestingInstitutionManagement/TestingInstitutionInformation/TestingInstitutionInformation.wxml-->
-<text>pages/TestingInstitutionManagement/TestingInstitutionInformation/TestingInstitutionInformation.wxml</text>
+<scroll-view scroll-y>
+  <van-cell>
+    <view slot="title">
+      <view>testingInstitutionName : {{testingInstitutionName}}</view>
+      <view>testingInstitutionAddress : {{testingInstitutionAddress}}</view>
+      <view>postcode : {{postcode}}</view>
+      <view>fax : {{fax}}</view>
+      <view>email : {{email}}</view>
+      <view>tiPeopleInCharge : {{tiPeopleInCharge}}</view>
+      <view>tiPicPosition : {{tiPicPosition}}</view>
+      <view>tiPicTelephone : {{tiPicTelephone}}</view>
+      <view>tiPicMobilephone : {{tiPicMobilephone}}</view>
+      <view>liaison : {{liaison}}</view>
+      <view>liaisonPosition : {{liaisonPosition}}</view>
+      <view>liaisonTelephone : {{liaisonTelephone}}</view>
+      <view>liaisonMobilephone : {{liaisonMobilephone}}</view>
+      <view>socialCreditCode : {{socialCreditCode}}</view>
+      <view>legalEntityBelongedName : {{legalEntityBelongedName}}</view>
+      <view>legalEntityBelongedAddress : {{legalEntityBelongedAddress}}</view>
+      <view>lebPeopelInCharge : {{lebPeopelInCharge}}</view>
+      <view>lebPicPosition : {{lebPicPosition}}</view>
+      <view>lebPicTelephone : {{lebPicTelephone}}</view>
+      <view>lebSocialCreditCode : {{lebSocialCreditCode}}</view>
+      <view>competentDepartmentName : {{competentDepartmentName}}</view>
+      <view>competentDepartmentAddress : {{competentDepartmentAddress}}</view>
+      <view>cdPeopelInCharge : {{cdPeopelInCharge}}</view>
+      <view>cdPicPosition : {{cdPicPosition}}</view>
+      <view>cdPicTelephone : {{cdPicTelephone}}</view>
+      <view>characteristic : {{characteristic}}</view>
+      <view>legalEntity : {{legalEntity}}</view>
+
+    </view>
+  </van-cell>
+  <van-button type="info" size="small" bindtap="viewDetail">Modify</van-button>
+</scroll-view>

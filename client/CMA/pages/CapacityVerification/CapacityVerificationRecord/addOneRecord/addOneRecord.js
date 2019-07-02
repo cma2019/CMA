@@ -31,7 +31,7 @@ Page({
     else {
       let url = app.globalData.url + 'CapacityVerification/addOneRecord'
       console.log("add one record id")
-      console.log(data.projectId)
+      console.log(this.data.projectId)
       let data = {
         "projectId": this.data.projectId,
         "date": e.detail.value.date,
