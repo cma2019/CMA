@@ -2,7 +2,7 @@
 <view>
   <van-cell-group title="CapacityVerificationProject">
   <view wx:for="{{temp}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
-    <van-cell value="详情" bindtap='gotoOne' projectId='{{item.projectId}}' recordId='{{item.recordId}}' is-link>
+    <van-cell value="详情" bindtap='gotoOne'  id='{{item.recordId}}' is-link>
       <view slot="title">
         <view>recordId : {{item.recordId}}</view>
         <view>date : {{item.date}}</view>

@@ -29,12 +29,9 @@ Page({
         console.log(res.code)
         if(res.code==200)
         {
-          console.log("fsaf")
-          wx.navigateTo({
-            url: '/pages/login/register/register',
-            //url: '/pages/home/home',
+          wx.switchTab({
+            url: '../home/home',
           })
-          console.log("asdsad")
         }
         else
         {

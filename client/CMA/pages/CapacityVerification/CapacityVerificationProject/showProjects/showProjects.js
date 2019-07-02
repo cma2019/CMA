@@ -35,11 +35,13 @@ Page({
     let data = {
      "planId": this.data.planId,
     }
-    console.log(data)
+    console.log("show pros")
+    console.log(this.data.planId)
     app.wxRequest(url, 'GET', data, (res) => {
       this.setData({
         mess: res.data
       })
+      console.log(res)
       console.log('get projects from planid')
     }, (err) => {
       console.log('fail projects from planid')
@@ -48,7 +50,7 @@ Page({
 
   gotoAdd(e) {
     console.log(e)
-    let target = e.currentTarget.planId
+    let target = this.data.planId
     console.log('getone id')
     console.log(target)
     wx.navigateTo({
@@ -57,8 +59,10 @@ Page({
   },
 
   gotoOne(e) {
+    console.log("pro go to one")
     console.log(e)
-    let target = e.currentTarget.projectId
+    console.log(e.currentTarget)
+    let target = e.currentTarget.id
     console.log('getone id')
     console.log(target)
     wx.navigateTo({

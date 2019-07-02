@@ -1,8 +1,8 @@
 <!--pages/CapacityVerificationPlan/CapacityVerificationPlan.wxml-->
 <view>
   <van-cell-group title="CapacityVerificationProject">
-  <view wx:for="{{temp}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
-    <van-cell value="详情" bindtap='gotoOne' projectId='{{item.projectId}}' planId='{{item.planId}}' is-link>
+  <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
+    <van-cell value="详情" bindtap='gotoOne' id='{{item.projectId}}'  is-link>
       <view slot="title">
         <view>projectId : {{item.projectId}}</view>
         <view>name : {{item.name}}</view>

@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/login/login/login",
+    "pages/login/login",
     "pages/home/home",
+    
     "pages/Management/Management",
     "pages/IntermediateCheck/IntermediateCheckMenu/IntermediateCheckMenu",
     "pages/index/index",
@@ -107,7 +108,7 @@
     "pages/TestingInstitutionManagement/TestingInstitutionInformation/TestingInstitutionInformationModify/TestingInstitutionInformationModify",
     "pages/TestingInstitutionManagement/TestingInstitutionResource/TestingInstitutionResourceModify/TestingInstitutionResourceModify",
     
-    "pages/login/register/register"
+    "pages/register/register"
   ],
   "window": {
     "backgroundTextStyle": "light",

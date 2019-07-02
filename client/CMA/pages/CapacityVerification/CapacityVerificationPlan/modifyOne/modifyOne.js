@@ -28,18 +28,18 @@ Page({
     console.log(this.data.planId)
     let url = app.globalData.url + 'CapacityVerification/getOne'
     let postdata = {
-      "planId": this.data.planId
+      "id": this.data.planId
     }
     app.wxRequest(url, 'GET', postdata, (res) => {
       console.log("plan modify success")
-      console.log(res.data[0])
+      console.log(res.data)
       this.setData({
-        name: res.data[0].name,
-        organizer: res.data[0].organizer,
-        state: res.data[0].state,
-        year: res.data[0].year,
-        note: res.data[0].note,
-        analysis: res.data[0].analysis
+        name: res.data.name,
+        organizer: res.data.organizer,
+        state: res.data.state,
+        year: res.data.year,
+        note: res.data.note,
+        analysis: res.data.analysis
       })
     }, (err) => {
       console.err('getone error')
@@ -65,13 +65,12 @@ Page({
     console.log(url)
     console.log(this.data.planId)
     let data = {
-      "planId": this.data.planId,
+      "id": this.data.planId,
       "name": e.detail.value.name,
       "organizer": e.detail.value.organizer,
       "state": e.detail.value.state,
       "year": e.detail.value.year,
       "note": e.detail.value.note,
-      "analysis": e.detail.value.analysis
     };
     console.log(data)
     app.wxRequest(url, 'POST', data, (res) => {
