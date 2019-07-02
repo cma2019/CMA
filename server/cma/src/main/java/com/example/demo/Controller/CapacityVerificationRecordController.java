@@ -36,7 +36,7 @@ public class CapacityVerificationRecordController {
                          @RequestParam(value = "resultDeal", required = false) String resultDeal,
                          @RequestParam(value = "note", required = false) String note){
         CapacityVerificationRecord newRecord = new CapacityVerificationRecord();
-        newRecord.setprojectID(projectId);
+        newRecord.setprojectId(projectId);
         newRecord.setDate(date);
         newRecord.setMethodID(methodId);
         newRecord.setEquipmentName(equipmentName);
@@ -137,12 +137,13 @@ public class CapacityVerificationRecordController {
         }
         else
         {
-            record= CapacityVerificationRecordRepository.getOne(recordId);
+            json.put("data",CapacityVerificationRecordRepository.findById(recordId));
+            /*record= CapacityVerificationRecordRepository.getOne(recordId);
             JSONObject data=new JSONObject(new LinkedHashMap());
             JSONArray array=new JSONArray();
             try{
-                data.put("recordId",record.getrecordID());
-                data.put("projectId",record.getprojectID());
+                data.put("recordId",record.getrecordId());
+                data.put("projectId",record.getprojectId());
                 data.put("date",record.getDate());
                 data.put("methodId",record.getMethodID());
                 data.put("equipmentName",record.getEquipmentName());
@@ -161,7 +162,7 @@ public class CapacityVerificationRecordController {
                 json.put("data",data);
             }catch (JSONException e){
                 e.printStackTrace();
-            }
+            }*/
 
         }
 
@@ -183,12 +184,13 @@ public class CapacityVerificationRecordController {
         }
         else
         {
-            record= CapacityVerificationRecordRepository.findByProjectId(projectId);
+            json.put("data",CapacityVerificationRecordRepository.findByProjectId(projectId));
+            /*record= CapacityVerificationRecordRepository.findByProjectId(projectId);
             JSONObject data=new JSONObject(new LinkedHashMap());
             JSONArray array=new JSONArray();
             try{
-                data.put("recordId",record.getrecordID());
-                data.put("projectId",record.getprojectID());
+                data.put("recordId",record.getrecordId());
+                data.put("projectId",record.getprojectId());
                 data.put("date",record.getDate());
                 data.put("methodId",record.getMethodID());
                 data.put("equipmentName",record.getEquipmentName());
@@ -207,7 +209,7 @@ public class CapacityVerificationRecordController {
                 json.put("data",data);
             }catch (JSONException e){
                 e.printStackTrace();
-            }
+            }*/
 
         }
         return json;

@@ -176,11 +176,12 @@ public class CapacityVerificationPlanController {
         }
         else
         {
-            plan= CapacityVerificationPlanRepository.getOne(planId);
+            json.put("data",CapacityVerificationPlanRepository.findById(planId));
+            /*plan= CapacityVerificationPlanRepository.getOne(planId);
             JSONObject data=new JSONObject(new LinkedHashMap());
             JSONArray array=new JSONArray();
             try{
-                data.put("planId",plan.getplanID());
+                data.put("planId",plan.getplanId());
                 data.put("name",plan.getName());
                 data.put("organizer",plan.getOrganizer());
                 data.put("state",plan.getState());
@@ -197,7 +198,7 @@ public class CapacityVerificationPlanController {
                 json.put("data",data);
             }catch (JSONException e){
                 e.printStackTrace();
-            }
+            }*/
 
         }
 

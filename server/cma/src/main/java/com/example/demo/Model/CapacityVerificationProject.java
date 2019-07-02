@@ -21,15 +21,15 @@ public class CapacityVerificationProject {
     private long state;   //0即未完成，1即完成变成了记录
     private String note;//该项目的备注
 
-    public void setprojectID(long id){
+    public void setprojectId(long id){
         this.projectId=id;
     }
-    public long getprojectID(){ return this.projectId; }
+    public long getprojectId(){ return this.projectId; }
 
-    public void setplanID(long id){
+    public void setplanId(long id){
         this.planId=id;
     }
-    public long getplanID(){
+    public long getplanId(){
         return this.planId;
     }
 
