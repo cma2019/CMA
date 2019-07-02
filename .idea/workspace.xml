@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="651ff98d-c157-4ecc-9e40-c378665378ef" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/server/cma/src/test/java/com/example/demo/Controller/SampleReceiptControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/cma/src/test/java/com/example/demo/Controller/SampleReceiveControllerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Controller/SampleIoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Controller/SampleIoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Model/SampleIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Model/SampleIO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Model/SampleReceive.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Model/SampleReceive.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/cma/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/server/cma/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/cma/src/test/java/com/example/demo/Controller/SampleIoControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/cma/src/test/java/com/example/demo/Controller/SampleIoControllerTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/server/cma/target/" />
@@ -20,31 +22,38 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Controller/SampleIoController.java">
+        <entry file="file://$PROJECT_DIR$/server/cma/src/test/java/com/example/demo/Controller/SampleReceiveControllerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="149">
-              <caret line="74" selection-start-line="74" selection-end-line="74" />
+            <state relative-caret-position="144">
+              <caret line="82" column="5" lean-forward="true" selection-start-line="82" selection-start-column="5" selection-end-line="82" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#deleteOne#0;class#SampleIoController#0" />
-                <element signature="method#findALL#0;class#SampleIoController#0" />
-                <element signature="method#findOne#0;class#SampleIoController#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Controller/SampleReceiveController.java">
+        <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Controller/SampleReceiptController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="259" column="9" lean-forward="true" selection-start-line="259" selection-start-column="9" selection-end-line="259" selection-end-column="9" />
+            <state relative-caret-position="2087">
+              <caret line="230" column="42" lean-forward="true" selection-start-line="230" selection-start-column="42" selection-end-line="230" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#addOne#0;class#SampleReceiveController#0" />
-                <element signature="method#deleteOne#0;class#SampleReceiveController#0" />
-                <element signature="method#findALL#0;class#SampleReceiveController#0" />
-                <element signature="method#findOne#0;class#SampleReceiveController#0" />
+                <element signature="method#deleteOne#0;class#SampleReceiptController#0" />
+                <element signature="method#findOne#0;class#SampleReceiptController#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/server/cma/src/test/java/com/example/demo/Controller/SampleReceiptControllerTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="133">
+              <caret line="22" column="3" lean-forward="true" selection-start-line="22" selection-start-column="3" selection-end-line="22" selection-end-column="3" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -53,43 +62,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/cma/src/main/resources/application.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="4" column="16" lean-forward="true" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/server/cma/src/test/java/com/example/demo/Controller/SampleIoControllerTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1213">
-              <caret line="79" lean-forward="true" selection-start-line="79" selection-end-line="79" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Model/SampleIO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="25" column="31" lean-forward="true" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1002#1003#0" expanded="true" />
-                <element signature="e#1040#1041#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Model/SampleReceipt.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
-              <caret line="33" column="55" lean-forward="true" selection-start-line="33" selection-start-column="55" selection-end-line="33" selection-end-column="55" />
+            <state relative-caret-position="95">
+              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
@@ -119,7 +93,6 @@
         <option value="$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Repository/SampleIoRepository.java" />
         <option value="$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Repository/RecordRepository.java" />
         <option value="$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Repository/SampleReceive.java" />
-        <option value="$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Model/SampleReceive.java" />
         <option value="$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Repository/SampleReceiveRepository.java" />
         <option value="$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Controller/IntermediateChecksPlanController.java" />
         <option value="$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Controller/IntermediateChecksRecordController.java" />
@@ -142,6 +115,9 @@
         <option value="$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Model/SampleIO.java" />
         <option value="$PROJECT_DIR$/server/cma/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/server/cma/src/test/java/com/example/demo/Controller/SampleIoControllerTest.java" />
+        <option value="$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Model/SampleReceive.java" />
+        <option value="$PROJECT_DIR$/server/cma/src/test/java/com/example/demo/Controller/SampleReceiveControllerTest.java" />
+        <option value="$PROJECT_DIR$/server/cma/src/test/java/com/example/demo/Controller/SampleReceiptControllerTest.java" />
       </list>
     </option>
   </component>
@@ -398,7 +374,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.DemoApplication">
+  <component name="RunManager" selected="JUnit.SampleReceiveControllerTest">
     <configuration name="SampleIoControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="gs-mysql-data" />
       <extension name="coverage">
@@ -414,6 +390,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SampleReceiveControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="gs-mysql-data" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.demo.Controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.demo.Controller" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.Controller.SampleReceiveControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="gs-mysql-data" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.demo.DemoApplication" />
@@ -423,6 +414,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SampleReceiveControllerTest" />
         <item itemvalue="JUnit.SampleIoControllerTest" />
       </list>
     </recent_temporary>
@@ -447,7 +439,7 @@
       <workItem from="1560322312995" duration="11239000" />
       <workItem from="1560345880010" duration="2500000" />
       <workItem from="1562034646537" duration="3991000" />
-      <workItem from="1562038717505" duration="5225000" />
+      <workItem from="1562038717505" duration="6632000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1559222367771</created>
@@ -498,7 +490,14 @@
       <option name="project" value="LOCAL" />
       <updated>1562044363169</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="1">
+      <created>1562045555295</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1562045555295</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -517,9 +516,18 @@
     <history-entry file="SampleIoControllerTest - 2019.07.02 at 13h 24m 35s.xml">
       <configuration name="SampleIoControllerTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="SampleIoControllerTest - 2019.07.02 at 13h 33m 44s.xml">
+      <configuration name="SampleIoControllerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SampleReceiveControllerTest - 2019.07.02 at 13h 46m 31s.xml">
+      <configuration name="SampleReceiveControllerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SampleReceiveControllerTest - 2019.07.02 at 13h 47m 45s.xml">
+      <configuration name="SampleReceiveControllerTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36968000" />
+    <option name="totallyTimeSpent" value="38375000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -560,7 +568,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="3" visible="true" weight="0.25192803" />
+      <window_info anchor="right" id="Maven" order="3" weight="0.25192803" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
       <window_info anchor="right" id="Database" order="6" />
@@ -630,34 +638,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Model/TrainingApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Repository/AllAnnualPlanRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Repository/EquipmentRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Repository/StaffManagementRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Repository/TrainingApplicationRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
@@ -968,18 +948,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Controller/SampleReceiptController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="638">
-          <caret line="248" column="26" lean-forward="true" selection-start-line="248" selection-start-column="26" selection-end-line="248" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#deleteOne#0;class#SampleReceiptController#0" />
-            <element signature="method#findOne#0;class#SampleReceiptController#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Controller/SampleIoController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="149">
@@ -989,20 +957,6 @@
             <element signature="method#deleteOne#0;class#SampleIoController#0" />
             <element signature="method#findALL#0;class#SampleIoController#0" />
             <element signature="method#findOne#0;class#SampleIoController#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Controller/SampleReceiveController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="259" column="9" lean-forward="true" selection-start-line="259" selection-start-column="9" selection-end-line="259" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#addOne#0;class#SampleReceiveController#0" />
-            <element signature="method#deleteOne#0;class#SampleReceiveController#0" />
-            <element signature="method#findALL#0;class#SampleReceiveController#0" />
-            <element signature="method#findOne#0;class#SampleReceiveController#0" />
           </folding>
         </state>
       </provider>
@@ -1026,17 +980,77 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/cma/src/main/resources/application.properties">
+    <entry file="file://$PROJECT_DIR$/server/cma/src/test/java/com/example/demo/Controller/StaffManagementControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="16" lean-forward="true" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+        <state relative-caret-position="-14">
+          <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Controller/SampleReceiveController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="32" column="59" selection-start-line="32" selection-start-column="49" selection-end-line="32" selection-end-column="59" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#deleteOne#0;class#SampleReceiveController#0" />
+            <element signature="method#findALL#0;class#SampleReceiveController#0" />
+            <element signature="method#findOne#0;class#SampleReceiveController#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/cma/src/test/java/com/example/demo/Controller/SampleIoControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1213">
-          <caret line="79" lean-forward="true" selection-start-line="79" selection-end-line="79" />
+        <state relative-caret-position="-285">
+          <caret line="9" column="71" lean-forward="true" selection-start-line="9" selection-start-column="71" selection-end-line="9" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/cma/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Model/SampleReceive.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="25" column="5" lean-forward="true" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+          <folding>
+            <element signature="e#951#952#0" expanded="true" />
+            <element signature="e#987#988#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/cma/src/test/java/com/example/demo/Controller/SampleReceiveControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="82" column="5" lean-forward="true" selection-start-line="82" selection-start-column="5" selection-end-line="82" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/cma/src/main/java/com/example/demo/Controller/SampleReceiptController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2087">
+          <caret line="230" column="42" lean-forward="true" selection-start-line="230" selection-start-column="42" selection-end-line="230" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#deleteOne#0;class#SampleReceiptController#0" />
+            <element signature="method#findOne#0;class#SampleReceiptController#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/cma/src/test/java/com/example/demo/Controller/SampleReceiptControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="22" column="3" lean-forward="true" selection-start-line="22" selection-start-column="3" selection-end-line="22" selection-end-column="3" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
