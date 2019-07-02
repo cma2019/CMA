@@ -2,9 +2,9 @@
   <form bindsubmit='ApplicationAdd'>
   <van-cell-group>
       <van-field 
-        name="user"
-        label="user"
-        placeholder="input user" 
+        name="username"
+        label="username"
+        placeholder="input username" 
         required
         clearable
       />
@@ -23,5 +23,5 @@
     </view>
   </form>
 </view>
- <van-button type="info" size="small" bindtap="goback">go back</van-button> 
+ <van-button type="info" size="small" bindtap="goback">register</van-button> 
 

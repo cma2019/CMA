@@ -17,21 +17,24 @@ Page({
       console.log('form发生了add事件，携带数据为：', e.detail.value)
       let url = app.globalData.url + 'user/find'
       let data = {
-        "user": e.detail.value.user,
+        "username": e.detail.value.username,
         "password": e.detail.value.password
       }
       console.log(url)
       console.log(data)
-      app.wxRequest(url, 'POST', data, (res) => {
+      app.wxRequest(url, 'GET', data, (res) => {
         console.log('successfully')
         console.log(res)
         console.log(res.msg)
         console.log(res.code)
         if(res.code==200)
         {
+          console.log("fsaf")
           wx.navigateTo({
-            url: '/pages/home/home',
+            url: '/pages/login/register/register',
+            //url: '/pages/home/home',
           })
+          console.log("asdsad")
         }
         else
         {
@@ -49,8 +52,8 @@ Page({
 
   },
   goback: function () {
-    wx.navigateBack({
-      delta: 1
+    wx.navigateTo({
+      url: '/pages/login/register/register',
     })
   }
 })
