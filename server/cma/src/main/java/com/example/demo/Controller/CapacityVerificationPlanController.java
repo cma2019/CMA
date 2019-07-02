@@ -1,10 +1,11 @@
 package com.example.demo.Controller;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONException;
+import com.alibaba.fastjson.JSONObject;
 import com.example.demo.Model.CapacityVerificationPlan;
 import com.example.demo.Repository.CapacityVerificationPlanRepository;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +30,7 @@ public class CapacityVerificationPlanController {
     @GetMapping(path="/getAll")
     public @ResponseBody JSONObject getAllPlan() throws JSONException {
         JSONObject json=new JSONObject(new LinkedHashMap());
+        System.out.println("in?");
         if(CapacityVerificationPlanRepository.findAll()==null)
         {
             try{
@@ -43,12 +45,13 @@ public class CapacityVerificationPlanController {
             try{
                 json.put("code",200);
                 json.put("msg","获取成功");
-                //json.put("data:",IntermediateChecksPlanRepository.findAll());
+                System.out.println("in?");
+                json.put("data:",CapacityVerificationPlanRepository.findAll());
             }catch (JSONException e){
                 e.printStackTrace();
             }
 
-            List<CapacityVerificationPlan> planList= CapacityVerificationPlanRepository.findAll();
+            /*List<CapacityVerificationPlan> planList= CapacityVerificationPlanRepository.findAll();
             JSONObject data=new JSONObject();
             JSONArray array=new JSONArray();
             for(CapacityVerificationPlan plan:planList){
@@ -61,11 +64,11 @@ public class CapacityVerificationPlanController {
                 singlePlan.put("year",plan.getYear());
                 singlePlan.put("note",plan.getNote());
                 singlePlan.put("analysis",plan.getAnalysis());
-                array.put(singlePlan);
+                array.add(singlePlan);
                 //System.out.println(array);
 
             }
-            json.put("data",array);
+            json.put("data",array);*/
         }
         return json;
         /*response.setContentType("text/html;charset=utf-8");
@@ -82,9 +85,11 @@ public class CapacityVerificationPlanController {
         CapacityVerificationPlan newPlan = new CapacityVerificationPlan();
         newPlan.setName(name);
         newPlan.setOrganizer(organizer);
+
         newPlan.setYear(year);
         newPlan.setNote(note);
         newPlan.setState(0);
+
         CapacityVerificationPlanRepository.save(newPlan);
 
         JSONObject json = new JSONObject(new LinkedHashMap());
@@ -186,11 +191,11 @@ public class CapacityVerificationPlanController {
             }catch (JSONException e){
                 e.printStackTrace();
             }
-            array.put(data);
+            //array.put(data);
             try{
                 json.put("code",200);
                 json.put("msg","获取成功");
-                json.put("data",array);
+                json.put("data",data);
             }catch (JSONException e){
                 e.printStackTrace();
             }

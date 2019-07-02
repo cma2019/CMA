@@ -1,10 +1,11 @@
 package com.example.demo.Controller;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONException;
+import com.alibaba.fastjson.JSONObject;
 import com.example.demo.Model.CapacityVerificationProject;
 import com.example.demo.Repository.CapacityVerificationProjectRepository;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -38,12 +39,12 @@ public class CapacityVerificationProjectController {
             try {
                 json.put("code", 200);
                 json.put("msg", "获取成功");
-                //json.put("data:",IntermediateChecksPlanRepository.findAll());
+                json.put("data:",CapacityVerificationProjectRepository.findAllByPlanId(planId));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
-        List<CapacityVerificationProject> projectList= CapacityVerificationProjectRepository.findAllByPlanId(planId);
+        /*List<CapacityVerificationProject> projectList= CapacityVerificationProjectRepository.findAllByPlanId(planId);
         JSONObject data=new JSONObject();
         JSONArray array=new JSONArray();
         for(CapacityVerificationProject project:projectList){
@@ -59,7 +60,7 @@ public class CapacityVerificationProjectController {
             //System.out.println(array);
 
         }
-        json.put("data",array);
+        json.put("data",array);*/
 
         return json;
     }
@@ -175,11 +176,11 @@ public class CapacityVerificationProjectController {
             }catch (JSONException e){
                 e.printStackTrace();
             }
-            array.put(data);
+            //array.put(data);
             try{
                 json.put("code",200);
                 json.put("msg","获取成功");
-                json.put("data",array);
+                json.put("data",data);
             }catch (JSONException e){
                 e.printStackTrace();
             }
