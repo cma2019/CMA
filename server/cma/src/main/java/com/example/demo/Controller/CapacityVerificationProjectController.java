@@ -71,7 +71,7 @@ public class CapacityVerificationProjectController {
                                             @RequestParam(value = "method", required = false) String method,
                                             @RequestParam(value = "note", required = false) String note){
         CapacityVerificationProject newProject = new CapacityVerificationProject();
-        newProject.setplanID(planId);
+        newProject.setplanId(planId);
         newProject.setName(name);
         newProject.setMethod(method);
         newProject.setNote(note);
@@ -163,12 +163,13 @@ public class CapacityVerificationProjectController {
         }
         else
         {
-            project= CapacityVerificationProjectRepository.getOne(projectId);
+            json.put("data",CapacityVerificationProjectRepository.findById(projectId));
+            /*project= CapacityVerificationProjectRepository.getOne(projectId);
             JSONObject data=new JSONObject(new LinkedHashMap());
             JSONArray array=new JSONArray();
             try{
-                data.put("projectId",project.getprojectID());
-                data.put("planId",project.getplanID());
+                data.put("projectId",project.getprojectId());
+                data.put("planId",project.getplanId());
                 data.put("name",project.getName());
                 data.put("method",project.getMethod());
                 data.put("state",project.getState());
@@ -183,7 +184,7 @@ public class CapacityVerificationProjectController {
                 json.put("data",data);
             }catch (JSONException e){
                 e.printStackTrace();
-            }
+            }*/
 
         }
 

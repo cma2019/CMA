@@ -22,10 +22,10 @@ public class CapacityVerificationPlan {
     private String note;//计划的备注
     private String analysis;
 
-    public void setplanID(long id){
+    public void setplanId(long id){
         this.planId=id;
     }
-    public long getplanID(){
+    public long getplanId(){
         return this.planId;
     }
 
