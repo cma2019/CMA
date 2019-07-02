@@ -137,6 +137,8 @@ public class CapacityVerificationRecordController {
         }
         else
         {
+            json.put("code",200);
+            json.put("msg","获取成功");
             json.put("data",CapacityVerificationRecordRepository.findById(recordId));
             /*record= CapacityVerificationRecordRepository.getOne(recordId);
             JSONObject data=new JSONObject(new LinkedHashMap());
