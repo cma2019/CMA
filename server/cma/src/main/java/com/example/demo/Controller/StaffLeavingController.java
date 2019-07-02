@@ -38,6 +38,12 @@ public class StaffLeavingController {
     @PostMapping(path = "addOne")
     public @ResponseBody JSONObject addOne(@RequestParam(required = false,value = "id")long id,@RequestParam(required = false,value = "LeavingDate")String LeavingDate){
         JSONObject json=new JSONObject();
+        if(staffManagementRepository.existsById(id)==false){
+            json.put("code",210);
+            json.put("msg","不存在员工");
+            json.put("data",null);
+            return null;
+        }
         StaffManagement staff=staffManagementRepository.getOne(id);
         StaffLeaving staffLeaving=new StaffLeaving();
         staffLeaving.setStaffid(staff.getId());
