@@ -103,7 +103,8 @@
     "pages/StaffManagement/StaffAuthorization/GetOneStaffAuthorization/GetOneStaffAuthorization",
     "pages/StaffManagement/StaffLeaving/StaffLeaving",
     "pages/StaffManagement/StaffLeaving/AddOneStaffLeaving/AddOneStaffLeaving",
-    "pages/TestingInstitutionManagement/TestingInstitutionInformation/TestingInstitutionInformationModify/TestingInstitutionInformationModify"
+    "pages/TestingInstitutionManagement/TestingInstitutionInformation/TestingInstitutionInformationModify/TestingInstitutionInformationModify",
+    "pages/TestingInstitutionManagement/TestingInstitutionResource/TestingInstitutionResourceModify/TestingInstitutionResourceModify"
   ],
   "window": {
     "backgroundTextStyle": "light",

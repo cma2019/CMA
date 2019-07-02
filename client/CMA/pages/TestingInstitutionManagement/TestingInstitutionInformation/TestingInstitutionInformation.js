@@ -79,7 +79,7 @@ Page({
         "characteristic": res.data.characteristic,
         "legalEntity": res.data.legalEntity
       })
-      console.log(that.data.array)
+      console.log(that.data)
     }, (err) => {
       console.log(err)
     })
