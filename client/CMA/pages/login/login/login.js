@@ -31,8 +31,7 @@ Page({
         {
           console.log("fsaf")
           wx.navigateTo({
-            url: '/pages/login/register/register',
-            //url: '/pages/home/home',
+            url: '../../home/home',
           })
           console.log("asdsad")
         }
