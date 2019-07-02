@@ -1,2 +1,27 @@
-<!--pages/login/register/register.wxml-->
-<text>pages/login/register/register.wxml</text>
+<view>
+  <form bindsubmit='ApplicationAdd'>
+  <van-cell-group>
+      <van-field 
+        name="user"
+        label="user"
+        placeholder="input user" 
+        required
+        clearable
+      />
+      <van-field 
+        name="password"
+        label="password"
+        placeholder="input password" 
+        password
+        required
+        clearable
+      />
+     
+    </van-cell-group>
+    <view>
+      <button class='van-button--info'formType = 'submit'>register           </button>
+    </view>
+  </form>
+</view>
+ <van-button type="info" size="small" bindtap="goback">go back</van-button> 
+
