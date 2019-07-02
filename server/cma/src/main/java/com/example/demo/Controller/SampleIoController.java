@@ -18,7 +18,6 @@ import java.util.List;
 public class SampleIoController {
     @Autowired
     private SampleIoRepository SampleIoRepository;
-    private static long ID=0;
     @PostMapping(path="/addOne")
     public @ResponseBody
     JSONObject addOne(@RequestParam(value = "sampleNumber", required = false)String sampleNumber,
@@ -31,15 +30,9 @@ public class SampleIoController {
                           @RequestParam(value="obtainer",required = false)String obtainer,
                           @RequestParam(value = "obtainDate",required = false)String obtainDate,
                           @RequestParam(value="sendDate",required = false) String sendDate){
-        /*System.out.println(sampleNumber);
-        System.out.println(sampleName);
-        System.out.println(sender);
-        System.out.println(receiver);
-        System.out.println(obtainer);*/
         JSONObject js=new JSONObject();
         int code=200;
         String msg="成功";
-        //JSONObject data=null;
         try {
             Integer.parseInt(sampleState);
             Integer.parseInt(sampleAmount);
@@ -48,28 +41,16 @@ public class SampleIoController {
         }catch (NumberFormatException e){
             code=513;
             msg="某项数据错误";
-            js.put("code",code);
-            js.put("msg",msg);
-            //js.put("data","null");
-            return js;
         }
         if(sampleNumber== null||sampleName==null||sender==null||receiver==null||obtainer==null)
         {
             code=511;
             msg="缺少请求参数";
-            js.put("code",code);
-            js.put("msg",msg);
-            //js.put("data","null");
-            return js;
         }
-        else if(ID>0&& SampleIoRepository.findBySampleNumber(sampleNumber)!=null)
+        else if(SampleIoRepository.findBySampleNumber(sampleNumber)!=null)
         {
             code=512;
             msg="样品编号已存在";
-            js.put("code",code);
-            js.put("msg",msg);
-            //js.put("data","null");
-            return js;
         }
         else if(sampleNumber.length()>10||sampleName.length()>20|| sender.length()>20||
                 receiver.length()>20||obtainer.length()>20|| Integer.parseInt(sampleAmount)<1||
@@ -77,29 +58,27 @@ public class SampleIoController {
         {
             code=513;
             msg="某项数据错误";
-            js.put("code",code);
-            js.put("msg",msg);
-            //js.put("data","null");
-            return js;
         }
+        else
+        {
             SampleIO receive=new SampleIO();
-            receive.setSampleIoId(ID);
-            receive.setSampleNumber(sampleNumber);//3
-            receive.setSampleName(sampleName);//s1
-            receive.setSampleAmount(Integer.parseInt(sampleAmount));//1
-            receive.setSampleState(Integer.parseInt(sampleState));//2
-            receive.setSender(sender);//nju
-            receive.setReceiver(receiver);//bl
-            receive.setNote(note);//
-            receive.setObtainer(obtainer);//hcb
-            receive.setObtainDate(java.sql.Date.valueOf(obtainDate));//2019-6-2
-            receive.setSendDate(java.sql.Date.valueOf(sendDate));//2019-1-9
+            receive.setSampleNumber(sampleNumber);
+            receive.setSampleName(sampleName);
+            receive.setSampleAmount(Integer.parseInt(sampleAmount));
+            receive.setSampleState(Integer.parseInt(sampleState));
+            receive.setSender(sender);
+            receive.setReceiver(receiver);
+            receive.setNote(note);
+            receive.setObtainer(obtainer);
+            receive.setObtainDate(java.sql.Date.valueOf(obtainDate));
+            receive.setSendDate(java.sql.Date.valueOf(sendDate));
             SampleIoRepository.saveAndFlush(receive);
-            js.put("code",code);
-            js.put("msg",msg);
-            //js.put("data","null");
-            ID++;
-            return js;
+        }
+        js.put("code",code);
+        js.put("msg",msg);
+        js.put("data",null);
+        System.out.println(js);
+        return js;
     }
     @PostMapping (path="/deleteOne")
     public @ResponseBody JSONObject deleteOne(@RequestParam(value="sampleIoId",required = false) String sampleIoId)
@@ -113,24 +92,19 @@ public class SampleIoController {
         {
             code=521;
             msg="未收到标识编号";
-            json.put("code",code);
-            json.put("msg",msg);
         }
         else if(SampleIoRepository.findBySampleIoId(Long.parseLong(sampleIoId))==null) //此样品接收登记的id不在表中
         {
             code=522;
             msg="数据不存在";
-            json.put("code",code);
-            json.put("msg",msg);
-            //json.put("data",data);
         }
         else
         {
             SampleIoRepository.deleteById(Long.parseLong(sampleIoId));
-            json.put("code",code);
-            json.put("msg",msg);
-            //json.put("data",data);
         }
+        json.put("code",code);
+        json.put("msg",msg);
+        json.put("data",null);
         return json;
     }
     @GetMapping(path="/getAll")
@@ -159,21 +133,17 @@ public class SampleIoController {
                 tmp.put("note",res.get(i).getNote());
                 data.add(tmp);
             }
-            js.put("code",code);
-            js.put("msg",msg);
-            js.put("data",data);
-            return js;
         }
         else
         {
             code=522;
             msg="数据不存在";
             //data=null;
-            js.put("code",code);
-            js.put("msg",msg);
-            //js.put("data",data);
-            return js;
         }
+        js.put("code",code);
+        js.put("msg",msg);
+        js.put("data",data);
+        return js;
     }
     @GetMapping(path="/getOne")
     public @ResponseBody JSONObject findOne(@RequestParam(value = "sampleIoId",required = false) String sampleIoId)
@@ -186,19 +156,11 @@ public class SampleIoController {
             {
                 code=521;
                 msg="未收到标识编号";
-                json.put("code",code);
-                json.put("msg",msg);
-                return json;
             }
             else if(SampleIoRepository.findBySampleIoId(Long.parseLong(sampleIoId))==null) {   //此样品接收登记的id不存在；
 
             code=522;
             msg="数据不存在";
-            //data=null;
-            json.put("code",code);
-            json.put("msg",msg);
-            //json.put("data",data);
-            return json;
         }
         else{
             SampleIO recv= SampleIoRepository.findBySampleIoId(Long.parseLong(sampleIoId));
@@ -212,11 +174,11 @@ public class SampleIoController {
             data.put("obtainer",recv.getObtainer());
             data.put("obtainDate",recv.getObtainDate().toString());
             data.put("note",recv.getNote());
-            json.put("code",code);
-            json.put("msg",msg);
-            json.put("data",data);
-            return json;
         }
+        json.put("code",code);
+        json.put("msg",msg);
+        json.put("data",data);
+        return json;
     }
     @PostMapping(path="/modifyOne")
     public @ResponseBody JSONObject modify(@RequestParam(value = "sampleIoId",required = false)String sampleIoId,
@@ -234,12 +196,6 @@ public class SampleIoController {
         JSONObject js=new JSONObject();
         int code=200;
         String msg="成功";
-        //JSONObject data=null;
-        /*System.out.println(sampleNumber);
-        System.out.println(sampleName);
-        System.out.println(sampleIoId);
-        System.out.println(sampleState);
-        System.out.println(obtainDate);*/
         try {
             Integer.parseInt(sampleState);
             Integer.parseInt(sampleAmount);
@@ -248,26 +204,16 @@ public class SampleIoController {
         }catch (NumberFormatException e){
             code=534;
             msg="修改后数据不合法";
-            js.put("code",code);
-            js.put("msg",msg);
-            return js;
-            //js.put("data",data);
         }
         if(sampleIoId==null||sampleIoId.equals(""))
         {
             code=531;
             msg="未收到标识编号";
-            js.put("code",code);
-            js.put("msg",msg);
-            //js.put("data",data);
          }
         else if(SampleIoRepository.findBySampleIoId(Long.parseLong(sampleIoId))==null)
         {
             code=532;
             msg="数据不存在";
-            js.put("code",code);
-            js.put("msg",msg);
-            //js.put("data",data);
         }
         else if(!sampleNumber.equals(SampleIoRepository.findBySampleIoId(Long.parseLong(sampleIoId)).getSampleNumber())&&SampleIoRepository.findBySampleNumber(sampleNumber)!=null)
         {
@@ -276,18 +222,12 @@ public class SampleIoController {
             System.out.println(receiver);
             code =533;
             msg="修改后数据错误";
-            js.put("code",code);
-            js.put("msg",msg);
-            //js.put("data",data);
         }
         else if(sampleNumber.length()>10||sampleName.length()>20||sender.length()>20
                 ||receiver.length()>20||obtainer.length()>20||(Integer.parseInt(sampleAmount)<1||(Integer.parseInt(sampleState)!=0&&Integer.parseInt(sampleState)!=1&&Integer.parseInt(sampleState)!=2)))
         {
             code=534;
             msg="修改后数据不合法";
-            js.put("code",code);
-            js.put("msg",msg);
-            //js.put("data",data);
         }
         else
         {
@@ -306,9 +246,10 @@ public class SampleIoController {
             recv.setSampleName(sampleName);
             SampleIoRepository.saveAndFlush(recv);
             System.out.println(receiver);
-            js.put("code",code);
-            js.put("msg",msg);
         }
+        js.put("code",code);
+        js.put("msg",msg);
+        js.put("data",null);
         return js;
     }
 }
