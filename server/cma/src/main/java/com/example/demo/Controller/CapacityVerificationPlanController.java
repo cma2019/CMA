@@ -30,7 +30,6 @@ public class CapacityVerificationPlanController {
     @GetMapping(path="/getAll")
     public @ResponseBody JSONObject getAllPlan() throws JSONException {
         JSONObject json=new JSONObject(new LinkedHashMap());
-        System.out.println("in?");
         if(CapacityVerificationPlanRepository.findAll()==null)
         {
             try{
@@ -45,7 +44,7 @@ public class CapacityVerificationPlanController {
             try{
                 json.put("code",200);
                 json.put("msg","获取成功");
-                System.out.println("in?");
+
                 json.put("data:",CapacityVerificationPlanRepository.findAll());
             }catch (JSONException e){
                 e.printStackTrace();
