@@ -7,43 +7,29 @@ Page({
    */
   data: {
     receiveDate:"",
-    materialType:[],
-    materialName:"",
-    activeNames: ['0']
-  },
-  onChange(event) {
-    this.setData({
-      activeNames: event.detail
-    })
-  },
-  onchange1(event){
-    console.log("123456")
-    console.log(event)
-    this.setData({
-      materialType1:event.value
-    }),
-    console.log(this.data.materialType1)
+    materialList: [
+      { "materialId": 1, "materialType": 0, "materialName": null },
+      { "materialId": 2, "materialType": 0, "materialName": null },
+      { "materialId": 3, "materialType": 0, "materialName": null },
+      { "materialId": 4, "materialType": 0, "materialName": null },
+      { "materialId": 5, "materialType": 0, "materialName": null },
+      { "materialId": 6, "materialType": 0, "materialName": null },
+      { "materialId": 7, "materialType": 0, "materialName": null },
+      { "materialId": 8, "materialType": 0, "materialName": null },
+      { "materialId": 9, "materialType": 0, "materialName": null },
+    ]
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+   
   },
 
   bindreceiveDateChange(e) {
     this.setData({
       receiveDate: e.detail.value
     })
-  },
-  receiptTypeAdd:function(){
-    var materialType = this.data.materialType
-    var newData = {}
-    materialType.push(newData)
-    this.setData({
-      materialType: materialType
-    })
-    console.log(this.data.materialType)
   },
   SampleReceipt_addone: function (e) {
     /*wx.request({
@@ -101,9 +87,94 @@ Page({
         console.log('final addone')
       }
     })*/
-    
-    console.log(e)
-    if (e.detail.value.sampleId == "" || e.detail.value.applicationUnit == "" || e.detail.value.version == "" || e.detail.value.contractId == "" || e.detail.value.testType == "" || e.detail.value.electronicMedia == "" || e.detail.value.softwareType == "" || e.detail.value.receiveUnit == "" || e.detail.value.receiveDate == "" || e.detail.value.sender == "" || e.detail.value.reciever == "") {
+    let receipttmp = e.detail.value
+    if (receipttmp.sampleName != "" && receipttmp.applicationUnit != "" && receipttmp.version != "" && receipttmp.contractId != "" && receipttmp.testType != "" && receipttmp.electronicMedia != "" && receipttmp.softwareType != "" && receipttmp.receiveUnit != "" && receipttmp.receiveDate != "" && receipttmp.sender != "" && receipttmp.receiver != ""){
+    var that = this
+    wx.getStorage({
+      key: 'materialListinfo',
+      success: function (res) {
+        let i =0
+        let tmp = that.data.materialList
+        while(i < 9){
+          tmp[i].materialId = res.data[i].materialId
+          tmp[i].materialType = res.data[i].materialType
+          tmp[i].materialName = res.data[i].materialName
+          ++i
+        }
+        that.setData({
+          materialList: tmp
+        })
+      }
+    }),
+    console.log('SampleReceipt发生了addone事件，携带数据为：', e.detail.value)
+    console.log("lkokokko")
+    console.log(this.data.materialList)
+    let materialList = this.data.materialList
+    var newmaterialList = []
+    for(let i = 0;i< 9;++i){
+      if(materialList[i].materialType != 0){
+        newmaterialList.push(materialList[i])
+      }
+    }
+    console.log(newmaterialList)
+
+    wx.request({
+      url: app.globalData.url + 'SampleReceipt/addOne',
+      method: 'POST',
+      header: {
+        'content-type': 'application/json',
+        'Accept': 'application/json'
+      },
+      data: {
+        "sampleId": e.detail.value.sampleId,
+        "applicationUnit": e.detail.value.applicationUnit,
+        "version": e.detail.value.version,
+        "contractId": e.detail.value.contractId,
+        "testType": e.detail.value.testType,
+        "electronicMedia": e.detail.value.electronicMedia,
+        "materialList": newmaterialList,
+        "softwareType": e.detail.value.softwareType,
+        "receiveUnit": e.detail.value.receiveUnit,
+        "receiveDate": e.detail.value.receiveDate,
+        "sender": e.detail.value.sender,
+        "receiver": e.detail.value.receiver
+      },
+      success(res) {
+        console.log(res.data)
+        if (res.data.code == 200) {
+          wx.showToast({
+            title: '成功',
+            icon: 'none',
+            duration: 1500
+          })
+          wx.navigateTo({
+            url: '../SampleReceipt'
+          })
+        }
+        else if (res.data.code == 511) {
+          wx.showToast({
+            title: '添加失败，缺少请求参数',
+            duration: 1500
+          })
+          console.log('添加失败，缺少请求参数')
+        }
+        else  {//513
+          wx.showToast({
+            title: '添加失败，某项数据错误',
+            duration: 1500
+          })
+          console.log('添加失败，某项数据错误')
+        }
+      },
+      fail(err) {
+        console.log('fail addone')
+      },
+      complete(fin) {
+        console.log('final addone')
+      }
+    })
+    }
+    else{
       wx.showToast({
         title: '错误（空白输入）',
         icon: 'none',
@@ -111,100 +182,13 @@ Page({
       })
       console.log('错误（空白输入）')
     }
-    else {
-      console.log('SampleReceipt发生了addone事件，携带数据为：', e.detail.value)
-      wx.request({
-        url: app.globalData.url + 'SampleReceipt/addOne',
-        method: 'POST',
-        header: {
-          'content-type': 'application/x-www-form-urlencoded',
-          'Accept': 'application/json'
-        },
-        data: {
-          "sampleId": e.detail.value.sampleId,
-          "applicationUnit": e.detail.value.applicationUnit,
-          "version": e.detail.value.version,
-          "contractId": e.detail.value.contractId,
-          "testType": e.detail.value.testType,
-          "electronicMedia": e.detail.value.electronicMedia,
-          "materialList": [{
-                        "materialId": 1,
-                        "materialType": this.data.materialType1
-                      },
-                      {
-                        "materialId": 2,
-                        "materialType": this.data.materialType2
-                      },
-                      {
-                        "materialId": 3,
-                        "materialType": this.data.materialType3
-                      },
-                      {
-                        "materialId": 4,
-                        "materialType": this.data.materialType4
-                      },
-                      {
-                        "materialId": 5,
-                        "materialType": this.data.materialType5
-                      },
-                      {
-                        "materialId": 6,
-                        "materialType": this.data.materialType6
-                      },
-                      {
-                        "materialId": 7,
-                        "materialType": this.data.materialType7
-                      },
-                      {
-                        "materialId": 8,
-                        "materialType": this.data.materialType8
-                      },
-                      {
-                        "materialId": 9,
-                        "materialType": this.data.materialType9,
-                        "materialName": this.data.materialName
-                      }],
-          "softwareType": e.detail.value.softwareType,
-          "receiveUnit": e.detail.value.receiveUnit,
-          "receiveDate": e.detail.value.receiveDate,
-          "sender": e.detail.value.sender,
-          "reciever": e.detail.value.reciever
-        },
-        success(res) {
-          console.log(res.data)
-          if (res.data.code == 200) {
-            wx.showToast({
-              title: '成功',
-              icon: 'none',
-              duration: 1500
-            })
-            wx.navigateTo({
-              url: '../SampleReceipt'
-            })
-          }
-          else if (res.data.code == 511) {
-            wx.showToast({
-              title: '添加失败，缺少请求参数',
-              duration: 1500
-            })
-            console.log('添加失败，缺少请求参数')
-          }
-          else  {//513
-            wx.showToast({
-              title: '添加失败，某项数据错误',
-              duration: 1500
-            })
-            console.log('添加失败，某项数据错误')
-          }
-        },
-        fail(err) {
-          console.log('fail addone')
-        },
-        complete(fin) {
-          console.log('final addone')
-        }
-      })
-    }
+    wx.removeStorage({
+      key: 'materialListinfo',
+      success: function (res) {
+        console.log(res)
+        console.log("qewrwuwndcjcncj")
+      }
+    })
   },
   goback: function () {
     wx.navigateBack({
@@ -221,8 +205,8 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
+  onShow: function (options) {
+  
   },
 
   /**

@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/login/login",
     "pages/Management/Management",
     "pages/IntermediateCheck/IntermediateCheckMenu/IntermediateCheckMenu",
     "pages/index/index",
@@ -21,6 +22,7 @@
     "pages/SampleManagement/SampleIo/ioAddOne/ioAddOne",
     "pages/SampleManagement/SampleIo/ioGetOne/ioGetOne",
     "pages/SampleManagement/SampleIo/ioModifyOne/ioModifyOne",
+    "pages/SampleManagement/SampleIo/ioReceiptDetail/ioReceiptDetail",
     "pages/SampleManagement/SampleReceipt/SampleReceipt",
     "pages/SampleManagement/SampleReceipt/receiptAddOne/receiptAddOne",
     "pages/SampleManagement/SampleReceipt/receiptGetOne/receiptGetOne",
@@ -96,14 +98,16 @@
     "pages/TestingInstitutionManagement/Certificate/Certificate",
     "pages/TestingInstitutionManagement/TestingInstitutionResource/TestingInstitutionResource",
     "pages/TestingInstitutionManagement/TestingInstitutionInformation/TestingInstitutionInformation",
-
     "pages/StaffManagement/StaffAuthorization/StaffAuthorization",
     "pages/StaffManagement/StaffAuthorization/AddOneStaffAuthorization/AddOneStaffAuthorization",
     "pages/StaffManagement/StaffAuthorization/ModifyOneStaffAuthorization/ModifyOneStaffAuthorization",
     "pages/StaffManagement/StaffAuthorization/GetAllByStaff/GetAllByStaff",
     "pages/StaffManagement/StaffAuthorization/GetOneStaffAuthorization/GetOneStaffAuthorization",
     "pages/StaffManagement/StaffLeaving/StaffLeaving",
-    "pages/StaffManagement/StaffLeaving/AddOneStaffLeaving/AddOneStaffLeaving"
+    "pages/StaffManagement/StaffLeaving/AddOneStaffLeaving/AddOneStaffLeaving",
+    "pages/TestingInstitutionManagement/TestingInstitutionInformation/TestingInstitutionInformationModify/TestingInstitutionInformationModify",
+    "pages/TestingInstitutionManagement/TestingInstitutionResource/TestingInstitutionResourceModify/TestingInstitutionResourceModify",
+    "pages/register/register"
   ],
   "window": {
     "backgroundTextStyle": "light",

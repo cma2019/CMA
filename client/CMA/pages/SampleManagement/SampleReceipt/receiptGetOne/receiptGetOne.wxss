@@ -1,5 +1,5 @@
 /* pages/SampleManagement/SampleReceipt/receiptSearch/receiptSearch.wxss */
-.search-box {
+/*.search-box {
     position: relative;
     display: flex;
     justify-content: space-between;
@@ -27,4 +27,12 @@
     font-size: 32rpx;
     padding: 0 20rpx;
     line-height: 64rpx;
+}*/
+.sampleNameright{
+    position: relative;
+  align-items:center;
+}
+.cart-count-num{
+  float: right;
+  width: 50rpx;
 }

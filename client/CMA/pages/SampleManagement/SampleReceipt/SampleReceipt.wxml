@@ -1,6 +1,6 @@
 <!--page_SampleIo/SampleIo/SampleIo.wxml-->
 <view>
-  <van-cell-group title="SampleReceipt">
+  <!--<van-cell-group title="SampleReceipt">
     <view class="search">
       <navigator url="../SampleReceipt/receiptGetOne/receiptGetOne">
       <view class="search-text">
@@ -8,6 +8,21 @@
                 搜 索
       </view>
       </navigator>
+    </view>
+  </van-cell-group>-->
+  <van-cell-group title="SampleReceipt">
+    <view wx:if="{{flag == 1}}">
+      <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
+        <van-cell value="详情" bindtap='gotoOne' id='{{item.sampleId}}' is-link>
+          <view slot="title">
+            <view>版本号:{{item.version}}  </view>
+            <view>检测类型：{{item.testType}}</view>
+          </view>
+        </van-cell>
+      </view>
+    </view>
+    <view wx:else>
+     <text>not have a SampleReceipt yet</text>
     </view>
   </van-cell-group>
 </view>

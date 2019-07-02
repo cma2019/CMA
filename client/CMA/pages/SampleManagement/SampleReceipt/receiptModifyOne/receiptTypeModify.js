@@ -1,13 +1,13 @@
-// pages/SampleManagement/SampleReceipt/receiptAddOne/receiptTypeAdd.js
+// pages/SampleManagement/SampleReceipt/receiptModifyOne/receiptTypeModify.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    array: ['《用户手册》','《计算机软件产品登记检测申请表》','《材料交接单》','《软件产品功能列表》','《软件名称与版本号确认单》','《受测软件产品简介》','《自主产权保证书》','软件样品一套','其它'],
+    array: ['《用户手册》', '《计算机软件产品登记检测申请表》', '《材料交接单》', '《软件产品功能列表》', '《软件名称与版本号确认单》', '《受测软件产品简介》', '《自主产权保证书》', '软件样品一套', '其它'],
     materialList: [
-      { "materialId": 1, "materialType": 0, "materialName": null},
+      { "materialId": 1, "materialType": 0, "materialName": null },
       { "materialId": 2, "materialType": 0, "materialName": null },
       { "materialId": 3, "materialType": 0, "materialName": null },
       { "materialId": 4, "materialType": 0, "materialName": null },
@@ -42,7 +42,7 @@ Page({
     const index = e.currentTarget.dataset.index
     let materialList = this.data.materialList
     let materialType = materialList[index].materialType
-    if (materialType <= 0) {
+    if (materialType <= -1) {  //-1表示不修改
       return false
     }
     materialType = materialType - 1
@@ -51,66 +51,31 @@ Page({
       materialList: materialList
     })
   },
-  bindmaterialName:function(e){
+  bindmaterialName: function (e) {
     let materialList = this.data.materialList
     materialList[8].materialName = e.detail.value
     this.setData({
       materialList: materialList
     })
   },
-  materialList_addone:function(e){
+  materialList_addone: function (e) {
     var that = this
     wx.setStorage({
-      key: 'materialListinfo',
+      key: 'materialListModifyinfo',
       data: that.data.materialList
     })
     wx.navigateBack({
       delta: 1
     })
-    },
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
 
   },
-  /*
-  bindreceiptTypeChange:function(e){
-    console.log(e)
-    let tmp = e.detail.value
-    let receiptType = this.data.receiptType
-    let flag = this.data.flag
-    receiptType[flag] = tmp
-    this.setData({
-      receiptType: receiptType
-    })
-    console.log(this.data.receiptType)
-    console.log("cchgfjhf")
-  },
-  receiptTypeAdd:function(){
-    let receiptType = this.data.receiptType
-    let newData = ""
-    let flag = this.data.flag
-    console.log(flag)
-    console.log(receiptType[flag])
-    if(receiptType[flag] !=""){
-      flag = flag + 1
-      receiptType.push(newData)
-      this.setData({
-        receiptType: receiptType,
-        flag : flag
-      })
-      console.log(this.data.flag)
-      console.log(this.data.receiptType)
-      console.log("chkdjhcfs")
-    }
-    else{
-      wx.showToast({
-        title: '还存在未填写的信息',
-        duration: 1500
-      })
-    }
-  },*/
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -1,4 +1,4 @@
-/* pages/SampleManagement/SampleReceipt/receiptAddOne/receiptTypeAdd.wxss */
+/* pages/SampleManagement/SampleReceipt/receiptModifyOne/receiptTypeModify.wxss */
 .cart-count-down,.cart-count-add{
     font-size: 44rpx;
     width: 50rpx;

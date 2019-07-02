@@ -8,29 +8,19 @@ Page({
 
   data: {
     "sampleId": "",
-    "applicationUnit": "",
-    "version": "",
-    "contractId": "",
-    "testType": "",
-    "electronicMedia": "",
-    "materialList": "",
-    "softwareType": "",
-    "receiveUnit": "",
+    "origindata": {},
     "receiveDate": "",
-    "sender": "",
-    "reciever": "",
-
-    "applicationUnitinfo": "",
-    "versioninfo": "",
-    "contractIdinfo": "",
-    "testTypeinfo": "",
-    "electronicMediainfo": "",
-    "materialListinfo": "",
-    "softwareTypeinfo": "",
-    "receiveUnitinfo": "",
-    "receiveDateinfo": "",
-    "senderinfo": "",
-    "recieverinfo": "",
+    materialList: [
+      { "materialId": 1, "materialType": 0, "materialName": null },
+      { "materialId": 2, "materialType": 0, "materialName": null },
+      { "materialId": 3, "materialType": 0, "materialName": null },
+      { "materialId": 4, "materialType": 0, "materialName": null },
+      { "materialId": 5, "materialType": 0, "materialName": null },
+      { "materialId": 6, "materialType": 0, "materialName": null },
+      { "materialId": 7, "materialType": 0, "materialName": null },
+      { "materialId": 8, "materialType": 0, "materialName": null },
+      { "materialId": 9, "materialType": 0, "materialName": null },
+    ]
   },
 
   /**
@@ -56,121 +46,102 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var thispage = this
-    //console.log('getone发生了事件，携带数据为：', this.data.sampleIoId)
-    wx.request({
-      url: app.globalData.url + 'SampleReceipt/getOne',
-      method: 'GET',
-      data: {
-        "sampleId": this.data.sampleId
-      },
-      header: {
-        'content-type': 'application/json',
-        'Accept': 'application/json'
-      },
-      success(res) {
-        if (res.data.code == 200) {
-          thispage.setData({
-            sampleNameinfo: res.data.data.sampleName,
-            applicationUnitinfo: res.data.data.applicationUnit,
-            versioninfo: res.data.data.version,
-            contractIdinfo: res.data.data.contractId,
-            testTypeinfo: res.data.data.testType,
-            electronicMediainfo: res.data.data.electronicMedia,
-            materialListinfo: res.data.data.materialList,
-            softwareTypeinfo: res.data.data.softwareType,
-            receiveUnitinfo: res.data.data.receiveUnit,
-            receiveDateinfo: res.data.data.receiveDate,
-            senderinfo: res.data.data.sender,
-            recieverinfo: res.data.data.reciever
-          })
-        }
-        else if (res.data.code == 521) {
-          console.log(res.data.msg)
-          wx.showToast({
-            title: '未收到标识编号',
-            duration: 1500
-          })
-          console.log('未收到标识编号')
-        }
-        else {//522
-          console.log(res.data.msg)
-          console.log("12")
-          wx.showToast({
-            title: '数据不存在',
-            duration: 1500
-          })
-          console.log('数据不存在')
-        }
-      },
-      fail(err) {
-        console.log('no data')
+    var that = this
+    wx.getStorage({
+      key: 'receiptGetOneinfo',
+      success: function (res) {
+        console.log("fdsgfgdhjkgh")
+        console.log(res)
+        that.setData({
+          'origindata': res.data
+        })
       }
-    })
+    }),
+    console.log(this.data)
+    console.log("456789")
   },
 
   SampleReceipt_modifyone: function (e) {
+    var mod = this.data.origindata
+    console.log(mod)
     console.log('SampleReceipt发生了modifyone事件，携带数据为：', e.detail.value)
     console.log(this.data)
     if (e.detail.value.applicationUnit != null && e.detail.value.applicationUnit != "") {
-      this.setData({
-        applicationUnitinfo: e.detail.value.applicationUnit
-      })
+      mod.applicationUnit = e.detail.value.applicationUnit
     }
     if (e.detail.value.version != null && e.detail.value.version != "") {
-      this.setData({
-        versioninfo: e.detail.value.version
-      })
+      mod.version = e.detail.value.version
     }
     if (e.detail.value.contractId != null && e.detail.value.contractId != "") {
-      this.setData({
-        scontractIdinfo: e.detail.value.contractId
-      })
+      mod.contractId = e.detail.value.contractId
     }
     if (e.detail.value.testType != null && e.detail.value.testType != "") {
-      this.setData({
-        testTypeinfo: e.detail.value.testType
-      })
+      mod.testType = e.detail.value.testType
     }
     if (e.detail.value.electronicMedia != null && e.detail.value.electronicMedia != "") {
-      this.setData({
-        electronicMediainfo: e.detail.value.electronicMedia
-      })
+      mod.electronicMedia = e.detail.value.electronicMedia
     }
     if (e.detail.value.materialList != null && e.detail.value.materialList != "") {
-      this.setData({
-        materialListinfo: e.detail.value.materialList
-      })
+      mod.materialList = e.detail.value.materialList
     }
     if (e.detail.value.softwareType != null && e.detail.value.softwareType != "") {
-      this.setData({
-        softwareTypeinfo: e.detail.value.softwareType
-      })
+      mod.softwareType = e.detail.value.softwareType
     }
     if (e.detail.value.receiveUnit != null && e.detail.value.receiveUnit != "") {
-      this.setData({
-        receiveUnitinfo: e.detail.value.receiveUnit
-      })
+      mod.receiveUnit = e.detail.value.receiveUnit
     }
     if (e.detail.value.receiveDate != null && e.detail.value.receiveDate != "") {
-      this.setData({
-        receiveDateinfo: e.detail.value.receiveDate
-      })
+      mod.receiveDate = e.detail.value.receiveDate
     }
     if (e.detail.value.sender != null && e.detail.value.sender != "") {
-      this.setData({
-        senderinfo: e.detail.value.sender
-      })
+      mod.sender = e.detail.value.sender
     }
     if (e.detail.value.reciever != null && e.detail.value.reciever != "") {
-      this.setData({
-        recieverinfo: e.detail.value.reciever
-      })
+      mod.reciever = e.detail.value.reciever
     }
-    console.log("dfg")
-    console.log(this.data)
+    var that = this
+    wx.getStorage({
+      key: 'materialListModifyinfo',
+      success: function (res) {
+        let i = 0
+        let tmp = that.data.materialList
+        while (i < 9) {
+          tmp[i].materialId = res.data[i].materialId
+          if(res.data.materialType == -1){ //不修改
+            let j = 0
+            while (res.data[i].materialId != origindata.materialList[j].materialId&& j < origindata.materialList.length){
+              ++j
+            }
+            if(res.data[i].materialId != origindata.materialList[j].materialId){ //找到了
+              tmp[i].materialType = origindata.materialList[j].materialType
+              tmp[i].materialName = origindata.materialList[j].materialName
+            }
+            //未找到将Type设为0，Name设为null
+          }
+          else{ //修改
+            tmp[i].materialType = res.data[i].materialType
+            if(i == 8){
+              tmp[i].materialName = res.data[i].materialName
+            }
+          }
+          ++i
+        }
+        that.setData({
+          materialList: tmp
+        })
+      }
+    }),
+    console.log(this.data.materialList)
+    let materialList = this.data.materialList
+    var newmaterialList = []
+    for (let i = 0; i < 9; ++i) {
+      if (materialList[i].materialType != 0) {
+        newmaterialList.push(materialList[i])
+      }
+    }
+    console.log(newmaterialList)
     wx.request({
-      url: app.globalData.url+ 'SampleReceipt/modifyOne',
+      url: app.globalData.url + 'SampleReceipt/modifyOne',
       method: 'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded',
@@ -178,17 +149,17 @@ Page({
       },
       data: {
         "sampleId": this.data.sampleId,
-        "applicationUnit": this.data.applicationUnitinfo,
-        "version": this.data.versioninfo,
-        "contractId": this.data.contractIdinfo,
-        "testType": this.data.testTypeinfo,
-        "electronicMedia": this.data.electronicMediainfo,
-        "materialList": this.data.materialListinfo,
-        "softwareType": this.data.softwareTypeinfo,
-        "receiveUnit": this.data.receiveUnitinfo,
-        "receiveDate": this.data.receiveDateinfo,
-        "sender": this.data.senderinfo,
-        "reciever": this.data.recieverinfo,
+        "applicationUnit": mod.applicationUnit,
+        "version": mod.version,
+        "contractId": mod.contractId,
+        "testType": mod.testType,
+        "electronicMedia": mod.electronicMedia,
+        "materialList": newmaterialList,
+        "softwareType": mod.softwareType,
+        "receiveUnit": mod.receiveUnit,
+        "receiveDate": mod.receiveDate,
+        "sender": mod.sender,
+        "reciever": mod.reciever
       },
       success(res) {
         console.log(res)
@@ -196,6 +167,12 @@ Page({
           wx.showToast({
             title: '修改成功',
             duration: 1500
+          })
+          wx.removeStorage({
+            key: 'receiptGetOneinfo',
+            success: function (res) {
+              console.log(res)
+            }
           })
           wx.navigateTo({
             url: '../SampleReceipt'
@@ -237,7 +214,13 @@ Page({
         console.log('final modifyone')
       }
     })
-
+    wx.removeStorage({
+      key: 'materialListModifyinfo',
+      success: function (res) {
+        console.log(res)
+        console.log("qewrwuwndcjcncj")
+      }
+    })
   },
   goback: function () {
     wx.navigateBack({

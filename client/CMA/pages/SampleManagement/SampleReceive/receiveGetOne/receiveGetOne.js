@@ -192,6 +192,15 @@ Page({
       delta: 1
     })
   },
+  looktoreceipt: function () {
+    console.log(e)
+    let target = this.data.sampleId
+    //console.log("dfdg")
+    //console.log(target)
+    wx.navigateTo({
+      url: '../ioReceiptDetail/ioReceiptDetail?id=' + target
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

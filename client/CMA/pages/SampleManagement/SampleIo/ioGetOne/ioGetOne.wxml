@@ -1,22 +1,21 @@
 <!--page_SampleIo/ioShow/ioShow.wxml-->
 <view>
-  <van-cell>
-      <view slot="title">
-        <text>sampleNumber: {{info.sampleNumber}}\n</text>
-        <text>sampleName: {{info.sampleName}}\n</text>
-        <text>sampleAmount: {{info.sampleAmount}}\n</text>
-        <text>sampleState: {{info.sampleState}}\n</text>
-        <text>sender: {{info.sender}}\n</text>
-        <text>receiver: {{info.receiver}}\n</text>
-        <text>sendDate: {{info.sendDate}}\n</text>
-        <text>obtainer: {{info.obtainer}}\n</text>
-        <text>obtainDate: {{info.obtainDate}}\n</text>
-        <text>note: {{info.note}}\n</text>
-      </view>
-  </van-cell>
+  <van-cell-group>
+      <van-field  label="sampleNumber" value='{{info.sampleNumber}}' disabled input-align="right"/>
+      <van-field  label="sampleName" value='{{info.sampleName}}' disabled input-align="right"/>
+      <van-field  label="sampleAmount" value='{{info.sampleAmount}}' disabled input-align="right"/>
+      <van-field  label="sampleState" value='{{info.sampleState}}' disabled input-align="right"/>
+      <van-field  label="sender" value='{{info.sender}}' disabled input-align="right"/>
+      <van-field  label="receiver" value='{{info.receiver}}' disabled input-align="right"/>
+      <van-field  label="sendDate" value='{{info.sendDate}}' disabled input-align="right"/>
+      <van-field  label="obtainer" value='{{info.obtainer}}' disabled input-align="right"/>
+      <van-field  label="obtainDate" value='{{info.obtainDate}}' disabled input-align="right"/>
+      <van-field  label="note" value='{{info.note}}' disabled input-align="right"/>
+    </van-cell-group>
 </view>
 <view>
   <van-button type="info" size="small" bindtap="modifyData">modify</van-button>
   <van-button type="info" size="small" bindtap="deleteData">delete</van-button>
   <van-button type="info" size="small" bindtap="goback">back</van-button>
+  <van-button type="info" size="small" bindtap="looktoreceipt">receiptdetail</van-button>
 </view>

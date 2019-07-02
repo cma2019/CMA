@@ -11,15 +11,15 @@
       <van-field v-model="sampleState"  name="sampleState" required clearable label="样品状态" placeholder="请输入样品状态" />
 
       <van-field v-model="requester"  name="requester" required clearable label="委托单位" placeholder="请输入委托单位"error-message="{{requesterMessage}}" bind:change="requesterChange"/>
-
-      <van-field v-model="receiver" name="receiver" required clearable label="接收人" placeholder="请输入接收人姓名" error-message="{{receiverMessage}}" bind:change="receiverChange"/>
-
-      <picker name = 'receiveDate' mode='date' value='{{receiveDate}}' bindchange='bindreceiveDateChange'>
-        <view class='picker'>
-          <van-field  name="receiveDate" label="接收日期" value='{{receiveDate}}' placeholder="请输入接收日期" required clearable />
-        </view>
-      </picker>   
-
+      <view wx:if="{{receiptId != ''}}">
+        <van-field v-model="receiver" name="receiver" required clearable label="接收人" placeholder="请输入接收人姓名" error-message="{{receiverMessage}}" bind:change="receiverChange"/>
+        
+        <picker name = 'receiveDate' mode='date' value='{{receiveDate}}' bindchange='bindreceiveDateChange'>
+          <view class='picker'>
+            <van-field  name="receiveDate" label="接收日期" value='{{receiveDate}}' placeholder="请输入接收日期" required clearable />
+          </view>
+        </picker>   
+      </view>
       <van-field v-model="obtainer" name="obtainer"required clearable label="领取人" placeholder="请输入领取人姓名"error-message="{{obtainerMessage}}" bind:change="obtainerChange"/>
 
       <picker name = 'obtainDate' mode='date' value='{{obtainDate}}' bindchange='bindobtainDateChange'>
