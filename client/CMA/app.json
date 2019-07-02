@@ -96,14 +96,14 @@
     "pages/TestingInstitutionManagement/Certificate/Certificate",
     "pages/TestingInstitutionManagement/TestingInstitutionResource/TestingInstitutionResource",
     "pages/TestingInstitutionManagement/TestingInstitutionInformation/TestingInstitutionInformation",
-
     "pages/StaffManagement/StaffAuthorization/StaffAuthorization",
     "pages/StaffManagement/StaffAuthorization/AddOneStaffAuthorization/AddOneStaffAuthorization",
     "pages/StaffManagement/StaffAuthorization/ModifyOneStaffAuthorization/ModifyOneStaffAuthorization",
     "pages/StaffManagement/StaffAuthorization/GetAllByStaff/GetAllByStaff",
     "pages/StaffManagement/StaffAuthorization/GetOneStaffAuthorization/GetOneStaffAuthorization",
     "pages/StaffManagement/StaffLeaving/StaffLeaving",
-    "pages/StaffManagement/StaffLeaving/AddOneStaffLeaving/AddOneStaffLeaving"
+    "pages/StaffManagement/StaffLeaving/AddOneStaffLeaving/AddOneStaffLeaving",
+    "pages/TestingInstitutionManagement/TestingInstitutionInformation/TestingInstitutionInformationModify/TestingInstitutionInformationModify"
   ],
   "window": {
     "backgroundTextStyle": "light",
