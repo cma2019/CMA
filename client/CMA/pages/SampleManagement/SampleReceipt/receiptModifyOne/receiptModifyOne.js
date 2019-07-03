@@ -1,4 +1,3 @@
-// page_SampleIo/ioModifyOne/ioModifyOne.js
 const app = getApp()
 Page({
 

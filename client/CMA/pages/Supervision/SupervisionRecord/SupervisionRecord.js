@@ -1,4 +1,3 @@
-// pages/Supervision/SupervisionRecord/Super.js
 Page({
 
   /**

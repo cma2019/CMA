@@ -6,16 +6,6 @@ Page({
    */
   data: {
     "id":"null",
-    /*"sampleNumber": "null",
-    "sampleName": "null",
-    "sampleAmount": "null",
-    "sampleState": "null",
-    "sender": "null",
-    "receiver": "null",
-    "sendDate": "null",
-    "obtainer": "null",
-    "obtainDate": "null",
-    "note":"null",*/
     "info":{},
     tmp: [{
       "planId ": 5,

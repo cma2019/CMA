@@ -1,4 +1,3 @@
-// page_SampleIo/SampleIo/SampleIo.js
 const app = getApp()
 Page({
 
@@ -90,22 +89,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onShow: function (options) {
+    var that = this
     let url = app.globalData.url + 'SampleReceipt/getAll'
     let postdata = ''
     app.wxRequest(url, 'GET', postdata, (res) => {
-      //console.log('success')
       console.log(res)
-      console.log('success')
       if (res.code == 522) {
-        this.setData({
+        that.setData({
           mess: ""
         })
       }
       else {
-        this.setData({
+        that.setData({
           mess: res.data,
           flag: 1
         })
+        console.log("success")
       }
     }, (err) => {
       wx.showToast({
