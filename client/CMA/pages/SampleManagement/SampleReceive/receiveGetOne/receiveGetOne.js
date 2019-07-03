@@ -1,4 +1,3 @@
-// page_SampleIo/ioShow/ioShow.js
 const app = getApp()
 Page({
 
@@ -7,15 +6,6 @@ Page({
    */
   data: {
     "sampleId": "null",
-    /*"sampleNumber": "null",
-    "sampleName": "null",
-    "sampleAmount": "null",
-    "sampleState": "null",
-    "requester": "null",
-    "receiver": "null",
-    "receiveDate": "null",
-    "obtainer": "null",
-    "obtainDate": "null",*/
     "info":{},
     tmp: [{
       "sampleId": 2,
@@ -67,17 +57,6 @@ Page({
       },
       success(res) {
         if (res.data.code == 200) {
-          /*thispage.setData({
-            sampleNumber: res.data.data.sampleNumber,
-            sampleName: res.data.data.sampleName,
-            sampleAmount: res.data.data.sampleAmount,
-            sampleState: res.data.data.sampleState,
-            requester: res.data.data.requester,
-            receiver: res.data.data.receiver,
-            receiveDate: res.data.data.receiveDate,
-            obtainer: res.data.data.obtainer,
-            obtainDate: res.data.data.obtainDate
-          })*/
           thispage.setData({
             info : res.data.data
           })
@@ -192,13 +171,11 @@ Page({
       delta: 1
     })
   },
-  looktoreceipt: function () {
+  looktoreceipt: function (e) {
     console.log(e)
     let target = this.data.sampleId
-    //console.log("dfdg")
-    //console.log(target)
     wx.navigateTo({
-      url: '../ioReceiptDetail/ioReceiptDetail?id=' + target
+      url: '/pages/SampleManagement/SampleIo/ioReceiptDetail/ioReceiptDetail?id=' + target
     })
   },
   /**

@@ -1,4 +1,5 @@
 // pages/SampleManagement/SampleIo/ioReceiptDetail/ioReceiptDetail.js
+const app = getApp()
 Page({
 
   /**

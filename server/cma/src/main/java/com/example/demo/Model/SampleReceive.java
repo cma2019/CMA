@@ -20,6 +20,7 @@ public class SampleReceive {
     private Date receiveDate;        //接受日期
     private String obtainer;         //领取人
     private Date obtainDate;         //领取日期
+    private Long receiptId;
 
     public void setSampleId(long id){
         this.sampleId=id;
@@ -81,4 +82,8 @@ public class SampleReceive {
     }
     public Date getObtainDate(){return this.obtainDate;
     }
+    public void setReceiptId(Long receiptId){
+        this.receiptId=receiptId;
+    }
+    public Long getReceiptId(){return receiptId;}
 }

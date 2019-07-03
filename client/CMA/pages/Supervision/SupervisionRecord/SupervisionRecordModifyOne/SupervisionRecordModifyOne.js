@@ -1,4 +1,3 @@
-// page_SampleIo/ioModifyOne/ioModifyOne.js
 const app = getApp()
 Page({
 
@@ -34,7 +33,6 @@ Page({
       operator: options.operator,
       recordDate: options.recordDate
     })
-    //console.log(this.data.sampleIoId)
     console.log("fdsf")
   },
 

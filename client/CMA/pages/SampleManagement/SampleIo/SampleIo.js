@@ -1,4 +1,3 @@
-// page_SampleIo/SampleIo/SampleIo.js
 const app = getApp()
 Page({
 
@@ -43,29 +42,20 @@ Page({
     console.log(url)
     console.log(postdata)
     app.wxRequest(url, 'GET', postdata, (res) => {
-      //console.log('success')
       console.log(res)
-      console.log('success')
-     // console.log(res.code)
-      //console.log(res.msg)
-     // console.log(res.data)
-      //var temp = res.data
-      //this.temp = temp
       if(res.code == 522){
         this.setData({
           mess : ""
         })
       }
       else{
-      this.setData({
-        mess: res.data,
-        flag: 1
-      })
+        this.setData({
+          mess: res.data,
+          flag: 1
+        })
+        console.log('success')
       }
-      
-      //console.log(this.mess)
     }, (err) => {
-      //console.err('getone error')
       wx.showToast({
         title: 'getone error',
         duration: 1500
