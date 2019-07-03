@@ -34,49 +34,6 @@ Page({
       url: '/pages/Equipment/EquipmentManagement/EquipmentManagementAddOne/EquipmentManagementAddOne',
     })
   },
-  uploadIMG: function(e){
-    wx.chooseImage({
-      count:9,
-      sizeType:['original','compressed'],
-      sourceType:['album','camera'],
-      success: function(res) {
-        var tempFilePaths = res.tempFilePaths;
-        var myurl = app.globalData.url + 'file/upload';
-        wx.uploadFile({
-          url: myurl,
-          filePath: tempFilePaths[0],
-          name: 'file',
-          header:{
-            'content-type':'multipart/form-data'
-          },
-          formData: {
-            imgName: 'this is name',
-            imgSize: 'this is size'
-          },
-          success:function(res){
-            console.log(res);
-          }
-        })
-      },
-    })
-  }, 
-  downloadMyFile:function(e){
-    var myurl = app.globalData.url + 'file/download';
-    wx.downloadFile({
-      url: myurl,
-      success(res)
-      {
-        console.log(res)
-        wx.saveFile({
-          tempFilePath: res.tempFilePath,
-          success(res)
-          {
-            console.log(res)
-          }
-        })
-      }
-    })
-  },
   /**
    * 生命周期函数--监听页面加载
    */

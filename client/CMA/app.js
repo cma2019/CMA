@@ -34,7 +34,7 @@ App({
       filePath: filePath,
       name: 'file',
       header: {
-        'content-type': 'Application/json'
+        'content-type': 'multipart/form-data'
       },
       formData: data,
       success: function (res) {
