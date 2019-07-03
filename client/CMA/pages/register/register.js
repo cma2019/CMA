@@ -35,28 +35,38 @@ Page({
   fun2:function(e){
     console.log("wx login end")
     let url = app.globalData.url + 'user/add'
+
+    
     let tempdata = {
       "password": e.detail.value.password,
       "password2": e.detail.value.password2
     }
+   
+    var lastdata = JSON.stringify(tempdata)
+    console.log("last")
+    console.log(lastdata)
 
-    let data = CryptoJS.Encrypt(tempdata)
+    var data = CryptoJS.Encrypt(lastdata)
     let adddata = {
       "data": data,
     }
     console.log("data secret")
-    console.log(data)
+    console.log(adddata)
 
-    let resdata = CryptoJS.Decrypt(data)
+    var resdata = CryptoJS.Decrypt(data)
     console.log("data result")
     console.log(url)
-    console.log(data)
-    app.wxRequest(url, 'POST', data, (res) => {
-      console.log('successfully')
+    console.log(resdata)
+
+    app.wxRequest(url, 'POST', adddata, (res) => {
+      
       console.log(res)
-      wx.redirectTo({
-        url: '/pages/login/login',
-      })
+      if(res.code == 200){
+        console.log('successfully')
+        wx.redirectTo({
+          url: '/pages/login/login',
+        })
+      }
     }, (err) => {
       console.log('fail intermediate check register')
     })
