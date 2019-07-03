@@ -26,6 +26,7 @@ public class FileController {
      */
     public Response upload(@RequestParam("file") MultipartFile file, HttpServletRequest request) {
         Response response=new Response();
+
         if (!file.isEmpty()) {
             String saveFileName = file.getOriginalFilename();
             String path="F:/img/upload/";
@@ -98,7 +99,7 @@ public class FileController {
         return "所有文件上传成功";
     }*/
 
-    public String downloadFile(HttpServletRequest request, HttpServletResponse response,String fileName) {
+    public String downloadFile( HttpServletResponse response,String fileName) {
        // Response myresponse=new Response();
         if (fileName != null) {
             //设置文件路径
@@ -140,5 +141,26 @@ public class FileController {
             }
         }
         return null;
+    }
+    public void deletefile(String filename,String path){
+        File file=new File(path+filename);
+        delete(file);
+    }
+    public static void delete(File f)
+    {
+        File[] fi=f.listFiles();
+        for(File file:fi)
+        {
+            if(file.isDirectory())
+                delete(file);
+            else if(file.isFile())
+            {
+                String filename=file.getName();
+                if(filename.endsWith("class"))
+                {
+                    System.out.println("成功删除：："+file.getName());
+                }
+            }
+        }
     }
 }
