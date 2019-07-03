@@ -12,4 +12,5 @@
   </van-cell-group>
   <van-button type="info" size="small" bindtap="gotoAdd">Add an equipment</van-button>
   <van-button type="info" size="small" bindtap="uploadIMG">Add an IMG</van-button>
+  <van-button type="info" size="small" bindtap="downloadMyFile">Get an IMG</van-button>
 </scroll-view>

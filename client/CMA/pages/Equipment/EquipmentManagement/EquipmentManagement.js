@@ -47,7 +47,7 @@ Page({
           filePath: tempFilePaths[0],
           name: 'file',
           header:{
-            'content-type':'Application/json'
+            'content-type':'multipart/form-data'
           },
           formData: {
             imgName: 'this is name',
@@ -60,6 +60,23 @@ Page({
       },
     })
   }, 
+  downloadMyFile:function(e){
+    var myurl = app.globalData.url + 'file/download';
+    wx.downloadFile({
+      url: myurl,
+      success(res)
+      {
+        console.log(res)
+        wx.saveFile({
+          tempFilePath: res.tempFilePath,
+          success(res)
+          {
+            console.log(res)
+          }
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

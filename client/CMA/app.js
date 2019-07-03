@@ -5,7 +5,7 @@ App({
 
   globalData: {
     userInfo: null,
-    url: 'http://192.168.1.107:8004/cma/'
+    url: 'http://192.168.1.108:8004/cma/'
   },
 
   wxRequest(url, method, data, callback, errfun) {
@@ -45,6 +45,18 @@ App({
       }
     })
   },
+  wxDownloadFile(url,callback,errfun){
+    wx.downloadFile({
+      url: url,
+      success: function(res){
+        callback(res)
+      },
+      fail: function(res){
+        errfun(res)
+      }
+    })
+  },
+
 
   onLaunch: function () {
     // 展示本地存储能力
