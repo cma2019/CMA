@@ -53,4 +53,108 @@ public class SupervisionRecordController {
         js.put("data",data);
         return js;
     }
+    @PostMapping(path = "/addOne")
+    public @ResponseBody JSONObject addOne(@RequestParam(value = "planId",required = false) String planId,
+                                           @RequestParam(value = "department",required = false) String department,
+                                           @RequestParam(value = "supervisor",required = false) String supervisor,
+                                           @RequestParam(value = "superviseDate",required = false) String superviseDate,
+                                           @RequestParam(value = "supervisedPerson",required = false) String supervisedPerson,
+                                           @RequestParam(value = "record",required = false) String record,
+                                           @RequestParam(value = "conclusion",required = false) String conclusion,
+                                           @RequestParam(value = "operator",required = false) String operator,
+                                           @RequestParam(value = "recordDate",required = false) String recordDate)
+    {
+        int code=200;
+        String msg="成功";
+        JSONObject js=new JSONObject();
+        //JSONObject data=null;
+        try{
+            Long.parseLong(planId);
+        }catch (NumberFormatException e){
+            code=513;
+            msg="某项数据错误";
+            js.put("code",code);
+            js.put("msg",msg);
+            js.put("data",null);
+            return js;
+        }
+        SupervisionRecord sr=new SupervisionRecord();
+        sr.setSupervisor(supervisor);
+        sr.setSupervisedPerson(supervisedPerson);
+        sr.setSuperviseDate(java.sql.Date.valueOf(superviseDate));
+        sr.setRecordDate(java.sql.Date.valueOf(recordDate));
+        sr.setRecord(record);
+        sr.setPlanId(Long.parseLong(planId));
+        sr.setOperator(operator);
+        sr.setDepartment(department);
+        sr.setConclusion(conclusion);
+        SupervisionRecordRepository.save(sr);
+        js.put("code",code);
+        js.put("msg",msg);
+        js.put("data",null);
+        return js;
+    }
+    @PostMapping(path = "/modifyOne")
+    public @ResponseBody JSONObject modifyOne(@RequestParam(value = "recordId",required = false) String recordId,
+                                              @RequestParam(value = "department",required = false) String department,
+                                              @RequestParam(value = "supervisor",required = false) String supervisor,
+                                              @RequestParam(value = "superviseDate",required = false) String superviseDate,
+                                              @RequestParam(value = "supervisedPerson",required = false) String supervisedPerson,
+                                              @RequestParam(value = "record",required = false) String record,
+                                              @RequestParam(value = "conclusion",required = false) String conclusion,
+                                              @RequestParam(value = "operator",required = false) String operator,
+                                              @RequestParam(value = "recordDate",required = false) String recordDate)
+    {
+        int code=200;
+        String msg="成功";
+        JSONObject js=new JSONObject();
+        //JSONObject data=null;
+        try{
+            Long.parseLong(recordId);
+        }catch (NumberFormatException e){
+            code=513;
+            msg="某项数据错误";
+            js.put("code",code);
+            js.put("msg",msg);
+            js.put("data",null);
+            return js;
+        }
+        SupervisionRecord sr=SupervisionRecordRepository.findByRecordId(Long.parseLong(recordId));
+        sr.setSupervisor(supervisor);
+        sr.setSupervisedPerson(supervisedPerson);
+        sr.setSuperviseDate(java.sql.Date.valueOf(superviseDate));
+        sr.setRecordDate(java.sql.Date.valueOf(recordDate));
+        sr.setRecord(record);
+        sr.setOperator(operator);
+        sr.setDepartment(department);
+        sr.setConclusion(conclusion);
+        SupervisionRecordRepository.saveAndFlush(sr);
+        js.put("code",code);
+        js.put("msg",msg);
+        js.put("data",null);
+        return js;
+    }
+    @PostMapping(path = "/deleteOne")
+    public @ResponseBody JSONObject deleteOne(@RequestParam(value = "recordId",required = false) String recordId)
+    {
+        int code=200;
+        String msg="成功";
+        JSONObject js=new JSONObject();
+        //JSONObject data=null;
+        try{
+            Long.parseLong(recordId);
+        }catch (NumberFormatException e){
+            code=513;
+            msg="某项数据错误";
+            js.put("code",code);
+            js.put("msg",msg);
+            js.put("data",null);
+            return js;
+        }
+        SupervisionRecordRepository.deleteById(Long.parseLong(recordId));
+        js.put("code",code);
+        js.put("msg",msg);
+        js.put("data",null);
+        return js;
+    }
 }
