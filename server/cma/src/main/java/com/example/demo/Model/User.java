@@ -14,6 +14,7 @@ public class User {
     private String username;
     private String password;
     private boolean []permission=new boolean[20];
+    private String code;
 
     public void setId(long id){
         this.id=id;
@@ -41,4 +42,9 @@ public class User {
     public boolean[] getPermission() {
         return permission;
     }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
 }
