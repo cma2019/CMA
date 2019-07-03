@@ -6,7 +6,7 @@
           <view class='picker'>
             <van-field 
               name="date"
-              label="my date"
+              label="date"
               value='{{date}}'
               placeholder="input date" 
               required
@@ -16,49 +16,49 @@
       </picker>
       <van-field 
         name="methodId"
-        label="my methodId"
+        label="methodId"
         placeholder="input methodId" 
         required
         clearable
       />
       <van-field 
         name="equipmentName"
-        label="my equipmentName"
+        label="equipmentName"
         placeholder="input equipmentName"
         required
         clearable
       />
       <van-field 
         name="equipmentId"
-        label="my equipmentId"
+        label="equipmentId"
         placeholder="input equipmentId"
         required
         clearable
       />
       <van-field 
         name="experimenter"
-        label="my experimenter"
+        label="experimenter"
         placeholder="input experimenter"
         required
         clearable
       />
       <van-field 
         name="result"
-        label="my result"
+        label="result"
         placeholder="input result"
         required
         clearable
       />
       <van-field 
         name="resultDeal"
-        label="my resultDeal"
+        label="resultDeal"
         placeholder="input resultDeal"
         required
         clearable
       />
       <van-field 
         name="note"
-        label="my note"
+        label="note"
         placeholder="input note"
         required
         clearable
