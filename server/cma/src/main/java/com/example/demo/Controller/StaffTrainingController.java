@@ -32,10 +32,11 @@ public class StaffTrainingController {
     }
 
     @PostMapping(path = "addOne")
-    public @ResponseBody JSONObject addOne(@RequestParam(value="program",required = false)String program,@RequestParam(value = "trainingDate",required = false)String trainingDate,
+    public @ResponseBody JSONObject addOne(@RequestParam(value="trainingId",required = false)long trainingId,@RequestParam(value="program",required = false)String program,@RequestParam(value = "trainingDate",required = false)String trainingDate,
                                            @RequestParam(value = "place",required = false)String place,@RequestParam(value = "presenter",required = false)String presenter,
                                            @RequestParam(value = "content",required = false)String content,@RequestParam(value = "note",required = false)String note){
         StaffTraining staffTraining=new StaffTraining();
+        staffTraining.setTrainingId(trainingId);
         staffTraining.setContent(content);
         staffTraining.setNote(note);
         staffTraining.setPlace(place);
@@ -50,7 +51,7 @@ public class StaffTrainingController {
         JSONObject json=new JSONObject();
         List<StaffTraining> list=staffTrainingRepository.findAll();
         for(int i=0;i<list.size();i++){
-            if(list.get(i).Equals(staffTraining)){
+            if(list.get(i).equals((staffTraining))){
                 json.put("code",210);
                 json.put("msg","失败，已存在");
                 json.put("data",null);
@@ -64,7 +65,7 @@ public class StaffTrainingController {
         return json;
     }
 
-    @PostMapping(path = "deleteOne")
+    /*@PostMapping(path = "deleteOne")
     public @ResponseBody JSONObject deleteOne(@RequestParam(value = "trainingId",required = false)long trainingId){
         JSONObject json=new JSONObject();
         if(staffTrainingRepository.existsById(trainingId)==false){
@@ -118,22 +119,90 @@ public class StaffTrainingController {
             json.put("data",null);
         }
         return json;
-    }
+    }*/
 
     @PostMapping(path = "addTrainingPeople")
-    public @ResponseBody JSONObject addTrainingPeople(@RequestParam(value = "data",required = false)JSONObject data){
+    public @ResponseBody JSONObject addTrainingPeople(@RequestParam(value = "trainingId",required = false)long trainingId,@RequestParam(value="id",required = false)long[] id) throws ParseException {
         JSONObject json=new JSONObject();
-        String string=data.getAsString("trainingId");
-        String id=data.getAsString("data");
-        System.out.println("id");
-        long trainingId=Long.parseLong(string);
-        if(!staffTrainingRepository.existsById(trainingId)){
+        if(!staffTrainingRepository.existsByTrainingId(trainingId)){
             json.put("code",210);
-            json.put("msg","失败,无法找到");
+            json.put("msg","失败,无法找到该培训");
             json.put("data",null);
         }
         else
         {
+            StaffTraining staffTraining=staffTrainingRepository.findByTrainingId(trainingId);
+            for(int i=0;i<id.length;i++){
+                if(staffManagementRepository.existsById(id[i])==false){
+                    json.put("code",210);
+                    json.put("msg","失败,无法找到id为"+id[i]+"的人员");
+                    json.put("data",null);
+                    return json;
+                }
+            }
+            staffTrainingRepository.deleteByTrainingId(trainingId);
+            for(int i=0;i<id.length;i++){
+                StaffTraining staffTraining1=new StaffTraining();
+                staffTraining1.setTrainingId(trainingId);
+                staffTraining1.setResult(staffTraining.getResult());
+                SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+                staffTraining1.setTrainingDate(sdf.parse(staffTraining.getTrainingDate()));
+                staffTraining1.setProgram(staffTraining.getProgram());
+                staffTraining1.setPlace(staffTraining.getPlace());
+                staffTraining1.setPresenter(staffTraining.getPresenter());
+                staffTraining1.setContent(staffTraining.getContent());
+                staffTraining1.setNote(staffTraining.getNote());
+                staffTraining1.setId(id[i]);
+                staffTrainingRepository.save(staffTraining1);
+            }
+            //staffTraining.setId(id[0]);
+            //staffTrainingRepository.save(staffTraining);
+            json.put("code",200);
+            json.put("msg","成功");
+            json.put("data",null);
+        }
+        return json;
+    }
+
+    @PostMapping(path = "addTrainingResult")
+    public @ResponseBody JSONObject addTrainingResult(@RequestParam(value = "trainingId",required = false)long trainingId,@RequestParam(value="id",required = false)long id,@RequestParam(value="result",required = false)String result){
+        JSONObject json=new JSONObject();
+        if(!staffTrainingRepository.existsByTrainingIdAndId(trainingId,id)){
+            json.put("code",210);
+            json.put("msg","失败,无法找到该培训");
+            json.put("data",null);
+        }
+        else{
+            StaffTraining staffTraining=staffTrainingRepository.findByTrainingIdAndId(trainingId, id);
+            staffTraining.setResult(result);
+            staffTrainingRepository.save(staffTraining);
+            json.put("code",200);
+            json.put("msg","成功");
+            json.put("data",null);
+        }
+        return json;
+    }
+    @GetMapping(path = "getTrainingPeople")
+    public @ResponseBody JSONObject getTrainingPeople(@RequestParam(value = "trainingId",required = false)long trainingId){
+        JSONObject json=new JSONObject();
+        json.put("code",200);
+        json.put("msg","成功");
+        json.put("data",staffTrainingRepository.findAllByTrainingId(trainingId));
+        return json;
+    }
+
+    @PostMapping(path = "modifyResult")
+    public @ResponseBody JSONObject modifyResult(@RequestParam(value = "trainingId",required = false)long trainingId,@RequestParam(value="id",required = false)long id,@RequestParam(value="result",required = false)String result){
+        JSONObject json=new JSONObject();
+        if(!staffTrainingRepository.existsByTrainingIdAndId(trainingId,id)){
+            json.put("code",210);
+            json.put("msg","失败,无法找到该培训");
+            json.put("data",null);
+        }
+        else{
+            StaffTraining staffTraining=staffTrainingRepository.findByTrainingIdAndId(trainingId, id);
+            staffTraining.setResult(result);
+            staffTrainingRepository.save(staffTraining);
             json.put("code",200);
             json.put("msg","成功");
             json.put("data",null);
