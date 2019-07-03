@@ -1,4 +1,3 @@
-// page_SampleIo/ioShow/ioShow.js
 const app = getApp()
 Page({
 
@@ -19,13 +18,18 @@ Page({
     "note":"null",*/
     "info":{},
     tmp: [{
+      "planId ": 5,
       "id": 1,
-      "situation ": 2,
-      "author": "老王",
-      "createDate": "2018-05-08",
-      "approver": "老李",
-      "approveDate": "2018-06-08",
-      "remark ": "无",
+      "content": "操作规范",
+      "object": "张三",
+      "dateFrequency": ""
+    },
+    {
+      "planId ": 6,
+      "id": 1,
+      "content": "仪器使用规范",
+      "object": "李四",
+      "dateFrequency": ""
     }]
   },
 
@@ -65,24 +69,12 @@ Page({
       },
       success(res) {
         if (res.data.code == 200) {
-         /* thispage.setData({ 
-            sampleNumber: res.data.data.sampleNumber,
-            sampleName: res.data.data.sampleName,
-            sampleAmount: res.data.data.sampleAmount,
-            sampleState: res.data.data.sampleState,
-            sender: res.data.data.sender,
-            receiver: res.data.data.receiver,
-            sendDate: res.data.data.sendDate,
-            obtainer: res.data.data.obtainer,
-            obtainDate: res.data.data.obtainDate,
-            note:res.data.data.note
-          })*/
           console.log(res.data)
           thispage.setData({
             info : res.data.data
           })
           wx.setStorage({
-            key:'supervisionGetOneinfo',
+            key:'supervisionPlaninfo',
             data:res.data.data
           })
         }
@@ -109,27 +101,44 @@ Page({
       }
     })
   },
-
-  modifyData: function(e) {
+  supervisionPlanModify:function(){
     console.log(e)
-    let target = this.data.id
-    //console.log("dfdg")
-    //console.log(target)
+    let planId = e.currentTarget.id
+    let id = this.data.id
+    let i = 0
+    while(info[i].planId != planId){
+      ++i
+    }
+    let content = info[i].content
+    let object = info[i].object
+    let dateFrequency = info[i].dateFrequency
     wx.navigateTo({
-      url: '../supervisionModifyOne/supervisionModifyOne?id=' + target
+      url: '../SupervisionPlan/supervisionPlanModifyOne/supervisionPlanModifyOne?id=' + id +"&planId="+planId +"&content="+content+"&object="+object+"&dateFrequency"+dateFrequency
     })
   },
-
-  deleteData: function(e) {
+  goback: function () {
+    wx.removeStorage({
+      key: 'supervisionPlaninfo',
+      success: function (res) {
+        console.log(res)
+      }
+    })
+    wx.navigateBack({
+      delta: 1
+    })
+  },
+  supervisionPlanDelete:function(e){
+    let planId = e.currentTarget.id
+    let id = this.data.id
     const deleteoneRequest = wx.request({
-      url: app.globalData.url + 'Supervision/deleteOne',
+      url: app.globalData.url + 'SupervisionPlan/deleteOne',
       method: 'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded',
         'Accept': 'application/json'
       },
       data: {
-        "id": this.data.id
+        "planId": planId
       },
       success(res) {
         console.log(res)
@@ -166,14 +175,18 @@ Page({
     })
 
   },
-
-  goback: function () {
-    wx.removeStorage({
-      key: 'supervisionGetOneinfo',
-      success: function (res) {
-        console.log(res)
-      }
+  supervisionPlanAdd:function(){
+    wx.navigateTo({
+      url: '../SupervisionPlan/supervisionPlanAddOne/supervisionPlanAddOne'  
     })
+  },
+  gotoSupervisionRecord(e){
+    let planId = e.currentTarget.id
+    wx.navigateTo({
+      url: '../SupervisionRecord/supervisionRecord?id='+planId
+    })
+  },
+  goback: function () {
     wx.navigateBack({
       delta: 1
     })

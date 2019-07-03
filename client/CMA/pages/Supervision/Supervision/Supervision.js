@@ -64,7 +64,7 @@ Page({
     console.log(target)
     console.log("dfdsfs")
     wx.navigateTo({
-      url: 'supervisionGetOne/supervisionGetOne?id=' + target
+      url: 'supervisionGetOne/supervisionGetOne?id=' + target  //==SupervisionPlan/getAll
     })
   },
   gotoAdd: function () {

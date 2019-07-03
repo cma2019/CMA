@@ -107,7 +107,13 @@
     "pages/StaffManagement/StaffLeaving/AddOneStaffLeaving/AddOneStaffLeaving",
     "pages/TestingInstitutionManagement/TestingInstitutionInformation/TestingInstitutionInformationModify/TestingInstitutionInformationModify",
     "pages/TestingInstitutionManagement/TestingInstitutionResource/TestingInstitutionResourceModify/TestingInstitutionResourceModify",
-    "pages/register/register"
+    "pages/register/register",
+    "pages/Supervision/SupervisionPlan/supervisionPlanModifyOne/supervisionPlanModifyOne",
+    "pages/Supervision/SupervisionPlan/supervisionPlanAddOne/supervisionPlanAddOne",
+    "pages/Supervision/SupervisionRecord/SupervisionRecord",
+    "pages/Supervision/SupervisionRecord/SupervisionRecordGetOne/SupervisionRecordGetOne",
+    "pages/Supervision/SupervisionRecord/SupervisonRecordAddOne/SupervisionRecordAddOne",
+    "pages/Supervision/SupervisionRecord/SupervisionRecordModifyOne/SupervisionRecordModifyOne"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -151,6 +157,7 @@
     "van-checkbox": "../../dist/checkbox/index",
     "van-checkbox-group": "../../dist/checkbox-group/index",
     "van-radio": "../../dist/radio/index",
-    "van-radio-group": "../../dist/radio-group/index"
+    "van-radio-group": "../../dist/radio-group/index",
+    "van-panel": "../../dist/panel/index"
   }
 }
