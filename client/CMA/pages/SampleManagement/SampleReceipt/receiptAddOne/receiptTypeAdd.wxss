@@ -1,1 +1,21 @@
 /* pages/SampleManagement/SampleReceipt/receiptAddOne/receiptTypeAdd.wxss */
+.cart-count-down,.cart-count-add{
+    font-size: 44rpx;
+    width: 50rpx;
+    height: 100%;
+}
+.cart-count-num{
+    width: 50rpx;
+}
+.cart-count-box text{
+    display: inline-block;
+    line-height: 80rpx;
+    text-align: center;
+}
+.cart-count-box{
+    float: right;
+    left: 185;
+    bottom: 20rpx;
+    width: 150rpx;
+    height: 80rpx;
+}

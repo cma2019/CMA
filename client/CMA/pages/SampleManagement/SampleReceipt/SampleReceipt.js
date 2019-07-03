@@ -90,35 +90,30 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onShow: function (options) {
-    /*
     let url = app.globalData.url + 'SampleReceipt/getAll'
     let postdata = ''
-    console.log(url)
-    console.log(postdata)
     app.wxRequest(url, 'GET', postdata, (res) => {
+      //console.log('success')
       console.log(res)
       console.log('success')
-      if(res.code == 522){
+      if (res.code == 522) {
         this.setData({
-          mess : ""
+          mess: ""
         })
       }
-      else{
+      else {
         this.setData({
           mess: res.data,
           flag: 1
         })
       }
-      
-      //console.log(this.mess)
     }, (err) => {
-      //console.err('getone error')
       wx.showToast({
-        title: 'getone error',
+        title: 'getall error',
         duration: 1500
       })
-      console.log('getone error')
-    })*/
+      console.log('getall error')
+    })
   },
   gotoOne: function (e) {
     console.log(e)
@@ -130,6 +125,7 @@ Page({
       url: 'receiptGetOne/receiptGetOne?id=' + target
     })
   },
+
   gotoAdd: function () {
     wx.navigateTo({
       url: 'receiptAddOne/receiptAddOne',

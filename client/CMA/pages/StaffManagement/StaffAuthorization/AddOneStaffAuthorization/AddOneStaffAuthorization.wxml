@@ -16,13 +16,6 @@
         clearable
       />
       <van-field 
-        name="people"
-        label="people"
-        placeholder="input people" 
-        required
-        clearable
-      />
-      <van-field 
         name="content"
         label="content"
         placeholder="input content" 

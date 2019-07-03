@@ -37,15 +37,15 @@ Page({
       console.log(res)
       console.log('plan get one project success')
       this.setData({
-        projectId: res.data[0].projectId,
-        date: res.data[0].date,
-        methodId: res.data[0].methodId,
-        equipmentName: res.data[0].equipmentName,
-        equipmentId: res.data[0].equipmentId,
-        experimenter: res.data[0].experimenter,
-        result: res.data[0].result,
-        resultDeal: res.data[0].resultDeal,
-        note: res.data[0].note
+        projectId: res.data.projectId,
+        date: res.data.date,
+        methodId: res.data.methodId,
+        equipmentName: res.data.equipmentName,
+        equipmentId: res.data.equipmentId,
+        experimenter: res.data.experimenter,
+        result: res.data.result,
+        resultDeal: res.data.resultDeal,
+        note: res.data.note
       })
     }, (err) => {
       console.err('get one project error')
@@ -66,7 +66,12 @@ Page({
       "id": this.data.recordId
     }
     app.wxRequest(url, 'POST', data, (res) => {
-      console.log('delete plan successfully')
+      if (res.code == 200) {
+        console.log('delete record successfully')
+        wx.navigateBack({
+          delta: 1
+        })
+      }
     }, (err) => {
       console.log('delete plan failed')
     })

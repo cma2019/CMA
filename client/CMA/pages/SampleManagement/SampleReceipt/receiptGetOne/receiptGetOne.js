@@ -6,15 +6,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-    search_sampleId: "",
-    mess: null
+    sampleId: "",
+    mess: null,
+    array: ['《用户手册》', '《计算机软件产品登记检测申请表》', '《材料交接单》', '《软件产品功能列表》', '《软件名称与版本号确认单》', '《受测软件产品简介》', '《自主产权保证书》', '软件样品一套', '其它'],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   
+    this.setData({
+      sampleId: options.id
+    })
+    console.log("fsdgdf")
+    console.log(this.data.sampleId)
   },
 
   /**
@@ -23,6 +28,7 @@ Page({
   onReady: function () {
 
   },
+  /*
   searchInput:function(e){
     console.log(e.detail.value)
     this.setData({
@@ -82,13 +88,134 @@ Page({
       delta: 1
     })
   },
+  */
+  gotoAddsampleReceive: function () {
+    wx.navigateTo({
+      url: '/pages/SampleManagement/SampleReceive/receiveAddOne/receiveAddOne?id=' + this.data.sampleId,
+    })
+  },
+  gotoAddsampleIo: function () {
+    wx.navigateTo({
+      url: '/pages/SampleManagement/SampleReceive/ioAddOne/ioAddOne?id=' + this.data.sampleId,
+    })
+  },
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function (options) {
+    var thispage = this
+    console.log('getone发生了事件，携带数据为：', this.data.sampleId)
+    wx.request({
+      url: app.globalData.url + 'SampleReceipt/getOne',
+      method: 'GET',
+      data: {
+        "sampleId": this.data.sampleId
+      },
+      header: {
+        'content-type': 'application/json',
+        'Accept': 'application/json'
+      },
+      success(res) {
+        if (res.data.code == 200) {
+          thispage.setData({
+            info: res.data.data
+          })
+          wx.setStorage({
+            key: 'receiptGetOneinfo',
+            data: res.data.data
+          })
+        }
+        else if (res.data.code == 521) {
+          console.log(res.data.msg)
+          wx.showToast({
+            title: '未收到标识编号',
+            duration: 1500
+          })
+          console.log('未收到标识编号')
+        }
+        else {//522
+          console.log("12")
+          wx.showToast({
+            title: '数据不存在',
+            duration: 1500
+          })
+          console.log('数据不存在')
+        }
+      },
+      fail(err) {
+        console.log('no data')
+      }
+    })
+  },
+
+  modifyData: function (e) {
+    console.log(e)
+    let target = this.data.sampleId
+    //console.log("dfdg")
+    //console.log(target)
+    wx.navigateTo({
+      url: '../ioModifyOne/ioModifyOne?id=' + target
+    })
+  },
+
+  deleteData: function (e) {
+    const deleteoneRequest = wx.request({
+      url: app.globalData.url + 'SampleReceipt/deleteOne',
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'Accept': 'application/json'
+      },
+      data: {
+        "sampleId": this.data.sampleId
+      },
+      success(res) {
+        console.log(res)
+        if (res.data.code == 200) {
+          wx.showToast({
+            title: '删除成功',
+            duration: 1500
+          })
+        }
+        else if (res.data.code == 521) {
+          wx.showToast({
+            title: '未收到标识编号',
+            duration: 1500
+          })
+          console.log('未收到标识编号')
+        }
+        else {
+          wx.showToast({
+            title: '数据不存在',
+            duration: 1500
+          })
+          console.log('数据不存在')
+        }
+        wx.navigateBack({
+          delta: 1
+        })
+      },
+      fail(err) {
+        console.log('fail deleteone')
+      },
+      complete(fin) {
+        console.log('final deleteone')
+      }
+    })
 
   },
 
+  goback: function () {
+    wx.removeStorage({
+      key: 'receiptGetOneinfo',
+      success: function (res) {
+        console.log(res)
+      }
+    })
+    wx.navigateBack({
+      delta: 1
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

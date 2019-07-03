@@ -35,23 +35,29 @@ Page({
     }
     app.wxRequest(url, 'GET', postdata, (res) => {
       console.log("plan modify success")
-      console.log(res.data[0])
+      console.log(res.data)
       this.setData({
-        projectId: res.data[0].projectId,
-        date: res.data[0].date,
-        methodId: res.data[0].methodId,
-        equipmentName: res.data[0].equipmentName,
-        equipmentId: res.data[0].equipmentId,
-        experimenter: res.data[0].experimenter,
-        result: res.data[0].result,
-        resultDeal: res.data[0].resultDeal,
-        note: res.data[0].note
+        projectId: res.data.projectId,
+        date: res.data.date,
+        methodId: res.data.methodId,
+        equipmentName: res.data.equipmentName,
+        equipmentId: res.data.equipmentId,
+        experimenter: res.data.experimenter,
+        result: res.data.result,
+        resultDeal: res.data.resultDeal,
+        note: res.data.note
       })
     }, (err) => {
       console.err('getone error')
     })
   },
-
+  bindDateChange: function (e) {
+    console.log("date")
+    console.log(e.detail.value)
+    this.setData({
+      date: e.detail.value
+    })
+  },
   capacityrecordmodify: function (e) {
     console.log('modify projects')
     /*
@@ -85,15 +91,12 @@ Page({
     };
     console.log(data)
     app.wxRequest(url, 'POST', data, (res) => {
-      console.log('modify record successfully')
-      console.log(res)
-      /*
-      if (res.data == "modify successfully.") {
+      if (res.code == 200) {
+        console.log('modify record successfully')
         wx.navigateBack({
           delta: 1
         })
       }
-      */
     }, (err) => {
       console.log('fail modify record')
     })

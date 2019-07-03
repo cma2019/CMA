@@ -8,28 +8,6 @@ Page({
 
   data: {
     "sampleIoId": "",
-    /*"sampleNumber": "",
-    "sampleName": "",
-    "sampleAmount": "",
-    "sampleState": "",
-    "sender": "",
-    "receiver": "",
-    
-    "obtainer": "",
-    
-    "note": "",
-
-
-    "sampleNumberinfo": "",
-    "sampleNameinfo": "",
-    "sampleAmountinfo": "",
-    "sampleStateinfo": "",
-    "senderinfo": "",
-    "receiverinfo": "",
-    "sendDateinfo": "",
-    "obtainerinfo": "",
-    "obtainDateinfo": "",
-    "noteinfo": "",*/
     "origindata":{},
     "sendDate": "",
     "obtainDate": ""
@@ -116,6 +94,8 @@ Page({
     wx.getStorage({
       key: 'ioGetOneinfo',
       success: function (res) {
+        console.log("fdsgfgdhjkgh")
+        console.log(res)
         that.setData({
           'origindata': res.data
         })

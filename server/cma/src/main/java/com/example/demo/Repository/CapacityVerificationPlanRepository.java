@@ -12,12 +12,11 @@ public interface CapacityVerificationPlanRepository extends JpaRepository<Capaci
 
     @Modifying
 
-    @Query(value="update Capacity_Verification_Plan set plan_id=:planid," +
-            "name = :name," +
+    @Query(value="update Capacity_Verification_Plan set name = :name," +
             "organizer = :organizer," +
             "state = :state," +
             "year = :year," +
-            "note=:note,",nativeQuery=true)
+            "note=:note where plan_id=:planid",nativeQuery=true)
     void updateById(@Param("planid")Long planid,
                     @Param("name")String name,
                     @Param("organizer")String organizer,

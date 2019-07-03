@@ -1,10 +1,11 @@
 package com.example.demo.Controller;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONException;
+import com.alibaba.fastjson.JSONObject;
 import com.example.demo.Model.CapacityVerificationRecord;
 import com.example.demo.Repository.CapacityVerificationRecordRepository;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -26,18 +27,18 @@ public class CapacityVerificationRecordController {
 
     @PostMapping(path = "/addOneRecord")
     public @ResponseBody JSONObject addRecord(@RequestParam(value = "projectId", required = false) Long projectId,
-                                              @RequestParam(value = "date", required = false) Date date,
-                                              @RequestParam(value = "methodId", required = false) String methodId,
-                                              @RequestParam(value = "equipmentName", required = false) String equipmentName,
-                                              @RequestParam(value = "equipmentId", required = false) String equipmentId,
-                                              @RequestParam(value = "experimenter", required = false) String experimenter,
-                                              @RequestParam(value = "result", required = false) String result,
-                                              @RequestParam(value = "resultDeal", required = false) String resultDeal,
-                                              @RequestParam(value = "note", required = false) String note){
+                         @RequestParam(value = "date", required = false) Date date,
+                         @RequestParam(value = "methodId", required = false) String methodId,
+                         @RequestParam(value = "equipmentName", required = false) String equipmentName,
+                         @RequestParam(value = "equipmentId", required = false) String equipmentId,
+                         @RequestParam(value = "experimenter", required = false) String experimenter,
+                         @RequestParam(value = "result", required = false) String result,
+                         @RequestParam(value = "resultDeal", required = false) String resultDeal,
+                         @RequestParam(value = "note", required = false) String note){
         CapacityVerificationRecord newRecord = new CapacityVerificationRecord();
-        newRecord.setprojectID(projectId);
+        newRecord.setprojectId(projectId);
         newRecord.setDate(date);
-        newRecord.setMethodID(methodId);
+        newRecord.setMethodId(methodId);
         newRecord.setEquipmentName(equipmentName);
         newRecord.setEquipmentId(equipmentId);
         newRecord.setExperimenter(experimenter);
@@ -136,12 +137,15 @@ public class CapacityVerificationRecordController {
         }
         else
         {
-            record= CapacityVerificationRecordRepository.getOne(recordId);
+            json.put("code",200);
+            json.put("msg","获取成功");
+            json.put("data",CapacityVerificationRecordRepository.findById(recordId));
+            /*record= CapacityVerificationRecordRepository.getOne(recordId);
             JSONObject data=new JSONObject(new LinkedHashMap());
             JSONArray array=new JSONArray();
             try{
-                data.put("recordId",record.getrecordID());
-                data.put("projectId",record.getprojectID());
+                data.put("recordId",record.getrecordId());
+                data.put("projectId",record.getprojectId());
                 data.put("date",record.getDate());
                 data.put("methodId",record.getMethodID());
                 data.put("equipmentName",record.getEquipmentName());
@@ -153,14 +157,14 @@ public class CapacityVerificationRecordController {
             }catch (JSONException e){
                 e.printStackTrace();
             }
-            array.put(data);
+            //array.put(data);
             try{
                 json.put("code",200);
                 json.put("msg","获取成功");
-                json.put("data",array);
+                json.put("data",data);
             }catch (JSONException e){
                 e.printStackTrace();
-            }
+            }*/
 
         }
 
@@ -168,10 +172,10 @@ public class CapacityVerificationRecordController {
     }
 
     @GetMapping(path="/getRecordByProjectId")
-    public @ResponseBody JSONObject getOneByPlanId(@RequestParam(value="projectId",required=false)Long projectId)throws IOException{
+    public @ResponseBody JSONObject getRecordByProjectId(@RequestParam(value="projectId",required=false)Long projectId)throws IOException{
         JSONObject json=new JSONObject(new LinkedHashMap());
         CapacityVerificationRecord record=new CapacityVerificationRecord();
-        if(CapacityVerificationRecordRepository.findByProjectId(projectId)==null)
+        if(CapacityVerificationRecordRepository.findAllByProjectId(projectId)==null)
         {
             try{
                 json.put("code",500);
@@ -182,12 +186,15 @@ public class CapacityVerificationRecordController {
         }
         else
         {
-            record= CapacityVerificationRecordRepository.findByProjectId(projectId);
+            json.put("code",200);
+            json.put("msg","获取成功");
+            json.put("data",CapacityVerificationRecordRepository.findAllByProjectId(projectId));
+            /*record= CapacityVerificationRecordRepository.findByProjectId(projectId);
             JSONObject data=new JSONObject(new LinkedHashMap());
             JSONArray array=new JSONArray();
             try{
-                data.put("recordId",record.getrecordID());
-                data.put("projectId",record.getprojectID());
+                data.put("recordId",record.getrecordId());
+                data.put("projectId",record.getprojectId());
                 data.put("date",record.getDate());
                 data.put("methodId",record.getMethodID());
                 data.put("equipmentName",record.getEquipmentName());
@@ -199,14 +206,14 @@ public class CapacityVerificationRecordController {
             }catch (JSONException e){
                 e.printStackTrace();
             }
-            array.put(data);
+            //array.put(data);
             try{
                 json.put("code",200);
                 json.put("msg","获取成功");
-                json.put("data",array);
+                json.put("data",data);
             }catch (JSONException e){
                 e.printStackTrace();
-            }
+            }*/
 
         }
         return json;

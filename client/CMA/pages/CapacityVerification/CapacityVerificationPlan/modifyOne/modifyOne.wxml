@@ -4,7 +4,7 @@
     <van-cell-group title="input message">
       <van-field 
         name="name"
-        label="my name"
+        label="name"
         value='{{name}}'
         placeholder="input name" 
         required
@@ -12,7 +12,7 @@
       />
       <van-field 
         name="organizer"
-        label="my organizer"
+        label="organizer"
         value='{{organizer}}'
         placeholder="input organizer" 
         required
@@ -20,7 +20,7 @@
       />
       <van-field 
         name="state"
-        label="my state"
+        label="state"
         value='{{state}}'
         placeholder="input state" 
         required
@@ -28,7 +28,7 @@
       />   
       <van-field 
         name="year"
-        label="my year"
+        label="year"
         value='{{year}}'
         placeholder="input year" 
         type='number'
@@ -37,21 +37,13 @@
       />   
       <van-field 
         name="note"
-        label="my note"
+        label="note"
         value='{{note}}'
         placeholder="input note" 
         required
         clearable
-      />    
-      <van-field
-        name="analysis"
-        label="my analysis"
-        placeholder="input analysis"
-        value='{{analysis}}'
-        required
-        clearable
         border = "{{false}}"
-      />
+      />    
     </van-cell-group>
     <view>
       <button class='van-button--info' formType='submit'>register</button>

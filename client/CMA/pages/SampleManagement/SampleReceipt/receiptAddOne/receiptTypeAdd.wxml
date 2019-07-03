@@ -1,11 +1,31 @@
 <!--pages/SampleManagement/SampleReceipt/receiptAddOne/receiptTypeAdd.wxml-->
 <view>
-  <block wx:for="{{receiptType}}" wx:key="{{index}}">
+  <!--<block wx:for="{{receiptType}}" wx:key="{{index}}">
+    <van-field v-model="applicationUnit"  name="applicationUnit"   required clearable label="申报单位名称" placeholder="请输入申报单位名称" />
     <picker name = 'receiptType' range="{{array}}" value='{{index}}' bindchange='bindreceiptTypeChange'>
       <view class='picker'>
         <van-field  name="receiptType" label="类型" value='{{objectArray[receiptType[index]].name}}' placeholder="请选择提交材料的类型"  required clearable />
       </view>
     </picker>
-  </block>
-  <button class="van-button--info" bindtap="receiptTypeAdd">添加</button>
+  </block>-->
+  <form bindsubmit='materialList_addone'>
+    <van-cell-group title="materialList_addone">
+      <view wx:for="{{materialList}}"wx:key="{{index}}">
+        <van-cell title="{{array[index]}}" required >
+          <view class="cart-count-box">
+            <text class="cart-count-down" bindtap="minusCount" data-index="{{index}}">-</text>
+            <text class="cart-count-num">{{item.materialType}}</text>
+            <text class="cart-count-add" bindtap="addCount" data-index="{{index}}">+</text>
+          </view>
+          <view wx:if="{{index==8 && item.materialType != 0}}">
+            <input  bindinput="bindmaterialName" placeholder="材料名" />
+          </view>
+        </van-cell>
+      </view>
+    </van-cell-group>
+
+    <view>
+      <button class="van-button--info" formType="submit">完成</button>
+    </view>
+  </form>
 </view>

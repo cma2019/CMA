@@ -16,6 +16,8 @@ HELP.md
 *.iws
 *.iml
 *.ipr
+/target/
+/src/javadoc/
 
 ### NetBeans ###
 /nbproject/private/
@@ -27,3 +29,10 @@ HELP.md
 
 ### VS Code ###
 .vscode/
+
+###lyt2019.7.2add###
+.mvn/
+*.swp
+mvnw
+mvnw.cmd
+src/javadoc/

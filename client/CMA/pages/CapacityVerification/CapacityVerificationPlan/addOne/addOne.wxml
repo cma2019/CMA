@@ -4,28 +4,28 @@
     <van-cell-group title="input message">
       <van-field 
         name="name"
-        label="my name"
+        label="name"
         placeholder="input name" 
         required
         clearable
       />
       <van-field 
         name="organizer"
-        label="my organizer"
+        label="organizer"
         placeholder="input organizer"
         required
         clearable
       />
       <van-field 
         name="state"
-        label="my state"
+        label="state"
         placeholder="input state"
         required
         clearable
       />
       <van-field 
         name="year"
-        label="my year"
+        label="year"
         placeholder="input year"
         type='number'
         required
@@ -33,14 +33,14 @@
       />
       <van-field 
         name="note"
-        label="my note"
+        label="note"
         placeholder="input note"
         required
         clearable
       />
       <van-field
         name="analysis"
-        label="my analysis"
+        label="analysis"
         placeholder="input analysis"
         required
         clearable

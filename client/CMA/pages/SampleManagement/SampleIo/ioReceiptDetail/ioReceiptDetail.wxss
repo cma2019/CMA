@@ -1,0 +1,9 @@
+/* pages/SampleManagement/SampleIo/ioReceiptDetail/ioReceiptDetail.wxss */
+.sampleNameright{
+    position: relative;
+  align-items:center;
+}
+.cart-count-num{
+  float: right;
+  width: 50rpx;
+}

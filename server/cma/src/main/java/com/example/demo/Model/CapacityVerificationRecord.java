@@ -18,7 +18,7 @@ public class CapacityVerificationRecord {
     private long recordId;     //能力验证记录序号
     private long projectId;//能力验证记录所对应的项目编号
     private Date date;//能力验证记录执行是时间，如2012-01-12
-    private String methodID;//能力验证项目的试验方法依据的标准编号
+    private String methodId;//能力验证项目的试验方法依据的标准编号
     private String equipmentName;//仪器设备名称（由前端从设备表里获取，后端无需关联两表）
     private String equipmentId;//仪器设备的编号（同上）
     private String experimenter;//试验人员（由前端从人员表里获取，后端无需关联两表）
@@ -26,26 +26,26 @@ public class CapacityVerificationRecord {
     private String resultDeal;//能力验证结果处理状况
     private String note;//结果的备注
 
-    public void setrecordID(long id){
+    public void setrecordId(long id){
         this.recordId=id;
     }
-    public long getrecordID(){ return this.recordId; }
+    public long getrecordId(){ return this.recordId; }
 
-    public void setprojectID(long id){
+    public void setprojectId(long id){
         this.projectId=id;
     }
-    public long getprojectID(){
+    public long getprojectId(){
         return this.projectId;
     }
 
     public void setDate(Date date){this.date=date;}
     public Date getDate(){return this.date;}
 
-    public void setMethodID(String methodID){
-        this.methodID=methodID;
+    public void setMethodId(String methodId){
+        this.methodId=methodId;
     }
-    public String getMethodID(){
-        return this.methodID;
+    public String getMethodId(){
+        return this.methodId;
     }
 
     public void setEquipmentName(String equipmentName){

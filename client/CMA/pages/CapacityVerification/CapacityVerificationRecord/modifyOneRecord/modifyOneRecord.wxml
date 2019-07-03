@@ -4,7 +4,7 @@
     <van-cell-group title="input message">
       <van-field 
         name="projectId"
-        label="my projectId"
+        label="projectId"
         placeholder="input projectId" 
         value='{{projectId}}'
         required
@@ -14,7 +14,7 @@
           <view class='picker'>
             <van-field 
               name="date"
-              label="my date"
+              label="date"
               value='{{date}}'
               placeholder="input date" 
               required
@@ -24,7 +24,7 @@
       </picker>
       <van-field 
         name="methodId"
-        label="my methodId"
+        label="methodId"
         placeholder="input methodId" 
         value='{{methodId}}'
         required
@@ -32,7 +32,7 @@
       />
       <van-field 
         name="equipmentName"
-        label="my equipmentName"
+        label="equipmentName"
         placeholder="input equipmentName"
         value='{{equipmentName}}'
         required
@@ -40,7 +40,7 @@
       />
       <van-field 
         name="equipmentId"
-        label="my equipmentId"
+        label="equipmentId"
         placeholder="input equipmentId"
         value='{{equipmentId}}'
         required
@@ -48,7 +48,7 @@
       />
       <van-field 
         name="experimenter"
-        label="my experimenter"
+        label="experimenter"
         placeholder="input experimenter"
         value='{{experimenter}}'
         required
@@ -56,7 +56,7 @@
       />
       <van-field 
         name="result"
-        label="my result"
+        label="result"
         placeholder="input result"
         value='{{result}}'
         required
@@ -64,7 +64,7 @@
       />
       <van-field 
         name="resultDeal"
-        label="my resultDeal"
+        label="resultDeal"
         placeholder="input resultDeal"
         value='{{resultDeal}}'
         required
@@ -72,7 +72,7 @@
       />
       <van-field 
         name="note"
-        label="my note"
+        label="note"
         placeholder="input note"
         value='{{note}}'
         required

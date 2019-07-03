@@ -24,6 +24,7 @@ Page({
   },
 
   onShow: function (options) {
+    console.log("plan modify")
     console.log(this.data.planId)
     let url = app.globalData.url + 'CapacityVerification/getOneProject'
     let postdata = {
@@ -31,13 +32,12 @@ Page({
     }
     app.wxRequest(url, 'GET', postdata, (res) => {
       console.log("plan modify success")
-      console.log(res.data[0])
       this.setData({
-        planId: res.data[0].planId,
-        name: res.data[0].name,
-        method: res.data[0].method,
-        state: res.data[0].state,
-        note: res.data[0].note,
+        planId: res.data.planId,
+        name: res.data.name,
+        method: res.data.method,
+        state: res.data.state,
+        note: res.data.note,
       })
     }, (err) => {
       console.err('getone error')
@@ -73,20 +73,15 @@ Page({
     };
     console.log(data)
     app.wxRequest(url, 'POST', data, (res) => {
-      console.log('modify message successfully')
-      console.log(res)
-      /*
-      if (res.data == "modify successfully.") {
+      if (res.code == 200) {
+        console.log('modify successfully')
         wx.navigateBack({
           delta: 1
         })
       }
-      */
     }, (err) => {
       console.log('fail modify')
     })
   }
   //}
 })
-
-

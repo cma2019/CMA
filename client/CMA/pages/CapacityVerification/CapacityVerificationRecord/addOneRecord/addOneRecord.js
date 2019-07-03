@@ -31,7 +31,7 @@ Page({
     else {
       let url = app.globalData.url + 'CapacityVerification/addOneRecord'
       console.log("add one record id")
-      console.log(data.projectId)
+      console.log(this.data.projectId)
       let data = {
         "projectId": this.data.projectId,
         "date": e.detail.value.date,
@@ -45,7 +45,12 @@ Page({
       }
       console.log(data)
       app.wxRequest(url, 'POST', data, (res) => {
-        console.log('send CapacityVerificationPlan message successfully')
+        if (res.code == 200) {
+          console.log('add record successfully')
+          wx.navigateBack({
+            delta: 1
+          })
+        }      
       }, (err) => {
         console.log('fail CapacityVerificationPlan register')
       })

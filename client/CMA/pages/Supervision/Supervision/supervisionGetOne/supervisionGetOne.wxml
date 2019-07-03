@@ -1,32 +1,21 @@
 <view>
-  <van-cell>
+  <view wx:for="{{info}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
+    <van-panel value="详情" bindtap='gotoSupervisionRecord' id='{{item.planId}}' is-link>
       <view slot="title">
-        <view>标识编号: {{info.id}}\n</view>
-        <view>
-          <view wx:if="{{info.situation == 0}}">
-            <view>计划状态:未批准</view>
-          </view>
-          <view wx:elif="{{info.situation == 1}}">
-            <view>计划状态:已批准</view>
-          </view>
-          <view wx:else>
-            <view>计划状态:已执行</view>
-          </view>
-        </view>
-        <view>编制人: {{info.author}}\n</view>
-        <view>编制时间: {{info.createDate}}\n</view>
-        <view>批准人: {{info.approver}}\n</view>
-        <view>批准时间: {{info.approveDate}}\n</view>
-        <view>备注: {{info.remark}}\n</view>
+        <view>planId: {{item.planId}}</view>
+        <view>id: {{item.id}}</view>
+        <view>content: {{item.content}}</view>
+        <view>object: {{item.object}}</view>
+        <view>dateFrequency: {{item.dateFrequency}}</view>
       </view>
-  </van-cell>
+      <div slot="footer">
+        <van-button bindtap="supervisionPlanModify" size="small" id='{{item.planId}}'>Modify</van-button>
+        <van-button bindtap="supervisionPlanDelete" size="small" id='{{item.planId}}'>Delete</van-button>
+      </div>
+    </van-panel>
+  </view>
 </view>
 <view>
-  <van-button type="info" size="small" bindtap="modifyData">modify</van-button>
-</view>
-<view>
-  <van-button type="info" size="small" bindtap="deleteData">delete</van-button>
-</view>
-<view>
-  <van-button type="info" size="small" bindtap="goback">返回</van-button>
+  <van-button type="info" size="small" bindtap="supervisionPlanAdd">Add a SupervisionPlan</van-button>
+  <van-button type="info" size="small" bindtap="goback">back</van-button>
 </view>
