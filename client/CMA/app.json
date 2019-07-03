@@ -113,7 +113,8 @@
     "pages/Supervision/SupervisionRecord/SupervisionRecord",
     "pages/Supervision/SupervisionRecord/SupervisionRecordGetOne/SupervisionRecordGetOne",
     "pages/Supervision/SupervisionRecord/SupervisonRecordAddOne/SupervisionRecordAddOne",
-    "pages/Supervision/SupervisionRecord/SupervisionRecordModifyOne/SupervisionRecordModifyOne"
+    "pages/Supervision/SupervisionRecord/SupervisionRecordModifyOne/SupervisionRecordModifyOne",
+    "pages/admin/admin"
   ],
   "window": {
     "backgroundTextStyle": "light",

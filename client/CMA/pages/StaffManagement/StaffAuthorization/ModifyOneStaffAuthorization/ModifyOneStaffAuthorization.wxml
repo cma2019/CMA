@@ -8,6 +8,7 @@
         value='{{authorizationId}}'
         placeholder="input authorizationId" 
         required
+        readonly
         clearable
       />
       <van-field 

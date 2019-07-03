@@ -66,7 +66,12 @@ Page({
       "id": this.data.recordId
     }
     app.wxRequest(url, 'POST', data, (res) => {
-      console.log('delete plan successfully')
+      if (res.code == 200) {
+        console.log('delete record successfully')
+        wx.navigateBack({
+          delta: 1
+        })
+      }
     }, (err) => {
       console.log('delete plan failed')
     })

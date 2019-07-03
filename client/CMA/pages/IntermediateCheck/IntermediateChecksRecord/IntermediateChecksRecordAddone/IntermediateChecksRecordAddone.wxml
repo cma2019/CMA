@@ -4,7 +4,7 @@
     <van-cell-group title="input message">
       <van-field 
         name="planId"
-        label="my planId"
+        label="planId"
         type='number'
         placeholder="input planId" 
         required
@@ -12,7 +12,7 @@
       />
       <van-field 
         name="object"
-        label="my object"
+        label="object"
         placeholder="input object" 
         required
         clearable
@@ -21,7 +21,7 @@
         <view class='picker'>
           <van-field 
             name="checkDate"
-            label="my checkDate"
+            label="checkDate"
             value='{{checkDate}}'
             placeholder="input checkDate" 
             required
@@ -31,14 +31,14 @@
       </picker> 
       <van-field 
         name="processRecord"
-        label="my processRecord"
+        label="processRecord"
         placeholder="input processRecord" 
         required
         clearable
       />
       <van-field 
         name="processRecordPerson"
-        label="my processRecordPerson"
+        label="processRecordPerson"
         placeholder="input processRecordPerson" 
         required
         clearable
@@ -47,7 +47,7 @@
         <view class='picker'>
           <van-field 
             name="processRecordDate"
-            label="my processRecordDate"
+            label="processRecordDate"
             value='{{processRecordDate}}'
             placeholder="input processRecordDate" 
             required
@@ -57,14 +57,14 @@
       </picker>  
       <van-field 
         name="resultRecord"
-        label="my resultRecord"
+        label="resultRecord"
         placeholder="input resultRecord" 
         required
         clearable
       />
       <van-field 
         name="resultRecordPerson"
-        label="my resultRecordPerson"
+        label="resultRecordPerson"
         placeholder="input resultRecordPerson" 
         required
         clearable
@@ -73,7 +73,7 @@
         <view class='picker'>
           <van-field 
             name="resultRecordDate"
-            label="my resultRecordDate"
+            label="resultRecordDate"
             value='{{resultRecordDate}}'
             placeholder="input resultRecordDate" 
             required
@@ -83,7 +83,7 @@
       </picker>  
       <van-field 
         name="note"
-        label="my note"
+        label="note"
         placeholder="input note" 
         required
         clearable

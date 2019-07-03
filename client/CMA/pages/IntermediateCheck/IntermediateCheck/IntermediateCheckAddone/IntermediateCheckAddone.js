@@ -39,10 +39,12 @@ Page({
       console.log(url)
       console.log(data)
       app.wxRequest(url, 'POST', data, (res) => {
-        console.log('send intermediate check message successfully')
-        console.log(res)
-        console.log(res.msg)
-        console.log(res.code)
+        if (res.code == 200){
+          console.log('send intermediate check message successfully')
+          wx.navigateBack({
+            delta: 1
+          })
+        }
       }, (err) => {
         console.log('fail intermediate check register')
       })

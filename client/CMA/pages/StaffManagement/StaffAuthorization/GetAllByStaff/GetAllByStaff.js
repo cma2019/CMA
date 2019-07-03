@@ -12,7 +12,7 @@ Page({
       id: options.id
     })
     console.log(this.data.id)
-    let url = app.globalData.url + 'StaffAuthorization/getAllByStaff'
+    let url = app.globalData.url + 'StaffAuthorization/GetAllByStaff'
     let postdata = {
       "id": this.data.id
     }

@@ -4,7 +4,7 @@
     <van-cell-group title="input message">
       <van-field 
         name="planId"
-        label="my planId"
+        label="planId"
         value='{{planId}}'
         type='number'
         placeholder="input planId" 
@@ -13,7 +13,7 @@
       />
       <van-field 
         name="object"
-        label="my object"
+        label="object"
         value='{{object}}'
         placeholder="input object" 
         required
@@ -23,7 +23,7 @@
         <view class='picker'>
           <van-field 
             name="checkDate"
-            label="my checkDate"
+            label="checkDate"
             value='{{checkDate}}'
             placeholder="input checkDate" 
             required
@@ -33,7 +33,7 @@
       </picker> 
       <van-field 
         name="processRecord"
-        label="my processRecord"
+        label="processRecord"
         value='{{processRecord}}'
         placeholder="input processRecord" 
         required
@@ -41,7 +41,7 @@
       />
       <van-field 
         name="processRecordPerson"
-        label="my processRecordPerson"
+        label="processRecordPerson"
         value='{{processRecordPerson}}'
         placeholder="input processRecordPerson" 
         required
@@ -51,7 +51,7 @@
         <view class='picker'>
           <van-field 
             name="processRecordDate"
-            label="my processRecordDate"
+            label="processRecordDate"
             value='{{processRecordDate}}'
             placeholder="input processRecordDate" 
             required
@@ -61,7 +61,7 @@
       </picker>  
       <van-field 
         name="resultRecord"
-        label="my resultRecord"
+        label="resultRecord"
         value='{{resultRecord}}'
         placeholder="input resultRecord" 
         required
@@ -69,7 +69,7 @@
       />
       <van-field 
         name="resultRecordPerson"
-        label="my resultRecordPerson"
+        label="resultRecordPerson"
         value='{{resultRecordPerson}}'
         placeholder="input resultRecordPerson" 
         required
@@ -79,7 +79,7 @@
         <view class='picker'>
           <van-field 
             name="resultRecordDate"
-            label="my resultRecordDate"
+            label="resultRecordDate"
             value='{{resultRecordDate}}'
             placeholder="input resultRecordDate" 
             required

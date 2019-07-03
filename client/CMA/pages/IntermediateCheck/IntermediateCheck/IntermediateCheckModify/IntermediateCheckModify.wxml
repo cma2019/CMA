@@ -4,7 +4,7 @@
     <van-cell-group title="input message">
       <van-field 
         name="object"
-        label="my object"
+        label="object"
         value='{{object}}'
         placeholder="input object" 
         required
@@ -12,7 +12,7 @@
       />
       <van-field 
         name="content"
-        label="my content"
+        label="content"
         value='{{content}}'
         placeholder="input content" 
         required
@@ -22,7 +22,7 @@
           <view class='picker'>
             <van-field 
               name="date"
-              label="my date"
+              label="date"
               value='{{checkDate}}'
               placeholder="input date" 
               required
@@ -32,7 +32,7 @@
         </picker>      
       <van-field
         name="personInCharge"
-        label="my personInCharge"
+        label="personInCharge"
         placeholder="input personInCharge"
         value='{{personInCharge}}'
         required
@@ -41,7 +41,7 @@
       />
       <van-field
         name="state"
-        label="my state"
+        label="state"
         placeholder="input state"
         value='{{state}}'
         required
