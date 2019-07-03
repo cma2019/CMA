@@ -275,6 +275,7 @@ public class SampleReceiptController {
                                                @RequestParam(value = "obtainDate",required = false)String obtainDate,
                                                @RequestParam(value="receiptId",required = false) String receiptId)
     {
-
+        JSONObject js=new JSONObject();
+        return js;
     }
 }
