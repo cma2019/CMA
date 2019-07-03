@@ -1,35 +1,36 @@
-// pages/Management/Management.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    activeNames: ['0']
+    activeNames: ['0'],
+    "mess": null
   },
-  "mess": null,
+
+  
   onChange(event) {
     this.setData({
       activeNames: event.detail
     });
+  },
+  onLoad: function (options) {
+    let url = app.globalData.url + 'user/getOne'
     wx.getStorage({
       key: 'key',
       success(res) {
         console.log(res.data)
-        var username1=res.data
-        console.log(username)
+        var username1 = res.data
+        console.log(username1)
       }
     })
-  },
-  onLoad: function (options) {
-    let url = app.globalData.url + 'user/getOne'
     let postdata = {
-      "username": username1
+      "username": "admin"
     }
     app.wxRequest(url, 'GET', postdata, (res) => {
       console.log(res)
       this.setData({
-        username:username1,
         mess: res.data1
       })
       console.log(mess)
