@@ -36,11 +36,16 @@ App({
     wx.setStorageSync('logs', logs)
 
     // 登录
+    /*
+    console.log("now login")
     wx.login({
       success: res => {
+        console.log("res code")
+        console.log(res.code)
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
       }
     })
+    */
     // 获取用户信息
     wx.getSetting({
       success: res => {
