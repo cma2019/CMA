@@ -1,4 +1,3 @@
-// pages/SampleManagement/SampleReceipt/receiptSearch/receiptSearch.js
 const app = getApp()
 Page({
 

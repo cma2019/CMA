@@ -1,4 +1,3 @@
-// page_SampleIo/ioModifyOne/ioModifyOne.js
 const app = getApp()
 Page({
 
@@ -41,54 +40,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    /*var thispage = this
-    console.log('getone发生了事件，携带数据为：', this.data)
-    wx.request({
-      url: app.globalData.url + 'SampleReceive/getOne',
-      method: 'GET',
-      data: {
-        "sampleId": this.data.sampleId
-      },
-      header: {
-        'content-type': 'application/json',
-        'Accept': 'application/json'
-      },
-      success(res) {
-        if (res.data.code == 200) {
-          thispage.setData({
-            sampleNumberinfo: res.data.data.sampleNumber,
-            sampleNameinfo: res.data.data.sampleName,
-            sampleAmountinfo: res.data.data.sampleAmount,
-            sampleStateinfo: res.data.data.sampleState,
-            requesterinfo: res.data.data.requester,
-            receiverinfo: res.data.data.receiver,
-            receiveDateinfo: res.data.data.receiveDate,
-            obtainerinfo: res.data.data.obtainer,
-            obtainDateinfo: res.data.data.obtainDate
-          })
-        }
-        else if (res.data.code == 521) {
-          console.log(res.data.msg)
-          wx.showToast({
-            title: '未收到标识编号',
-            duration: 1500
-          })
-          console.log('未收到标识编号')
-        }
-        else {//522
-          console.log(res.data.msg)
-          console.log("12")
-          wx.showToast({
-            title: '数据不存在',
-            duration: 1500
-          })
-          console.log('数据不存在')
-        }
-      },
-      fail(err) {
-        console.log('no data')
-      }
-    })*/
     var that = this
     wx.getStorage({
       key: 'receiveGetOneinfo',

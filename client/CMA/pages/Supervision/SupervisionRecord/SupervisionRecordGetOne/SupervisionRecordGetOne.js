@@ -53,8 +53,6 @@ Page({
   modifyData: function (e) {
     console.log(e)
     let recordId = this.data.recordId
-    //console.log("dfdg")
-    //console.log(target)
     wx.navigateTo({
       url: '../SupervisionRecordModifyOne/SupervisionRecordModifyOne?recordId=' + recordId + "&department=" + this.data.department + "&supervisor=" + this.data.supervisor + "&superviseDate=" + this.data.superviseDate + "&supervisedPerson=" + this.data.supervisedPerson + "&record=" + this.data.record + "&conclusion=" + this.data.conclusion + "&operator=" + this.data.operator + "&recordDate=" + this.data.recordDate
     })
