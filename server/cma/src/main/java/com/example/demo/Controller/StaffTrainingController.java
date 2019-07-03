@@ -53,7 +53,7 @@ public class StaffTrainingController {
         JSONObject json=new JSONObject();
         List<StaffTraining> list=staffTrainingRepository.findAll();
         for(int i=0;i<list.size();i++){
-            if(list.get(i).Equals(staffTraining)){
+            if(list.get(i).equals((staffTraining))){
                 json.put("code",210);
                 json.put("msg","失败，已存在");
                 json.put("data",null);

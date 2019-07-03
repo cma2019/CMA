@@ -25,7 +25,27 @@ Page({
       if (res.code == 200) {
         console.log('code successfully')
         console.log(res)
-        this.fun2(e)
+        CryptoJS.username = e.detail.value.username
+       
+        var mykey = CryptoJS.Encrypt(CryptoJS.username)
+        var endkey = mykey.slice(0, 16)
+          console.log(mykey)
+          console.log(endkey)
+          console.log(CryptoJS.key)
+
+        var data2 = CryptoJS.Encrypt(CryptoJS.username)
+        console.log("data2")
+        console.log(data2)
+
+        //CryptoJS.selfkey = endkey
+        
+          
+        if (CryptoJS.SetKey(endkey)){
+          console.log("usercode")
+          console.log(CryptoJS.key)
+          this.fun2(e)
+        }
+        
       }
     }, (err) => {
       console.log('fail intermediate check register')
@@ -36,28 +56,33 @@ Page({
     console.log("wx login end")
     let url = app.globalData.url + 'user/add'
 
-    
+
+    var data3 = CryptoJS.Encrypt(CryptoJS.username)
+    console.log("data3")
+    console.log(data3)
+
     let tempdata = {
       "password": e.detail.value.password,
       "password2": e.detail.value.password2
     }
-   
+    
     var lastdata = JSON.stringify(tempdata)
-    console.log("last")
-    console.log(lastdata)
-
+      console.log("last")
+      console.log(lastdata)
+      console.log(CryptoJS.username)
+    
     var data = CryptoJS.Encrypt(lastdata)
     let adddata = {
       "data": data,
     }
-    console.log("data secret")
-    console.log(adddata)
-
+      console.log("data secret")
+      console.log(adddata)
+      console.log(data)
     var resdata = CryptoJS.Decrypt(data)
-    console.log("data result")
-    console.log(url)
-    console.log(resdata)
-
+      console.log("data result")
+      console.log(url)
+      console.log(resdata)
+    
     app.wxRequest(url, 'POST', adddata, (res) => {
       
       console.log(res)
