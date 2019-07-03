@@ -23,7 +23,6 @@
         </van-cell>
       </view>
     </van-cell-group>
-
     <view>
       <button class="van-button--info" formType="submit">完成</button>
     </view>

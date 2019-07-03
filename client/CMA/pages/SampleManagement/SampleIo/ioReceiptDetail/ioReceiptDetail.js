@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    sampleId:'',
+    receiptId:'',
     "mess": null,
     array: ['《用户手册》', '《计算机软件产品登记检测申请表》', '《材料交接单》', '《软件产品功能列表》', '《软件名称与版本号确认单》', '《受测软件产品简介》', '《自主产权保证书》', '软件样品一套', '其它'],
     flag:0
@@ -17,10 +17,10 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      sampleId: options.id
+      receiptId: options.id
     })
     console.log("fsdgdf")
-    console.log(this.data.sampleId)
+    console.log(this.data.receiptId)
 
   },
 
@@ -36,12 +36,12 @@ Page({
    */
   onShow: function () {
     var thispage = this
-    console.log('ioReceiptDetail发生了事件，携带数据为：', this.data.sampleId)
+    console.log('ioReceiptDetail发生了事件，携带数据为：', this.data.receiptId)
     wx.request({
       url: app.globalData.url + 'SampleReceipt/getOne',
       method: 'GET',
       data: {
-        "sampleId": this.data.sampleId
+        "sampleId": this.data.receiptId
       },
       header: {
         'content-type': 'application/json',
@@ -70,7 +70,11 @@ Page({
       }
     })
   },
-
+  goback: function () {
+    wx.navigateBack({
+      delta: 1
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

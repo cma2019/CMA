@@ -1,4 +1,3 @@
-// pages/SampleManagement/SampleReceipt/receiptModifyOne/receiptTypeModify.js
 Page({
 
   /**
@@ -42,7 +41,7 @@ Page({
     const index = e.currentTarget.dataset.index
     let materialList = this.data.materialList
     let materialType = materialList[index].materialType
-    if (materialType <= -1) {  //-1表示不修改
+    if (materialType <= 0) {
       return false
     }
     materialType = materialType - 1
@@ -58,7 +57,7 @@ Page({
       materialList: materialList
     })
   },
-  materialList_addone: function (e) {
+  materialList_modifyone: function (e) {
     var that = this
     wx.setStorage({
       key: 'materialListModifyinfo',
@@ -68,14 +67,12 @@ Page({
       delta: 1
     })
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
 
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

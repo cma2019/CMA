@@ -4,11 +4,8 @@ Page({
   /**
    * 页面的初始数据
    */
-
   data: {
-    "sampleId": "",
-    "origindata": {},
-    "receiveDate": "",
+    receiveDate: "",
     materialList: [
       { "materialId": 1, "materialType": 0, "materialName": null },
       { "materialId": 2, "materialType": 0, "materialName": null },
@@ -19,9 +16,10 @@ Page({
       { "materialId": 7, "materialType": 0, "materialName": null },
       { "materialId": 8, "materialType": 0, "materialName": null },
       { "materialId": 9, "materialType": 0, "materialName": null },
-    ]
+    ],
+    flag: 0,
+    sampleId:''
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -29,75 +27,15 @@ Page({
     this.setData({
       sampleId: options.id
     })
-    console.log(this.data.sampleId)
-    console.log("fdsf")
   },
 
   bindreceiveDateChange(e) {
-    console.log(e.detail.value)
     this.setData({
       receiveDate: e.detail.value
     })
-    console.log(this.receiveDate)
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    var that = this
-    wx.getStorage({
-      key: 'receiptGetOneinfo',
-      success: function (res) {
-        console.log("fdsgfgdhjkgh")
-        console.log(res)
-        that.setData({
-          'origindata': res.data
-        })
-      }
-    }),
-    console.log(this.data)
-    console.log("456789")
-  },
-
   SampleReceipt_modifyone: function (e) {
-    var mod = this.data.origindata
-    console.log(mod)
-    console.log('SampleReceipt发生了modifyone事件，携带数据为：', e.detail.value)
-    console.log(this.data)
-    if (e.detail.value.applicationUnit != null && e.detail.value.applicationUnit != "") {
-      mod.applicationUnit = e.detail.value.applicationUnit
-    }
-    if (e.detail.value.version != null && e.detail.value.version != "") {
-      mod.version = e.detail.value.version
-    }
-    if (e.detail.value.contractId != null && e.detail.value.contractId != "") {
-      mod.contractId = e.detail.value.contractId
-    }
-    if (e.detail.value.testType != null && e.detail.value.testType != "") {
-      mod.testType = e.detail.value.testType
-    }
-    if (e.detail.value.electronicMedia != null && e.detail.value.electronicMedia != "") {
-      mod.electronicMedia = e.detail.value.electronicMedia
-    }
-    if (e.detail.value.materialList != null && e.detail.value.materialList != "") {
-      mod.materialList = e.detail.value.materialList
-    }
-    if (e.detail.value.softwareType != null && e.detail.value.softwareType != "") {
-      mod.softwareType = e.detail.value.softwareType
-    }
-    if (e.detail.value.receiveUnit != null && e.detail.value.receiveUnit != "") {
-      mod.receiveUnit = e.detail.value.receiveUnit
-    }
-    if (e.detail.value.receiveDate != null && e.detail.value.receiveDate != "") {
-      mod.receiveDate = e.detail.value.receiveDate
-    }
-    if (e.detail.value.sender != null && e.detail.value.sender != "") {
-      mod.sender = e.detail.value.sender
-    }
-    if (e.detail.value.reciever != null && e.detail.value.reciever != "") {
-      mod.reciever = e.detail.value.reciever
-    }
+    let receipttmp = e.detail.value
     var that = this
     wx.getStorage({
       key: 'materialListModifyinfo',
@@ -106,30 +44,18 @@ Page({
         let tmp = that.data.materialList
         while (i < 9) {
           tmp[i].materialId = res.data[i].materialId
-          if(res.data.materialType == -1){ //不修改
-            let j = 0
-            while (res.data[i].materialId != origindata.materialList[j].materialId&& j < origindata.materialList.length){
-              ++j
-            }
-            if(res.data[i].materialId != origindata.materialList[j].materialId){ //找到了
-              tmp[i].materialType = origindata.materialList[j].materialType
-              tmp[i].materialName = origindata.materialList[j].materialName
-            }
-            //未找到将Type设为0，Name设为null
-          }
-          else{ //修改
-            tmp[i].materialType = res.data[i].materialType
-            if(i == 8){
-              tmp[i].materialName = res.data[i].materialName
-            }
-          }
+          tmp[i].materialType = res.data[i].materialType
+          tmp[i].materialName = res.data[i].materialName
           ++i
         }
         that.setData({
-          materialList: tmp
+          materialList: tmp,
+          flag: 1
         })
       }
     }),
+    console.log('SampleReceipt发生了modifyone事件，携带数据为：', e.detail.value)
+    console.log("lkokokko")
     console.log(this.data.materialList)
     let materialList = this.data.materialList
     var newmaterialList = []
@@ -139,78 +65,67 @@ Page({
       }
     }
     console.log(newmaterialList)
+
     wx.request({
       url: app.globalData.url + 'SampleReceipt/modifyOne',
       method: 'POST',
       header: {
-        'content-type': 'application/x-www-form-urlencoded',
+        'content-type': 'application/json',
         'Accept': 'application/json'
       },
       data: {
         "sampleId": this.data.sampleId,
-        "applicationUnit": mod.applicationUnit,
-        "version": mod.version,
-        "contractId": mod.contractId,
-        "testType": mod.testType,
-        "electronicMedia": mod.electronicMedia,
+        "applicationUnit": e.detail.value.applicationUnit,
+        "version": e.detail.value.version,
+        "contractId": e.detail.value.contractId,
+        "testType": e.detail.value.testType,
+        "electronicMedia": e.detail.value.electronicMedia,
         "materialList": newmaterialList,
-        "softwareType": mod.softwareType,
-        "receiveUnit": mod.receiveUnit,
-        "receiveDate": mod.receiveDate,
-        "sender": mod.sender,
-        "reciever": mod.reciever
+        "softwareType": e.detail.value.softwareType,
+        "receiveUnit": e.detail.value.receiveUnit,
+        "receiveDate": e.detail.value.receiveDate,
+        "sender": e.detail.value.sender,
+        "receiver": e.detail.value.receiver
       },
       success(res) {
-        console.log(res)
+        console.log(res.data)
         if (res.data.code == 200) {
           wx.showToast({
-            title: '修改成功',
+            title: '成功',
+            icon: 'none',
             duration: 1500
-          })
-          wx.removeStorage({
-            key: 'receiptGetOneinfo',
-            success: function (res) {
-              console.log(res)
-            }
           })
           wx.navigateTo({
-            url: '../SampleReceipt'
+            url: '/pages/SampleManagement/SampleReceipt/SampleReceipt'
           })
         }
-        else if (res.data.code == 531) {
+        else if (res.data.code == 511) {
           wx.showToast({
-            title: '未收到标识编号',
+            title: '缺少请求参数',
             duration: 1500
           })
-          console.log('未收到标识编号')
+          console.log('缺少请求参数')
         }
-        else if (res.data.code == 532) {
+        else if (res.data.code == 512) {
           wx.showToast({
-            title: '数据不存在',
+            title: '样品标识编号已存在',
             duration: 1500
           })
-          console.log('数据不存在')
+          console.log('样品标识编号已存在')
         }
-        else if (res.data.code == 533) {
+        else {//513
           wx.showToast({
-            title: '修改后数据错误',
+            title: '某项数据错误',
             duration: 1500
           })
-          console.log('修改后数据错误')
-        }
-        else {
-          wx.showToast({
-            title: '修改后数据不合法',
-            duration: 1500
-          })
-          console.log('修改后数据不合法')
+          console.log('某项数据错误')
         }
       },
       fail(err) {
-        console.log('fail modifyone')
+        console.log('fail addone')
       },
       complete(fin) {
-        console.log('final modifyone')
+        console.log('final addone')
       }
     })
     wx.removeStorage({
@@ -233,7 +148,12 @@ Page({
 
   },
 
-  
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function (options) {
+
+  },
 
   /**
    * 生命周期函数--监听页面隐藏

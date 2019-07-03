@@ -11,7 +11,12 @@
 
       <van-field v-model="electronicMedia"  name="electronicMedia" clearable label="电子媒介" placeholder="{{origindata.electronicMedia}}"/>
 
-      <van-cell title="提交材料与类型" is-link value="请依次输入信息" url="../receiptModifyOne/receiptTypeModify"/>
+      <view wx:if="{{flag == 0}}">
+        <van-cell title="提交材料与类型"  is-link value="请输入" url="../receiptModifyOne/receiptTypeModify"/>
+      </view>
+      <view wx:else>
+        <van-cell title="提交材料与类型"  is-link value="已填写" url="../receiptModifyOne/receiptTypeModify"/>
+      </view>
 
       <van-field v-model="softwareType" name="softwareType"clearable label="软件类型" placeholder="{{origindata.softwareType}}" />
 
@@ -22,7 +27,7 @@
         </view>
       </picker>
       <van-field v-model="sender" name="sender" clearable label="报送人" placeholder="{{origindata.sender}}" />
-      <van-field v-model="reciever" name="reciever" clearable label="受理人" placeholder="{{origindata.reciever}}" />
+      <van-field v-model="receiver" name="receiver" clearable label="受理人" placeholder="{{origindata.receiver}}" />
     </van-cell-group>
     <view>
       <button class="van-button--info" formType="submit">完成</button>

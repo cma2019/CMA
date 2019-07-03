@@ -1,4 +1,5 @@
 // pages/Supervision/SupervisionRecord/SupervisionRecordGetOne/SupervisionRecordGetOne.js
+const app = getApp()
 Page({
 
   /**

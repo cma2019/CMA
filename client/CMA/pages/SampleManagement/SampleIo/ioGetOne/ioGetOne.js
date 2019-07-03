@@ -6,7 +6,7 @@ Page({
    */
   data: {
     "sampleIoId":"null",
-    "sampleId":"null",
+    "receiptId":"null",
     /*"sampleNumber": "null",
     "sampleName": "null",
     "sampleAmount": "null",
@@ -72,7 +72,7 @@ Page({
         if (res.data.code == 200) {
           thispage.setData({
             info : res.data.data,
-            sampleId:res.data.data.sampleId
+            receiptId:res.data.data.receiptId
           })
           console.log("sdgf")
           console.log(this.page.sampleId)
@@ -175,9 +175,7 @@ Page({
   },
   looktoreceipt:function(e){
     console.log(e)
-    let target = this.data.sampleId
-    //console.log("dfdg")
-    //console.log(target)
+    let target = this.data.receiptId
     wx.navigateTo({
       url: '../ioReceiptDetail/ioReceiptDetail?id=' + target
     })

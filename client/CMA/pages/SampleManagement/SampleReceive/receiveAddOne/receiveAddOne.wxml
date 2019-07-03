@@ -11,7 +11,7 @@
       <van-field v-model="sampleState"  name="sampleState" required clearable label="样品状态" placeholder="请输入样品状态" />
 
       <van-field v-model="requester"  name="requester" required clearable label="委托单位" placeholder="请输入委托单位"error-message="{{requesterMessage}}" bind:change="requesterChange"/>
-      <view wx:if="{{receiptId != ''}}">
+      <view wx:if="{{receiptId != 0}}">
         <van-field v-model="receiver" name="receiver" required clearable label="接收人" placeholder="请输入接收人姓名" error-message="{{receiverMessage}}" bind:change="receiverChange"/>
         
         <picker name = 'receiveDate' mode='date' value='{{receiveDate}}' bindchange='bindreceiveDateChange'>

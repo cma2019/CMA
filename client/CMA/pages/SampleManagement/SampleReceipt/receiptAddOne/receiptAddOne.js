@@ -16,7 +16,8 @@ Page({
       { "materialId": 7, "materialType": 0, "materialName": null },
       { "materialId": 8, "materialType": 0, "materialName": null },
       { "materialId": 9, "materialType": 0, "materialName": null },
-    ]
+    ],
+    flag:0
   },
   /**
    * 生命周期函数--监听页面加载
@@ -46,7 +47,8 @@ Page({
           ++i
         }
         that.setData({
-          materialList: tmp
+          materialList: tmp,
+          flag: 1
         })
       }
     }),
@@ -101,6 +103,13 @@ Page({
             duration: 1500
           })
           console.log('缺少请求参数')
+        }
+        else if(res.data.code == 512){
+          wx.showToast({
+            title: '样品标识编号已存在',
+            duration: 1500
+          })
+          console.log('样品标识编号已存在')
         }
         else  {//513
           wx.showToast({
