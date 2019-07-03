@@ -1,0 +1,44 @@
+<view>
+  <form bindsubmit='ApplicationAdd'>
+  <van-cell-group>
+      <van-field 
+        name="id"
+        label="id"
+        placeholder="input id" 
+        required
+        clearable
+      />
+      <van-field 
+        name="authorizerId"
+        label="authorizerId"
+        placeholder="input authorizerId" 
+        required
+        clearable
+      />
+      <van-field 
+        name="content"
+        label="content"
+        placeholder="input content" 
+        required
+        clearable
+      />
+      
+      <view class="section">
+        <picker name = 'authorizerDate' mode='date' value='{{authorizerDate}}' bindchange='bindDateChange'>
+          <view class='picker'>
+        <van-field 
+        label="authorizerDate"
+        value='{{authorizerDate}}'
+        required
+      />
+      </view>
+        </picker>
+    </view>
+    </van-cell-group>
+    <view>
+      <button class='van-button--info'formType = 'submit'>Add           </button>
+    </view>
+  </form>
+</view>
+ <van-button type="info" size="small" bindtap="goback">go back</van-button> 
+
