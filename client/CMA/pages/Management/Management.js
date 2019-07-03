@@ -11,6 +11,12 @@ Page({
     this.setData({
       activeNames: event.detail
     });
+    wx.getStorage({
+      key: 'key',
+      success(res) {
+        console.log(res.data)
+      }
+    })
   },
 
   /**
