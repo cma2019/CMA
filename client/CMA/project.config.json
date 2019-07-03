@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "description": "项目配置文件",
   "packOptions": {
     "ignore": []
@@ -46,52 +45,4 @@
       "list": []
     }
   }
-=======
-	"description": "项目配置文件",
-	"packOptions": {
-		"ignore": []
-	},
-	"setting": {
-		"urlCheck": false,
-		"es6": true,
-		"postcss": true,
-		"minified": true,
-		"newFeature": true,
-		"nodeModules": true,
-		"autoAudits": false,
-		"checkInvalidKey": true
-	},
-	"compileType": "miniprogram",
-	"libVersion": "2.7.1",
-	"appid": "wx798744c4652de5ce",
-	"projectname": "CMA",
-	"cloudfunctionTemplateRoot": "",
-	"debugOptions": {
-		"hidedInDevtools": []
-	},
-	"scripts": {},
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
-	"condition": {
-		"search": {
-			"current": -1,
-			"list": []
-		},
-		"conversation": {
-			"current": -1,
-			"list": []
-		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
-		"game": {
-			"list": []
-		},
-		"miniprogram": {
-			"current": -1,
-			"list": []
-		}
-	}
->>>>>>> ca856b6f1b66a76e96f25f112cf606987a0c2c99
 }

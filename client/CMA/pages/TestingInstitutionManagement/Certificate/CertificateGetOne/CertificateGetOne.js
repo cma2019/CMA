@@ -1,17 +1,11 @@
 // pages/TestingInstitutionManagement/Certificate/CertificateGetOne/CertificateGetOne.js
-<<<<<<< HEAD
-=======
 const app = getApp()
->>>>>>> ca856b6f1b66a76e96f25f112cf606987a0c2c99
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-<<<<<<< HEAD
-
-=======
     fileId: "test ID",
     fileName: "test.docx"
   },
@@ -28,35 +22,30 @@ Page({
       url: '/pages/TestingInstitutionManagement/Certificate/Certificate',
     })
   },
-  mydownload: function(e){
+  mydownload: function (e) {
     var that = this
     var myurl = app.globalData.url + 'Certificate/download/' + that.data.fileId;
     var myFilePath
-    app.wxDownloadFile(myurl,(res) => {
+    app.wxDownloadFile(myurl, (res) => {
       console.log(res)
       wx.saveFile({
         tempFilePath: res.tempFilePath,
-        success:function(res){
+        success: function (res) {
           myFilePath = res.savedFilePath
           console.log(myFilePath)
         },
-        fail:function(err){
+        fail: function (err) {
           console.log(err)
         }
       })
-    },(err) => {
+    }, (err) => {
       console.log(err)
     })
->>>>>>> ca856b6f1b66a76e96f25f112cf606987a0c2c99
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-<<<<<<< HEAD
-  onLoad: function (options) {
-
-=======
   onLoad: function (option) {
     var that = this;
     console.log(option)
@@ -64,7 +53,6 @@ Page({
       fileId: option.fileId,
       fileName: option.fileName
     })
->>>>>>> ca856b6f1b66a76e96f25f112cf606987a0c2c99
   },
 
   /**

@@ -45,7 +45,6 @@ App({
       }
     })
   },
-<<<<<<< HEAD
   wxDownloadFile(url, callback, errfun) {
     wx.downloadFile({
       url: url,
@@ -53,15 +52,6 @@ App({
         callback(res)
       },
       fail: function (res) {
-=======
-  wxDownloadFile(url,callback,errfun){
-    wx.downloadFile({
-      url: url,
-      success: function(res){
-        callback(res)
-      },
-      fail: function(res){
->>>>>>> ca856b6f1b66a76e96f25f112cf606987a0c2c99
         errfun(res)
       }
     })
