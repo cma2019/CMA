@@ -45,13 +45,13 @@ Page({
         wx.uploadFile({
           url: myurl,
           filePath: tempFilePaths[0],
-          name: 'name',
+          name: 'file',
           header:{
             'content-type':'Application/json'
           },
-          formData:{
-            imgName:'this is name',
-            imgSize:'this is size'
+          formData: {
+            imgName: 'this is name',
+            imgSize: 'this is size'
           },
           success:function(res){
             console.log(res);

@@ -28,6 +28,23 @@ App({
       }
     })
   },
+  wxUploadFile(url,filePath,data,callback,errfun){
+    wx.uploadFile({
+      url: url,
+      filePath: filePath,
+      name: 'file',
+      header: {
+        'content-type': 'Application/json'
+      },
+      formData: data,
+      success: function (res) {
+        callback(res.data)
+      },
+      fail:function (err){
+        errfun(res);
+      }
+    })
+  },
 
   onLaunch: function () {
     // 展示本地存储能力
