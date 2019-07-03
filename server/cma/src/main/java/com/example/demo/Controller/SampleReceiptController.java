@@ -39,6 +39,10 @@ public class SampleReceiptController {
         }catch (NumberFormatException e){
             code=513;
             msg="某项数据错误";
+            js.put("code",code);
+            js.put("msg",msg);
+            js.put("data",d);
+            return js;
         }
         Long sampleId=Long.parseLong(idstr);
         String applicationUnit=data.getString("applicationUnit");
@@ -51,7 +55,7 @@ public class SampleReceiptController {
         Date receiveDate= Date.valueOf(datestr);
         String sender=data.getString("sender");
         String receiver=data.getString("receiver");
-        JSONArray list =(JSONArray)data.get("materialList");
+        JSONArray list =data.getJSONArray("materialList");
         if(idstr==""||applicationUnit==""||version==""||contractId==""||
         testtypestr==""||electronicMedia==""||sofwwaretypestr==""||
         receiveUnit==""||datestr==""||sender==""||receiver=="")
@@ -73,14 +77,22 @@ public class SampleReceiptController {
             s.setSender(sender);
             s.setReceiveUnit(receiveUnit);
             s.setReceiver(receiver);
-             int basems=0;
-             for(int i=0;i<list.size()-1;i++)
+             StringBuilder index=new StringBuilder("000000000");
+             for(int i=0;i<list.size();i++)
              {
-                    JSONObject tmp=(JSONObject)list.get(i);
-                    basems+=(int)(Integer.parseInt(tmp.getString("materialType"))*Math.pow(10,Integer.parseInt(tmp.getString("materialId"))));
+                 JSONObject tmp = (JSONObject) list.get(i);
+                 System.out.println(tmp.getString("materialId"));
+                 System.out.println(tmp.getString("materialType"));
+                 System.out.println(index);
+                 index.replace(Integer.parseInt(tmp.getString("materialId")) - 1, Integer.parseInt(tmp.getString("materialId")), tmp.getString(" materialType"));
+                 if(i==list.size()-1)
+                 {
+                     s.setOthers(tmp.getString("materialName"));
+                 }
              }
-            s.setBaseMs(basems+"");
-            SampleReceiptRepository.saveAndFlush(s);
+             String basems=index.toString();
+             s.setBaseMs(basems);
+             SampleReceiptRepository.saveAndFlush(s);
         }
         js.put("code",code);
         js.put("msg",msg);
@@ -139,6 +151,7 @@ public class SampleReceiptController {
             data.put("testType",s.getTestType());
             data.put("electronicMedia",s.getElectronicMedia());
             JSONArray list=new JSONArray();
+            System.out.println(s.getBaseMs());
             for(int i=0;i<9;i++)
             {
                 JSONObject tmp=new JSONObject();
@@ -146,7 +159,7 @@ public class SampleReceiptController {
                 {
                     tmp.put("materialId",i+1);
                     tmp.put("materialType",s.getBaseMs().charAt(i));
-                    if(s.getBaseMs().charAt(i)-'0'>8)
+                    if(i==8)
                     {
                         tmp.put("materialName",s.getOthers());
                     }
@@ -249,5 +262,19 @@ public class SampleReceiptController {
         js.put("msg",msg);
         js.put("data",d);
         return js;
+    }
+    @PostMapping(path="addReceive")
+    public @ResponseBody JSONObject addReceive(@RequestParam(value = "sampleNumber", required = false)String sampleNumber,
+                                               @RequestParam(value = "sampleName", required = false) String sampleName,
+                                               @RequestParam(value = "sampleAmount", required = false) String sampleAmount,
+                                               @RequestParam(value = "sampleState", required = false) String sampleState,
+                                               @RequestParam(value="requester",required = false) String requester,
+                                               @RequestParam(value="receiver",required = false)String receiver,
+                                               @RequestParam(value="receiveDate",required = false) String receiveDate,
+                                               @RequestParam(value="obtainer",required = false)String obtainer,
+                                               @RequestParam(value = "obtainDate",required = false)String obtainDate,
+                                               @RequestParam(value="receiptId",required = false) String receiptId)
+    {
+
     }
 }
