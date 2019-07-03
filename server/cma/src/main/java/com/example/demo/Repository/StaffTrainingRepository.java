@@ -13,5 +13,6 @@ public interface StaffTrainingRepository extends JpaRepository<StaffTraining,Lon
     void deleteAllByTrainingId(long trainingId);
     boolean existsById(long id);
     List<StaffTraining> findAllById(long id);
+    void deleteByTrainingIdAndId(long trainingId,long id);
 
 }

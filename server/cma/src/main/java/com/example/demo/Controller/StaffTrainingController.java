@@ -269,4 +269,21 @@ public class StaffTrainingController {
         }
         return json;
     }
+
+    @PostMapping(path = "deleteTrainingPeople")
+    public @ResponseBody JSONObject deleteTrainingPeople(@RequestParam(value = "trainingId",required = false)long trainingId,@RequestParam(value = "id",required = false)long id){
+        JSONObject json=new JSONObject();
+        if(!staffTrainingRepository.existsByTrainingIdAndId(trainingId,id)){
+            json.put("code",210);
+            json.put("msg","失败,无法找到该培训");
+            json.put("data",null);
+        }
+        else{
+            staffTrainingRepository.deleteByTrainingIdAndId(trainingId, id);
+            json.put("code",200);
+            json.put("msg","成功");
+            json.put("data",null);
+        }
+        return json;
+    }
 }
