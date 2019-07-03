@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 @Controller
 @RequestMapping(path="/cma/user")
 public class UserController {
@@ -56,7 +58,7 @@ public class UserController {
         }
         else{
             u=userRepository.findByUsername(username);
-            if(u.getPassword().equals(password)==true)
+            if(u.login(password)==true)
             {
                 json.put("code",200);
                 json.put("msg","登录成功");
@@ -70,4 +72,55 @@ public class UserController {
         return json;
     }
 
+    @GetMapping(path = "getOne")
+    public @ResponseBody JSONObject getOne(@RequestParam(value="username",required = false)String username){
+        JSONObject json=new JSONObject();
+        if(userRepository.existsByUsername(username)==false)
+        {
+            json.put("code",210);
+            json.put("msg","不存在的用户");
+            json.put("data",null);
+        }
+        else{
+            User user=userRepository.findByUsername(username);
+            json.put("code",200);
+            json.put("msg","成功");
+            json.put("data",user);
+        }
+        return json;
+    }
+
+    @PostMapping(path = "modifyOne")
+    public @ResponseBody JSONObject modifyOne(@RequestParam(value = "username",required = false)String username, @RequestParam(value = "permission",required = false) boolean[] permission){
+        JSONObject json=new JSONObject();
+        if(userRepository.existsByUsername(username)==false){
+            json.put("code",210);
+            json.put("msg","不存在的用户");
+            json.put("data",null);
+        }
+        else{
+            User user=userRepository.findByUsername(username);
+            user.setPermission(permission);
+            userRepository.save(user);
+            json.put("code",200);
+            json.put("msg","成功");
+            json.put("data",null);
+        }
+        return json;
+    }
+
+    @GetMapping(path = "getAll")
+    public @ResponseBody JSONObject getAll(){
+        JSONObject json=new JSONObject();
+        List<User> list=userRepository.findAll();
+        for(int i=0;i<list.size();i++){
+            if(list.get(i).getUsername().equals("admin")){
+                list.remove(i);
+            }
+        }
+        json.put("code",200);
+        json.put("msg","成功");
+        json.put("data",list);
+        return json;
+    }
 }
