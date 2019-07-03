@@ -58,7 +58,7 @@ public class UserController {
         }
         else{
             u=userRepository.findByUsername(username);
-            if(u.getPassword().equals(password)==true)
+            if(u.login(password)==true)
             {
                 json.put("code",200);
                 json.put("msg","登录成功");

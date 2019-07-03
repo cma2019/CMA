@@ -31,8 +31,11 @@ public class User {
     public void setPassword(String password){
         this.password=password;
     }
-    public String getPassword(){
-        return this.password;
+    public boolean login(String password){
+        if(this.password.equals(password))
+            return true;
+        else
+            return false;
     }
 
     public void setPermission(boolean[] permission) {
