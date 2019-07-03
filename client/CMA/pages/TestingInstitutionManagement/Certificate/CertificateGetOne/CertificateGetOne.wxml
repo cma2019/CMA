@@ -1,0 +1,15 @@
+<!--pages/TestingInstitutionManagement/Certificate/CertificateGetOne/CertificateGetOne.wxml-->
+<<<<<<< HEAD
+<text>pages/TestingInstitutionManagement/Certificate/CertificateGetOne/CertificateGetOne.wxml</text>
+=======
+<scroll-view scroll-y>
+  <van-cell>
+    <view slot="title">
+      <view>fileId : {{fileId}}</view>
+      <view>fileName : {{fileName}}</view>
+    </view>
+  </van-cell>
+  <van-button type="info" size="small" bindtap="mydelete">Delete</van-button>
+  <van-button type="info" size="small" bindtap="mydownload">Download</van-button>
+</scroll-view>
+>>>>>>> ca856b6f1b66a76e96f25f112cf606987a0c2c99

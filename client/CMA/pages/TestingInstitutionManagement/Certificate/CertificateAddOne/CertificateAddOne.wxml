@@ -1,0 +1,12 @@
+<!--pages/TestingInstitutionManagement/Certificate/CertificateAddOne/CertificateAddOne.wxml-->
+<<<<<<< HEAD
+<text>pages/TestingInstitutionManagement/Certificate/CertificateAddOne/CertificateAddOne.wxml</text>
+=======
+<scroll-view scroll-y>
+  <form bindsubmit='newEquipment'>
+    <view>
+      <button class='van-button--info' formType='submit'>new equipment use</button>
+    </view>
+  </form>
+</scroll-view>
+>>>>>>> ca856b6f1b66a76e96f25f112cf606987a0c2c99
