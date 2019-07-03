@@ -48,7 +48,7 @@ Page({
   },
   goback: function () {
     wx.navigateTo({
-      url: '/pages/login/register/register',
+      url: '/pages/register/register',
     })
   }
 })

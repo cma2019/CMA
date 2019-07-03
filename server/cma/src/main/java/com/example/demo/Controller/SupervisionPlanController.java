@@ -66,6 +66,10 @@ public class SupervisionPlanController {
         }catch (NumberFormatException e){
             code=513;
             msg="某项数据错误";
+            js.put("code",code);
+            js.put("msg",msg);
+            js.put("data",null);
+            return js;
         }
         SupervisionPlan sp=new SupervisionPlan();
         sp.setObject(object);
