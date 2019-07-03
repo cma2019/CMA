@@ -1,18 +1,55 @@
 // pages/TestingInstitutionManagement/Certificate/CertificateGetOne/CertificateGetOne.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    id: "test ID",
+    fileName: "test.docx"
+  },
+  mydelete: function (e) {
+    var that = this
+    var myurl = app.globalData.url + 'Certificate/deleteOne/' + that.data.id;
+    app.wxRequest(myurl, 'POST', null, (res) => {
+      console.log(res)
+    }, (err) => {
+      console.log(err)
+    })
+    wx.redirectTo({
+      url: '/pages/TestingInstitutionManagement/Certificate/Certificate',
+    })
+  },
+  mydownload: function(e){
+    var that = this
+    var myurl = app.globalData.url + 'Certificate/downloadOne/' + that.data.fileName;
+    var myFilePath
+    app.wxDownloadFile(myurl,(res) => {
+      wx.saveFile({
+        tempFilePath: res.tempFilePath,
+        success:function(res){
+          myFilePath = res.savedFilePath
+        },
+        fail:function(err){
+          console.log(err)
+        }
+      })
+    },(err) => {
+      console.log(err)
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad: function (option) {
+    var that = this;
+    console.log(option)
+    that.setData({
+      id: option.id,
+      fileName: option.fileName
+    })
   },
 
   /**

@@ -68,7 +68,7 @@
       <van-field name="competentDepartmentAddress" value="{{competentDepartmentAddress}}" required clearable label="competentDepartmentAddress" placeholder="input competentDepartmentAddress"></van-field>
     </view>
     <view class="section">
-      <van-field name="cdPeopelInCharge" value="{{cdPeopelInCharge}}" required clearable label="cdPeopelInCharge" placeholder="input cdPeopelInCharge"></van-field>
+      <van-field name="cdPeopleInCharge" value="{{cdPeopleInCharge}}" required clearable label="cdPeopleInCharge" placeholder="input cdPeopleInCharge"></van-field>
     </view>
     <view class="section">
       <van-field name="cdPicPosition" value="{{cdPicPosition}}" required clearable label="cdPicPosition" placeholder="input cdPicPosition"></van-field>
