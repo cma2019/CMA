@@ -91,7 +91,7 @@
       </van-cell-group>
     </van-collapse-item>
     <van-collapse-item title="系统管理" name="20">
-      
+      <van-cell title="AuthorityManagement" boarder="{{false}}" is-link  center="{{true}}" bindtap="gotoAuthorityManagement"></van-cell>
     </van-collapse-item>
   </van-collapse>
 </scroll-view>
