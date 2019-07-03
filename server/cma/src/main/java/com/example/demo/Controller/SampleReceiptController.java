@@ -289,16 +289,24 @@ public class SampleReceiptController {
             s.setSender(sender);
             s.setReceiveUnit(receiveUnit);
             s.setReceiver(receiver);
-            int basems=0;
-            if(list!=null||list.size()!=0)
+            StringBuilder index=new StringBuilder();
+            index.append("000000000");
+            for(int i=0;i<list.size();i++)
             {
-                for(int i=0;i<list.size();i++)
+                JSONObject tmp = (JSONObject) list.get(i);
+                System.out.println(list);
+                System.out.println(index);
+                System.out.println(Integer.parseInt(tmp.getString("materialId")));
+                System.out.println(tmp.getString("materialType"));
+                index.replace(Integer.parseInt(tmp.getString("materialId")) - 1, Integer.parseInt(tmp.getString("materialId")), tmp.getString("materialType"));
+                if(i==list.size()-1)
                 {
-                    JSONObject tmp=(JSONObject)list.get(i);
-                    basems+=(int)(Integer.parseInt(tmp.getString("materialType"))*Math.pow(10,Integer.parseInt(tmp.getString("materialId"))));
+                    s.setOthers(tmp.getString("materialName"));
                 }
             }
-            s.setBaseMs(basems+"");
+            String basems=index.toString();
+            s.setSoftwareSample(basems.charAt(7)-'0');
+            s.setBaseMs(basems);
             SampleReceiptRepository.saveAndFlush(s);
     }
         js.put("code",code);
