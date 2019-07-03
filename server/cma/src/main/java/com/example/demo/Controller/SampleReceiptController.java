@@ -17,6 +17,35 @@ import java.util.Map;
 public class SampleReceiptController {
     @Autowired
     private SampleReceiptRepository SampleReceiptRepository;
+    @GetMapping(path="/getAll")
+    public @ResponseBody JSONObject getAll(){
+        List<SampleReceipt> res=SampleReceiptRepository.findAll();
+        JSONObject js=new JSONObject();
+        JSONArray data=new JSONArray();
+        int code=200;
+        String msg="成功";
+        if(res.size()>0)
+        {
+            for(int i=0;i<res.size();i++) {
+                JSONObject tmp = new JSONObject();
+                tmp.put("sampleId", res.get(i).getSampleId());
+                tmp.put("applicationUnit", res.get(i).getApplicationUnit());
+                tmp.put("sampleName", res.get(i).getSampleName());
+                tmp.put("version", res.get(i).getVersion());
+                data.add(tmp);
+            }
+        }
+        else
+        {
+            code=522;
+            msg="数据不存在";
+            //data=null;
+        }
+        js.put("code",code);
+        js.put("msg",msg);
+        js.put("data",data);
+        return js;
+    }
     @PostMapping(path="/addOne",consumes="application/json",produces="application/json")
     public @ResponseBody  JSONObject addOne(@RequestBody JSONObject data){
         JSONObject js= new JSONObject();
@@ -137,7 +166,7 @@ public class SampleReceiptController {
             code=521;
             msg="未收到标识编号";
         }
-        else if(SampleReceiptRepository.findBySampleId(Long.parseLong(sampleId))==null) {   //此样品接收登记的id不存在；
+        else if(sampleId=="0"||SampleReceiptRepository.findBySampleId(Long.parseLong(sampleId))==null) {   //此样品接收登记的id不存在；
 
             code=522;
             msg="数据不存在";
@@ -263,7 +292,7 @@ public class SampleReceiptController {
         js.put("data",d);
         return js;
     }
-    @PostMapping(path="addReceive")
+    /*@PostMapping(path="addReceive")
     public @ResponseBody JSONObject addReceive(@RequestParam(value = "sampleNumber", required = false)String sampleNumber,
                                                @RequestParam(value = "sampleName", required = false) String sampleName,
                                                @RequestParam(value = "sampleAmount", required = false) String sampleAmount,
@@ -277,5 +306,6 @@ public class SampleReceiptController {
     {
         JSONObject js=new JSONObject();
         return js;
-    }
+
+    }*/
 }

@@ -21,6 +21,7 @@ public class SampleIO {
     private String obtainer;         //领取人
     private Date obtainDate;         //领取日期
     private String note;             //备注
+    private Long receiptId;
 
     public Long getSampleIoId() {
         return this.sampleIoId;
@@ -96,4 +97,8 @@ public class SampleIO {
     public void setObtainDate(Date obtainDate) {
         this.obtainDate = obtainDate;
     }
+    public void setReceiptId(Long receiptId){
+        this.receiptId=receiptId;
+    }
+    public Long getReceiptId(){return receiptId;}
 }
