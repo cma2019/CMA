@@ -21,6 +21,8 @@ public class StaffTraining {
     private String note;         //备注
     private String result;       //结果
 
+    private long id;
+
 
     public void setResult(String result) {
         this.result = result;
@@ -83,12 +85,19 @@ public class StaffTraining {
         this.trainingDate = trainingDate;
     }
 
+    public long getId() {
+        return id;
+    }
 
-    public boolean Equals(StaffTraining staffTraining){
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    /*public boolean Equals(StaffTraining staffTraining){
         if(staffTraining.getContent().equals(this.content)&&staffTraining.getNote().equals(this.note)&&staffTraining.getPlace().equals(this.place)&&staffTraining.getPresenter()
         .equals(this.presenter)&&staffTraining.getProgram().equals(this.program)&&staffTraining.getTrainingDate().equals(this.getTrainingDate()))
             return true;
         else
             return false;
-    }
+    }*/
 }

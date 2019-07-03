@@ -1,1 +1,4 @@
 /* pages/admin/modifyadmin/modifyadmin.wxss */
+.value-class {
+  flex: none !important;
+}
