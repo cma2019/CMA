@@ -15,7 +15,7 @@ Page({
    */
   data: {
     activeNames: ['0'],
-    "mess":null  
+    mess:null
   },
   
   onChange(event) {
@@ -35,14 +35,14 @@ Page({
     }
     //console.log("2" + username1)
     console.log(postdata)
-    var that=this;
+    //var that=this;
     app.wxRequest(url, 'GET', postdata, (res) => {
       console.log(res)
-      console.log(res.data2)
-      that.setData({
-        mess:res.data2
+      console.log(res.data1)
+      this.setData({
+        mess:res.data1
       })
-      console.log(mess)
+      //console.log(mess)
     }, (err) => {
       console.err('getone error')
     })
