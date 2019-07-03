@@ -205,6 +205,11 @@ public class SampleReceiptController {
                     data.put("data",list);
                 }
             }
+            data.put("softwareType",s.getSoftwareType());
+            data.put("receiveUnit",s.getReceiveUnit());
+            data.put("receiveDate",s.getReceiveDate());
+            data.put("sender",s.getSender());
+            data.put("receiver",s.getReceiver());
         }
         json.put("code",code);
         json.put("msg",msg);
