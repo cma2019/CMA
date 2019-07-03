@@ -35,7 +35,7 @@ public class StaffFileController {
     @GetMapping(path = "getOne")
     public @ResponseBody JSONObject getOne(@RequestParam(value="id",required = false)long id){
         JSONObject json=new JSONObject(new LinkedHashMap());
-        if(!staffFileRepository.existsByStaffid(id)){
+        if(!staffFileRepository.existsById(id)){
             json.put("code",210);
             json.put("msg","档案不存在");
             json.put("data",null);
@@ -43,7 +43,7 @@ public class StaffFileController {
         else {
             json.put("code",200);
             json.put("msg","成功");
-            json.put("data",staffFileRepository.findByStaffid(id));
+            json.put("data",staffFileRepository.findById(id));
         }
         return json;
     }
@@ -60,7 +60,7 @@ public class StaffFileController {
         }
         else {
             StaffManagement staffManagement = staffManagementRepository.getOne(id);
-            staffFile.setStaffid(id);
+            staffFile.setId(id);
             staffFile.setName(staffManagement.getName());
             staffFile.setDepartment(staffManagement.getDepartment());
             staffFile.setPosition(staffManagement.getPosition());
@@ -87,13 +87,13 @@ public class StaffFileController {
     @PostMapping(path = "deleteOne")
     public @ResponseBody JSONObject deleteOne(@RequestParam(value = "id",required = false)long id){
         JSONObject json=new JSONObject();
-        if(staffFileRepository.existsByStaffid(id)==false){
+        if(staffFileRepository.existsById(id)==false){
             json.put("code",210);
             json.put("msg","档案不存在");
             json.put("data",null);
         }
         else{
-            staffFileRepository.deleteByStaffid(id);
+            staffFileRepository.deleteById(id);
             json.put("code",200);
             json.put("msg","成功");
             json.put("data",null);
