@@ -1,4 +1,3 @@
-// page_SampleIo/ioAddone/ioAddone.js
 const app = getApp()
 Page({
 

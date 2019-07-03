@@ -19,13 +19,7 @@ Page({
     })
     console.log(this.data)
   },
-/*
-  bindcreateDateChange(e) {
-    this.setData({
-      createDate: e.detail.value
-    })
-  },*/
-  
+
   Supervision_addone: function (e) {
     console.log('Supervision发生了addone事件，携带数据为：', e.detail.value)
     wx.request({

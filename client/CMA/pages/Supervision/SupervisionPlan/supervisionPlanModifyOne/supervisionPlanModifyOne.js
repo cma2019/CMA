@@ -92,17 +92,17 @@ Page({
           }
           else if (res.data.code == 533) {
             wx.showToast({
-              title: '修改后数据错误',
+              title: '数据错误',
               duration: 1500
             })
-            console.log('修改后数据错误')
+            console.log('数据错误')
           }
           else {
             wx.showToast({
-              title: '修改后数据不合法',
+              title: '数据不合法',
               duration: 1500
             })
-            console.log('修改后数据不合法')
+            console.log('数据不合法')
           }
         },
         fail(err) {

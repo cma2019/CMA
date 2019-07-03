@@ -1,4 +1,3 @@
-// page_SampleIo/ioShow/ioShow.js
 const app = getApp()
 Page({
 
@@ -69,23 +68,14 @@ Page({
         'Accept': 'application/json'
       },
       success(res) {
+        console.log(res)
         if (res.data.code == 200) {
-         /* thispage.setData({ 
-            sampleNumber: res.data.data.sampleNumber,
-            sampleName: res.data.data.sampleName,
-            sampleAmount: res.data.data.sampleAmount,
-            sampleState: res.data.data.sampleState,
-            sender: res.data.data.sender,
-            receiver: res.data.data.receiver,
-            sendDate: res.data.data.sendDate,
-            obtainer: res.data.data.obtainer,
-            obtainDate: res.data.data.obtainDate,
-            note:res.data.data.note
-          })*/
           thispage.setData({
             info : res.data.data,
             sampleId:res.data.data.sampleId
           })
+          console.log("sdgf")
+          console.log(this.page.sampleId)
           wx.setStorage({
             key:'ioGetOneinfo',
             data:res.data.data
@@ -183,7 +173,7 @@ Page({
       delta: 1
     })
   },
-  looktoreceipt:function(){
+  looktoreceipt:function(e){
     console.log(e)
     let target = this.data.sampleId
     //console.log("dfdg")

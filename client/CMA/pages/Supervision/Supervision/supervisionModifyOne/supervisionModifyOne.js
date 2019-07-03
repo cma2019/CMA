@@ -1,4 +1,3 @@
-// page_SampleIo/ioModifyOne/ioModifyOne.js
 const app = getApp()
 Page({
 
@@ -8,28 +7,6 @@ Page({
 
   data: {
     "id": "",
-    /*"sampleNumber": "",
-    "sampleName": "",
-    "sampleAmount": "",
-    "sampleState": "",
-    "sender": "",
-    "receiver": "",
-    
-    "obtainer": "",
-    
-    "note": "",
-
-
-    "sampleNumberinfo": "",
-    "sampleNameinfo": "",
-    "sampleAmountinfo": "",
-    "sampleStateinfo": "",
-    "senderinfo": "",
-    "receiverinfo": "",
-    "sendDateinfo": "",
-    "obtainerinfo": "",
-    "obtainDateinfo": "",
-    "noteinfo": "",*/
     "origindata":{}
   },
 
@@ -40,7 +17,6 @@ Page({
     this.setData({
       id: options.id
     })
-    //console.log(this.data.sampleIoId)
     console.log("fdsf")
   },
 
@@ -48,55 +24,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    /*var thispage = this
-    //console.log('getone发生了事件，携带数据为：', this.data.sampleIoId)
-    wx.request({
-      url: app.globalData.url + 'SampleIo/getOne',
-      method: 'GET',
-      data: {
-        "sampleIoId": this.data.sampleIoId
-      },
-      header: {
-        'content-type': 'application/json',
-        'Accept': 'application/json'
-      },
-      success(res) {
-        if (res.data.code == 200) {
-          thispage.setData({
-            sampleNumberinfo: res.data.data.sampleNumber,
-            sampleNameinfo: res.data.data.sampleName,
-            sampleAmountinfo: res.data.data.sampleAmount,
-            sampleStateinfo: res.data.data.sampleState,
-            senderinfo: res.data.data.sender,
-            receiverinfo: res.data.data.receiver,
-            sendDateinfo: res.data.data.sendDate,
-            obtainerinfo: res.data.data.obtainer,
-            obtainDateinfo: res.data.data.obtainDate,
-            noteinfo: res.data.data.note
-          })
-        }
-        else if (res.data.code == 521) {
-          console.log(res.data.msg)
-          wx.showToast({
-            title: '未收到标识编号',
-            duration: 1500
-          })
-          console.log('未收到标识编号')
-        }
-        else {//522
-          console.log(res.data.msg)
-          console.log("12")
-          wx.showToast({
-            title: '数据不存在',
-            duration: 1500
-          })
-          console.log('数据不存在')
-        }
-      },
-      fail(err) {
-        console.log('no data')
-      }
-    })*/
     var that = this
     wx.getStorage({
       key: 'supervisionGetOneinfo',
