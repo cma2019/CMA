@@ -1,4 +1,4 @@
-// pages/TestingInstitutionManagement/Certificate/Certificate.js
+// pages/StaffManagement/StaffFile/ModifyOneStaffFile/ModifyOneStaffFile.js
 Page({
 
   /**

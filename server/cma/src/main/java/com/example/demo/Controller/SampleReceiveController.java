@@ -2,6 +2,7 @@ package com.example.demo.Controller;
 
 //import com.fasterxml.jackson.databind.util.JSONPObject;
 import  com.example.demo.Repository.SampleReceiveRepository ;
+import  com.example.demo.Repository.SampleReceiptRepository ;
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.demo.Model.SampleReceive;
+import com.example.demo.Model.SampleReceipt;
 import java.util.List;
 import java.sql.Date;
 
@@ -20,6 +22,8 @@ import java.sql.Date;
 public class SampleReceiveController {
     @Autowired
     private SampleReceiveRepository sampleReceiveRepository;
+    @Autowired
+    private SampleReceiptRepository sampleReceiptRepository;
     @PostMapping(path="/addOne")
     public @ResponseBody
     JSONObject addOne(@RequestParam(value = "sampleNumber", required = false)String sampleNumber,
@@ -30,7 +34,8 @@ public class SampleReceiveController {
                           @RequestParam(value="receiver",required = false)String receiver,
                           @RequestParam(value="receiveDate",required = false) String receiveDate,
                           @RequestParam(value="obtainer",required = false)String obtainer,
-                          @RequestParam(value = "obtainDate",required = false)String obtainDate){
+                          @RequestParam(value = "obtainDate",required = false)String obtainDate,
+                          @RequestParam(value="receiptId",required = false) String receiptId){
         System.out.println(sampleNumber);
         System.out.println(obtainer);
         JSONObject js=new JSONObject();
@@ -73,7 +78,14 @@ public class SampleReceiveController {
             receive.setReceiveDate(java.sql.Date.valueOf(receiveDate));
             receive.setObtainer(obtainer);
             receive.setObtainDate(java.sql.Date.valueOf(obtainDate));
+            receive.setReceiptId(Long.parseLong(receiptId));
             sampleReceiveRepository.saveAndFlush(receive);
+            if(receiptId!="0")
+            {
+                SampleReceipt sr=sampleReceiptRepository.findBySampleId(Long.parseLong(receiptId));
+                sr.setSampleName(sampleName);
+                sampleReceiptRepository.saveAndFlush(sr);
+            }
         }
         js.put("code",code);
         js.put("msg",msg);
@@ -169,6 +181,7 @@ public class SampleReceiveController {
             data.put("receiveDate",recv.getReceiveDate().toString());
             data.put("obtainer",recv.getObtainer());
             data.put("obtainDate",recv.getObtainDate().toString());
+            data.put("receiptId",recv.getReceiptId());
         }
         json.put("code",code);
         json.put("msg",msg);

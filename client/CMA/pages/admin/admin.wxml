@@ -1,0 +1,12 @@
+<!--pages/StaffManagement/StaffManagement.wxml-->
+<view>
+  <van-cell-group title="UserAuthority">
+  <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
+  <van-cell value="详情" bindtap='gotoOne' id='{{item.username}}' is-link>
+      <view slot="title">
+        <view>{{item.username}}</view>
+      </view>
+  </van-cell>
+</view>
+  </van-cell-group>
+</view>

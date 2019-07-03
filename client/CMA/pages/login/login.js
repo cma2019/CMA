@@ -28,6 +28,10 @@ Page({
         console.log(res.msg)
         console.log(res.code)
         if (res.code == 200) {
+          wx.setStorage({
+            key: "key",
+            data: e.detail.value.username
+          })
           wx.switchTab({
             url: '../home/home',
           })
@@ -48,7 +52,7 @@ Page({
   },
   goback: function () {
     wx.navigateTo({
-      url: '/pages/login/register/register',
+      url: '/pages/register/register',
     })
   }
 })

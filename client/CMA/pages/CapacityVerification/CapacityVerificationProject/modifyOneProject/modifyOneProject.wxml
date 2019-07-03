@@ -4,7 +4,7 @@
     <van-cell-group title="input message">
       <van-field 
         name="name"
-        label="my name"
+        label="name"
         value='{{name}}'
         placeholder="input name"
         required
@@ -12,7 +12,7 @@
       />
       <van-field 
         name="method"
-        label="my method"
+        label="method"
         value='{{method}}'
         placeholder="input method" 
         required
@@ -20,7 +20,7 @@
       />
       <van-field 
         name="state"
-        label="my state"
+        label="state"
         value='{{state}}'
         placeholder="input state" 
         required
@@ -28,7 +28,7 @@
       />   
       <van-field 
         name="note"
-        label="my note"
+        label="note"
         value='{{note}}'
         placeholder="input note" 
         required

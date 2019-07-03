@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.demo.Repository.SampleIoRepository;
+import com.example.demo.Repository.SampleReceiptRepository;
 import com.example.demo.Model.SampleIO;
+import com.example.demo.Model.SampleReceipt;
 import java.util.List;
 
 @Controller
@@ -18,6 +20,8 @@ import java.util.List;
 public class SampleIoController {
     @Autowired
     private SampleIoRepository SampleIoRepository;
+    @Autowired
+    private SampleReceiptRepository SampleReceiptRepository;
     @PostMapping(path="/addOne")
     public @ResponseBody
     JSONObject addOne(@RequestParam(value = "sampleNumber", required = false)String sampleNumber,
@@ -29,7 +33,8 @@ public class SampleIoController {
                           @RequestParam(value="note",required = false) String note,
                           @RequestParam(value="obtainer",required = false)String obtainer,
                           @RequestParam(value = "obtainDate",required = false)String obtainDate,
-                          @RequestParam(value="sendDate",required = false) String sendDate){
+                          @RequestParam(value="sendDate",required = false) String sendDate,
+                      @RequestParam(value = "receiptId",required = false) String receiptId){
         JSONObject js=new JSONObject();
         int code=200;
         String msg="成功";
@@ -72,7 +77,14 @@ public class SampleIoController {
             receive.setObtainer(obtainer);
             receive.setObtainDate(java.sql.Date.valueOf(obtainDate));
             receive.setSendDate(java.sql.Date.valueOf(sendDate));
+            receive.setReceiptId(Long.parseLong(receiptId));
             SampleIoRepository.saveAndFlush(receive);
+            if(receiptId!="0")
+            {
+                SampleReceipt sr=SampleReceiptRepository.findBySampleId(Long.parseLong(receiptId));
+                sr.setSampleName(sampleName);
+                SampleReceiptRepository.saveAndFlush(sr);
+            }
         }
         js.put("code",code);
         js.put("msg",msg);
@@ -174,6 +186,7 @@ public class SampleIoController {
             data.put("obtainer",recv.getObtainer());
             data.put("obtainDate",recv.getObtainDate().toString());
             data.put("note",recv.getNote());
+            data.put("receiptId",recv.getReceiptId());
         }
         json.put("code",code);
         json.put("msg",msg);

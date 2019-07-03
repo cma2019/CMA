@@ -1,4 +1,3 @@
-// page_samplereceive/SampleReceive/SampleReceive.js
 const app = getApp()
 Page({
 

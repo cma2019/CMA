@@ -28,6 +28,35 @@ App({
       }
     })
   },
+  wxUploadFile(url,filePath,data,callback,errfun){
+    wx.uploadFile({
+      url: url,
+      filePath: filePath,
+      name: 'file',
+      header: {
+        'content-type': 'multipart/form-data'
+      },
+      formData: data,
+      success: function (res) {
+        callback(res.data)
+      },
+      fail:function (err){
+        errfun(res);
+      }
+    })
+  },
+  wxDownloadFile(url,callback,errfun){
+    wx.downloadFile({
+      url: url,
+      success: function(res){
+        callback(res)
+      },
+      fail: function(res){
+        errfun(res)
+      }
+    })
+  },
+
 
   onLaunch: function () {
     // 展示本地存储能力
@@ -36,11 +65,16 @@ App({
     wx.setStorageSync('logs', logs)
 
     // 登录
+    /*
+    console.log("now login")
     wx.login({
       success: res => {
+        console.log("res code")
+        console.log(res.code)
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
       }
     })
+    */
     // 获取用户信息
     wx.getSetting({
       success: res => {

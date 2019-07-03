@@ -51,7 +51,13 @@ Page({
       console.err('getone error')
     })
   },
-
+  bindDateChange: function (e) {
+    console.log("date")
+    console.log(e.detail.value)
+    this.setData({
+      date: e.detail.value
+    })
+  },
   capacityrecordmodify: function (e) {
     console.log('modify projects')
     /*
@@ -85,15 +91,12 @@ Page({
     };
     console.log(data)
     app.wxRequest(url, 'POST', data, (res) => {
-      console.log('modify record successfully')
-      console.log(res)
-      /*
-      if (res.data == "modify successfully.") {
+      if (res.code == 200) {
+        console.log('modify record successfully')
         wx.navigateBack({
           delta: 1
         })
       }
-      */
     }, (err) => {
       console.log('fail modify record')
     })

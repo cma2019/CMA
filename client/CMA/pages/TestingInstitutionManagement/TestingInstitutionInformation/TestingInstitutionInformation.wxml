@@ -18,13 +18,13 @@
       <view>socialCreditCode : {{socialCreditCode}}</view>
       <view>legalEntityBelongedName : {{legalEntityBelongedName}}</view>
       <view>legalEntityBelongedAddress : {{legalEntityBelongedAddress}}</view>
-      <view>lebPeopelInCharge : {{lebPeopelInCharge}}</view>
+      <view>lebPeopleInCharge : {{lebPeopleInCharge}}</view>
       <view>lebPicPosition : {{lebPicPosition}}</view>
       <view>lebPicTelephone : {{lebPicTelephone}}</view>
       <view>lebSocialCreditCode : {{lebSocialCreditCode}}</view>
       <view>competentDepartmentName : {{competentDepartmentName}}</view>
       <view>competentDepartmentAddress : {{competentDepartmentAddress}}</view>
-      <view>cdPeopelInCharge : {{cdPeopelInCharge}}</view>
+      <view>cdPeopleInCharge : {{cdPeopleInCharge}}</view>
       <view>cdPicPosition : {{cdPicPosition}}</view>
       <view>cdPicTelephone : {{cdPicTelephone}}</view>
       <view>characteristic : {{characteristic}}</view>

@@ -14,7 +14,7 @@ Page({
     console.log(this.data.id)
     let url = app.globalData.url + 'StaffAuthorization/getOne'
     let postdata = {
-      "authorizerId": this.data.id
+      "authorizationId": this.data.id
     }
     console.log(url)
     console.log(postdata)
@@ -39,8 +39,8 @@ Page({
     console.log(e)
     let target = this.data.id
     console.log(target)
-    wx.navigateTo({
-      url: '../ModifyAOneStaffAuthorization/ModifyAOneStaffAuthorization?id=' + target
+    wx.redirectTo({
+      url: '../ModifyOneStaffAuthorization/ModifyOneStaffAuthorization?id=' + target,
     })
   },
   DeleteStaff(e) {

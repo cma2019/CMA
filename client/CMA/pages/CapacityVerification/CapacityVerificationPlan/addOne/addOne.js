@@ -35,7 +35,12 @@ Page({
       }
       console.log(data)
       app.wxRequest(url, 'POST', data, (res) => {
-        console.log('send CapacityVerificationPlan message successfully')
+        if (res.code == 200) {
+          console.log('add plan successfully')
+          wx.navigateBack({
+            delta: 1
+          })
+        }
       }, (err) => {
         console.log('fail CapacityVerificationPlan register')
       })

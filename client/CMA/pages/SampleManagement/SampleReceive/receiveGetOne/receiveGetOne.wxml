@@ -14,6 +14,8 @@
 <view>
   <van-button type="info" size="small" bindtap="modifyData">modify</van-button>
   <van-button type="info" size="small" bindtap="deleteData">delete</van-button>
-  <van-button type="info" size="small" bindtap="goback">back</van-button>
   <van-button type="info" size="small" bindtap="looktoreceipt">receiptdetail</van-button>
+</view>
+<view>
+  <van-button type="info" size="small" bindtap="goback">back</van-button>
 </view>

@@ -1,4 +1,3 @@
-// page_SampleIo/ioAddone/ioAddone.js
 const app = getApp()
 Page({
 
@@ -32,61 +31,6 @@ Page({
     })
   },
   SampleReceipt_addone: function (e) {
-    /*wx.request({
-      url: app.globalData.url + 'SampleReceipt/addOne',
-      method: 'POST',
-      header: {
-        'content-type': 'application/json',
-        'Accept': 'application/json'
-      },
-      data: {
-        "sampleId": 2,
-        "applicationUnit": "阿里巴巴责任有限公司",
-        "version": "V1.0",
-        "contractId": "2487955568",
-        "testType": 0,
-        "electronicMedia": "光盘1张",
-        "materialList": [{
-          "materialId": 1,
-          "materialType": 1
-        },
-        {
-          "materialId": 2,
-          "materialType": 1
-        },
-        {
-          "materialId": 3,
-          "materialType": 1
-        },
-        {
-          "materialId": 4,
-          "materialType": 1
-        },
-        {
-          "materialId": 6,
-          "materialType": 2
-        },
-        {
-          "materialId": 9,
-          "materialType": 3,
-          "materialName": "《附加材料》"
-        }],
-        "softwareType": 1,
-        "receiveUnit": "南大测试中心",
-        "receiveDate": "2018-06-15",
-        "sender": "张三",
-        "receiver": "李四"
-      },
-      success(res) {
-      
-      },
-      fail(err) {
-        console.log('fail addone')
-      },
-      complete(fin) {
-        console.log('final addone')
-      }
-    })*/
     let receipttmp = e.detail.value
     if (receipttmp.sampleName != "" && receipttmp.applicationUnit != "" && receipttmp.version != "" && receipttmp.contractId != "" && receipttmp.testType != "" && receipttmp.electronicMedia != "" && receipttmp.softwareType != "" && receipttmp.receiveUnit != "" && receipttmp.receiveDate != "" && receipttmp.sender != "" && receipttmp.receiver != ""){
     var that = this
@@ -153,17 +97,17 @@ Page({
         }
         else if (res.data.code == 511) {
           wx.showToast({
-            title: '添加失败，缺少请求参数',
+            title: '缺少请求参数',
             duration: 1500
           })
-          console.log('添加失败，缺少请求参数')
+          console.log('缺少请求参数')
         }
         else  {//513
           wx.showToast({
-            title: '添加失败，某项数据错误',
+            title: '某项数据错误',
             duration: 1500
           })
-          console.log('添加失败，某项数据错误')
+          console.log('某项数据错误')
         }
       },
       fail(err) {
