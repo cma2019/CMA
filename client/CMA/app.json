@@ -116,7 +116,9 @@
     "pages/Supervision/SupervisionRecord/SupervisionRecordModifyOne/SupervisionRecordModifyOne",
     "pages/admin/admin",
     "pages/admin/modifyadmin/modifyadmin",
-    "pages/admin/printoneadmin/printoneadmin"
+    "pages/admin/printoneadmin/printoneadmin",
+    "pages/TestingInstitutionManagement/Certificate/CertificateAddOne/CertificateAddOne",
+    "pages/TestingInstitutionManagement/Certificate/CertificateGetOne/CertificateGetOne"
   ],
   "window": {
     "backgroundTextStyle": "light",
