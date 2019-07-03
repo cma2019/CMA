@@ -2,35 +2,31 @@
 <view>
  <form bindsubmit='SampleReceipt_modifyone'>
     <van-cell-group title="SampleReceipt_modifyone">
-      <van-field v-model="applicationUnit" name="applicationUnit" clearable label="申报单位名称" placeholder="{{applicationUnitinfo}}" />
+      <van-field v-model="applicationUnit" name="applicationUnit" clearable label="申报单位名称" placeholder="{{origindata.applicationUnit}}" />
 
-      <van-field v-model="version" name="version" clearable label="版本号" placeholder="{{versioninfo}}" />
+      <van-field v-model="version" name="version" clearable label="版本号" placeholder="{{origindata.version}}" />
 
-      <van-field v-model="contractId" name="contractId" clearable label="合同登记编号" placeholder="{{contractIdinfo}}"/>
-      <van-field v-model="testType" name="testType"clearable label="检测类型" placeholder="{{testTypeinfo}}" />
+      <van-field v-model="contractId" name="contractId" clearable label="合同登记编号" placeholder="{{origindata.contractId}}"/>
+      <van-field v-model="testType" name="testType"clearable label="检测类型" placeholder="{{origindata.testType}}" />
 
-      <van-field v-model="electronicMedia"  name="electronicMedia" clearable label="电子媒介" placeholder="{{sendeelectronicMediainfo}}"/>
+      <van-field v-model="electronicMedia"  name="electronicMedia" clearable label="电子媒介" placeholder="{{origindata.electronicMedia}}"/>
 
-      <van-field v-model="materialList" name="materialList" clearable label="提交材料与类型" placeholder="{{materialListinfo}}" /> 
+      <van-cell title="提交材料与类型" is-link value="请依次输入信息" url="../receiptModifyOne/receiptTypeModify"/>
 
-      <van-field v-model="softwareType" name="softwareType" clearable label="软件类型" placeholder="{{softwareTypeinfo}}" />
+      <van-field v-model="softwareType" name="softwareType"clearable label="软件类型" placeholder="{{origindata.softwareType}}" />
 
-      <van-field v-model="receiveUnit" name="receiveUnit" clearable label="接收单位名称" placeholder="{{receiveUnitinfo}}" />
-
+      <van-field v-model="receiveUnit"  name="receiveUnit" clearable label="接收单位名称" placeholder="{{origindata.receiveUnit}}"/>
       <picker name = 'receiveDate' mode='date' value='{{receiveDate}}' bindchange='bindreceiveDateChange'>
         <view class='picker'>
-          <van-field  name="receiveDate" label="接收时间" value='{{receiveDate}}' placeholder="{{receiveDateinfo}}" clearable />
+          <van-field  name="receiveDate" label="接收时间" value='{{receiveDate}}' placeholder="{{origindata.receiveDate}}" clearable />
         </view>
       </picker>
-
-      <van-field v-model="sender" name="sender" clearable label="报送人" placeholder="{{senderinfo}}" />
-
-      <van-field v-model="reciever" name="reciever" clearable label="受理人" placeholder="{{recieverinfo}}" />
-
+      <van-field v-model="sender" name="sender" clearable label="报送人" placeholder="{{origindata.sender}}" />
+      <van-field v-model="reciever" name="reciever" clearable label="受理人" placeholder="{{origindata.reciever}}" />
     </van-cell-group>
     <view>
-      <button formType='submit'>完成</button>
+      <button class="van-button--info" formType="submit">完成</button>
     </view>
   </form>
 </view>
-<button bindtap="goback">取消</button>
+<button class="van-button--info" bindtap="goback">取消</button>

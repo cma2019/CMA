@@ -1,27 +1,41 @@
 <!--pages/SampleManagement/SampleReceipt/receiptSearch/receiptSearch.wxml-->
 <view>
-  <view class="search-box">
+  <!--<view class="search-box">
     <input class="search-input" placeholder="搜索" value="{{search_sampleId}}" bindinput="searchInput" />
     <icon class="weui-icon-search_in-box search-icon" type="search" size="14"></icon>
     <text class="search-btn" bindtap="searchSubmit">确认</text>
     <text class="search-btn" bindtap="cancelSearch">取消</text>
-  </view>
-  <view class="result" wx:if="{{mess.length == 1}}">
-    <van-cell>
-      <view slot="title">
-        <text>sampleName: {{mess.sampleName}}</text>
-        <text>applicationUnit: {{mess.applicationUnit}}\n</text>
-        <text>version: {{mess.version}}\n</text>
-        <text>contractId: {{mess.contractId}}\n</text>
-        <text>testType: {{mess.testType}}\n</text>
-        <text>electronicMedia: {{mess.electronicMedia}}\n</text>
-        <text>materialList: {{mess.materialList}}\n</text>
-        <text>softwareType: {{mess.softwareType}}\n</text>
-        <text>receiveUnit: {{mess.receiveUnit}}\n</text>
-        <text>receiveDate: {{mess.receiveDate}}\n</text>
-        <text>sender: {{mess.sender}}\n</text>
-        <text>reciever: {{mess.reciever}}\n</text>
-      </view>
-    </van-cell>
-  </view>
+  -->
+    <van-cell-group>
+      <van-field  label="sampleName" value='{{mess.sampleName}}' disabled input-align="right"/>
+      <van-field  label="applicationUnit" value='{{mess.applicationUnit}}' disabled input-align="right"/>
+      <van-field  label="version" value='{{mess.version}}' disabled input-align="right"/>
+      <van-field  label="contractId" value='{{mess.contractId}}' disabled input-align="right"/>
+      <van-field  label="testType" value='{{mess.testType}}' disabled input-align="right"/>
+      <van-field  label="electronicMedia" value='{{mess.electronicMedia}}' disabled input-align="right"/>
+      <van-cell-group>
+        <view wx:for="{{mess.materialList}}"wx:key="{{index}}">
+          <van-cell title="{{array[mess.materialList[index].materialId]}}" >
+            <text class="cart-count-num">{{mess.materialType}}</text>
+            <view wx:if="{{mess.materialName != null}}">
+              <text>{{mess.materialName}}</text>
+            </view>
+          </van-cell>
+        </view>
+      </van-cell-group>
+      <van-field  label="softwareType" value='{{mess.softwareType}}' disabled input-align="right"/>
+      <van-field  label="receiveUnit" value='{{mess.receiveUnit}}' disabled input-align="right"/>
+      <van-field  label="receiveDate" value='{{mess.receiveDate}}' disabled input-align="right"/>
+      <van-field  label="sender" value='{{mess.sender}}' disabled input-align="right"/>
+      <van-field  label="receiver" value='{{mess.receiver}}' disabled input-align="right"/>
+    </van-cell-group>
+</view>
+<view>
+  <van-button type="info" size="small" bindtap="gotoAddsampleReceive">Add a sampleReceive</van-button>
+  <van-button type="info" size="small" bindtap="gotoAddsampleIo">Add a sampleIo</van-button>
+</view>
+<view>
+  <van-button type="info" size="small" bindtap="modifyData">modify</van-button>
+  <van-button type="info" size="small" bindtap="deleteData">delete</van-button>
+  <van-button type="info" size="small" bindtap="goback">back</van-button>
 </view>

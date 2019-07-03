@@ -2,26 +2,29 @@
   <van-cell-group title="Supervision">
     <view wx:if="{{flag == 1}}">
       <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
-        <view wx:if="{{item.situation == 1||item.situation == 2}}">
-          <van-cell value="详情" bindtap='gotoOne' id='{{item.id}}' is-link>
-            <view slot="title">
-              <view>
-                <view>编制人:{{item.author}}  </view>
-                <view>编制日期:{{item.createDate}}  </view>
+        <van-cell value="详情" bindtap='gotoOne' id='{{item.id}}' is-link>
+          <view slot="title">
+            <view>
+              <view>编制人:{{item.author}}  </view>
+              <view>编制日期:{{item.createDate}}  </view>
+              <view wx:if="{{item.situation == 1}}">
                 <view>批准人:{{item.approver}}</view>
                 <view>批准日期:{{item.approveDate}}</view>
-                <view wx:if="{{item.situation == 1}}">
-                  <view>计划状态:已批准</view>
-                </view>
-                <view wx:else>
-                  <view>计划状态:已执行</view>
-                </view>
+                <view>计划状态:已批准</view>
+              </view>
+              <view wx:elif="{{item.situation == 2}}">
+                <view>批准人:{{item.approver}}</view>
+                <view>批准日期:{{item.approveDate}}</view>
+                <view>计划状态:已执行</view>
+              </view>
+              <view wx:else>
+                <view>计划状态:未批准</view>
               </view>
             </view>
-          </van-cell>
-        </view>
+          </view>
+        </van-cell>
       </view>
-      </view>
+    </view>
     <view wx:else>
      <text>not have a Supervision yet</text>
     </view>

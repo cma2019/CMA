@@ -7,6 +7,7 @@ Page({
    */
   data: {
     "sampleIoId":"null",
+    "sampleId":"null",
     /*"sampleNumber": "null",
     "sampleName": "null",
     "sampleAmount": "null",
@@ -82,7 +83,8 @@ Page({
             note:res.data.data.note
           })*/
           thispage.setData({
-            info : res.data.data
+            info : res.data.data,
+            sampleId:res.data.data.sampleId
           })
           wx.setStorage({
             key:'ioGetOneinfo',
@@ -179,6 +181,15 @@ Page({
     })
     wx.navigateBack({
       delta: 1
+    })
+  },
+  looktoreceipt:function(){
+    console.log(e)
+    let target = this.data.sampleId
+    //console.log("dfdg")
+    //console.log(target)
+    wx.navigateTo({
+      url: '../ioReceiptDetail/ioReceiptDetail?id=' + target
     })
   },
   /**

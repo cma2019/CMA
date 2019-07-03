@@ -10,9 +10,9 @@
       <van-field v-model="sampleState"  name="sampleState" required clearable label="样品状态" placeholder="请输入样品状态" />
 
       <van-field v-model="sender"  name="sender" required clearable label="送样人" placeholder="请输入送样人姓名"error-message="{{senderMessage}}" bind:change="senderChange"/>
-
-      <van-field v-model="receiver" name="receiver" required clearable label="接收人" placeholder="请输入接收人姓名" error-message="{{receiverMessage}}" bind:change="receiverChange"/>
-
+      <view wx:if="{{receiptId == ''}}">
+        <van-field v-model="receiver" name="receiver" required clearable label="接收人" placeholder="请输入接收人姓名" error-message="{{receiverMessage}}" bind:change="receiverChange"/>
+      </view>
       <picker name = 'sendDate' mode='date' value='{{sendDate}}' bindchange='bindsendDateChange'>
         <view class='picker'>
           <van-field  name="sendDate" label="送样日期" value='{{sendDate}}' placeholder="请输入送样日期" required clearable error-message="{{sendDateMessage}}"/>

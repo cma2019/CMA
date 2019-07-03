@@ -1,5 +1,5 @@
 /* page_SampleIo/ioAddone/ioAddone.wxss */
-.addone-icon{
+/*.addone-icon{
     position: absolute;
     right: 45rpx;
     top: 25rpx;
@@ -10,4 +10,4 @@
   display: block;
   width: 45rpx;
   height: 45rpx;
-}
+}*/

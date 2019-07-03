@@ -27,14 +27,12 @@ Page({
         console.log(res)
         console.log(res.msg)
         console.log(res.code)
-        if(res.code==200)
-        {
+        if (res.code == 200) {
           wx.switchTab({
             url: '../home/home',
           })
         }
-        else
-        {
+        else {
           wx.showToast({
             title: '登录失败',
             icon: 'none',
