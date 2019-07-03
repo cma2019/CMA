@@ -9,6 +9,7 @@ Page({
     sampleId:'',
     "mess": null,
     array: ['《用户手册》', '《计算机软件产品登记检测申请表》', '《材料交接单》', '《软件产品功能列表》', '《软件名称与版本号确认单》', '《受测软件产品简介》', '《自主产权保证书》', '软件样品一套', '其它'],
+    flag:0
   },
 
   /**
@@ -54,11 +55,14 @@ Page({
         }
         else {//522
           console.log("12")
+          thispage.setData({
+            flag: 1
+          })
           wx.showToast({
-            title: '该SampleIo未对应SampleReceipt',
+            title: '未对应SampleReceipt',
             duration: 1500
           })
-          console.log('SampleIo未对应SampleReceipt')
+          console.log('未对应SampleReceipt')
         }
       },
       fail(err) {
