@@ -69,6 +69,10 @@ Page({
       console.log(res.code)
       if (res.code == 200) {
         console.log('successfully')
+        wx.setStorage({
+          key: "key",
+          data: e.detail.value.username
+        })
         wx.switchTab({
           url: '../home/home',
         })
