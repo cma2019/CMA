@@ -1,6 +1,7 @@
 package com.example.demo.Controller;
 import com.example.demo.Model.User;
 import com.example.demo.Repository.UserRepository;
+import com.google.appengine.repackaged.com.google.common.hash.HashCode;
 import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 @Controller
@@ -85,14 +88,16 @@ public class UserController {
             User user=userRepository.findByUsername(username);
             json.put("code",200);
             json.put("msg","成功");
-            json.put("data",user);
+            json.put("data1",user.Permissions());
+            json.put("data2",user.getPermission());
+            json.put("length",user.Permissions().size());
         }
         return json;
     }
 
     @PostMapping(path = "modifyOne")
     public @ResponseBody JSONObject modifyOne(@RequestParam(value = "username",required = false)String username, @RequestParam(value = "permission",required = false) boolean[] permission){
-        JSONObject json=new JSONObject();
+        JSONObject json=new JSONObject(new LinkedHashMap());
         if(userRepository.existsByUsername(username)==false){
             json.put("code",210);
             json.put("msg","不存在的用户");
@@ -100,6 +105,7 @@ public class UserController {
         }
         else{
             User user=userRepository.findByUsername(username);
+            System.out.println(permission);
             user.setPermission(permission);
             userRepository.save(user);
             json.put("code",200);
