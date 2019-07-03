@@ -73,12 +73,12 @@ public class SupervisionController {
         JSONObject json=new JSONObject();
         int code=200;
         String msg="成功";
-        //JSONObject data=null;
+        JSONObject data=null;
         System.out.println(supervisionId);
         SupervisionRepository.deleteById(Long.parseLong(supervisionId));
         json.put("code",code);
         json.put("msg",msg);
-        //json.put("data",data);
+        json.put("data",data);
         return json;
     }
     @GetMapping(path="/getAll")
