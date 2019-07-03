@@ -2,7 +2,7 @@
 <scroll-view scroll-y>
   <van-cell>
     <view slot="title">
-      <view>id : {{id}}</view>
+      <view>fileId : {{fileId}}</view>
       <view>fileName : {{fileName}}</view>
     </view>
   </van-cell>
