@@ -116,7 +116,13 @@
     "pages/Supervision/SupervisionRecord/SupervisionRecordModifyOne/SupervisionRecordModifyOne",
     "pages/admin/admin",
     "pages/admin/modifyadmin/modifyadmin",
-    "pages/admin/printoneadmin/printoneadmin"
+    "pages/admin/printoneadmin/printoneadmin",
+    "pages/TestingInstitutionManagement/Certificate/CertificateAddOne/CertificateAddOne",
+    "pages/TestingInstitutionManagement/Certificate/CertificateGetOne/CertificateGetOne",
+    "pages/StaffManagement/StaffFile/StaffFile",
+    "pages/StaffManagement/StaffFile/PrintOneStaffFile/PrintOneStaffFile",
+    "pages/StaffManagement/StaffFile/AddOneStaffFile/AddOneStaffFile",
+    "pages/StaffManagement/StaffFile/ModifyOneStaffFile/ModifyOneStaffFile"
   ],
   "window": {
     "backgroundTextStyle": "light",

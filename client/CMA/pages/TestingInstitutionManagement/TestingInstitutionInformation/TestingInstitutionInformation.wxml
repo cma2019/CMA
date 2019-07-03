@@ -24,7 +24,7 @@
       <view>lebSocialCreditCode : {{lebSocialCreditCode}}</view>
       <view>competentDepartmentName : {{competentDepartmentName}}</view>
       <view>competentDepartmentAddress : {{competentDepartmentAddress}}</view>
-      <view>cdPeopelInCharge : {{cdPeopelInCharge}}</view>
+      <view>cdPeopleInCharge : {{cdPeopleInCharge}}</view>
       <view>cdPicPosition : {{cdPicPosition}}</view>
       <view>cdPicTelephone : {{cdPicTelephone}}</view>
       <view>characteristic : {{characteristic}}</view>
