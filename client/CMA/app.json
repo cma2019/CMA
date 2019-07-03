@@ -73,7 +73,6 @@
     "pages/CapacityVerification/CapacityVerificationRecord/getRecordByProjectId/getRecordByProjectId",
     "pages/CapacityVerification/CapacityVerificationRecord/modifyOneRecord/modifyOneRecord",
     "pages/CapacityVerification/CapacityVerificationRecord/CapacityVerificationRecord",
-    "pages/Supervision/SupervisionApprove/SupervisionApprove",
     "pages/Equipment/EquipmentMaintenance/EquipmentMaintenance",
     "pages/Equipment/EquipmentMaintenance/EquipmentMaintenanceAddOne/EquipmentMaintenanceAddOne",
     "pages/Equipment/EquipmentMaintenance/EquipmentMaintenanceGetOne/EquipmentMaintenanceGetOne",
