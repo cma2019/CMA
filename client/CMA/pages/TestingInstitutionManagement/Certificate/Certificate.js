@@ -7,11 +7,11 @@ Page({
    */
   data: {
     array: [{
-      "id": 1,
+      "fileId": 1,
       "fileName":"a.docx"
     },
     {
-      "id": 2,
+      "fileId": 2,
       "fileName":"b.docx"
     }]
   },
