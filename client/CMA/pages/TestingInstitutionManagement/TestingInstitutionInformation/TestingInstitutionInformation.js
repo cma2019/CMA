@@ -28,7 +28,7 @@ Page({
     "lebSocialCreditCode": "CMA",
     "competentDepartmentName": "CMA",
     "competentDepartmentAddress": "CMA",
-    "cdPeopelInCharge": "CMA",
+    "cdPeopleInCharge": "CMA",
     "cdPicPosition": "CMA",
     "cdPicTelephone": "CMA",
     "characteristic": "CMA",
@@ -38,7 +38,7 @@ Page({
     console.log("display -> view")
     var that = this
     wx.redirectTo({
-      url: '/pages/TestingInstitutionManagement/TestingInstitutionInformation/TestingInstitutionInformationModify/TestingInstitutionInformationModify?testingInstitutionName=' + that.data.testingInstitutionName + "&testingInstitutionAddress=" + that.data.testingInstitutionAddress + "&postcode=" + that.data.postcode + "&fax=" + that.data.fax + "&email=" + that.data.email + "&tiPeopleInCharge=" + that.data.tiPeopleInCharge + "&tiPicPosition=" + that.data.tiPicPosition + "&tiPicTelephone=" + that.data.tiPicTelephone + "&tiPicMobilephone=" + that.data.tiPicMobilephone + "&liaison=" + that.data.liaison + "&liaisonPosition=" + that.data.liaisonPosition + "&liaisonTelephone=" + that.data.liaisonTelephone + "&liaisonMobilephone=" + that.data.liaisonMobilephone + "&socialCreditCode=" + that.data.socialCreditCode + "&legalEntityBelongedName=" + that.data.legalEntityBelongedName + "&legalEntityBelongedAddress=" + that.data.legalEntityBelongedAddress + "&lebPeopelInCharge=" + that.data.lebPeopelInCharge + "&lebPicPosition=" + that.data.lebPicPosition + "&lebPicTelephone=" + that.data.lebPicTelephone + "&lebSocialCreditCode=" + that.data.lebSocialCreditCode + "&competentDepartmentName=" + that.data.competentDepartmentName + "&competentDepartmentAddress=" + that.data.competentDepartmentAddress + "&cdPeopelInCharge=" + that.data.cdPeopelInCharge + "&cdPicPosition=" + that.data.cdPicPosition + "&cdPicTelephone=" + that.data.cdPicTelephone + "&characteristic=" + that.data.characteristic + "&legalEntity=" + that.data.legalEntity,
+      url: '/pages/TestingInstitutionManagement/TestingInstitutionInformation/TestingInstitutionInformationModify/TestingInstitutionInformationModify?testingInstitutionName=' + that.data.testingInstitutionName + "&testingInstitutionAddress=" + that.data.testingInstitutionAddress + "&postcode=" + that.data.postcode + "&fax=" + that.data.fax + "&email=" + that.data.email + "&tiPeopleInCharge=" + that.data.tiPeopleInCharge + "&tiPicPosition=" + that.data.tiPicPosition + "&tiPicTelephone=" + that.data.tiPicTelephone + "&tiPicMobilephone=" + that.data.tiPicMobilephone + "&liaison=" + that.data.liaison + "&liaisonPosition=" + that.data.liaisonPosition + "&liaisonTelephone=" + that.data.liaisonTelephone + "&liaisonMobilephone=" + that.data.liaisonMobilephone + "&socialCreditCode=" + that.data.socialCreditCode + "&legalEntityBelongedName=" + that.data.legalEntityBelongedName + "&legalEntityBelongedAddress=" + that.data.legalEntityBelongedAddress + "&lebPeopelInCharge=" + that.data.lebPeopelInCharge + "&lebPicPosition=" + that.data.lebPicPosition + "&lebPicTelephone=" + that.data.lebPicTelephone + "&lebSocialCreditCode=" + that.data.lebSocialCreditCode + "&competentDepartmentName=" + that.data.competentDepartmentName + "&competentDepartmentAddress=" + that.data.competentDepartmentAddress + "&cdPeopleInCharge=" + that.data.cdPeopleInCharge + "&cdPicPosition=" + that.data.cdPicPosition + "&cdPicTelephone=" + that.data.cdPicTelephone + "&characteristic=" + that.data.characteristic + "&legalEntity=" + that.data.legalEntity,
     })
   },
 
@@ -73,7 +73,7 @@ Page({
         "lebSocialCreditCode": res.data.lebSocialCreditCode,
         "competentDepartmentName": res.data.competentDepartmentName,
         "competentDepartmentAddress": res.data.competentDepartmentAddress,
-        "cdPeopelInCharge": res.data.cdPeopelInCharge,
+        "cdPeopleInCharge": res.data.cdPeopleInCharge,
         "cdPicPosition": res.data.cdPicPosition,
         "cdPicTelephone": res.data.cdPicTelephone,
         "characteristic": res.data.characteristic,
@@ -123,7 +123,7 @@ Page({
         "lebSocialCreditCode": res.data.lebSocialCreditCode,
         "competentDepartmentName": res.data.competentDepartmentName,
         "competentDepartmentAddress": res.data.competentDepartmentAddress,
-        "cdPeopelInCharge": res.data.cdPeopelInCharge,
+        "cdPeopleInCharge": res.data.cdPeopleInCharge,
         "cdPicPosition": res.data.cdPicPosition,
         "cdPicTelephone": res.data.cdPicTelephone,
         "characteristic": res.data.characteristic,

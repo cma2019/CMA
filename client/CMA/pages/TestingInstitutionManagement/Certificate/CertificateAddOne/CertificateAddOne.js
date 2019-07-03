@@ -1,11 +1,38 @@
 // pages/TestingInstitutionManagement/Certificate/CertificateAddOne/CertificateAddOne.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    id: "test id",
+    fileName: "test.docx"
+  },
+  
+  newEquipment: function (e) {
+    console.log(e.detail.value)
+    var myurl = app.globalData.url + 'Certificate/addOne';
+    var mypath;
+    wx.chooseMessageFile({
+      count:1,
+      type:'file',
+      success:function(res){
+        console.log(res)
+        mypath = res.tempFilePaths
+      },
+      fail:function(err){
+        console.log(err)
+      }
+    })
+    app.wxUploadFile(myurl,mypath,null,(res) => {
+      console.log(res)
+    },(err) => {
+      console.log(err)
+    })
+    wx.redirectTo({
+      url: '/pages/TestingInstitutionManagement/Certificate/Certificate',
+    })
   },
 
   /**
