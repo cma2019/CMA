@@ -1,2 +1,16 @@
-<!--pages/admin/printoneadmin/printoneadmin.wxml-->
-<text>pages/admin/printoneadmin/printoneadmin.wxml</text>
+<!--pages/StaffManagement/PrintOneStaff/PrintOneStaff.wxml-->
+<view>
+  <van-cell-group title="{{username}}">
+  <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
+  <van-cell >
+      <view slot="title">
+        <view>{{item}}</view>
+      </view>
+  </van-cell>
+</view>
+  </van-cell-group>
+</view>
+ <van-button type="info" size="small" bindtap="ModifyStaff">Modify</van-button>
+ <van-button type="info" size="small" bindtap="goback">go back</van-button>
+
+

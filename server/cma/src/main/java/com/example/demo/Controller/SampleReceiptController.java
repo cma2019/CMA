@@ -54,17 +54,17 @@ public class SampleReceiptController {
         String msg="成功";
         JSONObject d=new JSONObject();
         System.out.println(data);
-        System.out.println("?");
         String idstr=(String)data.get("sampleId");
         System.out.println(idstr);
         String testtypestr=data.getString("testType");
         System.out.println(testtypestr);
-        String sofwwaretypestr=data.getString("softwareType");
+        String softwaretypestr=data.getString("softwareType");
+        System.out.println(softwaretypestr);
         String datestr=data.getString("receiveDate");
         try {
             Long.parseLong(idstr);
             Integer.parseInt(testtypestr);
-            Integer.parseInt(sofwwaretypestr);
+            Integer.parseInt(softwaretypestr);
         }catch (NumberFormatException e){
             code=513;
             msg="某项数据错误";
@@ -79,18 +79,24 @@ public class SampleReceiptController {
         String contractId=data.getString("contractId");
         int testType=Integer.parseInt(testtypestr);
         String electronicMedia=data.getString("electronicMedia");
-        int softwareType=Integer.parseInt(sofwwaretypestr);
+        int softwareType=Integer.parseInt(softwaretypestr);
         String receiveUnit=data.getString("receiveUnit");
         Date receiveDate= Date.valueOf(datestr);
         String sender=data.getString("sender");
         String receiver=data.getString("receiver");
         JSONArray list =data.getJSONArray("materialList");
+        System.out.println("?");
         if(idstr==""||applicationUnit==""||version==""||contractId==""||
-        testtypestr==""||electronicMedia==""||sofwwaretypestr==""||
+        testtypestr==""||electronicMedia==""||softwaretypestr==""||
         receiveUnit==""||datestr==""||sender==""||receiver=="")
         {
             code=511;
             msg="缺少请求参数";
+        }
+        else if(SampleReceiptRepository.findBySampleId(sampleId)!=null)
+        {
+            code =512;
+            msg="数据已存在";
         }
         else
         {
@@ -106,20 +112,23 @@ public class SampleReceiptController {
             s.setSender(sender);
             s.setReceiveUnit(receiveUnit);
             s.setReceiver(receiver);
-             StringBuilder index=new StringBuilder("000000000");
+            StringBuilder index=new StringBuilder();
+            index.append("000000000");
              for(int i=0;i<list.size();i++)
              {
                  JSONObject tmp = (JSONObject) list.get(i);
-                 System.out.println(tmp.getString("materialId"));
-                 System.out.println(tmp.getString("materialType"));
+                 System.out.println(list);
                  System.out.println(index);
-                 index.replace(Integer.parseInt(tmp.getString("materialId")) - 1, Integer.parseInt(tmp.getString("materialId")), tmp.getString(" materialType"));
+                 System.out.println(Integer.parseInt(tmp.getString("materialId")));
+                 System.out.println(tmp.getString("materialType"));
+                 index.replace(Integer.parseInt(tmp.getString("materialId")) - 1, Integer.parseInt(tmp.getString("materialId")), tmp.getString("materialType"));
                  if(i==list.size()-1)
                  {
                      s.setOthers(tmp.getString("materialName"));
                  }
              }
              String basems=index.toString();
+             s.setSoftwareSample(basems.charAt(7)-'0');
              s.setBaseMs(basems);
              SampleReceiptRepository.saveAndFlush(s);
         }
@@ -196,6 +205,11 @@ public class SampleReceiptController {
                     data.put("data",list);
                 }
             }
+            data.put("softwareType",s.getSoftwareType());
+            data.put("receiveUnit",s.getReceiveUnit());
+            data.put("receiveDate",s.getReceiveDate());
+            data.put("sender",s.getSender());
+            data.put("receiver",s.getReceiver());
         }
         json.put("code",code);
         json.put("msg",msg);
@@ -275,16 +289,24 @@ public class SampleReceiptController {
             s.setSender(sender);
             s.setReceiveUnit(receiveUnit);
             s.setReceiver(receiver);
-            int basems=0;
-            if(list!=null||list.size()!=0)
+            StringBuilder index=new StringBuilder();
+            index.append("000000000");
+            for(int i=0;i<list.size();i++)
             {
-                for(int i=0;i<list.size();i++)
+                JSONObject tmp = (JSONObject) list.get(i);
+                System.out.println(list);
+                System.out.println(index);
+                System.out.println(Integer.parseInt(tmp.getString("materialId")));
+                System.out.println(tmp.getString("materialType"));
+                index.replace(Integer.parseInt(tmp.getString("materialId")) - 1, Integer.parseInt(tmp.getString("materialId")), tmp.getString("materialType"));
+                if(i==list.size()-1)
                 {
-                    JSONObject tmp=(JSONObject)list.get(i);
-                    basems+=(int)(Integer.parseInt(tmp.getString("materialType"))*Math.pow(10,Integer.parseInt(tmp.getString("materialId"))));
+                    s.setOthers(tmp.getString("materialName"));
                 }
             }
-            s.setBaseMs(basems+"");
+            String basems=index.toString();
+            s.setSoftwareSample(basems.charAt(7)-'0');
+            s.setBaseMs(basems);
             SampleReceiptRepository.saveAndFlush(s);
     }
         js.put("code",code);

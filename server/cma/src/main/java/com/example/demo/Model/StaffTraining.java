@@ -6,12 +6,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.text.DateFormat;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 public class StaffTraining {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    private long recordId;
     private long trainingId;     //培训记录id
     private String program;      //培训名称
     private Date trainingDate;   //培训日期
@@ -21,6 +21,12 @@ public class StaffTraining {
     private String note;         //备注
     private String result;       //结果
 
+    private long id;
+
+
+    public void setTrainingId(long trainingId) {
+        this.trainingId = trainingId;
+    }
 
     public void setResult(String result) {
         this.result = result;
@@ -83,6 +89,13 @@ public class StaffTraining {
         this.trainingDate = trainingDate;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public boolean Equals(StaffTraining staffTraining){
         if(staffTraining.getContent().equals(this.content)&&staffTraining.getNote().equals(this.note)&&staffTraining.getPlace().equals(this.place)&&staffTraining.getPresenter()
