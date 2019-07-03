@@ -1,2 +1,3 @@
 <!--pages/user/user.wxml-->
 <text>user info</text>
+ <van-button type="info" size="small" bindtap="gotoAdd">1</van-button> 
