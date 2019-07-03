@@ -24,11 +24,10 @@ public class FileController {
      * @return response
      * 本地路径为String path="F:/img/upload/"（统一）
      */
-    public Response upload(@RequestParam("file") MultipartFile file, HttpServletRequest request) {
+    public Response upload(@RequestParam("file") MultipartFile file, HttpServletRequest request,String saveFileName) {
         Response response=new Response();
 
         if (!file.isEmpty()) {
-            String saveFileName = file.getOriginalFilename();
             String path="F:/img/upload/";
             File saveFile = new File(path + saveFileName);
             if (!saveFile.getParentFile().exists()) {
@@ -63,7 +62,7 @@ public class FileController {
     /**
      * 多文件上传
      *
-     * @param request
+     * @param
      * @return
      */
  /*  @PostMapping("/uploadFiles")
@@ -140,27 +139,33 @@ public class FileController {
                 }
             }
         }
+        System.out.println("成功");
         return null;
     }
     public void deletefile(String filename,String path){
+        System.out.println(path+filename);
         File file=new File(path+filename);
-        delete(file);
+        if(file.exists())
+            System.out.println("!!!!!!!!!!!!!!!!!");
+        deletef(file);
     }
-    public static void delete(File f)
-    {
-        File[] fi=f.listFiles();
-        for(File file:fi)
-        {
-            if(file.isDirectory())
-                delete(file);
-            else if(file.isFile())
-            {
-                String filename=file.getName();
-                if(filename.endsWith("class"))
-                {
-                    System.out.println("成功删除：："+file.getName());
-                }
+    private static void deletef(File file) {
+        if (file.isFile()) {// 表示该文件不是文件夹
+            file.delete();
+        } else {
+            // 首先得到当前的路径
+            String[] childFilePaths = file.list();
+            for (String childFilePath : childFilePaths) {
+                File childFile = new File(file.getAbsolutePath() + "/" + childFilePath);
+                deletef(childFile);
             }
+            file.delete();
         }
     }
+    public String  getsuffix(String fileName) {
+        String suffix = fileName.substring(fileName.lastIndexOf(".") + 1);
+        System.out.println(suffix);
+        return suffix;
+    }
+
 }

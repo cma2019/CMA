@@ -25,11 +25,12 @@ public class CertificateController {
     public Response addEquipment(@RequestParam("file") MultipartFile file, HttpServletRequest request){
         Certificate certificate=new Certificate();
         FileController fileController=new FileController();
-        certificate.setFileName(file.getOriginalFilename());
+        certificate.setFileName(certificate.getFileId()+".pdf");
         CRepository.save(certificate);
-        return fileController.upload(file,request);
+        certificate.setFileName(certificate.getFileId()+".pdf");
+        CRepository.save(certificate);
+        return fileController.upload(file,request,certificate.getFileName());
     }
-
     @RequestMapping(value="/getOne/{id}",method=RequestMethod.GET)
     @ResponseBody
     public Response getOne(@PathVariable("id") long id){
@@ -83,8 +84,8 @@ public class CertificateController {
                 throw new Exception("doesn't exist");
             Certificate temp=CRepository.findByFileId(id);
             String name=temp.getFileName();
-            fileController.deletefile(name,"F:/img/upload/");
             CRepository.deleteById(id);
+            fileController.deletefile(name,"F:/img/upload/");
             response.data=null;
             response.msg="成功";
             response.code=200;
@@ -96,7 +97,7 @@ public class CertificateController {
         }
         return response;
     }
-    @RequestMapping(value="/download/{id}",method = RequestMethod.POST)
+    @RequestMapping(value="/download/{id}",method = RequestMethod.GET)
     @ResponseBody
     public String downloadOne(@PathVariable("id") long id, HttpServletResponse response){
         FileController fileController=new FileController();
