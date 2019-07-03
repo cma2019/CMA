@@ -114,7 +114,9 @@
     "pages/Supervision/SupervisionRecord/SupervisionRecordGetOne/SupervisionRecordGetOne",
     "pages/Supervision/SupervisionRecord/SupervisonRecordAddOne/SupervisionRecordAddOne",
     "pages/Supervision/SupervisionRecord/SupervisionRecordModifyOne/SupervisionRecordModifyOne",
-    "pages/admin/admin"
+    "pages/admin/admin",
+    "pages/admin/modifyadmin/modifyadmin",
+    "pages/admin/printoneadmin/printoneadmin"
   ],
   "window": {
     "backgroundTextStyle": "light",
