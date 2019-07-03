@@ -1,0 +1,22 @@
+<!--pages/SampleManagement/SampleReceipt/receiptModifyOne/receiptTypeModify.wxml-->
+<view>
+ <form bindsubmit='materialList_modifyone'>
+    <van-cell-group title="materialList_modifyone">
+      <view wx:for="{{materialList}}"wx:key="{{index}}">
+        <van-cell title="{{array[index]}}" required >
+          <view class="cart-count-box">
+            <text class="cart-count-down" bindtap="minusCount" data-index="{{index}}">-</text>
+            <text class="cart-count-num">{{item.materialType}}</text>
+            <text class="cart-count-add" bindtap="addCount" data-index="{{index}}">+</text>
+          </view>
+          <view wx:if="{{index==8 && item.materialType != 0}}">
+            <input  bindinput="bindmaterialName" placeholder="材料名" />
+          </view>
+        </van-cell>
+      </view>
+    </van-cell-group>
+    <view>
+      <button class="van-button--info" formType="submit">完成</button>
+    </view>
+  </form>
+</view>
