@@ -11,7 +11,7 @@ Page({
   mydelete: function (e) {
     var that = this
     var myurl = app.globalData.url + 'QualityManual/deleteOne/' + that.data.manual.id;
-    app.wxRequest(myurl, 'POST', null, (res) => {
+    app.wxRequest(myurl, 'GET', null, (res) => {
       console.log(res)
     }, (err) => {
       console.log(err)
@@ -22,7 +22,7 @@ Page({
   },
   mydownload:function(e){
     var that = this
-    var myurl = app.globalData.url + 'QualityManual/getFileById/' + that.data.manual.fileId;
+    var myurl = app.globalData.url + 'QualityManual/getFileById/' + that.data.manual.id;
     var myFilePath
     app.wxDownloadFile(myurl, (res) => {
       console.log(res)

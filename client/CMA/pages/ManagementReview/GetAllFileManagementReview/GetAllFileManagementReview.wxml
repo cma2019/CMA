@@ -1,2 +1,16 @@
-<!--pages/ManagementReview/GetAllFileManagementReview/GetAllFileManagementReview.wxml-->
-<text>pages/ManagementReview/GetAllFileManagementReview/GetAllFileManagementReview.wxml</text>
+ <!--pages/StaffManagement/StaffManagement.wxml-->
+<view>
+  <van-cell-group title="ManagementReview">
+  <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
+  <van-cell value="详情" bindtap='gotoOne' id='{{item.fileId}}' is-link>
+      <view slot="title">
+        <view>year : {{item.year}}</view>
+        <view>fileId : {{item.fileId}}</view>
+        <view>fileName : {{item.fileName}}</view>
+        <view>file : {{item.file}}</view>
+      </view>
+  </van-cell>
+</view>
+  </van-cell-group>
+</view>
+    <van-button type="info" size="small" bindtap="gotoAdd">Add</van-button>

@@ -14,4 +14,5 @@
     </view>
   </van-cell>
   <van-button type="info" size="small" bindtap="myapprove">Approve</van-button>
+  <van-button type="info" size="small" bindtap="myreject">Reject</van-button>
 </scroll-view>

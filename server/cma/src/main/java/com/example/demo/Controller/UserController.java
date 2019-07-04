@@ -27,8 +27,8 @@ public class UserController {
 
     private String tempCode;
     private String tempUserName;
-    String tempData1="12345";
-    Aes aes=new Aes();
+    //String tempData1="12345";
+    Aes aes;
     //private String userKey;
     @PostMapping(path = "/add")
     public @ResponseBody JSONObject addUser(/*@RequestParam(value = "username", required = false) String username, */
@@ -49,8 +49,6 @@ public class UserController {
 
 
         //aes.changeKey(tempCode);
-        String secretData3=aes.encrypt(tempData1);
-        System.out.println("add换密码后:"+secretData3);
 
 
         String tempData=aes.decrypt(data);
@@ -85,8 +83,67 @@ public class UserController {
         json.put("permission", user.getPermission());
         return json;
     }
+
+
+    //lyt add
+    @PostMapping(path = "/logingetCode")
+    public @ResponseBody JSONObject logingetCode(@RequestParam(value = "username", required = false) String username) {
+        JSONObject json = new JSONObject();
+        if (userRepository.findByUsername(username) == null) {
+            json.put("code", 210);
+            json.put("msg", "不存在的用户");
+            return json;
+        }
+        System.out.println("login Code in");
+        aes=new Aes();
+        tempCode=aes.encrypt(username);
+        tempCode=tempCode.substring(0,16);
+
+        aes.changeKey(tempCode);
+
+
+
+        json.put("code",200);
+        json.put("msg","Roger");
+        tempUserName=username;
+        System.out.println("username:"+username);
+        System.out.println("新密钥:"+tempCode);
+        return json;
+    }
+
+    @GetMapping(path="/login")
+    public @ResponseBody JSONObject login(@RequestParam(value = "data", required = false) String data){
+        JSONObject json=new JSONObject();
+        User u=new User();
+        String username=tempUserName;
+        String tempData=aes.decrypt(data);
+        System.out.println("解密后:"+tempData);
+        JSONObject obj=JSONObject.parseObject(tempData);
+        String password=obj.getString("password");
+        if(userRepository.findByUsername(username)==null)
+        {
+            json.put("code",210);
+            json.put("msg","不存在的用户");
+        }
+        else{
+            u=userRepository.findByUsername(username);
+            if(u.login(password)==true)
+            {
+                json.put("code",200);
+                json.put("msg","登录成功");
+            }
+            else
+            {
+                json.put("code",210);
+                json.put("msg","密码错误");
+            }
+        }
+        return json;
+    }
+
     @GetMapping(path="/find")
-    public @ResponseBody JSONObject findUser(@RequestParam(value = "username", required = false) String username,@RequestParam(value = "password", required = false) String password){
+    public @ResponseBody JSONObject findUser(@RequestParam(value = "username", required = false) String username,
+                                             @RequestParam(value = "password", required = false) String password){
         JSONObject json=new JSONObject();
         User u=new User();
         if(userRepository.findByUsername(username)==null)
@@ -120,15 +177,12 @@ public class UserController {
             return json;
         }
         System.out.println("get Code in");
-        //Aes aes=new Aes();
+        aes=new Aes();
         tempCode=aes.encrypt(username);
         tempCode=tempCode.substring(0,16);
 
-        String secretData1=aes.encrypt(tempData1);
-        System.out.println("换密码前:"+secretData1);
         aes.changeKey(tempCode);
-        String secretData2=aes.encrypt(tempData1);
-        System.out.println("换密码后:"+secretData2);
+
 
 
         json.put("code",200);

@@ -10,8 +10,28 @@ Page({
   },
   myapprove:function(e){
     var that = this
-    var myurl = app.globalData.url + 'QualityManual/approve/' + that.data.manual.id;
-    app.wxRequest(myurl, 'POST', null, (res) => {
+    var mydata = {
+      id: that.data.manual.id,
+      state: 2
+    }
+    var myurl = app.globalData.url + 'QualityManual/approve'
+    app.wxRequest(myurl, 'POST', mydata, (res) => {
+      console.log(res)
+    }, (err) => {
+      console.log(err)
+    })
+    wx.redirectTo({
+      url: '/pages/QualityManual/QualityManualApprove/QualityManualApprove',
+    })
+  },
+  myreject: function (e) {
+    var that = this
+    var mydata = {
+      id: that.data.manual.id,
+      state: 1
+    }
+    var myurl = app.globalData.url + 'QualityManual/approve'
+    app.wxRequest(myurl, 'POST', mydata, (res) => {
       console.log(res)
     }, (err) => {
       console.log(err)
