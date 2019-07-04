@@ -33,32 +33,32 @@ Page({
       "modifier": e.detail.value.modifier,
       "modifyContent": e.detail.value.modifyContent,
     };
-    wx.chooseMessageFile({
-      count: 1,
-      type: 'all',
-      success: function (res) {
-        console.log("get file success")
-        console.log(res)
-        mypath = res.tempFiles[0].path
-        app.wxUploadFile(myurl2, mypath, null, (res) => {
-          console.log("upload file success")
+    app.wxRequest(myurl1,'POST',mydata,(res) => {
+      console.log(res)
+      wx.chooseMessageFile({
+        count: 1,
+        type: 'all',
+        success: function (res) {
+          console.log("get file success")
           console.log(res)
-          app.wxRequest(myurl1,'POST',mydata,(res) => {
+          var mypath = res.tempFiles[0].path
+          app.wxUploadFile(myurl2, mypath, null, (res) => {
+            console.log("upload file success")
             console.log(res)
-          },(err) => {
+            wx.redirectTo({
+              url: '/pages/QualityManual/QualityManual/QualityManual',
+            })
+          }, (err) => {
             console.log(err)
           })
-        }, (err) => {
+        },
+        fail: function (err) {
+          console.log("get file failed")
           console.log(err)
-        })
-        wx.redirectTo({
-          url: '/pages/TestingInstitutionManagement/Certificate/Certificate',
-        })
-      },
-      fail: function (err) {
-        console.log("get file failed")
-        console.log(err)
-      }
+        }
+      })
+    },(err) => {
+      console.log(err)
     })
   },
   /**
