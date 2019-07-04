@@ -10,7 +10,7 @@ Page({
   },
   gotoAdd: function (e) {
     wx.redirectTo({
-      url: '/pages/TestingInstitutionManagement/Certificate/CertificateAddOne/CertificateAddOne',
+      url: '/pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocumentAddOne/SelfInspectionDocumentAddOne',
     })
   },
 

@@ -1,8 +1,14 @@
-<!--pages/TestingInstitutionManagement/Certificate/CertificateAddOne/CertificateAddOne.wxml-->
-<scroll-view scroll-y>
-  <form bindsubmit='newEquipment'>
+<view>
+ <form bindsubmit='SelfInspectionAddOne'>
+    <van-cell-group title="SelfInspectionAddOne">
+      <van-field v-model="id" name="id" required clearable label="自查编号" placeholder="请输入自查编号" />
+
+      <van-field v-model="fileName"  name="fileName" required clearable label="文档名称" placeholder="请输入文档名称"/>
+
+    </van-cell-group>
     <view>
-      <button class='van-button--info' formType='submit'>new equipment use</button>
+      <button class="van-button--info" formType="submit">完成</button>
     </view>
   </form>
-</scroll-view>
+</view>
+<button class="van-button--info" bindtap="goback">取消</button>
