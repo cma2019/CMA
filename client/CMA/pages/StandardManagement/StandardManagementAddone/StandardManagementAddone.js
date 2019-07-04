@@ -24,12 +24,17 @@ Page({
         app.wxUploadFile(myurl, mypath, null, (res) => {
           console.log("upload file success")
           console.log(res)
+          wx.navigateBack({
+            delta: 1
+          })
         }, (err) => {
           console.log(err)
         })
+        /*
         wx.redirectTo({
           url: '/pages/StandardManagement/StandardManagement',
         })
+        */
       },
       fail: function (err) {
         console.log("get file failed")

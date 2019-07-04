@@ -4,7 +4,7 @@ Page({
   data: {
     "year": null,
     "fileId": null,
-    "fileName": null
+    //"fileName": null
   },
 
   newEquipment: function (e) {
@@ -13,7 +13,7 @@ Page({
     var myurl2 = app.globalData.url + 'ManagementReview/addOneFile';
     var mydata = {
       "year": e.detail.value.year,
-      "fileName":e.detail.value.fileName
+      //"fileName":e.detail.value.fileName
     };
     wx.chooseMessageFile({
       count: 1,
@@ -38,14 +38,16 @@ Page({
           console.log(err)
         })
         wx.redirectTo({
-          url: '/pages/TestingInstitutionManagement/Certificate/Certificate',
+          url: '../GetAllFileManagementReview/GetAllFileManagementReview?id=' + e.detail.value.year,
         })
       },
       fail: function (err) {
         console.log("get file failed")
         console.log(err)
       }
+      
     })
+    
   },
   onLoad: function (options) {
     this.setData({

@@ -1,4 +1,4 @@
-// pages/TestingInstitutionManagement/Certificate/CertificateGetOne/CertificateGetOne.js
+// pages/QualityManual/QualityManual/QualityManualGetOne/QualityManualGetOne.js
 const app = getApp()
 Page({
 
@@ -6,25 +6,23 @@ Page({
    * 页面的初始数据
    */
   data: {
-    fileId: "test ID",
-    fileName: "test.docx"
+    manual: {}
   },
   mydelete: function (e) {
     var that = this
-    var myurl = app.globalData.url + 'Certificate/deleteOne/' + that.data.fileId;
-    console.log(that.data.fileId);
-    app.wxRequest(myurl, 'POST', null, (res) => {
+    var myurl = app.globalData.url + 'QualityManual/deleteOne/' + that.data.manual.id;
+    app.wxRequest(myurl, 'GET', null, (res) => {
       console.log(res)
     }, (err) => {
       console.log(err)
     })
     wx.redirectTo({
-      url: '/pages/TestingInstitutionManagement/Certificate/Certificate',
+      url: '/pages/QualityManual/QualityManual/QualityManual',
     })
   },
   mydownload: function (e) {
     var that = this
-    var myurl = app.globalData.url + 'Certificate/download/' + that.data.fileId;
+    var myurl = app.globalData.url + 'QualityManual/getFileById/' + that.data.manual.id;
     var myFilePath
     app.wxDownloadFile(myurl, (res) => {
       console.log(res)
@@ -50,8 +48,7 @@ Page({
     var that = this;
     console.log(option)
     that.setData({
-      fileId: option.fileId,
-      fileName: option.fileName
+      manual: option
     })
   },
 

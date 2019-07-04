@@ -3,6 +3,7 @@ package com.example.demo.Controller;
 import com.example.demo.FileControl.FileController;
 import com.example.demo.Model.ManagementFile;
 import com.example.demo.Model.ManagementReview;
+import com.example.demo.Model.qsm;
 import com.example.demo.Repository.ManagementFileRepository;
 import com.example.demo.Repository.ManagementReviewRepository;
 import com.example.demo.framework.Response;
@@ -27,8 +28,6 @@ public class ManagementReviewController {
     private ManagementReviewRepository managementReviewRepository;
     @Autowired
     private ManagementFileRepository managementFileRepository;
-    private MultipartFile mfile;
-    private HttpServletRequest mrequest;
 
     @GetMapping(path = "getAll")
     public @ResponseBody
@@ -101,16 +100,19 @@ public class ManagementReviewController {
         return json;
     }
     @PostMapping(path = "addFileData")
-    public @ResponseBody Response addOneFile(@RequestParam(value = "year",required = false)long year,@RequestParam(value = "fileName",required = false)String fileName){
+    public @ResponseBody JSONObject addOneFile(@RequestParam(value = "year",required = false)long year,@RequestParam(value = "fileName",required = false)String fileName){
         //JSONObject json=new JSONObject();
-        List<ManagementFile> list=managementFileRepository.findAllByYear(year);
+        JSONObject json=new JSONObject();
+        //List<ManagementFile> list=managementFileRepository.findAllByYear(year);
         ManagementFile managementFile=new ManagementFile();
         managementFile.setYear(year);
         managementFile.setFileName(fileName);
-        FileController fileController=new FileController();
-        managementFile.setFile(fileName+".doc");
+        managementFile.setFlag((byte) 1);
         managementFileRepository.save(managementFile);
-        return fileController.upload(mfile,mrequest,managementFile.getFileName(),managementFile.getDir());
+        json.put("code",200);
+        json.put("msg","成功");
+        json.put("data",null);
+        return json;
     }
     @GetMapping(path = "getOne")
     public  @ResponseBody JSONObject getOne(@RequestParam(value = "fileId",required = false)long fileId){
@@ -129,17 +131,28 @@ public class ManagementReviewController {
         return json;
     }
     @PostMapping(path = "addOneFile")
-    public @ResponseBody void UpLoad(@RequestParam("file") MultipartFile file, HttpServletRequest request){
-        mfile=file;
-        mrequest=request;
+    public @ResponseBody Response UpLoad(@RequestParam("file") MultipartFile file, HttpServletRequest request){
+        ManagementFile managementFile=managementFileRepository.findByFlag((byte) 1);
+        FileController fileController=new FileController();
+        managementFile.setFile(managementFile.getFileName());
+        managementFile.setFlag((byte) 0);
+        managementFileRepository.save(managementFile);
+        return  fileController.upload(file,request,managementFile.getFile(),managementFile.getDir());
     }
     @PostMapping(path = "modifyOneFile")
-    public @ResponseBody Response modifyOneFile(@RequestParam(value = "fileId",required = false)long fileId){
+    public @ResponseBody JSONObject modifyOneFile(@RequestParam(value = "fileId",required = false)long fileId){
+        JSONObject json=new JSONObject();
         FileController fileController=new FileController();
         ManagementFile managementFile=managementFileRepository.findByFileId(fileId);
         String name=managementFile.getFileName();
+        managementFile.setFlag((byte) 1);
         fileController.deletefile(name, managementFile.getDir());
-        return fileController.upload(mfile,mrequest,managementFile.getFileName(),managementFile.getDir());
+        managementFileRepository.save(managementFile);
+        json.put("code",200);
+        json.put("msg","成功");
+        json.put("data",null);
+        return json;
+        //return fileController.upload(file,request,managementFile.getFileName(),managementFile.getDir());
     }
     @PostMapping(path = "deleteOneFile")
     public @ResponseBody JSONObject deleteOneFile(@RequestParam(value = "fileId",required = false)long fileId){
