@@ -135,6 +135,7 @@ public class SelfInspectionController {
     public JSONObject addOneFormData(@RequestParam(value = "fileName",required = false) String fileName,
                                      @RequestParam(value = "id",required = false) String id){
         JSONObject js=new JSONObject();
+        System.out.println(fileName);
         sDoc.setFileName(fileName);
         sDoc.setId(Long.parseLong(id));
         SelfInspectionDocumentRepository.save(sDoc);
@@ -146,7 +147,8 @@ public class SelfInspectionController {
     @PostMapping(path = "/addOneFile")
     public @ResponseBody Response addOneFile(@RequestParam("file") MultipartFile file, HttpServletRequest request){
         FileController fileController=new FileController();
-        return  fileController.upload(file,request,sDoc.getFileName(),sDoc.getDir());
+        System.out.println(file.getContentType());
+        return  fileController.upload(file,request,sDoc.getFileName()+".pdf",sDoc.getDir());
     }
     /*
     @PostMapping(path = "/modifyOneFile")
@@ -171,3 +173,4 @@ public class SelfInspectionController {
 
     }*/
 }
+//select * from self_inspection_document;
