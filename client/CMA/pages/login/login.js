@@ -1,4 +1,5 @@
 const app = getApp()
+const CryptoJS = require("../../utils/cryptojs.js")
 Page({
 
   data: {
@@ -11,7 +12,7 @@ Page({
   onShow: function (options) {
 
   },
-  
+  /*
   ApplicationAdd: function (e) {
     {
       //console.log(res)
@@ -50,13 +51,13 @@ Page({
     }
 
   },
-  
+*/  
   goback: function () {
     wx.navigateTo({
       url: '/pages/register/register',
     })
   },
-/*
+
   fun1: function (e) {
     let codeurl = app.globalData.url + 'user/logingetCode'
     console.log("wx login")
@@ -97,7 +98,7 @@ Page({
 
   fun2: function (e) {
     console.log("wx login end")
-    let url = app.globalData.url + 'user/find'
+    let url = app.globalData.url + 'user/login'
 
 
     var data3 = CryptoJS.Encrypt(CryptoJS.username)
@@ -149,5 +150,5 @@ Page({
     }
     //this.fun1(e)
   }
-*/
+
 })
