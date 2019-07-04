@@ -88,11 +88,31 @@ Page({
   },
 
   DownloadStaff(e) {
-    console.log(e)
-    let target = this.data.id
-    console.log(target)
-    wx.navigateTo({
-      url: '../ModifyAnnualTrainingPlan/ModifyAnnualTrainingPlan?id=' + target
+    //var that = this
+    var myurl = app.globalData.url + 'ManagementReview/downloadFile/' + this.data.id;
+    var myFilePath
+    app.wxDownloadFile(myurl, (res) => {
+      console.log("download one now")
+      console.log(res)
+      wx.saveFile({
+        tempFilePath: res.tempFilePath,
+        success: function (res) {
+          console.log("download now")
+          console.log(res)
+          myFilePath = res.savedFilePath
+          console.log(myFilePath)
+          wx.showToast({
+            title: '下载成功!',
+            icon:'success',
+            duration:2000
+          })
+        },
+        fail: function (err) {
+          console.log(err)
+        }
+      })
+    }, (err) => {
+      console.log(err)
     })
   },
   DeleteStaff(e) {
