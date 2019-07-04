@@ -147,7 +147,12 @@
     "pages/ManagementReview/UploadFile/UploadFile",
     "pages/ManagementReview/PrintOneFile/PrintOneFile",
     "pages/StaffManagement/StaffTraining/AddOneStaffTraining/AddOneStaffTraining",
-    "pages/StaffManagement/StaffTraining/GetTrainingPeople/GetTrainingPeople"
+    "pages/StaffManagement/StaffTraining/GetTrainingPeople/GetTrainingPeople",
+    "pages/StaffManagement/StaffTraining/AddTrainingPeople/AddTrainingPeople",
+    "pages/StaffManagement/StaffTraining/GetOneTraining/GetOneTraining",
+    "pages/StaffManagement/StaffTraining/AddTrainingResult/AddTrainingResult",
+    "pages/StaffManagement/StaffTraining/ModifyOneTraining/ModifyOneTraining",
+    "pages/StaffManagement/StaffTraining/ModifyTrainingResult/ModifyTrainingResult"
   ],
   "window": {
     "backgroundTextStyle": "light",
