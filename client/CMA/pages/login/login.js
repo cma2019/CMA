@@ -31,10 +31,7 @@ Page({
         console.log(res.code)
         if (res.code == 200) {
           
-          wx.setStorage({
-            key: "key",
-            data: e.detail.value.username
-          })
+          app.globalData.username1=e.detail.value.username
           wx.switchTab({
             url: '../home/home',
           })
