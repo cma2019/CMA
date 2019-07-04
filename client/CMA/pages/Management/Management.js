@@ -150,5 +150,10 @@ Page({
     wx.navigateTo({
       url: '../admin/admin',
     })
+  },
+  gotoManagementReview: function () {
+    wx.navigateTo({
+      url: '../ManagementReview/ManagementReview',
+    })
   }
 })

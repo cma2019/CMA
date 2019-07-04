@@ -1,66 +1,57 @@
-// pages/ManagementReview/AddOneManagementReview/AddOneManagementReview.js
+const app = getApp()
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
 
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
 
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+  onShow: function (options) {
 
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  bindDateChange(e) {
+    this.setData({
+      date: e.detail.value
+    })
   },
+  StaffAdd: function (e) {
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+    if (e.detail.value.year == "" ||
+      e.detail.value.date == "") {
+      wx.showToast({
+        title: '错误(空白输入)',
+        icon: 'none',
+        duration: 2000
+      })
+      console.log('错误(空白输入)')
+    }
+    else {
+      console.log('form发生了add事件，携带数据为：', e.detail.value)
+      let url = app.globalData.url + 'ManagementReview/addOne'
+      let data = {
+        "year": e.detail.value.year,  
+        "date": e.detail.value.date
+      }
+      console.log(url)
+      console.log(data)
+      app.wxRequest(url, 'POST', data, (res) => {
+        console.log('send intermediate check message successfully')
+        console.log(res)
+        console.log(res.msg)
+        console.log(res.code)
+        wx.redirectTo({
+          url: '../ManagementReview',
+        })
+      }, (err) => {
+        console.log('fail intermediate check register')
+      })
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  goback: function () {
+    wx.navigateBack({
+      delta: 1
+    })
   }
 })
