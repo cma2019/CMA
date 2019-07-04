@@ -13,11 +13,20 @@ public class ManagementFile {
     private long year;
     private String fileName;
     private String file;
+    private Byte flag;
 
     private String dir="managementFile";
 
     public String getDir() {
         return dir;
+    }
+
+    public Byte getFlag() {
+        return flag;
+    }
+
+    public void setFlag(Byte flag) {
+        this.flag = flag;
     }
 
     public void setYear(long year) {
