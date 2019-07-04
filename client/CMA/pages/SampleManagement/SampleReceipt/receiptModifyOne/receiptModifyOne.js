@@ -18,12 +18,14 @@ Page({
       { "materialId": 9, "materialType": 0, "materialName": null },
     ],
     flag: 0,
-    sampleId:''
+    sampleId:'',
+    "origindata": {}
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
     this.setData({
       sampleId: options.id
     })
@@ -35,8 +37,41 @@ Page({
     })
   },
   SampleReceipt_modifyone: function (e) {
-    let receipttmp = e.detail.value
     var that = this
+    var mod = this.data.origindata
+    console.log(mod)
+    console.log(this.data)
+    console.log('SampleReceipt发生了modifyone事件，携带数据为：', e.detail.value)
+    if (e.detail.value.applicationUnit != null && e.detail.value.applicationUnit != "") {
+      mod.applicationUnit = e.detail.value.applicationUnit
+    }
+    if (e.detail.value.version != null) {
+      mod.version = e.detail.value.version
+    }
+    if (e.detail.value.contractId != null) {
+      mod.contractId = e.detail.value.contractId
+    }
+    if (e.detail.value.testType != null) {
+      mod.testType = e.detail.value.testType
+    }
+    if (e.detail.value.electronicMedia != null) {
+      mod.electronicMedia = e.detail.value.electronicMedia
+    }
+    if (e.detail.value.softwareType != null) {
+      mod.softwareType = e.detail.value.softwareType
+    }
+    if (e.detail.value.receiveUnit != null) {
+      mod.receiveUnit = e.detail.value.receiveUnit
+    }
+    if (e.detail.value.receiveDate != null&& e.detail.value.receiveDate != "") {
+      mod.receiveDate = e.detail.value.receiveDate
+    }
+    if (e.detail.value.sender != null) {
+      mod.sender = e.detail.value.sender
+    }
+    if (e.detail.value.receiver != null) {
+      mod.receiver = e.detail.value.receiver
+    }
     wx.getStorage({
       key: 'materialListModifyinfo',
       success: function (res) {
@@ -54,18 +89,18 @@ Page({
         })
       }
     }),
-    console.log('SampleReceipt发生了modifyone事件，携带数据为：', e.detail.value)
     console.log("lkokokko")
-    console.log(this.data.materialList)
+    console.log(this.data)
     let materialList = this.data.materialList
     var newmaterialList = []
     for (let i = 0; i < 9; ++i) {
-      if (materialList[i].materialType != 0) {
-        newmaterialList.push(materialList[i])
-      }
+      newmaterialList.push(materialList[i])
     }
     console.log(newmaterialList)
-
+    console.log("4564569999999")
+    let sampleId = this.data.sampleId
+    console.log(mod)
+    console.log(sampleId)
     wx.request({
       url: app.globalData.url + 'SampleReceipt/modifyOne',
       method: 'POST',
@@ -74,18 +109,18 @@ Page({
         'Accept': 'application/json'
       },
       data: {
-        "sampleId": this.data.sampleId,
-        "applicationUnit": e.detail.value.applicationUnit,
-        "version": e.detail.value.version,
-        "contractId": e.detail.value.contractId,
-        "testType": e.detail.value.testType,
-        "electronicMedia": e.detail.value.electronicMedia,
+        "sampleId": sampleId,
+        "applicationUnit": mod.applicationUnit,
+        "version": mod.version,
+        "contractId": mod.contractId,
+        "testType": mod.testType,
+        "electronicMedia": mod.electronicMedia,
         "materialList": newmaterialList,
-        "softwareType": e.detail.value.softwareType,
-        "receiveUnit": e.detail.value.receiveUnit,
-        "receiveDate": e.detail.value.receiveDate,
-        "sender": e.detail.value.sender,
-        "receiver": e.detail.value.receiver
+        "softwareType": mod.softwareType,
+        "receiveUnit": mod.receiveUnit,
+        "receiveDate": mod.receiveDate,
+        "sender": mod.sender,
+        "receiver": mod.receiver
       },
       success(res) {
         console.log(res.data)
@@ -152,7 +187,17 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function (options) {
-
+    var that = this
+    wx.getStorage({
+      key: 'receiptGetOneinfo',
+      success: function (res) {
+        console.log("fdsgfgdhjkgh")
+        console.log(res)
+        that.setData({
+          'origindata': res.data
+        })
+      }
+    })
   },
 
   /**

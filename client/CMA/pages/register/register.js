@@ -99,6 +99,7 @@ Page({
 
   ApplicationAdd: function (e) {
       console.log('form发生了add事件，携带数据为：', e.detail.value)
+      
       if (CryptoJS.SetKey("123456789abcdef1")) {
         console.log("usercode")
         console.log(CryptoJS.key)

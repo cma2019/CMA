@@ -11,7 +11,7 @@
   </van-cell-group>
   <van-cell-group title="Quality Manual History">
   <view wx:for="{{array}}" data-id="{{item.id}}" data-fileId="{{item.fileId}}" data-fileName="{{item.fileName}}" data-state="{{item.state}}" data-current="{{item.current}}" data-modifyTime="{{item.modifyTime}}" data-modifier="{{item.modifier}}"  data-modifyContent="{{item.modifyContent}}">
-    <van-cell value="详情" is-link url='/pages/QualityManual/QualityManual/QualityManualGetOne/QualityManualGetOne?id={{current.id}}&fileId={{current.fileId}}&fileName={{current.fileName}}&state={{current.state}}&current={{current.current}}&modifyTime={{current.modifyTime}}&modifier={{current.modifier}}&modifyContent={{current.modifyContent}}' link-type='redirectTo'>
+    <van-cell value="详情" is-link url='/pages/QualityManual/QualityManual/QualityManualGetOne/QualityManualGetOne?id={{item.id}}&fileId={{item.fileId}}&fileName={{item.fileName}}&state={{item.state}}&current={{item.current}}&modifyTime={{item.modifyTime}}&modifier={{item.modifier}}&modifyContent={{item.modifyContent}}' link-type='redirectTo'>
       <view slot="title">
         <view>id : {{item.id}}</view>
         <view>fileId : {{item.fileId}}</view>

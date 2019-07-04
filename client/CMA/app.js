@@ -5,8 +5,8 @@ App({
 
   globalData: {
     userInfo: null,
-    url: 'http://192.168.1.105:8004/cma/',
-    username1: "admin"
+    url: 'http://192.168.1.108:8004/cma/',
+    username1 : "admin"
   },
 
   wxRequest(url, method, data, callback, errfun) {
