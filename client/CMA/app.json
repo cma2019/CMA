@@ -6,6 +6,7 @@
     "pages/register/register","pages/IntermediateCheck/IntermediateCheckMenu/IntermediateCheckMenu",
     "pages/index/index",
     "pages/logs/logs",
+    "pages/admin/admin",
     "pages/IntermediateCheck/IntermediateCheck/IntermediateCheck",
     "pages/IntermediateCheck/IntermediateCheck/IntermediateCheckAddone/IntermediateCheckAddone",
     "pages/IntermediateCheck/IntermediateCheck/IntermediateCheckGetone/IntermediateCheckGetone",

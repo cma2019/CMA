@@ -71,6 +71,8 @@ Page({
       wx.saveFile({
         tempFilePath: res.tempFilePath,
         success: function (res) {
+          console.log("download now")
+          console.log(res)
           myFilePath = res.savedFilePath
           console.log(myFilePath)
         },
