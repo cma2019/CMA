@@ -6,7 +6,6 @@
       <view>fileId : {{manual.fileId}}</view>
       <view>fileName : {{manual.fileName}}</view>
       <view>state : {{manual.state}}</view>
-      <view>closeDate : {{manual.closeDate}}</view>
       <view>current : {{manual.current}}</view>
       <view>modifyTime : {{manual.modifyTime}}</view>
       <view>modifier : {{manual.modifier}}</view>
