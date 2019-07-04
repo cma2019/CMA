@@ -133,7 +133,12 @@
     "pages/ManagementReview/AddOneFile/AddOneFile",
     "pages/ManagementReview/ModifyOneFile/ModifyOneFile",
     "pages/ManagementReview/DeleteOneFile/DeleteOneFile",
-    "pages/ManagementReview/DownloadFile/DownloadFile"
+    "pages/ManagementReview/DownloadFile/DownloadFile",
+    "pages/SelfInspection/SelfInspection/SelfInspection",
+    "pages/SelfInspection/SelfInspection/SelfInspectionAddOne/SelfInspectionAddOne",
+    "pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocument",
+    "pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocumentAddOne/SelfInspectionDocumentAddOne",
+    "pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocumentModifyOne/SelfInspectionDocumentModifyOne"
   ],
   "window": {
     "backgroundTextStyle": "light",
