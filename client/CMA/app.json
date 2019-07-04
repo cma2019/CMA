@@ -123,7 +123,7 @@
     "pages/QualityManual/QualityManual/QualityManual",
     "pages/QualityManual/QualityManual/QualityManualAddOne/QualityManualAddOne",
     "pages/QualityManual/QualityManual/QualityManualGetOne/QualityManualGetOne",
-    "pages/QualityManual/QualityManual/QualityManualModify/QualityManualModify",
+    
     "pages/QualityManual/QualityManualApprove/QualityManualApprove",
     "pages/QualityManual/QualityManualApprove/QualityManualApproveGetOne/QualityManualApproveGetOne",
     "pages/StaffManagement/StaffTraining/StaffTraining",
