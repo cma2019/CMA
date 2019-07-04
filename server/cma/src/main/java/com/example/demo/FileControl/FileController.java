@@ -28,7 +28,6 @@ public class FileController {
     String path="E:/CMA/FileSystem/";
     public Response upload(@RequestParam("file") MultipartFile file, HttpServletRequest request,String saveFileName,String dir) {
         Response response=new Response();
-
         if (!file.isEmpty()) {
             String filepath=path+dir+"/";
             File saveFile = new File(filepath + saveFileName);
@@ -100,11 +99,14 @@ public class FileController {
         return "所有文件上传成功";
     }*/
 
-    public String downloadFile( HttpServletResponse response,String fileName,String dir) {
+    public String downloadFile(HttpServletRequest request,  HttpServletResponse response,String fileName,String dir) {
        // Response myresponse=new Response();
         if (fileName != null) {
             //设置文件路径
             String filepath=path+dir+"/";
+            System.out.println(filepath);
+            System.out.println(fileName);
+            System.out.println(filepath+fileName);
             File file = new File(path , fileName);
             if (file.exists()) {
                 response.setContentType("application/force-download");// 设置强制下载不打开
@@ -121,6 +123,7 @@ public class FileController {
                         os.write(buffer, 0, i);
                         i = bis.read(buffer);
                     }
+                    System.out.println("成功");
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
@@ -141,19 +144,20 @@ public class FileController {
                 }
             }
         }
-        System.out.println("成功");
         return null;
     }
-    public void deletefile(String filename,String dir){
-        System.out.println(path+filename);
+    public boolean deletefile(String filename,String dir){
+        System.out.println(path+dir+"/"+filename);
         File file=new File(path+dir+"/"+filename);
         if(file.exists())
             System.out.println("!!!!!!!!!!!!!!!!!");
-        deletef(file);
+        return  deletef(file);
     }
-    private static void deletef(File file) {
+    private static boolean deletef(File file) {
         if (file.isFile()) {// 表示该文件不是文件夹
             file.delete();
+            System.out.println("已删除");
+            return true;
         } else {
             // 首先得到当前的路径
             String[] childFilePaths = file.list();
@@ -163,6 +167,7 @@ public class FileController {
             }
             file.delete();
         }
+        return false;
     }
     public String  getsuffix(String fileName) {
         String suffix = fileName.substring(fileName.lastIndexOf(".") + 1);

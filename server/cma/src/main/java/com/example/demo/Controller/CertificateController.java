@@ -99,14 +99,15 @@ public class CertificateController {
     }
     @RequestMapping(value="/download/{id}",method = RequestMethod.GET)
     @ResponseBody
-    public String downloadOne(@PathVariable("id") long id, HttpServletResponse response){
+    public String downloadOne(@PathVariable("id") long id, HttpServletRequest request, HttpServletResponse response){
         FileController fileController=new FileController();
         try{
             if(CRepository.findById(id)==null)
                 throw new Exception("doesn't exist");
             Certificate temp=CRepository.findByFileId(id);
             String name=temp.getFileName();
-            return  fileController.downloadFile(response,name,temp.getDir());
+            System.out.println(name);
+            return  fileController.downloadFile(request,response,name,temp.getDir());
         }catch(Exception e){
             e.printStackTrace();
             return "下载失败";
