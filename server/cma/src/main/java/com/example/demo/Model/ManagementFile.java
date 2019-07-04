@@ -14,6 +14,12 @@ public class ManagementFile {
     private String fileName;
     private String file;
 
+    private String dir="managementFile";
+
+    public String getDir() {
+        return dir;
+    }
+
     public void setYear(long year) {
         this.year = year;
     }
