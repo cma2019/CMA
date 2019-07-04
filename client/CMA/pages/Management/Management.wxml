@@ -50,9 +50,7 @@
     </view>
     <view wx:if="{{mess[7]}}">
     <van-collapse-item title="档案管理" name="8">
-      <van-cell-group>
-        <van-cell title="档案管理" boarder="{{false}}" is-link  center="{{true}}" url="../StandardManagement/StandardManagement"></van-cell>
-      </van-cell-group>
+      
     </van-collapse-item>
     </view>
     <view wx:if="{{mess[8]}}">
@@ -116,7 +114,9 @@
     </view>
     <view wx:if="{{mess[16]}}">
     <van-collapse-item title="标准管理" name="17">
-      
+      <van-cell-group>
+        <van-cell title="档案管理" boarder="{{false}}" is-link  center="{{true}}" url="../StandardManagement/StandardManagement"></van-cell>
+      </van-cell-group>
     </van-collapse-item>
     </view>
     <view wx:if="{{mess[17]}}">
