@@ -116,7 +116,10 @@ public class SelfInspectionController {
                 JSONObject tmp=new JSONObject();
                 tmp.put("year",res.get(i).getFileName().substring(0,4));
                 tmp.put("fileId",res.get(i).getFileId());
-                tmp.put("fileName",res.get(i).getFileName());
+                String entire=res.get(i).getFileName();
+                System.out.println(entire);
+                System.out.println(entire.substring(0,entire.indexOf(".")));
+                tmp.put("fileName",entire.substring(0,entire.indexOf(".")));
                 tmp.put("file",res.get(i).getFileName()+".pdf");
                 data.add(tmp);
             }
@@ -151,8 +154,10 @@ public class SelfInspectionController {
         System.out.println("?");
         String[] str=file.getOriginalFilename().split(".");
         System.out.println(str[str.length-1]);
+        String suffix=str[str.length-1];
+        sDoc.setFileName(suffix);
         System.out.println("??");
-        return  fileController.upload(file,request,sDoc.getFileName()+".pdf",sDoc.getDir());
+        return  fileController.upload(file,request,sDoc.getFileName(),sDoc.getDir());
     }
     /*
     @PostMapping(path = "/modifyOneFile")
