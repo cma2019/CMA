@@ -49,7 +49,7 @@ Page({
 
   gotoAdd(e) {
     wx.navigateTo({
-      url: 'AddStaff/AddStaff',
+      url: 'AddOneManagementReview/AddOneManagementReview',
     })
   },
 
@@ -59,7 +59,7 @@ Page({
     console.log('getone id')
     console.log(target)
     wx.navigateTo({
-      url: 'PrintOneStaff/PrintOneStaff?id=' + target
+      url: 'GetAllFileManagementReview/GetAllFileManagementReview?id=' + target
     })
   }
 })
