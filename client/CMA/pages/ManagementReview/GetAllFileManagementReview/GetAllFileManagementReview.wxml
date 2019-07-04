@@ -2,7 +2,7 @@
 <view>
   <van-cell-group title="ManagementReview">
   <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
-  <van-cell value="详情" bindtap='gotoOne' id='{{item.fileId}}' is-link>
+  <van-cell value="详情" bindtap='gotoOne' id1='{{item.year}}' id='{{item.fileId}}' is-link>
       <view slot="title">
         <view>year : {{item.year}}</view>
         <view>fileId : {{item.fileId}}</view>

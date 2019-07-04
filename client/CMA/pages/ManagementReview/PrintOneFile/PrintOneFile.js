@@ -1,66 +1,71 @@
-// pages/ManagementReview/PrintOneFile/PrintOneFile.js
+// pages/StaffManagement/PrintOneStaff/PrintOneStaff.js
+const app = getApp()
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
+    console.log(options)
+    this.setData({
 
+      id: options.id
+    })
+    console.log('getone id')
+    console.log(this.data.id)
+    let url = app.globalData.url + 'ManagementReview/getOne'
+    let postdata = {
+      "fileId": this.data.id
+    }
+    console.log(url)
+    console.log(postdata)
+    app.wxRequest(url, 'GET', postdata, (res) => {
+      console.log(res)
+      console.log(res.data)
+      //console.log(res.data[0].id)
+      this.setData({
+        year: res.data.year,
+        fileId: res.data.fileId,
+        fileName: res.data.fileName,
+        file: res.data.file
+      })
+    }, (err) => {
+      console.err('get one error')
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  ModifyStaff(e) {
+    console.log(e)
+    let target = this.data.id
+    console.log(target)
+    wx.navigateTo({
+      url: '../ModifyAnnualTrainingPlan/ModifyAnnualTrainingPlan?id=' + target
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  UploadStaff(e) {
+    console.log(e)
+    let target = this.data.id
+    console.log(target)
+    wx.navigateTo({
+      url: '../ModifyAnnualTrainingPlan/ModifyAnnualTrainingPlan?id=' + target
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  DownloadStaff(e) {
+    console.log(e)
+    let target = this.data.id
+    console.log(target)
+    wx.navigateTo({
+      url: '../ModifyAnnualTrainingPlan/ModifyAnnualTrainingPlan?id=' + target
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  DeleteStaff(e) {
+    let url = app.globalData.url + 'AnnualTrainingPlan/deleteOne'
+    let data = {
+      "planId": this.data.id
+    }
+    app.wxRequest(url, 'POST', data, (res) => {
+      console.log('delete successfully')
+    }, (err) => {
+      console.log('delete failed')
+    })
   }
+
 })

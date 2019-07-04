@@ -62,8 +62,9 @@ Page({
   },
 
   gotoAdd(e) {
+    let target = e.currentTarget.id1
     wx.navigateTo({
-      url: 'AddOnFile/AddOneFile',
+      url: 'AddOnFile/AddOneFile?id'+id1,
     })
   },
 
