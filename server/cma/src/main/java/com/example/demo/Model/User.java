@@ -15,7 +15,6 @@ public class User {
     private String username;
     private String password;
     private boolean []permission=new boolean[19];
-    private String code;
 
     public void setId(long id){
         this.id=id;
@@ -59,8 +58,5 @@ public class User {
         return list;
     }
 
-    public void setCode(String code) {
-        this.code = code;
-    }
 
 }
