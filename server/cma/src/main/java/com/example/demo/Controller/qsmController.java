@@ -111,7 +111,7 @@ public class qsmController {
                 throw new Exception("doesn't exist");
             qsm temp=QRepository.findById(id);
             String name=temp.getFileName();
-            return  fileController.downloadFile(request, response,name,temp.getDir());
+            return  fileController.downloadFile(response,name,temp.getDir());
         }catch(Exception e){
             e.printStackTrace();
             return "下载失败";

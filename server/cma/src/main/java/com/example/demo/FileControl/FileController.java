@@ -99,15 +99,14 @@ public class FileController {
         return "所有文件上传成功";
     }*/
 
-    public String downloadFile(HttpServletRequest request,  HttpServletResponse response,String fileName,String dir) {
+    public String downloadFile( HttpServletResponse response,String fileName,String dir) {
        // Response myresponse=new Response();
         if (fileName != null) {
             //设置文件路径
             String filepath=path+dir+"/";
             System.out.println(filepath);
             System.out.println(fileName);
-            System.out.println(filepath+fileName);
-            File file = new File(path , fileName);
+            File file = new File(filepath, fileName);
             if (file.exists()) {
                 response.setContentType("application/force-download");// 设置强制下载不打开
                 response.addHeader("Content-Disposition", "attachment;fileName=" + fileName);// 设置文件名
@@ -123,7 +122,6 @@ public class FileController {
                         os.write(buffer, 0, i);
                         i = bis.read(buffer);
                     }
-                    System.out.println("成功");
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
