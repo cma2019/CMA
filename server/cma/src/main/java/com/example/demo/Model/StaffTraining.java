@@ -22,7 +22,16 @@ public class StaffTraining {
     private String result;       //结果
 
     private long id;
+    private String name;
 
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public void setTrainingId(long trainingId) {
         this.trainingId = trainingId;
