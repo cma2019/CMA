@@ -2,6 +2,7 @@
   "pages": [
     "pages/home/home",
     "pages/Management/Management",
+    "pages/login/login",
     "pages/IntermediateCheck/IntermediateCheckMenu/IntermediateCheckMenu",
     "pages/index/index",
     "pages/logs/logs",
