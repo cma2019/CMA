@@ -13,6 +13,8 @@
   </view>
   <view wx:if="{{mess[1]}}">
     <van-collapse-item title="质量体系管理" name="2">
+      <van-cell title="QualityManual" boarder="{{false}}" is-link  center="{{true}}" bindtap="gotoQuality1"></van-cell>
+      <van-cell title="QualityManualApprove" boarder="{{false}}" is-link  center="{{true}}" bindtap="gotoQuality2"></van-cell>
     </van-collapse-item>
   </view>
   <view wx:if="{{mess[2]}}">
