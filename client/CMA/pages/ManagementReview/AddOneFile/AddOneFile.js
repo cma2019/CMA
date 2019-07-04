@@ -15,6 +15,11 @@ Page({
       "year": e.detail.value.year,
       //"fileName":e.detail.value.fileName
     };
+    app.wxRequest(myurl1, 'POST', mydata, (res) => {
+      console.log(res)
+    }, (err) => {
+      console.log(err)
+    })
     wx.chooseMessageFile({
       count: 1,
       type: 'all',
@@ -29,15 +34,11 @@ Page({
           console.log("upload file success")
           console.log(res)
           console.log(mydata)
-          app.wxRequest(myurl1, 'POST', mydata, (res) => {
-            console.log(res)
-          }, (err) => {
-            console.log(err)
-          })
+          
         }, (err) => {
           console.log(err)
         })
-        wx.redirectTo({
+       wx.redirectTo({
           url: '../GetAllFileManagementReview/GetAllFileManagementReview?id=' + e.detail.value.year,
         })
       },
