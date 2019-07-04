@@ -1,66 +1,86 @@
-// pages/StandardManagement/StandardManagementdownload/StandardManagementdownload.js
+// pages/IntermediateCheck/IntermediateCheckGetone/IntermediateCheckGetone.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    "fileId": "null",
+    "fileName": "null"
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-
+    console.log('getone options')
+    console.log(options)
+    this.setData({
+      fileId: options.id
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  onShow: function (options) {
+    let url = app.globalData.url + 'StandardManagement/getOne'
+    let postdata = {
+      "fileId": this.data.planId
+    }
+    console.log(url)
+    console.log(postdata)
+    app.wxRequest(url, 'GET', postdata, (res) => {
+      console.log(res)
+      console.log('plan getone success')
+      this.setData({
+        fileId: res.data.fileId,
+        fileName: res.data.fileName,
+      })
+    }, (err) => {
+      console.err('getone error')
+    })
+  },
+  modifyData(e) {
+    console.log(e)
+    let target = this.data.fileId
+    console.log(target)
+    wx.navigateTo({
+      url: '../StandardManagementmodifyOne/StandardManagementmodifyOne?id=' + target
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  deleteData(e) {
+    let url = app.globalData.url + 'StandardManagement/deleteOne'
+    let data = {
+      "fileId": this.data.fileId
+    }
+    app.wxRequest(url, 'POST', data, (res) => {
+      if (res.code == 200) {
+        console.log('delete successfully')
+        wx.navigateBack({
+          delta: 1
+        })
+      }
+    }, (err) => {
+      console.log('delete failed')
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  downloadOne(e) {
+    var that = this
+    var myurl = app.globalData.url + 'StandardManagement/downloadFile/' + that.data.fileId;
+    var myFilePath
+    app.wxDownloadFile(myurl, (res) => {
+      console.log(res)
+      wx.saveFile({
+        tempFilePath: res.tempFilePath,
+        success: function (res) {
+          myFilePath = res.savedFilePath
+          console.log(myFilePath)
+        },
+        fail: function (err) {
+          console.log(err)
+        }
+      })
+    }, (err) => {
+      console.log(err)
+    })
   }
+
 })

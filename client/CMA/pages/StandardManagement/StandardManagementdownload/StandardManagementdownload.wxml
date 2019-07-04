@@ -1,2 +1,10 @@
-<!--pages/StandardManagement/StandardManagementdownload/StandardManagementdownload.wxml-->
-<text>pages/StandardManagement/StandardManagementdownload/StandardManagementdownload.wxml</text>
+<!--pages/IntermediateCheck/IntermediateCheckGetone/IntermediateCheckGetone.wxml-->
+<view>
+<van-cell-group title='message of {{planId}}'>
+    <van-cell value="{{fileId}}"title="fileId"border="{{ false }}"/>
+    <van-cell value="{{fileName}}"title="fileName"border="{{ false }}"/>
+</van-cell-group>
+</view>
+<button class='van-button--info' bindtap="modifyData">modify</button>
+<button class='van-button--info' bindtap="deleteData">delete</button>
+<button class='van-button--info' bindtap="downloadOne">download</button>
