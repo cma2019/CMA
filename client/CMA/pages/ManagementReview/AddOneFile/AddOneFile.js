@@ -38,7 +38,7 @@ Page({
           console.log(err)
         })
         wx.redirectTo({
-          url: '/pages/TestingInstitutionManagement/Certificate/Certificate',
+          url: '../GetAllFileManagementReview/GetAllFileManagementReview?id=' + e.detail.value.year,
         })
       },
       fail: function (err) {

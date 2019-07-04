@@ -40,14 +40,7 @@ Page({
       url: '../ModifyAnnualTrainingPlan/ModifyAnnualTrainingPlan?id=' + target
     })
   },
-  UploadStaff(e) {
-    console.log(e)
-    let target = this.data.id
-    console.log(target)
-    wx.navigateTo({
-      url: '../ModifyAnnualTrainingPlan/ModifyAnnualTrainingPlan?id=' + target
-    })
-  },
+
   DownloadStaff(e) {
     console.log(e)
     let target = this.data.id

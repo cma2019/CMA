@@ -1,4 +1,5 @@
 // pages/SelfInspection/SelfInspection/SelfInspection.js
+const app = getApp()
 Page({
 
   /**

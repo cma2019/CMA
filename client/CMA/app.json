@@ -2,9 +2,11 @@
   "pages": [
     "pages/home/home",
     "pages/Management/Management",
-    "pages/IntermediateCheck/IntermediateCheckMenu/IntermediateCheckMenu",
+    "pages/login/login",
+    "pages/register/register","pages/IntermediateCheck/IntermediateCheckMenu/IntermediateCheckMenu",
     "pages/index/index",
     "pages/logs/logs",
+    "pages/admin/admin",
     "pages/IntermediateCheck/IntermediateCheck/IntermediateCheck",
     "pages/IntermediateCheck/IntermediateCheck/IntermediateCheckAddone/IntermediateCheckAddone",
     "pages/IntermediateCheck/IntermediateCheck/IntermediateCheckGetone/IntermediateCheckGetone",
@@ -138,7 +140,7 @@
     "pages/SelfInspection/SelfInspection/SelfInspectionAddOne/SelfInspectionAddOne",
     "pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocument",
     "pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocumentAddOne/SelfInspectionDocumentAddOne",
-    "pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocumentModifyOne/SelfInspectionDocumentModifyOne",
+    "pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocumentGetOne/SelfInspectionDocumentGetOne",
     "pages/ManagementReview/UploadFile/UploadFile",
     "pages/ManagementReview/PrintOneFile/PrintOneFile"
   ],
