@@ -2,6 +2,7 @@
 <scroll-view scroll-y>
 
   <van-collapse value="{{ activeNames }}" bind:change="onChange">
+  
     <van-collapse-item title="用户管理" name="1">
       <van-cell-group>
         <van-cell title="StaffManagement" boarder="{{false}}" is-link  center="{{true}}" bindtap="goStaffManagement"></van-cell>

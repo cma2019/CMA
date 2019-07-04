@@ -15,7 +15,7 @@ Page({
    */
   data: {
     activeNames: ['0'],
-    mess:null
+    mess:[]
   },
   
   onChange(event) {
