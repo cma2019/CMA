@@ -25,6 +25,17 @@ public class FileController {
      * 服务器主路径为String path="E:/CMA/FileSystem/"（统一）
      * 分支路径由String dir确定
      */
+    /*File pathTest=new File(".");
+    {
+        try{
+            String pathString=pathTest.getCanonicalPath();//再用字符串操作拼接上后面的路径"\server\FileSystem
+            System.out.println("test path");
+            System.out.println(pathString);
+            System.out.println("test path over");
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }*/
     String path="E:/CMA/FileSystem/";
     public Response upload(@RequestParam("file") MultipartFile file, HttpServletRequest request,String saveFileName,String dir) {
         Response response=new Response();
