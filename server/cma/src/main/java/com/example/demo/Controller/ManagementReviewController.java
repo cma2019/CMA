@@ -1,5 +1,6 @@
 package com.example.demo.Controller;
 
+import com.example.demo.FileControl.FileController;
 import com.example.demo.Model.ManagementFile;
 import com.example.demo.Model.ManagementReview;
 import com.example.demo.Repository.ManagementFileRepository;
@@ -9,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -23,6 +26,8 @@ public class ManagementReviewController {
     private ManagementReviewRepository managementReviewRepository;
     @Autowired
     private ManagementFileRepository managementFileRepository;
+    MultipartFile mfile;
+    HttpServletRequest mrequest;
 
     @GetMapping(path = "getAll")
     public @ResponseBody
@@ -107,8 +112,12 @@ public class ManagementReviewController {
         return json;
     }
     @PostMapping(path = "UpLoad")
-    public @ResponseBody JSONObject UpLoad(File file){
+    public @ResponseBody JSONObject UpLoad(@RequestParam("file") MultipartFile file, HttpServletRequest request){
         JSONObject json=new JSONObject();
+        mfile=file;
+        mrequest=request;
+        FileController fileController=new FileController();
+        //fileController.upload(mfile,mrequest,Qsm.getFileName(),Qsm.getDir());
         return json;
     }
 }
