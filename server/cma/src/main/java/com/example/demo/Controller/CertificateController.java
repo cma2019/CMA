@@ -106,6 +106,7 @@ public class CertificateController {
                 throw new Exception("doesn't exist");
             Certificate temp=CRepository.findByFileId(id);
             String name=temp.getFileName();
+            System.out.println(name);
             return  fileController.downloadFile(response,name,temp.getDir());
         }catch(Exception e){
             e.printStackTrace();
