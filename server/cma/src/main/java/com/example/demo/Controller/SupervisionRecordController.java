@@ -78,6 +78,8 @@ public class SupervisionRecordController {
             js.put("data",null);
             return js;
         }
+        System.out.println(planId);
+
         SupervisionRecord sr=new SupervisionRecord();
         sr.setSupervisor(supervisor);
         sr.setSupervisedPerson(supervisedPerson);
