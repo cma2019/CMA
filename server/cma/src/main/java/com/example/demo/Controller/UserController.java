@@ -27,8 +27,9 @@ public class UserController {
 
     private String tempCode;
     private String tempUserName;
-
-    private String userKey;
+    String tempData1="12345";
+    Aes aes=new Aes();
+    //private String userKey;
     @PostMapping(path = "/add")
     public @ResponseBody JSONObject addUser(/*@RequestParam(value = "username", required = false) String username, */
             /*@RequestParam(value = "password", required = false) String password,*/
@@ -44,10 +45,12 @@ public class UserController {
         System.out.println(("add in"));
         System.out.println(tempCode);
         System.out.println(data);
-        Aes aes=new Aes();
+        //Aes aes=new Aes();
 
 
-        //aes.changeKey(tempCode);用userKey代替
+        //aes.changeKey(tempCode);
+        String secretData3=aes.encrypt(tempData1);
+        System.out.println("add换密码后:"+secretData3);
 
 
         String tempData=aes.decrypt(data);
@@ -67,8 +70,14 @@ public class UserController {
         user.setUsername(tempUserName);
         user.setPassword(password);
         boolean[] temp = new boolean[20];
-        for (int i = 0; i < 20; i++)
-            temp[i] = false;
+        if(tempUserName.equals("admin")){
+            for (int i = 0; i < 20; i++)
+                temp[i] = true;
+        }
+        else {
+            for (int i = 0; i < 20; i++)
+                temp[i] = false;
+        }
         user.setPermission(temp);
         userRepository.save(user);
         json.put("code", 200);
@@ -111,12 +120,15 @@ public class UserController {
             return json;
         }
         System.out.println("get Code in");
-        Aes aes=new Aes();
+        //Aes aes=new Aes();
         tempCode=aes.encrypt(username);
+        tempCode=tempCode.substring(0,16);
 
-
-        //aes.changeKey(tempCode);用userKey代替
-
+        String secretData1=aes.encrypt(tempData1);
+        System.out.println("换密码前:"+secretData1);
+        aes.changeKey(tempCode);
+        String secretData2=aes.encrypt(tempData1);
+        System.out.println("换密码后:"+secretData2);
 
 
         json.put("code",200);

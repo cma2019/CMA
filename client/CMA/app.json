@@ -123,11 +123,17 @@
     "pages/QualityManual/QualityManual/QualityManual",
     "pages/QualityManual/QualityManual/QualityManualAddOne/QualityManualAddOne",
     "pages/QualityManual/QualityManual/QualityManualGetOne/QualityManualGetOne",
-    
     "pages/QualityManual/QualityManualApprove/QualityManualApprove",
     "pages/QualityManual/QualityManualApprove/QualityManualApproveGetOne/QualityManualApproveGetOne",
     "pages/StaffManagement/StaffTraining/StaffTraining",
-    "pages/StaffManagement/StaffTraining/GetAllStaffTraining/GetAllStaffTraining"
+    "pages/StaffManagement/StaffTraining/GetAllStaffTraining/GetAllStaffTraining",
+    "pages/ManagementReview/ManagementReview",
+    "pages/ManagementReview/AddOneManagementReview/AddOneManagementReview",
+    "pages/ManagementReview/GetAllFileManagementReview/GetAllFileManagementReview",
+    "pages/ManagementReview/AddOneFile/AddOneFile",
+    "pages/ManagementReview/ModifyOneFile/ModifyOneFile",
+    "pages/ManagementReview/DeleteOneFile/DeleteOneFile",
+    "pages/ManagementReview/DownloadFile/DownloadFile"
   ],
   "window": {
     "backgroundTextStyle": "light",

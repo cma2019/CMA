@@ -92,6 +92,7 @@ Page({
     }
     console.log("dfg")
     console.log(this.data)
+    console.log(mod)
     wx.request({
       url: app.globalData.url+ 'SampleIo/modifyOne',
       method: 'POST',

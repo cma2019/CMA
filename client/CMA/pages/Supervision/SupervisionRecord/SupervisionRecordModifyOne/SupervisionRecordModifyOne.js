@@ -59,12 +59,9 @@ Page({
   },
 
   SupervisionRecord_modifyone: function (e) {
-    var mod = this.data
+    let mod = this.data
     console.log('SupervisionRecord发生了modifyone事件，携带数据为：', e.detail.value)
     console.log(this.data)
-    if (e.detail.value.recordId != null && e.detail.value.recordId != "") {
-      mod.recordId = e.detail.value.recordId
-    }
     if (e.detail.value.department != null && e.detail.value.department != "") {
       mod.department = e.detail.value.department
     }
