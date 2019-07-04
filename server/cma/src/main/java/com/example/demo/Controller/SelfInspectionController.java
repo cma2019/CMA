@@ -117,9 +117,8 @@ public class SelfInspectionController {
                 tmp.put("year",res.get(i).getFileName().substring(0,4));
                 tmp.put("fileId",res.get(i).getFileId());
                 String entire=res.get(i).getFileName();
-                System.out.println(entire);
-                System.out.println(entire.substring(0,entire.indexOf(".")));
-                tmp.put("fileName",entire.substring(0,entire.indexOf(".")));
+                System.out.println(res.get(i).getFileName());
+                tmp.put("fileName",res.get(i).getFileName());
                 tmp.put("file",res.get(i).getFileName()+".pdf");
                 data.add(tmp);
             }
@@ -152,10 +151,11 @@ public class SelfInspectionController {
     public @ResponseBody Response addOneFile(@RequestParam("file") MultipartFile file, HttpServletRequest request){
         FileController fileController=new FileController();
         System.out.println("?");
-        String[] str=file.getOriginalFilename().split(".");
+        System.out.println(file.getOriginalFilename());
+        String[] str=file.getOriginalFilename().split("\\.");
         System.out.println(str[str.length-1]);
         String suffix=str[str.length-1];
-        sDoc.setFileName(suffix);
+        sDoc.setFileName(sDoc.getFileName()+suffix);
         System.out.println("??");
         return  fileController.upload(file,request,sDoc.getFileName(),sDoc.getDir());
     }
@@ -169,6 +169,7 @@ public class SelfInspectionController {
         JSONObject js=new JSONObject();
         SelfInspectionDocument s=SelfInspectionDocumentRepository.findByFileId(Long.parseLong(fileId));
         FileController fileController=new FileController();
+        System.out.println(s.getFileName());
         fileController.deletefile(s.getFileName(), s.getDir());
         SelfInspectionDocumentRepository.deleteById(Long.parseLong(fileId));
         js.put("code",200);
