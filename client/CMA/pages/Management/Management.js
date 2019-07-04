@@ -1,13 +1,5 @@
 const app = getApp()
 
-wx.getStorage({
-  key: 'key',
-  success(res1) {
-    //console.log(res1.data)
-    //username1 = res1.data
-    //console.log(username1)
-  }
-});
 Page({
   
   /**
