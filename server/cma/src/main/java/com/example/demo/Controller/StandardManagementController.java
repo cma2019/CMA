@@ -93,7 +93,52 @@ public class StandardManagementController {
         }
     }
 
-    /*@PostMapping(path="/deleteOne")
-    public @ResponseBody*/
+    @PostMapping(path="/deleteOne")
+    public @ResponseBody JSONObject deleteStandard(@RequestParam(value="fileId",required =false)Long fileId){
+        JSONObject json=new JSONObject();
+        if(StandardManagementRepository.findById(fileId)==null){
+            json.put("code",500);
+            json.put("msg","文件不存在");
+        }
+        else
+        {
+            FileController fileController=new FileController();
+            StandardManagement temp=StandardManagementRepository.findByFileId(fileId);
+            String fileName=temp.getFileName();
+            fileController.deletefile(fileName,temp.getDir());
+            StandardManagementRepository.deleteById(fileId);
+            json.put("code",200);
+            json.put("msg","删除成功");
+
+        }
+        return json;
+    }
+
+    @PostMapping(path="/modifyOne")
+    public @ResponseBody Response modifyStandard(@RequestParam(value="fileId",required = false)Long fileId,
+                                                   @RequestParam(value="file")MultipartFile file, HttpServletRequest request){
+        Response response=new Response();
+        FileController fileController=new FileController();
+        if(StandardManagementRepository.findById(fileId)==null){
+            response.code=500;
+            response.msg="不存在的文件";
+            response.data=null;
+            return response;
+        }
+        else {
+            StandardManagement temp = StandardManagementRepository.findByFileId(fileId);
+            String fileName = temp.getFileName();
+            fileController.deletefile(fileName, temp.getDir());
+            StandardManagementRepository.deleteById(fileId);
+            System.out.println("delete success");
+
+            StandardManagement standard = new StandardManagement();
+            standard.setFileName(file.getOriginalFilename());
+            StandardManagementRepository.save(standard);
+            standard.setFileName(standard.getFileId() + "." + fileController.getsuffix(file.getOriginalFilename()));
+            StandardManagementRepository.save(standard);
+            return fileController.upload(file, request, standard.getFileName(), standard.getDir());
+        }
+    }
 
 }
