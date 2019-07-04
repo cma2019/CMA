@@ -59,7 +59,7 @@ Page({
       app.wxRequest(myurl2,'GET',null,(res) => {
         console.log(res)
         that.setData({
-          current:res.data.data
+          current:res.data
         })
         console.log(that.data) 
       },(err) => {
@@ -93,7 +93,7 @@ Page({
       app.wxRequest(myurl2, 'GET', null, (res) => {
         console.log(res)
         that.setData({
-          current: res.data.data
+          current: res.data
         })
         console.log(that.data)
       }, (err) => {
