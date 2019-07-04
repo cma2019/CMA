@@ -223,6 +223,7 @@ public class SampleReceiptController {
         int code=200;
         String msg="成功";
         JSONObject d= new JSONObject();
+        System.out.println(data);
         String idstr=data.getString("sampleId");
         String testtypestr=data.getString("testType");
         String sofwwaretypestr=data.getString("softwareType");

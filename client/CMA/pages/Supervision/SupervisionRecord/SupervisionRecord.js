@@ -33,7 +33,7 @@ Page({
    */
   onShow: function () {
     var thispage = this
-    console.log('getone发生了事件，携带数据为：', this.data.planId)
+    console.log('SupervisionRecord发生了getAll事件，携带数据为：', this.data.planId)
     wx.request({
       url: app.globalData.url + 'SupervisionRecord/getAll',
       method: 'GET',
@@ -46,19 +46,16 @@ Page({
       },
       success(res) {
         console.log(res)
-        if (res.data.code == 522) {
-          thispage.setData({
-            mess: ""
-          })
-        }
-        else if(res.data.code == 200){
+        if(res.data.code == 200){
           thispage.setData({
             mess: res.data.data,
             flag: 1
           })
         }
         else{
-
+          thispage.setData({
+            mess: ""
+          })
         }
         console.log(thispage.data.mess)
         console.log("fdsgfg")
@@ -85,6 +82,8 @@ Page({
     let conclusion = info[i].conclusion
     let operator = info[i].operator
     let recordDate = info[i].recordDate
+    console.log(superviseDate)
+    console.log("999999999999")
     wx.navigateTo({
       url: '/pages/Supervision/SupervisionRecord/SupervisionRecordModifyOne/SupervisionRecordModifyOne?planId=' + planId + "&recordId=" + recordId + "&department=" + department + "&supervisor=" + supervisor + "&superviseDate=" + superviseDate + "&supervisedPerson=" + supervisedPerson + "&record=" + record + "&conclusion=" + conclusion + "&operator=" + operator + "&recordDate=" + recordDate
     })
@@ -94,7 +93,7 @@ Page({
       delta: 1
     })
   },
-  supervisionPlanDelete: function (e) {
+  supervisionRecordDelete: function (e) {
     let recordId = e.currentTarget.id
     let planId = this.data.planId
     const deleteoneRequest = wx.request({
@@ -145,8 +144,10 @@ Page({
     })
   },
   supervisionRecordAdd: function () {
+    console.log(this.data.planId)
+    console.log("adfsdgf45646546578")
     wx.navigateTo({
-      url: '/pages/Supervision/SupervisionRecord/SupervisonRecordAddOne/SupervisionRecordAddOne?id=' + this.data.planId
+      url: '/pages/Supervision/SupervisionRecord/SupervisionRecordAddOne/SupervisionRecordAddOne?id=' + this.data.planId
     })
   },
   gotodetail:function(e){

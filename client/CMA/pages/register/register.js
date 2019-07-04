@@ -99,7 +99,13 @@ Page({
 
   ApplicationAdd: function (e) {
       console.log('form发生了add事件，携带数据为：', e.detail.value)
-      this.fun1(e)
+      
+      if (CryptoJS.SetKey("123456789abcdef1")) {
+        console.log("usercode")
+        console.log(CryptoJS.key)
+        this.fun1(e)
+      }
+      //this.fun1(e)
   },
 
   goback: function () {

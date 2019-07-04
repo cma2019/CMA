@@ -1,0 +1,13 @@
+<!--pages/TrainingApplication/PringOneApplication/PrintOneApplication.wxml-->
+<view>
+  <van-cell-group>
+  <van-cell title="year" value="{{year}}" />
+  <van-cell title="fileId" value="{{fileId}}" />
+  <van-cell title="fileName" value="{{fileName}}" />
+  <van-cell title="file" value="{{file}}" />
+  </van-cell-group>
+</view>
+<van-button type="info" size="small" bindtap="uploadStaff">Upload File</van-button> 
+<van-button type="info" size="small" bindtap="downloadStaff">Download File</van-button> 
+ <van-button type="info" size="small" bindtap="ModifyStaff">Modify File</van-button> 
+ <van-button type="info" size="small" bindtap="DeleteStaff">Delete File</van-button> 

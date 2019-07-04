@@ -2,7 +2,6 @@
 <view>
  <form bindsubmit='SupervisionPlan_modifyone'>
     <van-cell-group title="SupervisionPlan_modifyone">
-      <van-field v-model="planId" name="planId" required clearable label="标识编号" placeholder="请输入标识编号" />
       <van-field v-model="content" name="content" clearable label="监督内容" placeholder="请输入监督内容" />
       <van-field v-model="object" name="object" clearable label="监督对象" placeholder="请输入监督对象" />
       <van-field v-model="dateFrequency" name="dateFrequency" clearable label="监督时间/频次" placeholder="请输入监督时间/频次" />

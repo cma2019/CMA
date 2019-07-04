@@ -1,29 +1,29 @@
 const app = getApp()
 
 Page({
-  
+
   /**
    * 页面的初始数据
    */
   data: {
     activeNames: ['0'],
-    username2:'',
-    admin1:"admin",
-    mess:[]
+    username2: '',
+    admin1: "admin",
+    mess: []
   },
-  
+
   onChange(event) {
     this.setData({
       activeNames: event.detail
     });
   },
-  
+
   onLoad: function (options) {
-    
+
     //var res1;
     let url = app.globalData.url + 'user/getOne'
-   
-   // console.log("1"+username1)
+
+    // console.log("1"+username1)
     let postdata = {
       "username": app.globalData.username1
     }
@@ -34,7 +34,7 @@ Page({
       //console.log(res)
       //console.log(res.data1)
       this.setData({
-        mess:res.data1,
+        mess: res.data1,
         username2: app.globalData.username1
       })
       //console.log(mess)
@@ -91,12 +91,12 @@ Page({
       url: '../TrainingManagement/AnnualTrainingPlan/AnnualTrainingPlan',
     })
   },
-  gotoInterCheck:function(){
+  gotoInterCheck: function () {
     wx.navigateTo({
       url: '../IntermediateCheck/IntermediateCheckMenu/IntermediateCheckMenu',
     })
   },
-  gotoEquipment1:function(){
+  gotoEquipment1: function () {
     wx.navigateTo({
       url: '../Equipment/EquipmentManagement/EquipmentManagement',
     })
@@ -149,6 +149,11 @@ Page({
   gotoAuthorityManagement: function () {
     wx.navigateTo({
       url: '../admin/admin',
+    })
+  },
+  gotoManagementReview: function () {
+    wx.navigateTo({
+      url: '../ManagementReview/ManagementReview',
     })
   }
 })
