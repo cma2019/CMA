@@ -1,2 +1,24 @@
 <!--pages/QualityManual/QualityManual/QualityManual.wxml-->
-<text>pages/QualityManual/QualityManual/QualityManual.wxml</text>
+<scroll-view scroll-y>
+  <van-cell-group title="Quality Manual Current">
+    <van-cell value="详情" is-link url='/pages/QualityManual/QualityManual/QualityManualGetOne/QualityManualGetOne?id={{current.id}}&fileId={{current.fileId}}&fileName={{current.fileName}}&state={{current.state}}&current={{current.current}}&modifyTime={{current.modifyTime}}&modifier={{current.modifier}}&modifyContent={{current.modifyContent}}' link-type='redirectTo'>
+      <view slot="title">
+        <view>id : {{current.id}}</view>
+        <view>fileId : {{current.fileId}}</view>
+        <view>fileName : {{current.fileName}}</view>
+      </view>
+    </van-cell>
+  </van-cell-group>
+  <van-cell-group title="Quality Manual History">
+  <view wx:for="{{array}}" data-id="{{item.id}}" data-fileId="{{item.fileId}}" data-fileName="{{item.fileName}}" data-state="{{item.state}}" data-current="{{item.current}}" data-modifyTime="{{item.modifyTime}}" data-modifier="{{item.modifier}}"  data-modifyContent="{{item.modifyContent}}">
+    <van-cell value="详情" is-link url='/pages/QualityManual/QualityManual/QualityManualGetOne/QualityManualGetOne?id={{current.id}}&fileId={{current.fileId}}&fileName={{current.fileName}}&state={{current.state}}&current={{current.current}}&modifyTime={{current.modifyTime}}&modifier={{current.modifier}}&modifyContent={{current.modifyContent}}' link-type='redirectTo'>
+      <view slot="title">
+        <view>id : {{item.id}}</view>
+        <view>fileId : {{item.fileId}}</view>
+        <view>fileName : {{item.fileName}}</view>
+      </view>
+    </van-cell>
+  </view>
+  </van-cell-group>
+  <van-button type="info" size="small" bindtap="gotoAdd">Add a quality manual</van-button>
+</scroll-view>
