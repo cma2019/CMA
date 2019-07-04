@@ -76,8 +76,8 @@ public class ManagementReviewController {
         }
          return json;
     }
-    @GetMapping("getAllByYear")
-    public @ResponseBody JSONObject getAllByYear(@RequestParam(value = "year",required = false)long year){
+    @GetMapping("getAllFile")
+    public @ResponseBody JSONObject getAllFile(@RequestParam(value = "year",required = false)long year){
         JSONObject json=new JSONObject();
         json.put("code",200);
         json.put("msg","成功");
