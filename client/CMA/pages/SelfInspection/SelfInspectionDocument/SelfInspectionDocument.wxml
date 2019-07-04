@@ -1,2 +1,15 @@
-<!--pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocument.wxml-->
-<text>pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocument.wxml</text>
+<scroll-view scroll-y>
+  <van-cell-group title="SelfInspection GetAllFile">
+    <view wx:for="{{array}}"data-year="{{item.year}}" data-fileId="{{item.fileId}}" data-fileName="{{item.fileName}}"data-file="{{item.file}}">
+      <van-cell value="详情" is-link url='/pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocumentGetOne/SelfInspectionDocumentGetOne?year={{item.year}}&data-fileId={{item.data-fileId}}&data-fileName={{item.data-fileName}}&data-file={{item.data-file}}' link-type='redirectTo'>
+        <view slot="title">
+          <view>year: {{item.year}}</view>
+          <view>fileId: {{item.fileId}}</view>
+          <view>fileName: {{item.fileName}}</view>
+          <view>file: {{item.file}}</view>
+        </view>
+      </van-cell>
+    </view>
+  </van-cell-group>
+  <van-button type="info" size="small" bindtap="gotoAdd">Add an SelfInspection</van-button>
+</scroll-view>

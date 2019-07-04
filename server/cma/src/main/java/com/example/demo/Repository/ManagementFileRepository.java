@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface ManagementFileRepository extends JpaRepository<ManagementFile,Long> {
     List<ManagementFile> findAllByYear(long year);
+    ManagementFile findByFileId(long fileId);
+    boolean existsByFileId(long fileId);
 }

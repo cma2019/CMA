@@ -21,7 +21,7 @@ Page({
   onShow: function (options) {
     let url = app.globalData.url + 'StandardManagement/getOne'
     let postdata = {
-      "fileId": this.data.planId
+      "fileId": this.data.fileId
     }
     console.log(url)
     console.log(postdata)

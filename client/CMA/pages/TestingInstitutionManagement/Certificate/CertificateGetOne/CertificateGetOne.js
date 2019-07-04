@@ -28,9 +28,11 @@ Page({
     var myFilePath
     app.wxDownloadFile(myurl, (res) => {
       console.log(res)
+      console.log(res.tempFilePath)
       wx.saveFile({
         tempFilePath: res.tempFilePath,
         success: function (res) {
+          console.log(res)
           myFilePath = res.savedFilePath
           console.log(myFilePath)
         },

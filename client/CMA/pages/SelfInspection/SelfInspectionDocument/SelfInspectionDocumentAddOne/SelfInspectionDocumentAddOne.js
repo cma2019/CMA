@@ -1,13 +1,50 @@
-// pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocumentAddOne/SelfInspectionDocumentAddOne.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    "id": null,
+    "fileId": null,
+    "fileName": null,
   },
-
+  SelfInspectionAddOne: function (e) {
+    console.log(e.detail.value)
+    var myurl1 = app.globalData.url + 'SelfInspection/addOneFormData';
+    var myurl2 = app.globalData.url + 'SelfInspection/addOneFile';
+    var mydata = {
+      "id": e.detail.value.id,
+      "filename": e.detail.value.filename
+    };
+    app.wxRequest(myurl1, 'POST', mydata, (res) => {
+      console.log(res)
+      wx.chooseMessageFile({
+        count: 1,
+        type: 'all',
+        success: function (res) {
+          console.log("get file success")
+          console.log(res)
+          var mypath = res.tempFiles[0].path
+          app.wxUploadFile(myurl2, mypath, null, (res) => {
+            console.log("upload file success")
+            console.log(res)
+            wx.redirectTo({
+              url: '/pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocument',
+            })
+          }, (err) => {
+            console.log(err)
+          })
+        },
+        fail: function (err) {
+          console.log("get file failed")
+          console.log(err)
+        }
+      })
+    }, (err) => {
+      console.log(err)
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
