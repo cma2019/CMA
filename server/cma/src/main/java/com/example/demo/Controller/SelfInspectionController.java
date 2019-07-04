@@ -16,6 +16,7 @@ import com.example.demo.FileControl.FileController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.sql.Date;
 import java.util.List;
 
@@ -147,7 +148,10 @@ public class SelfInspectionController {
     @PostMapping(path = "/addOneFile")
     public @ResponseBody Response addOneFile(@RequestParam("file") MultipartFile file, HttpServletRequest request){
         FileController fileController=new FileController();
-        System.out.println(file.getContentType());
+        System.out.println("?");
+        String[] str=file.getOriginalFilename().split(".");
+        System.out.println(str[str.length-1]);
+        System.out.println("??");
         return  fileController.upload(file,request,sDoc.getFileName()+".pdf",sDoc.getDir());
     }
     /*
@@ -167,10 +171,20 @@ public class SelfInspectionController {
         js.put("data",null);
         return js;
     }
-    /*
     @GetMapping(path = "/downloadFile")
-    public @ResponseBody ResponseEntity downloadFile() {
-
-    }*/
+    public @ResponseBody String downloadFile(@PathVariable("fileId") long fileId, HttpServletResponse response) {
+        FileController fileController=new FileController();
+        try{
+            if(SelfInspectionDocumentRepository.findById(fileId)==null)
+                throw new Exception("doesn't exist");
+            SelfInspectionDocument temp=SelfInspectionDocumentRepository.findByFileId(fileId);
+            String name=temp.getFileName();
+            System.out.println(name);
+            return  fileController.downloadFile(response,name,temp.getDir());
+        }catch(Exception e){
+            e.printStackTrace();
+            return "下载失败";
+        }
+    }
 }
 //select * from self_inspection_document;
