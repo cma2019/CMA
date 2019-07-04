@@ -12,13 +12,6 @@ Page({
     console.log(url)
     console.log(postdata)
     app.wxRequest(url, 'GET', postdata, (res) => {
-      console.log(res)
-      console.log('success')
-      console.log(res.code)
-      //console.log(res.msg)
-      console.log(res.data)
-      //var temp = res.data
-      //this.temp = temp
       this.setData({
         mess: res.data
       })
@@ -34,25 +27,16 @@ Page({
     })
   },
   onShow: function (options) {
-    //console.log(this.data.planId)
-    let url = app.globalData.url + 'StaffManagement/getAll'
+    let url = app.globalData.url + 'ManagementReview/getAll'
     let postdata = ''
     console.log(url)
     console.log(postdata)
     app.wxRequest(url, 'GET', postdata, (res) => {
-      //console.log('success')
-      console.log(res)
-      console.log('success')
-      console.log(res.code)
-      //console.log(res.msg)
-      console.log(res.data)
-      //var temp = res.data
-      //this.temp = temp
       this.setData({
         mess: res.data
       })
 
-      console.log(this.mess)
+      console.log(this.data.mess)
     }, (err) => {
       //console.err('getone error')
       wx.showToast({
