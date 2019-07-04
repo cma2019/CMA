@@ -151,11 +151,10 @@ Page({
 
   modifyData: function (e) {
     console.log(e)
-    let target = this.data.sampleId
-    //console.log("dfdg")
-    //console.log(target)
+    console.log(this.data.sampleId)
+    console.log("6666666666")
     wx.navigateTo({
-      url: '/pages/SampleManagement/SampleReceipt/receiptModifyOne/receiptModifyOne?id=' + target
+      url: '/pages/SampleManagement/SampleReceipt/receiptModifyOne/receiptModifyOne?id=' + this.data.sampleId
     })
   },
 

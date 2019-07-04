@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.demo.Repository.SelfInspectionRepository;
 import com.example.demo.Model.SelfInspection;
+import com.example.demo.FileControl.FileController;
 import java.sql.Date;
 import java.util.List;
 
@@ -92,6 +93,8 @@ public class SelfInspectionController {
     public @ResponseBody ResponseEntity getExample() {
 
     }
+    */
+    /*
     @GetMapping(path = "/getAllFile")
     public @ResponseBody JSONObject getAllFile(){
 
@@ -111,6 +114,5 @@ public class SelfInspectionController {
     @GetMapping(path = "/downloadFile")
     public @ResponseBody ResponseEntity downloadFile() {
 
-    }
-    */
+    }*/
 }

@@ -170,6 +170,7 @@ public class StaffTrainingController {
                 staffTraining1.setContent(staffTraining.getContent());
                 staffTraining1.setNote(staffTraining.getNote());
                 staffTraining1.setId(id[i]);
+                staffTraining1.setName(staffManagementRepository.getOne(id[i]).getName());
                 staffTrainingRepository.save(staffTraining1);
             }
             //staffTraining.setId(id[0]);

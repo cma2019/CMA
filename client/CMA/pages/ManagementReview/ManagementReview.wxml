@@ -1,2 +1,14 @@
-<!--pages/ManagementReview/ManagementReview.wxml-->
-<text>pages/ManagementReview/ManagementReview.wxml</text>
+<!--pages/StaffManagement/StaffManagement.wxml-->
+<view>
+  <van-cell-group title="ManagementReview">
+  <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
+  <van-cell value="详情" bindtap='gotoOne' id='{{item.year}}' is-link>
+      <view slot="title">
+        <view>year : {{item.year}}</view>
+        <view>Date : {{item.date}}</view>
+      </view>
+  </van-cell>
+</view>
+  </van-cell-group>
+</view>
+    <van-button type="info" size="small" bindtap="gotoAdd">Add</van-button>
