@@ -22,10 +22,10 @@ public class FileController {
      * @param file
      * @param request
      * @return response
-     * 服务器主路径为String path="F:/img/upload/"（统一）
+     * 服务器主路径为String path="E:/CMA/FileSystem/"（统一）
      * 分支路径由String dir确定
      */
-    String path="F:/img/upload/";
+    String path="E:/CMA/FileSystem/";
     public Response upload(@RequestParam("file") MultipartFile file, HttpServletRequest request,String saveFileName,String dir) {
         Response response=new Response();
 
@@ -146,7 +146,7 @@ public class FileController {
     }
     public void deletefile(String filename,String dir){
         System.out.println(path+filename);
-        File file=new File(path+dir+filename);
+        File file=new File(path+dir+"/"+filename);
         if(file.exists())
             System.out.println("!!!!!!!!!!!!!!!!!");
         deletef(file);

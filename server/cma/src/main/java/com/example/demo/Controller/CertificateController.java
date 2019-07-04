@@ -85,7 +85,7 @@ public class CertificateController {
             Certificate temp=CRepository.findByFileId(id);
             String name=temp.getFileName();
             CRepository.deleteById(id);
-            fileController.deletefile(name,"F:/img/upload/");
+            fileController.deletefile(name,temp.getDir());
             response.data=null;
             response.msg="成功";
             response.code=200;
