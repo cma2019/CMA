@@ -1,18 +1,38 @@
-// pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocument.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    array: [],
+    id:''
+  },
+  gotoAdd: function (e) {
+    wx.redirectTo({
+      url: '/pages/TestingInstitutionManagement/Certificate/CertificateAddOne/CertificateAddOne',
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      id: options.id
+    })
+    var id = this.data.id
+    var that = this
+    var myurl = app.globalData.url + 'SelfInspection/getAllFile';
+    app.wxRequest(myurl, 'GET', id, (res) => {
+      console.log(res)
+      that.setData({
+        array: res.data.data
+      })
+      console.log(that.data.array)
+    }, (err) => {
+      console.log(err)
+    })
   },
 
   /**
@@ -26,7 +46,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    
   },
 
   /**
