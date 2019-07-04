@@ -1,2 +1,17 @@
 <!--pages/QualityManual/QualityManualApprove/QualityManualApproveGetOne/QualityManualApproveGetOne.wxml-->
-<text>pages/QualityManual/QualityManualApprove/QualityManualApproveGetOne/QualityManualApproveGetOne.wxml</text>
+<scroll-view scroll-y>
+  <van-cell>
+    <view slot="title">
+      <view>id : {{manual.id}}</view>
+      <view>fileId : {{manual.fileId}}</view>
+      <view>fileName : {{manual.fileName}}</view>
+      <view>state : {{manual.state}}</view>
+      <view>closeDate : {{manual.closeDate}}</view>
+      <view>current : {{manual.current}}</view>
+      <view>modifyTime : {{manual.modifyTime}}</view>
+      <view>modifier : {{manual.modifier}}</view>
+      <view>modifyContent : {{manual.modifyContent}}</view>
+    </view>
+  </van-cell>
+  <van-button type="info" size="small" bindtap="myapprove">Approve</van-button>
+</scroll-view>

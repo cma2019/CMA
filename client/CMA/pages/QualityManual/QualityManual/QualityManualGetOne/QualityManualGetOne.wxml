@@ -13,7 +13,6 @@
       <view>modifyContent : {{manual.modifyContent}}</view>
     </view>
   </van-cell>
-  <van-button type="info" size="small" bindtap="viewDetail">Modify</van-button>
   <van-button type="info" size="small" bindtap="mydelete">Delete</van-button>
   <van-button type="info" size="small" bindtap="mydownload">Download</van-button>
 </scroll-view>

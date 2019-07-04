@@ -40,13 +40,6 @@ Page({
       console.log(err)
     })
   },
-  viewDetail: function (e) {
-    console.log("display -> view")
-    var that = this
-    wx.redirectTo({
-      url: '/pages/QualityManual/QualityManual/QualityManualModify/QualityManualModify?id=' + that.data.manual.id + "&fileId=" + that.data.manual.fileId + "&fileName=" + that.data.manual.fileName + "&state=" + that.data.manual.state + "&current=" + that.data.manual.current + "&modifyTime=" + that.data.manual.modifyTime + "&modifier=" + that.data.manual.modifier + "&modifyContent=" + that.data.manual.modifyContent,
-    })
-  },
 
   /**
    * 生命周期函数--监听页面加载

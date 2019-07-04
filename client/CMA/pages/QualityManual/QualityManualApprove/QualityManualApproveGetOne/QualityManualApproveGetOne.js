@@ -1,18 +1,35 @@
 // pages/QualityManual/QualityManualApprove/QualityManualApproveGetOne/QualityManualApproveGetOne.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    manual: {}
+  },
+  myapprove:function(e){
+    var that = this
+    var myurl = app.globalData.url + 'QualityManual/approve/' + that.data.manual.id;
+    app.wxRequest(myurl, 'POST', null, (res) => {
+      console.log(res)
+    }, (err) => {
+      console.log(err)
+    })
+    wx.redirectTo({
+      url: '/pages/QualityManual/QualityManualApprove/QualityManualApprove',
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad: function (option) {
+    var that = this;
+    console.log(option)
+    that.setData({
+      manual: option
+    })
   },
 
   /**
