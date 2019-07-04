@@ -13,6 +13,7 @@ public class qsm {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     Long id;//系统编号
+    int flag=0;
     Long fileId;//文件编号
     String fileName;//文件名
     Byte state;//状态：0（未批准）/1（不允许）/2（批准通过）
@@ -22,10 +23,19 @@ public class qsm {
     String modifier;//修改人
     String modifyContent;//修改内容
     @Transient
+
     String dir="qsm";
 
     public void setFileName(String fileName) {
         this.fileName = fileName;
+    }
+
+    public int getFlag() {
+        return flag;
+    }
+
+    public void setFlag(int flag) {
+        this.flag = flag;
     }
 
     public void setFileId(Long fileId) {

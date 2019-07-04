@@ -138,7 +138,9 @@
     "pages/SelfInspection/SelfInspection/SelfInspectionAddOne/SelfInspectionAddOne",
     "pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocument",
     "pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocumentAddOne/SelfInspectionDocumentAddOne",
-    "pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocumentGetOne/SelfInspectionDocumentGetOne"
+    "pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocumentGetOne/SelfInspectionDocumentGetOne",
+    "pages/ManagementReview/UploadFile/UploadFile",
+    "pages/ManagementReview/PrintOneFile/PrintOneFile"
   ],
   "window": {
     "backgroundTextStyle": "light",
