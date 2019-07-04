@@ -114,7 +114,12 @@
     "pages/StaffManagement/StaffAuthorization/GetAllByStaff/GetAllByStaff",
     "pages/StaffManagement/StaffAuthorization/GetOneStaffAuthorization/GetOneStaffAuthorization",
     "pages/StaffManagement/StaffLeaving/StaffLeaving",
-    "pages/StaffManagement/StaffLeaving/AddOneStaffLeaving/AddOneStaffLeaving"
+    "pages/StaffManagement/StaffLeaving/AddOneStaffLeaving/AddOneStaffLeaving",
+    "pages/StandardManagement/StandardManagement",
+    "pages/StandardManagement/StandardManagementAddone/StandardManagementAddone",
+    "pages/StandardManagement/StandardManagementdeleteOne/StandardManagementdeleteOne",
+    "pages/StandardManagement/StandardManagementmodifyOne/StandardManagementmodifyOne",
+    "pages/StandardManagement/StandardManagementdownload/StandardManagementdownload"
   ],
   "window": {
     "backgroundTextStyle": "light",
