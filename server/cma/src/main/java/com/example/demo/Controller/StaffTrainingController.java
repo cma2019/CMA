@@ -29,7 +29,8 @@ public class StaffTrainingController {
         JSONObject json=new JSONObject();
         json.put("code",200);
         json.put("msg","成功");
-        json.put("data",staffTrainingRepository.findAll());
+        List<StaffTraining> list=staffTrainingRepository.findAllById(0);
+        json.put("data",list);
         return json;
     }
 
