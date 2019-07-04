@@ -144,6 +144,16 @@ Page({
       url: '../TestingInstitutionManagement/Certificate/Certificate',
     })
   },
+  gotoQuality1: function () {
+    wx.navigateTo({
+      url: '../QualityManual/QualityManual/QualityManual',
+    })
+  },
+  gotoQuality2: function () {
+    wx.navigateTo({
+      url: '../QualityManual/QualityManualApprove/QualityManualApprove',
+    })
+  },
   gotoAuthorityManagement: function () {
     wx.navigateTo({
       url: '../admin/admin',
