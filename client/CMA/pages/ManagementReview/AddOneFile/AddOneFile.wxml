@@ -1,2 +1,27 @@
-<!--pages/ManagementReview/AddOneFile/AddOneFile.wxml-->
-<text>pages/ManagementReview/AddOneFile/AddOneFile.wxml</text>
+<!--pages/QualityManual/QualityManual/QualityManualAddOne/QualityManualAddOne.wxml-->
+<scroll-view scroll-y>
+  <form bindsubmit='newEquipment'>
+    <view class="section">
+      <van-field 
+      name="year" 
+      value="{{year}}" 
+      required 
+      readonly
+      clearable
+      label="year" >
+      </van-field>
+      <van-field 
+      name="fileName"  
+      required 
+      clearable
+      label="fileName" 
+      
+      >
+      </van-field>
+    </view>
+    
+    <view>
+      <button class='van-button--info' formType='submit'>new quality manual</button>
+    </view>
+  </form>
+</scroll-view>

@@ -19,7 +19,7 @@
   </view>
   <view wx:if="{{mess[2]}}">
     <van-collapse-item title="管理评审" name="3">
-    
+      <van-cell title="ManagementReview" boarder="{{false}}" is-link  center="{{true}}" bindtap="gotoManagementReview"></van-cell>
     </van-collapse-item>
   </view>
   <view wx:if="{{mess[3]}}">
@@ -29,6 +29,9 @@
     </view>
     <view wx:if="{{mess[4]}}">
     <van-collapse-item title="自查管理" name="5">
+      <van-cell-group>
+        <van-cell title="SelfInspection" boarder="{{false}}" is-link  center="{{true}}" url="../SelfInspection/SelfInspection/SelfInspection"></van-cell>
+      </van-cell-group>
       
     </van-collapse-item>
     </view>
