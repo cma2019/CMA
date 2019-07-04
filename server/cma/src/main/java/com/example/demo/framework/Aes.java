@@ -64,6 +64,7 @@ public class Aes {
         Security.addProvider(new BouncyCastleProvider());
         // 转化成JAVA的密钥格式
         key = new SecretKeySpec(keybytes, KEY_ALGORITHM);
+        System.out.println(key);
         try {
             // 初始化cipher
             cipher = Cipher.getInstance(algorithmStr,"BC");
@@ -106,13 +107,17 @@ public class Aes {
         return new String(encryptedText);
     }
 
-    /*public void changeKey(String newKey){
+    public void changeKey(String newKey){
         System.out.println("current Key:"+sessionKey);
-        if(newKey.length()>16)
-            newKey=KeyCut(newKey);
+        /*if(newKey.length()>16)
+            newKey=KeyCut(newKey);*/
         sessionKey=newKey;
+        keybytes = sessionKey.getBytes();
+        key = new SecretKeySpec(keybytes, KEY_ALGORITHM);
+        System.out.println("changed");
         System.out.println("new Key:"+sessionKey);
-    }*/
+
+    }
 
     public String KeyCut(String key){
         key=key.substring(0,16);

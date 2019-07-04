@@ -1,46 +1,41 @@
 const app = getApp()
-var username1 = "admin";
-wx.getStorage({
-  key: 'key',
-  success(res1) {
-    //console.log(res1.data)
-    username1 = res1.data
-    //console.log(username1)
-  }
-});
+
 Page({
-  
+
   /**
    * 页面的初始数据
    */
   data: {
     activeNames: ['0'],
-    mess:[]
+    username2: '',
+    admin1: "admin",
+    mess: []
   },
-  
+
   onChange(event) {
     this.setData({
       activeNames: event.detail
     });
   },
-  
+
   onLoad: function (options) {
-    
+
     //var res1;
     let url = app.globalData.url + 'user/getOne'
-    
-   // console.log("1"+username1)
+
+    // console.log("1"+username1)
     let postdata = {
-      "username": username1
+      "username": app.globalData.username1
     }
     //console.log("2" + username1)
     console.log(postdata)
     //var that=this;
     app.wxRequest(url, 'GET', postdata, (res) => {
-      console.log(res)
-      console.log(res.data1)
+      //console.log(res)
+      //console.log(res.data1)
       this.setData({
-        mess:res.data1
+        mess: res.data1,
+        username2: app.globalData.username1
       })
       //console.log(mess)
     }, (err) => {
@@ -48,6 +43,27 @@ Page({
     })
   },
   onShow: function () {
+    //var res1;
+    let url = app.globalData.url + 'user/getOne'
+    // console.log("1"+username1)
+    let postdata = {
+      "username": app.globalData.username1
+    }
+    //console.log("2" + username1)
+    console.log(postdata)
+    //var that=this;
+    app.wxRequest(url, 'GET', postdata, (res) => {
+      //console.log(res)
+      //console.log(res.data1)
+      this.setData({
+        mess: res.data1,
+        username2: app.globalData.username1
+
+      })
+      //console.log(mess)
+    }, (err) => {
+      console.err('getone error')
+    })
 
   },
   goStaffManagement: function () {
@@ -75,12 +91,12 @@ Page({
       url: '../TrainingManagement/AnnualTrainingPlan/AnnualTrainingPlan',
     })
   },
-  gotoInterCheck:function(){
+  gotoInterCheck: function () {
     wx.navigateTo({
       url: '../IntermediateCheck/IntermediateCheckMenu/IntermediateCheckMenu',
     })
   },
-  gotoEquipment1:function(){
+  gotoEquipment1: function () {
     wx.navigateTo({
       url: '../Equipment/EquipmentManagement/EquipmentManagement',
     })
@@ -118,6 +134,16 @@ Page({
   gotoTestInstitution3: function () {
     wx.navigateTo({
       url: '../TestingInstitutionManagement/Certificate/Certificate',
+    })
+  },
+  gotoQuality1: function () {
+    wx.navigateTo({
+      url: '../QualityManual/QualityManual/QualityManual',
+    })
+  },
+  gotoQuality2: function () {
+    wx.navigateTo({
+      url: '../QualityManual/QualityManualApprove/QualityManualApprove',
     })
   },
   gotoAuthorityManagement: function () {

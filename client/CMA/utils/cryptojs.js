@@ -23,7 +23,7 @@ function Encrypt(word) {
     mode: CryptoJS.mode.CBC,
     padding: CryptoJS.pad.Pkcs7
   });
-  return encrypted.ciphertext.toString().toUpperCase();
+  return encrypted.ciphertext.toString();
 }
 function SetKey(codekey){
   /*
