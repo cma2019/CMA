@@ -1,10 +1,23 @@
 package com.example.demo.Model;
 
-public class SelfInspectionDocument {
-    private Long  id;       //自查编号
-    private Long fileId;    //文档编号
-    private String fileName;     //文档名称
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
+public class SelfInspectionDocument {
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Long fileId;    //文档编号
+    private Long  id;       //自查编号
+    private String fileName;     //文档名称
+    String dir="SelfInspectionDocument";
+
+    public String getDir(){
+        return dir;
+    }
     public void setId(Long id){
         this.id=id;
     }
