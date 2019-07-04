@@ -7,16 +7,6 @@ Page({
   data: {
     "sampleIoId":"null",
     "receiptId":"null",
-    /*"sampleNumber": "null",
-    "sampleName": "null",
-    "sampleAmount": "null",
-    "sampleState": "null",
-    "sender": "null",
-    "receiver": "null",
-    "sendDate": "null",
-    "obtainer": "null",
-    "obtainDate": "null",
-    "note":"null",*/
     "info":{},
     tmp: [{
       "sampleIoId": 2,
@@ -61,7 +51,7 @@ Page({
       url: app.globalData.url + 'SampleIo/getOne',
       method: 'GET',
       data: {
-        "sampleIoId": this.data.sampleIoId
+        "sampleIoId": thispage.data.sampleIoId
       },
       header: {
         'content-type': 'application/json',
@@ -75,7 +65,7 @@ Page({
             receiptId:res.data.data.receiptId
           })
           console.log("sdgf")
-          console.log(this.page.sampleId)
+          console.log(thispage.data.sampleId)
           wx.setStorage({
             key:'ioGetOneinfo',
             data:res.data.data
@@ -116,6 +106,7 @@ Page({
   },
 
   deleteData: function(e) {
+    var thispage = this
     const deleteoneRequest = wx.request({
       url: app.globalData.url + 'SampleIo/deleteOne',
       method: 'POST',
@@ -124,7 +115,7 @@ Page({
         'Accept': 'application/json'
       },
       data: {
-        "sampleIoId": this.data.sampleIoId
+        "sampleIoId": thispage.data.sampleIoId
       },
       success(res) {
         console.log(res)
@@ -176,9 +167,17 @@ Page({
   looktoreceipt:function(e){
     console.log(e)
     let target = this.data.receiptId
-    wx.navigateTo({
-      url: '../ioReceiptDetail/ioReceiptDetail?id=' + target
-    })
+    if(target != null){
+      wx.navigateTo({
+        url: '../ioReceiptDetail/ioReceiptDetail?id=' + target
+      })
+    }
+    else{
+      wx.showToast({
+        title: '未对应SampleReceipt',
+        duration: 1500
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面隐藏
