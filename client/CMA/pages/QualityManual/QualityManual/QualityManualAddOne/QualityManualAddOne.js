@@ -1,13 +1,66 @@
 // pages/QualityManual/QualityManual/QualityManualAddOne/QualityManualAddOne.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    "id": null,
+    "fileId": null,
+    "fileName": null,
+    "state": null,
+    "current": null,
+    "modifyTime": null,
+    "modifier": null,
+    "modifyContent": null
   },
-
+  bindDateChange: function (e) {
+    console.log("date")
+    console.log(e.detail.value)
+    this.setData({
+      'modifyTime': e.detail.value
+    })
+  },
+  newEquipment: function (e) {
+    console.log(e.detail.value)
+    var myurl1 = app.globalData.url + 'QualityManual/addOneFormData';
+    var myurl2 = app.globalData.url + 'QualityManual/addOneFile';
+    var mydata = {
+      "state": e.detail.value.state,
+      "current": e.detail.value.current,
+      "modifyTime": e.detail.value.modifyTime,
+      "modifier": e.detail.value.modifier,
+      "modifyContent": e.detail.value.modifyContent,
+    };
+    wx.chooseMessageFile({
+      count: 1,
+      type: 'all',
+      success: function (res) {
+        console.log("get file success")
+        console.log(res)
+        mypath = res.tempFiles[0].path
+        app.wxUploadFile(myurl2, mypath, null, (res) => {
+          console.log("upload file success")
+          console.log(res)
+          app.wxRequest(myurl1,'POST',mydata,(res) => {
+            console.log(res)
+          },(err) => {
+            console.log(err)
+          })
+        }, (err) => {
+          console.log(err)
+        })
+        wx.redirectTo({
+          url: '/pages/TestingInstitutionManagement/Certificate/Certificate',
+        })
+      },
+      fail: function (err) {
+        console.log("get file failed")
+        console.log(err)
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
