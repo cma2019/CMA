@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.Date;
+import java.sql.Date;
 
 @Entity
 public class SupervisionRecord {
@@ -14,12 +14,12 @@ public class SupervisionRecord {
     private Long planId;
     private String department;
     private String supervisor;
-    private Date superviseDate;
+    private java.sql.Date superviseDate;
     private String supervisedPerson	;
     private String record;
     private String conclusion;
     private String operator;
-    private Date recordDate;
+    private java.sql.Date recordDate;
 
     public Long getPlanId()
     {
@@ -41,7 +41,7 @@ public class SupervisionRecord {
         this.supervisor=supervisor;
     }
     public String getSupervisor(){return  supervisor;}
-    public void setSuperviseDate(Date superviseDate){
+    public void setSuperviseDate(java.sql.Date superviseDate){
         this.superviseDate=superviseDate;
     }
     public Date getSuperviseDate(){
@@ -63,7 +63,7 @@ public class SupervisionRecord {
     public void setOperator(String operator){
         this.operator=operator;
     }
-    public void setRecordDate(Date recordDate){
+    public void setRecordDate(java.sql.Date recordDate){
         this.recordDate=recordDate;
     }
     public Date getRecordDate(){
