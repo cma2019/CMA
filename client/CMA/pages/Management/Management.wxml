@@ -129,7 +129,7 @@
       </van-cell-group>
     </van-collapse-item>
     </view>
-    <view wx:if="{{username1=='admin'}}">
+    <view wx:if="{{username2==admin1}}">
     <van-collapse-item title="系统管理" name="20">
       <van-cell title="AuthorityManagement" boarder="{{false}}" is-link  center="{{true}}" bindtap="gotoAuthorityManagement"></van-cell>
     </van-collapse-item>

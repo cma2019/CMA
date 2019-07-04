@@ -15,6 +15,8 @@ Page({
    */
   data: {
     activeNames: ['0'],
+    username2:'',
+    admin1:"admin",
     mess:[]
   },
   
@@ -28,7 +30,7 @@ Page({
     
     //var res1;
     let url = app.globalData.url + 'user/getOne'
-    
+   
    // console.log("1"+username1)
     let postdata = {
       "username": username1
@@ -40,7 +42,8 @@ Page({
       console.log(res)
       console.log(res.data1)
       this.setData({
-        mess:res.data1
+        mess:res.data1,
+        username2:username1
       })
       //console.log(mess)
     }, (err) => {
@@ -48,6 +51,27 @@ Page({
     })
   },
   onShow: function () {
+    //var res1;
+    let url = app.globalData.url + 'user/getOne'
+    // console.log("1"+username1)
+    let postdata = {
+      "username": username1
+    }
+    //console.log("2" + username1)
+    console.log(postdata)
+    //var that=this;
+    app.wxRequest(url, 'GET', postdata, (res) => {
+      console.log(res)
+      console.log(res.data1)
+      this.setData({
+        mess: res.data1,
+        username2: username1
+
+      })
+      //console.log(mess)
+    }, (err) => {
+      console.err('getone error')
+    })
 
   },
   goStaffManagement: function () {

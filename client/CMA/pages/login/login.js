@@ -14,20 +14,23 @@ Page({
 
   ApplicationAdd: function (e) {
     {
+      //console.log(res)
       console.log('form发生了add事件，携带数据为：', e.detail.value)
       let url = app.globalData.url + 'user/find'
       let data = {
         "username": e.detail.value.username,
         "password": e.detail.value.password
       }
+     // wx.clearStorage()
       console.log(url)
       console.log(data)
       app.wxRequest(url, 'GET', data, (res) => {
         console.log('successfully')
-        console.log(res)
+        
         console.log(res.msg)
         console.log(res.code)
         if (res.code == 200) {
+          
           wx.setStorage({
             key: "key",
             data: e.detail.value.username
