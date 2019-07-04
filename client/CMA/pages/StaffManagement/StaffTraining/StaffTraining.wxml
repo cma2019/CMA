@@ -1,2 +1,15 @@
-<!--pages/StaffManagement/StaffTraining/StaffTraining.wxml-->
-<text>pages/StaffManagement/StaffTraining/StaffTraining.wxml</text>
+<!--pages/StaffManagement/StaffManagement.wxml-->
+<view>
+  <van-cell-group title="StaffManagement">
+  <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
+  <van-cell value="详情" bindtap='gotoOne' id='{{item.trainingId}}' is-link>
+      <view slot="title">
+        <view>trainingId : {{item.trainingId}}</view>
+        <view>program : {{item.program}}</view>
+        <view>trainingDate : {{item.trainingDate}}</view>
+      </view>
+  </van-cell>
+</view>
+  </van-cell-group>
+</view>
+    <van-button type="info" size="small" bindtap="gotoAdd">Add StaffTraining</van-button>
