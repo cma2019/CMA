@@ -4,7 +4,7 @@ Page({
   data: {
     "year": null,
     "fileId": null,
-    "fileName": null
+    //"fileName": null
   },
 
   newEquipment: function (e) {
@@ -13,8 +13,13 @@ Page({
     var myurl2 = app.globalData.url + 'ManagementReview/addOneFile';
     var mydata = {
       "year": e.detail.value.year,
-      "fileName":e.detail.value.fileName
+      //"fileName":e.detail.value.fileName
     };
+    app.wxRequest(myurl1, 'POST', mydata, (res) => {
+      console.log(res)
+    }, (err) => {
+      console.log(err)
+    })
     wx.chooseMessageFile({
       count: 1,
       type: 'all',
@@ -29,23 +34,21 @@ Page({
           console.log("upload file success")
           console.log(res)
           console.log(mydata)
-          app.wxRequest(myurl1, 'POST', mydata, (res) => {
-            console.log(res)
-          }, (err) => {
-            console.log(err)
-          })
+          
         }, (err) => {
           console.log(err)
         })
-        wx.redirectTo({
-          url: '/pages/TestingInstitutionManagement/Certificate/Certificate',
+       wx.redirectTo({
+          url: '../GetAllFileManagementReview/GetAllFileManagementReview?id=' + e.detail.value.year,
         })
       },
       fail: function (err) {
         console.log("get file failed")
         console.log(err)
       }
+      
     })
+    
   },
   onLoad: function (options) {
     this.setData({
