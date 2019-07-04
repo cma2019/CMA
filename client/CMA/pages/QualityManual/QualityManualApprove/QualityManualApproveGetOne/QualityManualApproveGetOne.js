@@ -11,10 +11,9 @@ Page({
   myapprove:function(e){
     var that = this
     var mydata = {
-      id: that.data.manual.id,
       state: 2
     }
-    var myurl = app.globalData.url + 'QualityManual/approve'
+    var myurl = app.globalData.url + 'QualityManual/Approve/' + that.data.manual.id
     app.wxRequest(myurl, 'POST', mydata, (res) => {
       console.log(res)
     }, (err) => {
@@ -27,10 +26,9 @@ Page({
   myreject: function (e) {
     var that = this
     var mydata = {
-      id: that.data.manual.id,
       state: 1
     }
-    var myurl = app.globalData.url + 'QualityManual/approve'
+    var myurl = app.globalData.url + 'QualityManual/Approve/' + that.data.manual.id
     app.wxRequest(myurl, 'POST', mydata, (res) => {
       console.log(res)
     }, (err) => {

@@ -5,7 +5,7 @@ App({
 
   globalData: {
     userInfo: null,
-    url: 'http://192.168.1.109:8004/cma/',
+    url: 'http://192.168.1.110:8004/cma/',
     username1: "admin"
   },
 
