@@ -3,44 +3,33 @@
  <form bindsubmit='SampleReceipt_addone'>
     <van-cell-group title="SampleReceipt_addone">
       <van-field v-model="sampleId" name="sampleId"  required clearable label="样品标识编号" placeholder="请输入样品标识编号" />
-
       <van-field v-model="applicationUnit"  name="applicationUnit"   required clearable label="申报单位名称" placeholder="请输入申报单位名称" />
-
       <van-field v-model="version" name="version" required clearable label="版本号" placeholder="请输入版本号"/>
       <van-field v-model="contractId"  name="contractId"  required clearable label="合同登记编号" placeholder="请输入合同登记编号" />
-
       <van-field v-model="testType"  name="testType"  required clearable label="检测类型" placeholder="请输入检测类型"/>
-
       <van-field v-model="electronicMedia" name="electronicMedia"  required clearable label="电子媒介" placeholder="请输入电子媒介" />
-
-
-      
       <!--<van-cell title="提交材料与类型" required>
-        
         <view class="addone-icon">
           <navigator url="../receiptAddOne/receiptTypeAdd"><image src="../receiptAddOne/plus-circle.png"></image></navigator>
           or
           <image src="../receiptAddOne/plus-circle.png" bindtap="receiptTypeAdd"></image>
         </view>
       </van-cell>-->
-
-      <van-cell title="提交材料与类型" required is-link value="请依次输入信息" url="../receiptAddOne/receiptTypeAdd"/>
-
+      <view wx:if="{{flag == 0}}">
+        <van-cell title="提交材料与类型" required is-link value="请输入" url="../receiptAddOne/receiptTypeAdd"/>
+      </view>
+      <view wx:else>
+        <van-cell title="提交材料与类型" required is-link value="已填写" url="../receiptAddOne/receiptTypeAdd"/>
+      </view>
       <van-field v-model="softwareType" name="softwareType" required clearable label="软件类型" placeholder="请输入软件类型"/>
-
       <van-field v-model="receiveUnit" name="receiveUnit" required clearable label="接收单位名称" placeholder="请输入接收单位名称"/>
-
       <picker name = 'receiveDate' mode='date' value='{{receiveDate}}' bindchange='bindreceiveDateChange'>
         <view class='picker'>
           <van-field  name="receiveDate" label="接收时间" value='{{receiveDate}}' placeholder="请输入接收时间"  required clearable />
         </view>
       </picker>
-
       <van-field v-model="sender" name="sender" required clearable label="报送人" placeholder="请输入报送人"/>
-
-      <van-field v-model="reciever" name="reciever" required clearable label="受理人" placeholder="请输入受理人"/>
-
-      
+      <van-field v-model="receiver" name="receiver" required clearable label="受理人" placeholder="请输入受理人"/>
     </van-cell-group>
     <view>
       <button class="van-button--info" formType="submit">完成</button>

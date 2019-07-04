@@ -6,6 +6,7 @@ Page({
    */
   data: {
     "sampleId": "null",
+    "receiptId":"null",
     "info":{},
     tmp: [{
       "sampleId": 2,
@@ -44,7 +45,7 @@ Page({
      */
   onShow: function (options) {
     var thispage = this
-    console.log('getone发生了事件，携带数据为：', this.data.sampleId)
+    console.log('getone发生了事件，携带数据为：', this.data)
     wx.request({
       url: app.globalData.url + 'SampleReceive/getOne',
       method: 'GET',
@@ -58,7 +59,8 @@ Page({
       success(res) {
         if (res.data.code == 200) {
           thispage.setData({
-            info : res.data.data
+            info : res.data.data,
+            receiptId:res.data.data.receiptId
           })
           wx.setStorage({
             key:'receiveGetOneinfo',
@@ -173,7 +175,7 @@ Page({
   },
   looktoreceipt: function (e) {
     console.log(e)
-    let target = this.data.sampleId
+    let target = this.data.receiptId
     wx.navigateTo({
       url: '/pages/SampleManagement/SampleIo/ioReceiptDetail/ioReceiptDetail?id=' + target
     })

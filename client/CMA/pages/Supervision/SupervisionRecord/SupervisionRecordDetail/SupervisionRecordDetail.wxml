@@ -1,0 +1,19 @@
+<!--pages/SampleManagement/SampleIo/ioReceiptDetail/ioReceiptDetail.wxml-->
+<view>
+  <van-cell-group>
+    <van-field  label="planId" value='{{planId}}' disabled input-align="right"/>
+    <van-field  label="recordId" value='{{recordId}}' disabled input-align="right"/>
+    <van-field  label="department" value='{{department}}' disabled input-align="right"/>
+    <van-field  label="supervisor" value='{{supervisor}}' disabled input-align="right"/>
+    <van-field  label="superviseDate" value='{{superviseDate}}' disabled input-align="right"/>
+    <van-field  label="supervisedPerson" value='{{supervisedPerson}}' disabled input-align="right"/>
+    <van-field  label="record" value='{{record}}' disabled input-align="right"/>
+    <van-field  label="conclusion" value='{{conclusion}}' disabled input-align="right"/>
+    <van-field  label="operator" value='{{operator}}' disabled input-align="right"/>
+    <van-field  label="recordDate" value='{{recordDate}}' disabled input-align="right"/>
+  </van-cell-group>
+</view>
+<view>
+  <van-button type="info" size="small" bindtap="goback">back</van-button>
+</view>
+

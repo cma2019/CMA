@@ -27,7 +27,7 @@ Page({
     }
     else{
       this.setData({
-        receiptId:0
+        receiptId: 0
       })
     }
     console.log("fsdgdf")

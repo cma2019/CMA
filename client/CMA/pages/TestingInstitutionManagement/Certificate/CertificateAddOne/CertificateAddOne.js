@@ -6,32 +6,35 @@ Page({
    * 页面的初始数据
    */
   data: {
-    id: "test id",
+    fileId: "test fileId",
     fileName: "test.docx"
   },
-  
+
   newEquipment: function (e) {
-    console.log(e.detail.value)
+    console.log('begin add')
     var myurl = app.globalData.url + 'Certificate/addOne';
     var mypath;
     wx.chooseMessageFile({
-      count:1,
-      type:'file',
-      success:function(res){
+      count: 1,
+      type: 'all',
+      success: function (res) {
+        console.log("get file success")
         console.log(res)
-        mypath = res.tempFilePaths
+        mypath = res.tempFiles[0].path
+        app.wxUploadFile(myurl, mypath, null, (res) => {
+          console.log("upload file success")
+          console.log(res)
+        }, (err) => {
+          console.log(err)
+        })
+        wx.redirectTo({
+          url: '/pages/TestingInstitutionManagement/Certificate/Certificate',
+        })
       },
-      fail:function(err){
+      fail: function (err) {
+        console.log("get file failed")
         console.log(err)
       }
-    })
-    app.wxUploadFile(myurl,mypath,null,(res) => {
-      console.log(res)
-    },(err) => {
-      console.log(err)
-    })
-    wx.redirectTo({
-      url: '/pages/TestingInstitutionManagement/Certificate/Certificate',
     })
   },
 

@@ -1,3 +1,4 @@
+const app = getApp()
 Page({
 
   /**
@@ -37,45 +38,136 @@ Page({
       url: app.globalData.url + 'SupervisionRecord/getAll',
       method: 'GET',
       data: {
-        "planId": this.data.planId
+        "planId": thispage.data.planId
       },
       header: {
         'content-type': 'application/json',
         'Accept': 'application/json'
       },
       success(res) {
-        if (res.code == 522) {
-          this.setData({
+        console.log(res)
+        if (res.data.code == 522) {
+          thispage.setData({
             mess: ""
           })
         }
-        else {
-          this.setData({
-            mess: res.data,
+        else if(res.data.code == 200){
+          thispage.setData({
+            mess: res.data.data,
             flag: 1
           })
         }
+        else{
+
+        }
+        console.log(thispage.data.mess)
+        console.log("fdsgfg")
       },
       fail(err) {
         console.log('no data')
       }
     })
   },
-  gotoOne: function (e) {
+  supervisionRecordModify: function (e) {
     console.log(e)
     let recordId = e.currentTarget.id
-    let i =0
-    let recordlist = this.data.mess
-    while (recordlist[i].recordId != recordId){
+    let info = this.data.mess
+    let planId = this.data.planId
+    let i = 0
+    while (info[i].recordId != recordId) {
       ++i
     }
+    let department = info[i].department
+    let supervisor = info[i].supervisor
+    let superviseDate = info[i].superviseDate
+    let supervisedPerson = info[i].supervisedPerson
+    let record = info[i].record
+    let conclusion = info[i].conclusion
+    let operator = info[i].operator
+    let recordDate = info[i].recordDate
     wx.navigateTo({
-      url: 'SupervisonRecordGetOne/SupervisonRecordGetOne?recordId=' + recordId + "&planId=" + recordlist[i].planId + "&department=" + recordlist[i].department + "&supervisor=" + recordlist[i].supervisor + "&superviseDate=" + recordlist[i].superviseDate + "&supervisedPerson=" + recordlist[i].supervisedPerson + "&record=" + recordlist[i].record + "&conclusion=" + recordlist[i].conclusion + "&operator=" + recordlist[i].operator +"&recordDate="+recordlist[i].recordDate
+      url: '/pages/Supervision/SupervisionRecord/SupervisionRecordModifyOne/SupervisionRecordModifyOne?planId=' + planId + "&recordId=" + recordId + "&department=" + department + "&supervisor=" + supervisor + "&superviseDate=" + superviseDate + "&supervisedPerson=" + supervisedPerson + "&record=" + record + "&conclusion=" + conclusion + "&operator=" + operator + "&recordDate=" + recordDate
     })
   },
-  gotoAdd: function () {
+  goback: function () {
+    wx.navigateBack({
+      delta: 1
+    })
+  },
+  supervisionPlanDelete: function (e) {
+    let recordId = e.currentTarget.id
+    let planId = this.data.planId
+    const deleteoneRequest = wx.request({
+      url: app.globalData.url + 'SupervisionRecord/deleteOne',
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'Accept': 'application/json'
+      },
+      data: {
+        "recordId": recordId
+      },
+      success(res) {
+        console.log(res)
+        if (res.data.code == 200) {
+          wx.showToast({
+            title: '删除成功',
+            duration: 1500
+          })
+          wx.navigateTo({
+            url: '/pages/Supervision/SupervisionRecord/SupervisionRecord?id=' + planId
+          })
+        }
+        else if (res.data.code == 521) {
+          wx.showToast({
+            title: '未收到标识编号',
+            duration: 1500
+          })
+          console.log('未收到标识编号')
+        }
+        else {
+          wx.showToast({
+            title: '数据不存在',
+            duration: 1500
+          })
+          console.log('数据不存在')
+        }
+        wx.navigateBack({
+          delta: 1
+        })
+      },
+      fail(err) {
+        console.log('fail deleteone')
+      },
+      complete(fin) {
+        console.log('final deleteone')
+      }
+    })
+  },
+  supervisionRecordAdd: function () {
     wx.navigateTo({
-      url: 'SupervisionRecordAddOne/SupervisionRecordAddOne',
+      url: '/pages/Supervision/SupervisionRecord/SupervisonRecordAddOne/SupervisionRecordAddOne?id=' + this.data.planId
+    })
+  },
+  gotodetail:function(e){
+    console.log(e)
+    let recordId = e.currentTarget.id
+    let info = this.data.mess
+    let planId = this.data.planId
+    let i = 0
+    while (info[i].recordId != recordId) {
+      ++i
+    }
+    let department = info[i].department
+    let supervisor = info[i].supervisor
+    let superviseDate = info[i].superviseDate
+    let supervisedPerson = info[i].supervisedPerson
+    let record = info[i].record
+    let conclusion = info[i].conclusion
+    let operator = info[i].operator
+    let recordDate = info[i].recordDate
+    wx.navigateTo({
+      url: '/pages/Supervision/SupervisionRecord/SupervisionRecordDetail/SupervisionRecordDetail?planId=' + planId + "&recordId=" + recordId + "&department=" + department + "&supervisor=" + supervisor + "&superviseDate=" + superviseDate + "&supervisedPerson=" + supervisedPerson + "&record=" + record + "&conclusion=" + conclusion + "&operator=" + operator + "&recordDate=" + recordDate
     })
   },
   /**

@@ -6,12 +6,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    id: "test ID",
+    fileId: "test ID",
     fileName: "test.docx"
   },
   mydelete: function (e) {
     var that = this
-    var myurl = app.globalData.url + 'Certificate/deleteOne/' + that.data.id;
+    var myurl = app.globalData.url + 'Certificate/deleteOne/' + that.data.fileId;
+    console.log(that.data.fileId);
     app.wxRequest(myurl, 'POST', null, (res) => {
       console.log(res)
     }, (err) => {
@@ -21,21 +22,23 @@ Page({
       url: '/pages/TestingInstitutionManagement/Certificate/Certificate',
     })
   },
-  mydownload: function(e){
+  mydownload: function (e) {
     var that = this
-    var myurl = app.globalData.url + 'Certificate/downloadOne/' + that.data.fileName;
+    var myurl = app.globalData.url + 'Certificate/download/' + that.data.fileId;
     var myFilePath
-    app.wxDownloadFile(myurl,(res) => {
+    app.wxDownloadFile(myurl, (res) => {
+      console.log(res)
       wx.saveFile({
         tempFilePath: res.tempFilePath,
-        success:function(res){
+        success: function (res) {
           myFilePath = res.savedFilePath
+          console.log(myFilePath)
         },
-        fail:function(err){
+        fail: function (err) {
           console.log(err)
         }
       })
-    },(err) => {
+    }, (err) => {
       console.log(err)
     })
   },
@@ -47,7 +50,7 @@ Page({
     var that = this;
     console.log(option)
     that.setData({
-      id: option.id,
+      fileId: option.fileId,
       fileName: option.fileName
     })
   },

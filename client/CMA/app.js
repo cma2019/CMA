@@ -28,7 +28,7 @@ App({
       }
     })
   },
-  wxUploadFile(url,filePath,data,callback,errfun){
+  wxUploadFile(url, filePath, data, callback, errfun) {
     wx.uploadFile({
       url: url,
       filePath: filePath,
@@ -40,18 +40,18 @@ App({
       success: function (res) {
         callback(res.data)
       },
-      fail:function (err){
+      fail: function (err) {
         errfun(res);
       }
     })
   },
-  wxDownloadFile(url,callback,errfun){
+  wxDownloadFile(url, callback, errfun) {
     wx.downloadFile({
       url: url,
-      success: function(res){
+      success: function (res) {
         callback(res)
       },
-      fail: function(res){
+      fail: function (res) {
         errfun(res)
       }
     })

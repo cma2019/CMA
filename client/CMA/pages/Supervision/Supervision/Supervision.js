@@ -60,9 +60,8 @@ Page({
   gotoOne: function (e) {
     console.log(e)
     let target = e.currentTarget.id
-    console.log('getone id')
     console.log(target)
-    console.log("dfdsfs")
+    console.log("fhsdjkhfk")
     wx.navigateTo({
       url: 'supervisionGetOne/supervisionGetOne?id=' + target  //==SupervisionPlan/getAll
     })
@@ -70,6 +69,11 @@ Page({
   gotoAdd: function () {
     wx.navigateTo({
       url: 'supervisionAddOne/supervisionAddOne',
+    })
+  },
+  goback: function () {
+    wx.navigateBack({
+      delta: 1
     })
   }
 })

@@ -1,39 +1,48 @@
 const app = getApp()
+var username1 = "admin";
+wx.getStorage({
+  key: 'key',
+  success(res1) {
+    //console.log(res1.data)
+    username1 = res1.data
+    //console.log(username1)
+  }
+});
 Page({
-
+  
   /**
    * 页面的初始数据
    */
   data: {
     activeNames: ['0'],
-    "mess": null
+    mess:[]
   },
-
   
   onChange(event) {
     this.setData({
       activeNames: event.detail
     });
   },
+  
   onLoad: function (options) {
+    
+    //var res1;
     let url = app.globalData.url + 'user/getOne'
-    wx.getStorage({
-      key: 'key',
-      success(res) {
-        console.log(res.data)
-        var username1 = res.data
-        console.log(username1)
-      }
-    })
+    
+   // console.log("1"+username1)
     let postdata = {
-      "username": "admin"
+      "username": username1
     }
+    //console.log("2" + username1)
+    console.log(postdata)
+    //var that=this;
     app.wxRequest(url, 'GET', postdata, (res) => {
       console.log(res)
+      console.log(res.data1)
       this.setData({
-        mess: res.data1
+        mess:res.data1
       })
-      console.log(mess)
+      //console.log(mess)
     }, (err) => {
       console.err('getone error')
     })
@@ -109,6 +118,11 @@ Page({
   gotoTestInstitution3: function () {
     wx.navigateTo({
       url: '../TestingInstitutionManagement/Certificate/Certificate',
+    })
+  },
+  gotoAuthorityManagement: function () {
+    wx.navigateTo({
+      url: '../admin/admin',
     })
   }
 })

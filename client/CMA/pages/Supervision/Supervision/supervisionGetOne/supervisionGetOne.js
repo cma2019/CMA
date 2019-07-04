@@ -6,7 +6,8 @@ Page({
    */
   data: {
     "id":"null",
-    "info":{},
+    info:[],
+    flag:0,
     tmp: [{
       "planId ": 5,
       "id": 1,
@@ -60,9 +61,14 @@ Page({
       success(res) {
         if (res.data.code == 200) {
           console.log(res.data)
+          console.log(res.data.data)
+          console.log("fsdkflksd")
           thispage.setData({
-            info : res.data.data
+            info : res.data.data,
+            flag: 1
           })
+          console.log(thispage.data.info)
+          console.log("fsdf")
           wx.setStorage({
             key:'supervisionPlaninfo',
             data:res.data.data
@@ -90,10 +96,12 @@ Page({
         console.log('no data')
       }
     })
+  
   },
-  supervisionPlanModify:function(){
+  supervisionPlanModify:function(e){
     console.log(e)
     let planId = e.currentTarget.id
+    let info = this.data.info
     let id = this.data.id
     let i = 0
     while(info[i].planId != planId){
@@ -103,7 +111,7 @@ Page({
     let object = info[i].object
     let dateFrequency = info[i].dateFrequency
     wx.navigateTo({
-      url: '../SupervisionPlan/supervisionPlanModifyOne/supervisionPlanModifyOne?id=' + id +"&planId="+planId +"&content="+content+"&object="+object+"&dateFrequency"+dateFrequency
+      url: '/pages/Supervision/SupervisionPlan/supervisionPlanModifyOne/supervisionPlanModifyOne?id=' + id +"&planId="+planId +"&content="+content+"&object="+object+"&dateFrequency="+dateFrequency
     })
   },
   goback: function () {
@@ -137,6 +145,9 @@ Page({
             title: '删除成功',
             duration: 1500
           })
+          wx.navigateTo({
+            url: '/pages/Supervision/Supervision/supervisionGetOne/supervisionGetOne?id=' + id
+          })
         }
         else if (res.data.code == 521) {
           wx.showToast({
@@ -167,18 +178,13 @@ Page({
   },
   supervisionPlanAdd:function(){
     wx.navigateTo({
-      url: '../SupervisionPlan/supervisionPlanAddOne/supervisionPlanAddOne'  
+      url: '/pages/Supervision/SupervisionPlan/supervisionPlanAddOne/supervisionPlanAddOne?id='+this.data.id  
     })
   },
   gotoSupervisionRecord(e){
     let planId = e.currentTarget.id
     wx.navigateTo({
-      url: '../SupervisionRecord/supervisionRecord?id='+planId
-    })
-  },
-  goback: function () {
-    wx.navigateBack({
-      delta: 1
+      url: '/pages/Supervision/SupervisionRecord/SupervisionRecord?id='+planId
     })
   },
   /**

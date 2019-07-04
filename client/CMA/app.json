@@ -1,7 +1,6 @@
 {
   "pages": [
     "pages/home/home",
-    "pages/login/login",
     "pages/Management/Management",
     "pages/IntermediateCheck/IntermediateCheckMenu/IntermediateCheckMenu",
     "pages/index/index",
@@ -28,6 +27,7 @@
     "pages/SampleManagement/SampleReceipt/receiptGetOne/receiptGetOne",
     "pages/SampleManagement/SampleReceipt/receiptModifyOne/receiptModifyOne",
     "pages/SampleManagement/SampleReceipt/receiptAddOne/receiptTypeAdd",
+    "pages/SampleManagement/SampleReceipt/receiptModifyOne/receiptTypeModify",
     "pages/SampleManagement/SampleReceive/SampleReceive",
     "pages/SampleManagement/SampleReceive/receiveAddOne/receiveAddOne",
     "pages/SampleManagement/SampleReceive/receiveGetOne/receiveGetOne",
@@ -52,6 +52,17 @@
     "pages/Equipment/EquipmentUse/EquipmentUseModify/EquipmentUseModify",
     "pages/Equipment/EquipmentUse/EquipmentUseAddOne/EquipmentUseAddOne",
     "pages/Supervision/Supervision/Supervision",
+    "pages/Supervision/Supervision/supervisionAddOne/supervisionAddOne",
+    "pages/Supervision/Supervision/supervisionGetOne/supervisionGetOne",
+    "pages/Supervision/Supervision/supervisionModifyOne/supervisionModifyOne",
+    "pages/Supervision/SupervisionPlan/supervisionPlanAddOne/supervisionPlanAddOne",
+    "pages/Supervision/SupervisionPlan/supervisionPlanModifyOne/supervisionPlanModifyOne",
+    "pages/Supervision/SupervisionRecord/SupervisionRecord",
+    "pages/Supervision/SupervisionRecord/SupervisionRecordAddOne/SupervisionRecordAddOne",
+    "pages/Supervision/SupervisionRecord/SupervisionRecordGetOne/SupervisionRecordGetOne",
+    "pages/Supervision/SupervisionRecord/SupervisionRecordModifyOne/SupervisionRecordModifyOne",
+    "pages/Supervision/SupervisionRecord/SupervisionRecordDetail/SupervisionRecordDetail",
+    "pages/Supervision/SupervisionApprove/SupervisionApprove",
     "pages/TrainingManagement/AnnualTrainingPlan/AnnualTrainingPlan/AddAnnualTrainingPlan/AddAnnualTrainingPlan",
     "pages/TrainingManagement/AnnualTrainingPlan/AnnualTrainingPlan/ModifyAnnualTrainingPlan/ModifyAnnualTrainingPlan",
     "pages/TrainingManagement/AnnualTrainingPlan/AnnualTrainingPlan/PrintOneAnnualTrainingPlan/PrintOneAnnualTrainingPlan",
@@ -73,7 +84,6 @@
     "pages/CapacityVerification/CapacityVerificationRecord/getRecordByProjectId/getRecordByProjectId",
     "pages/CapacityVerification/CapacityVerificationRecord/modifyOneRecord/modifyOneRecord",
     "pages/CapacityVerification/CapacityVerificationRecord/CapacityVerificationRecord",
-    "pages/Supervision/SupervisionApprove/SupervisionApprove",
     "pages/Equipment/EquipmentMaintenance/EquipmentMaintenance",
     "pages/Equipment/EquipmentMaintenance/EquipmentMaintenanceAddOne/EquipmentMaintenanceAddOne",
     "pages/Equipment/EquipmentMaintenance/EquipmentMaintenanceGetOne/EquipmentMaintenanceGetOne",
@@ -104,25 +114,7 @@
     "pages/StaffManagement/StaffAuthorization/GetAllByStaff/GetAllByStaff",
     "pages/StaffManagement/StaffAuthorization/GetOneStaffAuthorization/GetOneStaffAuthorization",
     "pages/StaffManagement/StaffLeaving/StaffLeaving",
-    "pages/StaffManagement/StaffLeaving/AddOneStaffLeaving/AddOneStaffLeaving",
-    "pages/TestingInstitutionManagement/TestingInstitutionInformation/TestingInstitutionInformationModify/TestingInstitutionInformationModify",
-    "pages/TestingInstitutionManagement/TestingInstitutionResource/TestingInstitutionResourceModify/TestingInstitutionResourceModify",
-    "pages/register/register",
-    "pages/Supervision/SupervisionPlan/supervisionPlanModifyOne/supervisionPlanModifyOne",
-    "pages/Supervision/SupervisionPlan/supervisionPlanAddOne/supervisionPlanAddOne",
-    "pages/Supervision/SupervisionRecord/SupervisionRecord",
-    "pages/Supervision/SupervisionRecord/SupervisionRecordGetOne/SupervisionRecordGetOne",
-    "pages/Supervision/SupervisionRecord/SupervisonRecordAddOne/SupervisionRecordAddOne",
-    "pages/Supervision/SupervisionRecord/SupervisionRecordModifyOne/SupervisionRecordModifyOne",
-    "pages/admin/admin",
-    "pages/admin/modifyadmin/modifyadmin",
-    "pages/admin/printoneadmin/printoneadmin",
-    "pages/TestingInstitutionManagement/Certificate/CertificateAddOne/CertificateAddOne",
-    "pages/TestingInstitutionManagement/Certificate/CertificateGetOne/CertificateGetOne",
-    "pages/StaffManagement/StaffFile/StaffFile",
-    "pages/StaffManagement/StaffFile/PrintOneStaffFile/PrintOneStaffFile",
-    "pages/StaffManagement/StaffFile/AddOneStaffFile/AddOneStaffFile",
-    "pages/StaffManagement/StaffFile/ModifyOneStaffFile/ModifyOneStaffFile"
+    "pages/StaffManagement/StaffLeaving/AddOneStaffLeaving/AddOneStaffLeaving"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -166,7 +158,6 @@
     "van-checkbox": "../../dist/checkbox/index",
     "van-checkbox-group": "../../dist/checkbox-group/index",
     "van-radio": "../../dist/radio/index",
-    "van-radio-group": "../../dist/radio-group/index",
-    "van-panel": "../../dist/panel/index"
+    "van-radio-group": "../../dist/radio-group/index"
   }
 }

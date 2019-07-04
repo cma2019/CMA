@@ -42,14 +42,8 @@ Page({
     console.log(url)
     console.log(postdata)
     app.wxRequest(url, 'GET', postdata, (res) => {
-      //console.log('success')
       console.log(res)
       console.log('success')
-      // console.log(res.code)
-      //console.log(res.msg)
-      // console.log(res.data)
-      //var temp = res.data
-      //this.temp = temp
       if(res.code == 522){
         this.setData({
           mess : ""
@@ -61,9 +55,7 @@ Page({
           flag: 1
         })
       }
-      //console.log(this.mess)
     }, (err) => {
-      //console.err('getone error')
       wx.showToast({
         title: 'getone error',
         duration: 1500
@@ -84,6 +76,11 @@ Page({
   gotoAdd: function () {
     wx.navigateTo({
       url: 'receiveAddOne/receiveAddOne',
+    })
+  },
+  goback: function () {
+    wx.navigateBack({
+      delta: 1
     })
   }
 })

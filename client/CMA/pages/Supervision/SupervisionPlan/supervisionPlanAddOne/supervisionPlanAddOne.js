@@ -1,21 +1,27 @@
 // pages/Supervision/SupervisionPlan/supervisionPlanAddOne/supervisionPlanAddOne.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    id:null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      id:options.id
+    })
+    console.log(this.data.id)
+    console.log("fsdgfd")
   },
   SupervisionPlan_addone:function(e){
     console.log('SupervisionPlan发生了addone事件，携带数据为：', e.detail.value)
+    let id = this.data.id
     wx.request({
       url: app.globalData.url + 'SupervisionPlan/addOne',
       method: 'POST',
@@ -24,7 +30,7 @@ Page({
         'Accept': 'application/json'
       },
       data: {
-        "id": e.detail.value.id,
+        "id":id,
         "content": e.detail.value.content,
         "object": e.detail.value.object,
         "dateFrequency": e.detail.value.dateFrequency
@@ -38,7 +44,13 @@ Page({
             duration: 1500
           })
           wx.navigateTo({
-            url: '../Supervision/Supervision'
+            url: '/pages/Supervision/Supervision/supervisionGetOne/supervisionGetOne?id='+id
+          })
+        }
+        else if(res.data.code == 513){
+          wx.showToast({
+            title: '某项数据错误',
+            duration: 1500
           })
         }
         else {
@@ -58,8 +70,8 @@ Page({
     })
   },
   goback: function () {
-    wx.navigateBack({
-      delta: 1
+    wx.navigateTo({
+      url: '/pages/Supervision/Supervision/Supervision'
     })
   },
   /**

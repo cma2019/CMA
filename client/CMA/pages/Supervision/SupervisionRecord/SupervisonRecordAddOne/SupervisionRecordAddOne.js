@@ -6,13 +6,17 @@ Page({
    */
   data: {
     superviseDate: "",
-    recordDate: ""
+    recordDate: "",
+    planId:""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      planId: options.id
+    })
   },
   bindsuperviseDateChange(e) {
     this.setData({
@@ -25,6 +29,7 @@ Page({
     })
   },
   SupervisionRecord_addone: function (e) {
+    var thispage = this
     if (e.detail.value.superviseDate == "") {
       wx.showToast({
         title: '错误（空白输入）',
@@ -43,7 +48,7 @@ Page({
             'Accept': 'application/json'
           },
           data: {
-            "planId": e.detail.value.planId,
+            "planId": thispage.planId,
             "department": e.detail.value.department,
             "supervisor": e.detail.value.supervisor,
             "superviseDate": e.detail.value.superviseDate,
@@ -62,22 +67,22 @@ Page({
                 duration: 1500
               })
               wx.navigateTo({
-                url: '../SampleIo'
+                url: '/pages/Supervision/SupervisionRecord/SupervisionRecord?id=' + thispage.planId
               })
             }
             else if (res.data.code == 512) {
               wx.showToast({
-                title: '添加失败，监督计划编号已存在',
+                title: '监督计划编号已存在',
                 duration: 1500
               })
-              console.log('添加失败，监督计划编号已存在')
+              console.log('监督计划编号已存在')
             }
             else{
               wx.showToast({
-                title: '添加失败，某项数据错误',
+                title: '某项数据错误',
                 duration: 1500
               })
-              console.log('添加失败，某项数据错误')
+              console.log('某项数据错误')
             }
           },
           fail(err) {

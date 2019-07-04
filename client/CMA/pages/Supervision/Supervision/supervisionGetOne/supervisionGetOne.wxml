@@ -1,19 +1,26 @@
 <view>
-  <view wx:for="{{info}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
-    <van-panel value="详情" bindtap='gotoSupervisionRecord' id='{{item.planId}}' is-link>
-      <view slot="title">
-        <view>planId: {{item.planId}}</view>
-        <view>id: {{item.id}}</view>
-        <view>content: {{item.content}}</view>
-        <view>object: {{item.object}}</view>
-        <view>dateFrequency: {{item.dateFrequency}}</view>
+  <van-cell-group title="supervisionPlan">
+    <view wx:if="{{flag == 1}}">
+      <view wx:for="{{info}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
+        <van-cell value="详情" bindtap='gotoSupervisionRecord' id='{{item.planId}}' is-link>
+          <view slot="title">
+            <view>planId: {{item.planId}}</view>
+            <view>id: {{item.id}}</view>
+            <view>content: {{item.content}}</view>
+            <view>object: {{item.object}}</view>
+            <view>dateFrequency: {{item.dateFrequency}}</view>
+          </view>
+        </van-cell>
+        <view>
+          <van-button type="info" size="small"id='{{item.planId}}' bindtap="supervisionPlanModify">modify</van-button>
+          <van-button type="info" size="small"id='{{item.planId}}' bindtap="supervisionPlanDelete">delete</van-button>
+        </view>
       </view>
-      <div slot="footer">
-        <van-button bindtap="supervisionPlanModify" size="small" id='{{item.planId}}'>Modify</van-button>
-        <van-button bindtap="supervisionPlanDelete" size="small" id='{{item.planId}}'>Delete</van-button>
-      </div>
-    </van-panel>
-  </view>
+    </view>
+    <view wx:else>
+     <text>not have a supervisionPlan yet</text>
+    </view>
+  </van-cell-group>
 </view>
 <view>
   <van-button type="info" size="small" bindtap="supervisionPlanAdd">Add a SupervisionPlan</van-button>
