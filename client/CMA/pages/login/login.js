@@ -132,8 +132,8 @@ Page({
       if (res.code == 200) {
         app.globalData.username1 = e.detail.value.username
         console.log('successfully')
-        wx.redirectTo({
-          url: '/pages/login/login',
+        wx.switchTab({
+          url: '../home/home',
         })
       }
     }, (err) => {
