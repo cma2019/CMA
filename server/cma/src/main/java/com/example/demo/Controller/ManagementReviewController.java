@@ -183,16 +183,17 @@ public class ManagementReviewController {
         return json;
     }
 
-    @RequestMapping(value="/downloadFile/{id}",method=RequestMethod.GET)
-    @ResponseBody
-    public  String download(@PathVariable("id") long id,HttpServletRequest request, HttpServletResponse response)
-    {
+    @RequestMapping(value="/downloadFile/{fileId}",method=RequestMethod.GET)
+    public @ResponseBody String downloadFile(@PathVariable("fileId")Long fileId, HttpServletResponse response){
+        //System.out.println("Download In");
         FileController fileController=new FileController();
         try{
-            if(managementFileRepository.findById(id)==null)
-                throw new Exception("doesn't exist");
-            ManagementFile temp=managementFileRepository.findByFileId(id);
+            if(managementFileRepository.findByFileId(fileId)==null)
+                throw new Exception("不存在");
+            //System.out.println(fileId);
+            ManagementFile temp=managementFileRepository.findByFileId(fileId);
             String name=temp.getFile();
+            System.out.println(name);
             return  fileController.downloadFile(response,name,temp.getDir());
         }catch(Exception e){
             e.printStackTrace();
