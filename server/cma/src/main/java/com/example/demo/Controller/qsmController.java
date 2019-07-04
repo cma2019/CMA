@@ -141,7 +141,7 @@ public class qsmController {
         }
         return response;
     }
-    @RequestMapping(value="/Approve/{id}",method = RequestMethod.GET)
+    @RequestMapping(value="/Approve/{id}",method = RequestMethod.POST)
     @ResponseBody
     public Response Approve(@PathVariable("id") long id,@RequestParam (value="state",required=false)Byte state){
 
@@ -150,6 +150,8 @@ public class qsmController {
             if (QRepository.findById(id) == null)
                 throw new Exception("doesn't exist");
             qsm temp = QRepository.findById(id);
+            System.out.println(state);
+            System.out.println(id);
             temp.setState(state);
             QRepository.save(temp);
             response.code=200;
