@@ -11,7 +11,7 @@ Page({
   onShow: function (options) {
 
   },
-  /*
+  
   ApplicationAdd: function (e) {
     {
       //console.log(res)
@@ -50,13 +50,13 @@ Page({
     }
 
   },
-  */
+  
   goback: function () {
     wx.navigateTo({
       url: '/pages/register/register',
     })
   },
-
+/*
   fun1: function (e) {
     let codeurl = app.globalData.url + 'user/logingetCode'
     console.log("wx login")
@@ -64,7 +64,7 @@ Page({
       "username": e.detail.value.username,
     }
     console.log(userdata)
-    app.wxRequest(codeurl, 'GET', userdata, (res) => {
+    app.wxRequest(codeurl, 'POST', userdata, (res) => {
       console.log(res)
       if (res.code == 200) {
         console.log('code successfully')
@@ -148,6 +148,6 @@ Page({
       this.fun1(e)
     }
     //this.fun1(e)
-  },
-
+  }
+*/
 })
