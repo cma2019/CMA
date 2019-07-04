@@ -9,6 +9,7 @@ public class Certificate {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long fileId;     //材料编号
     private String fileName;         //材料名称
+    String dir="Certificate";
 
     public Long getFileId() {
         return fileId;
@@ -24,5 +25,9 @@ public class Certificate {
 
     public void setFileName(String fileName) {
         this.fileName = fileName;
+    }
+
+    public String getDir() {
+        return dir;
     }
 }
