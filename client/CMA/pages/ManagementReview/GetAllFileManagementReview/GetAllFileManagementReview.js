@@ -3,7 +3,8 @@ const app = getApp()
 Page({
 
   data: {
-    mess: []
+    mess: [],
+    year:null
   },
 
   onLoad: function (options) {
@@ -34,11 +35,7 @@ Page({
     })
   },
   onShow: function (options) {
-    this.setData({
-
-      year: options.id
-    })
-
+   
     let url = app.globalData.url + 'ManagementReview/getAllFile'
     let postdata = {
       "year": this.data.year
@@ -62,9 +59,10 @@ Page({
   },
 
   gotoAdd(e) {
-    let target = e.currentTarget.id1
+    console.log(e)
+    let target = this.data.year
     wx.navigateTo({
-      url: 'AddOnFile/AddOneFile?id'+id1,
+      url: '../AddOneFile/AddOneFile?id='+target,
     })
   },
 

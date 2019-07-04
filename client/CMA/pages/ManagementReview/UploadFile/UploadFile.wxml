@@ -1,2 +1,7 @@
-<!--pages/ManagementReview/UploadFile/UploadFile.wxml-->
-<text>pages/ManagementReview/UploadFile/UploadFile.wxml</text>
+<scroll-view scroll-y>
+  <form bindsubmit='newEquipment'>
+    <view>
+      <button class='van-button--info' formType='submit'>new equipment use</button>
+    </view>
+  </form>
+</scroll-view>

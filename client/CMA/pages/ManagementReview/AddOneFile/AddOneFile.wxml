@@ -1,27 +1,27 @@
-<view>
-  <form bindsubmit='ApplicationAdd'>
-  <van-cell-group>
+<!--pages/QualityManual/QualityManual/QualityManualAddOne/QualityManualAddOne.wxml-->
+<scroll-view scroll-y>
+  <form bindsubmit='newEquipment'>
+    <view class="section">
       <van-field 
-        name="year"
-        label="year"
-        value='{{year}}'
-        readonly
-        required
-        clearable
-      />
+      name="year" 
+      value="{{year}}" 
+      required 
+      readonly
+      clearable
+      label="year" >
+      </van-field>
       <van-field 
-        name="fileName"
-        label="fileName"
-        placeholder="input fileName" 
-        required
-        clearable
-      />
-     
-    </van-cell-group>
+      name="fileName"  
+      required 
+      clearable
+      label="fileName" 
+      
+      >
+      </van-field>
+    </view>
+    
     <view>
-      <button class='van-button--info'formType = 'submit'>Add           </button>
+      <button class='van-button--info' formType='submit'>new quality manual</button>
     </view>
   </form>
-</view>
- <van-button type="info" size="small" bindtap="goback">go back</van-button> 
-
+</scroll-view>
