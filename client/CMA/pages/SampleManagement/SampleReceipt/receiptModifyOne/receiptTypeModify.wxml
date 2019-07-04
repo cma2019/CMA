@@ -1,7 +1,6 @@
-<!--pages/SampleManagement/SampleReceipt/receiptModifyOne/receiptTypeModify.wxml-->
 <view>
- <form bindsubmit='materialList_modifyone'>
-    <van-cell-group title="materialList_modifyone">
+  <form bindsubmit='materialList_modifyone'>
+    <van-cell-group title="materialList_addone">
       <view wx:for="{{materialList}}"wx:key="{{index}}">
         <van-cell title="{{array[index]}}" required >
           <view class="cart-count-box">

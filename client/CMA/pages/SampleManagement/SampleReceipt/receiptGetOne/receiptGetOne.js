@@ -95,7 +95,7 @@ Page({
   },
   gotoAddsampleIo: function () {
     wx.navigateTo({
-      url: '/pages/SampleManagement/SampleReceive/ioAddOne/ioAddOne?id=' + this.data.sampleId,
+      url: '/pages/SampleManagement/SampleIo/ioAddOne/ioAddOne?id=' + this.data.sampleId,
     })
   },
   /**
@@ -108,7 +108,7 @@ Page({
       url: app.globalData.url + 'SampleReceipt/getOne',
       method: 'GET',
       data: {
-        "sampleId": this.data.sampleId
+        "sampleId": thispage.data.sampleId
       },
       header: {
         'content-type': 'application/json',
@@ -117,12 +117,14 @@ Page({
       success(res) {
         if (res.data.code == 200) {
           thispage.setData({
-            info: res.data.data
+            mess: res.data.data
           })
           wx.setStorage({
             key: 'receiptGetOneinfo',
             data: res.data.data
           })
+          console.log(thispage.data.mess)
+          console.log("hhhhh")
         }
         else if (res.data.code == 521) {
           console.log(res.data.msg)
@@ -153,7 +155,7 @@ Page({
     //console.log("dfdg")
     //console.log(target)
     wx.navigateTo({
-      url: '../ioModifyOne/ioModifyOne?id=' + target
+      url: '/pages/SampleManagement/SampleReceipt/receiptModifyOne/receiptModifyOne?id=' + target
     })
   },
 

@@ -1,5 +1,3 @@
-<!--pages/Supervision/SupervisionRecord/SupervisionRecordModifyOne/SupervisionRecordModifyOne.wxml-->
-<!--page_SampleIo/ioModifyOne/ioModifyOne.wxml-->
 <view>
  <form bindsubmit='SupervisionRecord_modifyone'>
     <van-cell-group title="SupervisionRecord_modifyone">

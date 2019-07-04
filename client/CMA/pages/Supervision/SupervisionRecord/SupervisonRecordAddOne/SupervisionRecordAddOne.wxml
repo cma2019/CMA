@@ -2,7 +2,6 @@
 <view>
  <form bindsubmit='SupervisionRecord_addone'>
     <van-cell-group title="SupervisionRecord_addone">
-      <van-field v-model="planId" name="planId" required clearable label="监督计划编号" placeholder="请输入监督计划编号" />
        <van-field v-model="department" name="department" required clearable label="部门" placeholder="请输入部门" />
       <van-field v-model="supervisor" name="supervisor" required clearable label="监督员" placeholder="请输入监督员" />
       <picker name = 'superviseDate' mode='date' value='{{superviseDate}}' bindchange='bindsuperviseDateChange'>

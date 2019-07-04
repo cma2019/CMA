@@ -9,7 +9,10 @@ public interface StaffTrainingRepository extends JpaRepository<StaffTraining,Lon
     StaffTraining findByTrainingIdAndId(long trainingId,long id);
     boolean existsByTrainingIdAndId(long trainingId,long id);
     List<StaffTraining> findAllByTrainingId(long trainingId);
-    StaffTraining findByTrainingId(long trainingId);
     boolean existsByTrainingId(long trainingId);
-    void deleteByTrainingId(long trainingId);
+    void deleteAllByTrainingId(long trainingId);
+    boolean existsById(long id);
+    List<StaffTraining> findAllById(long id);
+    void deleteByTrainingIdAndId(long trainingId,long id);
+
 }

@@ -24,6 +24,7 @@ Page({
   onLoad: function (options) {
     this.setData({
       recordId: options.recordId,
+      planId:options.planId,
       department: options.department,
       supervisor: options.supervisor,
       superviseDate: options.superviseDate,
@@ -33,6 +34,7 @@ Page({
       operator: options.operator,
       recordDate: options.recordDate
     })
+    console.log(this.data)
     console.log("fdsf")
   },
 
@@ -41,14 +43,14 @@ Page({
     this.setData({
       superviseDate: e.detail.value
     })
-    console.log(this.newsuperviseDate)
+    console.log(this.superviseDate)
   },
 
   bindrecordDateChange(e) {
     this.setData({
       recordDate: e.detail.value
     })
-    console.log(this.newrecordDate)
+    console.log(this.recordDate)
   },
   /**
    * 生命周期函数--监听页面显示
@@ -56,9 +58,9 @@ Page({
   onShow: function () {
   },
 
-  SampleIo_modifyone: function (e) {
+  SupervisionRecord_modifyone: function (e) {
     var mod = this.data
-    console.log('SampleIo发生了modifyone事件，携带数据为：', e.detail.value)
+    console.log('SupervisionRecord发生了modifyone事件，携带数据为：', e.detail.value)
     console.log(this.data)
     if (e.detail.value.recordId != null && e.detail.value.recordId != "") {
       mod.recordId = e.detail.value.recordId
@@ -68,6 +70,9 @@ Page({
     }
     if (e.detail.value.supervisor != null && e.detail.value.supervisor != "") {
       mod.supervisor = e.detail.value.supervisor
+    }
+    if (e.detail.value.superviseDate != null && e.detail.value.superviseDate != "") {
+      mod.superviseDate = e.detail.value.superviseDate
     }
     if (e.detail.value.supervisedPerson != null && e.detail.value.supervisedPerson != "") {
       mod.supervisedPerson = e.detail.value.supervisedPerson
@@ -80,10 +85,6 @@ Page({
     }
     if (e.detail.value.operator != null && e.detail.value.operator != "") {
       mod.operator = e.detail.value.operator
-    }
-
-    if (e.detail.value.superviseDate != null && e.detail.value.superviseDate != "") {
-      mod.superviseDate = e.detail.value.superviseDate
     }
     if (e.detail.value.recordDate != null && e.detail.value.recordDate != "") {
       mod.recordDate = e.detail.value.recordDate
@@ -116,7 +117,7 @@ Page({
             duration: 1500
           })
           wx.navigateTo({
-            url: '../SupervisionRecord'
+            url: '/pages/Supervision/SupervisionRecord/SupervisionRecord?id=' + mod.planId
           })
         }
         else if (res.data.code == 531) {

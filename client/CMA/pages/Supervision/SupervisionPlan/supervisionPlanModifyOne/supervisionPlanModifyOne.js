@@ -1,4 +1,5 @@
 // pages/Supervision/SupervisionPlan/supervisionPlanModifyOne/supervisionPlanModifyOne.js
+const app = getApp()
 Page({
 
   /**
@@ -35,84 +36,82 @@ Page({
     let content = e.detail.value.content
     let object = e.detail.value.object
     let dateFrequency = e.detail.value.dateFrequency
-    if(planId == null||planId ==''){
-      wx.showToast({
-        title: 'planId未修改',
-        duration: 1500
-      })
+    if(content == null){
+      content = this.data.content
     }
-    else{
-      if(content == null){
-        content = this.data.content
-      }
-      if(object == null){
-        object = this.data.object
-      }
-      if(dateFrequency == null){
-        dateFrequency = this.data.dateFrequency
-      }
-      console.log('supervisionPlan发生了modifyone事件，携带数据为：', e.detail.value)
-      wx.request({
-        url: app.globalData.url + 'SupervisionPlan/modifyOne',
-        method: 'POST',
-        header: {
-          'content-type': 'application/x-www-form-urlencoded',
-          'Accept': 'application/json'
-        },
-        data: {
-          "planId": planId,
-          "content": content,
-          "object":object,
-          "dateFrequency":dateFrequency
-        },
-        success(res) {
-          console.log(res)
-          if (res.data.code == 200) {
-            wx.showToast({
-              title: '修改成功',
-              duration: 1500
-            })
-            wx.navigateTo({
-              url: '../Supervision/Supervision/supervisionGetOne?id='+this.data.id
-            })
-          }
-          else if (res.data.code == 531) {
-            wx.showToast({
-              title: '未收到标识编号',
-              duration: 1500
-            })
-            console.log('未收到标识编号')
-          }
-          else if (res.data.code == 532) {
-            wx.showToast({
-              title: '数据不存在',
-              duration: 1500
-            })
-            console.log('数据不存在')
-          }
-          else if (res.data.code == 533) {
-            wx.showToast({
-              title: '数据错误',
-              duration: 1500
-            })
-            console.log('数据错误')
-          }
-          else {
-            wx.showToast({
-              title: '数据不合法',
-              duration: 1500
-            })
-            console.log('数据不合法')
-          }
-        },
-        fail(err) {
-          console.log('fail modifyone')
-        },
-        complete(fin) {
-          console.log('final modifyone')
+    if(object == null){
+      object = this.data.object
+    }
+    if(dateFrequency == null){
+      dateFrequency = this.data.dateFrequency
+    }
+    var thispage = this
+    console.log('supervisionPlan发生了modifyone事件，携带数据为：', e.detail.value)
+    wx.request({
+      url: app.globalData.url + 'SupervisionPlan/modifyOne',
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'Accept': 'application/json'
+      },
+      data: {
+        "planId": planId,
+        "content": content,
+        "object":object,
+        "dateFrequency":dateFrequency
+      },
+      success(res) {
+        console.log(res)
+        if (res.data.code == 200) {
+          wx.showToast({
+            title: '修改成功',
+            duration: 1500
+          })
+          wx.navigateTo({
+            url: '/pages/Supervision/Supervision/supervisionGetOne/supervisionGetOne?id='+thispage.data.id
+          })
         }
-      })
-    }
+        else if (res.data.code == 531) {
+          wx.showToast({
+            title: '未收到标识编号',
+            duration: 1500
+          })
+          console.log('未收到标识编号')
+        }
+        else if (res.data.code == 532) {
+          wx.showToast({
+            title: '数据不存在',
+            duration: 1500
+          })
+          console.log('数据不存在')
+        }
+        else if (res.data.code == 533) {
+          wx.showToast({
+            title: '数据错误',
+            duration: 1500
+          })
+          console.log('数据错误')
+        }
+        else {
+          wx.showToast({
+            title: '数据不合法',
+            duration: 1500
+          })
+          console.log('数据不合法')
+        }
+      },
+      fail(err) {
+        console.log('fail modifyone')
+      },
+      complete(fin) {
+        console.log('final modifyone')
+      }
+    })
+  },
+  goback: function () {
+    wx.navigateBack({
+      delta: 1
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

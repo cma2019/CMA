@@ -1,4 +1,4 @@
-package com.example.demo.Model;/*package com.example.demo.Model;
+package com.example.demo.Model;
 
 import javax.persistence.*;
 
@@ -25,4 +25,4 @@ public class Certificate {
     public void setFileName(String fileName) {
         this.fileName = fileName;
     }
-}*/
+}

@@ -7,7 +7,6 @@
     <text class="search-btn" bindtap="cancelSearch">取消</text>
   -->
     <van-cell-group>
-      <van-field  label="sampleName" value='{{mess.sampleName}}' disabled input-align="right"/>
       <van-field  label="applicationUnit" value='{{mess.applicationUnit}}' disabled input-align="right"/>
       <van-field  label="version" value='{{mess.version}}' disabled input-align="right"/>
       <van-field  label="contractId" value='{{mess.contractId}}' disabled input-align="right"/>

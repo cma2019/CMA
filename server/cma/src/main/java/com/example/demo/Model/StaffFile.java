@@ -9,8 +9,8 @@ import javax.persistence.Id;
 public class StaffFile {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-    private long staffid;         //web端用listview检索，对于安卓端无实际意义。
+    private long recordId;
+    private long id;         //web端用listview检索，对于安卓端无实际意义。
     private String name;	//名称
     private String department;	//部门
     private String position;    //职位
@@ -18,12 +18,18 @@ public class StaffFile {
     private String fileLocation;    //档案位置
     private String fileImage;   //档案扫描件（图片在服务器的位置）
 
-    public void setStaffid(long staffid) {
-        this.staffid = staffid;
-    }
+
 
     public void setFileId(String fileId) {
         this.fileId = fileId;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public void setName(String name) {
@@ -46,9 +52,6 @@ public class StaffFile {
         this.fileLocation = fileLocation;
     }
 
-    public long getStaffid() {
-        return staffid;
-    }
 
     public String getName() {
         return name;
@@ -75,7 +78,7 @@ public class StaffFile {
     }
 
     public boolean Equals(StaffFile staffFile){
-        if(this.staffid==staffFile.getStaffid()&&this.fileId.equals(staffFile.getFileId())&&this.fileImage.equals(staffFile.getFileImage())&&this.fileLocation.equals(staffFile.getFileLocation()))
+        if(this.id==staffFile.getId()&&this.fileId.equals(staffFile.getFileId())&&this.fileImage.equals(staffFile.getFileImage())&&this.fileLocation.equals(staffFile.getFileLocation()))
             return true;
         else
             return false;

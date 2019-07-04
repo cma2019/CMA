@@ -1,77 +1,53 @@
-// pages/Management/Management.js
+const app = getApp()
+var username1 = "admin";
+wx.getStorage({
+  key: 'key',
+  success(res1) {
+    //console.log(res1.data)
+    username1 = res1.data
+    //console.log(username1)
+  }
+});
 Page({
-
+  
   /**
    * 页面的初始数据
    */
   data: {
-    activeNames: ['0']
+    activeNames: ['0'],
+    mess:[]
   },
+  
   onChange(event) {
     this.setData({
       activeNames: event.detail
     });
-    wx.getStorage({
-      key: 'key',
-      success(res) {
-        console.log(res.data)
-      }
+  },
+  
+  onLoad: function (options) {
+    
+    //var res1;
+    let url = app.globalData.url + 'user/getOne'
+    
+   // console.log("1"+username1)
+    let postdata = {
+      "username": username1
+    }
+    //console.log("2" + username1)
+    console.log(postdata)
+    //var that=this;
+    app.wxRequest(url, 'GET', postdata, (res) => {
+      console.log(res)
+      console.log(res.data1)
+      this.setData({
+        mess:res.data1
+      })
+      //console.log(mess)
+    }, (err) => {
+      console.err('getone error')
     })
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
   },
   goStaffManagement: function () {
@@ -142,6 +118,11 @@ Page({
   gotoTestInstitution3: function () {
     wx.navigateTo({
       url: '../TestingInstitutionManagement/Certificate/Certificate',
+    })
+  },
+  gotoAuthorityManagement: function () {
+    wx.navigateTo({
+      url: '../admin/admin',
     })
   }
 })

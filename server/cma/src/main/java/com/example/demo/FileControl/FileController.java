@@ -1,4 +1,4 @@
-package com.example.demo.Controller;
+package com.example.demo.FileControl;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
@@ -16,45 +16,26 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.util.List;
 
-@RestController
-@RequestMapping("cma/file")
 public class FileController {
     /**
      * 单文件上传
-     *
      * @param file
      * @param request
      * @return response
      * 本地路径为String path="F:/img/upload/"（统一）
      */
-    @PostMapping("/upload")
-    @ResponseBody
-    public Response upload(@RequestParam("file") MultipartFile file, HttpServletRequest request) {
+    public Response upload(@RequestParam("file") MultipartFile file, HttpServletRequest request,String saveFileName) {
         Response response=new Response();
+
         if (!file.isEmpty()) {
-            String saveFileName = file.getOriginalFilename();
             String path="F:/img/upload/";
             File saveFile = new File(path + saveFileName);
-            File saveFilel = new File(path );
             if (!saveFile.getParentFile().exists()) {
                 saveFile.getParentFile().mkdirs();
             }
             System.out.println(ServletFileUpload.isMultipartContent(request));
             try {
-                DiskFileItemFactory factory=new DiskFileItemFactory();
-                factory.setSizeThreshold(4096*1000);
-                factory.setRepository(saveFilel);
-                ServletFileUpload upload=new ServletFileUpload(factory);
-                upload.setSizeMax(4194304*3);
-                List<FileItem>items=upload.parseRequest(request);
-                System.out.println(items);
-                for(FileItem item:items)
-                {
-                    System.out.println("1111111111");
-                    System.out.println(item.getFieldName());
-                    System.out.println(item.getName());
-                    System.out.println("2222222222");
-                }
+
                 BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(saveFile));
                 out.write(file.getBytes());
                 out.flush();
@@ -70,10 +51,6 @@ public class FileController {
                 e.printStackTrace();
                 response.code=500;
                 response.msg="上传失败";
-            }catch (FileUploadException e) {
-                e.printStackTrace();
-                response.code=500;
-                response.msg="上传失败";
             }
         } else {
             response.code=500;
@@ -85,7 +62,7 @@ public class FileController {
     /**
      * 多文件上传
      *
-     * @param request
+     * @param
      * @return
      */
  /*  @PostMapping("/uploadFiles")
@@ -121,9 +98,7 @@ public class FileController {
         return "所有文件上传成功";
     }*/
 
-    @RequestMapping("/download")
-    public String downloadFile(HttpServletRequest request, HttpServletResponse response) {
-        String fileName="test.jpg";
+    public String downloadFile( HttpServletResponse response,String fileName) {
        // Response myresponse=new Response();
         if (fileName != null) {
             //设置文件路径
@@ -144,14 +119,7 @@ public class FileController {
                         os.write(buffer, 0, i);
                         i = bis.read(buffer);
                     }
-                  //  myresponse.code=200;
-                 //   myresponse.msg="成功";
-                  //  myresponse.data=null;
-
                 } catch (Exception e) {
-                  //  myresponse.code=500;
-                  //  myresponse.msg="失败";
-                 //   myresponse.data=null;
                     e.printStackTrace();
                 } finally {
                     if (bis != null) {
@@ -171,7 +139,33 @@ public class FileController {
                 }
             }
         }
+        System.out.println("成功");
         return null;
+    }
+    public void deletefile(String filename,String path){
+        System.out.println(path+filename);
+        File file=new File(path+filename);
+        if(file.exists())
+            System.out.println("!!!!!!!!!!!!!!!!!");
+        deletef(file);
+    }
+    private static void deletef(File file) {
+        if (file.isFile()) {// 表示该文件不是文件夹
+            file.delete();
+        } else {
+            // 首先得到当前的路径
+            String[] childFilePaths = file.list();
+            for (String childFilePath : childFilePaths) {
+                File childFile = new File(file.getAbsolutePath() + "/" + childFilePath);
+                deletef(childFile);
+            }
+            file.delete();
+        }
+    }
+    public String  getsuffix(String fileName) {
+        String suffix = fileName.substring(fileName.lastIndexOf(".") + 1);
+        System.out.println(suffix);
+        return suffix;
     }
 
 }
