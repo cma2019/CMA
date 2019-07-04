@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!--pages/Supervision/SupervisionRecord/SupervisonRecordAddOne/SupervisionRecordAddOne.wxml-->
 <view>
  <form bindsubmit='SupervisionRecord_addone'>
@@ -25,3 +26,7 @@
   </form>
 </view>
 <button class="van-button--info" bindtap="goback">取消</button>
+=======
+<!--pages/Supervision/SupervisionRecord/SupervisionRecordAddOne/SupervisionRecordAddOne.wxml-->
+<text>pages/Supervision/SupervisionRecord/SupervisionRecordAddOne/SupervisionRecordAddOne.wxml</text>
+>>>>>>> a8a5724cc8623347d68a3f074ef2fa680b2a8b84

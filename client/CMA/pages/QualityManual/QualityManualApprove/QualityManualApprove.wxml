@@ -1,0 +1,15 @@
+<!--pages/QualityManual/QualityManualApprove/QualityManualApprove.wxml-->
+<scroll-view scroll-y>
+  <van-cell-group title="Quality Manual Approve">
+  <view wx:for="{{array}}" data-id="{{item.id}}" data-fileId="{{item.fileId}}" data-fileName="{{item.fileName}}" data-state="{{item.state}}" data-current="{{item.current}}" data-modifyTime="{{item.modifyTime}}" data-modifier="{{item.modifier}}"  data-modifyContent="{{item.modifyContent}}">
+    <van-cell value="详情" is-link url='/pages/QualityManual/QualityManualApprove/QualityManualApproveGetOne/QualityManualApproveGetOne?id={{item.id}}&fileId={{item.fileId}}&fileName={{item.fileName}}&state={{item.state}}&current={{item.current}}&modifyTime={{item.modifyTime}}&modifier={{item.modifier}}&modifyContent={{item.modifyContent}}' link-type='redirectTo'>
+      <view slot="title">
+        <view>id : {{item.id}}</view>
+        <view>fileId : {{item.fileId}}</view>
+        <view>fileName : {{item.fileName}}</view>
+      </view>
+    </van-cell>
+  </view>
+  </van-cell-group>
+</scroll-view>
+

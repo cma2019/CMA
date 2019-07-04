@@ -1,19 +1,28 @@
+<<<<<<< HEAD
 const app = getApp()
+=======
+// pages/Supervision/SupervisionRecord/SupervisionRecordAddOne/SupervisionRecordAddOne.js
+>>>>>>> a8a5724cc8623347d68a3f074ef2fa680b2a8b84
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+<<<<<<< HEAD
     planid: '',
     superviseDate: "",
     recordDate: ""
+=======
+
+>>>>>>> a8a5724cc8623347d68a3f074ef2fa680b2a8b84
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+<<<<<<< HEAD
     console.log(options)
     this.setData({
       planid: options.id
@@ -108,6 +117,11 @@ Page({
       delta: 1
     })
   },
+=======
+
+  },
+
+>>>>>>> a8a5724cc8623347d68a3f074ef2fa680b2a8b84
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -119,7 +133,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+<<<<<<< HEAD
     console.log("465465456465")
+=======
+
+>>>>>>> a8a5724cc8623347d68a3f074ef2fa680b2a8b84
   },
 
   /**
