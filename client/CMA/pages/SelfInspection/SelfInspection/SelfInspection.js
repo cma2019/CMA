@@ -112,7 +112,31 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let url = app.globalData.url + 'SelfInspection/getAll'
+    let postdata = ''
+    console.log(url)
+    console.log(postdata)
+    app.wxRequest(url, 'GET', postdata, (res) => {
+      if (res.code == 522) {
+        this.setData({
+          mess: ""
+        })
+      }
+      else {
+        this.setData({
+          mess: res.data,
+          flag: 1
+        })
+        console.log(this.data.mess)
+        console.log("abcdefg")
+      }
+    }, (err) => {
+      wx.showToast({
+        title: 'getall error',
+        duration: 1500
+      })
+      console.log('getall error')
+    })
   },
 
   /**

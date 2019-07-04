@@ -6,11 +6,23 @@ Page({
    */
   data: {
     array: [],
-    id:''
+    id:"",
+    flag:0
+  },
+  gotoOne:function(e){
+    console.log(e)
+    const index = e.currentTarget.dataset.index
+    console.log(index)
+    let that = this.data.array
+    console.log(that[index])
+    console.log("456456465465465")
+    wx.redirectTo({
+      url: '/pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocumentGetOne/SelfInspectionDocumentGetOne?id=' + this.data.id + "&fileId=" + that[index].fileId + "&year=" + that[index].year + "&file=" + that[index].file+"&fileName=" + that[index].fileName
+    })
   },
   gotoAdd: function (e) {
     wx.redirectTo({
-      url: '/pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocumentAddOne/SelfInspectionDocumentAddOne',
+      url: '/pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocumentAddOne/SelfInspectionDocumentAddOne?id='+this.data.id,
     })
   },
 
@@ -19,17 +31,20 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      id: options.id
+      id:options.id
     })
     var id = this.data.id
     var that = this
-    var myurl = app.globalData.url + 'SelfInspection/getAllFile';
-    app.wxRequest(myurl, 'GET', id, (res) => {
+    var myurl1 = app.globalData.url + 'SelfInspection/getAllFile?id=' + id
+    app.wxRequest(myurl1, 'GET', null, (res) => {
       console.log(res)
-      that.setData({
-        array: res.data.data
-      })
-      console.log(that.data.array)
+     // if(res.data.code == 200){
+        that.setData({
+          array: res.data,
+          flag: 1
+        })
+     // }
+      console.log(that.data)
     }, (err) => {
       console.log(err)
     })

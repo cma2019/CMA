@@ -14,9 +14,12 @@ Page({
     var myurl1 = app.globalData.url + 'SelfInspection/addOneFormData';
     var myurl2 = app.globalData.url + 'SelfInspection/addOneFile';
     var mydata = {
-      "id": e.detail.value.id,
-      "filename": e.detail.value.filename
+      "id": this.data.id,
+      "fileName": e.detail.value.fileName //大于等于4位
     };
+    var id = this.data.id
+    console.log(mydata)
+    console.log("999999999")
     app.wxRequest(myurl1, 'POST', mydata, (res) => {
       console.log(res)
       wx.chooseMessageFile({
@@ -30,7 +33,7 @@ Page({
             console.log("upload file success")
             console.log(res)
             wx.redirectTo({
-              url: '/pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocument',
+              url: '/pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocument?id='+id,
             })
           }, (err) => {
             console.log(err)
@@ -49,7 +52,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      id:options.id
+    })
   },
 
   /**
