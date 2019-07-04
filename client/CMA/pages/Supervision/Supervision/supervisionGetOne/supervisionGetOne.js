@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    "id":"null",
+    id:null,
     info:[],
     flag:0,
     tmp: [{
@@ -47,12 +47,12 @@ Page({
      */
   onShow: function (options) {
     var thispage = this
-    console.log('getone发生了事件，携带数据为：', this.data.id)
+    console.log('SupervisionPlan发生了getAll事件，携带数据为：', thispage.data.id)
     wx.request({
       url: app.globalData.url + 'SupervisionPlan/getAll',
       method: 'GET',
       data: {
-        "id": this.data.id
+        "id": thispage.data.id
       },
       header: {
         'content-type': 'application/json',
@@ -60,19 +60,17 @@ Page({
       },
       success(res) {
         if (res.data.code == 200) {
-          console.log(res.data)
-          console.log(res.data.data)
-          console.log("fsdkflksd")
           thispage.setData({
             info : res.data.data,
             flag: 1
           })
-          console.log(thispage.data.info)
-          console.log("fsdf")
           wx.setStorage({
             key:'supervisionPlaninfo',
             data:res.data.data
           })
+          console.log(thispage.data.id)
+          console.log(thispage.data.info)
+          console.log("weqweqewwqew")
         }
         else if (res.data.code == 521) {
           console.log(res)
@@ -84,7 +82,7 @@ Page({
         }
         else {//522
           console.log(res)
-          console.log("12")
+          console.log("g999999999999")
           wx.showToast({
             title: '数据不存在',
             duration: 1500
@@ -180,6 +178,7 @@ Page({
     wx.navigateTo({
       url: '/pages/Supervision/SupervisionPlan/supervisionPlanAddOne/supervisionPlanAddOne?id='+this.data.id  
     })
+
   },
   gotoSupervisionRecord(e){
     let planId = e.currentTarget.id

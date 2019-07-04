@@ -32,7 +32,6 @@ Page({
     console.log(this.data.dateFrequency)
   },
   SupervisionPlan_modifyone:function(e){
-    let planId = e.detail.value.planId
     let content = e.detail.value.content
     let object = e.detail.value.object
     let dateFrequency = e.detail.value.dateFrequency
@@ -55,7 +54,7 @@ Page({
         'Accept': 'application/json'
       },
       data: {
-        "planId": planId,
+        "planId": thispage.data.planId,
         "content": content,
         "object":object,
         "dateFrequency":dateFrequency
