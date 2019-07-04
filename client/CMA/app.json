@@ -139,7 +139,8 @@
     "pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocument",
     "pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocumentAddOne/SelfInspectionDocumentAddOne",
     "pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocumentModifyOne/SelfInspectionDocumentModifyOne",
-    "pages/ManagementReview/UploadFile/UploadFile"
+    "pages/ManagementReview/UploadFile/UploadFile",
+    "pages/ManagementReview/PrintOneFile/PrintOneFile"
   ],
   "window": {
     "backgroundTextStyle": "light",
