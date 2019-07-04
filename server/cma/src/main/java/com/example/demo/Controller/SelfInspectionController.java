@@ -16,6 +16,7 @@ import com.example.demo.FileControl.FileController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.sql.Date;
 import java.util.List;
 
@@ -115,6 +116,8 @@ public class SelfInspectionController {
                 JSONObject tmp=new JSONObject();
                 tmp.put("year",res.get(i).getFileName().substring(0,4));
                 tmp.put("fileId",res.get(i).getFileId());
+                String entire=res.get(i).getFileName();
+                System.out.println(res.get(i).getFileName());
                 tmp.put("fileName",res.get(i).getFileName());
                 tmp.put("file",res.get(i).getFileName()+".pdf");
                 data.add(tmp);
@@ -135,6 +138,7 @@ public class SelfInspectionController {
     public JSONObject addOneFormData(@RequestParam(value = "fileName",required = false) String fileName,
                                      @RequestParam(value = "id",required = false) String id){
         JSONObject js=new JSONObject();
+        System.out.println(fileName);
         sDoc.setFileName(fileName);
         sDoc.setId(Long.parseLong(id));
         SelfInspectionDocumentRepository.save(sDoc);
@@ -146,6 +150,13 @@ public class SelfInspectionController {
     @PostMapping(path = "/addOneFile")
     public @ResponseBody Response addOneFile(@RequestParam("file") MultipartFile file, HttpServletRequest request){
         FileController fileController=new FileController();
+        System.out.println("?");
+        System.out.println(file.getOriginalFilename());
+        String[] str=file.getOriginalFilename().split("\\.");
+        System.out.println(str[str.length-1]);
+        String suffix=str[str.length-1];
+        sDoc.setFileName(sDoc.getFileName()+suffix);
+        System.out.println("??");
         return  fileController.upload(file,request,sDoc.getFileName(),sDoc.getDir());
     }
     /*
@@ -158,6 +169,7 @@ public class SelfInspectionController {
         JSONObject js=new JSONObject();
         SelfInspectionDocument s=SelfInspectionDocumentRepository.findByFileId(Long.parseLong(fileId));
         FileController fileController=new FileController();
+        System.out.println(s.getFileName());
         fileController.deletefile(s.getFileName(), s.getDir());
         SelfInspectionDocumentRepository.deleteById(Long.parseLong(fileId));
         js.put("code",200);
@@ -165,9 +177,20 @@ public class SelfInspectionController {
         js.put("data",null);
         return js;
     }
-    /*
     @GetMapping(path = "/downloadFile")
-    public @ResponseBody ResponseEntity downloadFile() {
-
-    }*/
+    public @ResponseBody String downloadFile(@PathVariable("fileId") long fileId, HttpServletResponse response) {
+        FileController fileController=new FileController();
+        try{
+            if(SelfInspectionDocumentRepository.findById(fileId)==null)
+                throw new Exception("doesn't exist");
+            SelfInspectionDocument temp=SelfInspectionDocumentRepository.findByFileId(fileId);
+            String name=temp.getFileName();
+            System.out.println(name);
+            return  fileController.downloadFile(response,name,temp.getDir());
+        }catch(Exception e){
+            e.printStackTrace();
+            return "下载失败";
+        }
+    }
 }
+//select * from self_inspection_document;

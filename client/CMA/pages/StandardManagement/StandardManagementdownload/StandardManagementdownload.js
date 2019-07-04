@@ -67,6 +67,7 @@ Page({
     var myurl = app.globalData.url + 'StandardManagement/downloadFile/' + that.data.fileId;
     var myFilePath
     app.wxDownloadFile(myurl, (res) => {
+      console.log("download one now")
       console.log(res)
       wx.saveFile({
         tempFilePath: res.tempFilePath,
