@@ -277,7 +277,7 @@ public class SampleReceiptController {
         }
         else
         {
-            SampleReceipt s=new SampleReceipt();
+            SampleReceipt s=SampleReceiptRepository.findBySampleId(sampleId);
             s.setSampleId(sampleId);
             s.setApplicationUnit(applicationUnit);
             s.setContractId(contractId);
@@ -290,7 +290,7 @@ public class SampleReceiptController {
             s.setReceiveUnit(receiveUnit);
             s.setReceiver(receiver);
             StringBuilder index=new StringBuilder();
-            index.append("000000000");
+            index.append(s.getBaseMs());
             for(int i=0;i<list.size();i++)
             {
                 JSONObject tmp = (JSONObject) list.get(i);
