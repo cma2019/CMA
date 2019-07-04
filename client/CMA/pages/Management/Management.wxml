@@ -2,14 +2,15 @@
 <scroll-view scroll-y>
 
   <van-collapse value="{{ activeNames }}" bind:change="onChange">
-  
+  <view wx:if="{{mess[0]}}">
     <van-collapse-item title="用户管理" name="1">
       <van-cell-group>
         <van-cell title="StaffManagement" boarder="{{false}}" is-link  center="{{true}}" bindtap="goStaffManagement"></van-cell>
-         <van-cell title="StaffAuthorization" boarder="{{false}}" is-link  center="{{true}}" bindtap="goStaffAuthorization"></van-cell>
-          <van-cell title="StaffLeaving" boarder="{{false}}" is-link  center="{{true}}" bindtap="goStaffLeaving"></van-cell>
+        <van-cell title="StaffAuthorization" boarder="{{false}}" is-link  center="{{true}}" bindtap="goStaffAuthorization"></van-cell>
+        <van-cell title="StaffLeaving" boarder="{{false}}" is-link  center="{{true}}" bindtap="goStaffLeaving"></van-cell>
       </van-cell-group>
     </van-collapse-item>
+  </view>
     <van-collapse-item title="质量体系管理" name="2">
     </van-collapse-item>
     <van-collapse-item title="管理评审" name="3">
