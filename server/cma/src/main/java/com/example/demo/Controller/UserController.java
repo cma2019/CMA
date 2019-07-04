@@ -70,8 +70,14 @@ public class UserController {
         user.setUsername(tempUserName);
         user.setPassword(password);
         boolean[] temp = new boolean[20];
-        for (int i = 0; i < 20; i++)
-            temp[i] = false;
+        if(tempUserName.equals("admin")){
+            for (int i = 0; i < 20; i++)
+                temp[i] = true;
+        }
+        else {
+            for (int i = 0; i < 20; i++)
+                temp[i] = false;
+        }
         user.setPermission(temp);
         userRepository.save(user);
         json.put("code", 200);
