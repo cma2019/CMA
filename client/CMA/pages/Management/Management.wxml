@@ -11,6 +11,7 @@
       </van-cell-group>
     </van-collapse-item>
   </view>
+  
     <van-collapse-item title="质量体系管理" name="2">
     </van-collapse-item>
     <van-collapse-item title="管理评审" name="3">
