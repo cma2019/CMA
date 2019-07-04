@@ -1,10 +1,10 @@
 const app = getApp()
-var username1 = "admin";
+
 wx.getStorage({
   key: 'key',
   success(res1) {
     //console.log(res1.data)
-    username1 = res1.data
+    //username1 = res1.data
     //console.log(username1)
   }
 });
@@ -33,7 +33,7 @@ Page({
    
    // console.log("1"+username1)
     let postdata = {
-      "username": username1
+      "username": app.globalData.username1
     }
     //console.log("2" + username1)
     console.log(postdata)
@@ -43,7 +43,7 @@ Page({
       console.log(res.data1)
       this.setData({
         mess:res.data1,
-        username2:username1
+        username2: app.globalData.username1
       })
       //console.log(mess)
     }, (err) => {
@@ -55,7 +55,7 @@ Page({
     let url = app.globalData.url + 'user/getOne'
     // console.log("1"+username1)
     let postdata = {
-      "username": username1
+      "username": app.globalData.username1
     }
     //console.log("2" + username1)
     console.log(postdata)
@@ -65,7 +65,7 @@ Page({
       console.log(res.data1)
       this.setData({
         mess: res.data1,
-        username2: username1
+        username2: app.globalData.username1
 
       })
       //console.log(mess)
