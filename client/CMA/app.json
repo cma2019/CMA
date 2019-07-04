@@ -2,7 +2,8 @@
   "pages": [
     "pages/home/home",
     "pages/Management/Management",
-    "pages/IntermediateCheck/IntermediateCheckMenu/IntermediateCheckMenu",
+    "pages/login/login",
+    "pages/register/register","pages/IntermediateCheck/IntermediateCheckMenu/IntermediateCheckMenu",
     "pages/index/index",
     "pages/logs/logs",
     "pages/IntermediateCheck/IntermediateCheck/IntermediateCheck",
