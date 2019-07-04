@@ -29,7 +29,7 @@ public class CertificateController {
         CRepository.save(certificate);
         certificate.setFileName(certificate.getFileId()+".pdf");
         CRepository.save(certificate);
-        return fileController.upload(file,request,certificate.getFileName());
+        return fileController.upload(file,request,certificate.getFileName(),certificate.getDir());
     }
     @RequestMapping(value="/getOne/{id}",method=RequestMethod.GET)
     @ResponseBody
@@ -106,7 +106,7 @@ public class CertificateController {
                 throw new Exception("doesn't exist");
             Certificate temp=CRepository.findByFileId(id);
             String name=temp.getFileName();
-            return  fileController.downloadFile(response,name);
+            return  fileController.downloadFile(response,name,temp.getDir());
         }catch(Exception e){
             e.printStackTrace();
             return "下载失败";

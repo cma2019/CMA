@@ -22,14 +22,16 @@ public class FileController {
      * @param file
      * @param request
      * @return response
-     * 本地路径为String path="F:/img/upload/"（统一）
+     * 服务器主路径为String path="F:/img/upload/"（统一）
+     * 分支路径由String dir确定
      */
-    public Response upload(@RequestParam("file") MultipartFile file, HttpServletRequest request,String saveFileName) {
+    String path="F:/img/upload/";
+    public Response upload(@RequestParam("file") MultipartFile file, HttpServletRequest request,String saveFileName,String dir) {
         Response response=new Response();
 
         if (!file.isEmpty()) {
-            String path="F:/img/upload/";
-            File saveFile = new File(path + saveFileName);
+            String filepath=path+dir+"/";
+            File saveFile = new File(filepath + saveFileName);
             if (!saveFile.getParentFile().exists()) {
                 saveFile.getParentFile().mkdirs();
             }
@@ -98,12 +100,12 @@ public class FileController {
         return "所有文件上传成功";
     }*/
 
-    public String downloadFile( HttpServletResponse response,String fileName) {
+    public String downloadFile( HttpServletResponse response,String fileName,String dir) {
        // Response myresponse=new Response();
         if (fileName != null) {
             //设置文件路径
-            String realPath = "F:/img/upload/";
-            File file = new File(realPath , fileName);
+            String filepath=path+dir+"/";
+            File file = new File(path , fileName);
             if (file.exists()) {
                 response.setContentType("application/force-download");// 设置强制下载不打开
                 response.addHeader("Content-Disposition", "attachment;fileName=" + fileName);// 设置文件名
@@ -142,9 +144,9 @@ public class FileController {
         System.out.println("成功");
         return null;
     }
-    public void deletefile(String filename,String path){
+    public void deletefile(String filename,String dir){
         System.out.println(path+filename);
-        File file=new File(path+filename);
+        File file=new File(path+dir+filename);
         if(file.exists())
             System.out.println("!!!!!!!!!!!!!!!!!");
         deletef(file);
