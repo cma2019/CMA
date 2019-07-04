@@ -119,7 +119,13 @@
     "pages/StandardManagement/StandardManagementAddone/StandardManagementAddone",
     "pages/StandardManagement/StandardManagementdeleteOne/StandardManagementdeleteOne",
     "pages/StandardManagement/StandardManagementmodifyOne/StandardManagementmodifyOne",
-    "pages/StandardManagement/StandardManagementdownload/StandardManagementdownload"
+    "pages/StandardManagement/StandardManagementdownload/StandardManagementdownload",
+    "pages/QualityManual/QualityManual/QualityManual",
+    "pages/QualityManual/QualityManual/QualityManualAddOne/QualityManualAddOne",
+    "pages/QualityManual/QualityManual/QualityManualGetOne/QualityManualGetOne",
+    "pages/QualityManual/QualityManual/QualityManualModify/QualityManualModify",
+    "pages/QualityManual/QualityManualApprove/QualityManualApprove",
+    "pages/QualityManual/QualityManualApprove/QualityManualApproveGetOne/QualityManualApproveGetOne"
   ],
   "window": {
     "backgroundTextStyle": "light",
