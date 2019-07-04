@@ -1,16 +1,13 @@
 package com.example.demo.Controller;
 
 
+import com.example.demo.framework.Response;
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import com.example.demo.Repository.SelfInspectionRepository;
 import com.example.demo.Repository.SelfInspectionDocumentRepository;
 import com.example.demo.Model.SelfInspection;
@@ -29,6 +26,7 @@ public class SelfInspectionController {
     private SelfInspectionRepository SelfInspectionRepository;
     @Autowired
     private SelfInspectionDocumentRepository SelfInspectionDocumentRepository;
+    SelfInspectionDocument sDoc=new SelfInspectionDocument();
     @GetMapping(path = "/getAll")
     public @ResponseBody JSONObject getAll(){
         List<SelfInspection> res=SelfInspectionRepository.findAll();
@@ -103,7 +101,6 @@ public class SelfInspectionController {
 
     }
     */
-    /*
     @GetMapping(path = "/getAllFile")
     public @ResponseBody JSONObject getAllFile(@RequestParam(value = "id",required = false) String id){
         List<SelfInspectionDocument> res= SelfInspectionDocumentRepository.findAll();
@@ -133,20 +130,42 @@ public class SelfInspectionController {
         js.put("data",data);
         return js;
     }
-    @PostMapping(path = "/addOneFile")
-    public @ResponseBody JSONObject addOneFile(@RequestParam("file") MultipartFile file, HttpServletRequest request){
-        SelfInspectionDocument sDoc=new SelfInspectionDocument();
-        FileController fileController=new FileController();
-        sDoc.setFileName(sDoc.getFileName());
+    @RequestMapping(path="/addOneFormData",method= RequestMethod.POST)
+    @ResponseBody
+    public JSONObject addOneFormData(@RequestParam(value = "fileName",required = false) String fileName,
+                                     @RequestParam(value = "id",required = false) String id){
+        JSONObject js=new JSONObject();
+        sDoc.setFileName(fileName);
+        sDoc.setId(Long.parseLong(id));
+        SelfInspectionDocumentRepository.save(sDoc);
+        js.put("code",200);
+        js.put("msg","成功");
+        js.put("data",null);
+        return js;
     }
+    @PostMapping(path = "/addOneFile")
+    public @ResponseBody Response addOneFile(@RequestParam("file") MultipartFile file, HttpServletRequest request){
+        FileController fileController=new FileController();
+        return  fileController.upload(file,request,sDoc.getFileName(),sDoc.getDir());
+    }
+    /*
     @PostMapping(path = "/modifyOneFile")
     public @ResponseBody JSONObject modifyOneFile(){
 
-    }
+    }*/
     @PostMapping(path = "/deleteOneFile")
-    public @ResponseBody JSONObject deleteOneFile(){
-
+    public @ResponseBody JSONObject deleteOneFile(@RequestParam(value = "fileId",required = false) String fileId){
+        JSONObject js=new JSONObject();
+        SelfInspectionDocument s=SelfInspectionDocumentRepository.findByFileId(Long.parseLong(fileId));
+        FileController fileController=new FileController();
+        fileController.deletefile(s.getFileName(), s.getDir());
+        SelfInspectionDocumentRepository.deleteById(Long.parseLong(fileId));
+        js.put("code",200);
+        js.put("msg","成功");
+        js.put("data",null);
+        return js;
     }
+    /*
     @GetMapping(path = "/downloadFile")
     public @ResponseBody ResponseEntity downloadFile() {
 
