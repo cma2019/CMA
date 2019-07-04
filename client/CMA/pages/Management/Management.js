@@ -31,8 +31,8 @@ Page({
     console.log(postdata)
     //var that=this;
     app.wxRequest(url, 'GET', postdata, (res) => {
-      console.log(res)
-      console.log(res.data1)
+      //console.log(res)
+      //console.log(res.data1)
       this.setData({
         mess:res.data1,
         username2: app.globalData.username1
@@ -53,8 +53,8 @@ Page({
     console.log(postdata)
     //var that=this;
     app.wxRequest(url, 'GET', postdata, (res) => {
-      console.log(res)
-      console.log(res.data1)
+      //console.log(res)
+      //console.log(res.data1)
       this.setData({
         mess: res.data1,
         username2: app.globalData.username1

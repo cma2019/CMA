@@ -25,7 +25,7 @@ Page({
         mess: res.data
       })
 
-      console.log(this.mess)
+      console.log(this.data.mess)
     }, (err) => {
       //console.err('getone error')
       wx.showToast({
