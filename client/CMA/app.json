@@ -108,6 +108,8 @@
     "pages/TestAbility/addOneItem/addOneItem",
     "pages/TestAbility/getOneItem/getOneItem",
     "pages/TestingInstitutionManagement/Certificate/Certificate",
+    "pages/TestingInstitutionManagement/Certificate/CertificateAddOne/CertificateAddOne",
+    "pages/TestingInstitutionManagement/Certificate/CertificateGetOne/CertificateGetOne",
     "pages/TestingInstitutionManagement/TestingInstitutionResource/TestingInstitutionResource",
     "pages/TestingInstitutionManagement/TestingInstitutionInformation/TestingInstitutionInformation",
     "pages/StaffManagement/StaffAuthorization/StaffAuthorization",

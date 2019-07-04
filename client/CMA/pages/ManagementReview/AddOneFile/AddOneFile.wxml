@@ -10,16 +10,7 @@
       clearable
       label="year" >
       </van-field>
-      <van-field 
-      name="fileName"  
-      required 
-      clearable
-      label="fileName" 
-      
-      >
-      </van-field>
-    </view>
-    
+    </view>  
     <view>
       <button class='van-button--info' formType='submit'>new quality manual</button>
     </view>
