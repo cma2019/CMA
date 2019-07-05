@@ -8,5 +8,6 @@
 <view>
   <van-button type="info" size="small" bindtap="deleteitem">Delete</van-button>
   <van-button type="info" size="small" bindtap="downloaditem">Download</van-button>
+  <van-button type="info" size="small" bindtap="modifyitem">Modify</van-button>
   <van-button type="info" size="small" bindtap="goback">Back</van-button>
 </view>

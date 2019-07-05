@@ -42,7 +42,10 @@ Page({
     })
   },
   modifyitem: function (e) {
-    
+    var that = this.data.detail
+    wx.redirectTo({
+      url: '/pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocumentModifyOne/SelfInspectionDocumentModifyOne?fileId=' + that.fileId+"&fileName="+that.fileName+"&id="+that.id
+    })
   },
   /**
    * 生命周期函数--监听页面加载
