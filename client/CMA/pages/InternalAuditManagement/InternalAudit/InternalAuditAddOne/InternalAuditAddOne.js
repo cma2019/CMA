@@ -19,9 +19,9 @@ Page({
       date: e.detail.value
     })
   },
-  SelfInspection_addone: function (e) {
+  InternalAudit_addone: function (e) {
     console.log(e.detail.value)
-    if (this.data.name == "" || e.detail.value.date == "") {
+    if (e.detail.value.year == "" || e.detail.value.date == "") {
       wx.showToast({
         title: '错误（空白输入）',
         icon: 'none',
@@ -30,16 +30,16 @@ Page({
       console.log('错误（空白输入）')
     }
     else {
-      console.log('SelfInspection发生了addone事件，携带数据为：', e.detail.value)
+      console.log('InternalAudit发生了addone事件，携带数据为：', e.detail.value)
       wx.request({
-        url: app.globalData.url + 'SelfInspection/addOne',
+        url: app.globalData.url + 'InternalAuditManagement/addOne',
         method: 'POST',
         header: {
           'content-type': 'application/x-www-form-urlencoded',
           'Accept': 'application/json'
         },
         data: {
-          "name": e.detail.value.name,
+          "year": e.detail.value.year,
           "date": e.detail.value.date
         },
         success(res) {
@@ -51,7 +51,7 @@ Page({
               duration: 1500
             })
             wx.navigateTo({
-              url: '../SelfInspection'
+              url: '../InternalAudit'
             })
           }
           else {

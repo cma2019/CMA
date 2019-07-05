@@ -2,7 +2,7 @@ const app = getApp()
 Page({
 
   data: {
-      trainingId:null
+      //trainingId:null
       //id:[]
   },
 
@@ -38,6 +38,17 @@ Page({
             title: '添加失败!',
             icon:"none",
             duration:2000
+          })
+        }
+        else
+        {
+          wx.showToast({
+            title: '添加成功!',
+            icon: "success",
+            duration: 2000
+          })
+          wx.navigateTo({
+            url: '../GetOneTrainingPeople/GetOneTrainingPeople',
           })
         }
       }, (err) => {

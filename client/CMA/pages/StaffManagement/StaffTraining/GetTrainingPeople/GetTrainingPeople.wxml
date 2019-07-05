@@ -10,4 +10,5 @@
 </view>
   </van-cell-group>
 </view>
+
     <van-button type="info" size="small" bindtap="gotoAdd">Add TrainingPeople</van-button> 

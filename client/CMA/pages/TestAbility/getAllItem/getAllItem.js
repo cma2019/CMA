@@ -8,11 +8,6 @@ Page({
     "temp":
       [{
         "year": 1,
-        "fileName": "222",
-        "file": "content1",
-      },
-      {
-        "year": 1,
         "fileName": "333",
         "file": "content2",
         "id": "222",
@@ -30,9 +25,6 @@ Page({
   },
 
   onLoad: function (options) {
-  },
-
-  onShow: function (options) {
     let url = app.globalData.url + 'TestAbility/getAll'
     let postdata = ''
     this.setData({
@@ -53,8 +45,6 @@ Page({
     }, (err) => {
       console.err('getone error')
       console.log('get all item success')
-    }, (err) => {
-      console.err('get all item error')
     })
   },
 
@@ -83,5 +73,29 @@ Page({
     wx.navigateTo({
       url: '../modifyOne/modifyOne?id=' + target,
     })
-  }
+  },
+
+  downloadAnnex(e) {
+    var that = this
+    var myurl = app.globalData.url + 'TestAbility/getAnnex/' + that.data.year;
+    var myFilePath
+    app.wxDownloadFile(myurl, (res) => {
+      console.log("download one now")
+      console.log(res)
+      wx.saveFile({
+        tempFilePath: res.tempFilePath,
+        success: function (res) {
+          console.log("download ability annex now")
+          console.log(res)
+          myFilePath = res.savedFilePath
+          console.log(myFilePath)
+        },
+        fail: function (err) {
+          console.log(err)
+        }
+      })
+    }, (err) => {
+      console.log(err)
+    })
+  },
 })

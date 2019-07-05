@@ -12,5 +12,6 @@
       </view>
     </van-cell-group>
   </view>
-  <van-button type="info" size="small" id="{{id}}" bindtap="gotoAdd">Add an SelfInspection</van-button>
+  <van-button type="info" size="small" id="{{id}}" bindtap="gotoAdd">Add a SelfInspectionDocument</van-button>
+   <van-button type="info" size="small" bindtap="goback">Back</van-button>
 </scroll-view>

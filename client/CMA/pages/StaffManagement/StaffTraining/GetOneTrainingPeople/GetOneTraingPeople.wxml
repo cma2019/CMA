@@ -1,0 +1,18 @@
+<!--pages/TrainingApplication/PringOneApplication/PrintOneApplication.wxml-->
+<view>
+  <van-cell-group>
+  <van-cell title="trainingId" value="{{trainingId}}" />
+  <van-cell title="id" value="{{id}}" />
+  <van-cell title="name" value="{{name}}" />
+  <van-cell title="program" value="{{program}}" />
+  <van-cell title="place" value="{{place}}" />
+  <van-cell title="trainingDate" value="{{trainingDate}}" />
+  <van-cell title="result" value="{{result}}" />
+  <van-cell title="note" value="{{note}}" />
+  </van-cell-group>
+</view>
+
+<van-button type="info" size="small" bindtap="AddResult">Add Result</van-button> 
+<van-button type="info" size="small" bindtap="ModifyResult">Moidfy Result</van-button> 
+ <van-button type="info" size="small" bindtap="Delete">Delete</van-button> 
+ <van-button type="info" size="small" bindtap="Search">Get All By Staff</van-button> 

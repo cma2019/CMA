@@ -10,12 +10,8 @@ Page({
     flag:0
   },
   gotoOne:function(e){
-    console.log(e)
     const index = e.currentTarget.dataset.index
-    console.log(index)
     let that = this.data.array
-    console.log(that[index])
-    console.log("456456465465465")
     wx.redirectTo({
       url: '/pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocumentGetOne/SelfInspectionDocumentGetOne?id=' + this.data.id + "&fileId=" + that[index].fileId + "&year=" + that[index].year + "&file=" + that[index].file+"&fileName=" + that[index].fileName
     })
@@ -38,18 +34,22 @@ Page({
     var myurl1 = app.globalData.url + 'SelfInspection/getAllFile?id=' + id
     app.wxRequest(myurl1, 'GET', null, (res) => {
       console.log(res)
-     // if(res.data.code == 200){
+      if(res.code == 200){
         that.setData({
           array: res.data,
           flag: 1
         })
-     // }
+      }
       console.log(that.data)
     }, (err) => {
       console.log(err)
     })
   },
-
+  goback: function () {
+    wx.navigateBack({
+      delta: 1
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

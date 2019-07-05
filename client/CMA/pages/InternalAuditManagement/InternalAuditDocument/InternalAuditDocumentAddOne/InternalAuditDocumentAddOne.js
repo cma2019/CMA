@@ -5,19 +5,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-    "id": null,
+    "year": null,
     "fileId": null,
     "fileName": null,
   },
-  SelfInspectionAddOne: function (e) {
+  InternalAuditDocumentAddOne: function (e) {
     console.log(e.detail.value)
-    var myurl1 = app.globalData.url + 'SelfInspection/addOneFormData';
-    var myurl2 = app.globalData.url + 'SelfInspection/addOneFile';
+    var myurl1 = app.globalData.url + 'InternalAuditManagement/addOneFormData';
+    var myurl2 = app.globalData.url + 'InternalAuditManagement/addOneFile';
     var mydata = {
-      "id": this.data.id,
+      "year": this.data.year,
       "fileName": e.detail.value.fileName //大于等于4位
     };
-    var id = this.data.id
+    var year = this.data.year
     console.log(mydata)
     console.log("999999999")
     app.wxRequest(myurl1, 'POST', mydata, (res) => {
@@ -33,7 +33,7 @@ Page({
             console.log("upload file success")
             console.log(res)
             wx.redirectTo({
-              url: '/pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocument?id='+id,
+              url: '/pages/InternalAuditManagement/InternalAuditDocument/InternalAuditDocument?id=' + year,
             })
           }, (err) => {
             console.log(err)
@@ -53,7 +53,7 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      id:options.id
+      year:options.id
     })
   },
 

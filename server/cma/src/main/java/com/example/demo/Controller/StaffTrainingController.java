@@ -127,8 +127,17 @@ public class StaffTrainingController {
         return json;
     }
 
+    @GetMapping(path = "getOneTraining")
+    public @ResponseBody JSONObject getOneTraining(@RequestParam(value = "trainingId",required = false)long trainingId){
+        JSONObject json=new JSONObject();
+        json.put("code",200);
+        json.put("msg","成功");
+        List<StaffTraining> list=staffTrainingRepository.findAllByTrainingId(trainingId);
+        json.put("data",list.get(0));
+        return json;
+    }
     @PostMapping(path = "addTrainingPeople")
-    public @ResponseBody JSONObject addTrainingPeople(@RequestParam(value = "trainingId",required = false)long trainingId,@RequestParam(value="id",required = false)long[] id) throws ParseException {
+    public @ResponseBody JSONObject addTrainingPeople(@RequestParam(value = "trainingId",required = false)long trainingId,@RequestParam(value="id",required = false)long id) throws ParseException {
         JSONObject json=new JSONObject();
         if(!staffTrainingRepository.existsByTrainingId(trainingId)){
             json.put("code",210);
@@ -138,41 +147,35 @@ public class StaffTrainingController {
         else
         {
             List<StaffTraining> list=staffTrainingRepository.findAllByTrainingId(trainingId);
-            for(int i=0;i<id.length;i++){
-                if(staffManagementRepository.existsById(id[i])==false){
+            if(staffManagementRepository.existsById(id)==false){
+                json.put("code",210);
+                json.put("msg","失败,无法找到id为"+id+"的人员");
+                json.put("data",null);
+                return json;
+            }
+            for(int j=0;j<list.size();j++){
+                if(id==list.get(j).getId()){
                     json.put("code",210);
-                    json.put("msg","失败,无法找到id为"+id[i]+"的人员");
+                    json.put("msg","已存在id为"+id+"人员");
                     json.put("data",null);
                     return json;
                 }
             }
-            for(int i=0;i<id.length;i++){
-                for(int j=0;j<list.size();j++){
-                    if(id[i]==list.get(j).getId()){
-                        json.put("code",210);
-                        json.put("msg","已存在id为"+id[i]+"人员");
-                        json.put("data",null);
-                        return json;
-                    }
-                }
-            }
             //staffTrainingRepository.deleteByTrainingId(trainingId);
             StaffTraining staffTraining=list.get(0);
-            for(int i=0;i<id.length;i++){
-                StaffTraining staffTraining1=new StaffTraining();
-                staffTraining1.setTrainingId(trainingId);
-                staffTraining1.setResult(staffTraining.getResult());
-                SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-                staffTraining1.setTrainingDate(sdf.parse(staffTraining.getTrainingDate()));
-                staffTraining1.setProgram(staffTraining.getProgram());
-                staffTraining1.setPlace(staffTraining.getPlace());
-                staffTraining1.setPresenter(staffTraining.getPresenter());
-                staffTraining1.setContent(staffTraining.getContent());
-                staffTraining1.setNote(staffTraining.getNote());
-                staffTraining1.setId(id[i]);
-                staffTraining1.setName(staffManagementRepository.getOne(id[i]).getName());
-                staffTrainingRepository.save(staffTraining1);
-            }
+            StaffTraining staffTraining1=new StaffTraining();
+            staffTraining1.setTrainingId(trainingId);
+            staffTraining1.setResult(staffTraining.getResult());
+            SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+            staffTraining1.setTrainingDate(sdf.parse(staffTraining.getTrainingDate()));
+            staffTraining1.setProgram(staffTraining.getProgram());
+            staffTraining1.setPlace(staffTraining.getPlace());
+            staffTraining1.setPresenter(staffTraining.getPresenter());
+            staffTraining1.setContent(staffTraining.getContent());
+            staffTraining1.setNote(staffTraining.getNote());
+            staffTraining1.setId(id);
+            staffTraining1.setName(staffManagementRepository.getOne(id).getName());
+            staffTrainingRepository.save(staffTraining1);
             //staffTraining.setId(id[0]);
             //staffTrainingRepository.save(staffTraining);
             json.put("code",200);

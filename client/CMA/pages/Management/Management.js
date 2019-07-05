@@ -160,5 +160,10 @@ Page({
     wx.navigateTo({
       url: '../ManagementReview/ManagementReview',
     })
+  },
+  gotoERM: function () {
+    wx.navigateTo({
+      url: '/pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagement',
+    })
   }
 })
