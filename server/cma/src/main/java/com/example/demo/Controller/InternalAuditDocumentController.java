@@ -112,13 +112,14 @@ public class InternalAuditDocumentController {
         System.out.println(fileName);
         add_name=fileName;
         add_year=year;
+        /*
         if(InternalAuditDocumentRepository.findByYear(year)!=null)
         {
             js.put("code",500);
             js.put("msg","年份重复");
             js.put("data",null);
             return js;
-        }
+        }*/
         js.put("code",200);
         js.put("msg","成功");
         js.put("data",null);
@@ -126,6 +127,7 @@ public class InternalAuditDocumentController {
     }
     @PostMapping(path = "/addOneFile")
     public @ResponseBody Response addOneFile(@RequestParam("file") MultipartFile file, HttpServletRequest request){
+        /*
         if(InternalAuditDocumentRepository.findByYear(add_year)!=null)
         {
             Response res=new Response();
@@ -134,22 +136,20 @@ public class InternalAuditDocumentController {
             res.data=null;
             return res;
         }
-        else
-        {
-            FileController fileController=new FileController();
-            InternalAuditDocument sDoc=new InternalAuditDocument();
-            sDoc.setYear(add_year);
-            System.out.println("?");
-            System.out.println(file.getOriginalFilename());
-            String[] str=file.getOriginalFilename().split("\\.");
-            System.out.println(str[str.length-1]);
-            String suffix=str[str.length-1];
-            sDoc.setFileName(add_name+"."+suffix);
-            InternalAuditDocumentRepository.save(sDoc);
-            System.out.println(sDoc.getFileName());
-            System.out.println("??");
-            return  fileController.upload(file,request,sDoc.getFileName(),sDoc.getDir());
-        }
+        */
+        FileController fileController=new FileController();
+        InternalAuditDocument sDoc=new InternalAuditDocument();
+        sDoc.setYear(add_year);
+        System.out.println("?");
+        System.out.println(file.getOriginalFilename());
+        String[] str=file.getOriginalFilename().split("\\.");
+        System.out.println(str[str.length-1]);
+        String suffix=str[str.length-1];
+        sDoc.setFileName(add_name+"."+suffix);
+        InternalAuditDocumentRepository.save(sDoc);
+        System.out.println(sDoc.getFileName());
+        System.out.println("??");
+        return  fileController.upload(file,request,sDoc.getFileName(),sDoc.getDir());
     }
     @RequestMapping(path="/modifyOneFormData",method= RequestMethod.POST)
     @ResponseBody
@@ -170,25 +170,22 @@ public class InternalAuditDocumentController {
     public @ResponseBody Response modifyOneFile(@RequestParam("file") MultipartFile file, HttpServletRequest request){
         FileController fileController=new FileController();
         InternalAuditDocument tmp=InternalAuditDocumentRepository.findByFileId(modify_id);
-        if(InternalAuditDocumentRepository.findByYear(modify_year)!=null)
+        /*if(InternalAuditDocumentRepository.findByYear(modify_year)!=null)
         {
             Response res=new Response();
             res.code=500;
             res.msg="修改后年份重复";
             res.data=null;
             return res;
-        }
-        else
-        {
-            String oldName=tmp.getFileName();
-            fileController.deletefile(oldName,tmp.getDir());
-            String[] str=file.getOriginalFilename().split("\\.");
-            System.out.println(str[str.length-1]);
-            String suffix=str[str.length-1];
-            tmp.setFileName(modify_name+"."+suffix);
-            InternalAuditDocumentRepository.saveAndFlush(tmp);
-            return  fileController.upload(file,request,tmp.getFileName(),tmp.getDir());
-        }
+        }*/
+        String oldName=tmp.getFileName();
+        fileController.deletefile(oldName,tmp.getDir());
+        String[] str=file.getOriginalFilename().split("\\.");
+        System.out.println(str[str.length-1]);
+        String suffix=str[str.length-1];
+        tmp.setFileName(modify_name+"."+suffix);
+        InternalAuditDocumentRepository.saveAndFlush(tmp);
+        return  fileController.upload(file,request,tmp.getFileName(),tmp.getDir());
     }
     @PostMapping(path = "/deleteOneFile")
     public @ResponseBody JSONObject deleteOneFile(@RequestParam(value = "fileId",required = false) long fileId){
