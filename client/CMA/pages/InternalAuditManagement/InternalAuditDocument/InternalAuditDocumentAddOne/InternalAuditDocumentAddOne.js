@@ -18,8 +18,7 @@ Page({
       "fileName": e.detail.value.fileName //大于等于4位
     };
     var year = this.data.year
-    console.log(mydata)
-    console.log("999999999")
+    console.log('InternalAuditDocument发生了addone事件，携带数据为：', mydata)
     app.wxRequest(myurl1, 'POST', mydata, (res) => {
       console.log(res)
       wx.chooseMessageFile({

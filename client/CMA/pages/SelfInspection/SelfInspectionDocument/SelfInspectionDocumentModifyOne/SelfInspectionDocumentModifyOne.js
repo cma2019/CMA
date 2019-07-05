@@ -34,7 +34,7 @@ Page({
       "fileName": fileName //大于等于4位
     };
     var id = this.data.id
-    console.log('SelfInspectionDocument发生了ModifyOne事件:', mydata)
+    console.log('SelfInspectionDocument发生了ModifyOne事件，携带数据为：',  mydata)
     app.wxRequest(myurl1, 'POST', mydata, (res) => {
       console.log(res)
       wx.chooseMessageFile({
