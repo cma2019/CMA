@@ -11,6 +11,7 @@ import java.util.Date;
 public class ExternalReviewManagement {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
+    long id;
     private long year;     //外审的年份
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date date;   //外审管理的日期
@@ -29,6 +30,10 @@ public class ExternalReviewManagement {
 
     public void setYear(long year) {
         this.year = year;
+    }
+
+    public long getId() {
+        return id;
     }
 
     public static String dateToStr(java.util.Date dateDate) {
