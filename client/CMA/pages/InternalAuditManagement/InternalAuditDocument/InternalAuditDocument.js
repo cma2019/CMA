@@ -6,7 +6,7 @@ Page({
    */
   data: {
     array: [],
-    id:"",
+    year:"",
     flag:0
   },
   gotoOne:function(e){
@@ -17,25 +17,29 @@ Page({
     console.log(that[index])
     console.log("456456465465465")
     wx.redirectTo({
-      url: '/pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocumentGetOne/SelfInspectionDocumentGetOne?id=' + this.data.id + "&fileId=" + that[index].fileId + "&year=" + that[index].year + "&file=" + that[index].file+"&fileName=" + that[index].fileName
+      url: '/pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocumentGetOne/SelfInspectionDocumentGetOne?year=' + this.data.year + "&fileId=" + that[index].fileId +"&file=" + that[index].file+"&fileName=" + that[index].fileName
     })
   },
   gotoAdd: function (e) {
     wx.redirectTo({
-      url: '/pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocumentAddOne/SelfInspectionDocumentAddOne?id='+this.data.id,
+      url: '/pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocumentAddOne/SelfInspectionDocumentAddOne?id=' + this.data.year,
     })
   },
-
+  goback: function () {
+    wx.navigateBack({
+      delta: 1
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     this.setData({
-      id:options.id
+      year:options.id
     })
-    var id = this.data.id
+    var year = this.data.year
     var that = this
-    var myurl1 = app.globalData.url + 'SelfInspection/getAllFile?id=' + id
+    var myurl1 = app.globalData.url + 'InternalAuditManagement/getAllFile?year=' + year
     app.wxRequest(myurl1, 'GET', null, (res) => {
       console.log(res)
      // if(res.data.code == 200){

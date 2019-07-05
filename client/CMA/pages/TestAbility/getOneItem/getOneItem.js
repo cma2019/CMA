@@ -15,22 +15,22 @@ Page({
 
   onLoad: function (options) {
     this.setData({
-      year: options.id
+      id: options.id
     })
   },
   onShow: function (options) {
     let url = app.globalData.url + 'TestAbility/getOneItem'
     let postdata = {
-      "year": this.data.year
+      "id": this.data.id
     }
     app.wxRequest(url, 'GET', postdata, (res) => {
       console.log('test ability getone success')
       console.log(res)
       this.setData({
-        id: res.data[0].id,
-        productionName: res.data[0].productionName,
-        ability: res.data[0].ability,
-        referrence: res.data[0].referrence,
+        id: res.data.id,
+        productionName: res.data.productionName,
+        ability: res.data.ability,
+        referrence: res.data.referrence,
       })
     }, (err) => {
       console.err('getone error')
@@ -44,6 +44,11 @@ Page({
     }
     app.wxRequest(url, 'POST', data, (res) => {
       console.log('delete successfully')
+      if (res.code == 200) {
+        wx.navigateBack({
+          delta: 1
+        })
+      }
     }, (err) => {
       console.log('delete failed')
     })

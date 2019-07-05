@@ -3,6 +3,7 @@
 <!--pages/IntermediateCheck/IntermediateCheckGetone/IntermediateCheckGetone.wxml-->
 <view>
 <van-cell-group title='message of {{year}}'>
+    <van-cell value="{{year}}"title="year"border="{{ false }}"/>
     <van-cell value="{{id}}"title="id"border="{{ false }}"/>
     <van-cell value="{{productionName}}"title="productionName"border="{{ false }}"/>
     <van-cell value="{{ability}}"title="ability"border="{{ false }}"/>

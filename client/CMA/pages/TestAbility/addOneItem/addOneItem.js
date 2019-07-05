@@ -24,6 +24,7 @@ Page({
     else {
       let url = app.globalData.url + 'TestAbility/addOneItem'
       let data = {
+        "productionName":this.data.year,
         "productionName": e.detail.value.productionName,
         "ability": e.detail.value.ability,
         "referrence": e.detail.value.referrence
@@ -33,9 +34,11 @@ Page({
       console.log(data)
       app.wxRequest(url, 'POST', data, (res) => {
         console.log('add ability test successfully')
-        console.log(res)
-        console.log(res.msg)
-        console.log(res.code)
+        if(res.code == 200){
+          wx.navigateBack({
+            delta : 1
+          })
+        }
       }, (err) => {
         console.log('fail intermediate check register')
       })

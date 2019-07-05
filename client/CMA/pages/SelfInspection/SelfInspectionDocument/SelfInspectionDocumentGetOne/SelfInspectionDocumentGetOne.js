@@ -9,12 +9,10 @@ Page({
   },
   deleteitem: function (e) {
     var that = this
-    console.log(that.data.detail.fileId)
-    console.log(that.data.detail.id)
+    console.log('SelfInspection发生了deleteOneFile事件:', that.data.detail.fileId)
     var myurl = app.globalData.url + 'SelfInspection/deleteOneFile?fileId=' + that.data.detail.fileId
     app.wxRequest(myurl, 'POST', null, (res) => {
       console.log(res)
-      console.log("aaaaaaaaaaaaa")
     }, (err) => {
       console.log(err)
     })
@@ -24,7 +22,8 @@ Page({
   },
   downloaditem: function (e) {
     var that = this
-    var myurl = app.globalData.url + 'SelfInspection/downloadFile?fileId=' + that.data.detail.fileId
+    console.log('SelfInspection发生了downloadFile事件:', that.data.detail.fileId)
+    var myurl = app.globalData.url + 'SelfInspection/downloadFile/' + that.data.detail.fileId
     var myFilePath
     app.wxDownloadFile(myurl, (res) => {
       console.log(res)
@@ -42,18 +41,20 @@ Page({
       console.log(err)
     })
   },
-
+  modifyitem: function (e) {
+    var that = this.data.detail
+    wx.redirectTo({
+      url: '/pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocumentModifyOne/SelfInspectionDocumentModifyOne?fileId=' + that.fileId+"&fileName="+that.fileName+"&id="+that.id
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (option) {
     var that = this
-    console.log(option)
     that.setData({
       detail: option
     })
-    console.log(this.data.detail)
-    console.log("465465465")
   },
   goback: function () {
     wx.navigateBack({
