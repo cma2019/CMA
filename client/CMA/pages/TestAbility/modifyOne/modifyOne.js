@@ -26,8 +26,8 @@ Page({
 
   modifyTestAbility: function (e) {
     console.log('modify modify')
-    if (e.detail.value.year == "" || e.detail.value.fileName == "" ||
-      e.detail.value.file == "") {
+    if (e.detail.value.year == "" 
+    || e.detail.value.fileName == ""){
       wx.showToast({
         title: 'wrong message',
         duration: 2000
@@ -43,23 +43,46 @@ Page({
       let data = {
         "year": e.detail.value.year,
         "fileName": e.detail.value.fileName,
-        "file": e.detail.value.file
       };
       console.log(data)
       app.wxRequest(url, 'POST', data, (res) => {
         console.log('modify message successfully')
         console.log(res)
-        /*
-        if (res.data == "modify successfully.") {
-          wx.navigateBack({
-            delta: 1
-          })
+        if (res.code == 200) {
+          newTestAbility(e)
         }
-        */
+
       }, (err) => {
         console.log('fail modify')
       })
     }
+  },
+  newTestAbility: function (e) {
+    console.log('begin add testability')
+    var myurl = app.globalData.url + 'TestAbility/modifyOneeFile';
+    var mypath;
+    wx.chooseMessageFile({
+      count: 1,
+      type: 'all',
+      success: function (res) {
+        console.log("get file success")
+        console.log(res)
+        mypath = res.tempFiles[0].path
+        app.wxUploadFile(myurl, mypath, null, (res) => {
+          console.log("upload file success")
+          console.log(res)
+          wx.navigateBack({
+            delta: 1
+          })
+        }, (err) => {
+          console.log(err)
+        })
+      },
+      fail: function (err) {
+        console.log("get file failed")
+        console.log(err)
+      }
+    })
   }
 })
 

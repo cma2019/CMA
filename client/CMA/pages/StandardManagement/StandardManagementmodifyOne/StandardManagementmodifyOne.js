@@ -14,6 +14,7 @@ Page({
     console.log('begin add')
     var myurl = app.globalData.url + 'StandardManagement/modifyOne';
     var mypath;
+    var myfileId = this.data.fileId
     wx.chooseMessageFile({
       count: 1,
       type: 'all',
@@ -21,7 +22,13 @@ Page({
         console.log("get file success")
         console.log(res)
         mypath = res.tempFiles[0].path
-        app.wxUploadFile(myurl, mypath, null, (res) => {
+        console.log(myfileId)
+        let formdata = {
+          "fileId": myfileId
+        }
+        console.log("formdata")
+        console.log(formdata)
+        app.wxUploadFile(myurl, mypath, formdata, (res) => {
           console.log("upload file success")
           console.log(res)
           wx.navigateBack({
@@ -47,7 +54,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log('getone options')
+    console.log(options)
+    this.setData({
+      fileId: options.id
+    })
   },
 
   /**

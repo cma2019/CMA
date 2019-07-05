@@ -1,6 +1,6 @@
 <!--pages/IntermediateCheck/IntermediateCheck.wxml-->
 <view>
-  <form bindsubmit='InterCheckRegister'>
+  <form bindsubmit='AddOneTestAbility'>
     <van-cell-group title="input message">
       <van-field 
         name="year"
@@ -17,14 +17,6 @@
         required
         clearable
       />    
-      <van-field
-        name="file"
-        label="my file"
-        placeholder="input file"
-        required
-        clearable
-        border = "{{false}}"
-      />
     </van-cell-group>
     <view>
       <button class='van-button--info' formType='submit'>register</button>
