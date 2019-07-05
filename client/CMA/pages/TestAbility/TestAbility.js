@@ -9,12 +9,10 @@ Page({
       [{
         "year": 1,
         "fileName": "222",
-        "file": "content1",
       },
       {
         "year": 1,
         "fileName": "333",
-        "file": "content2",
       }]
   },
 
