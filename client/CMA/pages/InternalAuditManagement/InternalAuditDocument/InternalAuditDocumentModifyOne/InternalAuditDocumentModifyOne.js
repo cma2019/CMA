@@ -27,14 +27,17 @@ Page({
     if (fileName == null || fileName == "") {
       fileName = this.data.fileName
     }
+    console.log("4564654645654")
+    console.log(this.data.year)
     var myurl1 = app.globalData.url + 'InternalAuditManagement/modifyOneFormData';
     var myurl2 = app.globalData.url + 'InternalAuditManagement/modifyOneFile';
     var mydata = {
+      "year":this.data.year,
       "fileId": this.data.fileId,
       "fileName": fileName //大于等于4位
     };
     var year = this.data.year
-    console.log('InternalAuditDocument发生了ModifyOne事件:', mydata)
+    console.log('InternalAuditDocument发生了ModifyOne事件，携带数据为：', mydata)
     app.wxRequest(myurl1, 'POST', mydata, (res) => {
       console.log(res)
       wx.chooseMessageFile({
@@ -47,8 +50,9 @@ Page({
           app.wxUploadFile(myurl2, mypath, null, (res) => {
             console.log("upload file success")
             console.log(res)
+            console.log(year)
             wx.redirectTo({
-              url: '/pages/InternalAuditManagement/InternalAuditDocument/InternalAuditDocument?year=' + year,
+              url: '/pages/InternalAuditManagement/InternalAuditDocument/InternalAuditDocument?id=' + year,
             })
           }, (err) => {
             console.log(err)

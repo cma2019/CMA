@@ -34,7 +34,6 @@ Page({
       operator: options.operator,
       recordDate: options.recordDate
     })
-    console.log("fsdgdf")
     console.log(this.data)
   },
 

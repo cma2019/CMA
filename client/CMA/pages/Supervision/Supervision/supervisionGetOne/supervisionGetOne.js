@@ -32,8 +32,12 @@ Page({
     this.setData({
       id: options.id
     })
-    console.log("fsdgdf")
-    console.log(this.data.id)
+    wx.removeStorage({
+      key: 'supervisionPlaninfo',
+      success: function (res) {
+        console.log(res)
+      }
+    })
   },
 
   /**
@@ -60,6 +64,7 @@ Page({
       },
       success(res) {
         if (res.data.code == 200) {
+
           thispage.setData({
             info : res.data.data,
             flag: 1
@@ -68,10 +73,7 @@ Page({
             key:'supervisionPlaninfo',
             data:res.data.data
           })
-          console.log(thispage.data.id)
-          console.log(thispage.data.info)
-          console.log("weqweqewwqew")
-        }
+        }/*
         else if (res.data.code == 521) {
           console.log(res)
           wx.showToast({
@@ -79,15 +81,13 @@ Page({
             duration: 1500
           })
           console.log('未收到标识编号')
-        }
+        }*/
         else {//522
-          console.log(res)
-          console.log("g999999999999")
           wx.showToast({
-            title: '数据不存在',
+            title: '暂未含有SupervisionPlan',
             duration: 1500
           })
-          console.log('数据不存在')
+          console.log('暂未含有SupervisionPlan')
         }
       },
       fail(err) {
@@ -98,13 +98,10 @@ Page({
   },
   supervisionPlanModify:function(e){
     console.log(e)
-    let planId = e.currentTarget.id
+    let i = e.currentTarget.dataset.index
     let info = this.data.info
     let id = this.data.id
-    let i = 0
-    while(info[i].planId != planId){
-      ++i
-    }
+    let planId = info[i].planId
     let content = info[i].content
     let object = info[i].object
     let dateFrequency = info[i].dateFrequency
@@ -124,7 +121,8 @@ Page({
     })
   },
   supervisionPlanDelete:function(e){
-    let planId = e.currentTarget.id
+    let i = e.currentTarget.dataset.index
+    let planId = this.data.info[i].planId
     let id = this.data.id
     const deleteoneRequest = wx.request({
       url: app.globalData.url + 'SupervisionPlan/deleteOne',
@@ -181,7 +179,8 @@ Page({
 
   },
   gotoSupervisionRecord(e){
-    let planId = e.currentTarget.id
+    let i = e.currentTarget.dataset.index
+    let planId = this.data.info[i].planId
     wx.navigateTo({
       url: '/pages/Supervision/SupervisionRecord/SupervisionRecord?id='+planId
     })

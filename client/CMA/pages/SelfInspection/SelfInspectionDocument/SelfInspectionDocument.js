@@ -31,6 +31,7 @@ Page({
     })
     var id = this.data.id
     var that = this
+    console.log('SelfInspection发生了getAllFile事件，携带数据为：', id)
     var myurl1 = app.globalData.url + 'SelfInspection/getAllFile?id=' + id
     app.wxRequest(myurl1, 'GET', null, (res) => {
       console.log(res)

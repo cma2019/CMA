@@ -14,7 +14,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log('SelfInspection发生了getAll事件')
+    console.log('SelfInspection发生了getAll事件，携带数据为：', options)
     let url = app.globalData.url + 'SelfInspection/getAll'
     let postdata = ''
     console.log(url)

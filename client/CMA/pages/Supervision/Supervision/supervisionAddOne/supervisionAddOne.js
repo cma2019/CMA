@@ -46,7 +46,7 @@ Page({
             url: '../Supervision'
           })
         }
-        else{
+        else{  //513缺少参数
           wx.showToast({
             title: '添加失败',
             duration: 1500

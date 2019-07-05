@@ -26,7 +26,14 @@ Page({
       "remark ": "happy",
     }]
   },
-
+  onLoad:function(){
+    wx.removeStorage({
+      key: 'supervisionPlaninfo',
+      success: function (res) {
+        console.log(res)
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -69,11 +76,6 @@ Page({
   gotoAdd: function () {
     wx.navigateTo({
       url: 'supervisionAddOne/supervisionAddOne',
-    })
-  },
-  goback: function () {
-    wx.navigateBack({
-      delta: 1
     })
   }
 })
