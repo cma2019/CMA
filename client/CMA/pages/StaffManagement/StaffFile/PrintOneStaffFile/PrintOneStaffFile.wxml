@@ -1,7 +1,7 @@
 <!--pages/TrainingApplication/PringOneApplication/PrintOneApplication.wxml-->
 <view>
   <van-cell-group>
-  <van-cell title="id" value="{{id}}" />
+  <van-cell title="staffId" value="{{staffId}}" />
   <van-cell title="name" value="{{name}}" />
   <van-cell title="fileId" value="{{fileId}}" />
   <van-cell title="fileLocation" value="{{fileLocation}}" />

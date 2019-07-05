@@ -2,9 +2,9 @@
 <view>
   <van-cell-group title="StaffFile">
   <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
-  <van-cell value="详情" bindtap='gotoOne' id='{{item.id}}' is-link>
+  <van-cell value="详情" bindtap='gotoOne' id='{{item.staffId}}' is-link>
       <view slot="title">
-        <view>id : {{item.id}}</view>
+        <view>staffId : {{item.staffId}}</view>
         <view>name : {{item.name}}</view>
         <view>department : {{item.department}}</view>
         <view>position : {{item.position}}</view>

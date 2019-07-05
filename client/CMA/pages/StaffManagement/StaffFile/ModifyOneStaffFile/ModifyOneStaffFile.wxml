@@ -3,9 +3,9 @@
   <form bindsubmit='intercheckmodify'>
   <van-cell-group>
       <van-field 
-        name="id"
-        label="id"
-        value='{{id}}'
+        name="staffId"
+        label="staffId"
+        value='{{staffId}}'
         readonly
         required
         clearable

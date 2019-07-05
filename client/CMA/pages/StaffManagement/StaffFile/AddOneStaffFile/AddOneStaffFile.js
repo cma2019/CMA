@@ -6,13 +6,15 @@ Page({
     //"fileId": null,
     //"fileName": null
   },
+  onLoad: function () {
 
+  },
   newEquipment: function (e) {
     console.log(e.detail.value)
     var myurl1 = app.globalData.url + 'StaffFile/addOne';
     var myurl2 = app.globalData.url + 'StaffFile/addOneFile';
     var mydata = {
-      "id": e.detail.value.id,
+      "staffId": e.detail.value.staffId,
       "fileId": e.detail.value.fileId,
       "fileLocation": e.detail.value.fileLocation
       //"fileName":e.detail.value.fileName
@@ -41,7 +43,7 @@ Page({
           console.log(err)
         })
         wx.redirectTo({
-          url: '../PrintOneStaffFile/PrintOneStaffFile?id=' + e.detail.value.id,
+          url: '../PrintOneStaffFile/PrintOneStaffFile?id=' + e.detail.value.staffId,
         })
       },
       fail: function (err) {
@@ -50,9 +52,6 @@ Page({
       }
 
     })
-
-  },
-  onLoad: function () {
 
   }
 

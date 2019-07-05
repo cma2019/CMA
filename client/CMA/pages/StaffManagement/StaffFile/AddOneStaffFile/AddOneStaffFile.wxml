@@ -2,9 +2,9 @@
   <form bindsubmit='newEquipment'>
     <view class="section">
       <van-field 
-      name="id" 
-      label="id"
-      placeholder="input id" 
+      name="staffId" 
+      label="staffId"
+      placeholder="input staffId" 
       required 
       clearable
        >

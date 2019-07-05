@@ -11,7 +11,7 @@ Page({
     console.log(this.data.id)
     let url = app.globalData.url + 'StaffFile/getOne'
     let postdata = {
-      "id": this.data.id
+      "staffId": this.data.id
     }
     console.log(url)
     console.log(postdata)
@@ -19,7 +19,7 @@ Page({
       console.log("data modify")
       
       this.setData({
-        id: res.data.id,
+        staffId: res.data.staffId,
         fileId: res.data.fileId,
         fileLocation: res.data.fileLocation
       })
@@ -35,7 +35,7 @@ Page({
       console.log(this.data.id)
       let data = {
         //"id ":this.data.id,
-        "id": e.detail.value.id,
+        "staffId": e.detail.value.staffId,
         "fileId": e.detail.value.fileId,
         "fileLocation": e.detail.value.fileLocation
       };

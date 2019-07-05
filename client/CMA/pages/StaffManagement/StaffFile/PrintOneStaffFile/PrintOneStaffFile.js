@@ -14,7 +14,7 @@ Page({
     console.log(this.data.id)
     let url = app.globalData.url + 'StaffFile/getOne'
     let postdata = {
-      "id": this.data.id
+      "staffId": this.data.id
     }
     console.log(url)
     console.log(postdata)
@@ -31,7 +31,7 @@ Page({
         })
       }
       this.setData({
-        id: res.data.id,
+        staffId: res.data.staffId,
         name: res.data.name,
         fileId: res.data.fileId,
         fileLocation: res.data.fileLocation,
@@ -42,11 +42,11 @@ Page({
     })
   },
   onShow: function () {
-    console.log(options)
+   // console.log(options)
     console.log(this.data.id)
     let url0 = app.globalData.url + 'StaffFile/getOne'
     let postdata0 = {
-      "id": this.data.id
+      "staffId": this.data.id
     }
     app.wxRequest(url0, 'GET', postdata0, (res) => {
       console.log(res)
@@ -60,7 +60,7 @@ Page({
         })
       }
       this.setData({
-        id: res.data.id,
+        staffId: res.data.staffId,
         name: res.data.name,
         fileId: res.data.fileId,
         fileLocation: res.data.fileLocation,
@@ -75,7 +75,7 @@ Page({
     console.log('getall id')
     console.log(target)
     wx.navigateTo({
-      url: 'ModifyOneStaffFile/ModifyOneStaffFile?id=' + target
+      url: '../ModifyOneStaffFile/ModifyOneStaffFile?id=' + target
     })
 
   },
@@ -85,7 +85,7 @@ Page({
     //console.log(target)
     let url1 = app.globalData.url + 'StaffFile/modifyOneFile'
     let postdata1 = {
-      "id": this.data.id
+      "staffId": this.data.id
     }
     console.log(postdata1)
     app.wxRequest(url1, 'POST', postdata1, (res) => {
@@ -165,7 +165,7 @@ Page({
   DeleteStaff(e) {
     let url2 = app.globalData.url + 'StaffFile/deleteOne'
     let data2 = {
-      "id": this.data.id
+      "staffId": this.data.id
     }
     app.wxRequest(url2, 'POST', data2, (res) => {
       console.log('delete successfully')

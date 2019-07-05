@@ -57,7 +57,7 @@ Page({
     console.log('getone id')
     console.log(target)
     wx.navigateTo({
-      url: 'printOneStaffFile/printOneStaffFile?id=' + target
+      url: 'PrintOneStaffFile/PrintOneStaffFile?id=' + target
     })
   }
 })
