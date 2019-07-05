@@ -27,7 +27,10 @@ public class SelfInspectionController {
     private SelfInspectionRepository SelfInspectionRepository;
     @Autowired
     private SelfInspectionDocumentRepository SelfInspectionDocumentRepository;
-    SelfInspectionDocument sDoc=new SelfInspectionDocument();
+    String add_id="0";
+    String add_name="null";
+    String modify_Id="0";
+    String modify_name="null";
     @GetMapping(path = "/getAll")
     public @ResponseBody JSONObject getAll(){
         List<SelfInspection> res=SelfInspectionRepository.findAll();
@@ -64,7 +67,7 @@ public class SelfInspectionController {
         JSONObject js=new JSONObject();
         //JSONObject data=null;
         String year=date.substring(0,4);
-        String rname=year+"年度第"+name+"自查文档集";
+        String rname=year+"年度第"+name+"次自查文档集";
         SelfInspection s=new SelfInspection();
         s.setDate(java.sql.Date.valueOf(date));
         s.setName(rname);
@@ -90,6 +93,16 @@ public class SelfInspectionController {
             js.put("data",null);
             return js;
         }
+        List<SelfInspectionDocument> res= SelfInspectionDocumentRepository.findAllById(Long.parseLong(id));
+        if(res.size()>0)
+        {
+            for(int i=0;i<res.size();i++)
+            {
+                SelfInspectionDocument tmp=res.get(i);
+                deleteOneFile(tmp.getFileId());
+                SelfInspectionDocumentRepository.deleteByFileId(tmp.getFileId());
+            }
+        }
         SelfInspectionRepository.deleteById(Long.parseLong(id));
         js.put("code",code);
         js.put("msg",msg);
@@ -104,7 +117,7 @@ public class SelfInspectionController {
     */
     @GetMapping(path = "/getAllFile")
     public @ResponseBody JSONObject getAllFile(@RequestParam(value = "id",required = false) String id){
-        List<SelfInspectionDocument> res= SelfInspectionDocumentRepository.findAll();
+        List<SelfInspectionDocument> res= SelfInspectionDocumentRepository.findAllById(Long.parseLong(id));
         JSONObject js=new JSONObject();
         JSONArray data=new JSONArray();
         int code=200;
@@ -128,6 +141,7 @@ public class SelfInspectionController {
             code=522;
             msg="数据不存在";
         }
+        System.out.println(data);
         js.put("code",code);
         js.put("msg",msg);
         js.put("data",data);
@@ -139,9 +153,8 @@ public class SelfInspectionController {
                                      @RequestParam(value = "id",required = false) String id){
         JSONObject js=new JSONObject();
         System.out.println(fileName);
-        sDoc.setFileName(fileName);
-        sDoc.setId(Long.parseLong(id));
-        SelfInspectionDocumentRepository.save(sDoc);
+        add_name=fileName;
+        add_id=id;
         js.put("code",200);
         js.put("msg","成功");
         js.put("data",null);
@@ -150,30 +163,53 @@ public class SelfInspectionController {
     @PostMapping(path = "/addOneFile")
     public @ResponseBody Response addOneFile(@RequestParam("file") MultipartFile file, HttpServletRequest request){
         FileController fileController=new FileController();
+        SelfInspectionDocument sDoc=new SelfInspectionDocument();
+        sDoc.setId(Long.parseLong(add_id));
         System.out.println("?");
         System.out.println(file.getOriginalFilename());
         String[] str=file.getOriginalFilename().split("\\.");
         System.out.println(str[str.length-1]);
         String suffix=str[str.length-1];
-        sDoc.setFileName(sDoc.getFileName()+"."+suffix);
-        SelfInspectionDocumentRepository.saveAndFlush(sDoc);
+        sDoc.setFileName(add_name+"."+suffix);
+        SelfInspectionDocumentRepository.save(sDoc);
         System.out.println(sDoc.getFileName());
         System.out.println("??");
         return  fileController.upload(file,request,sDoc.getFileName(),sDoc.getDir());
     }
-    /*
-    @PostMapping(path = "/modifyOneFile")
-    public @ResponseBody JSONObject modifyOneFile(){
-
-    }*/
-    @PostMapping(path = "/deleteOneFile")
-    public @ResponseBody JSONObject deleteOneFile(@RequestParam(value = "fileId",required = false) String fileId){
+    @RequestMapping(path="/modifyOneFormData",method= RequestMethod.POST)
+    @ResponseBody
+    public JSONObject modifyOneFormData(@RequestParam(value = "fileName",required = false) String fileName,
+                                     @RequestParam(value = "fileId",required = false) String fileId){
         JSONObject js=new JSONObject();
-        SelfInspectionDocument s=SelfInspectionDocumentRepository.findByFileId(Long.parseLong(fileId));
+        System.out.println(fileName);
+        modify_Id=fileId;
+        modify_name=fileName;
+        js.put("code",200);
+        js.put("msg","成功");
+        js.put("data",null);
+        return js;
+    }
+    @PostMapping(path = "/modifyOneFile")
+    public @ResponseBody Response modifyOneFile(@RequestParam("file") MultipartFile file, HttpServletRequest request){
+        FileController fileController=new FileController();
+        SelfInspectionDocument tmp=SelfInspectionDocumentRepository.findByFileId(Long.parseLong(modify_Id));
+        String oldName=tmp.getFileName();
+        fileController.deletefile(oldName,tmp.getDir());
+        String[] str=file.getOriginalFilename().split("\\.");
+        System.out.println(str[str.length-1]);
+        String suffix=str[str.length-1];
+        tmp.setFileName(modify_name+"."+suffix);
+        SelfInspectionDocumentRepository.saveAndFlush(tmp);
+        return  fileController.upload(file,request,tmp.getFileName(),tmp.getDir());
+    }
+    @PostMapping(path = "/deleteOneFile")
+    public @ResponseBody JSONObject deleteOneFile(@RequestParam(value = "fileId",required = false) long fileId){
+        JSONObject js=new JSONObject();
+        SelfInspectionDocument s=SelfInspectionDocumentRepository.findByFileId(fileId);
         FileController fileController=new FileController();
         System.out.println(s.getFileName());
         fileController.deletefile(s.getFileName(), s.getDir());
-        SelfInspectionDocumentRepository.deleteById(Long.parseLong(fileId));
+        SelfInspectionDocumentRepository.deleteByFileId(fileId);
         js.put("code",200);
         js.put("msg","成功");
         js.put("data",null);
