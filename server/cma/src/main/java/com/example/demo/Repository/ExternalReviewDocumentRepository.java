@@ -1,4 +1,7 @@
 package com.example.demo.Repository;
-
-public interface ExternalReviewDocumentRepository {
+import com.example.demo.Model.ExternalReviewDocument;
+import org.springframework.data.jpa.repository.JpaRepository;
+public interface ExternalReviewDocumentRepository extends JpaRepository<ExternalReviewDocument,Long>{
+    ExternalReviewDocument findAllByYear(long year)   ;
+    ExternalReviewDocument findByFlag(int flag);
 }

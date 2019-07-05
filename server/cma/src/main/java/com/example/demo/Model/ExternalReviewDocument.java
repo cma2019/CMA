@@ -7,16 +7,27 @@ import javax.persistence.*;
 public class ExternalReviewDocument {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    long id;
     private long year; //这个文档所在的外审的年份
     private long fileId;    //文档编号
     private String fileName;     //文档名称
     private String dir="ExternalReviewDocument";
+    int flag=0;
+
+    public void setFlag(int flag) {
+        this.flag = flag;
+    }
+
     public void setYear(long year) {
         this.year = year;
     }
 
     public long getYear() {
         return year;
+    }
+
+    public long getId() {
+        return id;
     }
 
     public String getFileName() {
