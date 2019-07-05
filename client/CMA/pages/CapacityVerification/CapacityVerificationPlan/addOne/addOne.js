@@ -28,10 +28,8 @@ Page({
       let data = {
         "name": e.detail.value.name,
         "organizer": e.detail.value.organizer,
-        "state": e.detail.value.state,
         "year": e.detail.value.year,
         "note": e.detail.value.note,
-        "analysis": e.detail.value.analysis
       }
       console.log(data)
       app.wxRequest(url, 'POST', data, (res) => {

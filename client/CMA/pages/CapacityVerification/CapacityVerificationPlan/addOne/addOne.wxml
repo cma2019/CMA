@@ -17,13 +17,6 @@
         clearable
       />
       <van-field 
-        name="state"
-        label="state"
-        placeholder="input state"
-        required
-        clearable
-      />
-      <van-field 
         name="year"
         label="year"
         placeholder="input year"
@@ -37,14 +30,6 @@
         placeholder="input note"
         required
         clearable
-      />
-      <van-field
-        name="analysis"
-        label="analysis"
-        placeholder="input analysis"
-        required
-        clearable
-        border = "{{false}}"
       />
     </van-cell-group>
     <view>
