@@ -8,7 +8,9 @@
       <van-cell-group>
         <van-cell title="StaffManagement" boarder="{{false}}" is-link  center="{{true}}" bindtap="goStaffManagement"></van-cell>
         <van-cell title="StaffAuthorization" boarder="{{false}}" is-link  center="{{true}}" bindtap="goStaffAuthorization"></van-cell>
+        <van-cell title="StaffFile" boarder="{{false}}" is-link  center="{{true}}" bindtap="goStaffFile"></van-cell>
         <van-cell title="StaffTraining" boarder="{{false}}" is-link  center="{{true}}" bindtap="goStaffTraining"></van-cell>
+          <van-cell title="StaffQualification" boarder="{{false}}" is-link  center="{{true}}" bindtap="goStaffQualification"></van-cell>
         <van-cell title="StaffLeaving" boarder="{{false}}" is-link  center="{{true}}" bindtap="goStaffLeaving"></van-cell>
       </van-cell-group>
     </van-collapse-item>

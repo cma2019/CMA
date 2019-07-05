@@ -19,7 +19,6 @@ Page({
     this.setData({
       planid: options.id
     })
-    console.log("1aaaaa")
     console.log(this.data.planid)
   },
   bindsuperviseDateChange(e) {
@@ -72,8 +71,6 @@ Page({
               icon: 'none',
               duration: 1500
             })
-            console.log("4545646546578")
-            console.log(thispage.data.superviseDate)
             wx.navigateTo({
               url: '/pages/Supervision/SupervisionRecord/SupervisionRecord?id=' + planid
             })

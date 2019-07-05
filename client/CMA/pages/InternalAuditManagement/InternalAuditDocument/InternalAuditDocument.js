@@ -17,12 +17,12 @@ Page({
     console.log(that[index])
     console.log("456456465465465")
     wx.redirectTo({
-      url: '/pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocumentGetOne/SelfInspectionDocumentGetOne?year=' + this.data.year + "&fileId=" + that[index].fileId +"&file=" + that[index].file+"&fileName=" + that[index].fileName
+      url: '/pages/InternalAuditManagement/InternalAuditDocument/InternalAuditDocumentGetOne/InternalAuditDocumentGetOne?year=' + this.data.year + "&fileId=" + that[index].fileId +"&file=" + that[index].file+"&fileName=" + that[index].fileName
     })
   },
   gotoAdd: function (e) {
     wx.redirectTo({
-      url: '/pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocumentAddOne/SelfInspectionDocumentAddOne?id=' + this.data.year,
+      url: '/pages/InternalAuditManagement/InternalAuditDocument/InternalAuditDocumentAddOne/InternalAuditDocumentAddOne?id=' + this.data.year,
     })
   },
   goback: function () {
@@ -39,6 +39,7 @@ Page({
     })
     var year = this.data.year
     var that = this
+    console.log('InternalAuditDocument发生了getAllFile事件，携带数据为：', year)
     var myurl1 = app.globalData.url + 'InternalAuditManagement/getAllFile?year=' + year
     app.wxRequest(myurl1, 'GET', null, (res) => {
       console.log(res)

@@ -33,3 +33,4 @@
     </view>
 </view>
 <van-button type="info" size="small" bindtap="gotoApprove">Approve a supervision</van-button>
+<van-button type="info" size="small" bindtap="goback">back</van-button>

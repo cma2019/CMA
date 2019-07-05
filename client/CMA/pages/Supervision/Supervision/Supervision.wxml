@@ -31,7 +31,6 @@
   </van-cell-group>
 </view>
 <van-button type="info" size="small" bindtap="gotoAdd">Add a supervision</van-button>
-<van-button type="info" size="small" bindtap="goback">back</van-button>
 <!-->
 <van-checkbox-group v-model="result">
   <van-cell-group>

@@ -1,2 +1,33 @@
-<!--pages/StaffManagement/StaffFile/AddOneStaffFile/AddOneStaffFile.wxml-->
-<text>pages/StaffManagement/StaffFile/AddOneStaffFile/AddOneStaffFile.wxml</text>
+<scroll-view scroll-y>
+  <form bindsubmit='newEquipment'>
+    <view class="section">
+      <van-field 
+      name="staffId" 
+      label="staffId"
+      placeholder="input staffId" 
+      required 
+      clearable
+       >
+       </van-field>
+       <van-field 
+      name="fileId" 
+      label="fileId"
+      placeholder="input fileId" 
+      required 
+      clearable
+       >
+       </van-field>
+       <van-field 
+      name="fileLocation" 
+      label="fileLocation"
+      placeholder="input fileLocation" 
+      required 
+      clearable
+       >
+      </van-field>
+    </view>  
+    <view>
+      <button class='van-button--info' formType='submit'>Add File</button>
+    </view>
+  </form>
+</scroll-view>

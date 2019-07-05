@@ -49,11 +49,21 @@ Page({
 
   gotoOne(e) {
     console.log(e)
-    let target = e.currentTarget.id
+    let target = e.currentTarget.dataset.name
+    let target2 = e.currentTarget.dataset.year
     console.log('getone id')
+    console.log(e.currentTarget)
     console.log(target)
-    wx.navigateTo({
-      url: 'getAllItem/getAllItem?id=' + target
-    })
+    console.log(target2)
+    var myurl = "1"
+    if (target != "" && target2 != "") {
+      myurl = 'getAllItem/getAllItem?name=' + target + '&year=' + target2
+      console.log("myurl")
+      console.log(myurl)
+      async: wx.navigateTo({
+        //url: 'getAllItem/getAllItem?name=' + target + '&year=' + target2
+        url: myurl
+      })
+    }
   }
 })

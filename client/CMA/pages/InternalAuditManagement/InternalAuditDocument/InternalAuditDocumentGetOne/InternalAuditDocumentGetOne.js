@@ -9,8 +9,7 @@ Page({
   },
   deleteitem: function (e) {
     var that = this
-    console.log(that.data.detail.fileId)
-    console.log(that.data.detail.id)
+    console.log('InternalAuditDocument发生了deleteOneFile事件，携带数据为：', that.data.detail.fileId)
     var myurl = app.globalData.url + 'InternalAuditManagement/deleteOneFile?fileId=' + that.data.detail.fileId
     app.wxRequest(myurl, 'POST', null, (res) => {
       console.log(res)
@@ -24,6 +23,7 @@ Page({
   },
   downloaditem: function (e) {
     var that = this
+    console.log('InternalAuditDocument发生了downloadFile事件，携带数据为：', that.data.detail.fileId)
     var myurl = app.globalData.url + 'InternalAuditManagement/downloadFile/' + that.data.detail.fileId
     var myFilePath
     app.wxDownloadFile(myurl, (res) => {
@@ -36,6 +36,18 @@ Page({
         },
         fail: function (err) {
           console.log(err)
+          wx.getSavedFileList({
+            success:function(res){
+              if(res.fileList.length > 0){
+                wx.removeSavedFile({
+                  filePath:res.fileList[0].filePath,
+                  comlplete:function(res){
+                    console.log(res)
+                  }
+                })
+              }
+            }
+          })
         }
       })
     }, (err) => {
@@ -45,7 +57,7 @@ Page({
   modifyitem: function (e) {
     var that = this.data.detail
     wx.redirectTo({
-      url: '/pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocumentModifyOne/SelfInspectionDocumentModifyOne?fileId=' + that.fileId + "&fileName=" + that.fileName + "&year=" + that.year
+      url: '/pages/InternalAuditManagement/InternalAuditDocument/InternalAuditDocumentModifyOne/InternalAuditDocumentModifyOne?fileId=' + that.fileId + "&fileName=" + that.fileName + "&year=" + that.year
     })
   },
   /**
@@ -57,8 +69,6 @@ Page({
     that.setData({
       detail: option
     })
-    console.log(this.data.detail)
-    console.log("465465465")
   },
   goback: function () {
     wx.navigateBack({

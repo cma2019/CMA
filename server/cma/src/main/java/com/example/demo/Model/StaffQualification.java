@@ -12,7 +12,7 @@ public class StaffQualification {
     private long qualificationId;    //资质证明id
     private String qualificationName;     //资质名称
     private String qualificationImage;    //资质证书扫描件
-    private long id;                 //人员id
+    private long staffId;                 //人员id
     private String name;             //人员名称
     private String department;       //人员部门
     private String position;         //人员职位
@@ -40,8 +40,8 @@ public class StaffQualification {
         this.position = position;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setStaffId(long staffId) {
+        this.staffId = staffId;
     }
 
     public void setQualificationImage(String qualificationImage) {
@@ -64,8 +64,8 @@ public class StaffQualification {
         return position;
     }
 
-    public long getId() {
-        return id;
+    public long getStaffId() {
+        return staffId;
     }
 
     public String getQualificationImage() {

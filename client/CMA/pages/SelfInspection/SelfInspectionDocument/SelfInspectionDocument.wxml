@@ -1,7 +1,7 @@
 <scroll-view scroll-y>
   <view wx:if="{{flag == 1}}">
     <van-cell-group title="SelfInspection GetAllFile">
-      <view wx:for="{{array}}" data-index ='{{index}}' wx:for-item="item">
+      <view wx:for="{{array}}" data-index ='{{index}}' wx:for-item="item"wx:key="unique">
         <van-cell value="详情" data-index ='{{index}}'bindtap='gotoOne' is-link>
           <view slot="title">
             <view>year: {{item.year}}</view>

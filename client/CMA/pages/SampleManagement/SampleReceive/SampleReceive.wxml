@@ -19,4 +19,3 @@
   </van-cell-group>
 </view>
 <van-button type="info" size="small" bindtap="gotoAdd">Add a samplereceive</van-button>
-<van-button type="info" size="small" bindtap="goback">back</van-button>
