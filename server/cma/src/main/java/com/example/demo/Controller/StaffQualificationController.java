@@ -131,7 +131,7 @@ public class StaffQualificationController {
         return json;
         //return fileController.upload(file,request,managementFile.getFileName(),managementFile.getDir());
     }
-    @RequestMapping(value="/getImage/{id}",method=RequestMethod.GET)
+    @RequestMapping(value="/getImage/{qualificationId}",method=RequestMethod.GET)
     public @ResponseBody String downloadFile(@PathVariable("qualificationId")long qualificationId, HttpServletResponse response){
         //System.out.println("Download In");
         FileController fileController=new FileController();
@@ -155,5 +155,22 @@ public class StaffQualificationController {
         jsonObject.put("msg","成功");
         jsonObject.put("data",staffQualificationRepository.findAll());
         return jsonObject;
+    }
+
+    @GetMapping(path = "getOne")
+    public @ResponseBody JSONObject getOne(@RequestParam(value = "qualificationId",required = false)long qualificationId){
+        JSONObject json=new JSONObject();
+        if(staffQualificationRepository.findByQualificationId(qualificationId)==null){
+            json.put("code", 210);
+            json.put("msg", "资质档案不存在");
+            json.put("data", null);
+        }
+        else{
+            StaffQualification staffQualification=staffQualificationRepository.findByQualificationId(qualificationId);
+            json.put("code",200);
+            json.put("msg","成功");
+            json.put("data",staffQualification);
+        }
+        return json;
     }
 }
