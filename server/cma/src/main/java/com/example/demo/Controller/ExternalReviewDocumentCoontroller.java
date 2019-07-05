@@ -156,7 +156,7 @@ public class ExternalReviewDocumentCoontroller {
         }
         return response;
     }*/
-    @RequestMapping(value="/deleteOne/{id}",method=RequestMethod.GET)
+    @RequestMapping(value="/deleteOne/{id}",method=RequestMethod.POST)
     @ResponseBody
     public Response deleteOneFile(@PathVariable("id") long id)
     {
