@@ -6,13 +6,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
 
-//@Entity
+@Entity
 public class InternalAuditDocument {
-    //@Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long fileId;    //文档编号
     private Long year; //这个文档所在的内审的年份
     private String fileName;     //文档名称
+    String Dir="InternalAuditDocument";
 
     public void setFileId(Long fileId){
         this.fileId=fileId;
@@ -31,6 +32,10 @@ public class InternalAuditDocument {
     }
     public String getFileName(){
         return fileName;
+    }
+
+    public String getDir() {
+        return Dir;
     }
 }
 
