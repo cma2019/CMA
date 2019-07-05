@@ -157,7 +157,13 @@
     "pages/InternalAuditManagement/InternalAudit/InternalAuditAddOne/InternalAuditAddOne",
     "pages/InternalAuditManagement/InternalAuditDocument/InternalAuditDocument",
     "pages/InternalAuditManagement/InternalAuditDocument/InternalAuditDocumentAddOne/InternalAuditDocumentAddOne",
-    "pages/InternalAuditManagement/InternalAuditDocument/InternalAuditDocumentGetOne/InternalAuditDocumentGetOne"
+    "pages/InternalAuditManagement/InternalAuditDocument/InternalAuditDocumentGetOne/InternalAuditDocumentGetOne",
+    "pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagement",
+    "pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementAddOne/ExternalReviewManagementAddOne",
+    "pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementYear/ExternalReviewManagementYear",
+    "pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementYear/ExternalReviewManagementYearGetOne/ExternalReviewManagementYearGetOne",
+    "pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementYear/ExternalReviewManagementYearAddOne/ExternalReviewManagementYearAddOne",
+    "pages/StaffManagement/StaffTraining/GetOneTrainingPeople/GetOneTraingPeople"
   ],
   "window": {
     "backgroundTextStyle": "light",

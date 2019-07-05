@@ -129,14 +129,14 @@ public class StandardManagementController {
             StandardManagement temp = StandardManagementRepository.findByFileId(fileId);
             String fileName = temp.getFileName();
             fileController.deletefile(fileName, temp.getDir());
-            StandardManagementRepository.deleteById(fileId);
+            //StandardManagementRepository.deleteById(fileId);
             System.out.println("delete success");
 
             StandardManagement standard = new StandardManagement();
-            standard.setFileName(file.getOriginalFilename());
-            StandardManagementRepository.save(standard);
+            standard.setFileName(fileName);
+            /*StandardManagementRepository.save(standard);
             standard.setFileName(standard.getFileId() + "." + fileController.getsuffix(file.getOriginalFilename()));
-            StandardManagementRepository.save(standard);
+            StandardManagementRepository.save(standard);*/
             return fileController.upload(file, request, standard.getFileName(), standard.getDir());
         }
     }
