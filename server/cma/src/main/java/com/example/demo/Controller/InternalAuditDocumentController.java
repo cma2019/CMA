@@ -60,7 +60,8 @@ public class InternalAuditDocumentController {
                 InternalAuditDocumentRepository.delete(tmp);
             }
         }
-        InternalAuditManagementRepository.deleteByYear(year);
+        InternalAuditManagement iam=InternalAuditManagementRepository.findByYear(year);
+        InternalAuditManagementRepository.delete(iam);
         js.put("code",code);
         js.put("msg",msg);
         js.put("data",null);
