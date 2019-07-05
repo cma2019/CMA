@@ -159,7 +159,8 @@
     "pages/InternalAuditManagement/InternalAuditDocument/InternalAuditDocumentAddOne/InternalAuditDocumentAddOne",
     "pages/InternalAuditManagement/InternalAuditDocument/InternalAuditDocumentGetOne/InternalAuditDocumentGetOne",
     "pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagement",
-    "pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementAddOne/ExternalReviewManagementAddOne"
+    "pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementAddOne/ExternalReviewManagementAddOne",
+    "pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementYear/ExternalReviewManagementYear"
   ],
   "window": {
     "backgroundTextStyle": "light",
