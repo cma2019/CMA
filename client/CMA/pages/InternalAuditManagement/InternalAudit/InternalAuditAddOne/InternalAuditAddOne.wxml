@@ -1,0 +1,16 @@
+<view>
+ <form bindsubmit='SelfInspection_addone'>
+    <van-cell-group title="SelfInspection_addone">
+      <van-field v-model="name" name="name" required clearable label="自查次数 	" placeholder="请输入自查次数" />
+      <picker name = 'date' mode='date' value='{{date}}' bindchange='binddateChange'>
+        <view class='picker'>
+          <van-field  name="date" label="自查日期" value='{{date}}' placeholder="请输入自查日期" required clearable />
+        </view>
+      </picker>
+    </van-cell-group>
+    <view>
+      <button class="van-button--info" formType="submit">完成</button>
+    </view>
+  </form>
+</view>
+<button class="van-button--info" bindtap="goback">取消</button>

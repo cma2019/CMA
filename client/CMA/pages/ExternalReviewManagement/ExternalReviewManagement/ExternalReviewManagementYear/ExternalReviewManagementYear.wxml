@@ -1,0 +1,15 @@
+<!--pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementYear/ExternalReviewManagementYear.wxml-->
+<scroll-view scroll-y>
+  <van-cell-group title="External Review File Management">
+  <view wx:for="{{array}}" data-id="{{item.id}}" data-year="{{item.year}}" data-fileId="{{item.fileId}}" data-fileName="{{item.fileName}}">
+    <van-cell value="详情" is-link url='/pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementYear/ExternalReviewManagementYearGetOne/ExternalReviewManagementYearGetOne?id={{item.id}}&year={{item.year}}&fileId={{item.fileId}}&fileName={{item.fileName}}' link-type='redirectTo'>
+      <view slot="title">
+        <view>id : {{item.id}}</view>
+        <view>year : {{item.year}}</view>
+        <view>fileId : {{item.fileId}}</view>
+      </view>
+    </van-cell>
+  </view>
+  </van-cell-group>
+  <van-button type="info" size="small" bindtap="gotoAdd">Add an external review file</van-button>
+</scroll-view>
