@@ -1,2 +1,15 @@
-<!--pages/StaffManagement/StaffTraining/GetOneTraining/GetOneTraining.wxml-->
-<text>pages/StaffManagement/StaffTraining/GetOneTraining/GetOneTraining.wxml</text>
+<!--pages/TrainingApplication/PringOneApplication/PrintOneApplication.wxml-->
+<view>
+  <van-cell-group>
+  <van-cell title="trainingId" value="{{trainingId}}" />
+  <van-cell title="program" value="{{program}}" />
+  <van-cell title="trainingDate" value="{{trainingDate}}" />
+  <van-cell title="place" value="{{place}}" />
+  <van-cell title="presenter" value="{{presenter}}" />
+  <van-cell title="content" value="{{content}}" />
+  <van-cell title="note" value="{{note}}" />
+  </van-cell-group>
+</view>
+<van-button type="info" size="small" bindtap="SearchStaff">TrainingPeople</van-button> 
+ <van-button type="info" size="small" bindtap="ModifyStaff">Modify</van-button> 
+ <van-button type="info" size="small" bindtap="DeleteStaff">Delete</van-button> 

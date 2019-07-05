@@ -73,29 +73,5 @@ Page({
     wx.navigateTo({
       url: '../GetOneTrainingPeople/GetOneTraingPeople?id=' + target
     })
-  },
-  gotodelete(e) {
-    let url2 = app.globalData.url + 'StaffTraining/deleteOne'
-    let data2 = {
-      "trainingId": this.data.id
-    }
-    app.wxRequest(url2, 'POST', data2, (res) => {
-      console.log('delete successfully')
-    }, (err) => {
-      console.log('delete failed')
-    })
-   
-  },
-  ModifyMessage(e) {
-    let url2 = app.globalData.url + 'StaffTraining/deleteOne'
-    let data2 = {
-      "trainingId": this.data.id
-    }
-    app.wxRequest(url2, 'POST', data2, (res) => {
-      console.log('delete successfully')
-    }, (err) => {
-      console.log('delete failed')
-    })
-
   }
 })

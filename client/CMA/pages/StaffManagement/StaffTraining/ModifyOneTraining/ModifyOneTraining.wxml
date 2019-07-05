@@ -1,2 +1,72 @@
-<!--pages/StaffManagement/StaffTraining/ModifyOneTraining/ModifyOneTraining.wxml-->
-<text>pages/StaffManagement/StaffTraining/ModifyOneTraining/ModifyOneTraining.wxml</text>
+<!--pages/TrainingApplication/ModifyApplication/ModifyApplication.wxml-->
+<view>
+  <form bindsubmit='intercheckmodify'>
+  <van-cell-group>
+      <van-field 
+        name="trainingId"
+        label="trainingId"
+        value='{{trainingId}}'
+        readonly
+        required
+        clearable
+      />
+      <van-field 
+        name="program"
+        label="program"
+        value='{{program}}'
+        placeholder="input program" 
+   required
+        clearable
+      />
+      <view class="section">
+        <picker name = 'trainingDate' mode='date' value='{{trainingDate}}' bindchange='bindDateChange'>
+        <view class='picker'>
+        <van-field 
+        label="trainingDate"
+        value='{{trainingDate}}'
+        />
+        </view>
+        </picker>
+    </view>
+      <van-field 
+        name="place"
+        label="place"
+        value='{{place}}'
+        placeholder="input place" 
+       required
+        clearable
+      />
+      <van-field 
+        name="presenter"
+        label="presenter"
+        value='{{presenter}}'
+        placeholder="input presenter" 
+        required
+        clearable
+      />
+      <van-field 
+        name="content"
+        label="content"
+        value='{{content}}'
+        placeholder="input content" 
+       required
+        clearable
+      />
+      <van-field 
+        name="note"
+        label="note"
+        value='{{note}}'
+        placeholder="input note" 
+        required
+        clearable
+      />    
+    </van-cell-group>
+    
+
+    <view>
+      <button class='van-button--info' formType='submit'>Modify Training</button>
+    </view>
+  </form>
+</view>
+<van-button type="info" size="small" bindtap="goback">go back</van-button> 
+
