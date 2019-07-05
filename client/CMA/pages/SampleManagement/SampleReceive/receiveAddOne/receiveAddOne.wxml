@@ -1,4 +1,3 @@
-<!--page_SampleIo/ioAddone/ioAddone.wxml-->
 <view>
  <form bindsubmit='SampleReceive_addone'>
     <van-cell-group title="SampleReceive_addone">

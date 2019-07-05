@@ -8,6 +8,7 @@
       <van-cell-group>
         <van-cell title="StaffManagement" boarder="{{false}}" is-link  center="{{true}}" bindtap="goStaffManagement"></van-cell>
         <van-cell title="StaffAuthorization" boarder="{{false}}" is-link  center="{{true}}" bindtap="goStaffAuthorization"></van-cell>
+        <van-cell title="StaffTraining" boarder="{{false}}" is-link  center="{{true}}" bindtap="goStaffTraining"></van-cell>
         <van-cell title="StaffLeaving" boarder="{{false}}" is-link  center="{{true}}" bindtap="goStaffLeaving"></van-cell>
       </van-cell-group>
     </van-collapse-item>
@@ -28,7 +29,9 @@
   <!--<view wx:if="{{mess[3]}}">-->
   <view wx:if="{{true}}">
     <van-collapse-item title="内审管理" name="4">
-      
+      <van-cell-group>
+        <van-cell title="InternalAuditManagement" boarder="{{false}}" is-link  center="{{true}}" url="../InternalAuditManagement/InternalAudit/InternalAudit"></van-cell>
+      </van-cell-group>
     </van-collapse-item>
     </view>
     <!--<view wx:if="{{mess[4]}}">-->

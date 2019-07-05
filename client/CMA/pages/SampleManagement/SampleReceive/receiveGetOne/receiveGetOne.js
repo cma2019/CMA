@@ -176,9 +176,17 @@ Page({
   looktoreceipt: function (e) {
     console.log(e)
     let target = this.data.receiptId
-    wx.navigateTo({
-      url: '/pages/SampleManagement/SampleIo/ioReceiptDetail/ioReceiptDetail?id=' + target
-    })
+    if (target != null) {
+      wx.navigateTo({
+        url: '/pages/SampleManagement/SampleIo/ioReceiptDetail/ioReceiptDetail?id=' + target
+      })
+    }
+    else {
+      wx.showToast({
+        title: '不含有对应的接收单',
+        duration: 1500
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面隐藏
