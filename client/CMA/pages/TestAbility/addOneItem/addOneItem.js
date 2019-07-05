@@ -24,7 +24,7 @@ Page({
     else {
       let url = app.globalData.url + 'TestAbility/addOneItem'
       let data = {
-        "productionName":this.data.year,
+        "year":this.data.year,
         "productionName": e.detail.value.productionName,
         "ability": e.detail.value.ability,
         "referrence": e.detail.value.referrence

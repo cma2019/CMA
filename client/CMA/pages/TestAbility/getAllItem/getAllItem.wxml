@@ -1,12 +1,12 @@
 <!--pages/IntermediateCheck/IntermediateCheck.wxml-->
 <view>
   <van-cell-group title="show all ability items">
-  <view wx:for="{{temp}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
+  <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
     <van-cell value="详情" bindtap='gotoOne' id='{{item.id}}' is-link>
       <view slot="title">
         <view>id : {{item.id}}</view>
-        <view>fileName : {{item.fileName}}</view>
         <view>productionName : {{item.productionName}}</view>
+        <view>ability : {{item.ability}}</view>
       </view>
     </van-cell>
   </view>

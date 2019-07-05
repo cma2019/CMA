@@ -1,6 +1,4 @@
 <!--pages/TestAbility/getOneItem/getOneItem.wxml-->
-<text>pages/TestAbility/getOneItem/getOneItem.wxml</text>
-<!--pages/IntermediateCheck/IntermediateCheckGetone/IntermediateCheckGetone.wxml-->
 <view>
 <van-cell-group title='message of {{year}}'>
     <van-cell value="{{year}}"title="year"border="{{ false }}"/>
