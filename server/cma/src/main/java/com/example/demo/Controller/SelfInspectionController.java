@@ -99,6 +99,7 @@ public class SelfInspectionController {
             for(int i=0;i<res.size();i++)
             {
                 SelfInspectionDocument tmp=res.get(i);
+                System.out.println(tmp.getFileId()+"?");
                 deleteOneFile(tmp.getFileId());
                 SelfInspectionDocumentRepository.deleteByFileId(tmp.getFileId());
             }
@@ -141,7 +142,6 @@ public class SelfInspectionController {
             code=522;
             msg="数据不存在";
         }
-        System.out.println(data);
         js.put("code",code);
         js.put("msg",msg);
         js.put("data",data);
@@ -205,11 +205,12 @@ public class SelfInspectionController {
     @PostMapping(path = "/deleteOneFile")
     public @ResponseBody JSONObject deleteOneFile(@RequestParam(value = "fileId",required = false) long fileId){
         JSONObject js=new JSONObject();
+        System.out.println(fileId);
         SelfInspectionDocument s=SelfInspectionDocumentRepository.findByFileId(fileId);
         FileController fileController=new FileController();
         System.out.println(s.getFileName());
         fileController.deletefile(s.getFileName(), s.getDir());
-        SelfInspectionDocumentRepository.deleteByFileId(fileId);
+        SelfInspectionDocumentRepository.delete(s);
         js.put("code",200);
         js.put("msg","成功");
         js.put("data",null);
