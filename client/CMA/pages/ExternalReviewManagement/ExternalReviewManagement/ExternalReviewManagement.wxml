@@ -1,0 +1,15 @@
+<!--pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagement.wxml-->
+<scroll-view scroll-y>
+  <van-cell-group title="External Review Management">
+  <view wx:for="{{array}}" data-id="{{item.id}}" data-year="{{item.year}}" data-date="{{item.date}}">
+    <van-cell value="详情" is-link url='/pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementYear/ExternalReviewManagementYear?id={{item.id}}&year={{item.year}}&date={{item.date}}' link-type='redirectTo'>
+      <view slot="title">
+        <view>id : {{item.id}}</view>
+        <view>year : {{item.year}}</view>
+        <view>date : {{item.date}}</view>
+      </view>
+    </van-cell>
+  </view>
+  </van-cell-group>
+  <van-button type="info" size="small" bindtap="gotoAdd">Add an external review</van-button>
+</scroll-view>

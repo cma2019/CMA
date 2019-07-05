@@ -1,0 +1,11 @@
+<!--pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementYear/ExternalReviewManagementYearAddOne/ExternalReviewManagementYearAddOne.wxml-->
+<scroll-view scroll-y>
+  <form bindsubmit='newEquipment'>
+    <view class="section">
+      <van-field name="year" value="{{year}}" required clearable label="year" placeholder="input year"></van-field>
+    </view>
+    <view>
+      <button class='van-button--info' formType='submit'>new external review document</button>
+    </view>
+  </form>
+</scroll-view>

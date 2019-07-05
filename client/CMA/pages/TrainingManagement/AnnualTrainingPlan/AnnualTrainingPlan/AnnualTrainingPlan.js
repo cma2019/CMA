@@ -3,7 +3,7 @@ const app = getApp()
 Page({
 
   data: {
-    "mess": null
+    mess: []
   },
 
   onLoad: function (options) {
@@ -31,7 +31,7 @@ Page({
         mess: res.data
       })
 
-      console.log(this.mess)
+      console.log(this.data.mess)
     }, (err) => {
       //console.err('getone error')
       wx.showToast({

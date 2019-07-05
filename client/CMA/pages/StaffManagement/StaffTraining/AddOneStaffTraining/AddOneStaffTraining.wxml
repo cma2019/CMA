@@ -1,0 +1,66 @@
+<!--pages/StaffManagement/AddStaff/AddStaff.wxml-->
+<view>
+  <form bindsubmit='StaffAdd'>
+   <van-cell-group>
+      <van-field 
+        name="trainingId"
+        label="trainingId"
+        placeholder="input trainingId" 
+        required
+        clearable
+      />
+      <van-field 
+        name="program"
+        label="program"
+        placeholder="input program" 
+        required
+        clearable
+      />
+      <view class="section">
+        <picker name = 'trainingDate' mode='date' value='{{trainingDate}}' bindchange='bindDateChange'>
+          <view class='picker'>
+        <van-field 
+        label="trainingDate"
+        value='{{trainingDate}}'
+        required
+      />
+      </view>
+        </picker>
+    </view>
+      <van-field 
+        name="place"
+        label="place"
+        placeholder="input place" 
+        required
+        clearable
+      />
+      <van-field 
+        name="presenter"
+        label="presenter"
+        placeholder="input presenter" 
+        required
+        clearable
+      />
+      <van-field 
+        name="content"
+        label="content"
+        placeholder="input content" 
+        required
+        clearable
+      />
+      <van-field 
+        name="note"
+        label="note"
+        placeholder="input note" 
+        required
+        clearable
+      />
+    </van-cell-group>
+    <view>
+      <button class='van-button--info'  formType='submit'>Add</button>
+    </view>
+  </form>
+</view>
+<!--<van-button type="info" size="small" bindtap="addfile">add file</van-button> -->
+
+ <van-button type="info" size="small" bindtap="goback">go back</van-button> 
