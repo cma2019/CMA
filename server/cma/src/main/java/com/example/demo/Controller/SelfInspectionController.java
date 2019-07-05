@@ -179,11 +179,11 @@ public class SelfInspectionController {
         js.put("data",null);
         return js;
     }
-    @GetMapping(path = "/downloadFile")
+    @GetMapping(path = "/downloadFile/{fileId}")
     public @ResponseBody String downloadFile(@PathVariable("fileId") long fileId, HttpServletResponse response) {
         FileController fileController=new FileController();
         try{
-            if(SelfInspectionDocumentRepository.findById(fileId)==null)
+            if(SelfInspectionDocumentRepository.findByFileId(fileId)==null)
                 throw new Exception("doesn't exist");
             SelfInspectionDocument temp=SelfInspectionDocumentRepository.findByFileId(fileId);
             String name=temp.getFileName();
