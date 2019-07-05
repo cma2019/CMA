@@ -54,15 +54,15 @@ public class ExternalReviewManagementController {
         response.msg="成功";
         return  response;
     }
-    @RequestMapping(path="deleteOne/{year}",method = RequestMethod.POST)
+    @RequestMapping(path="deleteOne/{id}",method = RequestMethod.POST)
     @ResponseBody
-    public Response deleteOne(@PathVariable("year")long year)
+    public Response deleteOne(@PathVariable("id")long id)
     {
         Response response=new Response();
         try{
-            if(ERMRepository.findById(year)==null)
-                throw new Exception(" doesn't exist");
-            ERMRepository.deleteById(year);
+            if(ERMRepository.findById(id)==null)
+                throw new Exception("不存在");
+            ERMRepository.deleteById(id);
             response.data=null;
             response.msg="成功";
             response.code=200;
