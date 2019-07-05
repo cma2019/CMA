@@ -12,7 +12,7 @@
       </van-field>
     </view>  
     <view>
-      <button class='van-button--info' formType='submit'>new quality manual</button>
+      <button class='van-button--info' formType='submit'>Upload OneFile</button>
     </view>
   </form>
 </scroll-view>

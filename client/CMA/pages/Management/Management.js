@@ -76,6 +76,16 @@ Page({
       url: '../StaffManagement/StaffTraining/StaffTraining',
     })
   },
+  goStaffFile: function () {
+    wx.navigateTo({
+      url: '../StaffManagement/StaffFile/StaffFile',
+    })
+  },
+  goStaffQualification: function () {
+    wx.navigateTo({
+      url: '../StaffManagement/StaffQualification/StaffQualification',
+    })
+  },
   goStaffAuthorization: function () {
     wx.navigateTo({
       url: '../StaffManagement/StaffAuthorization/StaffAuthorization',

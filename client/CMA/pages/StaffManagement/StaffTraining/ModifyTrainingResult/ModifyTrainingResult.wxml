@@ -1,2 +1,36 @@
-<!--pages/StaffManagement/StaffTraining/ModifyTrainingResult/ModifyTrainingResult.wxml-->
-<text>pages/StaffManagement/StaffTraining/ModifyTrainingResult/ModifyTrainingResult.wxml</text>
+<!--pages/TrainingApplication/ModifyApplication/ModifyApplication.wxml-->
+<view>
+  <form bindsubmit='intercheckmodify'>
+  <van-cell-group>
+      <van-field 
+        name="trainingId"
+        label="trainingId"
+        value='{{trainingId}}'
+        readonly
+        required
+        clearable
+      />
+      <van-field 
+        name="id"
+        label="id"
+        value='{{id}}'
+        readonly
+       required
+        clearable
+      />
+      <van-field 
+        name="result"
+        label="result"
+        value='{{result}}'
+        placeholder="input result" 
+        required
+        clearable
+      />
+    </van-cell-group>
+    <view>
+      <button class='van-button--info' formType='submit'>Modify TrainingResult</button>
+    </view>
+  </form>
+</view>
+<van-button type="info" size="small" bindtap="goback">go back</van-button> 
+

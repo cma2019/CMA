@@ -151,5 +151,10 @@ Page({
       })
     }
     this.onLoad()
+  },
+  goback: function () {
+    wx.navigateBack({
+      delta: 1
+    })
   }
 })

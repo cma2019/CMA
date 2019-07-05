@@ -4,12 +4,11 @@ Page({
 
   data: {
     "year":null,
+    "name":null,
     "mess": null,
     "temp":
       [{
         "year": 1,
-        "fileName": "333",
-        "file": "content2",
         "id": "222",
         "productionName": "content1",
         "ability": "cont21",
@@ -25,10 +24,11 @@ Page({
   },
 
   onLoad: function (options) {
-    let url = app.globalData.url + 'TestAbility/getAll'
-    let postdata = ''
+    console.log("get all items")
+    console.log(options)
     this.setData({
-      year: options.id
+      year: options.year,
+      name: options.name
     })
   },
 
@@ -37,7 +37,7 @@ Page({
     let data = {
       "year": this.data.year,
     }
-    app.wxRequest(url, 'GET', postdata, (res) => {
+    app.wxRequest(url, 'GET', data, (res) => {
       this.setData({
         mess: res.data
       })
@@ -68,10 +68,11 @@ Page({
   },
   gotoModify(e){
     let target = this.data.year
+    let target2 = this.data.name
     console.log('modify one test ability id')
     console.log(target)
     wx.navigateTo({
-      url: '../modifyOne/modifyOne?id=' + target,
+      url: '../modifyOne/modifyOne?year=' + target+'&name='+target2
     })
   },
 

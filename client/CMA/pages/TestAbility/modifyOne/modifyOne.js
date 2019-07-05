@@ -16,7 +16,8 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      year: options.id
+      year: options.year,
+      fileName : options.name
     })
   },
 
@@ -49,41 +50,43 @@ Page({
         console.log('modify message successfully')
         console.log(res)
         if (res.code == 200) {
-          newTestAbility(e)
+          console.log('begin add testability')
+          var myurl = app.globalData.url + 'TestAbility/modifyOneFile';
+          var mypath;
+          wx.chooseMessageFile({
+            count: 1,
+            type: 'all',
+            success: function (res) {
+              console.log("get file success")
+              console.log(res)
+              mypath = res.tempFiles[0].path
+              app.wxUploadFile(myurl, mypath, null, (res) => {
+                console.log("upload file success")
+                console.log(res)
+                wx.navigateBack({
+                  delta: 1
+                })
+              }, (err) => {
+                console.log(err)
+              })
+            },
+            fail: function (err) {
+              console.log("get file failed")
+              console.log(err)
+            }
+          })
         }
 
       }, (err) => {
         console.log('fail modify')
       })
     }
-  },
-  newTestAbility: function (e) {
-    console.log('begin add testability')
-    var myurl = app.globalData.url + 'TestAbility/modifyOneeFile';
-    var mypath;
-    wx.chooseMessageFile({
-      count: 1,
-      type: 'all',
-      success: function (res) {
-        console.log("get file success")
-        console.log(res)
-        mypath = res.tempFiles[0].path
-        app.wxUploadFile(myurl, mypath, null, (res) => {
-          console.log("upload file success")
-          console.log(res)
-          wx.navigateBack({
-            delta: 1
-          })
-        }, (err) => {
-          console.log(err)
-        })
-      },
-      fail: function (err) {
-        console.log("get file failed")
-        console.log(err)
-      }
-    })
   }
+  /*
+  newTestAbility: function (e) {
+    
+  }
+  */
 })
 
 

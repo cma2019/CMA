@@ -9,7 +9,7 @@ Page({
   },
   deleteitem: function (e) {
     var that = this
-    console.log('SelfInspection发生了deleteOneFile事件:', that.data.detail.fileId)
+    console.log('SelfInspection发生了deleteOneFile事件，携带数据为：', that.data.detail.fileId)
     var myurl = app.globalData.url + 'SelfInspection/deleteOneFile?fileId=' + that.data.detail.fileId
     app.wxRequest(myurl, 'POST', null, (res) => {
       console.log(res)
@@ -35,6 +35,22 @@ Page({
         },
         fail: function (err) {
           console.log(err)
+          wx.getSavedFileList({
+            success: function (res) {
+              if (res.fileList.length > 0) {
+                wx.removeSavedFile({
+                  filePath: res.fileList[0].filePath,
+                  comlplete: function (res) {
+                    console.log(res)
+                    wx.showToast({
+                      title: '请重新下载',
+                      duration: 1500
+                    })
+                  }
+                })
+              }
+            }
+          })
         }
       })
     }, (err) => {

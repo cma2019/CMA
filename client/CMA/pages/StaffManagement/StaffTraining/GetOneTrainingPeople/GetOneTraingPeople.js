@@ -39,106 +39,87 @@ Page({
         trainingId: res.data.trainingId,
         program: res.data.program,
         result: res.data.result,
+        id:res.data.id,
+        name:res.data.name,
+        place:res.data.place,
+        presenter:res.data.presenter,
+        trainingDate:res.data.trainingDate,
         note: res.data.note
       })
     }, (err) => {
       console.err('get one error')
     })
   },
-  ModifyStaff(e) {
-    console.log(e)
-    //let target = this.data.id
-    //console.log(target)
-    let url1 = app.globalData.url + 'ManagementReview/modifyOneFile'
-    let postdata1 = {
-      "fileId": this.data.id
+  onShow:function()
+  {
+    let myurl = app.globalData.url + 'StaffTraining/getOne'
+    let mypostdata = {
+      "id": this.data.id,
+      "trainingId": this.data.trainingId
     }
-    console.log(postdata1)
-    app.wxRequest(url1, 'POST', postdata1, (res) => {
+    app.wxRequest(myurl, 'GET', mypostdata, (res) => {
       console.log(res)
       console.log(res.data)
       //console.log(res.data[0].id)
+      this.setData({
+        trainingId: res.data.trainingId,
+        program: res.data.program,
+        result: res.data.result,
+        id: res.data.id,
+        name: res.data.name,
+        place: res.data.place,
+        presenter: res.data.presenter,
+        trainingDate: res.data.trainingDate,
+        note: res.data.note
+      })
     }, (err) => {
       console.err('get one error')
     })
-    var myurl2 = app.globalData.url + 'ManagementReview/addOneFile';
-    wx.chooseMessageFile({
-      count: 1,
-      type: 'all',
-      success: function (res) {
-        console.log("get file success")
-        console.log(res)
-        console.log(res.tempFiles)
-        console.log(res.tempFiles[0])
-        console.log(res.tempFiles[0].path)
-        //mypath = res.tempFiles[0].path
-        app.wxUploadFile(myurl2, res.tempFiles[0].path, null, (res) => {
-          console.log("upload file success")
-          console.log(res)
-          wx.showToast({
-            title: '修改成功!',
-            icon: 'success',
-            duration: 2000
-          })
-          //console.log(mydata)
-
-        }, (err) => {
-          console.log(err)
-        })
-        /*console.log(this.data.year)
-        console.log(this.year)
-        wx.redirectTo({
-          url: '../GetAllFileManagementReview/GetAllFileManagementReview?id=' + this.data.year,
-        })*/
-      },
-      fail: function (err) {
-        console.log("get file failed")
-        console.log(err)
-      }
-    })
-
-
   },
-
-  DownloadStaff(e) {
-    //var that = this
-    var myurl = app.globalData.url + 'ManagementReview/downloadFile/' + this.data.id;
-    var myFilePath
-    app.wxDownloadFile(myurl, (res) => {
-      console.log("download one now")
-      console.log(res)
-      wx.saveFile({
-        tempFilePath: res.tempFilePath,
-        success: function (res) {
-          console.log("download now")
-          console.log(res)
-          myFilePath = res.savedFilePath
-          console.log(myFilePath)
-          wx.showToast({
-            title: '下载成功!',
-            icon: 'success',
-            duration: 2000
-          })
-        },
-        fail: function (err) {
-          console.log(err)
-        }
-      })
-    }, (err) => {
-      console.log(err)
+  AddResult(e)
+  {
+    console.log(e)
+    let target = []
+    target[0] = this.data.trainingId
+    target[1] = this.data.id
+    console.log('getone id')
+    console.log(target)
+    wx.navigateTo({
+      url: '../AddTrainingResult/AddTrainingResult?id=' + target
     })
   },
-  DeleteStaff(e) {
-    let url2 = app.globalData.url + 'ManagementReview/deleteOneFile'
-    let data2 = {
-      "fileId": this.data.id
+  ModifyResult(e) {
+    console.log(e)
+    let target1 = []
+    target1[0] = this.data.trainingId
+    target1[1] = this.data.id
+    console.log('getone id')
+    //console.log(target)
+    wx.navigateTo({
+      url: '../ModifyTrainingResult/ModifyTrainingResult?id=' + target1
+    })
+  },
+  Search(e)
+  {
+    wx.navigateTo({
+      url: '../GetAllStaffTraining/GetAllStaffTraining?id=' + this.data.id
+    })
+  },
+  Delete(e) {
+    let url1 = app.globalData.url + 'StaffTraining/deleteTrainingPeople'
+    let data1 = {
+      "id": this.data.id,
+      "trainingId":this.data.trainingId
     }
-    app.wxRequest(url2, 'POST', data2, (res) => {
+    app.wxRequest(url1, 'POST', data1, (res) => {
       console.log('delete successfully')
       wx.showToast({
         title: '删除成功!',
-        icon: 'success',
-        duration: 2000
+        icon:'success',
+        duration:2000
+      })
+      wx.navigateBack({
+        delta: 1
       })
     }, (err) => {
       console.log('delete failed')
