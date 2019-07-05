@@ -157,7 +157,8 @@
     "pages/InternalAuditManagement/InternalAudit/InternalAuditAddOne/InternalAuditAddOne",
     "pages/InternalAuditManagement/InternalAuditDocument/InternalAuditDocument",
     "pages/InternalAuditManagement/InternalAuditDocument/InternalAuditDocumentAddOne/InternalAuditDocumentAddOne",
-    "pages/InternalAuditManagement/InternalAuditDocument/InternalAuditDocumentGetOne/InternalAuditDocumentGetOne"
+    "pages/InternalAuditManagement/InternalAuditDocument/InternalAuditDocumentGetOne/InternalAuditDocumentGetOne",
+    "pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagement"
   ],
   "window": {
     "backgroundTextStyle": "light",
