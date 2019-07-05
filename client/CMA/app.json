@@ -166,7 +166,12 @@
     "pages/StaffManagement/StaffTraining/GetOneTrainingPeople/GetOneTraingPeople",
     "pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocumentModifyOne/SelfInspectionDocumentModifyOne",
     "pages/InternalAuditManagement/InternalAuditDocument/InternalAuditDocumentModifyOne/InternalAuditDocumentModifyOne",
-    "pages/StaffManagement/StaffFile/GetImageStaffFile/GetImageStaffFile"
+    "pages/StaffManagement/StaffFile/GetImageStaffFile/GetImageStaffFile",
+    "pages/StaffManagement/StaffQualification/StaffQualification",
+    "pages/StaffManagement/StaffQualification/AddOneStaffQualification/AddOneStaffQualification",
+    "pages/StaffManagement/StaffQualification/DownloadOneStaffQualification/DownloadOneStaffQualification",
+    "pages/StaffManagement/StaffQualification/PrintOneStaffQualification/PrintOneStaffQualification",
+    "pages/StaffManagement/StaffQualification/GetAllByStaff/GetAllByStaff"
   ],
   "window": {
     "backgroundTextStyle": "light",
