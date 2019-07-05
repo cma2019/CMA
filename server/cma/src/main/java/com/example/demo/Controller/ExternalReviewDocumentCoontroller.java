@@ -22,24 +22,26 @@ import java.util.List;
 public class ExternalReviewDocumentCoontroller {
     @Autowired
     ExternalReviewDocumentRepository ERDRepository;
-    @RequestMapping(path="getAllFile",method = RequestMethod.GET)
+    @RequestMapping(path="/getAllFile/{year}",method = RequestMethod.GET)
     @ResponseBody
-    public Response getAllFile()
+    public Response getAllFile(@PathVariable("year")long year)
     {
         Response response=new Response();
         Iterable<ExternalReviewDocument>list=ERDRepository.findAll();
         JSONArray jsons=new JSONArray();
         for(int i=0;i< ((List<ExternalReviewDocument>)list).size();i++)
         {
-            JSONObject ejson = JSONObject.parseObject(JSONObject.toJSONString(((List<ExternalReviewDocument>) list).get(i)));
-            jsons.add(ejson);
+            if((((List<ExternalReviewDocument>) list).get(i)).getYear()==year) {
+                JSONObject ejson = JSONObject.parseObject(JSONObject.toJSONString(((List<ExternalReviewDocument>) list).get(i)));
+                jsons.add(ejson);
+            }
         }
         response.code=200;
         response.data=jsons;
         response.msg="成功";
         return response;
     }
-    @RequestMapping(path="addOneFormData",method = RequestMethod.POST)
+    @RequestMapping(path="/addOneFormData",method = RequestMethod.POST)
     @ResponseBody
     public Response addOneFormData(@RequestParam(value ="year" ,required = false)long year)
     {
@@ -56,7 +58,7 @@ public class ExternalReviewDocumentCoontroller {
         response.msg="收到数据";
         return response;
     }
-    @RequestMapping(path="addOneFile",method = RequestMethod.POST)
+    @RequestMapping(path="/addOneFile",method = RequestMethod.POST)
     @ResponseBody
     public  Response addOneFile(@RequestParam("file") MultipartFile file, HttpServletRequest request){
 
@@ -69,7 +71,7 @@ public class ExternalReviewDocumentCoontroller {
         ERDRepository.save(temp);
         return  fileController.upload(file,request,temp.getFileName(),temp.getDir());
     }
-    @RequestMapping(path="modifyFormData/{id}",method = RequestMethod.POST)
+    @RequestMapping(path="/modifyFormData/{id}",method = RequestMethod.POST)
     @ResponseBody
     public Response modifyFormData(
             @PathVariable("id")long id,
@@ -96,7 +98,7 @@ public class ExternalReviewDocumentCoontroller {
         }
         return response;
     }
-    @RequestMapping(path="modifyFile",method = RequestMethod.POST)
+    @RequestMapping(path="/modifyFile",method = RequestMethod.POST)
     @ResponseBody
     public Response modifyFormData(@RequestParam("file") MultipartFile file, HttpServletRequest request
     ){
