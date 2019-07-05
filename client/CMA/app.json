@@ -165,7 +165,8 @@
     "pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementYear/ExternalReviewManagementYearAddOne/ExternalReviewManagementYearAddOne",
     "pages/StaffManagement/StaffTraining/GetOneTrainingPeople/GetOneTraingPeople",
     "pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocumentModifyOne/SelfInspectionDocumentModifyOne",
-    "pages/InternalAuditManagement/InternalAuditDocument/InternalAuditDocumentModifyOne/InternalAuditDocumentModifyOne"
+    "pages/InternalAuditManagement/InternalAuditDocument/InternalAuditDocumentModifyOne/InternalAuditDocumentModifyOne",
+    "pages/StaffManagement/StaffFile/GetImageStaffFile/GetImageStaffFile"
   ],
   "window": {
     "backgroundTextStyle": "light",
