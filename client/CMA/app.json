@@ -162,7 +162,8 @@
     "pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementAddOne/ExternalReviewManagementAddOne",
     "pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementYear/ExternalReviewManagementYear",
     "pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementYear/ExternalReviewManagementYearGetOne/ExternalReviewManagementYearGetOne",
-    "pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementYear/ExternalReviewManagementYearAddOne/ExternalReviewManagementYearAddOne"
+    "pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementYear/ExternalReviewManagementYearAddOne/ExternalReviewManagementYearAddOne",
+    "pages/StaffManagement/StaffTraining/GetOneTrainingPeople/GetOneTraingPeople"
   ],
   "window": {
     "backgroundTextStyle": "light",
