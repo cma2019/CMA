@@ -160,7 +160,9 @@
     "pages/InternalAuditManagement/InternalAuditDocument/InternalAuditDocumentGetOne/InternalAuditDocumentGetOne",
     "pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagement",
     "pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementAddOne/ExternalReviewManagementAddOne",
-    "pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementYear/ExternalReviewManagementYear"
+    "pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementYear/ExternalReviewManagementYear",
+    "pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementYear/ExternalReviewManagementYearGetOne/ExternalReviewManagementYearGetOne",
+    "pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementYear/ExternalReviewManagementYearAddOne/ExternalReviewManagementYearAddOne"
   ],
   "window": {
     "backgroundTextStyle": "light",
