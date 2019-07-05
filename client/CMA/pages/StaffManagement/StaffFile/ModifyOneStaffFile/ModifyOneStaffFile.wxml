@@ -1,2 +1,38 @@
-<!--pages/StaffManagement/StaffFile/ModifyOneStaffFile/ModifyOneStaffFile.wxml-->
-<text>pages/StaffManagement/StaffFile/ModifyOneStaffFile/ModifyOneStaffFile.wxml</text>
+<!--pages/TrainingApplication/ModifyApplication/ModifyApplication.wxml-->
+<view>
+  <form bindsubmit='intercheckmodify'>
+  <van-cell-group>
+      <van-field 
+        name="id"
+        label="id"
+        value='{{id}}'
+        readonly
+        required
+        clearable
+      />
+      <van-field 
+        name="fileId"
+        label="fileId"
+        value='{{fileId}}'
+        placeholder="input fileId" 
+    required
+        clearable
+      />
+      <van-field 
+        name="fileLocation"
+        label="fileLocation"
+        value='{{fileLocation}}'
+        placeholder="input fileLocation" 
+        required
+        clearable
+      />
+    </van-cell-group>
+    
+
+    <view>
+      <button class='van-button--info' formType='submit'>Modify StaffFile</button>
+    </view>
+  </form>
+</view>
+<van-button type="info" size="small" bindtap="goback">go back</van-button> 
+
