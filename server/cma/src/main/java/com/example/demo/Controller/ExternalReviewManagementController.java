@@ -54,19 +54,27 @@ public class ExternalReviewManagementController {
         response.msg="成功";
         return  response;
     }
-    @RequestMapping(path="deleteOne/{id}",method = RequestMethod.POST)
+    @RequestMapping(path="deleteOne/{year}",method = RequestMethod.POST)
     @ResponseBody
-    public Response deleteOne(@PathVariable("id")long id)
+    public Response deleteOne(@PathVariable("year")long year)
     {
         Response response=new Response();
+        JSONObject alljson=new JSONObject();
+        Iterable<ExternalReviewManagement> list=ERMRepository.findAll();
+        int count=0;
         try{
-            if(ERMRepository.findById(id)==null)
-                throw new Exception("不存在");
-            ERMRepository.deleteById(id);
+            for(int i = 0; i<((List<ExternalReviewManagement>) list).size(); i++){
+              if(((List<ExternalReviewManagement>) list).get(i).getYear()==year) {
+                  count++;
+                  ERMRepository.deleteById(((List<ExternalReviewManagement>) list).get(i).getId());
+              }
+            }
+            if(count==0)
+               throw new Exception("未找到该年份信息");
+            count =0;
             response.data=null;
-            response.msg="成功";
+            response.msg="删除成功";
             response.code=200;
-
         }catch(Exception e){
             e.printStackTrace();
             response.code=500;
