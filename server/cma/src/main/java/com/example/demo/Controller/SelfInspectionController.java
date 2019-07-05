@@ -101,7 +101,7 @@ public class SelfInspectionController {
                 SelfInspectionDocument tmp=res.get(i);
                 System.out.println(tmp.getFileId()+"?");
                 deleteOneFile(tmp.getFileId());
-                SelfInspectionDocumentRepository.deleteByFileId(tmp.getFileId());
+                SelfInspectionDocumentRepository.delete(tmp);
             }
         }
         SelfInspectionRepository.deleteById(Long.parseLong(id));
