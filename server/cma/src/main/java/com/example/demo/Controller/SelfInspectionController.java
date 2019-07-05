@@ -118,8 +118,8 @@ public class SelfInspectionController {
                 tmp.put("fileId",res.get(i).getFileId());
                 String entire=res.get(i).getFileName();
                 System.out.println(res.get(i).getFileName());
-                tmp.put("fileName",res.get(i).getFileName());
-                tmp.put("file",res.get(i).getFileName()+".pdf");
+                tmp.put("fileName",entire.substring(0,entire.indexOf(".")));
+                tmp.put("file",res.get(i).getFileName());
                 data.add(tmp);
             }
         }
@@ -155,7 +155,9 @@ public class SelfInspectionController {
         String[] str=file.getOriginalFilename().split("\\.");
         System.out.println(str[str.length-1]);
         String suffix=str[str.length-1];
-        sDoc.setFileName(sDoc.getFileName()+suffix);
+        sDoc.setFileName(sDoc.getFileName()+"."+suffix);
+        SelfInspectionDocumentRepository.saveAndFlush(sDoc);
+        System.out.println(sDoc.getFileName());
         System.out.println("??");
         return  fileController.upload(file,request,sDoc.getFileName(),sDoc.getDir());
     }
@@ -177,11 +179,11 @@ public class SelfInspectionController {
         js.put("data",null);
         return js;
     }
-    @GetMapping(path = "/downloadFile")
+    @GetMapping(path = "/downloadFile/{fileId}")
     public @ResponseBody String downloadFile(@PathVariable("fileId") long fileId, HttpServletResponse response) {
         FileController fileController=new FileController();
         try{
-            if(SelfInspectionDocumentRepository.findById(fileId)==null)
+            if(SelfInspectionDocumentRepository.findByFileId(fileId)==null)
                 throw new Exception("doesn't exist");
             SelfInspectionDocument temp=SelfInspectionDocumentRepository.findByFileId(fileId);
             String name=temp.getFileName();
@@ -194,3 +196,4 @@ public class SelfInspectionController {
     }
 }
 //select * from self_inspection_document;
+//delete from self_inspection_document where file_id=
