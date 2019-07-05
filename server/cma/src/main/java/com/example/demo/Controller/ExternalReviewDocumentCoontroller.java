@@ -122,23 +122,63 @@ public class ExternalReviewDocumentCoontroller {
             return response;
         }
     }
-    @RequestMapping(value="/deleteOne/{id}",method=RequestMethod.GET)
+    @RequestMapping(value="/deleteOne/{year}",method=RequestMethod.GET)
     @ResponseBody
-    public Response deleteOne(@PathVariable("id") long id)
+    public Response deleteOne(@PathVariable("year") long year)
     {
         Response response=new Response();
         FileController fileController=new FileController();
         try {
-            if (ERDRepository.findById(id) == null)
-                throw new Exception("doesn't exist");
-            ExternalReviewDocument temp = ERDRepository.findById(id);
-            String name = temp.getFileName();
-            ERDRepository.deleteById(id);
-            if (!fileController.deletefile(name, temp.getDir()))
-                throw new Exception("删除失败");
+            int count =0;
+            Iterable<ExternalReviewDocument>list=ERDRepository.findAll();
+            for(int i=0;i< ((List<ExternalReviewDocument>)list).size();i++)
+            {
+                if((((List<ExternalReviewDocument>) list).get(i)).getYear()==year) {
+                    count++;
+                    ExternalReviewDocument temp=((List<ExternalReviewDocument>) list).get(i);
+                    String name = temp.getFileName();
+                    ERDRepository.deleteById((((List<ExternalReviewDocument>) list).get(i).getId()));
+                    if (!fileController.deletefile(name, temp.getDir()))
+                        throw new Exception("删除失败");
+                }
+                if(count==0)
+                {
+                    throw new Exception("删除失败，未找到该年份记录");
+                }
+            }
             response.data = null;
             response.msg = "成功";
             response.code = 200;
+        }catch(Exception e){
+            e.printStackTrace();
+            response.code=500;
+            response.msg=e.getMessage();
+        }
+        return response;
+    }
+    @RequestMapping(value="/deleteOneFile/{id}",method=RequestMethod.GET)
+    @ResponseBody
+    public Response deleteOneFile(@PathVariable("id") long id)
+    {
+        Response response=new Response();
+        FileController fileController=new FileController();
+        try {
+            if(ERDRepository.findById(id)==null)
+                throw new Exception("未找到该记录");
+            ExternalReviewDocument temp=ERDRepository.findById(id);
+            String name = temp.getFileName();
+            ERDRepository.deleteById(temp.getId());
+            response.data = null;
+            response.msg = "数据删除成功";
+            response.code = 200;
+            boolean F=fileController.deletefile(name, temp.getDir());
+                 if (!F){
+                        throw new Exception("数据删除成功，文档删除失败");
+            } else if(F){
+                     response.data = null;
+                     response.msg = "数据删除成功,文档删除成功";
+                     response.code = 200;
+            }
         }catch(Exception e){
             e.printStackTrace();
             response.code=500;
