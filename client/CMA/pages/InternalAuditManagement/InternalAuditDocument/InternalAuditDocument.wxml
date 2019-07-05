@@ -1,0 +1,16 @@
+<scroll-view scroll-y>
+  <view wx:if="{{flag == 1}}">
+    <van-cell-group title="SelfInspection GetAllFile">
+      <view wx:for="{{array}}" data-index ='{{index}}' wx:for-item="item">
+        <van-cell value="详情" data-index ='{{index}}'bindtap='gotoOne' is-link>
+          <view slot="title">
+            <view>year: {{item.year}}</view>
+            <view>fileName: {{item.fileName}}</view>
+            <view>file: {{item.file}}</view>
+          </view>
+        </van-cell>
+      </view>
+    </van-cell-group>
+  </view>
+  <van-button type="info" size="small" id="{{id}}" bindtap="gotoAdd">Add an SelfInspection</van-button>
+</scroll-view>
