@@ -1,18 +1,96 @@
 // pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementYear/ExternalReviewManagementYearGetOne/ExternalReviewManagementYearGetOne.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    id:1,
+    year:2019,
+    fileId:1,
+    fileName:"1.pdf"
+  },
+  mydelete: function (e) {
+    var that = this
+    var myurl = app.globalData.url + 'ExternalReviewDocument/deleteOne/' + that.data.id;
+    app.wxRequest(myurl, 'POST', null, (res) => {
+      console.log(res)
+    }, (err) => {
+      console.log(err)
+    })
+    wx.request({
+      url: '/pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementYear/ExternalReviewManagementYear?year=' + that.data.year,
+    })
+  },
+  viewDetail: function (e) {
+    var that = this
+    var myurl1 = app.globalData.url + 'ExternalReviewDocument/modifyFormData';
+    var myurl2 = app.globalData.url + 'ExternalReviewDocument/modifyFile/' + that.data.id;
+    var mydata = {
+      "year": that.data.year
+    };
+    app.wxRequest(myurl1, 'POST', mydata, (res) => {
+      console.log(res)
+      wx.chooseMessageFile({
+        count: 1,
+        type: 'all',
+        success: function (res) {
+          console.log("get file success")
+          console.log(res)
+          var mypath = res.tempFiles[0].path
+          app.wxUploadFile(myurl2, mypath, null, (res) => {
+            console.log("upload file success")
+            console.log(res)
+            wx.request({
+              url: '/pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementYear/ExternalReviewManagementYear?year=' + that.data.year,
+            })
+          }, (err) => {
+            console.log(err)
+          })
+        },
+        fail: function (err) {
+          console.log("get file failed")
+          console.log(err)
+        }
+      })
+    }, (err) => {
+      console.log(err)
+    })
+  },
+  mydownload: function (e) {
+    var that = this
+    var myurl = app.globalData.url + 'ExternalReviewDocument/downloadFile/' + that.data.id;
+    var myFilePath
+    app.wxDownloadFile(myurl, (res) => {
+      console.log(res)
+      wx.saveFile({
+        tempFilePath: res.tempFilePath,
+        success: function (res) {
+          myFilePath = res.savedFilePath
+          console.log(myFilePath)
+        },
+        fail: function (err) {
+          console.log(err)
+        }
+      })
+    }, (err) => {
+      console.log(err)
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad: function (option) {
+    var that = this;
+    console.log(option)
+    that.setData({
+      id: option.id,
+      year: option.year,
+      fileId: option.fileId,
+      fileName: option.fileName
+    })
   },
 
   /**

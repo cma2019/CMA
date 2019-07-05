@@ -1,11 +1,50 @@
 // pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementYear/ExternalReviewManagementYearAddOne/ExternalReviewManagementYearAddOne.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    "id": null,
+    "year": null,
+    "fileId": null,
+    "fileName": null
+  },
+  newEquipment: function (e) {
+    console.log(e.detail.value)
+    var myurl1 = app.globalData.url + 'ExternalReviewDocument/addOneFormData';
+    var myurl2 = app.globalData.url + 'ExternalReviewDocument/addOneFile';
+    var mydata = {
+      "year": e.detail.value.year
+    };
+    app.wxRequest(myurl1, 'POST', mydata, (res) => {
+      console.log(res)
+      wx.chooseMessageFile({
+        count: 1,
+        type: 'all',
+        success: function (res) {
+          console.log("get file success")
+          console.log(res)
+          var mypath = res.tempFiles[0].path
+          app.wxUploadFile(myurl2, mypath, null, (res) => {
+            console.log("upload file success")
+            console.log(res)
+            wx.request({
+              url: '/pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementYear/ExternalReviewManagementYear?year=' + e.detail.value.year,
+            })
+          }, (err) => {
+            console.log(err)
+          })
+        },
+        fail: function (err) {
+          console.log("get file failed")
+          console.log(err)
+        }
+      })
+    }, (err) => {
+      console.log(err)
+    })
   },
 
   /**
