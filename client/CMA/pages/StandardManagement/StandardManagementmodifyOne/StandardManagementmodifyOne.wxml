@@ -1,2 +1,8 @@
-<!--pages/StandardManagement/StandardManagementmodifyOne/StandardManagementmodifyOne.wxml-->
-<text>pages/StandardManagement/StandardManagementmodifyOne/StandardManagementmodifyOne.wxml</text>
+<!--pages/TestingInstitutionManagement/Certificate/CertificateAddOne/CertificateAddOne.wxml-->
+<scroll-view scroll-y>
+  <form bindsubmit='newEquipment'>
+    <view>
+      <button class='van-button--info' formType='submit'>modify standard file</button>
+    </view>
+  </form>
+</scroll-view>

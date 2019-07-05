@@ -14,6 +14,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log('SelfInspection发生了getAll事件')
     let url = app.globalData.url + 'SelfInspection/getAll'
     let postdata = ''
     console.log(url)
@@ -29,8 +30,6 @@ Page({
           mess: res.data,
           flag: 1
         })
-        console.log(this.data.mess)
-        console.log("abcdefg")
       }
     }, (err) => {
       wx.showToast({
@@ -41,12 +40,9 @@ Page({
     })
   },
   gotoFile: function (e) {
-    console.log(e)
-    let target = e.currentTarget.id
-    console.log(target)
-    console.log("fhsdjkhfk")
+    let id = e.currentTarget.id
     wx.navigateTo({
-      url: '/pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocument?id=' + target  
+      url: '/pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocument?id=' + id  
     })
   },
   gotoAdd: function () {
@@ -61,6 +57,7 @@ Page({
   },
   SelfInspectionDelete: function (e) {
     let id = e.currentTarget.id
+    console.log('SelfInspection发生了deleteOne事件:', id)
     const deleteoneRequest = wx.request({
       url: app.globalData.url + 'SelfInspection/deleteOne',
       method: 'POST',
@@ -112,7 +109,29 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let url = app.globalData.url + 'SelfInspection/getAll'
+    let postdata = ''
+    console.log(url)
+    console.log(postdata)
+    app.wxRequest(url, 'GET', postdata, (res) => {
+      if (res.code == 522) {
+        this.setData({
+          mess: ""
+        })
+      }
+      else {
+        this.setData({
+          mess: res.data,
+          flag: 1
+        })
+      }
+    }, (err) => {
+      wx.showToast({
+        title: 'getall error',
+        duration: 1500
+      })
+      console.log('getall error')
+    })
   },
 
   /**

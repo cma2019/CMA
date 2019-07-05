@@ -35,6 +35,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    /*
     console.log(this.data.mess)
     let url = app.globalData.url + 'Supervision/getAll'
     let postdata = ''
@@ -68,7 +69,7 @@ Page({
         duration: 1500
       })
       console.log('getall error')
-    })
+    })*/
   },
   selectList(e){
     const index = e.currentTarget.dataset.index

@@ -1,0 +1,11 @@
+<view>
+ <form bindsubmit='SelfInspectionDocumentModifyOne'>
+    <van-cell-group title="SelfInspectionDocumentModifyOne">
+      <van-field v-model="fileName"  name="fileName" required clearable label="文档名称" placeholder="请输入文档名称"/>
+    </van-cell-group>
+    <view>
+      <button class="van-button--info" formType="submit">完成</button>
+    </view>
+  </form>
+</view>
+<button class="van-button--info" bindtap="goback">取消</button>

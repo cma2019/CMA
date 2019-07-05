@@ -13,7 +13,7 @@ public class ManagementFile {
     private long year;
     private String fileName;
     private String file;
-    private Byte flag;
+    private int flag=0;
 
     private String dir="managementFile";
 
@@ -21,11 +21,7 @@ public class ManagementFile {
         return dir;
     }
 
-    public Byte getFlag() {
-        return flag;
-    }
-
-    public void setFlag(Byte flag) {
+    public void setFlag(int flag) {
         this.flag = flag;
     }
 

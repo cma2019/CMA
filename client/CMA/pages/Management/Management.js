@@ -71,6 +71,11 @@ Page({
       url: '../StaffManagement/StaffManagement/StaffManagement',
     })
   },
+  goStaffTraining: function () {
+    wx.navigateTo({
+      url: '../StaffManagement/StaffTraining/StaffTraining',
+    })
+  },
   goStaffAuthorization: function () {
     wx.navigateTo({
       url: '../StaffManagement/StaffAuthorization/StaffAuthorization',
@@ -154,6 +159,11 @@ Page({
   gotoManagementReview: function () {
     wx.navigateTo({
       url: '../ManagementReview/ManagementReview',
+    })
+  },
+  gotoERM: function () {
+    wx.navigateTo({
+      url: '/pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagement',
     })
   }
 })

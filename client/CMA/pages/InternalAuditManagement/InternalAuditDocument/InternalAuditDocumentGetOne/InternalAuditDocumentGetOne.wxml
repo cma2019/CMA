@@ -1,0 +1,13 @@
+<view>
+  <van-cell-group>
+      <van-field  label="year" value='{{detail.year}}' disabled input-align="right"/>
+      <van-field  label="fileName" value='{{detail.fileName}}' disabled input-align="right"/>
+      <van-field  label="file" value='{{detail.file}}' disabled input-align="right"/>
+  </van-cell-group>
+</view>
+<view>
+  <van-button type="info" size="small" bindtap="deleteitem">Delete</van-button>
+  <van-button type="info" size="small" bindtap="downloaditem">Download</van-button>
+  <van-button type="info" size="small" bindtap="modifyitem">Modify</van-button>
+  <van-button type="info" size="small" bindtap="goback">Back</van-button>
+</view>

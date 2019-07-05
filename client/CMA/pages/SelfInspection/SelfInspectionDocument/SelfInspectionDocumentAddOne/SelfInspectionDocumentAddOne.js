@@ -9,14 +9,16 @@ Page({
     "fileId": null,
     "fileName": null,
   },
-  SelfInspectionAddOne: function (e) {
+  SelfInspectionDocumentAddOne: function (e) {
     console.log(e.detail.value)
     var myurl1 = app.globalData.url + 'SelfInspection/addOneFormData';
     var myurl2 = app.globalData.url + 'SelfInspection/addOneFile';
     var mydata = {
-      "id": e.detail.value.id,
-      "filename": e.detail.value.filename
+      "id": this.data.id,
+      "fileName": e.detail.value.fileName //大于等于4位
     };
+    var id = this.data.id
+    console.log('SelfInspectionDocument发生了AddOne事件:', mydata)
     app.wxRequest(myurl1, 'POST', mydata, (res) => {
       console.log(res)
       wx.chooseMessageFile({
@@ -30,7 +32,7 @@ Page({
             console.log("upload file success")
             console.log(res)
             wx.redirectTo({
-              url: '/pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocument',
+              url: '/pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocument?id='+id,
             })
           }, (err) => {
             console.log(err)
@@ -45,11 +47,18 @@ Page({
       console.log(err)
     })
   },
+  goback: function () {
+    wx.navigateBack({
+      delta: 1
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      id:options.id
+    })
   },
 
   /**

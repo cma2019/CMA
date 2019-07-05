@@ -1,18 +1,64 @@
-// pages/StandardManagement/StandardManagementmodifyOne/StandardManagementmodifyOne.js
+// pages/TestingInstitutionManagement/Certificate/CertificateAddOne/CertificateAddOne.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    fileId: "test fileId",
+    fileName: "test.docx"
+  },
 
+  newEquipment: function (e) {
+    console.log('begin add')
+    var myurl = app.globalData.url + 'StandardManagement/modifyOne';
+    var mypath;
+    var myfileId = this.data.fileId
+    wx.chooseMessageFile({
+      count: 1,
+      type: 'all',
+      success: function (res) {
+        console.log("get file success")
+        console.log(res)
+        mypath = res.tempFiles[0].path
+        console.log(myfileId)
+        let formdata = {
+          "fileId": myfileId
+        }
+        console.log("formdata")
+        console.log(formdata)
+        app.wxUploadFile(myurl, mypath, formdata, (res) => {
+          console.log("upload file success")
+          console.log(res)
+          wx.navigateBack({
+            delta: 1
+          })
+        }, (err) => {
+          console.log(err)
+        })
+        /*
+        wx.redirectTo({
+          url: '/pages/StandardManagement/StandardManagement',
+        })
+        */
+      },
+      fail: function (err) {
+        console.log("get file failed")
+        console.log(err)
+      }
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log('getone options')
+    console.log(options)
+    this.setData({
+      fileId: options.id
+    })
   },
 
   /**

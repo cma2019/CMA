@@ -1,0 +1,16 @@
+<view>
+ <form bindsubmit='InternalAudit_addone'>
+    <van-cell-group title="InternalAudit_addone">
+      <van-field v-model="year" name="year" required clearable label="内审年份 	" placeholder="请输入内审年份" />
+      <picker name = 'date' mode='date' value='{{date}}' bindchange='binddateChange'>
+        <view class='picker'>
+          <van-field  name="date" label="内审日期" value='{{date}}' placeholder="请输入内审日期" required clearable />
+        </view>
+      </picker>
+    </van-cell-group>
+    <view>
+      <button class="van-button--info" formType="submit">完成</button>
+    </view>
+  </form>
+</view>
+<button class="van-button--info" bindtap="goback">取消</button>

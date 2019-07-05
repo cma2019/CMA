@@ -21,7 +21,7 @@ Page({
   },
   SelfInspection_addone: function (e) {
     console.log(e.detail.value)
-    if (this.data.name == "" || e.detail.value.date == "") {
+    if (e.detail.value.name == "" || e.detail.value.date == "") {
       wx.showToast({
         title: '错误（空白输入）',
         icon: 'none',
