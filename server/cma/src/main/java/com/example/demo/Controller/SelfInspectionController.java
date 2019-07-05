@@ -179,15 +179,16 @@ public class SelfInspectionController {
         js.put("data",null);
         return js;
     }
-    @GetMapping(path = "/downloadFile")
+    @GetMapping(path = "/downloadFile/{fileId}")
     public @ResponseBody String downloadFile(@PathVariable("fileId") long fileId, HttpServletResponse response) {
         FileController fileController=new FileController();
+        System.out.println(fileId);
         try{
-            if(SelfInspectionDocumentRepository.findById(fileId)==null)
+            if(SelfInspectionDocumentRepository.findByFileId(fileId)==null)
                 throw new Exception("doesn't exist");
             SelfInspectionDocument temp=SelfInspectionDocumentRepository.findByFileId(fileId);
             String name=temp.getFileName();
-            System.out.println(name);
+            System.out.println(name+"????");
             return  fileController.downloadFile(response,name,temp.getDir());
         }catch(Exception e){
             e.printStackTrace();

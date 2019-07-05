@@ -18,7 +18,7 @@ Page({
   },
   StaffAdd: function (e) {
 
-    if (e.detail.value.program == ""
+    if (e.detail.value.program == "" || e.detail.value.trainingId == ""
       || e.detail.value.trainingDate == ""
       || e.detail.value.place == "" || e.detail.value.presenter == ""
       ) {
@@ -32,7 +32,10 @@ Page({
     else {
       console.log('form发生了add事件，携带数据为：', e.detail.value)
       let url = app.globalData.url + 'StaffTraining/addOne'
+      //let url1 = app.globalData.url + 'StaffTraining/addOneFile';
       let data = {
+        //trainId
+        "trainingId":e.detail.value.trainingId,
         "program": e.detail.value.program,
         "trainingDate": e.detail.value.trainingDate,
         "place": e.detail.value.place,
@@ -54,9 +57,40 @@ Page({
       }, (err) => {
         console.log('fail intermediate check register')
       })
+     /* wx.chooseMessageFile({
+        count: 1,
+        type: 'all',
+        success: function (res) {
+          console.log("get file success")
+          console.log(res)
+          console.log(res.tempFiles)
+          console.log(res.tempFiles[0])
+          console.log(res.tempFiles[0].path)
+          //mypath = res.tempFiles[0].path
+          app.wxUploadFile(url1, res.tempFiles[0].path, null, (res) => {
+            console.log("upload file success")
+            console.log(res)
+           // console.log(mydata)
+
+          }, (err) => {
+            console.log(err)
+          })
+          wx.redirectTo({
+            url: '../GetAllFileManagementReview/GetAllFileManagementReview?id=' + e.detail.value.year,
+          })
+        },
+        fail: function (err) {
+          console.log("get file failed")
+          console.log(err)
+        }
+
+      })*/
 
     }
 
+  },
+  addfile: function () {
+    
   },
   goback: function () {
     wx.navigateBack({
