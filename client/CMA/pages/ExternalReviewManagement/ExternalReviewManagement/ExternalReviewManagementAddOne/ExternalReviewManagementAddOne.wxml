@@ -1,2 +1,25 @@
 <!--pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementAddOne/ExternalReviewManagementAddOne.wxml-->
-<text>pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementAddOne/ExternalReviewManagementAddOne.wxml</text>
+<scroll-view scroll-y>
+  <form bindsubmit='newEquipment'>
+    <view class="section">
+      <van-field name="year" value="{{year}}" required clearable label="year" placeholder="input year"></van-field>
+    </view>
+    <view class="section">
+      <picker name = 'date' mode='date' value='{{date}}' bindchange='bindDateChange'>
+          <view class='picker'>
+            <van-field 
+              name="date"
+              label="date"
+              value='{{date}}'
+              placeholder="input date" 
+              required
+              clearable
+            />
+          </view>
+      </picker> 
+    </view>
+    <view>
+      <button class='van-button--info' formType='submit'>new external review</button>
+    </view>
+  </form>
+</scroll-view>

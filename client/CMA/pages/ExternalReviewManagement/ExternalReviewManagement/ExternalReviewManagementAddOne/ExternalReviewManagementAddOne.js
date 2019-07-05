@@ -1,11 +1,38 @@
 // pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementAddOne/ExternalReviewManagementAddOne.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    "id": null,
+    "year": null,
+    "date": null
+  },
+  bindDateChange: function (e) {
+    console.log("date")
+    console.log(e.detail.value)
+    this.setData({
+      'date': e.detail.value
+    })
+  },
+  newEquipment: function (e) {
+    console.log(e.detail.value)
+    var myurl = app.globalData.url + 'ExternalReviewManagement/addOne';
+    var mydata = {
+      "year": e.detail.value.year,
+      "date": e.detail.value.date
+    };
+    app.wxRequest(myurl, 'POST', mydata, (res) => {
+      console.log("add")
+      console.log(res)
+    }, (err) => {
+      console.log(err)
+    })
+    wx.redirectTo({
+      url: '/pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagement',
+    })
   },
 
   /**
