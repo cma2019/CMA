@@ -21,6 +21,7 @@ public class CapacityVerificationPlan {
     private String year;  //参加年度
     private String note;//计划的备注
     private String analysis;
+    String dir="CapacityVerificationPlan";
 
     public void setplanId(long id){
         this.planId=id;
@@ -66,4 +67,6 @@ public class CapacityVerificationPlan {
 
     public void setAnalysis(String analysis){this.analysis=analysis;}
     public String getAnalysis(){return this.analysis;}
+
+    public String getDir(){return this.dir;}
 }

@@ -11,4 +11,7 @@
 </view>
 <button class='van-button--info' bindtap="modifyData">modify</button>
 <button class='van-button--info' bindtap="deleteData">delete</button>
+<button class='van-button--info' bindtap="uploadAna">upload Analysis</button>
+<button class='van-button--info' bindtap="deleteAna">delete Analysis</button>
+<button class='van-button--info' bindtap="downloadAnnex">download Analysis</button>
 <button class='van-button--info' bindtap="getProjects">get projects</button>
