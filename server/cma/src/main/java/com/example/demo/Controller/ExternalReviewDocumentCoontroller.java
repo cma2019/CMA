@@ -160,6 +160,26 @@ public class ExternalReviewDocumentCoontroller {
             return "下载失败";
         }
     }
-
-
+    @RequestMapping(value = "/getOneFile/{id}",method = RequestMethod.GET)
+    @ResponseBody
+    public Response getOneFile(@PathVariable("id")long id)
+    {
+        Response response=new Response();
+        try{
+            if(ERDRepository.findById(id)==null)
+                throw new Exception("文档不存在");
+            ExternalReviewDocument temp=ERDRepository.findById(id);
+            JSONObject json=JSONObject.parseObject(JSONObject.toJSONString(temp));
+            response.code=200;
+            response.data=json;
+            response.msg="成功";
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+            response.code=500;
+            response.data=null;
+            response.msg=e.getMessage();
+        }
+        return response;
+    }
 }
