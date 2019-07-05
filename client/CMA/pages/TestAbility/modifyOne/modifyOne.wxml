@@ -19,15 +19,6 @@
         required
         clearable
       />    
-      <van-field
-        name="file"
-        label="my file"
-        placeholder="input file"
-        value='{{file}}'
-        required
-        clearable
-        border = "{{false}}"
-      />
     </van-cell-group>
     <view>
       <button class='van-button--info' formType='submit'>register</button>

@@ -18,7 +18,16 @@ public class StaffFile {
     private String fileLocation;    //档案位置
     private String fileImage;   //档案扫描件（图片在服务器的位置）
 
+    private int flag=0;
+    private String dir="StaffFile";
 
+    public String getDir() {
+        return dir;
+    }
+
+    public void setFlag(int flag) {
+        this.flag = flag;
+    }
 
     public void setFileId(String fileId) {
         this.fileId = fileId;

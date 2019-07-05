@@ -1,4 +1,3 @@
-// pages/SelfInspection/SelfInspection/SelfInspection.js
 const app = getApp()
 Page({
 
@@ -14,7 +13,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let url = app.globalData.url + 'SelfInspection/getAll'
+    let url = app.globalData.url + 'InternalAuditManagement/getAll'
     let postdata = ''
     console.log(url)
     console.log(postdata)
@@ -42,16 +41,16 @@ Page({
   },
   gotoFile: function (e) {
     console.log(e)
-    let target = e.currentTarget.id
-    console.log(target)
+    let year = e.currentTarget.id
+    console.log(year)
     console.log("fhsdjkhfk")
     wx.navigateTo({
-      url: '/pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocument?id=' + target  
+      url: '/pages/InternalAuditManagement/InternalAuditDocument/InternalAuditDocument?id=' + year  
     })
   },
   gotoAdd: function () {
     wx.navigateTo({
-      url: '/pages/SelfInspection/SelfInspection/SelfInspectionAddOne/SelfInspectionAddOne',
+      url: '/pages/InternalAuditManagement/InternalAudit/InternalAuditAddOne/InternalAuditAddOne',
     })
   },
   goback: function () {
@@ -59,17 +58,17 @@ Page({
       delta: 1
     })
   },
-  SelfInspectionDelete: function (e) {
-    let id = e.currentTarget.id
+  InternalAuditDelete: function (e) {
+    let year = e.currentTarget.id
     const deleteoneRequest = wx.request({
-      url: app.globalData.url + 'SelfInspection/deleteOne',
+      url: app.globalData.url + 'InternalAuditManagement/deleteOne',
       method: 'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded',
         'Accept': 'application/json'
       },
       data: {
-        "id": id
+        "year": year
       },
       success(res) {
         console.log(res)
@@ -79,7 +78,7 @@ Page({
             duration: 1500
           })
           wx.navigateTo({
-            url: '/pages/SelfInspection/SelfInspection/SelfInspection'
+            url: '/pages/InternalAuditManagement/InternalAudit/InternalAudit'
           })
         }
         else {
@@ -112,7 +111,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    let url = app.globalData.url + 'SelfInspection/getAll'
+    let url = app.globalData.url + 'InternalAuditManagement/getAll'
     let postdata = ''
     console.log(url)
     console.log(postdata)

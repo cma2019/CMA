@@ -54,7 +54,7 @@ Page({
    */
   onShow: function (option) {
     var that = this
-    var myurl = app.globalData.url + 'ExternalReviewManagement/getAllFile/' + option.year;
+    var myurl = app.globalData.url + 'ExternalReviewDocument/getAll/' + option.year;
     app.wxRequest(myurl, 'GET', null, (res) => {
       console.log(res)
       that.setData({

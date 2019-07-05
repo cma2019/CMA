@@ -145,7 +145,7 @@
     <!--<view wx:if="{{mess[17]}}">-->
     <view wx:if="{{true}}">
     <van-collapse-item title="外部评审与上报管理" name="18">
-      
+      <van-cell title="ExternalReviewManagement" boarder="{{false}}" is-link  center="{{true}}" bindtap="gotoERM"></van-cell>
     </van-collapse-item>
     </view>
     <!--<view wx:if="{{mess[18]}}">-->

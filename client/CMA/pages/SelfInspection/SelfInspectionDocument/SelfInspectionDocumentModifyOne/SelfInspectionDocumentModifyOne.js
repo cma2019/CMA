@@ -1,3 +1,4 @@
+
 const app = getApp()
 Page({
 
@@ -5,20 +6,35 @@ Page({
    * 页面的初始数据
    */
   data: {
-    "id": null,
-    "fileId": null,
-    "fileName": null,
+    fileId:'',
+    fileName:'',
+    id:''
   },
-  SelfInspectionDocumentAddOne: function (e) {
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    this.setData({
+      fileId:options.fileId,
+      fileName:options.fileName,
+      id:options.id
+    })
+  },
+  SelfInspectionDocumentModifyOne: function (e) {
     console.log(e.detail.value)
-    var myurl1 = app.globalData.url + 'SelfInspection/addOneFormData';
-    var myurl2 = app.globalData.url + 'SelfInspection/addOneFile';
+    let fileName = e.detail.value.fileName
+    if (fileName == null || fileName == ""){
+      fileName = this.data.fileName
+    }
+    var myurl1 = app.globalData.url + 'SelfInspection/modifyOneFormData';
+    var myurl2 = app.globalData.url + 'SelfInspection/modifyOneFile';
     var mydata = {
-      "id": this.data.id,
-      "fileName": e.detail.value.fileName //大于等于4位
+      "fileId": this.data.fileId,
+      "fileName": fileName //大于等于4位
     };
     var id = this.data.id
-    console.log('SelfInspectionDocument发生了AddOne事件:', mydata)
+    console.log('SelfInspectionDocument发生了ModifyOne事件:', mydata)
     app.wxRequest(myurl1, 'POST', mydata, (res) => {
       console.log(res)
       wx.chooseMessageFile({
@@ -32,7 +48,7 @@ Page({
             console.log("upload file success")
             console.log(res)
             wx.redirectTo({
-              url: '/pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocument?id='+id,
+              url: '/pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocument?id=' + id,
             })
           }, (err) => {
             console.log(err)
@@ -52,15 +68,6 @@ Page({
       delta: 1
     })
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    this.setData({
-      id:options.id
-    })
-  },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
