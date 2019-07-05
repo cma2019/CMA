@@ -122,7 +122,7 @@ public class ExternalReviewDocumentCoontroller {
             return response;
         }
     }
-    @RequestMapping(value="/deleteOne/{year}",method=RequestMethod.GET)
+    /*@RequestMapping(value="/deleteOne/{year}",method=RequestMethod.POST)
     @ResponseBody
     public Response deleteOne(@PathVariable("year") long year)
     {
@@ -155,8 +155,8 @@ public class ExternalReviewDocumentCoontroller {
             response.msg=e.getMessage();
         }
         return response;
-    }
-    @RequestMapping(value="/deleteOneFile/{id}",method=RequestMethod.GET)
+    }*/
+    @RequestMapping(value="/deleteOne/{id}",method=RequestMethod.GET)
     @ResponseBody
     public Response deleteOneFile(@PathVariable("id") long id)
     {
