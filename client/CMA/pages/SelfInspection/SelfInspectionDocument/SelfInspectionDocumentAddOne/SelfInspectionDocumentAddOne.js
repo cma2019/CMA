@@ -9,7 +9,7 @@ Page({
     "fileId": null,
     "fileName": null,
   },
-  SelfInspectionAddOne: function (e) {
+  SelfInspectionDocumentAddOne: function (e) {
     console.log(e.detail.value)
     var myurl1 = app.globalData.url + 'SelfInspection/addOneFormData';
     var myurl2 = app.globalData.url + 'SelfInspection/addOneFile';
@@ -18,8 +18,7 @@ Page({
       "fileName": e.detail.value.fileName //大于等于4位
     };
     var id = this.data.id
-    console.log(mydata)
-    console.log("999999999")
+    console.log('SelfInspectionDocument发生了AddOne事件:', mydata)
     app.wxRequest(myurl1, 'POST', mydata, (res) => {
       console.log(res)
       wx.chooseMessageFile({
@@ -46,6 +45,11 @@ Page({
       })
     }, (err) => {
       console.log(err)
+    })
+  },
+  goback: function () {
+    wx.navigateBack({
+      delta: 1
     })
   },
   /**

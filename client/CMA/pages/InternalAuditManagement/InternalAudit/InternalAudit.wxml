@@ -1,24 +1,24 @@
 <view>
-  <van-cell-group title="SelfInspection">
+  <van-cell-group title="InternalAudit">
     <view wx:if="{{flag == 1}}">
       <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
-        <van-cell value="详情" bindtap='gotoFile' id='{{item.id}}' is-link>
+        <van-cell value="详情" bindtap='gotoFile' id='{{item.year}}' is-link>
           <view slot="title">
             <view>
-              <view>自查名称:{{item.name}}  </view>
-              <view>自查日期:{{item.date}}  </view>
+              <view>内审年份:{{item.year}}  </view>
+              <view>内审日期:{{item.date}}  </view>
             </view>
           </view>
         </van-cell>
         <view>
-          <van-button type="info" size="small"id='{{item.id}}' bindtap="SelfInspectionDelete">delete</van-button>
+          <van-button type="info" size="small"id='{{item.year}}' bindtap="InternalAuditDelete">delete</van-button>
         </view>
       </view>
     </view>
     <view wx:else>
-     <text>not have a SelfInspection yet</text>
+     <text>not have a InternalAudit yet</text>
     </view>
   </van-cell-group>
 </view>
-<van-button type="info" size="small" bindtap="gotoAdd">Add a SelfInspection</van-button>
+<van-button type="info" size="small" bindtap="gotoAdd">Add a InternalAudit</van-button>
 <van-button type="info" size="small" bindtap="goback">back</van-button>

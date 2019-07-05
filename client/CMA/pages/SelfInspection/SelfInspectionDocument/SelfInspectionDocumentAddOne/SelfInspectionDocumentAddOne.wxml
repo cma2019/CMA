@@ -1,6 +1,6 @@
 <view>
- <form bindsubmit='SelfInspectionAddOne'>
-    <van-cell-group title="SelfInspectionAddOne">
+ <form bindsubmit='SelfInspectionDocumentAddOne'>
+    <van-cell-group title="SelfInspectionDocumentAddOne">
       <van-field v-model="fileName"  name="fileName" required clearable label="文档名称" placeholder="请输入文档名称"/>
     </van-cell-group>
     <view>

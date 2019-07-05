@@ -11,7 +11,7 @@ Page({
     var that = this
     console.log(that.data.detail.fileId)
     console.log(that.data.detail.id)
-    var myurl = app.globalData.url + 'SelfInspection/deleteOneFile?fileId=' + that.data.detail.fileId
+    var myurl = app.globalData.url + 'InternalAuditManagement/deleteOneFile?fileId=' + that.data.detail.fileId
     app.wxRequest(myurl, 'POST', null, (res) => {
       console.log(res)
       console.log("aaaaaaaaaaaaa")
@@ -19,12 +19,12 @@ Page({
       console.log(err)
     })
     wx.redirectTo({
-      url: '/pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocument?id=' + that.data.detail.id
+      url: '/pages/InternalAuditManagement/InternalAuditDocument/InternalAuditDocument?id=' + that.data.detail.year
     })
   },
   downloaditem: function (e) {
     var that = this
-    var myurl = app.globalData.url + 'SelfInspection/downloadFile?fileId=' + that.data.detail.fileId
+    var myurl = app.globalData.url + 'InternalAuditManagement/downloadFile/' + that.data.detail.fileId
     var myFilePath
     app.wxDownloadFile(myurl, (res) => {
       console.log(res)
