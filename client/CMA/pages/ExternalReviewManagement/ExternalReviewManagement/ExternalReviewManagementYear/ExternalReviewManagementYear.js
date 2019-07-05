@@ -17,11 +17,26 @@ Page({
       "year": 2020,
       "fileId": "2",
       "fileName": "2.pdf"
-    }]
+    }],
+    year:null
   },
   gotoAdd: function (e) {
+    var that = this
     wx.redirectTo({
-      url: '/pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementYear/ExternalReviewManagementYearAddOne/ExternalReviewManagementYearAddOne',
+      url: '/pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementYear/ExternalReviewManagementYearAddOne/ExternalReviewManagementYearAddOne?year=' + that.data.year,
+    })
+  },
+  gotoDelete: function(e){
+    var that = this
+    console.log(that.data)
+    var myurl = app.globalData.url + 'ExternalReviewManagement/deleteOne/' + that.data.year;
+    app.wxRequest(myurl, 'POST', null, (res) => {
+      console.log(res)
+    }, (err) => {
+      console.log(err)
+    })
+    wx.redirectTo({
+      url: '/pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagement',
     })
   },
 
@@ -30,11 +45,14 @@ Page({
    */
   onLoad: function (option) {
     var that = this
-    var myurl = app.globalData.url + 'ExternalReviewManagement/getAllFile/' + option.year;
+    that.setData({
+      year: option.year
+    })
+    var myurl = app.globalData.url + 'ExternalReviewDocument/getAllFile/' + option.year;
     app.wxRequest(myurl, 'GET', null, (res) => {
       console.log(res)
       that.setData({
-        array: res.data.data
+        array: res.data
       })
       console.log(that.data.array)
     }, (err) => {
@@ -53,17 +71,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function (option) {
-    var that = this
-    var myurl = app.globalData.url + 'ExternalReviewDocument/getAll/' + option.year;
-    app.wxRequest(myurl, 'GET', null, (res) => {
-      console.log(res)
-      that.setData({
-        array: res.data.data
-      })
-      console.log(that.data.array)
-    }, (err) => {
-      console.log(err)
-    })
   },
 
   /**

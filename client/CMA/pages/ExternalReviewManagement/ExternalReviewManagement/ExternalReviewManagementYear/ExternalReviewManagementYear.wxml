@@ -12,4 +12,5 @@
   </view>
   </van-cell-group>
   <van-button type="info" size="small" bindtap="gotoAdd">Add an external review file</van-button>
+  <van-button type="info" size="small" bindtap="gotoDelete">Delete this external review</van-button>
 </scroll-view>
