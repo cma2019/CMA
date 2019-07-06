@@ -126,3 +126,4 @@ public class SupervisionPlanController {
     }
 }
 //select * from supervision_plan;
+//alter table supervision_plan ENGINE =InnoDB;

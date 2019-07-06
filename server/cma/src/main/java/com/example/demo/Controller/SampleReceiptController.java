@@ -315,4 +315,5 @@ public class SampleReceiptController {
         return js;
     }
 }
-////select * from sample_receipt;
+//select * from sample_receipt;
+//alter table sample_receipt ENGINE =InnoDB;
