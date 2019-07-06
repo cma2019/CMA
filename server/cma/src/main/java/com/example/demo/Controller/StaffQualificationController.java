@@ -30,26 +30,26 @@ public class StaffQualificationController {
 
     @GetMapping(path = "getAllByStaff")
     public @ResponseBody
-    JSONObject getAllByStaff(@RequestParam(required = false,value = "id")long id){
+    JSONObject getAllByStaff(@RequestParam(required = false,value = "staffId")long staffId){
         JSONObject json=new JSONObject();
         json.put("code",200);
         json.put("msg","成功");
-        json.put("data",staffQualificationRepository.findAllById(id));
+        json.put("data",staffQualificationRepository.findAllByStaffId(staffId));
         return json;
     }
 
     @PostMapping(path = "addOne")
-    public @ResponseBody JSONObject addOne(@RequestParam(required = false,value = "id")long id, @RequestParam(required = false,value="qualificationName")String qualificationName){
+    public @ResponseBody JSONObject addOne(@RequestParam(required = false,value = "staffId")long staffId, @RequestParam(required = false,value="qualificationName")String qualificationName){
         JSONObject json=new JSONObject();
         StaffQualification staffQualification=new StaffQualification();
-        if(staffManagementRepository.existsById(id)==false){
+        if(staffManagementRepository.existsById(staffId)==false){
             json.put("code",210);
             json.put("msg","不存在人员");
             json.put("data",null);
             return json;
         }
-        StaffManagement staffManagement=staffManagementRepository.getOne(id);
-        staffQualification.setId(id);
+        StaffManagement staffManagement=staffManagementRepository.getOne(staffId);
+        staffQualification.setStaffId(staffId);
         staffQualification.setDepartment(staffManagement.getDepartment());
         staffQualification.setName(staffManagement.getName());
         staffQualification.setPosition(staffManagement.getPosition());
@@ -67,7 +67,7 @@ public class StaffQualificationController {
         FileController fileController = new FileController();
         StaffQualification staffQualification = staffQualificationRepository.findByFlag(1);
         staffQualification.setFlag(0);
-        staffQualification.setQualificationImage(staffQualification.getId()+"_"+staffQualification.getQualificationName()+".jpg");
+        staffQualification.setQualificationImage(staffQualification.getStaffId()+"_"+staffQualification.getQualificationName()+".jpg");
         staffQualificationRepository.save(staffQualification);
         return fileController.upload(file, request, staffQualification.getQualificationImage(), staffQualification.getDir());
     }
@@ -120,7 +120,7 @@ public class StaffQualificationController {
     JSONObject modifyOneFile(@RequestParam(value = "qualificationId", required = false) long qualificationId) {
         JSONObject json = new JSONObject();
         FileController fileController = new FileController();
-        StaffQualification staffQualification=staffQualificationRepository.findAllById(qualificationId);
+        StaffQualification staffQualification=staffQualificationRepository.findByQualificationId(qualificationId);
         String name = staffQualification.getQualificationImage();
         staffQualification.setFlag(1);
         fileController.deletefile(name,staffQualification.getDir());
@@ -131,7 +131,7 @@ public class StaffQualificationController {
         return json;
         //return fileController.upload(file,request,managementFile.getFileName(),managementFile.getDir());
     }
-    @RequestMapping(value="/getImage/{id}",method=RequestMethod.GET)
+    @RequestMapping(value="/getImage/{qualificationId}",method=RequestMethod.GET)
     public @ResponseBody String downloadFile(@PathVariable("qualificationId")long qualificationId, HttpServletResponse response){
         //System.out.println("Download In");
         FileController fileController=new FileController();
@@ -155,5 +155,22 @@ public class StaffQualificationController {
         jsonObject.put("msg","成功");
         jsonObject.put("data",staffQualificationRepository.findAll());
         return jsonObject;
+    }
+
+    @GetMapping(path = "getOne")
+    public @ResponseBody JSONObject getOne(@RequestParam(value = "qualificationId",required = false)long qualificationId){
+        JSONObject json=new JSONObject();
+        if(staffQualificationRepository.findByQualificationId(qualificationId)==null){
+            json.put("code", 210);
+            json.put("msg", "资质档案不存在");
+            json.put("data", null);
+        }
+        else{
+            StaffQualification staffQualification=staffQualificationRepository.findByQualificationId(qualificationId);
+            json.put("code",200);
+            json.put("msg","成功");
+            json.put("data",staffQualification);
+        }
+        return json;
     }
 }

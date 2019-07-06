@@ -193,6 +193,31 @@ public class UserController {
         return json;
     }
 
+    @PostMapping(path = "/getCodeModify")
+    public @ResponseBody JSONObject getCodeModify(@RequestParam(value = "username", required = false) String username) {
+        JSONObject json = new JSONObject();
+        if (userRepository.findByUsername(username) == null) {
+            json.put("code", 210);
+            json.put("msg", "不存在用户");
+            return json;
+        }
+        System.out.println("get Code in");
+        aes=new Aes();
+        tempCode=aes.encrypt(username);
+        tempCode=tempCode.substring(0,16);
+
+        aes.changeKey(tempCode);
+
+
+
+        json.put("code",200);
+        json.put("msg","Roger");
+        tempUserName=username;
+        System.out.println("username:"+username);
+        System.out.println("新密钥:"+tempCode);
+        return json;
+    }
+
     @GetMapping(path = "getOne")
     public @ResponseBody JSONObject getOne(@RequestParam(value="username",required = false)String username){
         JSONObject json=new JSONObject();
@@ -245,6 +270,30 @@ public class UserController {
         json.put("code",200);
         json.put("msg","成功");
         json.put("data",list);
+        return json;
+    }
+
+    @PostMapping(path = "modifyPassword")
+    public @ResponseBody JSONObject modifyPassword(/*@RequestParam(value = "password",required = false)String password,@RequestParam(value = "newPassword",required = false)String newPassword*/
+            @RequestParam(value = "data",required = false)String data){
+        JSONObject json=new JSONObject();
+        System.out.println("xiugai");
+        String tempData=aes.decrypt(data);
+        System.out.println("解密后:"+tempData);
+        JSONObject obj=JSONObject.parseObject(tempData);
+        String password=obj.getString("password");
+        String newPassword=obj.getString("newPassword");
+        User user=userRepository.findByUsername(tempUserName);
+        if(user.login(password)==false){
+            json.put("code",210);
+            json.put("msg","密码错误");
+        }
+        else{
+            user.setPassword(newPassword);
+            json.put("code",200);
+            json.put("msg","修改成功");
+            userRepository.save(user);
+        }
         return json;
     }
 }

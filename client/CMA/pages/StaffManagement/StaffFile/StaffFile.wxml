@@ -1,2 +1,16 @@
-<!--pages/StaffManagement/StaffFile/StaffFile.wxml-->
-<text>pages/StaffManagement/StaffFile/StaffFile.wxml</text>
+<!--pages/StaffManagement/StaffManagement.wxml-->
+<view>
+  <van-cell-group title="人员档案管理">
+  <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
+  <van-cell value="详情" bindtap='gotoOne' id='{{item.staffId}}' is-link>
+      <view slot="title">
+        <view>人员编号 : {{item.staffId}}</view>
+        <view>姓名 : {{item.name}}</view>
+        <view>部门 : {{item.department}}</view>
+        <view>职位 : {{item.position}}</view>
+      </view>
+  </van-cell>
+</view>
+  </van-cell-group>
+</view>
+    <van-button type="info" size="small" bindtap="gotoAdd">添加</van-button>

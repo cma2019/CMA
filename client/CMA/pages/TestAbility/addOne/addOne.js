@@ -9,31 +9,14 @@ Page({
   onLoad: function (options) {
 
   },
+  /*
   newTestAbility: function (e) {
-    console.log('begin add testability')
-    var myurl = app.globalData.url + 'TestAbility/addOneFile';
-    var mypath;
-    wx.chooseMessageFile({
-      count: 1,
-      type: 'all',
-      success: function (res) {
-        console.log("get file success")
-        console.log(res)
-        mypath = res.tempFiles[0].path
-        app.wxUploadFile(myurl, mypath, null, (res) => {
-          console.log("upload file success")
-          console.log(res)
-          wx.navigateBack({
-            delta: 1
-          })
-        }, (err) => {
-          console.log(err)
-        })
-      },
-      fail: function (err) {
-        console.log("get file failed")
-        console.log(err)
-      }
+    
+  },
+  */
+  gotologin(e) {
+    wx.navigateBack({
+      delta: 1
     })
   },
   AddOneTestAbility(e) {
@@ -55,7 +38,31 @@ Page({
         console.log('add ability test successfully')
         console.log(res)
         if(res.code == 200){
-          newTestAbility(e)
+          console.log('begin add testability')
+          var myurl = app.globalData.url + 'TestAbility/addOneFile';
+          var mypath;
+          wx.chooseMessageFile({
+            count: 1,
+            type: 'all',
+            success: function (res) {
+              console.log("get file success")
+              console.log(res)
+              mypath = res.tempFiles[0].path
+              app.wxUploadFile(myurl, mypath, null, (res) => {
+                console.log("upload file success")
+                console.log(res)
+                wx.navigateBack({
+                  delta: 1
+                })
+              }, (err) => {
+                console.log(err)
+              })
+            },
+            fail: function (err) {
+              console.log("get file failed")
+              console.log(err)
+            }
+          })
         }
       }, (err) => {
         console.log('fail intermediate check register')

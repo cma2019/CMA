@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.demo.Model.SampleReceive;
 import com.example.demo.Model.SampleReceipt;
 import java.util.List;
-import java.sql.Date;
+//import java.sql.Date;
 
 @Controller
 @RequestMapping(path="/cma/SampleReceive")
@@ -42,6 +42,7 @@ public class SampleReceiveController {
         int code=200;
         String msg="成功";
         try{
+            Long.parseLong(receiptId);
             Integer.parseInt(sampleAmount);
             Integer.parseInt(sampleState);
             java.sql.Date.valueOf(receiveDate);
@@ -49,8 +50,9 @@ public class SampleReceiveController {
         }catch(NumberFormatException e){
             code=513;
             msg="某项数据错误";
-        };
-        if(sampleNumber==""||sampleName==null||requester==null||receiver==null||obtainer==null)
+        }
+        if(sampleNumber==null||sampleName==null||requester==null||receiver==null||obtainer==null||
+        sampleNumber.equals("")||sampleName.equals("")||requester.equals("")||receiver.equals("")||obtainer.equals(""))
         {
             code=511;
             msg="缺少请求参数";
@@ -80,7 +82,7 @@ public class SampleReceiveController {
             receive.setObtainDate(java.sql.Date.valueOf(obtainDate));
             receive.setReceiptId(Long.parseLong(receiptId));
             sampleReceiveRepository.saveAndFlush(receive);
-            if(receiptId!="0")
+            if(!receiptId.equals("0"))
             {
                 SampleReceipt sr=sampleReceiptRepository.findBySampleId(Long.parseLong(receiptId));
                 sr.setSampleName(sampleName);
@@ -98,7 +100,17 @@ public class SampleReceiveController {
         JSONObject json=new JSONObject();
         int code=200;
         String msg="成功";
-        if(sampleId=="")
+        try{
+            Long.parseLong(sampleId);
+        }catch (NumberFormatException E){
+            code=500;
+            msg="请求参数格式错误";
+            json.put("code",code);
+            json.put("msg",msg);
+            json.put("data",null);
+            return json;
+        }
+        if(sampleId.equals(""))
         {
             code=521;
             msg="未收到标识编号";
@@ -145,8 +157,9 @@ public class SampleReceiveController {
         }
         else
         {
-            code=522;
-            msg="数据不存在";
+            code=210;
+            msg="无有效信息返回";
+            //data=null;
         }
         js.put("code",code);
         js.put("msg",msg);
@@ -160,14 +173,14 @@ public class SampleReceiveController {
             int code=200;
             String msg="成功";
             JSONObject data=new JSONObject();
-            if(sampleId=="")
+            if(sampleId.equals(""))
             {
-                code=521;
+                code=500;
                 msg="未收到标识编号";
             }
             else if(sampleReceiveRepository.findBySampleId(Long.parseLong(sampleId))==null) {   //此样品接收登记的id不存在；
 
-                code=522;
+                code=500;
                 msg="数据不存在";
             }
             else {
@@ -277,3 +290,4 @@ public class SampleReceiveController {
         return js;
     }
 }
+//select * from sample_receive;

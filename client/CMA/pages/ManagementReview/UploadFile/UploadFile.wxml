@@ -1,7 +1,7 @@
 <scroll-view scroll-y>
   <form bindsubmit='newEquipment'>
     <view>
-      <button class='van-button--info' formType='submit'>new equipment use</button>
+      <button class='van-button--info' formType='submit'>上传文件</button>
     </view>
   </form>
 </scroll-view>

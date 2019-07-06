@@ -1,21 +1,21 @@
 <!--pages/TrainingApplication/PringOneApplication/PrintOneApplication.wxml-->
 <view>
   <van-cell-group>
-  <van-cell title="name" value="{{name}}" />
-  <van-cell title="people" value="{{people}}" />
-  <van-cell title="trainingUnit" value="{{trainingUnit}}" />
-  <van-cell title="expense" value="{{expense}}" />
-  <van-cell title="reason" value="{{reason}}" />
-  <van-cell title="situation" value="{{situation}}" />
-  <van-cell title="department" value="{{department}}" />
-  <van-cell title="createDate" value="{{createDate}}" />
-  <van-cell title="approver" value="{{approver}}" />
-  <van-cell title="approveDate" value="{{approveDate}}" />
+  <van-cell title="项目名称" value="{{name}}" />
+  <van-cell title="参与人员" value="{{people}}" />
+  <van-cell title="培训单位" value="{{trainingUnit}}" />
+  <van-cell title="预计培训费" value="{{expense}}" />
+  <van-cell title="申请理由" value="{{reason}}" />
+  <van-cell title="状态" value="{{situation}}" />
+  <van-cell title="申请部门" value="{{department}}" />
+  <van-cell title="申请时间" value="{{createDate}}" />
+  <van-cell title="批准人" value="{{approver}}" />
+  <van-cell title="批准时间" value="{{approveDate}}" />
   </van-cell-group>
 </view>
- <van-button type="info" size="small" bindtap="ModifyStaff">Modify</van-button> 
- <van-button type="info" size="small" bindtap="DeleteStaff">Delete</van-button> 
- <van-button type="info" size="small" bindtap="ApproveStaff">Approve</van-button> 
+ <van-button type="info" size="small" bindtap="ModifyStaff">修改</van-button> 
+ <van-button type="info" size="small" bindtap="DeleteStaff">删除</van-button> 
+ <van-button type="info" size="small" bindtap="ApproveStaff">批准</van-button> 
 
 <!--
 <button bindtap="ModifyStaff">Modify</button>

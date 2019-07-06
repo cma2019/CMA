@@ -1,28 +1,28 @@
 <scroll-view scroll-y>
   <form bindsubmit='mytest'>
     <view class="section">
-      <van-field name="name" value="{{name}}" required clearable label="name" placeholder="input name"></van-field>
+      <van-field name="name" value="{{name}}" required clearable label="设备名称" placeholder="设备名称"></van-field>
     </view>
     <view class="section">
-      <van-field name="model" value="{{model}}" required clearable label="model" placeholder="input model"></van-field>
+      <van-field name="model" value="{{model}}" required clearable label="型号" placeholder="型号"></van-field>
     </view>
     <view class="section">
-      <van-field name="manufacturer" value="{{manufacturer}}" required clearable label="manufacturer" placeholder="input manufacturer"></van-field>
+      <van-field name="manufacturer" value="{{manufacturer}}" required clearable label="生产厂家" placeholder="生产厂家"></van-field>
     </view>
     <view class="section">
-      <van-field name="receiveSituation" value="{{receiveSituation}}" required clearable label="receiveSituation" placeholder="input receiveSituation"></van-field>
+      <van-field name="receiveSituation" value="{{receiveSituation}}" required clearable label="接收情况" placeholder="接收情况"></van-field>
     </view>
     <view class="section">
-      <van-field name="recipient" value="{{recipient}}" required clearable label="recipient" placeholder="input recipient"></van-field>
+      <van-field name="recipient" value="{{recipient}}" required clearable label="接收人" placeholder="接收人"></van-field>
     </view>
     <view class="section">
       <picker name = 'receiveDate' mode='date' value='{{receiveDate}}' bindchange='bindDateChange'>
           <view class='picker'>
             <van-field 
               name="receiveDate"
-              label="receiveDate"
+              label="接收日期"
               value='{{receiveDate}}'
-              placeholder="input receiveDate" 
+              placeholder="接收日期" 
               required
               clearable
             />
@@ -30,22 +30,22 @@
       </picker> 
     </view>
     <view class="section">
-      <van-field name="equipmentSituation" value="{{equipmentSituation}}" required clearable label="equipmentSituation" placeholder="input equipmentSituation"></van-field>
+      <van-field name="equipmentSituation" value="{{equipmentSituation}}" required clearable label="安装调试情况" placeholder="安装调试情况"></van-field>
     </view>
     <view class="section">
-      <van-field name="acceptance" value="{{acceptance}}" required clearable label="acceptance" placeholder="input acceptance"></van-field>
+      <van-field name="acceptance" value="{{acceptance}}" required clearable label="验收情况" placeholder="验收情况"></van-field>
     </view>
     <view class="section">
-      <van-field name="acceptancePerson" value="{{acceptancePerson}}" required clearable label="acceptancePerson" placeholder="input acceptancePerson"></van-field>
+      <van-field name="acceptancePerson" value="{{acceptancePerson}}" required clearable label="验收人" placeholder="验收人"></van-field>
     </view>
     <view class="section">
       <picker name = 'acceptanceDate' mode='date' value='{{acceptanceDate}}' bindchange='bindDateChange2'>
           <view class='picker'>
             <van-field 
               name="acceptanceDate"
-              label="acceptanceDate"
+              label="验收日期"
               value='{{acceptanceDate}}'
-              placeholder="input acceptanceDate" 
+              placeholder="验收日期" 
               required
               clearable
             />
@@ -53,7 +53,7 @@
       </picker>
     </view>
     <view>
-      <button class='van-button--info' form-type='submit'>Modify</button>
+      <button class='van-button--info' form-type='submit'>确定</button>
     </view>
   </form>
 </scroll-view>

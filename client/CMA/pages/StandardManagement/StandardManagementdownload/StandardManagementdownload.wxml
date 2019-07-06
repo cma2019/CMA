@@ -1,10 +1,10 @@
 <!--pages/IntermediateCheck/IntermediateCheckGetone/IntermediateCheckGetone.wxml-->
 <view>
 <van-cell-group title='message of {{planId}}'>
-    <van-cell value="{{fileId}}"title="fileId"border="{{ false }}"/>
-    <van-cell value="{{fileName}}"title="fileName"border="{{ false }}"/>
+    <van-cell value="{{fileId}}"title="标准文件编号"border="{{ false }}"/>
+    <van-cell value="{{fileName}}"title="标准文件名称"border="{{ false }}"/>
 </van-cell-group>
 </view>
-<button class='van-button--info' bindtap="modifyData">modify</button>
-<button class='van-button--info' bindtap="deleteData">delete</button>
-<button class='van-button--info' bindtap="downloadOne">download</button>
+<button class='van-button--info' bindtap="modifyData">修改</button>
+<button class='van-button--info' bindtap="deleteData">删除</button>
+<button class='van-button--info' bindtap="downloadOne">下载文件</button>

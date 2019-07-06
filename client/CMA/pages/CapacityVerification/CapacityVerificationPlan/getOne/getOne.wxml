@@ -1,14 +1,17 @@
 <!--pages/IntermediateCheck/IntermediateCheckGetone/IntermediateCheckGetone.wxml-->
 <view>
-<van-cell-group title='message of {{planId}}'>
-    <van-cell value="{{name}}"title="name"border="{{ false }}"/>
-    <van-cell value="{{organizer}}"title="organizer"border="{{ false }}"/>
-    <van-cell value="{{state}}"title="state"border="{{ false }}"/>
-    <van-cell value="{{year}}"title="year"border="{{ false }}"/>
-    <van-cell value="{{note}}"title="note"border="{{ false }}"/>
-    <van-cell value="{{analysis}}"title="analysis"/>
+<van-cell-group title='{{planId}}号能力验证计划'>
+    <van-cell value="{{name}}"title="计划名称"border="{{ false }}"/>
+    <van-cell value="{{organizer}}"title="组织方"border="{{ false }}"/>
+    <van-cell value="{{state}}"title="计划状态"border="{{ false }}"/>
+    <van-cell value="{{year}}"title="参加年度"border="{{ false }}"/>
+    <van-cell value="{{note}}"title="备注"border="{{ false }}"/>
+    <van-cell value="{{analysis}}"title="分析报告"/>
 </van-cell-group>
 </view>
-<button class='van-button--info' bindtap="modifyData">modify</button>
-<button class='van-button--info' bindtap="deleteData">delete</button>
-<button class='van-button--info' bindtap="getProjects">get projects</button>
+<button class='van-button--info' bindtap="modifyData">修改</button>
+<button class='van-button--info' bindtap="deleteData">删除</button>
+<button class='van-button--info' bindtap="uploadAna">上传分析报告</button>
+<button class='van-button--info' bindtap="deleteAna">删除分析报告</button>
+<button class='van-button--info' bindtap="downloadAnnex">下载分析报告</button>
+<button class='van-button--info' bindtap="getProjects">相关能力验证项目</button>

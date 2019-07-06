@@ -1,60 +1,19 @@
 <!--pages/StaffManagement/PrintOneStaff/PrintOneStaff.wxml-->
 <view>
   <van-cell-group>
-  <van-cell title="name" value="{{name}}" />
-  <van-cell title="gender" value="{{gender}}" />
-  <van-cell title="department" value="{{department}}" />
-  <van-cell title="position" value="{{position}}" />
-  <van-cell title="title" value="{{title}}" />
-  <van-cell title="degree" value="{{degree}}" />
-  <van-cell title="graduationSchool" value="{{graduationSchool}}" />
-  <van-cell title="graduationMajor" value="{{graduationMajor}}" />
-  <van-cell title="graduationDate" value="{{graduationDate}}" />
-  <van-cell title="workingYears" value="{{workingYears}}" />
+  <van-cell title="姓名" value="{{name}}" />
+  <van-cell title="性别" value="{{gender}}" />
+  <van-cell title="部门" value="{{department}}" />
+  <van-cell title="职位" value="{{position}}" />
+  <van-cell title="职称" value="{{title}}" />
+  <van-cell title="文化程度" value="{{degree}}" />
+  <van-cell title="毕业院校" value="{{graduationSchool}}" />
+  <van-cell title="毕业专业" value="{{graduationMajor}}" />
+  <van-cell title="毕业时间" value="{{graduationDate}}" />
+  <van-cell title="工龄" value="{{workingYears}}" />
 </van-cell-group>
-<!--
-  <view class="section">
-    <view class="section__title">name</view>
-      <text>{{name}}</text>
-  </view>
-  <view class="section">
-    <view class="section__title">gender</view>
-      <text>{{gender}}</text>
-  </view>
-  <view class="section">
-    <view class="section__title">department</view>
-      <text>{{department}}</text>
-  </view>
-  <view class="section">
-    <view class="section__title">position</view>
-      <text>{{position}}</text>
-  </view>
-  <view class="section">
-    <view class="section__title">title</view>
-      <text>{{title}}</text>
-  </view>
-  <view class="section">
-    <view class="section__title">degree</view>
-      <text>{{degree}}</text>
-  </view>
-  <view class="section">
-    <view class="section__title">graduationSchool</view>
-      <text>{{graduationSchool}}</text>
-  </view>
-  <view class="section">
-    <view class="section__title">graduationMajor</view>
-      <text>{{graduationMajor}}</text>
-  </view>
-  <view class="section">
-    <view class="section__title">graduationDate</view>
-      <text>{{grauationDate}}</text>
-  </view>
-  <view class="section">
-    <view class="section__title">workingYears</view>
-      <text>{{workingYears}}</text>
-  </view>
-  -->
+
 </view>
- <van-button type="info" size="small" bindtap="ModifyStaff">Modify</van-button>
-  <van-button type="info" size="small" bindtap="DeleteStaff">Delete</van-button>
+ <van-button type="info" size="small" bindtap="ModifyStaff">修改</van-button>
+  <van-button type="info" size="small" bindtap="DeleteStaff">删除</van-button>
 

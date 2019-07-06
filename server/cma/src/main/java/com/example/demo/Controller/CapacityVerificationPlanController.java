@@ -3,12 +3,15 @@ package com.example.demo.Controller;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
+import com.example.demo.FileControl.FileController;
 import com.example.demo.Model.CapacityVerificationPlan;
 import com.example.demo.Repository.CapacityVerificationPlanRepository;
 
+import com.example.demo.framework.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,6 +27,9 @@ import java.util.List;
 @Controller
 @RequestMapping(path="/cma/CapacityVerification")
 public class CapacityVerificationPlanController {
+
+    Long tempId;
+
     @Autowired
     private CapacityVerificationPlanRepository CapacityVerificationPlanRepository;
 
@@ -205,9 +211,68 @@ public class CapacityVerificationPlanController {
         return json;
     }
 
-    /*@PostMapping(path="/uploadAnalysis")
-    public @ResponseBody JSONObject uploadAnalysis(@RequestParam(value="id",required = false)Long id,
-                                                   @RequestParam(value="analysis",required = false))
-                                                   */
+    @PostMapping(path="/uploadAnalysis")
+    public @ResponseBody
+    JSONObject uploadAnalysis(@RequestParam(value="id",required = false)Long id){
+        JSONObject json=new JSONObject();
+        tempId=id;
+        json.put("code",200);
+        json.put("msg","信息获取成功");
+        return json;
+    }
 
+    @PostMapping(path="/uploadAnalysisFile")
+    public @ResponseBody Response addAnalysis(@RequestParam(value="file",required = false)MultipartFile file, HttpServletRequest request){
+        System.out.println("Upload in");
+        FileController fileController=new FileController();
+        System.out.println(tempId);
+        System.out.println(file.getOriginalFilename());
+        String fileName=tempId+"."+fileController.getsuffix(file.getOriginalFilename());
+        System.out.println(fileName);
+        CapacityVerificationPlanRepository.updateAnalysis(fileName,tempId);
+        CapacityVerificationPlan plan=CapacityVerificationPlanRepository.findByPlanId(tempId);
+        plan.setAnalysis(fileName);
+        tempId=null;
+        System.out.println(plan.getAnalysis());
+        System.out.println(fileName);
+        return fileController.upload(file,request,plan.getAnalysis(),plan.getDir());
+    }
+
+    @RequestMapping(value="/downloadAnalysis/{id}",method=RequestMethod.GET)
+    public @ResponseBody String downloadStandard(@PathVariable("id")Long id, HttpServletResponse response){
+        System.out.println("Download In");
+        FileController fileController=new FileController();
+        try{
+            if(CapacityVerificationPlanRepository.findById(id)==null)
+                throw new Exception("不存在");
+            System.out.println(id);
+            CapacityVerificationPlan temp=CapacityVerificationPlanRepository.findByPlanId(id);
+            String name=temp.getAnalysis();
+            System.out.println(name);
+            return  fileController.downloadFile(response,name,temp.getDir());
+        }catch(Exception e){
+            e.printStackTrace();
+            return "下载失败";
+        }
+    }
+
+    @PostMapping(path="/deleteAnalysis")
+    public @ResponseBody JSONObject deleteStandard(@RequestParam(value="id",required =false)Long id){
+        JSONObject json=new JSONObject();
+        if(CapacityVerificationPlanRepository.findById(id)==null){
+            json.put("code",500);
+            json.put("msg","文件不存在");
+        }
+        else
+        {
+            FileController fileController=new FileController();
+            CapacityVerificationPlan temp=CapacityVerificationPlanRepository.findByPlanId(id);
+            String fileName=temp.getAnalysis();
+            fileController.deletefile(fileName,temp.getDir());
+            CapacityVerificationPlanRepository.updateAnalysis(null,id);
+            json.put("code",200);
+            json.put("msg","删除成功");
+        }
+        return json;
+    }
 }

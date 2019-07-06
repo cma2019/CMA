@@ -1,16 +1,14 @@
 <view>
-  <van-cell-group title="TrainingPeople">
+  <van-cell-group title="培训人员">
   <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
   <van-cell value="详情" bindtap='gotoOne' id='{{item.id}}' is-link>
       <view slot="title">
-        <view>id : {{item.id}}</view>
-        <view>name : {{item.name}}</view>
+        <view>人员编号 : {{item.id}}</view>
+        <view>姓名 : {{item.name}}</view>
       </view>
   </van-cell>
 </view>
   </van-cell-group>
 </view>
 
-    <van-button type="info" size="small" bindtap="gotoAdd">Add TrainingPeople</van-button> 
-    <van-button type="info" size="small" bindtap="ModifyMessage">Modify StaffTraining</van-button> 
-    <van-button type="info" size="small" bindtap="gotodelete">Delete StaffTraining</van-button> 
+    <van-button type="info" size="small" bindtap="gotoAdd">添加</van-button> 

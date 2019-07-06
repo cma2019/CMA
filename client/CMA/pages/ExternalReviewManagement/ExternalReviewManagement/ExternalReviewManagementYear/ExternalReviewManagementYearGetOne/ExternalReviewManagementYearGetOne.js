@@ -19,16 +19,18 @@ Page({
     }, (err) => {
       console.log(err)
     })
-    wx.request({
+    wx.redirectTo({
       url: '/pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementYear/ExternalReviewManagementYear?year=' + that.data.year,
     })
   },
   viewDetail: function (e) {
     var that = this
-    var myurl1 = app.globalData.url + 'ExternalReviewDocument/modifyFormData';
-    var myurl2 = app.globalData.url + 'ExternalReviewDocument/modifyFile/' + that.data.id;
+    console.log(that.data)
+    var myurl1 = app.globalData.url + 'ExternalReviewDocument/modifyFormData/' + that.data.id;
+    var myurl2 = app.globalData.url + 'ExternalReviewDocument/modifyFile/';
     var mydata = {
-      "year": that.data.year
+      "year": that.data.year,
+      "fileId": that.data.fileId
     };
     app.wxRequest(myurl1, 'POST', mydata, (res) => {
       console.log(res)
@@ -42,7 +44,7 @@ Page({
           app.wxUploadFile(myurl2, mypath, null, (res) => {
             console.log("upload file success")
             console.log(res)
-            wx.request({
+            wx.redirectTo({
               url: '/pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementYear/ExternalReviewManagementYear?year=' + that.data.year,
             })
           }, (err) => {

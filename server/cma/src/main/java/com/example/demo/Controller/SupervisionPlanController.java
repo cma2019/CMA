@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.demo.Repository.SupervisionPlanRepository;
 import com.example.demo.Model.SupervisionPlan;
-
-import java.sql.Date;
+//import java.sql.Date;
 import java.util.List;
 
 @Controller
@@ -42,8 +41,8 @@ public class SupervisionPlanController {
         }
         else
         {
-            code=522;
-            msg="数据不存在";
+            code=210;
+            msg="无有效信息返回";
             //data=null;
         }
         js.put("code",code);
@@ -60,7 +59,7 @@ public class SupervisionPlanController {
         int code=200;
         String msg="成功";
         JSONObject js=new JSONObject();
-        //JSONObject data=null;
+        JSONObject data=new JSONObject();
         try{
             Long.parseLong(id);
         }catch (NumberFormatException e){
@@ -68,7 +67,17 @@ public class SupervisionPlanController {
             msg="某项数据错误";
             js.put("code",code);
             js.put("msg",msg);
-            js.put("data",null);
+            js.put("data",data);
+            return js;
+        }
+        if(content.equals("")||object.equals("")
+        ||dateFrequency.equals(""))
+        {
+            code=511;
+            msg="缺少参数";
+            js.put("code",code);
+            js.put("msg",msg);
+            js.put("data",data);
             return js;
         }
         SupervisionPlan sp=new SupervisionPlan();
@@ -91,7 +100,7 @@ public class SupervisionPlanController {
         int code=200;
         String msg="成功";
         JSONObject js=new JSONObject();
-        //JSONObject data=null;
+        JSONObject data=new JSONObject();
         SupervisionPlan sp=SupervisionPlanRepository.findByPlanID(Long.parseLong(planId));
         sp.setContent(content);
         sp.setDateFrequency(dateFrequency);
@@ -99,7 +108,7 @@ public class SupervisionPlanController {
         SupervisionPlanRepository.saveAndFlush(sp);
         js.put("code",code);
         js.put("msg",msg);
-        js.put("data",null);
+        js.put("data",data);
         return js;
     }
     @PostMapping(path = "deleteOne")
@@ -108,11 +117,12 @@ public class SupervisionPlanController {
         JSONObject json=new JSONObject();
         int code=200;
         String msg="成功";
-        JSONObject data=null;
+        JSONObject data=new JSONObject();
         SupervisionPlanRepository.deleteById(Long.parseLong(planId));
         json.put("code",code);
         json.put("msg",msg);
-        //json.put("data",data);
+        json.put("data",data);
         return json;
     }
 }
+//select * from supervision_plan;

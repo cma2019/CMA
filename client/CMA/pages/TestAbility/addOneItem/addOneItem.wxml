@@ -1,33 +1,33 @@
 <!--pages/IntermediateCheck/IntermediateCheck.wxml-->
 <view>
   <form bindsubmit='AddoneTestItem'>
-    <van-cell-group title="input message">
+    <van-cell-group title="请输入信息">
       <van-field 
         name="productionName"
-        label="my productionName"
-        placeholder="input productionName"
+        label="产品名称"
+        placeholder="产品名称"
         required
         clearable
       />
       <van-field 
         name="ability"
-        label="my ability"
-        placeholder="input ability"
+        label="产品能力"
+        placeholder="产品能力"
         required
         clearable
       />    
       <van-field
         name="referrence"
-        label="my referrence"
-        placeholder="input referrence"
+        label="产品依据"
+        placeholder="产品依据"
         required
         clearable
         border = "{{false}}"
       />
     </van-cell-group>
     <view>
-      <button class='van-button--info' formType='submit'>register</button>
+      <button class='van-button--info' formType='submit'>确定</button>
     </view>
   </form>
 </view>
-<button class='van-button--info' bindtap="gotologin">go back</button>
+<button class='van-button--info' bindtap="gotologin">返回</button>

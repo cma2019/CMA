@@ -77,10 +77,5 @@ Page({
     wx.navigateTo({
       url: 'receiveAddOne/receiveAddOne',
     })
-  },
-  goback: function () {
-    wx.navigateBack({
-      delta: 1
-    })
   }
 })

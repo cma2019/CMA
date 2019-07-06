@@ -1,0 +1,26 @@
+<scroll-view scroll-y>
+  <form bindsubmit='newEquipment'>
+    <view class="section">
+      <van-field 
+      name="staffId" 
+      label="人员编号"
+      placeholder="人员编号" 
+      required 
+      clearable
+       >
+       </van-field>
+       <van-field 
+      name="qualificationName" 
+      label="资质名称"
+      placeholder="资质名称" 
+      required 
+      clearable
+       >
+      
+      </van-field>
+    </view>  
+    <view>
+      <button class='van-button--info' formType='submit'>上传文件</button>
+    </view>
+  </form>
+</scroll-view>

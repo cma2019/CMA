@@ -1,2 +1,9 @@
 <!--pages/CapacityVerification/CapacityVerificationPlan/uploadAnalysis/uploadAnalysis.wxml-->
-<text>pages/CapacityVerification/CapacityVerificationPlan/uploadAnalysis/uploadAnalysis.wxml</text>
+<scroll-view scroll-y>
+  <form bindsubmit='UploadAnalysis'>
+    <view>
+      <button class='van-button--info' formType='submit'>上传文件</button>
+    </view>
+  </form>
+</scroll-view>
+

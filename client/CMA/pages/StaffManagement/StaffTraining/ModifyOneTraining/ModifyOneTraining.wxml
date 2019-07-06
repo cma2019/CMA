@@ -1,2 +1,72 @@
-<!--pages/StaffManagement/StaffTraining/ModifyOneTraining/ModifyOneTraining.wxml-->
-<text>pages/StaffManagement/StaffTraining/ModifyOneTraining/ModifyOneTraining.wxml</text>
+<!--pages/TrainingApplication/ModifyApplication/ModifyApplication.wxml-->
+<view>
+  <form bindsubmit='intercheckmodify'>
+  <van-cell-group>
+      <van-field 
+        name="trainingId"
+        label="培训编号"
+        value='{{trainingId}}'
+        readonly
+        required
+        clearable
+      />
+      <van-field 
+        name="program"
+        label="培训项目名称"
+        value='{{program}}'
+        placeholder="培训项目名称" 
+   required
+        clearable
+      />
+      <view class="section">
+        <picker name = 'trainingDate' mode='date' value='{{trainingDate}}' bindchange='bindDateChange'>
+        <view class='picker'>
+        <van-field 
+        label="培训日期"
+        value='{{trainingDate}}'
+        />
+        </view>
+        </picker>
+    </view>
+      <van-field 
+        name="place"
+        label="培训地点"
+        value='{{place}}'
+        placeholder="培训地点" 
+       required
+        clearable
+      />
+      <van-field 
+        name="presenter"
+        label="主讲人"
+        value='{{presenter}}'
+        placeholder="主讲人" 
+        required
+        clearable
+      />
+      <van-field 
+        name="content"
+        label="培训内容"
+        value='{{content}}'
+        placeholder="培训内容" 
+       required
+        clearable
+      />
+      <van-field 
+        name="note"
+        label="备注"
+        value='{{note}}'
+        placeholder="备注" 
+        required
+        clearable
+      />    
+    </van-cell-group>
+    
+
+    <view>
+      <button class='van-button--info' formType='submit'>确定</button>
+    </view>
+  </form>
+</view>
+<van-button type="info" size="small" bindtap="goback">返回</van-button> 
+

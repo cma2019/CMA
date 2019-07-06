@@ -78,5 +78,53 @@ Page({
     wx.navigateTo({
       url: '../../CapacityVerificationProject/showProjects/showProjects?id=' + target
     })
+  },
+  uploadAna(e){
+    console.log("upload plan")
+    let target = this.data.planId
+    console.log(target)
+    wx.navigateTo({
+      url: '../uploadAnalysis/uploadAnalysis?id=' + target
+    })
+  },
+  downloadAnnex(e) {
+    console.log("download annex now")
+    var that = this
+    var myurl = app.globalData.url + 'CapacityVerification/downloadAnalysis/' + that.data.planId;
+    var myFilePath
+    app.wxDownloadFile(myurl, (res) => {
+      console.log("download one now")
+      console.log(res)
+      wx.saveFile({
+        tempFilePath: res.tempFilePath,
+        success: function (res) {
+          console.log("download ability annex now")
+          console.log(res)
+          myFilePath = res.savedFilePath
+          console.log(myFilePath)
+        },
+        fail: function (err) {
+          console.log(err)
+        }
+      })
+    }, (err) => {
+      console.log(err)
+    })
+  },
+  deleteAna(e) {
+    let url = app.globalData.url + 'CapacityVerification/deleteAnalysis'
+    let data = {
+      "id": this.data.planId
+    }
+    app.wxRequest(url, 'POST', data, (res) => {
+      if (res.code == 200) {
+        console.log('delete successfully')
+        wx.navigateBack({
+          delta: 1
+        })
+      }
+    }, (err) => {
+      console.log('delete failed')
+    })
   }
 })

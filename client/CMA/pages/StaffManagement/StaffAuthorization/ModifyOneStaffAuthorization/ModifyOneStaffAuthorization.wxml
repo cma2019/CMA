@@ -4,39 +4,39 @@
   <van-cell-group>
       <van-field 
         name="authorizationId"
-        label="authorizationId"
+        label="授权记录编号"
         value='{{authorizationId}}'
-        placeholder="input authorizationId" 
+        placeholder="授权记录编号" 
         required
         readonly
         clearable
       />
       <van-field 
         name="id"
-        label="id"
+        label="被授权人编号"
         value='{{id}}'
-        placeholder="input id" 
+        placeholder="被授权人编号" 
         clearable
       />
       <van-field 
         name="authorizerId"
-        label="authorizerId"
+        label="授权记录编号"
         value='{{authorizerId}}'
-        placeholder="input authorizerId" 
+        placeholder="授权记录编号" 
         clearable
       />
       <van-field 
         name="content"
-        label="content"
+        label="授权内容"
         value='{{content}}'
-        placeholder="input content" 
+        placeholder="授权内容" 
         clearable
       />
       <view class="section">
         <picker name = 'authorizerDate' mode='date' value='{{authorizerDate}}' bindchange='bindDateChange'>
         <view class='picker'>
         <van-field 
-        label="authorizerDate"
+        label="授权时间"
         value='{{authorizerDate}}'
         required
       />
@@ -45,9 +45,9 @@
     </view>
     </van-cell-group>
     <view>
-      <button class='van-button--info' formType='submit'>Modify Application</button>
+      <button class='van-button--info' formType='submit'>确定</button>
     </view>
   </form>
 </view>
-<van-button type="info" size="small" bindtap="goback">go back</van-button> 
+<van-button type="info" size="small" bindtap="goback">返回</van-button> 
 

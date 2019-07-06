@@ -1,28 +1,25 @@
 <view>
   <van-cell-group title="supervisionPlan">
     <view wx:if="{{flag == 1}}">
-      <view wx:for="{{info}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
-        <van-cell value="详情" bindtap='gotoSupervisionRecord' id='{{item.planId}}' is-link>
+      <view wx:for="{{info}}" data-index ='{{index}}' wx:for-item="item" wx:key="unique">
+        <van-cell value="详情" bindtap='gotoSupervisionRecord' data-index ='{{index}}' is-link>
           <view slot="title">
-            <view>planId: {{item.planId}}</view>
-            <view>id: {{item.id}}</view>
-            <view>content: {{item.content}}</view>
-            <view>object: {{item.object}}</view>
-            <view>dateFrequency: {{item.dateFrequency}}</view>
+            <view>监督计划编号: {{item.planId}}</view>
+            <view>监督编号: {{item.id}}</view>
+            <view>监督内容: {{item.content}}</view>
+            <view>监督对象: {{item.object}}</view>
+            <view>监督时间/频率: {{item.dateFrequency}}</view>
           </view>
         </van-cell>
         <view>
-          <van-button type="info" size="small"id='{{item.planId}}' bindtap="supervisionPlanModify">modify</van-button>
-          <van-button type="info" size="small"id='{{item.planId}}' bindtap="supervisionPlanDelete">delete</van-button>
+          <van-button type="info" size="small"data-index ='{{index}}' bindtap="supervisionPlanModify">修改</van-button>
+          <van-button type="info" size="small"data-index ='{{index}}'bindtap="supervisionPlanDelete">删除</van-button>
         </view>
       </view>
-    </view>
-    <view wx:else>
-     <text>not have a supervisionPlan yet</text>
     </view>
   </van-cell-group>
 </view>
 <view>
-  <van-button type="info" size="small" bindtap="supervisionPlanAdd">Add a SupervisionPlan</van-button>
-  <van-button type="info" size="small" bindtap="goback">back</van-button>
+  <van-button type="info" size="small" bindtap="supervisionPlanAdd">添加</van-button>
+  <van-button type="info" size="small" bindtap="goback">返回</van-button>
 </view>

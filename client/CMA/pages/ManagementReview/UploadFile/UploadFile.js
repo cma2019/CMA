@@ -27,9 +27,6 @@ Page({
         }, (err) => {
           console.log(err)
         })
-        wx.redirectTo({
-          url: '/pages/TestingInstitutionManagement/Certificate/Certificate',
-        })
       },
       fail: function (err) {
         console.log("get file failed")

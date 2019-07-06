@@ -6,31 +6,33 @@
   <view wx:if="{{true}}">
     <van-collapse-item title="用户管理" name="1">
       <van-cell-group>
-        <van-cell title="StaffManagement" boarder="{{false}}" is-link  center="{{true}}" bindtap="goStaffManagement"></van-cell>
-        <van-cell title="StaffAuthorization" boarder="{{false}}" is-link  center="{{true}}" bindtap="goStaffAuthorization"></van-cell>
-        <van-cell title="StaffTraining" boarder="{{false}}" is-link  center="{{true}}" bindtap="goStaffTraining"></van-cell>
-        <van-cell title="StaffLeaving" boarder="{{false}}" is-link  center="{{true}}" bindtap="goStaffLeaving"></van-cell>
+        <van-cell title="人员管理" boarder="{{false}}" is-link  center="{{true}}" bindtap="goStaffManagement"></van-cell>
+        <van-cell title="人员授权管理" boarder="{{false}}" is-link  center="{{true}}" bindtap="goStaffAuthorization"></van-cell>
+        <van-cell title="人员档案管理" boarder="{{false}}" is-link  center="{{true}}" bindtap="goStaffFile"></van-cell>
+        <van-cell title="人员培训与考核管理" boarder="{{false}}" is-link  center="{{true}}" bindtap="goStaffTraining"></van-cell>
+          <van-cell title="人员资质管理" boarder="{{false}}" is-link  center="{{true}}" bindtap="goStaffQualification"></van-cell>
+        <van-cell title="离任管理" boarder="{{false}}" is-link  center="{{true}}" bindtap="goStaffLeaving"></van-cell>
       </van-cell-group>
     </van-collapse-item>
   </view>
   <!--<view wx:if="{{mess[1]}}">-->
   <view wx:if="{{true}}">
     <van-collapse-item title="质量体系管理" name="2">
-      <van-cell title="QualityManual" boarder="{{false}}" is-link  center="{{true}}" bindtap="gotoQuality1"></van-cell>
-      <van-cell title="QualityManualApprove" boarder="{{false}}" is-link  center="{{true}}" bindtap="gotoQuality2"></van-cell>
+      <van-cell title="质量体系管理" boarder="{{false}}" is-link  center="{{true}}" bindtap="gotoQuality1"></van-cell>
+      <van-cell title="质量体系批准管理" boarder="{{false}}" is-link  center="{{true}}" bindtap="gotoQuality2"></van-cell>
     </van-collapse-item>
   </view>
   <!--<view wx:if="{{mess[2]}}">-->
   <view wx:if="{{true}}">
     <van-collapse-item title="管理评审" name="3">
-      <van-cell title="ManagementReview" boarder="{{false}}" is-link  center="{{true}}" bindtap="gotoManagementReview"></van-cell>
+      <van-cell title="管理评审" boarder="{{false}}" is-link  center="{{true}}" bindtap="gotoManagementReview"></van-cell>
     </van-collapse-item>
   </view>
   <!--<view wx:if="{{mess[3]}}">-->
   <view wx:if="{{true}}">
     <van-collapse-item title="内审管理" name="4">
       <van-cell-group>
-        <van-cell title="InternalAuditManagement" boarder="{{false}}" is-link  center="{{true}}" url="../InternalAuditManagement/InternalAudit/InternalAudit"></van-cell>
+        <van-cell title="内审管理" boarder="{{false}}" is-link  center="{{true}}" url="../InternalAuditManagement/InternalAudit/InternalAudit"></van-cell>
       </van-cell-group>
     </van-collapse-item>
     </view>
@@ -38,7 +40,7 @@
     <view wx:if="{{true}}">
     <van-collapse-item title="自查管理" name="5">
       <van-cell-group>
-        <van-cell title="SelfInspection" boarder="{{false}}" is-link  center="{{true}}" url="../SelfInspection/SelfInspection/SelfInspection"></van-cell>
+        <van-cell title="自查管理" boarder="{{false}}" is-link  center="{{true}}" url="../SelfInspection/SelfInspection/SelfInspection"></van-cell>
       </van-cell-group>
       
     </van-collapse-item>
@@ -47,8 +49,8 @@
     <view wx:if="{{true}}">
     <van-collapse-item title="监督" name="6">
       <van-cell-group>
-        <van-cell title="Supervision" boarder="{{false}}" is-link  center="{{true}}" url="../Supervision/Supervision/Supervision"></van-cell>
-        <van-cell title="Supervisionapprove" boarder="{{false}}" is-link  center="{{true}}" url="../Supervision/SupervisionApprove/SupervisionApprove"></van-cell>
+        <van-cell title="监督" boarder="{{false}}" is-link  center="{{true}}" url="../Supervision/Supervision/Supervision"></van-cell>
+        <van-cell title="监督批准" boarder="{{false}}" is-link  center="{{true}}" url="../Supervision/SupervisionApprove/SupervisionApprove"></van-cell>
       </van-cell-group>
     </van-collapse-item>
     </view>
@@ -56,8 +58,8 @@
     <view wx:if="{{true}}">
     <van-collapse-item title="期间核查" name="7">
       <van-cell-group>
-        <van-cell title="InterCheck" boarder="{{false}}" is-link  center="{{true}}" url="../IntermediateCheck/IntermediateCheck/IntermediateCheck"></van-cell>
-        <van-cell title="InterCheckPlan" boarder="{{false}}" is-link  center="{{true}}" url="../IntermediateCheck/IntermediateChecksRecord/IntermediateChecksRecord"></van-cell>
+        <van-cell title="期间核查计划" boarder="{{false}}" is-link  center="{{true}}" url="../IntermediateCheck/IntermediateCheck/IntermediateCheck"></van-cell>
+        <van-cell title="期间核查记录" boarder="{{false}}" is-link  center="{{true}}" url="../IntermediateCheck/IntermediateChecksRecord/IntermediateChecksRecord"></van-cell>
       </van-cell-group>
     </van-collapse-item>
     </view>
@@ -71,8 +73,8 @@
     <view wx:if="{{true}}">
     <van-collapse-item title="培训管理" name="9">
       <van-cell-group>
-        <van-cell title="TrainingApplication" boarder="{{false}}" is-link  center="{{true}}" bindtap="goTrainingApplication"></van-cell>
-        <van-cell title="AnnualTrainingPlan" boarder="{{false}}" is-link  center="{{true}}" bindtap="goAnnualTrainingPlan"></van-cell>
+        <van-cell title="培训申请" boarder="{{false}}" is-link  center="{{true}}" bindtap="goTrainingApplication"></van-cell>
+        <van-cell title="年度培训计划" boarder="{{false}}" is-link  center="{{true}}" bindtap="goAnnualTrainingPlan"></van-cell>
       </van-cell-group>
     </van-collapse-item>
     </view>
@@ -80,9 +82,9 @@
     <view wx:if="{{true}}">
     <van-collapse-item title="样品管理"  name="10">
       <van-cell-group>
-        <van-cell title="SampleReceive" boarder="{{false}}" is-link  center="{{true}}" url="../SampleManagement/SampleReceive/SampleReceive"></van-cell>
-        <van-cell title="SampleIo" boarder="{{false}}" is-link  center="{{true}}" url="../SampleManagement/SampleIo/SampleIo"></van-cell>
-        <van-cell title="SampleReceipt" boarder="{{false}}" is-link  center="{{true}}" url="../SampleManagement/SampleReceipt/SampleReceipt"></van-cell>
+        <van-cell title="样品接收登记表" boarder="{{false}}" is-link  center="{{true}}" url="../SampleManagement/SampleReceive/SampleReceive"></van-cell>
+        <van-cell title="样品进出登记表" boarder="{{false}}" is-link  center="{{true}}" url="../SampleManagement/SampleIo/SampleIo"></van-cell>
+        <van-cell title="样品接收单" boarder="{{false}}" is-link  center="{{true}}" url="../SampleManagement/SampleReceipt/SampleReceipt"></van-cell>
       </van-cell-group>
     </van-collapse-item>
     </view>
@@ -90,11 +92,11 @@
     <view wx:if="{{true}}">
     <van-collapse-item title="设备管理" name="11">
       <van-cell-group>
-        <van-cell title="EquipmentManagement" boarder="{{false}}" is-link  center="{{true}}" bindtap="gotoEquipment1"></van-cell>
-        <van-cell title="EquipmentAcceptManagement" boarder="{{false}}" is-link  center="{{true}}" bindtap="gotoEquipment2"></van-cell>
-        <van-cell title="EquipmentUseManagement" boarder="{{false}}" is-link  center="{{true}}" bindtap="gotoEquipment3"></van-cell>
-        <van-cell title="EquipmentMaintenanceManagement" boarder="{{false}}" is-link  center="{{true}}" bindtap="gotoEquipment4"></van-cell>
-        <van-cell title="EquipmentApplicationManagement" boarder="{{false}}" is-link  center="{{true}}" bindtap="gotoEquipment5"></van-cell>
+        <van-cell title="仪器设备信息管理" boarder="{{false}}" is-link  center="{{true}}" bindtap="gotoEquipment1"></van-cell>
+        <van-cell title="仪器设备验收记录管理" boarder="{{false}}" is-link  center="{{true}}" bindtap="gotoEquipment2"></van-cell>
+        <van-cell title="仪器设备使用记录管理" boarder="{{false}}" is-link  center="{{true}}" bindtap="gotoEquipment3"></van-cell>
+        <van-cell title="仪器设备维修保养记录管理" boarder="{{false}}" is-link  center="{{true}}" bindtap="gotoEquipment4"></van-cell>
+        <van-cell title="仪器设备使用申请记录管理" boarder="{{false}}" is-link  center="{{true}}" bindtap="gotoEquipment5"></van-cell>
       </van-cell-group>
     </van-collapse-item>
     </view>
@@ -138,30 +140,30 @@
     <view wx:if="{{true}}">
     <van-collapse-item title="标准管理" name="17">
       <van-cell-group>
-        <van-cell title="档案管理" boarder="{{false}}" is-link  center="{{true}}" url="../StandardManagement/StandardManagement"></van-cell>
+        <van-cell title="标准管理" boarder="{{false}}" is-link  center="{{true}}" url="../StandardManagement/StandardManagement"></van-cell>
       </van-cell-group>
     </van-collapse-item>
     </view>
     <!--<view wx:if="{{mess[17]}}">-->
     <view wx:if="{{true}}">
     <van-collapse-item title="外部评审与上报管理" name="18">
-      <van-cell title="ExternalReviewManagement" boarder="{{false}}" is-link  center="{{true}}" bindtap="gotoERM"></van-cell>
+      <van-cell title="外部评审与上报管理" boarder="{{false}}" is-link  center="{{true}}" bindtap="gotoERM"></van-cell>
     </van-collapse-item>
     </view>
     <!--<view wx:if="{{mess[18]}}">-->
     <view wx:if="{{true}}">
     <van-collapse-item title="检测机构管理" name="19">
       <van-cell-group>
-        <van-cell title="TestingInstitutionInformation" boarder="{{false}}" is-link  center="{{true}}" bindtap="gotoTestInstitution1"></van-cell>
-        <van-cell title="TestingInstitutionResource" boarder="{{false}}" is-link  center="{{true}}" bindtap="gotoTestInstitution2"></van-cell>
-        <van-cell title="Certificate" boarder="{{false}}" is-link  center="{{true}}" bindtap="gotoTestInstitution3"></van-cell>
+        <van-cell title="检测机构信息管理" boarder="{{false}}" is-link  center="{{true}}" bindtap="gotoTestInstitution1"></van-cell>
+        <van-cell title="检测机构资源管理" boarder="{{false}}" is-link  center="{{true}}" bindtap="gotoTestInstitution2"></van-cell>
+        <van-cell title="证书管理" boarder="{{false}}" is-link  center="{{true}}" bindtap="gotoTestInstitution3"></van-cell>
       </van-cell-group>
     </van-collapse-item>
     </view>
     <!--<view wx:if="{{username2==admin1}}">-->
     <view wx:if="{{true}}">
     <van-collapse-item title="系统管理" name="20">
-      <van-cell title="AuthorityManagement" boarder="{{false}}" is-link  center="{{true}}" bindtap="gotoAuthorityManagement"></van-cell>
+      <van-cell title="用户授权管理" boarder="{{false}}" is-link  center="{{true}}" bindtap="gotoAuthorityManagement"></van-cell>
     </van-collapse-item>
     </view>
   </van-collapse>

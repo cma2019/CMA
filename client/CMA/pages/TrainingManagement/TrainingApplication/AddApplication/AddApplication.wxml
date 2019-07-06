@@ -4,43 +4,43 @@
   <van-cell-group>
       <van-field 
         name="name"
-        label="name"
-        placeholder="input name" 
+        label="项目名称"
+        placeholder="项目名称" 
         required
         clearable
       />
       <van-field 
         name="people"
-        label="people"
-        placeholder="input people" 
+        label="参与人员"
+        placeholder="参与人员" 
         required
         clearable
       />
       <van-field 
         name="trainingUnit"
-        label="trainingUnit"
-        placeholder="input trainingUnit" 
+        label="培训单位"
+        placeholder="培训单位" 
         required
         clearable
       />
       <van-field 
         name="expense"
-        label="expense"
-        placeholder="input expense" 
+        label="预计培训费"
+        placeholder="预计培训费" 
         required
         clearable
       />
       <van-field 
         name="reason"
-        label="reason"
-        placeholder="input reason" 
+        label="申请理由"
+        placeholder="申请理由" 
         required
         clearable
       />
       <van-field 
         name="department"
-        label="department"
-        placeholder="input department" 
+        label="申请部门"
+        placeholder="申请部门" 
         required
         clearable
       />
@@ -48,7 +48,7 @@
         <picker name = 'date' mode='date' value='{{date}}' bindchange='bindDateChange'>
           <view class='picker'>
         <van-field 
-        label="date"
+        label="申请时间"
         value='{{date}}'
         required
       />
@@ -56,43 +56,10 @@
         </picker>
     </view>
     </van-cell-group>
-  <!--
-    <view class="section">
-      <view class="section__title">name</view>
-      <input name="name" placeholder="input name" />
-    </view>
-    <view class="section">
-      <view class="section__title">people</view>
-      <input name="people" placeholder="input people" />
-    </view>
-    <view class="section">
-      <view class="section__title">trainingUnit</view>
-      <input name="trainingUnit" placeholder="input trainingUnit" />
-    </view>
-    <view class="section">
-      <view class="section__title">expense</view>
-      <input name="expense" placeholder="input expense" />
-    </view>
-    <view class="section">
-      <view class="section__title">reason</view>
-      <input name="reason" placeholder="input reason" />
-    </view>
-    <view class="section">
-      <view class="section__title">department</view>
-      <input name="department" placeholder="input department" />
-    </view>
-    
-    <view class="section">
-      <view class="section__title">select date</view>
-        <picker name = 'date' mode='date' value='{{date}}' bindchange='bindDateChange'>
-          <view class='picker'>date: {{date}}</view>
-        </picker>
-    </view>
-    -->
     <view>
-      <button class='van-button--info'formType = 'submit'>Add           </button>
+      <button class='van-button--info'formType = 'submit'>确定</button>
     </view>
   </form>
 </view>
- <van-button type="info" size="small" bindtap="goback">go back</van-button> 
+ <van-button type="info" size="small" bindtap="goback">返回</van-button> 
 

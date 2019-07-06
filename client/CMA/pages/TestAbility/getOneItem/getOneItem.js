@@ -27,6 +27,7 @@ Page({
       console.log('test ability getone success')
       console.log(res)
       this.setData({
+        year: res.data.year,
         id: res.data.id,
         productionName: res.data.productionName,
         ability: res.data.ability,

@@ -1,43 +1,43 @@
 <!--pages/IntermediateCheck/IntermediateCheck.wxml-->
 <view>
   <form bindsubmit='capacityprojectmodify'>
-    <van-cell-group title="input message">
+    <van-cell-group title="请输入信息">
       <van-field 
         name="name"
-        label="name"
+        label="项目名称"
         value='{{name}}'
-        placeholder="input name"
+        placeholder="项目名称"
         required
         clearable
       />
       <van-field 
         name="method"
-        label="method"
+        label="验证方法"
         value='{{method}}'
-        placeholder="input method" 
+        placeholder="验证方法" 
         required
         clearable
       />
       <van-field 
         name="state"
-        label="state"
+        label="项目状态"
         value='{{state}}'
-        placeholder="input state" 
+        placeholder="项目状态" 
         required
         clearable
       />   
       <van-field 
         name="note"
-        label="note"
+        label="备注"
         value='{{note}}'
-        placeholder="input note" 
+        placeholder="备注" 
         required
         clearable
       />    
     </van-cell-group>
     <view>
-      <button class='van-button--info' formType='submit'>register</button>
+      <button class='van-button--info' formType='submit'>确认</button>
     </view>
   </form>
 </view>
-<button class='van-button--info' bindtap="gotologin">go back</button>
+<button class='van-button--info' bindtap="gotologin">返回</button>

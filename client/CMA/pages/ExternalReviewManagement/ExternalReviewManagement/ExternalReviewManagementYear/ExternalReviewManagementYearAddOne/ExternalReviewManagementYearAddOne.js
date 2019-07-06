@@ -9,10 +9,12 @@ Page({
     "id": null,
     "year": null,
     "fileId": null,
-    "fileName": null
+    "fileName": null,
+    year:null
   },
   newEquipment: function (e) {
     console.log(e.detail.value)
+    var that = this
     var myurl1 = app.globalData.url + 'ExternalReviewDocument/addOneFormData';
     var myurl2 = app.globalData.url + 'ExternalReviewDocument/addOneFile';
     var mydata = {
@@ -30,8 +32,8 @@ Page({
           app.wxUploadFile(myurl2, mypath, null, (res) => {
             console.log("upload file success")
             console.log(res)
-            wx.request({
-              url: '/pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementYear/ExternalReviewManagementYear?year=' + e.detail.value.year,
+            wx.redirectTo({
+              url: '/pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementYear/ExternalReviewManagementYear?year=' + that.data.year,
             })
           }, (err) => {
             console.log(err)
@@ -50,8 +52,12 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad: function (option) {
+    var that = this;
+    console.log(option)
+    that.setData({
+      year: option.year
+    })
   },
 
   /**

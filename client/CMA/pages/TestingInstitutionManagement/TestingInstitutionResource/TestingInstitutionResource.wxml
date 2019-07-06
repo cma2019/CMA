@@ -2,18 +2,18 @@
 <scroll-view scroll-y>
   <van-cell>
     <view slot="title">
-      <view>totalNumber : {{totalNumber}}</view>
-      <view>seniorProfessionalTitle : {{seniorProfessionalTitle}}</view>
-      <view>intermediateProfessionalTitle : {{intermediateProfessionalTitle}}</view>
-      <view>primaryProfessionalTitle : {{primaryProfessionalTitle}}</view>
-      <view>fixedAssets : {{fixedAssets}}</view>
-      <view>equipmentNumber : {{equipmentNumber}}</view>
-      <view>floorSpace : {{floorSpace}}</view>
-      <view>stableArea : {{stableArea}}</view>
-      <view>outdoorsArea : {{outdoorsArea}}</view>
-      <view>nameAndAddress : {{nameAndAddress}}</view>
-      <view>newPlace : {{newPlace}}</view>
+      <view>总人数 : {{totalNumber}}</view>
+      <view>高级专业技术职称人数 : {{seniorProfessionalTitle}}</view>
+      <view>中级专业技术职称人数 : {{intermediateProfessionalTitle}}</view>
+      <view>初级专业技术职称人数 : {{primaryProfessionalTitle}}</view>
+      <view>固定资产原值 : {{fixedAssets}}</view>
+      <view>仪器设备台数 : {{equipmentNumber}}</view>
+      <view>场地面积 : {{floorSpace}}</view>
+      <view>稳恒面积 : {{stableArea}}</view>
+      <view>户外面积 : {{outdoorsArea}}</view>
+      <view>场所名称和地址 : {{nameAndAddress}}</view>
+      <view>新申请的地点 : {{newPlace}}</view>
     </view>
   </van-cell>
-  <van-button type="info" size="small" bindtap="viewDetail">Modify</van-button>
+  <van-button type="info" size="small" bindtap="viewDetail">修改</van-button>
 </scroll-view>

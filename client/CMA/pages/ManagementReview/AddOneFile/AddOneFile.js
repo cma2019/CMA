@@ -50,41 +50,7 @@ Page({
     })
     
   },
-  onLoad: function (options) {
-    this.setData({
-      year: options.id
-    })
-    
-  },
-
-  ApplicationAdd: function (e) {
-    {
-      console.log('form发生了add事件，携带数据为：', e.detail.value)
-      let url = app.globalData.url + 'ManagementReview/addOneFile'
-      let data = {
-        "year": e.detail.value.year,
-        "fileName": e.detail.value.fileName
-      }
-      console.log(url)
-      console.log(data)
-      app.wxRequest(url, 'POST', data, (res) => {
-        console.log('successfully')
-        console.log(res)
-        console.log(res.msg)
-        wx.redirectTo({
-          url: '../GetAllFileManagementReview/GetAllFileManagementReview?id='+e.detail.value.year,
-        })
-      }, (err) => {
-        console.log('fail intermediate check register')
-      })
-
-    }
-
-  },
-  goback: function () {
-    wx.navigateBack({
-      delta: 1
-    })
-  },
+  onLoad: function (options) {  
+  }
   
 })

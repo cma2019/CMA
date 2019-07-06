@@ -26,12 +26,11 @@
       </view>
     </view>
     <view wx:else>
-     <text>not have a Supervision yet</text>
+     <text>暂未含有监督</text>
     </view>
   </van-cell-group>
 </view>
-<van-button type="info" size="small" bindtap="gotoAdd">Add a supervision</van-button>
-<van-button type="info" size="small" bindtap="goback">back</van-button>
+<van-button type="info" size="small" bindtap="gotoAdd">添加</van-button>
 <!-->
 <van-checkbox-group v-model="result">
   <van-cell-group>

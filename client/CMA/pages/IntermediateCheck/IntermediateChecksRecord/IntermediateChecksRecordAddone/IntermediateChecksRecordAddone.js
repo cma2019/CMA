@@ -9,7 +9,11 @@ Page({
   onLoad: function (options) {
 
   },
-
+  gotologin(e) {
+    wx.navigateBack({
+      delta: 1
+    })
+  },
   bindCheckDateChange(e) {
     console.log(e)
     this.setData({
