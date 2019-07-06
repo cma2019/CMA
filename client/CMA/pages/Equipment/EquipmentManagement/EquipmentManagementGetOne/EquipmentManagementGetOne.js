@@ -13,11 +13,17 @@ Page({
     var myurl = app.globalData.url + 'Equipment/deleteOne/' + that.data.equipment.id;
     app.wxRequest(myurl, 'POST', null, (res) => {
       console.log(res)
+      wx.showToast({
+        title: '删除成功',
+        image: '/icons/ok/ok.png',
+        success:function(e){
+          wx.redirectTo({
+            url: '/pages/Equipment/EquipmentManagement/EquipmentManagement',
+          })
+        }
+      })
     }, (err) => {
       console.log(err)
-    })
-    wx.redirectTo({
-      url: '/pages/Equipment/EquipmentManagement/EquipmentManagement',
     })
   },
   viewDetail: function (e) {
