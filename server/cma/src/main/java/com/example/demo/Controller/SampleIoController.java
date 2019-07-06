@@ -116,7 +116,7 @@ public class SampleIoController {
         int code=200;
         String msg="成功";
         //JSONObject data=null;
-        System.out.println(sampleIoId);
+        //System.out.println(sampleIoId);
         if(sampleIoId==null||sampleIoId.equals(""))
         {
             code=521;
@@ -246,9 +246,9 @@ public class SampleIoController {
             msg="数据不存在";
         }
         else if(!sampleNumber.equals(SampleIoRepository.findBySampleIoId(Long.parseLong(sampleIoId)).getSampleNumber())&&SampleIoRepository.findBySampleNumber(sampleNumber)!=null) {
-            System.out.println(sampleNumber);
+            /*System.out.println(sampleNumber);
             System.out.println(SampleIoRepository.findBySampleIoId(Long.parseLong(sampleIoId)).getSampleNumber());
-            System.out.println(receiver);
+            System.out.println(receiver);*/
             code = 533;
             msg = "修改后数据错误";
         }

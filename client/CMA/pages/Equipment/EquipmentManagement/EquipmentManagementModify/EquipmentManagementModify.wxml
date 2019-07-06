@@ -22,10 +22,20 @@
       <van-field name="application" value="{{equipment.application}}" required clearable label="用途" placeholder="用途"></van-field>
     </view>
     <view class="section">
-      <van-field name="state" value="{{equipment.state}}" required clearable label="使用情况" placeholder="使用情况"></van-field>
+      <van-cell required title="使用情况">
+        <van-stepper
+          value="{{equipment.state}}"
+          integer
+          min="0"
+          max="1"
+          step="1"
+          name="state"
+        />
+      </van-cell>
     </view>
     <view>
       <button class='van-button--info' form-type='submit'>确定</button>
     </view>
   </form>
+  <van-button type="info" size="small" bindtap="mygo">返回</van-button>
 </scroll-view>

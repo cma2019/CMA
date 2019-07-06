@@ -64,11 +64,6 @@ public class EquipmentUseController {
         return response;
     }
 
-    /**
-     * @param id
-     * @return 返回id对应的装备
-     *
-     */
     @RequestMapping(value="/getOne/{id}",method=RequestMethod.GET)
     @ResponseBody
     public Response getOne(@PathVariable("id") long id){
@@ -157,10 +152,6 @@ public class EquipmentUseController {
         return response;
     }
 
-    /**
-     * @param id
-     * @return code,msg,data=null
-     */
     @RequestMapping(value="/deleteOne/{id}",method = RequestMethod.POST)
     @ResponseBody
     public Response deleteOne(@PathVariable("id") long id)
