@@ -50,7 +50,7 @@ public class SampleReceiveController {
         }catch(NumberFormatException e){
             code=513;
             msg="某项数据错误";
-        };
+        }
         if(sampleNumber==null||sampleName==null||requester==null||receiver==null||obtainer==null||
         sampleNumber.equals("")||sampleName.equals("")||requester.equals("")||receiver.equals("")||obtainer.equals(""))
         {
@@ -82,7 +82,7 @@ public class SampleReceiveController {
             receive.setObtainDate(java.sql.Date.valueOf(obtainDate));
             receive.setReceiptId(Long.parseLong(receiptId));
             sampleReceiveRepository.saveAndFlush(receive);
-            if(receiptId!="0")
+            if(!receiptId.equals("0"))
             {
                 SampleReceipt sr=sampleReceiptRepository.findBySampleId(Long.parseLong(receiptId));
                 sr.setSampleName(sampleName);
@@ -110,7 +110,7 @@ public class SampleReceiveController {
             json.put("data",null);
             return json;
         }
-        if(sampleId=="")
+        if(sampleId.equals(""))
         {
             code=521;
             msg="未收到标识编号";
@@ -173,7 +173,7 @@ public class SampleReceiveController {
             int code=200;
             String msg="成功";
             JSONObject data=new JSONObject();
-            if(sampleId=="")
+            if(sampleId.equals(""))
             {
                 code=500;
                 msg="未收到标识编号";

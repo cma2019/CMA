@@ -96,7 +96,7 @@ public class SampleIoController {
             receive.setSendDate(java.sql.Date.valueOf(sendDate));
             receive.setReceiptId(Long.parseLong(receiptId));
             SampleIoRepository.saveAndFlush(receive);
-            if(receiptId!="0")
+            if(!receiptId.equals("0"))
             {
                 SampleReceipt sr=SampleReceiptRepository.findBySampleId(Long.parseLong(receiptId));
                 sr.setSampleName(sampleName);
