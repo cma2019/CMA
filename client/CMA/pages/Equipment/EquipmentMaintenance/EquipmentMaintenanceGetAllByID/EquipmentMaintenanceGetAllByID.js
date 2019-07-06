@@ -23,6 +23,11 @@ Page({
       "confirmer": "confirmer"
     }]
   },
+  mygo: function (e) {
+    wx.redirectTo({
+      url: '/pages/Equipment/EquipmentMaintenance/EquipmentMaintenance',
+    })
+  },
   gotoAdd: function (e) {
     wx.redirectTo({
       url: '/pages/Equipment/EquipmentMaintenance/EquipmentMaintenanceAddOne/EquipmentMaintenanceAddOne',
