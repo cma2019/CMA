@@ -33,5 +33,5 @@
     </view>
   </form>
 </view>
- <van-button type="info" size="small" bindtap="goback">返回/van-button> 
+ <van-button type="info" size="small" bindtap="goback">返回</van-button> 
 

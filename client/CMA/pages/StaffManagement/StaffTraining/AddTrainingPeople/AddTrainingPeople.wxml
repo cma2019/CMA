@@ -5,7 +5,7 @@
       <van-field 
         name="trainingId"
         label="培训编号"
-        value="{{培训编号}}"
+        value="{{trainingId}}"
         readonly
         required
         clearable
@@ -13,7 +13,7 @@
       <van-field 
         name="id"
         label="人员编号"
-        placeholder="input 人员编号" 
+        placeholder="人员编号" 
         required
         clearable
       />
