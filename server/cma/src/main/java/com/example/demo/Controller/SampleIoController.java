@@ -39,6 +39,7 @@ public class SampleIoController {
         int code=200;
         String msg="成功";
         try {
+            Long.parseLong(receiptId);
             Integer.parseInt(sampleState);
             Integer.parseInt(sampleAmount);
             java.sql.Date.valueOf(sendDate);
@@ -47,7 +48,8 @@ public class SampleIoController {
             code=513;
             msg="某项数据错误";
         }
-        if(sampleNumber== null||sampleName==null||sender==null||receiver==null||obtainer==null)
+        if(sampleNumber== null||sampleName==null||sender==null||receiver==null||obtainer==null
+        ||sampleNumber.equals("")||sampleName.equals("")||sender.equals("")||receiver.equals("")||obtainer.equals(""))
         {
             code=511;
             msg="缺少请求参数";
@@ -148,8 +150,8 @@ public class SampleIoController {
         }
         else
         {
-            code=522;
-            msg="数据不存在";
+            code=210;
+            msg="无有效信息返回";
             //data=null;
         }
         js.put("code",code);
@@ -166,12 +168,12 @@ public class SampleIoController {
             JSONObject data=new JSONObject();
             if(sampleIoId==null||sampleIoId.equals(""))
             {
-                code=521;
+                code=500;
                 msg="未收到标识编号";
             }
             else if(SampleIoRepository.findBySampleIoId(Long.parseLong(sampleIoId))==null) {   //此样品接收登记的id不存在；
 
-            code=522;
+            code=500;
             msg="数据不存在";
         }
         else{
