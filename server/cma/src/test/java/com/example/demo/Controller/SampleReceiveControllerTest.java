@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 //import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -40,18 +41,19 @@ public class SampleReceiveControllerTest {
     }
 
     @Transactional
+    @Rollback(true)
     @Test
     public void addOne() throws Exception {
         String url = "/cma/SampleReceive/addOne";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0])
                 .param("sampleNumber","2019004")
-                .param("sampleName","天猫超市")
+                .param("sampleName","soft004")
                 .param("sampleAmount","1")
                 .param("sampleState","0")
-                .param("requester","nju")
-                .param("receiver","lb")
+                .param("requester","nju04")
+                .param("receiver","lb04")
                 .param("receiveDate","2019-7-1")
-                .param("obtainer","hcb")
+                .param("obtainer","hcb04")
                 .param("obtainDate","2019-7-2")
                 .param("receiptId","0")
         )
@@ -67,7 +69,7 @@ public class SampleReceiveControllerTest {
     public void deleteOne() throws Exception {
         String url = "/cma/SampleReceive/deleteOne";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0])
-                .param("sampleId","0")
+                .param("sampleId","122")
         )
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print()).andReturn();
@@ -95,7 +97,7 @@ public class SampleReceiveControllerTest {
     public void findOne() throws Exception {
         String url = "/cma/SampleReceive/getOne";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get(url, new Object[0])
-                .param("sampleId","0")
+                .param("sampleId","122")
         )
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print()).andReturn();
@@ -109,16 +111,16 @@ public class SampleReceiveControllerTest {
     public void modify() throws Exception {
         String url = "/cma/SampleReceive/modifyOne";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0])
-                .param("sampleNumber","2019004")
-                .param("sampleName","天猫超市")
+                .param("sampleNumber","2019001")
+                .param("sampleName","soft001")
                 .param("sampleAmount","1")
                 .param("sampleState","0")
-                .param("requester","nju")
-                .param("receiver","lb")
+                .param("requester","nju01")
+                .param("receiver","lb01")
                 .param("receiveDate","2019-7-1")
-                .param("obtainer","hcb")
+                .param("obtainer","hcb01")
                 .param("obtainDate","2019-7-2")
-                .param("sampleId","0")
+                .param("sampleId","122")
         )
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print()).andReturn();

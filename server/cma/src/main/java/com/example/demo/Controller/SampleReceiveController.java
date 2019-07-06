@@ -291,3 +291,4 @@ public class SampleReceiveController {
     }
 }
 //select * from sample_receive;
+//alter table sample_receive ENGINE =InnoDB;
