@@ -45,6 +45,10 @@ Page({
       app.wxRequest(url, 'POST', data, (res) => {
         if (res.code == 200){
           console.log('send intermediate check message successfully')
+          wx.showToast({
+            title: '123',
+            image: '/icons/ok/ok.png'
+          })
           wx.navigateBack({
             delta: 1
           })
