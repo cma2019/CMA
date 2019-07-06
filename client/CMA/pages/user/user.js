@@ -67,5 +67,10 @@ Page({
     wx.redirectTo({
       url: '../login/login',
     })
+  },
+  gotoModify(e) {
+    wx.redirectTo({
+      url: '../login/modifypassword/modifypassword',
+    })
   }
 })
