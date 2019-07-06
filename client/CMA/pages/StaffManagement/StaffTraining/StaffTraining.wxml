@@ -1,15 +1,15 @@
 <!--pages/StaffManagement/StaffManagement.wxml-->
 <view>
-  <van-cell-group title="StaffTraining">
+  <van-cell-group title="人员培训管理">
   <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
   <van-cell value="详情" bindtap='gotoOne' id='{{item.trainingId}}' is-link>
       <view slot="title">
-        <view>trainingId : {{item.trainingId}}</view>
-        <view>program : {{item.program}}</view>
-        <view>trainingDate : {{item.trainingDate}}</view>
+        <view>培训编号 : {{item.trainingId}}</view>
+        <view>培训项目名称 : {{item.program}}</view>
+        <view>培训日期 : {{item.trainingDate}}</view>
       </view>
   </van-cell>
 </view>
   </van-cell-group>
 </view>
-    <van-button type="info" size="small" bindtap="gotoAdd">Add StaffTraining</van-button>
+    <van-button type="info" size="small" bindtap="gotoAdd">添加</van-button>
