@@ -1,14 +1,14 @@
 <scroll-view scroll-y>
-  <van-cell-group title="Equipment Use Management">
+  <van-cell-group title="仪器设备使用记录管理">
   <view wx:for="{{array}}" data-id="{{item.id}}" data-equipmentId="{{item.equipmentId}}" data-useDate="{{item.useDate}}" data-openDate="{{item.openDate}}" data-closeDate="{{item.closeDate}}" data-sampleNumber="{{item.sampleNumber}}" data-testProject="{{item.testProject}}"  data-beforeUse="{{item.beforeUse}}" data-afterUse="{{item.afterUse}}" data-user="{{item.user}}" data-remark="{{item.remark}}">
     <van-cell value="详情" is-link url='/pages/Equipment/EquipmentUse/EquipmentUseGetOne/EquipmentUseGetOne?id={{item.id}}&equipmentId={{item.equipmentId}}&useDate={{item.useDate}}&openDate={{item.openDate}}&closeDate={{item.closeDate}}&sampleNumber={{item.sampleNumber}}&testProject={{item.testProject}}&beforeUse={{item.beforeUse}}&afterUse={{item.afterUse}}&user={{item.user}}&remark={{item.remark}}' link-type='redirectTo'>
       <view slot="title">
         <view>id : {{item.id}}</view>
-        <view>equipmentId : {{item.equipmentId}}</view>
-        <view>useDate : {{item.useDate}}</view>
+        <view>机身编号 : {{item.equipmentId}}</view>
+        <view>使用日期 : {{item.useDate}}</view>
       </view>
     </van-cell>
   </view>
   </van-cell-group>
-  <van-button type="info" size="small" bindtap="gotoAdd">Add an equipment use</van-button>
+  <van-button type="info" size="small" bindtap="gotoAdd">添加仪器设备使用记录</van-button>
 </scroll-view>

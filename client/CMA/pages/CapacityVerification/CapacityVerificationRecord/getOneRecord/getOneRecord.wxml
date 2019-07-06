@@ -1,16 +1,16 @@
 <!--pages/IntermediateCheck/IntermediateCheckGetone/IntermediateCheckGetone.wxml-->
 <view>
-<van-cell-group title='message of {{recordId}}'>
-    <van-cell value="{{projectId}}"title="projectId"border="{{ false }}"/>
-    <van-cell value="{{date}}"title="date"border="{{ false }}"/>
-    <van-cell value="{{methodId}}"title="methodId"border="{{ false }}"/>
-    <van-cell value="{{equipmentName}}"title="equipmentName"border="{{ false }}"/>
-    <van-cell value="{{equipmentId}}"title="equipmentId"border="{{ false }}"/>
-    <van-cell value="{{experimenter}}"title="experimenter"border="{{ false }}"/>
-    <van-cell value="{{result}}"title="result"border="{{ false }}"/>
-    <van-cell value="{{resultDeal}}"title="resultDeal"border="{{ false }}"/>
-    <van-cell value="{{note}}"title="note"/>
+<van-cell-group title='记录编号 : {{recordId}}'>
+    <van-cell value="{{projectId}}"title="所属项目编号"border="{{ false }}"/>
+    <van-cell value="{{date}}"title="执行时间"border="{{ false }}"/>
+    <van-cell value="{{methodId}}"title="验证方法依据标准编号"border="{{ false }}"/>
+    <van-cell value="{{equipmentName}}"title="仪器设备名称"border="{{ false }}"/>
+    <van-cell value="{{equipmentId}}"title="仪器设备编号"border="{{ false }}"/>
+    <van-cell value="{{experimenter}}"title="试验人员"border="{{ false }}"/>
+    <van-cell value="{{result}}"title="结果"border="{{ false }}"/>
+    <van-cell value="{{resultDeal}}"title="结果处理"border="{{ false }}"/>
+    <van-cell value="{{note}}"title="备注"/>
 </van-cell-group>
 </view>
-<button class='van-button--info' bindtap="modifyData">modify</button>
-<button class='van-button--info' bindtap="deleteData">delete</button>
+<button class='van-button--info' bindtap="modifyData">修改</button>
+<button class='van-button--info' bindtap="deleteData">删除</button>

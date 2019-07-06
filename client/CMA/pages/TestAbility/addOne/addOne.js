@@ -14,6 +14,11 @@ Page({
     
   },
   */
+  gotologin(e) {
+    wx.navigateBack({
+      delta: 1
+    })
+  },
   AddOneTestAbility(e) {
     if (e.detail.value.year == "" ||
       e.detail.value.fileName == ""){

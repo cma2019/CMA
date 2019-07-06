@@ -3,18 +3,18 @@
   <van-cell>
     <view slot="title">
       <view>id : {{equipment.id}}</view>
-      <view>equipmentId : {{equipment.equipmentId}}</view>
-      <view>useDate : {{equipment.useDate}}</view>
-      <view>openDate : {{equipment.openDate}}</view>
-      <view>closeDate : {{equipment.closeDate}}</view>
-      <view>sampleNumber : {{equipment.sampleNumber}}</view>
-      <view>testProject : {{equipment.testProject}}</view>
-      <view>beforeUse : {{equipment.beforeUse}}</view>
-      <view>afterUse : {{equipment.afterUse}}</view>
-      <view>user : {{equipment.user}}</view>
-      <view>remark : {{equipment.remark}}</view>
+      <view>机身编号 : {{equipment.equipmentId}}</view>
+      <view>使用日期 : {{equipment.useDate}}</view>
+      <view>开机时间 : {{equipment.openDate}}</view>
+      <view>关机时间 : {{equipment.closeDate}}</view>
+      <view>样品编号 : {{equipment.sampleNumber}}</view>
+      <view>测试项目 : {{equipment.testProject}}</view>
+      <view>仪器使用前状况 : {{equipment.beforeUse}}</view>
+      <view>仪器使用后状况 : {{equipment.afterUse}}</view>
+      <view>使用人 : {{equipment.user}}</view>
+      <view>备注 : {{equipment.remark}}</view>
     </view>
   </van-cell>
-  <van-button type="info" size="small" bindtap="viewDetail">Modify</van-button>
-  <van-button type="info" size="small" bindtap="mydelete">Delete</van-button>
+  <van-button type="info" size="small" bindtap="viewDetail">修改</van-button>
+  <van-button type="info" size="small" bindtap="mydelete">删除</van-button>
 </scroll-view>

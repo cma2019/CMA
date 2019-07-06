@@ -1,12 +1,12 @@
 <!--pages/IntermediateCheck/IntermediateCheckGetone/IntermediateCheckGetone.wxml-->
 <view>
-<van-cell-group title='message of {{planId}}'>
-    <van-cell value="{{object}}"title="object"border="{{ false }}"/>
-    <van-cell value="{{content}}"title="content"border="{{ false }}"/>
-    <van-cell value="{{checkDate}}"title="checkDate"border="{{ false }}"/>
-    <van-cell value="{{personInCharge}}"title="personInCharge"border="{{ false }}"/>
-    <van-cell value="{{state}}"title="state"/>
+<van-cell-group title='期间核查计划编号 : {{planId}}'>
+    <van-cell value="{{object}}"title="核查对象"border="{{ false }}"/>
+    <van-cell value="{{content}}"title="核查内容"border="{{ false }}"/>
+    <van-cell value="{{checkDate}}"title="计划核查时间"border="{{ false }}"/>
+    <van-cell value="{{personInCharge}}"title="核查负责人"border="{{ false }}"/>
+    <van-cell value="{{state}}"title="核查状态"/>
 </van-cell-group>
 </view>
-<button class='van-button--info' bindtap="modifyData">modify</button>
-<button class='van-button--info' bindtap="deleteData">delete</button>
+<button class='van-button--info' bindtap="modifyData">修改</button>
+<button class='van-button--info' bindtap="deleteData">删除</button>
