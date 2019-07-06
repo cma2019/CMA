@@ -31,21 +31,43 @@ Page({
         app.wxUploadFile(myurl, mypath, formdata, (res) => {
           console.log("upload file success")
           console.log(res)
-          wx.navigateBack({
-            delta: 1
-          })
+          if(res.code == 200){
+            wx.showToast({
+              title: '修改成功',
+              image: '/icons/ok/ok.png',
+              duration: 1000,
+              success: function () {
+                setTimeout(function () {
+                  wx.navigateBack({
+                    delta: 1
+                  })
+                }, 1000);
+              }
+            })
+          }else{
+            wx.showToast({
+              title: '修改失败',
+              image: '/icons/warning/warning.png',
+              duration: 1000
+            })
+          }
         }, (err) => {
           console.log(err)
+          wx.showToast({
+            title: '修改失败',
+            image: '/icons/warning/warning.png',
+            duration: 1000
+          })
         })
-        /*
-        wx.redirectTo({
-          url: '/pages/StandardManagement/StandardManagement',
-        })
-        */
       },
       fail: function (err) {
         console.log("get file failed")
         console.log(err)
+        wx.showToast({
+          title: '修改失败',
+          image: '/icons/warning/warning.png',
+          duration: 1000
+        })
       }
     })
   },

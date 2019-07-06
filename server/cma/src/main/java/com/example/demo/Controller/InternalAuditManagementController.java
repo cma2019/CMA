@@ -96,3 +96,4 @@ public class InternalAuditManagementController {
 }
 //select * from internal_audit_management;
 //delete from internal_audit_management where file_id=
+//alter table internal_audit_management ENGINE =InnoDB;

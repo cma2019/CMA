@@ -27,11 +27,20 @@ Page({
     app.wxRequest(myurl, 'POST', mydata, (res) => {
       console.log("add")
       console.log(res)
+      wx.showToast({
+        title: '添加成功',
+        icon: '/icons/ok/ok.png',
+        duration: 1000,
+        success: function () {
+          setTimeout(function () {
+            wx.redirectTo({
+              url: '/pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagement',
+            })
+          }, 1000);
+        }
+      })
     }, (err) => {
       console.log(err)
-    })
-    wx.redirectTo({
-      url: '/pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagement',
     })
   },
 

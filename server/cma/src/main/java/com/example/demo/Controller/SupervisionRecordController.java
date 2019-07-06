@@ -184,3 +184,4 @@ public class SupervisionRecordController {
     }
 }
 //select * from supervision_record;
+//alter table supervision_record ENGINE =InnoDB;
