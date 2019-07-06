@@ -23,5 +23,5 @@
     </view>
   </form>
 </view>
- <van-button type="info" size="small" bindtap="goback">register</van-button> 
+ <van-button type="info" size="small" bindtap="goback">注册</van-button> 
 
