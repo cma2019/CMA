@@ -249,9 +249,9 @@ public class UserController {
     }
 
     @PostMapping(path = "modifyPassword")
-    public @ResponseBody JSONObject modifyPassword(@RequestParam(value = "username",required = false)String userName,@RequestParam(value = "password",required = false)String password,@RequestParam(value = "newPassword",required = false)String newPassword){
+    public @ResponseBody JSONObject modifyPassword(@RequestParam(value = "username",required = false)String username,@RequestParam(value = "password",required = false)String password,@RequestParam(value = "newPassword",required = false)String newPassword){
         JSONObject json=new JSONObject();
-        User user=userRepository.findByUsername(userName);
+        User user=userRepository.findByUsername(username);
         if(user.login(password)==false){
             json.put("code",210);
             json.put("msg","密码错误");
