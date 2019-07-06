@@ -72,6 +72,19 @@ Page({
     }
     app.wxRequest(url, 'POST', data, (res) => {
       console.log('delete successfully')
+      wx.showToast({
+        title: '删除成功',
+        //icon: 'success',
+        image: '/icons/ok/ok.png',
+        duration: 1000,
+        success: function () {
+          setTimeout(function () {
+            wx.navigateTo({
+              url: '../StaffManagement',
+            })
+          }, 1000);
+        }
+      })
     }, (err) => {
       console.log('delete failed')
     })
