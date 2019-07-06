@@ -13,7 +13,7 @@ public class StaffManagement {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private long id;                 //人员唯一编号
     private String name;             //名称
-    private int gender;           //性别(男0 女1)
+    private String gender;           //性别(男0 女1)
     private String department;       //部门
     private String position;         //职位
     private String title;          	 //职称
@@ -32,10 +32,7 @@ public class StaffManagement {
     }
 
     public String getGender() {
-        if(this.gender==0)
-            return "男";
-        else
-            return "女";
+        return gender;
     }
 
     public String getDepartment() {
@@ -75,7 +72,7 @@ public class StaffManagement {
         this.name = name;
     }
 
-    public void setGender(int gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
