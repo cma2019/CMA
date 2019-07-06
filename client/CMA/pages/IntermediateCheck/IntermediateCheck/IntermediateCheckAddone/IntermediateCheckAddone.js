@@ -45,8 +45,18 @@ Page({
       app.wxRequest(url, 'POST', data, (res) => {
         if (res.code == 200){
           console.log('send intermediate check message successfully')
-          wx.navigateBack({
-            delta: 1
+          console.log('send intermediate check message successfully')
+          wx.showToast({
+            title: '添加成功',
+            image: '/icons/ok/ok.png',
+            duration: 1000,
+            success: function () {
+              setTimeout(function () {
+                wx.navigateBack({
+                  delta:1
+                })
+              }, 1000);
+            }
           })
         }
       }, (err) => {

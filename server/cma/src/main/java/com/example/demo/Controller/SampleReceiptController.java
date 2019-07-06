@@ -46,19 +46,20 @@ public class SampleReceiptController {
         return js;
     }
     @PostMapping(path="/addOne",consumes="application/json",produces="application/json")
-    public @ResponseBody  JSONObject addOne(@RequestBody JSONObject data){
+    public @ResponseBody  JSONObject addOne(@RequestBody JSONObject data)
+    {
         JSONObject js= new JSONObject();
 
         int code=200;
         String msg="成功";
         JSONObject d=new JSONObject();
-        System.out.println(data);
+        //System.out.println(data);
         String idstr=(String)data.get("sampleId");
-        System.out.println(idstr);
+        //System.out.println(idstr);
         String testtypestr=data.getString("testType");
-        System.out.println(testtypestr);
+        //System.out.println(testtypestr);
         String softwaretypestr=data.getString("softwareType");
-        System.out.println(softwaretypestr);
+        //System.out.println(softwaretypestr);
         String datestr=data.getString("receiveDate");
         try {
             Long.parseLong(idstr);
@@ -84,7 +85,6 @@ public class SampleReceiptController {
         String sender=data.getString("sender");
         String receiver=data.getString("receiver");
         JSONArray list =data.getJSONArray("materialList");
-        System.out.println("?");
         if(idstr.equals("")||applicationUnit.equals("")||version.equals("")||contractId.equals("")||
         testtypestr.equals("")||electronicMedia.equals("")||softwaretypestr.equals("")||
         receiveUnit.equals("")||datestr.equals("")||sender.equals("")||receiver.equals(""))
@@ -116,10 +116,10 @@ public class SampleReceiptController {
              for(int i=0;i<list.size();i++)
              {
                  JSONObject tmp = (JSONObject) list.get(i);
-                 System.out.println(list);
+                 /*System.out.println(list);
                  System.out.println(index);
                  System.out.println(Integer.parseInt(tmp.getString("materialId")));
-                 System.out.println(tmp.getString("materialType"));
+                 System.out.println(tmp.getString("materialType"));*/
                  index.replace(Integer.parseInt(tmp.getString("materialId")) - 1, Integer.parseInt(tmp.getString("materialId")), tmp.getString("materialType"));
                  if(i==list.size()-1)
                  {
@@ -142,7 +142,7 @@ public class SampleReceiptController {
         JSONObject json=new JSONObject();
         int code=200;
         String msg="成功";
-        System.out.println(sampleId);
+        //System.out.println(sampleId);
         if(sampleId==null||sampleId.equals(""))
         {
             code=521;
@@ -215,14 +215,14 @@ public class SampleReceiptController {
         json.put("data",data);
         return json;
     }
-    @PostMapping(path="/modifyOne")
-    public @ResponseBody JSONObject modify(@RequestParam(value = "data",required = false) JSONObject data)
+    @PostMapping(path="/modifyOne",consumes="application/json",produces="application/json")
+    public @ResponseBody JSONObject modify(@RequestBody JSONObject data)
     {
         JSONObject js=new JSONObject();
         int code=200;
         String msg="成功";
         JSONObject d= new JSONObject();
-        System.out.println(data);
+        //System.out.println(data);
         String idstr=data.getString("sampleId");
         String testtypestr=data.getString("testType");
         String sofwwaretypestr=data.getString("softwareType");
@@ -314,21 +314,5 @@ public class SampleReceiptController {
         js.put("data",d);
         return js;
     }
-    /*@PostMapping(path="addReceive")
-    public @ResponseBody JSONObject addReceive(@RequestParam(value = "sampleNumber", required = false)String sampleNumber,
-                                               @RequestParam(value = "sampleName", required = false) String sampleName,
-                                               @RequestParam(value = "sampleAmount", required = false) String sampleAmount,
-                                               @RequestParam(value = "sampleState", required = false) String sampleState,
-                                               @RequestParam(value="requester",required = false) String requester,
-                                               @RequestParam(value="receiver",required = false)String receiver,
-                                               @RequestParam(value="receiveDate",required = false) String receiveDate,
-                                               @RequestParam(value="obtainer",required = false)String obtainer,
-                                               @RequestParam(value = "obtainDate",required = false)String obtainDate,
-                                               @RequestParam(value="receiptId",required = false) String receiptId)
-    {
-        JSONObject js=new JSONObject();
-        return js;
-
-    }*/
 }
 ////select * from sample_receipt;

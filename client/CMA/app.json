@@ -1,8 +1,9 @@
 {
   "pages": [
+    
     "pages/home/home",
-    "pages/Management/Management",
     "pages/login/login",
+    "pages/Management/Management",
     "pages/register/register",
     "pages/IntermediateCheck/IntermediateCheckMenu/IntermediateCheckMenu",
     "pages/index/index",
@@ -172,7 +173,8 @@
     "pages/StaffManagement/StaffQualification/DownloadOneStaffQualification/DownloadOneStaffQualification",
     "pages/StaffManagement/StaffQualification/PrintOneStaffQualification/PrintOneStaffQualification",
     "pages/StaffManagement/StaffQualification/GetAllByStaff/GetAllByStaff",
-    "pages/StaffManagement/StaffQualification/ModifyOneStaffQualification/ModifyOneStaffQualification"
+    "pages/StaffManagement/StaffQualification/ModifyOneStaffQualification/ModifyOneStaffQualification",
+    "pages/login/modifypassword/modifypassword"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -216,6 +218,7 @@
     "van-checkbox": "../../dist/checkbox/index",
     "van-checkbox-group": "../../dist/checkbox-group/index",
     "van-radio": "../../dist/radio/index",
-    "van-radio-group": "../../dist/radio-group/index"
+    "van-radio-group": "../../dist/radio-group/index",
+    "van-stepper": "../../dist/stepper/index"
   }
 }

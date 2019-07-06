@@ -5,10 +5,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+  },
+  mygo:function(e){
+    wx.redirectTo({
+      url: '/pages/Equipment/EquipmentManagement/EquipmentManagement',
+    })
   },
   newEquipment:function(e)
   {
+    var that = this
     console.log(e.detail.value)
     var myurl = app.globalData.url + 'Equipment/add';
     var mydata = {
@@ -23,11 +28,20 @@ Page({
     };
     app.wxRequest(myurl, 'POST', mydata, (res) => {
       console.log(res)
+      wx.showToast({
+        title: '添加成功',
+        icon: '/icons/ok/ok.png',
+        duration: 1000,
+        success: function () {
+          setTimeout(function () {
+            wx.redirectTo({
+              url: '/pages/Equipment/EquipmentManagement/EquipmentManagement',
+            })
+          }, 1000);
+        }
+      });
     }, (err) => {
       console.log(err)
-    })
-    wx.redirectTo({
-      url: '/pages/Equipment/EquipmentManagement/EquipmentManagement',
     })
   },
   /**

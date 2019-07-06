@@ -164,26 +164,31 @@ public class EquipmentMaintenanceController {
         response.code=200;
         return response;
     }
-    @RequestMapping(value="/getAllByEquipmentId/{id}",method = RequestMethod.GET)
+    @RequestMapping(value="/getAllByEquipmentId/{equipmentId}",method = RequestMethod.GET)
     @ResponseBody
-    public Response getAllByEquipmentId(@PathVariable("id") Long id)
+    public Response getAllByEquipmentId(@PathVariable("equipmentId") Long id)
     {
+        System.out.println(id);
         Response response=new Response();
         try{
-            if(equipmentMaintenanceRepository.findById(id)==null)
-                throw new Exception("Equipment ID:"+id+" doesn't exist");
             JSONObject alljson=new JSONObject();
             Iterable<EquipmentMaintenance> list=equipmentMaintenanceRepository.findAll();
             JSONArray jsons=new JSONArray();
+            int count=0;
             for(int i = 0; i<((List<EquipmentMaintenance>) list).size(); i++)
             {
-                if(((List<EquipmentMaintenance>) list).get(i).getEquipmentId()==id) {
+                System.out.println(((List<EquipmentMaintenance>) list).get(i).getEquipmentId());
+                System.out.println(((List<EquipmentMaintenance>) list).get(i).getEquipmentId()-id);
+
+                if(((List<EquipmentMaintenance>) list).get(i).getEquipmentId()-id==0) {
+                    System.out.println("in");
                     JSONObject ejson = JSONObject.parseObject(JSONObject.toJSONString(((List<EquipmentMaintenance>) list).get(i)));
                     jsons.add(ejson);
-                }else{
-                    throw new Exception("Equipment ID:"+id+" doesn't exist");
+                    count++;
                 }
             }
+            if(count==0)
+                throw new Exception("设备维护记录不存在");
             alljson.put("data",jsons);
             response.data=alljson;
             response.msg="成功";

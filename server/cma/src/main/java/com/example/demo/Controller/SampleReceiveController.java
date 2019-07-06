@@ -36,8 +36,8 @@ public class SampleReceiveController {
                           @RequestParam(value="obtainer",required = false)String obtainer,
                           @RequestParam(value = "obtainDate",required = false)String obtainDate,
                           @RequestParam(value="receiptId",required = false) String receiptId){
-        System.out.println(sampleNumber);
-        System.out.println(obtainer);
+        //System.out.println(sampleNumber);
+        //System.out.println(obtainer);
         JSONObject js=new JSONObject();
         int code=200;
         String msg="成功";
@@ -225,7 +225,7 @@ public class SampleReceiveController {
             code =533;
             msg="修改后数据错误";
         }
-        System.out.println(sampleId.equals(""));
+        //System.out.println(sampleId.equals(""));
         if(sampleReceiveRepository.findBySampleId(Integer.parseInt(sampleId))==null)
         {
             code=532;
