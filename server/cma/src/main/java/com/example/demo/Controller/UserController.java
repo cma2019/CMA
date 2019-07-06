@@ -247,4 +247,20 @@ public class UserController {
         json.put("data",list);
         return json;
     }
+
+    @PostMapping(path = "modifyPassword")
+    public @ResponseBody JSONObject modifyPassword(@RequestParam(value = "username",required = false)String userName,@RequestParam(value = "password",required = false)String password,@RequestParam(value = "newPassword",required = false)String newPassword){
+        JSONObject json=new JSONObject();
+        User user=userRepository.findByUsername(userName);
+        if(user.login(password)==false){
+            json.put("code",210);
+            json.put("msg","密码错误");
+        }
+        else{
+            user.setPassword(newPassword);
+            json.put("code",200);
+            json.put("msg","修改成功");
+        }
+        return json;
+    }
 }

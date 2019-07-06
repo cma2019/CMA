@@ -1,16 +1,16 @@
 <!--pages/TrainingApplication/PringOneApplication/PrintOneApplication.wxml-->
 <view>
   <van-cell-group>
-  <van-cell title="staffId" value="{{staffId}}" />
-  <van-cell title="name" value="{{name}}" />
-  <van-cell title="department" value="{{department}}" />
-  <van-cell title="position" value="{{position}}" />
-  <van-cell title="qualificationId" value="{{qualificationId}}" />
-  <van-cell title="qualificationName" value="{{qualificationName}}" />
+  <van-cell title="人员编号" value="{{staffId}}" />
+  <van-cell title="姓名" value="{{name}}" />
+  <van-cell title="部门" value="{{department}}" />
+  <van-cell title="职位" value="{{position}}" />
+  <van-cell title="资质编号" value="{{qualificationId}}" />
+  <van-cell title="资质名称" value="{{qualificationName}}" />
   </van-cell-group>
 </view>
-<van-button type="info" size="small" bindtap="DownloadStaff">Download File</van-button> 
- <van-button type="info" size="small" bindtap="ModifyData">Modify Data</van-button> 
- <van-button type="info" size="small" bindtap="ModifyStaff">Modify File</van-button> 
- <van-button type="info" size="small" bindtap="DeleteStaff">Delete File</van-button> 
-  <van-button type="info" size="small" bindtap="Search">Get All By Staff</van-button> 
+<van-button type="info" size="small" bindtap="DownloadStaff">下载文件</van-button> 
+ <van-button type="info" size="small" bindtap="ModifyData">修改数据</van-button> 
+ <van-button type="info" size="small" bindtap="ModifyStaff">修改文件</van-button> 
+ <van-button type="info" size="small" bindtap="DeleteStaff">删除</van-button> 
+  <van-button type="info" size="small" bindtap="Search">全部资质信息</van-button> 

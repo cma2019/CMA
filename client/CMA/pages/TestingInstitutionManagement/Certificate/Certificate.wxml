@@ -1,14 +1,14 @@
 <!--pages/TestingInstitutionManagement/Certificate/Certificate.wxml-->
 <scroll-view scroll-y>
-  <van-cell-group title="Certificate Management">
+  <van-cell-group title="证书管理">
   <view wx:for="{{array}}" data-fileId="{{item.fileId}}" data-fileName="{{item.fileName}}" >
     <van-cell value="详情" is-link url='/pages/TestingInstitutionManagement/Certificate/CertificateGetOne/CertificateGetOne?fileId={{item.fileId}}&fileName={{item.fileName}}' link-type='redirectTo'>
       <view slot="title">
-        <view>fileId : {{item.fileId}}</view>
-        <view>fileName : {{item.fileName}}</view>
+        <view>材料编号 : {{item.fileId}}</view>
+        <view>材料名称 : {{item.fileName}}</view>
       </view>
     </van-cell>
   </view>
   </van-cell-group>
-  <van-button type="info" size="small" bindtap="gotoAdd">Add an Certificate use</van-button>
+  <van-button type="info" size="small" bindtap="gotoAdd">添加证书</van-button>
 </scroll-view>

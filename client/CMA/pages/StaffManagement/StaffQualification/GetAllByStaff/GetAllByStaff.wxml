@@ -1,14 +1,14 @@
 <!--pages/StaffManagement/StaffManagement.wxml-->
 <view>
-  <van-cell-group title="StaffQualification">
+  <van-cell-group title="资质信息">
   <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
   <van-cell >
       <view slot="title">
-        <view>qualificationId : {{item.qualificationId}}</view>
-        <view>qualificationName : {{item.qualificationName}}</view>
+        <view>资质编号 : {{item.qualificationId}}</view>
+        <view>资质名称 : {{item.qualificationName}}</view>
       </view>
   </van-cell>
 </view>
   </van-cell-group>
 </view>
-    <van-button type="info" size="small" bindtap="gotoAdd">go back</van-button>
+    <van-button type="info" size="small" bindtap="gotoAdd">返回</van-button>

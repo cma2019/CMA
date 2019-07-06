@@ -3,36 +3,36 @@
   <van-cell-group>
       <van-field 
         name="year"
-        label="year"
-        placeholder="input year" 
+        label="年份"
+        placeholder="年份" 
         required
         clearable
       />
       <van-field 
         name="trainProject"
-        label="trainProject"
-        placeholder="input trainProject" 
+        label="培训项目"
+        placeholder="培训项目" 
         required
         clearable
       />
       <van-field 
         name="people"
-        label="people"
-        placeholder="input people" 
+        label="培训对象"
+        placeholder="培训对象" 
         required
         clearable
       />
       <van-field 
         name="method"
-        label="method"
-        placeholder="input method" 
+        label="培训方式"
+        placeholder="培训方式" 
         required
         clearable
       />
       <van-field 
         name="trainingTime"
-        label="trainingTime"
-        placeholder="input trainingTime" 
+        label="培训课时"
+        placeholder="培训课时" 
         required
         clearable
       />
@@ -40,7 +40,7 @@
         <picker name = 'startTime' mode='date' value='{{startTime}}' bindchange='bindDateChange1'>
           <view class='picker'>
         <van-field 
-        label="startTime"
+        label="培训开始时间"
         value='{{startTime}}'
         required
       />
@@ -51,7 +51,7 @@
         <picker name = 'endTime' mode='date' value='{{endTime}}' bindchange='bindDateChange2'>
           <view class='picker'>
         <van-field 
-        label="endTime"
+        label="培训结束时间"
         value='{{endTime}}'
         required
       />
@@ -60,16 +60,16 @@
     </view>
     <van-field 
         name="note"
-        label="note"
-        placeholder="input note" 
+        label="备注"
+        placeholder="备注" 
         required
         clearable
       />
     </van-cell-group>
     <view>
-      <button class='van-button--info'formType = 'submit'>Add           </button>
+      <button class='van-button--info'formType = 'submit'>确定</button>
     </view>
   </form>
 </view>
- <van-button type="info" size="small" bindtap="goback">go back</van-button> 
+ <van-button type="info" size="small" bindtap="goback">返回</van-button> 
 

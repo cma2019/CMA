@@ -2,40 +2,40 @@
 <scroll-view scroll-y>
   <form bindsubmit='mytest'>
     <view class="section">
-      <van-field name="totalNumber" value="{{totalNumber}}" required clearable label="totalNumber" placeholder="input totalNumber"></van-field>
+      <van-field name="totalNumber" value="{{totalNumber}}" required clearable label="总人数" placeholder="总人数"></van-field>
     </view>
     <view class="section">
-      <van-field name="seniorProfessionalTitle" value="{{seniorProfessionalTitle}}" required clearable label="seniorProfessionalTitle" placeholder="input seniorProfessionalTitle"></van-field>
+      <van-field name="seniorProfessionalTitle" value="{{seniorProfessionalTitle}}" required clearable label="高级专业技术职称人数" placeholder="高级专业技术职称人数"></van-field>
     </view>
     <view class="section">
-      <van-field name="intermediateProfessionalTitle" value="{{intermediateProfessionalTitle}}" required clearable label="intermediateProfessionalTitle" placeholder="input intermediateProfessionalTitle"></van-field>
+      <van-field name="intermediateProfessionalTitle" value="{{intermediateProfessionalTitle}}" required clearable label="中级专业技术职称人数" placeholder="中级专业技术职称人数"></van-field>
     </view>
     <view class="section">
-      <van-field name="primaryProfessionalTitle" value="{{primaryProfessionalTitle}}" required clearable label="primaryProfessionalTitle" placeholder="input primaryProfessionalTitle"></van-field>
+      <van-field name="primaryProfessionalTitle" value="{{primaryProfessionalTitle}}" required clearable label="初级专业技术职称人数" placeholder="初级专业技术职称人数"></van-field>
     </view>
     <view class="section">
-      <van-field name="fixedAssets" value="{{fixedAssets}}" required clearable label="fixedAssets" placeholder="input fixedAssets"></van-field>
+      <van-field name="fixedAssets" value="{{fixedAssets}}" required clearable label="固定资产原值" placeholder="固定资产原值"></van-field>
     </view>
     <view class="section">
-      <van-field name="equipmentNumber" value="{{equipmentNumber}}" required clearable label="equipmentNumber" placeholder="input equipmentNumber"></van-field>
+      <van-field name="equipmentNumber" value="{{equipmentNumber}}" required clearable label="仪器设备台数" placeholder="仪器设备台数"></van-field>
     </view>
     <view class="section">
-      <van-field name="floorSpace" value="{{floorSpace}}" required clearable label="floorSpace" placeholder="input floorSpace"></van-field>
+      <van-field name="floorSpace" value="{{floorSpace}}" required clearable label="场地面积" placeholder="场地面积"></van-field>
     </view>
     <view class="section">
-      <van-field name="stableArea" value="{{stableArea}}" required clearable label="stableArea" placeholder="input stableArea"></van-field>
+      <van-field name="stableArea" value="{{stableArea}}" required clearable label="稳恒面积" placeholder="稳恒面积"></van-field>
     </view>
     <view class="section">
-      <van-field name="outdoorsArea" value="{{outdoorsArea}}" required clearable label="outdoorsArea" placeholder="input outdoorsArea"></van-field>
+      <van-field name="outdoorsArea" value="{{outdoorsArea}}" required clearable label="户外面积" placeholder="户外面积"></van-field>
     </view>
     <view class="section">
-      <van-field name="nameAndAddress" value="{{nameAndAddress}}" required clearable label="nameAndAddress" placeholder="input nameAndAddress"></van-field>
+      <van-field name="nameAndAddress" value="{{nameAndAddress}}" required clearable label="场所名称和地址" placeholder="场所名称和地址"></van-field>
     </view>
     <view class="section">
-      <van-field name="newPlace" value="{{newPlace}}" required clearable label="newPlace" placeholder="input newPlace"></van-field>
+      <van-field name="newPlace" value="{{newPlace}}" required clearable label="新申请的地点" placeholder="新申请的地点"></van-field>
     </view>
     <view>
-      <button class='van-button--info' form-type='submit'>Modify</button>
+      <button class='van-button--info' form-type='submit'>确定</button>
     </view>
   </form>
 </scroll-view>

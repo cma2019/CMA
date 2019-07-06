@@ -3,32 +3,32 @@
   <van-cell-group>
       <van-field 
         name="username"
-        label="username"
-        placeholder="input username" 
+        label="用户名"
+        placeholder="用户名" 
         required
         clearable
       />
       <van-field 
         name="password"
-        label="password"
-        placeholder="input password" 
+        label="密码"
+        placeholder="密码" 
         password
         required
         clearable
       />
      <van-field 
         name="password2"
-        label="password2"
-        placeholder="input password" 
+        label="重新输入密码"
+        placeholder="密码" 
         password
         required
         clearable
       />
     </van-cell-group>
     <view>
-      <button class='van-button--info'formType = 'submit'>register           </button>
+      <button class='van-button--info'formType = 'submit'>注册           </button>
     </view>
   </form>
 </view>
- <van-button type="info" size="small" bindtap="goback">go back</van-button> 
+ <van-button type="info" size="small" bindtap="goback">返回</van-button> 
 

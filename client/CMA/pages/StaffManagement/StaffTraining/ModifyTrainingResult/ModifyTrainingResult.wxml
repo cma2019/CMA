@@ -4,7 +4,7 @@
   <van-cell-group>
       <van-field 
         name="trainingId"
-        label="trainingId"
+        label="培训编号"
         value='{{trainingId}}'
         readonly
         required
@@ -12,7 +12,7 @@
       />
       <van-field 
         name="id"
-        label="id"
+        label="人员编号"
         value='{{id}}'
         readonly
        required
@@ -20,17 +20,17 @@
       />
       <van-field 
         name="result"
-        label="result"
+        label="培训结果"
         value='{{result}}'
-        placeholder="input result" 
+        placeholder="培训结果" 
         required
         clearable
       />
     </van-cell-group>
     <view>
-      <button class='van-button--info' formType='submit'>Modify TrainingResult</button>
+      <button class='van-button--info' formType='submit'>确定</button>
     </view>
   </form>
 </view>
-<van-button type="info" size="small" bindtap="goback">go back</van-button> 
+<van-button type="info" size="small" bindtap="goback">返回</van-button> 
 

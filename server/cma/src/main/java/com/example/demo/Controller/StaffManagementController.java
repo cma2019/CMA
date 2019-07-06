@@ -35,7 +35,7 @@ public class StaffManagementController {
     }
 
     @PostMapping(path="addOne")
-    public @ResponseBody JSONObject addOne(@RequestParam(value="name",required = false)String name,@RequestParam(value = "gender",required = false)int gender,
+    public @ResponseBody JSONObject addOne(@RequestParam(value="name",required = false)String name,@RequestParam(value = "gender",required = false)String gender,
                                        @RequestParam(value = "department",required = false)String department,@RequestParam(value = "position",required = false)String position,
                                        @RequestParam(value="title",required = false)String title,@RequestParam(value = "degree",required = false)String degree,
                                        @RequestParam(value = "graduationSchool",required = false)String graduationSchool,@RequestParam(value = "graduationMajor",required = false)String graduationMajor,
@@ -121,10 +121,7 @@ public class StaffManagementController {
             if(!name.equals(""))
                 staffManagement.setName(name);
             if(!gender.equals("")) {
-                if(gender.equals("男"))
-                    staffManagement.setGender(0);
-                else
-                    staffManagement.setGender(1);
+                staffManagement.setGender(gender);
             }
             if(!department.equals(""))
                 staffManagement.setDepartment(department);
