@@ -10,6 +10,9 @@ Page({
 
       id: options.id
     })
+    
+  },
+  onShow: function () {
     console.log('getone id')
     console.log(this.data.id)
     let url = app.globalData.url + 'StaffQualification/getOne'
@@ -25,38 +28,8 @@ Page({
       if (res.code == 210) {
         wx.showToast({
           title: '资质档案不存在!',
-          icon: 'none',
-          duration: 2000
-        })
-      }
-      this.setData({
-        staffId: res.data.staffId,
-        name: res.data.name,
-        department: res.data.department,
-        position: res.data.position,
-        qualificationId: res.data.qualificationId,
-        qualificationName: res.data.qualificationName
-      })
-    }, (err) => {
-      console.err('get one error')
-    })
-  },
-  onShow: function () {
-    // console.log(options)
-    console.log(this.data.id)
-    let url0 = app.globalData.url + 'StaffQualification/getOne'
-    let postdata0 = {
-      "qualificationId": this.data.id
-    }
-    app.wxRequest(url0, 'GET', postdata0, (res) => {
-      console.log(res)
-      console.log(res.data)
-      //console.log(res.data[0].id)
-      if (res.code == 210) {
-        wx.showToast({
-          title: '档案不存在!',
-          icon: 'none',
-          duration: 2000
+          image: '/icons/warning/warning.png',
+          duration: 1000
         })
       }
       this.setData({
@@ -122,7 +95,7 @@ Page({
           console.log(res)
           wx.showToast({
             title: '修改成功!',
-            icon: 'success',
+            image: '/icons/ok/ok.png',
             duration: 2000
           })
           //console.log(mydata)
@@ -160,8 +133,8 @@ Page({
           myFilePath = res.savedFilePath
           console.log(myFilePath)
           wx.showToast({
-            title: '下载成功!',
-            icon: 'success',
+            title: '下载成功',
+            image: '/icons/ok/ok.png',
             duration: 2000
           })
         },

@@ -8,6 +8,10 @@ Page({
     this.setData({
       id: options.id
     })
+  
+  },
+  
+  onShow: function () {
     console.log(this.data.id)
     let url = app.globalData.url + 'TrainingApplication/getOne'
     let postdata = {
@@ -20,42 +24,14 @@ Page({
       console.log(res.data.name)
       this.setData({
         id: res.data.id,
-        situation:res.data.situation,
-        approver:res.data.approver,
+        situation: res.data.situation,
+        approver: res.data.approver,
         approveDate: res.data.approveDate
       })
     }, (err) => {
       console.err('get one error')
     })
   },
-  /*
-  onShow: function (options) {
-    this.setData({
-      id: options.id
-    })
-    console.log(this.data.id)
-    let url = app.globalData.url + 'TrainingApplication/getOne'
-    let postdata = {
-      "id": this.data.id
-    }
-    console.log(url)
-    console.log(postdata)
-    app.wxRequest(url, 'GET', postdata, (res) => {
-      console.log("data modify")
-      console.log(res.data.name)
-      this.setData({
-        
-        id: res.data.id,
-        situation: res.data.situation,
-        approver: res.data.approver,
-        approveDate: res.data.approveDate
-
-
-      })
-    }, (err) => {
-      console.err('get one error')
-    })
-  },*/
   bindDateChange: function (e) {
     console.log("date")
     console.log(e.detail.value)
@@ -65,15 +41,16 @@ Page({
   },
   intercheckmodify: function (e) {
     console.log('modify modify')
-   /* if (e.detail.value.object == "" || e.detail.value.content == "" ||
-      e.detail.value.date == "" || e.detail.value.personInCharge == "" || e.detail.value.state == "") {
+    if (e.detail.value.id == "" || e.detail.value.situation == "" ||
+      e.detail.value.approver == "" || e.detail.value.approveDate == "" ) {
       wx.showToast({
-        title: 'wrong message',
-        duration: 2000
+        title: '空白输入',
+        image: '/icons/warning/warning.png',
+        duration: 1000
       })
       console.log('wrong message')
     }
-    else */{
+    else {
       console.log('modify，携带数据为：', e.detail.value)
       console.log('modify，携带数据为：', e.detail.value.object)
 
@@ -86,8 +63,6 @@ Page({
         "situation": e.detail.value.situation,
         "approver": e.detail.value.approver,
         "approveDate": e.detail.value.date
-
-
       };
       console.log(data)
       app.wxRequest(url, 'POST', data, (res) => {
@@ -100,6 +75,28 @@ Page({
           })
         }
         */
+        if (res.msg == "已审查") {
+          wx.showToast({
+            title: '已审查',
+            image: '/icons/warning/warning.png',
+            duration: 1000
+          })
+        }
+        else {
+          wx.showToast({
+            title: '成功',
+            //icon: 'success',
+            image: '/icons/ok/ok.png',
+            duration: 1000,
+            success: function () {
+              setTimeout(function () {
+                wx.navigateTo({
+                  url: '../PrintOneApplication/PrintOneApplication',
+                })
+              }, 1000);
+            }
+          })
+        }
       }, (err) => {
         console.log('fail modify')
       })

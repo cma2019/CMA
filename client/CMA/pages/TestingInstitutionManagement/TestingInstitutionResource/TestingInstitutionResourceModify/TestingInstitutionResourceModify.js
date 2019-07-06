@@ -8,11 +8,16 @@ Page({
   data: {
 
   },
+  mygo: function (e) {
+    wx.redirectTo({
+      url: '/pages/TestingInstitutionManagement/TestingInstitutionResource/TestingInstitutionResource',
+    })
+  },
   mytest: function (e) {
     var that = this
 
     //console.log(e.detail.value)
-    var myurl = app.globalData.url + 'TestingInstitutionResource/modify';
+    var myurl = app.globalData.url + 'TestingInstitutionResource/modifyOne';
     var mydata = {
       "totalNumber": e.detail.value.totalNumber,
       "seniorProfessionalTitle": e.detail.value.seniorProfessionalTitle,
@@ -28,13 +33,21 @@ Page({
     };
     app.wxRequest(myurl, 'POST', mydata, (res) => {
       console.log(res.data)
+      wx.showToast({
+        title: '修改成功',
+        icon: '/icons/ok/ok.png',
+        duration: 1000,
+        success: function () {
+          setTimeout(function () {
+            wx.redirectTo({
+              url: '/pages/TestingInstitutionManagement/TestingInstitutionResource/TestingInstitutionResource',
+            })
+          }, 1000);
+        }
+      })
     }, (err) => {
       console.log(err)
     })
-    wx.redirectTo({
-      url: '/pages/TestingInstitutionManagement/TestingInstitutionResource/TestingInstitutionResource',
-    })
-
   },
 
   /**

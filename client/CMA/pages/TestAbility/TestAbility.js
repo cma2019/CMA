@@ -38,6 +38,11 @@ Page({
       console.log('plan get all success')
     }, (err) => {
       console.err('getone error')
+      wx.showToast({
+        title: '连接失败',
+        image: '/icons/warning/warning.png',
+        duration: 1000
+      })
     })
   },
 

@@ -8,6 +8,9 @@ Page({
     this.setData({
       id: options.id
     })
+  },
+  onShow:function()
+  {
     let url = app.globalData.url + 'user/getOne'
     let postdata = {
       "username": this.data.id
@@ -16,7 +19,7 @@ Page({
       console.log(res)
       this.setData({
         username: this.data.id,
-        mess:res.data1
+        mess: res.data1
       })
     }, (err) => {
       console.err('getone error')

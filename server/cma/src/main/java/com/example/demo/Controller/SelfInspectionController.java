@@ -250,5 +250,8 @@ public class SelfInspectionController {
 }
 //select * from self_inspection;
 //delete from self_inspection where file_id=
+//alter table self_inspection ENGINE =InnoDB;
 //select * from self_inspection_document;
 //delete from self_inspection_document where file_id=
+//alter table self_inspection_document ENGINE =InnoDB;
+

@@ -43,6 +43,11 @@ Page({
       })
     }, (err) => {
       console.err('getone error')
+      wx.showToast({
+        title: '连接失败',
+        image: '/icons/warning/warning.png',
+        duration: 1000
+      })
     })
   },
   modifyData(e) {
@@ -62,12 +67,32 @@ Page({
     app.wxRequest(url, 'POST', data, (res) => {
       if (res.code == 200) {
         console.log('delete successfully')
-        wx.navigateBack({
-          delta: 1
+        wx.showToast({
+          title: '删除成功',
+          image: '/icons/ok/ok.png',
+          duration: 1000,
+          success: function () {
+            setTimeout(function () {
+              wx.navigateBack({
+                delta: 1
+              })
+            }, 1000);
+          }
+        })
+      }else{
+        wx.showToast({
+          title: '删除失败',
+          image: '/icons/warning/warning.png',
+          duration: 1000
         })
       }
     }, (err) => {
       console.log('delete failed')
+      wx.showToast({
+        title: '连接失败',
+        image: '/icons/warning/warning.png',
+        duration: 1000
+      })
     })
   },
 
@@ -100,15 +125,45 @@ Page({
         success: function (res) {
           console.log("download ability annex now")
           console.log(res)
-          myFilePath = res.savedFilePath
-          console.log(myFilePath)
+          if(res.code == 200){
+            myFilePath = res.savedFilePath
+            console.log(myFilePath)
+            wx.showToast({
+              title: '下载成功',
+              image: '/icons/ok/ok.png',
+              duration: 1000,
+              success: function () {
+                setTimeout(function () {
+                  wx.navigateBack({
+                    delta: 1
+                  })
+                }, 1000);
+              }
+            })
+          }else{
+            wx.showToast({
+              title: '下载失败',
+              image: '/icons/warning/warning.png',
+              duration: 1000
+            })
+          }
         },
         fail: function (err) {
           console.log(err)
+          wx.showToast({
+            title: '添加失败',
+            image: '/icons/warning/warning.png',
+            duration: 1000
+          })
         }
       })
     }, (err) => {
       console.log(err)
+      wx.showToast({
+        title: '添加失败',
+        image: '/icons/warning/warning.png',
+        duration: 1000
+      })
     })
   },
   deleteAna(e) {
@@ -119,12 +174,32 @@ Page({
     app.wxRequest(url, 'POST', data, (res) => {
       if (res.code == 200) {
         console.log('delete successfully')
-        wx.navigateBack({
-          delta: 1
+        wx.showToast({
+          title: '删除成功',
+          image: '/icons/ok/ok.png',
+          duration: 1000,
+          success: function () {
+            setTimeout(function () {
+              wx.navigateBack({
+                delta: 1
+              })
+            }, 1000);
+          }
+        })
+      }else{
+        wx.showToast({
+          title: '删除失败',
+          image: '/icons/warning/warning.png',
+          duration: 1000
         })
       }
     }, (err) => {
       console.log('delete failed')
+      wx.showToast({
+        title: '连接失败',
+        image: '/icons/warning/warning.png',
+        duration: 1000
+      })
     })
   }
 })

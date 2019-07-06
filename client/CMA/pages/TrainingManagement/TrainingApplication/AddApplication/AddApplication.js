@@ -19,22 +19,19 @@ Page({
   
   ApplicationAdd: function (e) {
 
-    /*if (e.detail.value.name == ""
+    if (e.detail.value.name == ""
       || e.detail.value.people == ""
       || e.detail.value.department == "" || e.detail.value.trainingUnit == ""
       || e.detail.value.expense == "" || e.detail.value.reason == ""
-      || e.detail.value.createDate == ""
-      || e.detail.value.graduationMajor == ""
-      || e.detail.value.date == "" ||
-      e.detail.value.workingYears == "") {
+      || e.detail.value.createDate == "") {
       wx.showToast({
-        title: '错误(空白输入)',
-        icon: 'none',
-        duration: 2000
+        title: '空白输入',
+        image: '/icons/warning/warning.png',
+        duration: 1000
       })
       console.log('错误(空白输入)')
     }
-    else*/ {
+    else {
       console.log('form发生了add事件，携带数据为：', e.detail.value)
       //console.log('form发生了add事件，携带数据为：', e.detail.value.id)
 
@@ -68,6 +65,28 @@ Page({
         console.log(res)
         console.log(res.msg)
         console.log(res.code)
+        if (res.msg == "已存在") {
+          wx.showToast({
+            title: '项目已存在',
+            image: '/icons/warning/warning.png',
+            duration: 1000
+          })
+        }
+        else {
+          wx.showToast({
+            title: '成功',
+            //icon: 'success',
+            image: '/icons/ok/ok.png',
+            duration: 1000,
+            success: function () {
+              setTimeout(function () {
+                wx.navigateTo({
+                  url: '../TrainingApplication',
+                })
+              }, 1000);
+            }
+          })
+        }
       }, (err) => {
         console.log('fail intermediate check register')
       })

@@ -8,6 +8,11 @@ Page({
   data: {
     equipment: {}
   },
+  mygo: function (e) {
+    wx.redirectTo({
+      url: '/pages/Equipment/EquipmentManagement/EquipmentManagement',
+    })
+  },
   mydelete: function (e) {
     var that = this
     var myurl = app.globalData.url + 'Equipment/deleteOne/' + that.data.equipment.id;
@@ -15,11 +20,14 @@ Page({
       console.log(res)
       wx.showToast({
         title: '删除成功',
-        image: '/icons/ok/ok.png',
-        success:function(e){
-          wx.redirectTo({
-            url: '/pages/Equipment/EquipmentManagement/EquipmentManagement',
-          })
+        icon: '/icons/ok/ok.png',
+        duration: 1000,
+        success: function () {
+          setTimeout(function () {
+            wx.redirectTo({
+              url: '/pages/Equipment/EquipmentManagement/EquipmentManagement',
+            })
+          }, 1000);
         }
       })
     }, (err) => {

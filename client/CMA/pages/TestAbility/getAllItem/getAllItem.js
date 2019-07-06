@@ -45,6 +45,11 @@ Page({
     }, (err) => {
       console.err('getone error')
       console.log('get all item success')
+      wx.showToast({
+        title: '添加失败',
+        image: '/icons/warning/warning.png',
+        duration: 1000
+      })
     })
   },
 
@@ -88,15 +93,45 @@ Page({
         success: function (res) {
           console.log("download ability annex now")
           console.log(res)
-          myFilePath = res.savedFilePath
-          console.log(myFilePath)
+          if (res.code == 200) {
+            myFilePath = res.savedFilePath
+            console.log(myFilePath)
+            wx.showToast({
+              title: '添加成功',
+              image: '/icons/ok/ok.png',
+              duration: 1000,
+              success: function () {
+                setTimeout(function () {
+                  wx.navigateBack({
+                    delta: 1
+                  })
+                }, 1000);
+              }
+            })
+          } else {
+            wx.showToast({
+              title: '添加失败',
+              image: '/icons/warning/warning.png',
+              duration: 1000
+            })
+          }
         },
         fail: function (err) {
           console.log(err)
+          wx.showToast({
+            title: '下载失败',
+            image: '/icons/warning/warning.png',
+            duration: 1000
+          })
         }
       })
     }, (err) => {
       console.log(err)
+      wx.showToast({
+        title: '连接失败',
+        image: '/icons/warning/warning.png',
+        duration: 1000
+      })
     })
   },
 })

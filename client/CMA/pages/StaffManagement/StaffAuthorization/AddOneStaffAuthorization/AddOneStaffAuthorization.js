@@ -29,12 +29,12 @@ Page({
       }
       console.log(url)
       console.log(data)
-      if(id==""||authorizerId==""||content==""||authorizerDate=="")
+      if (e.detail.value.id == "" || e.detail.value.authorizerId == "" || e.detail.value.content == "" || e.detail.value.authorizerDate=="")
       {
         wx.showToast({
           title: '错误，空白输入',
-          icon:'none',
-          duration:'2000'
+          image: '/icons/warning/warning.png',
+          duration:2000
         })
       }
       app.wxRequest(url, 'POST', data, (res) => {
@@ -42,9 +42,37 @@ Page({
         console.log(res)
         console.log(res.msg)
         console.log(res.code)
-        wx.redirectTo({
-          url: '../StaffAuthorization',
-        })
+        if(res.msg=="被授权人不存在")
+        {
+          wx.showToast({
+            title: '被授权人不存在',
+            image: '/icons/warning/warning.png',
+            duration: 1000
+          })
+        }
+        else if (res.msg == "授权人不存在") {
+          wx.showToast({
+            title: '授权人不存在',
+            image: '/icons/warning/warning.png',
+            duration: 1000
+          })
+        }
+        else{
+          wx.showToast({
+            title: '成功',
+            //icon: 'success',
+            image: '/icons/ok/ok.png',
+            duration: 1000,
+            success: function () {
+              setTimeout(function () {
+                wx.navigateTo({
+                  url: '../StaffAuthorization',
+                })
+              }, 1000);
+            }
+
+          })
+        }
       }, (err) => {
         console.log('fail intermediate check register')
       })

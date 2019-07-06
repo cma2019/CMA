@@ -9,6 +9,10 @@ Page({
       id: options.id
     })
     console.log(this.data.id)
+    
+  },
+  onShow:function()
+  {
     let url = app.globalData.url + 'StaffAuthorization/getOne'
     let postdata = {
       "authorizationId": this.data.id
@@ -38,17 +42,18 @@ Page({
   },
   intercheckmodify: function (e) {
     console.log('modify modify')
-   /* if (e.detail.value.object == "" || e.detail.value.content == "" ||
-      e.detail.value.date == "" || e.detail.value.personInCharge == "" || e.detail.value.state == "") {
+    if (e.detail.value.authorizationId == "" || e.detail.value.id == "" ||
+      e.detail.value.authorizerId == "" || e.detail.value.content == "" || e.detail.value.authorizerDate == "") {
       wx.showToast({
-        title: 'wrong message',
-        duration: 2000
+        title: '空白输入',
+        image: '/icons/warning/warning.png',
+        duration: 1000
       })
       console.log('wrong message')
     }
-    else */{
-      console.log('modify，携带数据为：', e.detail.value)
-      console.log('modify，携带数据为：', e.detail.value.object)
+    else {
+     // console.log('modify，携带数据为：', e.detail.value)
+     // console.log('modify，携带数据为：', e.detail.value.object)
 
       let url = app.globalData.url + 'StaffAuthorization/modifyOne';
       console.log(url)
@@ -71,6 +76,40 @@ Page({
           })
         }
         */
+        if (res.msg == "被授权人不存在") {
+          wx.showToast({
+            title: '被授权人不存在',
+            image: '/icons/warning/warning.png',
+            duration: 1000
+          })
+        }
+        else if (res.msg == "授权人不存在") {
+          wx.showToast({
+            title: '授权人不存在',
+            image: '/icons/warning/warning.png',
+            duration: 1000
+          })
+        }
+        else {
+          wx.showToast({
+            title: '成功',
+            //icon: 'success',
+            image: '/icons/ok/ok.png',
+            duration: 1000,
+            success: function () {
+              setTimeout(function () {
+               /* wx.navigateTo({
+                  url: '../GetOneStaffAuthorization/GetOneStaffAuthorization?id=' + e.detail.value.authorizationId,
+                })*/
+                wx.navigateBack({
+                  delta:1
+                })
+              }, 1000);
+            }
+
+          })
+        }
+
       }, (err) => {
         console.log('fail modify')
       })

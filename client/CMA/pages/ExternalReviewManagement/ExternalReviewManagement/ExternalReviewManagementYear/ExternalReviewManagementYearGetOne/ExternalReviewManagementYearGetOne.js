@@ -16,11 +16,20 @@ Page({
     var myurl = app.globalData.url + 'ExternalReviewDocument/deleteOne/' + that.data.id;
     app.wxRequest(myurl, 'POST', null, (res) => {
       console.log(res)
+      wx.showToast({
+        title: '删除成功',
+        icon: '/icons/ok/ok.png',
+        duration: 1000,
+        success: function () {
+          setTimeout(function () {
+            wx.redirectTo({
+              url: '/pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementYear/ExternalReviewManagementYear?year=' + that.data.year,
+            })
+          }, 1000);
+        }
+      })
     }, (err) => {
       console.log(err)
-    })
-    wx.redirectTo({
-      url: '/pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementYear/ExternalReviewManagementYear?year=' + that.data.year,
     })
   },
   viewDetail: function (e) {
@@ -44,8 +53,17 @@ Page({
           app.wxUploadFile(myurl2, mypath, null, (res) => {
             console.log("upload file success")
             console.log(res)
-            wx.redirectTo({
-              url: '/pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementYear/ExternalReviewManagementYear?year=' + that.data.year,
+            wx.showToast({
+              title: '修改成功',
+              icon: '/icons/ok/ok.png',
+              duration: 1000,
+              success: function () {
+                setTimeout(function () {
+                  wx.redirectTo({
+                    url: '/pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementYear/ExternalReviewManagementYear?year=' + that.data.year,
+                  })
+                }, 1000);
+              }
             })
           }, (err) => {
             console.log(err)
@@ -71,6 +89,15 @@ Page({
         success: function (res) {
           myFilePath = res.savedFilePath
           console.log(myFilePath)
+          wx.showToast({
+            title: '下载成功',
+            icon: '/icons/ok/ok.png',
+            duration: 1000,
+            success: function () {
+              setTimeout(function () {
+              }, 1000);
+            }
+          })
         },
         fail: function (err) {
           console.log(err)

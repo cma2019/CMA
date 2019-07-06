@@ -2,31 +2,31 @@
 <scroll-view scroll-y>
   <form bindsubmit='mytest'>
     <view class="section">
-      <van-field name="totalNumber" value="{{totalNumber}}" required clearable label="总人数" placeholder="总人数"></van-field>
+      <van-field name="totalNumber" value="{{totalNumber}}" required clearable label="总人数" placeholder="总人数" type='number' maxlength="8"></van-field>
     </view>
     <view class="section">
-      <van-field name="seniorProfessionalTitle" value="{{seniorProfessionalTitle}}" required clearable label="高级专业技术职称人数" placeholder="高级专业技术职称人数"></van-field>
+      <van-field name="seniorProfessionalTitle" value="{{seniorProfessionalTitle}}" required clearable label="高级专业技术职称人数" placeholder="高级专业技术职称人数" type='number' maxlength="8"></van-field>
     </view>
     <view class="section">
-      <van-field name="intermediateProfessionalTitle" value="{{intermediateProfessionalTitle}}" required clearable label="中级专业技术职称人数" placeholder="中级专业技术职称人数"></van-field>
+      <van-field name="intermediateProfessionalTitle" value="{{intermediateProfessionalTitle}}" required clearable label="中级专业技术职称人数" placeholder="中级专业技术职称人数" type='number' maxlength="8"></van-field>
     </view>
     <view class="section">
-      <van-field name="primaryProfessionalTitle" value="{{primaryProfessionalTitle}}" required clearable label="初级专业技术职称人数" placeholder="初级专业技术职称人数"></van-field>
+      <van-field name="primaryProfessionalTitle" value="{{primaryProfessionalTitle}}" required clearable label="初级专业技术职称人数" placeholder="初级专业技术职称人数" type='number' maxlength="8"></van-field>
     </view>
     <view class="section">
-      <van-field name="fixedAssets" value="{{fixedAssets}}" required clearable label="固定资产原值" placeholder="固定资产原值"></van-field>
+      <van-field name="fixedAssets" value="{{fixedAssets}}" required clearable label="固定资产原值" placeholder="固定资产原值" type='digit' maxlength="8"></van-field>
     </view>
     <view class="section">
-      <van-field name="equipmentNumber" value="{{equipmentNumber}}" required clearable label="仪器设备台数" placeholder="仪器设备台数"></van-field>
+      <van-field name="equipmentNumber" value="{{equipmentNumber}}" required clearable label="仪器设备台数" placeholder="仪器设备台数" type='number' maxlength="8"></van-field>
     </view>
     <view class="section">
-      <van-field name="floorSpace" value="{{floorSpace}}" required clearable label="场地面积" placeholder="场地面积"></van-field>
+      <van-field name="floorSpace" value="{{floorSpace}}" required clearable label="场地面积" placeholder="场地面积" type='digit' maxlength="8"></van-field>
     </view>
     <view class="section">
-      <van-field name="stableArea" value="{{stableArea}}" required clearable label="稳恒面积" placeholder="稳恒面积"></van-field>
+      <van-field name="stableArea" value="{{stableArea}}" required clearable label="稳恒面积" placeholder="稳恒面积" type='digit' maxlength="8"></van-field>
     </view>
     <view class="section">
-      <van-field name="outdoorsArea" value="{{outdoorsArea}}" required clearable label="户外面积" placeholder="户外面积"></van-field>
+      <van-field name="outdoorsArea" value="{{outdoorsArea}}" required clearable label="户外面积" placeholder="户外面积" type='digit' maxlength="8"></van-field>
     </view>
     <view class="section">
       <van-field name="nameAndAddress" value="{{nameAndAddress}}" required clearable label="场所名称和地址" placeholder="场所名称和地址"></van-field>
@@ -38,4 +38,5 @@
       <button class='van-button--info' form-type='submit'>确定</button>
     </view>
   </form>
+  <van-button type="info" size="small" bindtap="mygo">返回</van-button>
 </scroll-view>

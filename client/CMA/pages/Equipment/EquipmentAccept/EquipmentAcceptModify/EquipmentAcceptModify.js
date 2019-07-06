@@ -6,6 +6,11 @@ Page({
    */
   data: {
   },
+  mygo: function (e) {
+    wx.redirectTo({
+      url: '/pages/Equipment/EquipmentAccept/EquipmentAccept',
+    })
+  },
   bindDateChange: function (e) {
     console.log("date")
     console.log(e.detail.value)
@@ -52,13 +57,21 @@ Page({
     };
     app.wxRequest(myurl, 'POST', mydata, (res) => {
       console.log(res.data)
+      wx.showToast({
+        title: '修改成功',
+        icon: '/icons/ok/ok.png',
+        duration: 1000,
+        success: function () {
+          setTimeout(function () {
+            wx.redirectTo({
+              url: '/pages/Equipment/EquipmentAccept/EquipmentAccept',
+            })
+          }, 1000);
+        }
+      })
     }, (err) => {
       console.log(err)
     })
-    wx.redirectTo({
-      url: '/pages/Equipment/EquipmentAccept/EquipmentAccept',
-    })
-    
   },
   /**
    * 生命周期函数--监听页面加载

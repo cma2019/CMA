@@ -23,9 +23,9 @@ Page({
       || e.detail.value.place == "" || e.detail.value.presenter == ""
       ) {
       wx.showToast({
-        title: '错误(空白输入)',
-        icon: 'none',
-        duration: 2000
+        title: '空白输入',
+        image: '/icons/warning/warning.png',
+        duration: 1000
       })
       console.log('错误(空白输入)')
     }
@@ -51,9 +51,28 @@ Page({
         console.log(res)
         console.log(res.msg)
         console.log(res.code)
-        wx.redirectTo({
-          url: '/pages/StaffManagement/StaffTraining/StaffTraining',
-        })
+        if (res.msg == "已存在") {
+          wx.showToast({
+            title: '已存在',
+            image: '/icons/warning/warning.png',
+            duration: 1000
+          })
+        }
+        else {
+          wx.showToast({
+            title: '成功',
+            //icon: 'success',
+            image: '/icons/ok/ok.png',
+            duration: 1000,
+            success: function () {
+              setTimeout(function () {
+                wx.redirectTo({
+                  url: '/pages/StaffManagement/StaffTraining/StaffTraining',
+                })
+              }, 1000);
+            }
+          })
+        }
       }, (err) => {
         console.log('fail intermediate check register')
       })

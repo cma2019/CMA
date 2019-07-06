@@ -9,7 +9,11 @@ Page({
     fileId: "test fileId",
     fileName: "test.docx"
   },
-
+  mygo: function (e) {
+    wx.redirectTo({
+      url: '/pages/TestingInstitutionManagement/Certificate/Certificate',
+    })
+  },
   newEquipment: function (e) {
     console.log('begin add')
     var myurl = app.globalData.url + 'Certificate/addOne';
@@ -27,8 +31,17 @@ Page({
         }, (err) => {
           console.log(err)
         })
-        wx.redirectTo({
-          url: '/pages/TestingInstitutionManagement/Certificate/Certificate',
+        wx.showToast({
+          title: '上传成功',
+          icon: '/icons/ok/ok.png',
+          duration: 1000,
+          success: function () {
+            setTimeout(function () {
+              wx.redirectTo({
+                url: '/pages/TestingInstitutionManagement/Certificate/Certificate',
+              })
+            }, 1000);
+          }
         })
       },
       fail: function (err) {

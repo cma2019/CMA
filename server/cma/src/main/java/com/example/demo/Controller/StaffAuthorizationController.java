@@ -89,7 +89,7 @@ public class StaffAuthorizationController {
         JSONObject json=new JSONObject();
         if(staffAuthorizationRepository.existsById(authorizationId)==false){
             json.put("code",210);
-            json.put("msg","失败,无法找到");
+            json.put("msg","授权信息不存在");
             json.put("data",null);
         }
         else{
@@ -107,7 +107,7 @@ public class StaffAuthorizationController {
         JSONObject json=new JSONObject();
         if(staffAuthorizationRepository.existsById(authorizationId)==false){
             json.put("code",210);
-            json.put("msg","失败,无法找到");
+            json.put("msg","授权信息不存在");
             json.put("data",null);
         }
         else{

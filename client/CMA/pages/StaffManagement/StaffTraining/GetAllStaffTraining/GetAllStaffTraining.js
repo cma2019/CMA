@@ -11,6 +11,9 @@ Page({
     this.setData({
       id: options.id
     })
+    
+  },
+  onShow: function () {
     let url = app.globalData.url + 'StaffTraining/getAllByStaff'
     let postdata = {
       "id": this.data.id
@@ -23,32 +26,7 @@ Page({
       })
 
       console.log(this.data.mess)
-    }, (err) => {
-      //console.err('getone error')
-      wx.showToast({
-        title: '失败',
-        duration: 1500
-      })
-      console.log('getone error')
-    })
-  },
-  onShow: function () {
-    let url1 = app.globalData.url + 'StaffTraining/getAllByStaff'
-    let postdata1 = {
-      "id": this.data.id
-    }
-    app.wxRequest(url1, 'GET', postdata1, (res) => {
-      this.setData({
-        mess: res.data
-      })
-
-      console.log(this.data.mess)
-    }, (err) => {
-      //console.err('getone error')
-      wx.showToast({
-        title: '失败',
-        duration: 1500
-      })
+    }, (err) => {     
       console.log('getone error')
     })
   },

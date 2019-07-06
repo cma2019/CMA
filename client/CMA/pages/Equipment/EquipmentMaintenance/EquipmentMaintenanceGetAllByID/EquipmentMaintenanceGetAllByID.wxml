@@ -12,4 +12,5 @@
   </view>
   </van-cell-group>
   <van-button type="info" size="small" bindtap="gotoAdd">添加仪器设备维修保养记录</van-button>
+  <van-button type="info" size="small" bindtap="mygo">返回</van-button>
 </scroll-view>

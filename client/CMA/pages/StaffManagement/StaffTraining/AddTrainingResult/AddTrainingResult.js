@@ -21,6 +21,7 @@ Page({
 
   },
   onShow: function () {
+    
     this.setData({
       trainingId: this.data.trainingId
     })
@@ -41,21 +42,29 @@ Page({
         console.log(res)
         console.log(res.msg)
         console.log(res.code)
-        if (res.code == 210) {
+        if (res.msg == "已有结果") {
           wx.showToast({
-            title: '添加失败!',
-            icon: "none",
-            duration: 2000
+            title: '已有结果',
+            image: '/icons/warning/warning.png',
+            duration: 1000
           })
         }
-        else
-        {
+        else {
           wx.showToast({
-            title: '添加成功!',
-            icon: "success",
-            duration: 2000
+            title: '成功',
+            //icon: 'success',
+            image: '/icons/ok/ok.png',
+            duration: 1000,
+            success: function () {
+              setTimeout(function () {
+                wx.navigateTo({
+                  url: '../GetOneTrainingPeople/GetOneTrainingPeople',
+                })
+              }, 1000);
+            }
           })
         }
+
       }, (err) => {
         console.log('fail intermediate check register')
       })

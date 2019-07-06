@@ -1,9 +1,8 @@
 {
   "pages": [
-    
     "pages/home/home",
-    "pages/login/login",
     "pages/Management/Management",
+    "pages/login/login",
     "pages/register/register",
     "pages/IntermediateCheck/IntermediateCheckMenu/IntermediateCheckMenu",
     "pages/index/index",
@@ -219,6 +218,6 @@
     "van-checkbox-group": "../../dist/checkbox-group/index",
     "van-radio": "../../dist/radio/index",
     "van-radio-group": "../../dist/radio-group/index",
-    "van-stepper":"../../dist/stepper/index"
+    "van-stepper": "../../dist/stepper/index"
   }
 }
