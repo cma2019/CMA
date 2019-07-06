@@ -58,8 +58,8 @@
     <view wx:if="{{true}}">
     <van-collapse-item title="期间核查" name="7">
       <van-cell-group>
-        <van-cell title="InterCheck" boarder="{{false}}" is-link  center="{{true}}" url="../IntermediateCheck/IntermediateCheck/IntermediateCheck"></van-cell>
-        <van-cell title="InterCheckPlan" boarder="{{false}}" is-link  center="{{true}}" url="../IntermediateCheck/IntermediateChecksRecord/IntermediateChecksRecord"></van-cell>
+        <van-cell title="期间核查计划" boarder="{{false}}" is-link  center="{{true}}" url="../IntermediateCheck/IntermediateCheck/IntermediateCheck"></van-cell>
+        <van-cell title="期间核查记录" boarder="{{false}}" is-link  center="{{true}}" url="../IntermediateCheck/IntermediateChecksRecord/IntermediateChecksRecord"></van-cell>
       </van-cell-group>
     </van-collapse-item>
     </view>
@@ -140,7 +140,7 @@
     <view wx:if="{{true}}">
     <van-collapse-item title="标准管理" name="17">
       <van-cell-group>
-        <van-cell title="档案管理" boarder="{{false}}" is-link  center="{{true}}" url="../StandardManagement/StandardManagement"></van-cell>
+        <van-cell title="标准管理" boarder="{{false}}" is-link  center="{{true}}" url="../StandardManagement/StandardManagement"></van-cell>
       </van-cell-group>
     </van-collapse-item>
     </view>
