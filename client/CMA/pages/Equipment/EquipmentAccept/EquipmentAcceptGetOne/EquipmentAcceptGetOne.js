@@ -7,16 +7,30 @@ Page({
   data: {
     equipment: {}
   },
+  mygo: function (e) {
+    wx.redirectTo({
+      url: '/pages/Equipment/EquipmentAccept/EquipmentAccept',
+    })
+  },
   mydelete: function (e) {
     var that = this
     var myurl = app.globalData.url + 'EquipmentReceive/deleteOne/' + that.data.equipment.id;
     app.wxRequest(myurl, 'POST', null, (res) => {
       console.log(res)
+      wx.showToast({
+        title: '删除成功',
+        icon: '/icons/ok/ok.png',
+        duration: 1000,
+        success: function () {
+          setTimeout(function () {
+            wx.redirectTo({
+              url: '/pages/Equipment/EquipmentAccept/EquipmentAccept',
+            })
+          }, 1000);
+        }
+      })
     }, (err) => {
       console.log(err)
-    })
-    wx.redirectTo({
-      url: '/pages/Equipment/EquipmentAccept/EquipmentAccept',
     })
   },
   viewDetail: function (e) {

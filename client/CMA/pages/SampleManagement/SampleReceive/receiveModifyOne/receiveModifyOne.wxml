@@ -7,7 +7,13 @@
       <van-field v-model="sampleName" name="sampleName" clearable label="样品名称" placeholder="{{origindata.sampleName}}" />
 
       <van-field v-model="sampleAmount" name="sampleAmount" clearable label="样品数量" placeholder="{{origindata.sampleAmount}}"/>
-      <van-field v-model="sampleState" name="sampleState"clearable label="样品状态" placeholder="{{origindata.sampleState}}" />
+      <van-cell v-model="sampleAmount" name="sampleAmount" title="样品数量">
+        <van-stepper value="{{origindata.sampleAmount}}"  name="sampleAmount" integer min="1" step="1"/>
+      </van-cell>
+
+      <van-cell v-model="sampleState" name="sampleState" title="样品状态">
+        <van-stepper value="{{origindata.sampleState}}"  name="sampleState" integer min="0" max="2"step="1"/>
+      </van-cell>
 
       <van-field v-model="requester"  name="requester" clearable label="委托单位" placeholder="{{origindata.requester}}"/>
 
@@ -15,7 +21,7 @@
       
       <picker name = 'receiveDate' mode='date' value='{{receiveDate}}' bindchange='bindreceiveDateChange'>
         <view class='picker'>
-          <van-field  name="receiveDate" label="接收日期"  value='{{receiveDate}}' placeholder="{{origindata.receiveDate}}" clearable />
+          <van-field readonly name="receiveDate" label="接收日期"  value='{{receiveDate}}' placeholder="{{origindata.receiveDate}}" clearable />
         </view>
       </picker>  
 
@@ -23,7 +29,7 @@
 
       <picker name = 'obtainDate' mode='date' value='{{obtainDate}}' bindchange='bindobtainDateChange'>
         <view class='picker'>
-          <van-field  name="obtainDate" label="领取日期" value='{{obtainDate}}' placeholder="{{origindata.obtainDate}}" clearable />
+          <van-field  readonly name="obtainDate" label="领取日期" value='{{obtainDate}}' placeholder="{{origindata.obtainDate}}" clearable />
         </view>
       </picker>
       

@@ -61,7 +61,7 @@ public class TrainingApplicationController {
             if(list.get(i).Equals(trainingApplication))
             {
                 json.put("code",210);
-                json.put("msg","失败,已存在");
+                json.put("msg","已存在");
                 json.put("data",null);
                 return json;
             }
@@ -78,7 +78,7 @@ public class TrainingApplicationController {
         JSONObject json=new JSONObject();
         if(trainingApplicationRepository.existsById(id)==false){
             json.put("code",210);
-            json.put("msg","失败,无法找到");
+            json.put("msg","无法找到");
             json.put("data",null);
         }
         else{
@@ -97,7 +97,7 @@ public class TrainingApplicationController {
         JSONObject json=new JSONObject();
         if(trainingApplicationRepository.existsById(id)==false){
             json.put("code",210);
-            json.put("msg","失败,无法找到");
+            json.put("msg","无法找到");
             json.put("data",null);
         }
         else{
@@ -131,7 +131,7 @@ public class TrainingApplicationController {
         JSONObject json=new JSONObject();
         if(trainingApplicationRepository.existsById(id)==false){
             json.put("code",210);
-            json.put("msg","失败，无法找到");
+            json.put("msg","无法找到");
             json.put("data",null);
         }
         else{
@@ -148,7 +148,7 @@ public class TrainingApplicationController {
             }
             else{
                 json.put("code",210);
-                json.put("msg","失败,已审查");
+                json.put("msg","已审查");
                 json.put("data",null);
             }
         }

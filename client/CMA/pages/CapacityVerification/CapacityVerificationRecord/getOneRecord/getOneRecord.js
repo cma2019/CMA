@@ -49,6 +49,11 @@ Page({
       })
     }, (err) => {
       console.err('get one project error')
+      wx.showToast({
+        title: '连接失败',
+        image: '/icons/warning/warning.png',
+        duration: 1000
+      })
     })
   },
   modifyData(e) {
@@ -68,12 +73,32 @@ Page({
     app.wxRequest(url, 'POST', data, (res) => {
       if (res.code == 200) {
         console.log('delete record successfully')
-        wx.navigateBack({
-          delta: 1
+        wx.showToast({
+          title: '删除成功',
+          image: '/icons/ok/ok.png',
+          duration: 1000,
+          success: function () {
+            setTimeout(function () {
+              wx.navigateBack({
+                delta: 1
+              })
+            }, 1000);
+          }
+        })
+      }else{
+        wx.showToast({
+          title: '删除失败',
+          image: '/icons/warning/warning.png',
+          duration: 1000
         })
       }
     }, (err) => {
       console.log('delete plan failed')
+      wx.showToast({
+        title: '连接失败',
+        image: '/icons/warning/warning.png',
+        duration: 1000
+      })
     })
   }
 })

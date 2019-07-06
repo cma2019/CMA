@@ -14,7 +14,11 @@ Page({
     obtainerMessage: "领取人不能为空",
     sendDateMessage:"",
     dis: "false",
-    receiptId:''
+    receiptId:'',
+    sampleNumber:null,
+    sampleName:null,
+    sampleAmount:null,
+    sampleState:null
   },
 
   /**
@@ -28,11 +32,15 @@ Page({
     }
     else{
       this.setData({
-        receiptId: 0
+        receiptId: 0,
+        sampleNumber: options.sampleNumber,
+        sampleName: options.sampleName,
+        sampleAmount: options.sampleAmount,
+        sampleState: options.sampleState
       })
     }
     console.log("fsdgdf")
-    console.log(this.data.receiptId)
+    console.log(this.data)
   },
   sampleNumberChange: function (event) {
     const no = event.detail
@@ -188,6 +196,16 @@ Page({
       console.log('错误（空白输入）')
     }
     else {
+      let sampleNumber = this.data.sampleNumber
+      let sampleName = this.data.sampleName
+      let sampleAmount = this.data.sampleAmount
+      let sampleState = this.data.sampleState
+      if (this.data.sampleNumber == '' || this.data.sampleNumber == null) {
+        sampleNumber = e.detail.value.sampleNumber
+        sampleName = e.detail.value.sampleName
+        sampleAmount = e.detail.value.sampleAmount
+        sampleState = e.detail.value.sampleState
+      }
       console.log('SampleIo发生了addone事件，携带数据为：', e.detail.value)
       console.log(this.data.receiptId)
       console.log("fsdsdgf")
@@ -200,10 +218,10 @@ Page({
         },
         data: {
           "receiptId": this.data.receiptId,
-          "sampleNumber": e.detail.value.sampleNumber,
-          "sampleName": e.detail.value.sampleName,
-          "sampleAmount": e.detail.value.sampleAmount,
-          "sampleState": e.detail.value.sampleState,
+          "sampleNumber": sampleNumber,
+          "sampleName": sampleName,
+          "sampleAmount": sampleAmount,
+          "sampleState": sampleState,
           "sender": e.detail.value.sender,
           "receiver": e.detail.value.receiver,
           "sendDate": e.detail.value.sendDate,

@@ -56,7 +56,7 @@ public class StaffTrainingController {
         for(int i=0;i<list.size();i++){
             if(list.get(i).equals((staffTraining))){
                 json.put("code",210);
-                json.put("msg","失败，已存在");
+                json.put("msg","已存在");
                 json.put("data",null);
                 return json;
             }
@@ -141,7 +141,7 @@ public class StaffTrainingController {
         JSONObject json=new JSONObject();
         if(!staffTrainingRepository.existsByTrainingId(trainingId)){
             json.put("code",210);
-            json.put("msg","失败,无法找到该培训");
+            json.put("msg","无法找到该培训");
             json.put("data",null);
         }
         else
@@ -149,14 +149,14 @@ public class StaffTrainingController {
             List<StaffTraining> list=staffTrainingRepository.findAllByTrainingId(trainingId);
             if(staffManagementRepository.existsById(id)==false){
                 json.put("code",210);
-                json.put("msg","失败,无法找到id为"+id+"的人员");
+                json.put("msg","无法找到该人员");
                 json.put("data",null);
                 return json;
             }
             for(int j=0;j<list.size();j++){
                 if(id==list.get(j).getId()){
                     json.put("code",210);
-                    json.put("msg","已存在id为"+id+"人员");
+                    json.put("msg","已存在该人员");
                     json.put("data",null);
                     return json;
                 }
@@ -190,7 +190,7 @@ public class StaffTrainingController {
         JSONObject json=new JSONObject();
         if(!staffTrainingRepository.existsByTrainingIdAndId(trainingId,id)){
             json.put("code",210);
-            json.put("msg","失败,无法找到该培训");
+            json.put("msg","无法找到该培训");
             json.put("data",null);
         }
         else{
@@ -198,7 +198,7 @@ public class StaffTrainingController {
             if(staffTraining.getResult()!=null)
             {
                 json.put("code",210);
-                json.put("msg","失败，已有结果");
+                json.put("msg","已有结果");
                 json.put("data",null);
                 return json;
             }
@@ -229,7 +229,7 @@ public class StaffTrainingController {
         JSONObject json=new JSONObject();
         if(!staffTrainingRepository.existsByTrainingIdAndId(trainingId,id)){
             json.put("code",210);
-            json.put("msg","失败,无法找到该培训");
+            json.put("msg","无法找到该培训");
             json.put("data",null);
         }
         else{
@@ -237,7 +237,7 @@ public class StaffTrainingController {
             if(staffTraining.getResult()==null)
             {
                 json.put("code",210);
-                json.put("msg","失败，未有结果");
+                json.put("msg","未有结果");
                 json.put("data",null);
                 return json;
             }
@@ -263,7 +263,7 @@ public class StaffTrainingController {
         JSONObject json=new JSONObject();
         if(!staffTrainingRepository.existsByTrainingIdAndId(trainingId,id)){
             json.put("code",210);
-            json.put("msg","失败,无法找到该培训");
+            json.put("msg","无法找到该培训");
             json.put("data",null);
         }
         else{
@@ -280,7 +280,7 @@ public class StaffTrainingController {
         JSONObject json=new JSONObject();
         if(!staffTrainingRepository.existsByTrainingIdAndId(trainingId,id)){
             json.put("code",210);
-            json.put("msg","失败,无法找到该培训");
+            json.put("msg","无法找到该培训");
             json.put("data",null);
         }
         else{
