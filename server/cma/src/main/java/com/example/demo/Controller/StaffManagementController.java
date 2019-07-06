@@ -61,7 +61,7 @@ public class StaffManagementController {
             if(staffManagement.Eqauls(temp)==true)
             {
                 json.put("code",210);
-                json.put("msg","失败，已存在员工");
+                json.put("msg","失败,已存在员工");
                 json.put("data",null);
                 return json;
             }
