@@ -5,7 +5,7 @@ import javax.persistence.*;
 public class TestingInstitutionInformation {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    int id;
+    long id;
     private String testingInstitutionName;     //检测检验机构名称
     private String testingInstitutionAddress;       //地址
     private String postcode;       //邮编
@@ -97,11 +97,11 @@ public class TestingInstitutionInformation {
         return tiPicTelephone;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
