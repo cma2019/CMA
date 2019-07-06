@@ -13,8 +13,8 @@
       </view>
     </view>
     <view wx:else>
-     <text>not have a SampleIo yet</text>
+     <text>暂未含有样品进入进出登记表</text>
     </view>
   </van-cell-group>
 </view>
-<van-button type="info" size="small" bindtap="gotoAdd">Add a sampleio</van-button>
+<van-button type="info" size="small" bindtap="gotoAdd">添加</van-button>

@@ -26,8 +26,8 @@ Page({
     })
   },
   goback: function () {
-    wx.navigateBack({
-      delta: 1
+    wx.redirectTo({
+      url: '/pages/InternalAuditManagement/InternalAudit/InternalAudit',
     })
   },
   /**

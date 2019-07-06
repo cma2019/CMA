@@ -23,8 +23,8 @@
       </view>
     </view>
     <view wx:else>
-     <text>not have a SampleReceipt yet</text>
+     <text>暂未含有样品接收单</text>
     </view>
   </van-cell-group>
 </view>
-<van-button type="info" size="small" bindtap="gotoAdd">Add a samplereceipt</van-button>
+<van-button type="info" size="small" bindtap="gotoAdd">添加</van-button>

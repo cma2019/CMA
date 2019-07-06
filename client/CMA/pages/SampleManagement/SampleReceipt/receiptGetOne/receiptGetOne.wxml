@@ -7,11 +7,11 @@
     <text class="search-btn" bindtap="cancelSearch">取消</text>
   -->
     <van-cell-group>
-      <van-field  label="applicationUnit" value='{{mess.applicationUnit}}' disabled input-align="right"/>
-      <van-field  label="version" value='{{mess.version}}' disabled input-align="right"/>
-      <van-field  label="contractId" value='{{mess.contractId}}' disabled input-align="right"/>
-      <van-field  label="testType" value='{{mess.testType}}' disabled input-align="right"/>
-      <van-field  label="electronicMedia" value='{{mess.electronicMedia}}' disabled input-align="right"/>
+      <van-field  label="申报单位名称" value='{{mess.applicationUnit}}' disabled input-align="right"/>
+      <van-field  label="版本号" value='{{mess.version}}' disabled input-align="right"/>
+      <van-field  label="合同登记编号" value='{{mess.contractId}}' disabled input-align="right"/>
+      <van-field  label="检测类型" value='{{mess.testType}}' disabled input-align="right"/>
+      <van-field  label="电子媒介" value='{{mess.electronicMedia}}' disabled input-align="right"/>
       <van-cell-group>
         <view wx:for="{{mess.materialList}}"wx:key="{{index}}">
           <van-cell title="{{array[mess.materialList[index].materialId]}}" >
@@ -22,19 +22,19 @@
           </van-cell>
         </view>
       </van-cell-group>
-      <van-field  label="softwareType" value='{{mess.softwareType}}' disabled input-align="right"/>
-      <van-field  label="receiveUnit" value='{{mess.receiveUnit}}' disabled input-align="right"/>
-      <van-field  label="receiveDate" value='{{mess.receiveDate}}' disabled input-align="right"/>
-      <van-field  label="sender" value='{{mess.sender}}' disabled input-align="right"/>
-      <van-field  label="receiver" value='{{mess.receiver}}' disabled input-align="right"/>
+      <van-field  label="软件类型" value='{{mess.softwareType}}' disabled input-align="right"/>
+      <van-field  label="接收单位名称" value='{{mess.receiveUnit}}' disabled input-align="right"/>
+      <van-field  label="接收时间" value='{{mess.receiveDate}}' disabled input-align="right"/>
+      <van-field  label="报送人" value='{{mess.sender}}' disabled input-align="right"/>
+      <van-field  label="受理人" value='{{mess.receiver}}' disabled input-align="right"/>
     </van-cell-group>
 </view>
 <view>
-  <van-button type="info" size="small" bindtap="gotoAddsampleReceive">Add a sampleReceive</van-button>
-  <van-button type="info" size="small" bindtap="gotoAddsampleIo">Add a sampleIo</van-button>
+  <van-button type="info" size="small" bindtap="gotoAddsampleReceive">添加样品接收登记表</van-button>
+  <van-button type="info" size="small" bindtap="gotoAddsampleIo">添加样品进出登记表</van-button>
 </view>
 <view>
-  <van-button type="info" size="small" bindtap="modifyData">modify</van-button>
-  <van-button type="info" size="small" bindtap="deleteData">delete</van-button>
-  <van-button type="info" size="small" bindtap="goback">back</van-button>
+  <van-button type="info" size="small" bindtap="modifyData">修改</van-button>
+  <van-button type="info" size="small" bindtap="deleteData">删除</van-button>
+  <van-button type="info" size="small" bindtap="goback">返回</van-button>
 </view>
