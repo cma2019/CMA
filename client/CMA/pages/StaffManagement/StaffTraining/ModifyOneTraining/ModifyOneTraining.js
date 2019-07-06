@@ -8,6 +8,10 @@ Page({
     this.setData({
       id: options.id
     })
+    
+  },
+  onShow :function()
+  {
     console.log(this.data.id)
     let url = app.globalData.url + 'StaffTraining/getOneTraining'
     let postdata = {
@@ -58,8 +62,18 @@ Page({
       app.wxRequest(url, 'POST', data, (res) => {
         console.log('modify message successfully')
         console.log(res)
-        wx.redirectTo({
-          url: '../GetOneTraining/GetOneTraining?id=' + e.detail.value.trainingId,
+        wx.showToast({
+          title: '成功',
+          //icon: 'success',
+          image: '/icons/ok/ok.png',
+          duration: 1000,
+          success: function () {
+            setTimeout(function () {
+              wx.redirectTo({
+                url: '../GetOneTraining/GetOneTraining',
+              })
+            }, 1000);
+          }
         })
       }, (err) => {
         console.log('fail modify')

@@ -21,38 +21,83 @@ Page({
     };
     app.wxRequest(myurl1, 'POST', mydata, (res) => {
       console.log(res)
+      if (res.msg == "人员不存在") {
+        wx.showToast({
+          title: '人员不存在',
+          image: '/icons/warning/warning.png',
+          duration: 1000
+        })
+      }
+      else if (res.msg == "失败,已存在") {
+        wx.showToast({
+          title: '失败,已存在',
+          image: '/icons/warning/warning.png',
+          duration: 1000
+        })
+      }
+      else
+      {
+        wx.chooseMessageFile({
+          count: 1,
+          type: 'all',
+          success: function (res) {
+            console.log("get file success")
+            console.log(res)
+            console.log(res.tempFiles)
+            console.log(res.tempFiles[0])
+            console.log(res.tempFiles[0].path)
+            //mypath = res.tempFiles[0].path
+            app.wxUploadFile(myurl2, res.tempFiles[0].path, null, (res) => {
+              console.log("upload file success")
+              console.log(res)
+              console.log(mydata)
+              wx.showToast({
+                title: '成功',
+                //icon: 'success',
+                image: '/icons/ok/ok.png',
+                duration: 1000,
+                success: function () {
+                  setTimeout(function () {
+                    wx.redirectTo({
+                      url: '../PrintOneStaffFile/PrintOneStaffFile',
+                    })
+                  }, 1000);
+                }
+
+              })
+            }, (err) => {
+              console.log(err)
+            })
+
+          },
+          fail: function (err) {
+            console.log("get file failed")
+            console.log(err)
+          }
+
+        })
+
+      }
+      /*else {
+        wx.showToast({
+          title: '成功',
+          //icon: 'success',
+          image: '/icons/ok/ok.png',
+          duration: '1000',
+          success: function () {
+            setTimeout(function () {
+              wx.navigateTo({
+                url: '../StaffAuthorization',
+              })
+            }, 1000);
+          }
+
+        })
+      }*/
     }, (err) => {
       console.log(err)
     })
-    wx.chooseMessageFile({
-      count: 1,
-      type: 'all',
-      success: function (res) {
-        console.log("get file success")
-        console.log(res)
-        console.log(res.tempFiles)
-        console.log(res.tempFiles[0])
-        console.log(res.tempFiles[0].path)
-        //mypath = res.tempFiles[0].path
-        app.wxUploadFile(myurl2, res.tempFiles[0].path, null, (res) => {
-          console.log("upload file success")
-          console.log(res)
-          console.log(mydata)
-
-        }, (err) => {
-          console.log(err)
-        })
-        wx.redirectTo({
-          url: '../PrintOneStaffFile/PrintOneStaffFile?id=' + e.detail.value.staffId,
-        })
-      },
-      fail: function (err) {
-        console.log("get file failed")
-        console.log(err)
-      }
-
-    })
-
+    
   }
 
 })

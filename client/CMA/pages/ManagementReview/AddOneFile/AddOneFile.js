@@ -17,6 +17,7 @@ Page({
     };
     app.wxRequest(myurl1, 'POST', mydata, (res) => {
       console.log(res)
+      
     }, (err) => {
       console.log(err)
     })
@@ -38,9 +39,21 @@ Page({
         }, (err) => {
           console.log(err)
         })
-       wx.redirectTo({
-          url: '../GetAllFileManagementReview/GetAllFileManagementReview?id=' + e.detail.value.year,
+        wx.showToast({
+          title: '成功',
+          //icon: 'success',
+          image: '/icons/ok/ok.png',
+          duration: 1000,
+          success: function () {
+            setTimeout(function () {
+              wx.redirectTo({
+                url: '../GetAllFileManagementReview/GetAllFileManagementReview',
+              })
+            }, 1000);
+          }
+
         })
+      
       },
       fail: function (err) {
         console.log("get file failed")

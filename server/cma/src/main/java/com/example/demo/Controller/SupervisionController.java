@@ -204,3 +204,4 @@ public class SupervisionController {
     }
 }
 //select * from supervision;
+//alter table supervision ENGINE =InnoDB;

@@ -8,7 +8,9 @@ Page({
     this.setData({
       id: options.id
     })
-    console.log(this.data.id)
+  },
+  onShow:function()
+  {
     let url = app.globalData.url + 'StaffFile/getOne'
     let postdata = {
       "staffId": this.data.id
@@ -17,7 +19,7 @@ Page({
     console.log(postdata)
     app.wxRequest(url, 'GET', postdata, (res) => {
       console.log("data modify")
-      
+
       this.setData({
         staffId: res.data.staffId,
         fileId: res.data.fileId,
@@ -43,6 +45,20 @@ Page({
       app.wxRequest(url, 'POST', data, (res) => {
         console.log('modify message successfully')
         console.log(res)
+        wx.showToast({
+          title: '成功',
+          //icon: 'success',
+          image: '/icons/ok/ok.png',
+          duration: 1000,
+          success: function () {
+            setTimeout(function () {
+              wx.redirectTo({
+                url: '../PrintOneStaffFile/PrintOneStaffFile',
+              })
+            }, 1000);
+          }
+
+        })
       }, (err) => {
         console.log('fail modify')
       })

@@ -58,9 +58,21 @@ Page({
               }, 1000);
             }
           })
+        }else{
+          console.log('send intermediate check message failed')
+          wx.showToast({
+            title: '添加失败',
+            image: '/icons/warning/warning.png',
+            duration: 1000
+          })
         }
       }, (err) => {
         console.log('fail intermediate check register')
+        wx.showToast({
+          title: '连接失败',
+          image: '/icons/warning/warning.png',
+          duration: 1000
+        })
       })
     }
   }

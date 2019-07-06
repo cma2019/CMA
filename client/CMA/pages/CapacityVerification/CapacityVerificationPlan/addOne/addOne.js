@@ -35,12 +35,32 @@ Page({
       app.wxRequest(url, 'POST', data, (res) => {
         if (res.code == 200) {
           console.log('add plan successfully')
-          wx.navigateBack({
-            delta: 1
+          wx.showToast({
+            title: '添加成功',
+            image: '/icons/ok/ok.png',
+            duration: 1000,
+            success: function () {
+              setTimeout(function () {
+                wx.navigateBack({
+                  delta: 1
+                })
+              }, 1000);
+            }
+          })
+        }else{
+          wx.showToast({
+            title: '添加失败',
+            image: '/icons/warning/warning.png',
+            duration: 1000
           })
         }
       }, (err) => {
         console.log('fail CapacityVerificationPlan register')
+        wx.showToast({
+          title: '连接失败',
+          image: '/icons/warning/warning.png',
+          duration: 1000
+        })
       })
     }
   }

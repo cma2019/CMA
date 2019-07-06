@@ -32,6 +32,30 @@ Page({
       console.err('get one error')
     })
   },
+  onShow :function()
+  {
+    console.log('getone id')
+    console.log(this.data.id)
+    let url = app.globalData.url + 'ManagementReview/getOne'
+    let postdata = {
+      "fileId": this.data.id
+    }
+    console.log(url)
+    console.log(postdata)
+    app.wxRequest(url, 'GET', postdata, (res) => {
+      console.log(res)
+      console.log(res.data)
+      //console.log(res.data[0].id)
+      this.setData({
+        year: res.data.year,
+        fileId: res.data.fileId,
+        fileName: res.data.fileName,
+        file: res.data.file
+      })
+    }, (err) => {
+      console.err('get one error')
+    })
+  },
   ModifyStaff(e) {
     console.log(e)
     //let target = this.data.id
@@ -63,9 +87,9 @@ Page({
           console.log("upload file success")
           console.log(res)
           wx.showToast({
-            title: '修改成功!',
-            icon:'success',
-            duration:2000
+            title: '文件修改成功',
+            image: '/icons/ok/ok.png',
+            duration: 1000
           })
           //console.log(mydata)
           
@@ -102,10 +126,11 @@ Page({
           myFilePath = res.savedFilePath
           console.log(myFilePath)
           wx.showToast({
-            title: '下载成功!',
-            icon:'success',
-            duration:2000
+            title: '文件下载成功',
+            image: '/icons/ok/ok.png',
+            duration: 1000
           })
+
         },
         fail: function (err) {
           console.log(err)
@@ -123,9 +148,17 @@ Page({
     app.wxRequest(url2, 'POST', data2, (res) => {
       console.log('delete successfully')
       wx.showToast({
-        title: '删除成功!',
-        icon: 'success',
-        duration: 2000
+        title: '成功',
+        //icon: 'success',
+        image: '/icons/ok/ok.png',
+        duration: 1000,
+        success: function () {
+          setTimeout(function () {
+            wx.navigateTo({
+              url: '../GetAllFileManagementReview/GetAllFileManagementReview',
+            })
+          }, 1000);
+        }
       })
     }, (err) => {
       console.log('delete failed')

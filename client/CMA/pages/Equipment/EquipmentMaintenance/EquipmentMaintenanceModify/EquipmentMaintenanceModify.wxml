@@ -2,7 +2,7 @@
 <scroll-view scroll-y>
   <form bindsubmit='mytest'>
     <view class="section">
-      <van-field name="equipmentId" value="{{equipmentId}}" required clearable label="机身编号" placeholder="机身编号"></van-field>
+      <van-field name="equipmentId" value="{{equipmentId}}" required clearable label="机身编号" placeholder="机身编号" type='number' maxlength="8"></van-field>
     </view>
     <view class="section">
       <picker name = 'maintenanceDate' mode='date' value='{{maintenanceDate}}' bindchange='bindDateChange'>
@@ -31,4 +31,5 @@
       <button class='van-button--info' form-type='submit'>确定</button>
     </view>
   </form>
+  <van-button type="info" size="small" bindtap="mygo">返回</van-button>
 </scroll-view>

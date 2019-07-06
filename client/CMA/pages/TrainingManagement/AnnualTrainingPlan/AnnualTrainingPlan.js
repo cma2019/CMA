@@ -14,14 +14,15 @@ Page({
     if (e.detail.value.year == null)
       {
       wx.showToast({
-        title: '错误(空白输入)',
-        icon: 'none',
-        duration: 2000
+        title: '空白输入',
+        image: '/icons/warning/warning.png',
+        duration: 1000
       })
       console.log('错误(空白输入)')
     }
     else
-    {console.log(e)
+    {
+      console.log(e)
     let target = e.detail.value.year
     console.log(e.detail.value)
     console.log('getall id')

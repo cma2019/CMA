@@ -77,13 +77,32 @@
       <van-field name="cdPicTelephone" value="{{cdPicTelephone}}" required clearable label="负责人电话" placeholder="负责人电话"></van-field>
     </view>
     <view class="section">
-      <van-field name="characteristic" value="{{characteristic}}" required clearable label="检测机构设施特点" placeholder="检测机构设施特点"></van-field>
+      <van-cell required title="检测机构设施特点">
+        <van-stepper
+          value="{{characteristic}}"
+          integer
+          min="0"
+          max="3"
+          step="1"
+          name="characteristic"
+        />
+      </van-cell>
     </view>
     <view class="section">
-      <van-field name="legalEntity" value="{{legalEntity}}" required clearable label="法人类别" placeholder="法人类别"></van-field>
+      <van-cell required title="法人类别">
+        <van-stepper
+          value="{{legalEntity}}"
+          integer
+          min="0"
+          max="1"
+          step="1"
+          name="legalEntity"
+        />
+      </van-cell>
     </view>
     <view>
       <button class='van-button--info' form-type='submit'>确定</button>
     </view>
   </form>
+  <van-button type="info" size="small" bindtap="mygo">返回</van-button>
 </scroll-view>

@@ -51,6 +51,16 @@ Page({
         "approver": e.detail.value.approver,
         "approveDate": e.detail.value.approveDate
       };
+      if (e.detail.value.year == "" || e.detail.value.author == ""
+        || e.detail.value.createDate == "") {
+        wx.showToast({
+          title: '空白输入',
+          image: '/icons/warning/warning.png',
+          duration: 1000
+        })
+        console.log('错误(空白输入)')
+      }
+      else {
       console.log(data)
       app.wxRequest(url, 'POST', data, (res) => {
         console.log('modify message successfully')
@@ -62,9 +72,23 @@ Page({
           })
         }
         */
+        wx.showToast({
+          title: '成功',
+          //icon: 'success',
+          image: '/icons/ok/ok.png',
+          duration: 1000,
+          success: function () {
+            setTimeout(function () {
+              wx.navigateTo({
+                url: '../GetAnnualPlan/GetAnnualPlan',
+              })
+            }, 1000);
+          }
+        })
       }, (err) => {
         console.log('fail modify')
       })
+    }
     }
   },
   goback: function () {

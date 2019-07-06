@@ -52,6 +52,11 @@ Page({
       console.log('get projects from planid')
     }, (err) => {
       console.log('fail projects from planid')
+      wx.showToast({
+        title: '连接失败',
+        image: '/icons/warning/warning.png',
+        duration: 1000
+      })
     })
   },
 
