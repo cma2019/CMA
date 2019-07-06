@@ -88,7 +88,7 @@ public class InternalAuditDocumentController {
                 tmp.put("year",res.get(i).getYear());
                 tmp.put("fileId",res.get(i).getFileId());
                 String entire=res.get(i).getFileName();
-                System.out.println(res.get(i).getFileName());
+                //System.out.println(res.get(i).getFileName());
                 tmp.put("fileName",entire.substring(0,entire.indexOf(".")));
                 tmp.put("file",res.get(i).getFileName());
                 data.add(tmp);
@@ -139,15 +139,13 @@ public class InternalAuditDocumentController {
         FileController fileController=new FileController();
         InternalAuditDocument sDoc=new InternalAuditDocument();
         sDoc.setYear(add_year);
-        System.out.println("?");
-        System.out.println(file.getOriginalFilename());
+        //System.out.println(file.getOriginalFilename());
         String[] str=file.getOriginalFilename().split("\\.");
-        System.out.println(str[str.length-1]);
+        //System.out.println(str[str.length-1]);
         String suffix=str[str.length-1];
         sDoc.setFileName(add_name+"."+suffix);
         InternalAuditDocumentRepository.save(sDoc);
-        System.out.println(sDoc.getFileName());
-        System.out.println("??");
+        //System.out.println(sDoc.getFileName());
         return  fileController.upload(file,request,sDoc.getFileName(),sDoc.getDir());
     }
     @RequestMapping(path="/modifyOneFormData",method= RequestMethod.POST)
@@ -179,7 +177,7 @@ public class InternalAuditDocumentController {
         String oldName=tmp.getFileName();
         fileController.deletefile(oldName,tmp.getDir());
         String[] str=file.getOriginalFilename().split("\\.");
-        System.out.println(str[str.length-1]);
+        //System.out.println(str[str.length-1]);
         String suffix=str[str.length-1];
         tmp.setFileName(modify_name+"."+suffix);
         tmp.setYear(modify_year);
@@ -215,7 +213,7 @@ public class InternalAuditDocumentController {
     @GetMapping(path = "/downloadFile/{fileId}")
     public @ResponseBody String downloadFile(@PathVariable("fileId") long fileId, HttpServletResponse response) {
         FileController fileController=new FileController();
-        System.out.println(fileId);
+        //System.out.println(fileId);
         try{
             if(InternalAuditDocumentRepository.findByFileId(fileId)==null)
                 throw new Exception("doesn't exist");

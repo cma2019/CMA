@@ -139,7 +139,7 @@ public class SelfInspectionController {
                 tmp.put("year",res.get(i).getFileName().substring(0,4));
                 tmp.put("fileId",res.get(i).getFileId());
                 String entire=res.get(i).getFileName();
-                System.out.println(res.get(i).getFileName());
+                //System.out.println(res.get(i).getFileName());
                 tmp.put("fileName",entire.substring(0,entire.indexOf(".")));
                 tmp.put("file",res.get(i).getFileName());
                 data.add(tmp);
@@ -159,7 +159,7 @@ public class SelfInspectionController {
     public @ResponseBody JSONObject addOneFormData(@RequestParam(value = "fileName",required = false) String fileName,
                                      @RequestParam(value = "id",required = false) String id){
         JSONObject js=new JSONObject();
-        System.out.println(fileName);
+        //System.out.println(fileName);
         add_name=fileName;
         add_id=id;
         js.put("code",200);
@@ -172,22 +172,19 @@ public class SelfInspectionController {
         FileController fileController=new FileController();
         SelfInspectionDocument sDoc=new SelfInspectionDocument();
         sDoc.setId(Long.parseLong(add_id));
-        System.out.println("?");
-        System.out.println(file.getOriginalFilename());
         String[] str=file.getOriginalFilename().split("\\.");
-        System.out.println(str[str.length-1]);
         String suffix=str[str.length-1];
         sDoc.setFileName(add_name+"."+suffix);
         SelfInspectionDocumentRepository.save(sDoc);
-        System.out.println(sDoc.getFileName());
-        System.out.println("??");
+        //System.out.println(sDoc.getFileName());
+        //System.out.println("??");
         return  fileController.upload(file,request,sDoc.getFileName(),sDoc.getDir());
     }
     @RequestMapping(path="/modifyOneFormData",method= RequestMethod.POST)
     public @ResponseBody JSONObject modifyOneFormData(@RequestParam(value = "fileName",required = false) String fileName,
                                      @RequestParam(value = "fileId",required = false) String fileId){
         JSONObject js=new JSONObject();
-        System.out.println(fileName);
+        //System.out.println(fileName);
         modify_Id=fileId;
         modify_name=fileName;
         js.put("code",200);
@@ -202,7 +199,7 @@ public class SelfInspectionController {
         String oldName=tmp.getFileName();
         fileController.deletefile(oldName,tmp.getDir());
         String[] str=file.getOriginalFilename().split("\\.");
-        System.out.println(str[str.length-1]);
+        //System.out.println(str[str.length-1]);
         String suffix=str[str.length-1];
         tmp.setFileName(modify_name+"."+suffix);
         SelfInspectionDocumentRepository.saveAndFlush(tmp);
@@ -237,7 +234,7 @@ public class SelfInspectionController {
     @GetMapping(path = "/downloadFile/{fileId}")
     public @ResponseBody String downloadFile(@PathVariable("fileId") long fileId, HttpServletResponse response) {
         FileController fileController=new FileController();
-        System.out.println(fileId);
+        //System.out.println(fileId);
         try{
             if(SelfInspectionDocumentRepository.findByFileId(fileId)==null)
                 throw new Exception("doesn't exist");
