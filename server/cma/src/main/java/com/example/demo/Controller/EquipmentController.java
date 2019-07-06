@@ -13,33 +13,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-
-
-/**
- * @author yxp
- *  code 200表示成功
- *  code 5xx表示失败
- *  装备信息管理
- */
-
 @Controller
 @RequestMapping(path="cma/Equipment")
 public class EquipmentController {
     @Autowired
     private EquipmentRepository ERepository;
 
-    /**
-     * addEquipment
-     * @param name
-     * @param model
-     * @param cpu
-     * @param memory
-    // * @param harddisk
-   //  * @param equipmentnumber
-     * @param application
-     * @param state
-     * @return 返回code,msg,data=null
-     */
     @RequestMapping(path="add",method=RequestMethod.POST)
     @ResponseBody
     public Response addEquipment(
@@ -70,11 +49,6 @@ public class EquipmentController {
             return response;
     }
 
-    /**
-     * @param id
-     * @return 返回id对应的装备
-     *
-     */
     @RequestMapping(value="/getOne/{id}",method=RequestMethod.GET)
     @ResponseBody
     public Response getOne(@PathVariable("id") long id){
@@ -97,10 +71,6 @@ public class EquipmentController {
         return response;
         }
 
-    /**
-     * getAll
-     * @return code,msg,data=EQUIPMENT_INFO表
-     */
 
     @RequestMapping(value="/getAll",method=RequestMethod.GET)
     @ResponseBody
@@ -123,18 +93,6 @@ public class EquipmentController {
         return response;
     }
 
-    /**
-     * @param id
-     * @param name
-     * @param model
-     * @param cpu
-     * @param memory
-   //  * @param harddisk
-   //  * @param equipmentnumber
-     * @param application
-     * @param state
-     * @return code,msg,data=null
-     */
     @RequestMapping(value="/modifyOne/{id}",method = RequestMethod.POST)
     @ResponseBody
     public Response modifyOne(
@@ -174,10 +132,6 @@ public class EquipmentController {
         return response;
     }
 
-    /**
-     * @param id
-     * @return code,msg,data=null
-     */
     @RequestMapping(value="/deleteOne/{id}",method = RequestMethod.POST)
     @ResponseBody
     public Response deleteOne(@PathVariable("id") long id)

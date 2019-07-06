@@ -1,21 +1,21 @@
 package com.example.demo.Controller;
 
 
-import com.example.demo.framework.Response;
+//import com.example.demo.framework.Response;
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+//import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import com.example.demo.Repository.InternalAuditManagementRepository;
 import com.example.demo.Model.InternalAuditManagement;
-import com.example.demo.FileControl.FileController;
-import org.springframework.web.multipart.MultipartFile;
+//import com.example.demo.FileControl.FileController;
+//import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.sql.Date;
+//import javax.servlet.http.HttpServletRequest;
+//import javax.servlet.http.HttpServletResponse;
+//import java.sql.Date;
 import java.util.List;
 
 @Controller
@@ -47,8 +47,8 @@ public class InternalAuditManagementController {
             }
         }
         else{
-            code=522;
-            msg="数据不存在";
+            code=210;
+            msg="无有效信息返回";
             //data=null;
         }
         js.put("code",code);
@@ -62,25 +62,26 @@ public class InternalAuditManagementController {
         int code=200;
         String msg="成功";
         JSONObject js=new JSONObject();
-        //JSONObject data=null;
+        JSONObject data=new JSONObject();
         try{
             Long.parseLong(year);
+            java.sql.Date.valueOf(date);
         }catch (NumberFormatException e)
         {
-            code=500;
-            msg="年份不合法";
+            code=513;
+            msg="数据不合法";
             js.put("code",code);
             js.put("msg",msg);
-            js.put("data",null);
+            js.put("data",data);
             return js;
         }
         if(InternalAuditManagementRepository.findByYear(Long.parseLong(year))!=null)
         {
-            code=500;
+            code=514;
             msg="年份重复";
             js.put("code",code);
             js.put("msg",msg);
-            js.put("data",null);
+            js.put("data",data);
             return js;
         }
         InternalAuditManagement iam=new InternalAuditManagement();
@@ -89,7 +90,9 @@ public class InternalAuditManagementController {
         InternalAuditManagementRepository.save(iam);
         js.put("code",code);
         js.put("msg",msg);
-        js.put("data",null);
+        js.put("data",data);
         return js;
     }
 }
+//select * from internal_audit_management;
+//delete from internal_audit_management where file_id=
