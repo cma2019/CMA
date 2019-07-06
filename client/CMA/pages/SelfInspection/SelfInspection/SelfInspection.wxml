@@ -11,14 +11,14 @@
           </view>
         </van-cell>
         <view>
-          <van-button type="info" size="small"id='{{item.id}}' bindtap="SelfInspectionDelete">delete</van-button>
+          <van-button type="info" size="small"id='{{item.id}}' bindtap="SelfInspectionDelete">删除</van-button>
         </view>
       </view>
     </view>
     <view wx:else>
-     <text>not have a SelfInspection yet</text>
+     <text>暂未含有自查</text>
     </view>
   </van-cell-group>
 </view>
-<van-button type="info" size="small" bindtap="gotoAdd">Add a SelfInspection</van-button>
-<van-button type="info" size="small" bindtap="goback">back</van-button>
+<van-button type="info" size="small" bindtap="gotoAdd">添加</van-button>
+<van-button type="info" size="small" bindtap="goback">返回</van-button>

@@ -1,9 +1,9 @@
 <view>
  <form bindsubmit='Supervision_addone'>
     <van-cell-group title="Supervision_addone">
-      <van-field v-model="author" name="author" required clearable label="编制人" placeholder="请输入编制人" />
+      <van-field v-model="author" name="author" required clearable label="编制人" placeholder="编制人" />
       
-      <van-field v-model="remark" name="remark"  clearable label="备注" placeholder="请输入备注" rows="1" autosize />
+      <van-field v-model="remark" name="remark"  clearable label="备注" placeholder="备注" rows="1" autosize />
 <!-->
       <picker name = 'createDate' mode='date' value='{{createDate}}' bindchange='bindcreateDateChange'>
         <view class='picker'>
@@ -13,7 +13,7 @@
 <-->
     </van-cell-group>
     <view>
-      <button class="van-button--info" formType="submit">完成</button>
+      <button class="van-button--info" formType="submit">确定</button>
     </view>
   </form>
 </view>
