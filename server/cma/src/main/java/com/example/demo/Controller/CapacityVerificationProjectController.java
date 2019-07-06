@@ -28,7 +28,7 @@ public class CapacityVerificationProjectController {
     @GetMapping(path="/getAllProject")
     public @ResponseBody JSONObject getAllProject(@RequestParam(value="planId",required = false)Long planId) throws JSONException {
         JSONObject json = new JSONObject(new LinkedHashMap());
-        if (CapacityVerificationProjectRepository.findAllByPlanId(planId) == null) {
+        if (CapacityVerificationProjectRepository.findAllByPlanId(planId)==null) {
             try {
                 json.put("code", 500);
                 json.put("msg", "查找不到");
@@ -163,6 +163,8 @@ public class CapacityVerificationProjectController {
         }
         else
         {
+            json.put("code",200);
+            json.put("msg","获取成功");
             json.put("data",CapacityVerificationProjectRepository.findById(projectId));
             /*project= CapacityVerificationProjectRepository.getOne(projectId);
             JSONObject data=new JSONObject(new LinkedHashMap());
