@@ -1,8 +1,9 @@
 {
   "pages": [
+    
     "pages/home/home",
-    "pages/Management/Management",
     "pages/login/login",
+    "pages/Management/Management",
     "pages/register/register",
     "pages/IntermediateCheck/IntermediateCheckMenu/IntermediateCheckMenu",
     "pages/index/index",

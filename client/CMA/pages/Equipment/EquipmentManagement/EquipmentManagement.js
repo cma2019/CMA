@@ -38,6 +38,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
+    wx.showToast({
+      title: 'test',
+      icon: 'success',
+      duration: 500
+    })
     //console.log(this.data.array)
     var that = this
     var myurl = app.globalData.url + 'Equipment/getAll';

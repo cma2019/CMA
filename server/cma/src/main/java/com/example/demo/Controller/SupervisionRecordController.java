@@ -43,10 +43,10 @@ public class SupervisionRecordController {
                 data.add(tmp);
             }
         }
-        else{
-            code=522;
-        msg="数据不存在";
-        //data=null;
+        else {
+            code=210;
+            msg="无有效信息返回";
+            //data=null;
         }
         js.put("code",code);
         js.put("msg",msg);
@@ -67,19 +67,30 @@ public class SupervisionRecordController {
         int code=200;
         String msg="成功";
         JSONObject js=new JSONObject();
-        //JSONObject data=null;
+        JSONObject data=new JSONObject();
         try{
             Long.parseLong(planId);
+            java.sql.Date.valueOf(superviseDate);
+            java.sql.Date.valueOf(recordDate);
         }catch (NumberFormatException e){
             code=513;
             msg="某项数据错误";
             js.put("code",code);
             js.put("msg",msg);
-            js.put("data",null);
+            js.put("data",data);
+            return js;
+        }
+        if(department.equals("")||supervisor.equals("")||supervisedPerson.equals("")||
+        record.equals("")||conclusion.equals("")||operator.equals(""))
+        {
+            code=511;
+            msg="缺少请求参数";
+            js.put("code",code);
+            js.put("msg",msg);
+            js.put("data",data);
             return js;
         }
         System.out.println(planId);
-
         SupervisionRecord sr=new SupervisionRecord();
         sr.setSupervisor(supervisor);
         sr.setSupervisedPerson(supervisedPerson);
@@ -110,15 +121,27 @@ public class SupervisionRecordController {
         int code=200;
         String msg="成功";
         JSONObject js=new JSONObject();
-        //JSONObject data=null;
+        JSONObject data=new JSONObject();
         try{
             Long.parseLong(recordId);
+            java.sql.Date.valueOf(superviseDate);
+            java.sql.Date.valueOf(recordDate);
         }catch (NumberFormatException e){
             code=513;
             msg="某项数据错误";
             js.put("code",code);
             js.put("msg",msg);
-            js.put("data",null);
+            js.put("data",data);
+            return js;
+        }
+        if(department.equals("")||supervisor.equals("")||supervisedPerson.equals("")||
+                record.equals("")||conclusion.equals("")||operator.equals(""))
+        {
+            code=511;
+            msg="缺少请求参数";
+            js.put("code",code);
+            js.put("msg",msg);
+            js.put("data",data);
             return js;
         }
         SupervisionRecord sr=SupervisionRecordRepository.findByRecordId(Long.parseLong(recordId));
@@ -142,7 +165,7 @@ public class SupervisionRecordController {
         int code=200;
         String msg="成功";
         JSONObject js=new JSONObject();
-        //JSONObject data=null;
+        JSONObject data=new JSONObject();
         try{
             Long.parseLong(recordId);
         }catch (NumberFormatException e){
@@ -150,7 +173,7 @@ public class SupervisionRecordController {
             msg="某项数据错误";
             js.put("code",code);
             js.put("msg",msg);
-            js.put("data",null);
+            js.put("data",data);
             return js;
         }
         SupervisionRecordRepository.deleteById(Long.parseLong(recordId));
