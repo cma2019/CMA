@@ -50,8 +50,8 @@ public class SelfInspectionController {
             }
         }
         else{
-            code=522;
-            msg="数据不存在";
+            code=210;
+            msg="无有效信息返回";
             //data=null;
         }
         js.put("code",code);
@@ -65,7 +65,15 @@ public class SelfInspectionController {
         int code=200;
         String msg="成功";
         JSONObject js=new JSONObject();
-        //JSONObject data=null;
+        JSONObject data=new JSONObject();
+        try {
+            java.sql.Date.valueOf(date);
+        }catch (NumberFormatException e){
+            js.put("code",513);
+            js.put("msg","数据不合法");
+            js.put("data",data);
+            return js;
+        }
         String year=date.substring(0,4);
         String rname=year+"年度第"+name+"次自查文档集";
         SelfInspection s=new SelfInspection();
@@ -74,7 +82,7 @@ public class SelfInspectionController {
         SelfInspectionRepository.save(s);
         js.put("code",code);
         js.put("msg",msg);
-        js.put("data",null);
+        js.put("data",data);
         return js;
     }
     @PostMapping(path = "/deleteOne")
@@ -82,7 +90,7 @@ public class SelfInspectionController {
         int code=200;
         String msg="成功";
         JSONObject js=new JSONObject();
-        //JSONObject data=null;
+        JSONObject data=new JSONObject();
         try{
             Long.parseLong(id);
         }catch (NumberFormatException e){
@@ -90,7 +98,7 @@ public class SelfInspectionController {
             msg="某项数据错误";
             js.put("code",code);
             js.put("msg",msg);
-            js.put("data",null);
+            js.put("data",data);
             return js;
         }
         List<SelfInspectionDocument> res= SelfInspectionDocumentRepository.findAllById(Long.parseLong(id));
@@ -107,7 +115,7 @@ public class SelfInspectionController {
         SelfInspectionRepository.deleteById(Long.parseLong(id));
         js.put("code",code);
         js.put("msg",msg);
-        js.put("data",null);
+        js.put("data",data);
         return js;
     }
     /*
@@ -139,8 +147,8 @@ public class SelfInspectionController {
         }
         else
         {
-            code=522;
-            msg="数据不存在";
+            code=210;
+            msg="无有效信息返回";
         }
         js.put("code",code);
         js.put("msg",msg);
@@ -148,8 +156,7 @@ public class SelfInspectionController {
         return js;
     }
     @RequestMapping(path="/addOneFormData",method= RequestMethod.POST)
-    @ResponseBody
-    public JSONObject addOneFormData(@RequestParam(value = "fileName",required = false) String fileName,
+    public @ResponseBody JSONObject addOneFormData(@RequestParam(value = "fileName",required = false) String fileName,
                                      @RequestParam(value = "id",required = false) String id){
         JSONObject js=new JSONObject();
         System.out.println(fileName);
@@ -177,8 +184,7 @@ public class SelfInspectionController {
         return  fileController.upload(file,request,sDoc.getFileName(),sDoc.getDir());
     }
     @RequestMapping(path="/modifyOneFormData",method= RequestMethod.POST)
-    @ResponseBody
-    public JSONObject modifyOneFormData(@RequestParam(value = "fileName",required = false) String fileName,
+    public @ResponseBody JSONObject modifyOneFormData(@RequestParam(value = "fileName",required = false) String fileName,
                                      @RequestParam(value = "fileId",required = false) String fileId){
         JSONObject js=new JSONObject();
         System.out.println(fileName);
@@ -205,11 +211,23 @@ public class SelfInspectionController {
     @PostMapping(path = "/deleteOneFile")
     public @ResponseBody JSONObject deleteOneFile(@RequestParam(value = "fileId",required = false) long fileId){
         JSONObject js=new JSONObject();
-        System.out.println(fileId);
         SelfInspectionDocument s=SelfInspectionDocumentRepository.findByFileId(fileId);
+        if(s==null)
+        {
+            js.put("code",522);
+            js.put("msg","数据不存在");
+            js.put("data",null);
+            return js;
+        }
         FileController fileController=new FileController();
-        System.out.println(s.getFileName());
-        fileController.deletefile(s.getFileName(), s.getDir());
+        boolean res=fileController.deletefile(s.getFileName(), s.getDir());
+        if(!res)
+        {
+            js.put("code",522);
+            js.put("msg","文件不存在");
+            js.put("data",null);
+            return js;
+        }
         SelfInspectionDocumentRepository.delete(s);
         js.put("code",200);
         js.put("msg","成功");
