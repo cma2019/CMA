@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.demo.Repository.SupervisionRepository;
 import com.example.demo.Model.Supervision;
-
-import java.sql.Date;
+//import java.sql.Date;
 import java.util.List;
 
 @Controller
@@ -40,7 +39,7 @@ public class SupervisionController {
             //js.put("data","null");
             return js;
         }
-        if(author=="")
+        if(author.equals(""))
         {
             code=513;
             msg="缺少参数";
@@ -73,7 +72,7 @@ public class SupervisionController {
         JSONObject json=new JSONObject();
         int code=200;
         String msg="成功";
-        JSONObject data=null;
+        JSONObject data=new JSONObject();
         System.out.println(supervisionId);
         SupervisionRepository.deleteById(Long.parseLong(supervisionId));
         json.put("code",code);
@@ -174,3 +173,4 @@ public class SupervisionController {
 
     }
 }
+//select * from supervision;
