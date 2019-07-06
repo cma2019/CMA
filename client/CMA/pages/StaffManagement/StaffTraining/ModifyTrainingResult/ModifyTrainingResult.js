@@ -51,9 +51,28 @@ Page({
       app.wxRequest(url, 'POST', data, (res) => {
         console.log('modify message successfully')
         console.log(res)
-        wx.navigateBack({
-          delta:1
-        })
+        if (res.msg == "未有结果") {
+          wx.showToast({
+            title: '未有结果',
+            image: '/icons/warning/warning.png',
+            duration: 1000
+          })
+        }
+        else {
+          wx.showToast({
+            title: '成功',
+            //icon: 'success',
+            image: '/icons/ok/ok.png',
+            duration: 1000,
+            success: function () {
+              setTimeout(function () {
+                wx.navigateTo({
+                  url: '../GetOneTrainingPeople',
+                })
+              }, 1000);
+            }
+          })
+        }
       }, (err) => {
         console.log('fail modify')
       })

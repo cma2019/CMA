@@ -65,7 +65,15 @@ Page({
     var data3 = CryptoJS.Encrypt(CryptoJS.username)
     console.log("data3")
     console.log(data3)
-
+    if (e.detail.value.password2 != e.detail.value.password3)
+    {
+      wx.showToast({
+        title: '两次密码不匹配',
+        image: '/icons/warning/warning.png',
+        duration: 1000
+      })
+    }
+    else{
     let tempdata = {
       "password": e.detail.value.password,
       "newPassword": e.detail.value.password2
@@ -91,15 +99,32 @@ Page({
     app.wxRequest(url, 'POST', adddata, (res) => {
 
       console.log(res)
-      if (res.code == 200) {
-        console.log('successfully')
-        wx.redirectTo({
-          url: '/pages/login/login',
+      if (res.msg == "密码错误") {
+        wx.showToast({
+          title: '旧密码错误',
+          image: '/icons/warning/warning.png',
+          duration: 1000
+        })
+      }
+      else {
+        wx.showToast({
+          title: '修改成功',
+          //icon: 'success',
+          image: '/icons/ok/ok.png',
+          duration: 1000,
+          success: function () {
+            setTimeout(function () {
+              wx.navigateTo({
+                url: '/pages/login/login',
+              })
+            }, 1000);
+          }
         })
       }
     }, (err) => {
       console.log('fail intermediate check register')
     })
+    }
   },
 
   ApplicationAdd: function (e) {
