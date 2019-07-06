@@ -45,13 +45,17 @@ Page({
       app.wxRequest(url, 'POST', data, (res) => {
         if (res.code == 200){
           console.log('send intermediate check message successfully')
+          console.log('send intermediate check message successfully')
           wx.showToast({
             title: '123',
-            image: '/icons/ok/ok.png'
+            image: '/icons/ok/ok.png',
+            duration: 2000
           })
+          /*  
           wx.navigateBack({
             delta: 1
           })
+          */
         }
       }, (err) => {
         console.log('fail intermediate check register')
