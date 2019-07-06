@@ -4,14 +4,14 @@
       <view wx:for="{{array}}" data-index ='{{index}}' wx:for-item="item">
         <van-cell value="详情" data-index ='{{index}}'bindtap='gotoOne' is-link>
           <view slot="title">
-            <view>year: {{item.year}}</view>
-            <view>fileName: {{item.fileName}}</view>
-            <view>file: {{item.file}}</view>
+            <view>内审年份: {{item.year}}</view>
+            <view>文档名称: {{item.fileName}}</view>
+            <view>文件实际名称: {{item.file}}</view>
           </view>
         </van-cell>
       </view>
     </van-cell-group>
   </view>
-  <van-button type="info" size="small" id="{{id}}" bindtap="gotoAdd">Add a InternalAuditDocument</van-button>
-  <van-button type="info" size="small" bindtap="goback">Back</van-button>
+  <van-button type="info" size="small" id="{{id}}" bindtap="gotoAdd">上传文件</van-button>
+  <van-button type="info" size="small" bindtap="goback">返回</van-button>
 </scroll-view>

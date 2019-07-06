@@ -1,20 +1,20 @@
 <!--pages/Supervision/SupervisionRecord/SupervisionRecordGetOne/SupervisionRecordGetOne.wxml-->
 <view>
   <van-cell-group>
-      <van-field  label="recordId" value='{{recordId}}' disabled input-align="right"/>
-      <van-field  label="planId" value='{{planId}}' disabled input-align="right"/>
-      <van-field  label="department" value='{{department}}' disabled input-align="right"/>
-      <van-field  label="supervisor" value='{{supervisor}}' disabled input-align="right"/>
-      <van-field  label="superviseDate" value='{{superviseDate}}' disabled input-align="right"/>
-      <van-field  label="supervisedPerson" value='{{supervisedPerson}}' disabled input-align="right"/>
-      <van-field  label="record" value='{{record}}' disabled input-align="right"/>
-      <van-field  label="conclusion" value='{{conclusion}}' disabled input-align="right"/>
-      <van-field  label="operator" value='{{operator}}' disabled input-align="right"/>
-      <van-field  label="recordDate" value='{{recordDate}}' disabled input-align="right"/>
+      <van-field  label="监督记录编号" value='{{recordId}}' disabled input-align="right"/>
+      <van-field  label="监督计划编号" value='{{planId}}' disabled input-align="right"/>
+      <van-field  label="部门" value='{{department}}' disabled input-align="right"/>
+      <van-field  label="监督员" value='{{supervisor}}' disabled input-align="right"/>
+      <van-field  label="监督时间" value='{{superviseDate}}' disabled input-align="right"/>
+      <van-field  label="被监督人" value='{{supervisedPerson}}' disabled input-align="right"/>
+      <van-field  label="监督内容记录" value='{{record}}' disabled input-align="right"/>
+      <van-field  label="结论" value='{{conclusion}}' disabled input-align="right"/>
+      <van-field  label="操作人" value='{{operator}}' disabled input-align="right"/>
+      <van-field  label="记录时间" value='{{recordDate}}' disabled input-align="right"/>
     </van-cell-group>
 </view>
 <view>
-  <van-button type="info" size="small" bindtap="modifyData">modify</van-button>
-  <van-button type="info" size="small" bindtap="deleteData">delete</van-button>
-  <van-button type="info" size="small" bindtap="goback">back</van-button>
+  <van-button type="info" size="small" bindtap="modifyData">修改</van-button>
+  <van-button type="info" size="small" bindtap="deleteData">删除</van-button>
+  <van-button type="info" size="small" bindtap="goback">返回</van-button>
 </view>

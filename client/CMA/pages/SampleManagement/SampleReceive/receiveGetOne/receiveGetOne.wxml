@@ -1,21 +1,21 @@
 <view>
   <van-cell-group>
-    <van-field  label="sampleNumber" value='{{info.sampleNumber}}' disabled input-align="right"/>
-    <van-field  label="sampleName" value='{{info.sampleName}}' disabled input-align="right"/>
-    <van-field  label="sampleAmount" value='{{info.sampleAmount}}' disabled input-align="right"/>
-    <van-field  label="sampleState" value='{{info.sampleState}}' disabled input-align="right"/>
-    <van-field  label="requester" value='{{info.requester}}' disabled input-align="right"/>
-    <van-field  label="receiver" value='{{info.receiver}}' disabled input-align="right"/>
-    <van-field  label="receiveDate" value='{{info.receiveDate}}' disabled input-align="right"/>
-    <van-field  label="obtainer" value='{{info.obtainer}}' disabled input-align="right"/>
-    <van-field  label="obtainDate" value='{{info.obtainDate}}' disabled input-align="right"/>
+    <van-field  label="样品编号" value='{{info.sampleNumber}}' disabled input-align="right"/>
+    <van-field  label="样品名称" value='{{info.sampleName}}' disabled input-align="right"/>
+    <van-field  label="样品数量" value='{{info.sampleAmount}}' disabled input-align="right"/>
+    <van-field  label="样品状态" value='{{info.sampleState}}' disabled input-align="right"/>
+    <van-field  label="委托单位" value='{{info.requester}}' disabled input-align="right"/>
+    <van-field  label="接收人" value='{{info.receiver}}' disabled input-align="right"/>
+    <van-field  label="接收日期" value='{{info.receiveDate}}' disabled input-align="right"/>
+    <van-field  label="领取人" value='{{info.obtainer}}' disabled input-align="right"/>
+    <van-field  label="领取日期" value='{{info.obtainDate}}' disabled input-align="right"/>
   </van-cell-group>
 </view>
 <view>
-  <van-button type="info" size="small" bindtap="modifyData">modify</van-button>
-  <van-button type="info" size="small" bindtap="deleteData">delete</van-button>
-  <van-button type="info" size="small" bindtap="looktoreceipt">receiptdetail</van-button>
+  <van-button type="info" size="small" bindtap="modifyData">修改</van-button>
+  <van-button type="info" size="small" bindtap="deleteData">删除</van-button>
+  <van-button type="info" size="small" bindtap="looktoreceipt">查看接收单</van-button>
 </view>
 <view>
-  <van-button type="info" size="small" bindtap="goback">back</van-button>
+  <van-button type="info" size="small" bindtap="goback">返回</van-button>
 </view>
