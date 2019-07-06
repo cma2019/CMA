@@ -28,7 +28,7 @@ public class SupervisionController {
         int code;
         String msg;
         JSONObject js=new JSONObject();
-        //JSONObject data=null;
+        JSONObject data=new JSONObject();
         try {
             java.sql.Date.valueOf(createDate);
         }catch (NumberFormatException e){
@@ -36,16 +36,16 @@ public class SupervisionController {
             msg="某项数据错误";
             js.put("code",code);
             js.put("msg",msg);
-            //js.put("data","null");
+            js.put("data",data);
             return js;
         }
         if(author.equals(""))
         {
-            code=513;
+            code=511;
             msg="缺少参数";
             js.put("code",code);
             js.put("msg",msg);
-            //js.put("data","null");
+            js.put("data",data);
             return js;
         }
         else
@@ -62,7 +62,7 @@ public class SupervisionController {
             SupervisionRepository.save(sv);
             js.put("code",code);
             js.put("msg",msg);
-            //js.put("data","null");
+            js.put("data",data);
             return js;
         }
     }
@@ -109,8 +109,8 @@ public class SupervisionController {
         }
         else
         {
-            code=522;
-            msg="数据不存在";
+            code=210;
+            msg="无有效信息返回";
             //data=null;
             js.put("code",code);
             js.put("msg",msg);
@@ -127,6 +127,26 @@ public class SupervisionController {
         int code=200;
         String msg="成功";
         JSONObject data=new JSONObject();
+        try {
+            java.sql.Date.valueOf(approveDate);
+            Long.parseLong(supervisionId);
+        }catch (NumberFormatException e){
+            code=513;
+            msg="某项数据错误";
+            json.put("code",code);
+            json.put("msg",msg);
+            json.put("data",data);
+            return json;
+        }
+        if(approveDate.equals("")||supervisionId.equals(""))
+        {
+            code=511;
+            msg="缺少请求参数";
+            json.put("code",code);
+            json.put("msg",msg);
+            json.put("data",data);
+            return json;
+        }
         Supervision sv= SupervisionRepository.findBySupervisionId(Long.parseLong(supervisionId));
         sv.setSituation(1);
         sv.setApprover(approver);
@@ -148,15 +168,26 @@ public class SupervisionController {
         JSONObject js=new JSONObject();
         int code=200;
         String msg="成功";
-        //JSONObject data=null;
+        JSONObject data=new JSONObject();
+        try {
+            Long.parseLong(supervisionId);
+        }catch (NumberFormatException E){
+            code=534;
+            msg="参数错误";
+            js.put("code",code);
+            js.put("msg",msg);
+            js.put("data",data);
+            return js;
+        }
         Supervision sv=SupervisionRepository.findBySupervisionId(Long.parseLong(supervisionId));
         sv.setRemark(remark);
         SupervisionRepository.saveAndFlush(sv);
         js.put("code",code);
         js.put("msg",msg);
+        js.put("data",data);
         return js;
     }
-    @GetMapping(path="/executeroveOne")
+    @GetMapping(path="/executeOne")
     public @ResponseBody JSONObject executeOne(@RequestParam(value="supervisionId",required = false) String supervisionId)
     {
         JSONObject json=new JSONObject();
@@ -170,7 +201,6 @@ public class SupervisionController {
         json.put("msg",msg);
         json.put("data",data);
         return json;
-
     }
 }
 //select * from supervision;
