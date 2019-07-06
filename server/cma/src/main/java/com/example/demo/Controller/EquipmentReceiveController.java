@@ -28,14 +28,6 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 
 
-
-/**
- * @author yxp
- *  code 200表示成功
- *  code 5xx表示失败
- *  装备信息管理
- */
-
 @Controller
 @RequestMapping(path="/cma/EquipmentReceive")
 public class EquipmentReceiveController {
@@ -80,11 +72,6 @@ public class EquipmentReceiveController {
         return response;
     }
 
-    /**
-     * @param id
-     * @return 返回id对应的装备
-     *
-     */
     @RequestMapping(value="/getOne/{id}",method=RequestMethod.GET)
     @ResponseBody
     public Response getOne(@PathVariable("id") long id){
@@ -176,10 +163,6 @@ public class EquipmentReceiveController {
         return response;
     }
 
-    /**
-     * @param id
-     * @return code,msg,data=null
-     */
     @RequestMapping(value="/deleteOne/{id}",method = RequestMethod.POST)
     @ResponseBody
     public Response deleteOne(@PathVariable("id") long id)

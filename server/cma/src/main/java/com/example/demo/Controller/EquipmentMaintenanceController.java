@@ -178,7 +178,10 @@ public class EquipmentMaintenanceController {
             for(int i = 0; i<((List<EquipmentMaintenance>) list).size(); i++)
             {
                 System.out.println(((List<EquipmentMaintenance>) list).get(i).getEquipmentId());
-                if(((List<EquipmentMaintenance>) list).get(i).getEquipmentId()==id) {
+                System.out.println(((List<EquipmentMaintenance>) list).get(i).getEquipmentId()-id);
+
+                if(((List<EquipmentMaintenance>) list).get(i).getEquipmentId()-id==0) {
+                    System.out.println("in");
                     JSONObject ejson = JSONObject.parseObject(JSONObject.toJSONString(((List<EquipmentMaintenance>) list).get(i)));
                     jsons.add(ejson);
                     count++;
