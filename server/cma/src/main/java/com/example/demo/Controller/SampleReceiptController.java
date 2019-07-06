@@ -1,16 +1,15 @@
 package com.example.demo.Controller;
-import com.alibaba.fastjson.JSON;
+//import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.JSONArray;
 import com.example.demo.Model.SampleReceipt;
 import com.example.demo.Repository.SampleReceiptRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+//import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import java.sql.Date;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequestMapping(path="/cma/SampleReceipt")
@@ -86,9 +85,9 @@ public class SampleReceiptController {
         String receiver=data.getString("receiver");
         JSONArray list =data.getJSONArray("materialList");
         System.out.println("?");
-        if(idstr==""||applicationUnit==""||version==""||contractId==""||
-        testtypestr==""||electronicMedia==""||softwaretypestr==""||
-        receiveUnit==""||datestr==""||sender==""||receiver=="")
+        if(idstr.equals("")||applicationUnit.equals("")||version.equals("")||contractId.equals("")||
+        testtypestr.equals("")||electronicMedia.equals("")||softwaretypestr.equals("")||
+        receiveUnit.equals("")||datestr.equals("")||sender.equals("")||receiver.equals(""))
         {
             code=511;
             msg="缺少请求参数";
@@ -175,7 +174,7 @@ public class SampleReceiptController {
             code=521;
             msg="未收到标识编号";
         }
-        else if(sampleId=="0"||SampleReceiptRepository.findBySampleId(Long.parseLong(sampleId))==null) {   //此样品接收登记的id不存在；
+        else if(sampleId.equals("0")||SampleReceiptRepository.findBySampleId(Long.parseLong(sampleId))==null) {   //此样品接收登记的id不存在；
 
             code=522;
             msg="数据不存在";
@@ -240,7 +239,7 @@ public class SampleReceiptController {
             js.put("data",d);
             return js;
         }
-        if(idstr=="")
+        if(idstr.equals(""))
         {
             code=531;
             msg="未收到标识编号";
@@ -249,8 +248,8 @@ public class SampleReceiptController {
             js.put("data",d);
             return js;
         }
-        else if((testtypestr!="1"&&testtypestr!="2"&&testtypestr!="0")
-                ||(sofwwaretypestr!="0"&&sofwwaretypestr!="1"&&sofwwaretypestr!="2"&&sofwwaretypestr!="3"))
+        else if((!testtypestr.equals("1")&&!testtypestr.equals("2")&&!testtypestr.equals("0"))
+                ||(!sofwwaretypestr.equals("0")&&!sofwwaretypestr.equals("1")&&!sofwwaretypestr.equals("2")&&!sofwwaretypestr.equals("3")))
         {
             code=534;
             msg="修改后数据不合法";
