@@ -1,6 +1,7 @@
 <!--pages/StaffManagement/PrintOneStaff/PrintOneStaff.wxml-->
 <view>
   <van-cell-group>
+  <van-cell title="用户编号" value="{{id}}" />
   <van-cell title="姓名" value="{{name}}" />
   <van-cell title="性别" value="{{gender}}" />
   <van-cell title="部门" value="{{department}}" />
