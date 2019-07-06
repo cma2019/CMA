@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.demo.Repository.SampleIoRepository;
+import com.example.demo.Repository.SampleReceiveRepository;
 import com.example.demo.Repository.SampleReceiptRepository;
 import com.example.demo.Model.SampleIO;
 import com.example.demo.Model.SampleReceipt;
@@ -20,6 +21,8 @@ import java.util.List;
 public class SampleIoController {
     @Autowired
     private SampleIoRepository SampleIoRepository;
+    @Autowired
+    private SampleReceiveRepository SampleReceiveRepository;
     @Autowired
     private SampleReceiptRepository SampleReceiptRepository;
     @PostMapping(path="/addOne")
@@ -58,6 +61,18 @@ public class SampleIoController {
         {
             code=512;
             msg="样品编号已存在";
+        }
+        else if(SampleReceiveRepository.findBySampleNumber(sampleNumber)==null)
+        {
+            code=514;
+            msg="添加数据与登记表不符";
+        }
+        else if(SampleReceiveRepository.findBySampleNumber(sampleNumber).getSampleAmount()!=Integer.parseInt(sampleAmount)||
+                !SampleReceiveRepository.findBySampleNumber(sampleNumber).getSampleName().equals(sampleName)||
+                SampleReceiveRepository.findBySampleNumber(sampleNumber).getSampleState()!=Integer.parseInt(sampleState))
+        {
+            code=514;
+            msg="添加数据与登记表不符";
         }
         else if(sampleNumber.length()>10||sampleName.length()>20|| sender.length()>20||
                 receiver.length()>20||obtainer.length()>20|| Integer.parseInt(sampleAmount)<1||
@@ -230,13 +245,24 @@ public class SampleIoController {
             code=532;
             msg="数据不存在";
         }
-        else if(!sampleNumber.equals(SampleIoRepository.findBySampleIoId(Long.parseLong(sampleIoId)).getSampleNumber())&&SampleIoRepository.findBySampleNumber(sampleNumber)!=null)
-        {
+        else if(!sampleNumber.equals(SampleIoRepository.findBySampleIoId(Long.parseLong(sampleIoId)).getSampleNumber())&&SampleIoRepository.findBySampleNumber(sampleNumber)!=null) {
             System.out.println(sampleNumber);
             System.out.println(SampleIoRepository.findBySampleIoId(Long.parseLong(sampleIoId)).getSampleNumber());
             System.out.println(receiver);
-            code =533;
-            msg="修改后数据错误";
+            code = 533;
+            msg = "修改后数据错误";
+        }
+        else if(SampleReceiveRepository.findBySampleNumber(sampleNumber)==null)
+        {
+            code=514;
+            msg="添加数据与登记表不符";
+        }
+        else if(SampleReceiveRepository.findBySampleNumber(sampleNumber).getSampleAmount()!=Integer.parseInt(sampleAmount)||
+                !SampleReceiveRepository.findBySampleNumber(sampleNumber).getSampleName().equals(sampleName)||
+                SampleReceiveRepository.findBySampleNumber(sampleNumber).getSampleState()!=Integer.parseInt(sampleState))
+        {
+            code=514;
+            msg="添加数据与登记表不符";
         }
         else if(sampleNumber.length()>10||sampleName.length()>20||sender.length()>20
                 ||receiver.length()>20||obtainer.length()>20||(Integer.parseInt(sampleAmount)<1||(Integer.parseInt(sampleState)!=0&&Integer.parseInt(sampleState)!=1&&Integer.parseInt(sampleState)!=2)))
