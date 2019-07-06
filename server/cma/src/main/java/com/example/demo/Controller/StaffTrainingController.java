@@ -127,6 +127,15 @@ public class StaffTrainingController {
         return json;
     }
 
+    @GetMapping(path = "getOneTraining")
+    public @ResponseBody JSONObject getOneTraining(@RequestParam(value = "trainingId",required = false)long trainingId){
+        JSONObject json=new JSONObject();
+        json.put("code",200);
+        json.put("msg","成功");
+        List<StaffTraining> list=staffTrainingRepository.findAllByTrainingId(trainingId);
+        json.put("data",list.get(0));
+        return json;
+    }
     @PostMapping(path = "addTrainingPeople")
     public @ResponseBody JSONObject addTrainingPeople(@RequestParam(value = "trainingId",required = false)long trainingId,@RequestParam(value="id",required = false)long id) throws ParseException {
         JSONObject json=new JSONObject();

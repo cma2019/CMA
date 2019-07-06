@@ -1,19 +1,19 @@
 <view>
-  <van-cell-group title="AnnualTrainingPlan">
+  <van-cell-group title="授权记录">
   <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
   <van-cell value="详情" id='{{item.id}}'>
       <view slot="title">
-        <view>name : {{item.name}}</view>
-        <view>department : {{item.department}}</view>
-        <view>position : {{item.position}}</view>
-        <view>authorizationId : {{item.authorizationId}}</view>
-        <view>authorizerId : {{item.authorizerId}}</view>
-        <view>content : {{item.content}}</view>
-        <view>authorizerName : {{item.authorizerName}}</view>
-        <view>authorizerDate : {{item.authorizerDate}}</view>
+        <view>姓名 : {{item.name}}</view>
+        <view>部门 : {{item.department}}</view>
+        <view>职位 : {{item.position}}</view>
+        <view>授权记录编号 : {{item.authorizationId}}</view>
+        <view>授权人编号 : {{item.authorizerId}}</view>
+        <view>授权内容 : {{item.content}}</view>
+        <view>授权人姓名 : {{item.authorizerName}}</view>
+        <view>授权时间 : {{item.authorizerDate}}</view>
       </view>
   </van-cell>
 </view>
   </van-cell-group>
 </view>
-<van-button type="info" size="small" bindtap="goback">go back</van-button> 
+<van-button type="info" size="small" bindtap="goback">返回</van-button> 

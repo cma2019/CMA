@@ -56,9 +56,12 @@ Page({
           thispage.setData({
             mess: ""
           })
+          wx.showToast({
+            title: '暂未含有SupervisionRecord',
+            duration: 1500
+          })
+          console.log('暂未含有SupervisionRecord')
         }
-        console.log(thispage.data.mess)
-        console.log("fdsgfg")
       },
       fail(err) {
         console.log('no data')
@@ -66,14 +69,10 @@ Page({
     })
   },
   supervisionRecordModify: function (e) {
-    console.log(e)
-    let recordId = e.currentTarget.id
+    let i = e.currentTarget.dataset.index
     let info = this.data.mess
-    let planId = this.data.planId
-    let i = 0
-    while (info[i].recordId != recordId) {
-      ++i
-    }
+    let planId = this.data.planId 
+    let recordId = info[i].recordId
     let department = info[i].department
     let supervisor = info[i].supervisor
     let superviseDate = info[i].superviseDate
@@ -83,7 +82,6 @@ Page({
     let operator = info[i].operator
     let recordDate = info[i].recordDate
     console.log(superviseDate)
-    console.log("999999999999")
     wx.navigateTo({
       url: '/pages/Supervision/SupervisionRecord/SupervisionRecordModifyOne/SupervisionRecordModifyOne?planId=' + planId + "&recordId=" + recordId + "&department=" + department + "&supervisor=" + supervisor + "&superviseDate=" + superviseDate + "&supervisedPerson=" + supervisedPerson + "&record=" + record + "&conclusion=" + conclusion + "&operator=" + operator + "&recordDate=" + recordDate
     })
@@ -94,8 +92,10 @@ Page({
     })
   },
   supervisionRecordDelete: function (e) {
-    let recordId = e.currentTarget.id
+    let i = e.currentTarget.dataset.index
+    let recordId = this.data.mess[i].recordId
     let planId = this.data.planId
+    console.log('SupervisionRecord发生了deleteOne事件，携带数据为：', recordId)
     const deleteoneRequest = wx.request({
       url: app.globalData.url + 'SupervisionRecord/deleteOne',
       method: 'POST',
@@ -145,20 +145,16 @@ Page({
   },
   supervisionRecordAdd: function () {
     console.log(this.data.planId)
-    console.log("adfsdgf45646546578")
     wx.navigateTo({
       url: '/pages/Supervision/SupervisionRecord/SupervisionRecordAddOne/SupervisionRecordAddOne?id=' + this.data.planId
     })
   },
   gotodetail:function(e){
     console.log(e)
-    let recordId = e.currentTarget.id
+    let i = e.currentTarget.dataset.index
     let info = this.data.mess
     let planId = this.data.planId
-    let i = 0
-    while (info[i].recordId != recordId) {
-      ++i
-    }
+    let recordId = info[i].recordId
     let department = info[i].department
     let supervisor = info[i].supervisor
     let superviseDate = info[i].superviseDate

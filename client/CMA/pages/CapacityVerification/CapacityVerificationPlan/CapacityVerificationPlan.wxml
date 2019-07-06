@@ -1,15 +1,15 @@
 <!--pages/CapacityVerificationPlan/CapacityVerificationPlan.wxml-->
 <view>
-  <van-cell-group title="CapacityVerificationPlan">
+  <van-cell-group title="能力验证计划管理">
   <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
     <van-cell value="详情" bindtap='gotoOne' id='{{item.planId}}' is-link>
       <view slot="title">
-        <view>name : {{item.name}}</view>
-        <view>organizer : {{item.organizer}}</view>
-        <view>year : {{item.year}}</view>
+        <view>计划名称 : {{item.name}}</view>
+        <view>组织方 : {{item.organizer}}</view>
+        <view>参加年度 : {{item.year}}</view>
       </view>
     </van-cell>
   </view>
   </van-cell-group>
 </view>
-<van-button type="info" size="small" bindtap="gotoAdd">Add an CapacityVerification Plan</van-button>
+<van-button type="info" size="small" bindtap="gotoAdd">添加能力验证计划</van-button>

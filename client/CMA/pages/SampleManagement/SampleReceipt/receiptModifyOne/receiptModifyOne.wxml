@@ -30,7 +30,7 @@
       <van-field v-model="receiver" name="receiver" clearable label="受理人" placeholder="{{origindata.receiver}}" />
     </van-cell-group>
     <view>
-      <button class="van-button--info" formType="submit">完成</button>
+      <button class="van-button--info" formType="submit">确定</button>
     </view>
   </form>
 </view>

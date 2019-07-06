@@ -77,10 +77,5 @@ Page({
     wx.navigateTo({
       url: 'ioAddOne/ioAddOne',
     })
-  },
-  goback: function () {
-    wx.navigateBack({
-      delta: 1
-    })
-  },
+  }
 })

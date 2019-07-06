@@ -6,17 +6,16 @@
       <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
         <van-cell value="详情" bindtap='gotoOne' id='{{item.sampleId}}' is-link>
             <view slot="title">
-              <view>sampleNumber:{{item.sampleNumber}}  </view>
-              <view>sampleName:{{item.sampleName}}  </view>
-              <view>sampleAmount：{{item.sampleAmount}}</view>
+              <view>样品编号:{{item.sampleNumber}}  </view>
+              <view>样品名称:{{item.sampleName}}  </view>
+              <view>样品数量:{{item.sampleAmount}}</view>
             </view>
         </van-cell>
       </view>
     </view>
     <view wx:else>
-      <text>not have a SampleReceive yet</text>
+      <text>暂未含有样品接收单</text>
     </view>
   </van-cell-group>
 </view>
-<van-button type="info" size="small" bindtap="gotoAdd">Add a samplereceive</van-button>
-<van-button type="info" size="small" bindtap="goback">back</van-button>
+<van-button type="info" size="small" bindtap="gotoAdd">添加</van-button>

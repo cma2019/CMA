@@ -41,32 +41,33 @@ public class StaffFileController {
 
     @GetMapping(path = "getOne")
     public @ResponseBody
-    JSONObject getOne(@RequestParam(value = "id", required = false) long id) {
-        JSONObject json = new JSONObject(new LinkedHashMap());
-        if (!staffFileRepository.existsById(id)) {
+    JSONObject getOne(@RequestParam(value = "staffId", required = false) long staffId) {
+        JSONObject json = new JSONObject();
+        if (staffFileRepository.existsByStaffId(staffId)==false) {
             json.put("code", 210);
             json.put("msg", "档案不存在");
             json.put("data", null);
-        } else {
+        }
+        else {
             json.put("code", 200);
             json.put("msg", "成功");
-            json.put("data", staffFileRepository.findById(id));
+            json.put("data", staffFileRepository.findByStaffId(staffId));
         }
         return json;
     }
 
     @PostMapping(path = "addOne")
     public @ResponseBody
-    JSONObject addOne(@RequestParam(value = "id", required = false) long id, @RequestParam(value = "fileId", required = false) String fileId, @RequestParam(value = "fileLocation", required = false) String fileLocation) {
+    JSONObject addOne(@RequestParam(value = "staffId", required = false) long staffId, @RequestParam(value = "fileId", required = false) String fileId, @RequestParam(value = "fileLocation", required = false) String fileLocation) {
         StaffFile staffFile = new StaffFile();
         JSONObject json = new JSONObject();
-        if (!staffManagementRepository.existsById(id)) {
+        if (!staffManagementRepository.existsById(staffId)) {
             json.put("code", 210);
             json.put("msg", "人员不存在");
             json.put("data", null);
         } else {
-            StaffManagement staffManagement = staffManagementRepository.getOne(id);
-            staffFile.setId(id);
+            StaffManagement staffManagement = staffManagementRepository.getOne(staffId);
+            staffFile.setStaffId(staffId);
             staffFile.setName(staffManagement.getName());
             staffFile.setDepartment(staffManagement.getDepartment());
             staffFile.setPosition(staffManagement.getPosition());
@@ -75,7 +76,7 @@ public class StaffFileController {
             staffFile.setFlag(1);
             List<StaffFile> list = staffFileRepository.findAll();
             for (int i = 0; i < list.size(); i++) {
-                if (list.get(i).Equals(staffFile)) {
+                if (list.get(i).getStaffId()==staffId) {
                     json.put("code", 210);
                     json.put("msg", "失败,已存在");
                     json.put("data", null);
@@ -95,7 +96,7 @@ public class StaffFileController {
     Response UpLoad(@RequestParam("file") MultipartFile file, HttpServletRequest request) {
         FileController fileController = new FileController();
         StaffFile staffFile = staffFileRepository.findByFlag(1);
-        staffFile.setFileImage(staffFile.getId() + "_" + staffFile.getFileId() + ".jpg");
+        staffFile.setFileImage(staffFile.getStaffId() + "_" + staffFile.getFileId() + ".jpg");
         staffFile.setFlag(0);
         staffFileRepository.save(staffFile);
         return fileController.upload(file, request, staffFile.getFileImage(), staffFile.getDir());
@@ -103,20 +104,20 @@ public class StaffFileController {
 
     @PostMapping(path = "deleteOne")
     public @ResponseBody
-    JSONObject deleteOne(@RequestParam(value = "id", required = false) long id) {
+    JSONObject deleteOne(@RequestParam(value = "staffId", required = false) long staffId) {
         JSONObject json = new JSONObject();
-        if (staffFileRepository.existsById(id) == false) {
+        if (staffFileRepository.existsByStaffId(staffId) == false) {
             json.put("code", 210);
             json.put("msg", "档案不存在");
             json.put("data", null);
             return json;
         }
         FileController fileController = new FileController();
-        StaffFile staffFile = staffFileRepository.findById(id);
+        StaffFile staffFile = staffFileRepository.findByStaffId(staffId);
         String name = staffFile.getFileImage();
         fileController.deletefile(name, staffFile.getDir());
         //managementFile.setFile(null);
-        staffFileRepository.deleteById(id);
+        staffFileRepository.deleteByStaffId(staffId);
         //JSONObject json = new JSONObject();
         json.put("code", 200);
         json.put("msg", "成功");
@@ -126,14 +127,14 @@ public class StaffFileController {
 
     @PostMapping(path = "modifyOne")
     public @ResponseBody
-    JSONObject modifyOne(@RequestParam(value = "id", required = false) long id, @RequestParam(value = "fileId", required = false) String fileId, @RequestParam(value = "fileLocation", required = false) String fileLocation) {
+    JSONObject modifyOne(@RequestParam(value = "staffId", required = false) long staffId, @RequestParam(value = "fileId", required = false) String fileId, @RequestParam(value = "fileLocation", required = false) String fileLocation) {
         JSONObject json = new JSONObject();
-        if (staffFileRepository.existsById(id) == false) {
+        if (staffFileRepository.existsByStaffId(staffId) == false) {
             json.put("code", 210);
             json.put("msg", "档案不存在");
             json.put("data", null);
         } else {
-            StaffFile staffFile = staffFileRepository.findById(id);
+            StaffFile staffFile = staffFileRepository.findByStaffId(staffId);
             if (!fileId.equals("")) {
                 staffFile.setFileId(fileId);
             }
@@ -149,10 +150,10 @@ public class StaffFileController {
 
     @PostMapping(path = "modifyOneFile")
     public @ResponseBody
-    JSONObject modifyOneFile(@RequestParam(value = "id", required = false) long id) {
+    JSONObject modifyOneFile(@RequestParam(value = "staffId", required = false) long staffId) {
         JSONObject json = new JSONObject();
         FileController fileController = new FileController();
-        StaffFile staffFile = staffFileRepository.findById(id);
+        StaffFile staffFile = staffFileRepository.findByStaffId(staffId);
         String name = staffFile.getFileImage();
         staffFile.setFlag(1);
         fileController.deletefile(name,staffFile.getDir());
@@ -163,15 +164,15 @@ public class StaffFileController {
         return json;
         //return fileController.upload(file,request,managementFile.getFileName(),managementFile.getDir());
     }
-    @RequestMapping(value="/getImage/{id}",method=RequestMethod.GET)
-    public @ResponseBody String downloadFile(@PathVariable("id")long id, HttpServletResponse response){
+    @RequestMapping(value="/getImage/{staffId}",method=RequestMethod.GET)
+    public @ResponseBody String downloadFile(@PathVariable("staffId")long staffId, HttpServletResponse response){
         //System.out.println("Download In");
         FileController fileController=new FileController();
         try{
-            if(staffFileRepository.findById(id)==null)
+            if(staffFileRepository.findByStaffId(staffId)==null)
                 throw new Exception("不存在");
             //System.out.println(fileId);
-            StaffFile temp = staffFileRepository.findById(id);
+            StaffFile temp = staffFileRepository.findByStaffId(staffId);
             String name=temp.getFileImage();
             System.out.println(name);
             return  fileController.downloadFile(response,name,temp.getDir());

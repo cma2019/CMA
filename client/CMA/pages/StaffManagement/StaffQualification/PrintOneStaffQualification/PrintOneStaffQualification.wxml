@@ -1,0 +1,16 @@
+<!--pages/TrainingApplication/PringOneApplication/PrintOneApplication.wxml-->
+<view>
+  <van-cell-group>
+  <van-cell title="staffId" value="{{staffId}}" />
+  <van-cell title="name" value="{{name}}" />
+  <van-cell title="department" value="{{department}}" />
+  <van-cell title="position" value="{{position}}" />
+  <van-cell title="qualificationId" value="{{qualificationId}}" />
+  <van-cell title="qualificationName" value="{{qualificationName}}" />
+  </van-cell-group>
+</view>
+<van-button type="info" size="small" bindtap="DownloadStaff">Download File</van-button> 
+ <van-button type="info" size="small" bindtap="ModifyData">Modify Data</van-button> 
+ <van-button type="info" size="small" bindtap="ModifyStaff">Modify File</van-button> 
+ <van-button type="info" size="small" bindtap="DeleteStaff">Delete File</van-button> 
+  <van-button type="info" size="small" bindtap="Search">Get All By Staff</van-button> 

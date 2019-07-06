@@ -4,8 +4,8 @@
    <van-cell-group>
       <van-field 
         name="year"
-        label="year"
-        placeholder="input year" 
+        label="评审年份"
+        placeholder="评审年份" 
         required
         clearable
       />
@@ -13,7 +13,7 @@
         <picker name = 'date' mode='date' value='{{date}}' bindchange='bindDateChange'>
           <view class='picker'>
         <van-field 
-        label="date"
+        label="评审日期"
         value='{{date}}'
         required
       />
@@ -22,8 +22,8 @@
     </view>
     </van-cell-group>
     <view>
-      <button class='van-button--info'  formType='submit'>Add</button>
+      <button class='van-button--info'  formType='submit'>确定</button>
     </view>
   </form>
 </view>
- <van-button type="info" size="small" bindtap="goback">go back</van-button> 
+ <van-button type="info" size="small" bindtap="goback">返回</van-button> 

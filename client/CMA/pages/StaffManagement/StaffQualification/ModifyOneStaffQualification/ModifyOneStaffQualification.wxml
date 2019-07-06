@@ -1,0 +1,39 @@
+<!--pages/TrainingApplication/ModifyApplication/ModifyApplication.wxml-->
+<view>
+  <form bindsubmit='intercheckmodify'>
+  <van-cell-group>
+      <van-field 
+        name="staffId"
+        label="staffId"
+        value='{{staffId}}'
+        readonly
+        required
+        clearable
+      />
+      <van-field 
+        name="qualificationId"
+        label="qualificationId"
+        value='{{qualificationId}}'
+        placeholder="input qualificationId" 
+    required
+    readonly
+        clearable
+      />
+      <van-field 
+        name="qualificationName"
+        label="qualificationName"
+        value='{{qualificationName}}'
+        placeholder="input qualificationName" 
+        required
+        clearable
+      />
+    </van-cell-group>
+    
+
+    <view>
+      <button class='van-button--info' formType='submit'>Modify StaffFile</button>
+    </view>
+  </form>
+</view>
+<van-button type="info" size="small" bindtap="goback">go back</van-button> 
+

@@ -12,5 +12,3 @@
 </view>
 
     <van-button type="info" size="small" bindtap="gotoAdd">Add TrainingPeople</van-button> 
-    <van-button type="info" size="small" bindtap="ModifyMessage">Modify StaffTraining</van-button> 
-    <van-button type="info" size="small" bindtap="gotodelete">Delete StaffTraining</van-button> 

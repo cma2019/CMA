@@ -13,6 +13,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log('InternalAudit发生了getAll事件，携带数据为：', options)
     let url = app.globalData.url + 'InternalAuditManagement/getAll'
     let postdata = ''
     console.log(url)
@@ -60,6 +61,7 @@ Page({
   },
   InternalAuditDelete: function (e) {
     let year = e.currentTarget.id
+    console.log('InternalAudit发生了deleteOne事件，携带数据为：', year)
     const deleteoneRequest = wx.request({
       url: app.globalData.url + 'InternalAuditManagement/deleteOne',
       method: 'POST',

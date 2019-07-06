@@ -1,66 +1,74 @@
-// pages/StaffManagement/StaffTraining/ModifyOneTraining/ModifyOneTraining.js
+// pages/StaffManagement/ModifyStaff/ModifyStaff.js
+const app = getApp()
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-
+    this.setData({
+      id: options.id
+    })
+    console.log(this.data.id)
+    let url = app.globalData.url + 'StaffTraining/getOneTraining'
+    let postdata = {
+      "trainingId": this.data.id
+    }
+    console.log(url)
+    console.log(postdata)
+    app.wxRequest(url, 'GET', postdata, (res) => {
+      console.log("data modify")
+      //console.log(res.data.program)
+      this.setData({
+        trainingId: res.data.trainingId,
+        program: res.data.program,
+        trainingDate: res.data.trainingDate,
+        place: res.data.place,
+        presenter: res.data.presenter,
+        content: res.data.content,
+        note: res.data.note
+      })
+    }, (err) => {
+      console.err('get one error')
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  bindDateChange: function (e) {
+    console.log("date")
+    console.log(e.detail.value)
+    this.setData({
+      trainingDate: e.detail.value
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  intercheckmodify: function (e) {
+    console.log('modify modify')
+    {
+      let url = app.globalData.url + 'StaffTraining/modifyOne';
+      console.log(url)
+      console.log(this.data.planId)
+      let data = {
+        //"id ":this.data.id,
+        "trainingId": e.detail.value.trainingId,
+        "program": e.detail.value.program,
+        "trainingDate": e.detail.value.trainingDate,
+        "place": e.detail.value.place,
+        "presenter": e.detail.value.presenter,
+        "content": e.detail.value.content,
+        "note": e.detail.value.note
+      };
+      console.log(data)
+      app.wxRequest(url, 'POST', data, (res) => {
+        console.log('modify message successfully')
+        console.log(res)
+        wx.redirectTo({
+          url: '../GetOneTraining/GetOneTraining?id=' + e.detail.value.trainingId,
+        })
+      }, (err) => {
+        console.log('fail modify')
+      })
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  goback: function () {
+    wx.navigateBack({
+      delta: 1
+    })
   }
 })

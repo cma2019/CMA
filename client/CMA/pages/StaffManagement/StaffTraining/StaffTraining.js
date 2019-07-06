@@ -60,7 +60,7 @@ Page({
     console.log('getone id')
     console.log(target)
     wx.navigateTo({
-      url: 'GetTrainingPeople/GetTrainingPeople?id=' + target
+      url: 'GetOneTraining/GetOneTraining?id=' + target
     })
   }
 })

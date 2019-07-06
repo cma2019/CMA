@@ -2,19 +2,19 @@
 <scroll-view scroll-y>
   <form bindsubmit='newEquipment'>
     <view class="section">
-      <van-field name="state" value="{{state}}" required clearable label="state" placeholder="input state"></van-field>
+      <van-field name="state" value="{{state}}" required clearable label="状态" placeholder="状态"></van-field>
     </view>
     <view class="section">
-      <van-field name="current" value="{{current}}" required clearable label="current" placeholder="input current"></van-field>
+      <van-field name="current" value="{{current}}" required clearable label="当前版本" placeholder="当前版本"></van-field>
     </view>
     <view class="section">
       <picker name = 'modifyTime' mode='date' value='{{modifyTime}}' bindchange='bindDateChange'>
           <view class='picker'>
             <van-field 
               name="modifyTime"
-              label="modifyTime"
+              label="最后修改时间"
               value='{{modifyTime}}'
-              placeholder="input modifyTime" 
+              placeholder="最后修改时间" 
               required
               clearable
             />
@@ -22,13 +22,13 @@
       </picker> 
     </view>
     <view class="section">
-      <van-field name="modifier" value="{{modifier}}" required clearable label="modifier" placeholder="input modifier"></van-field>
+      <van-field name="modifier" value="{{modifier}}" required clearable label="修改人" placeholder="修改人"></van-field>
     </view>
     <view class="section">
-      <van-field name="modifyContent" value="{{modifyContent}}" required clearable label="modifyContent" placeholder="input modifyContent"></van-field>
+      <van-field name="modifyContent" value="{{modifyContent}}" required clearable label="修改内容" placeholder="修改内容"></van-field>
     </view>
     <view>
-      <button class='van-button--info' formType='submit'>new quality manual</button>
+      <button class='van-button--info' formType='submit'>确定</button>
     </view>
   </form>
 </scroll-view>
