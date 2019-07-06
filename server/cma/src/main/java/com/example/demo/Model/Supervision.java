@@ -30,9 +30,9 @@ public class Supervision {
         this.createDate = createDate;
     }
 
-    public void setSupervisionId(Long supervisionId) {
-        supervisionId = supervisionId;
-    }
+    /*public void setSupervisionId(Long supervisionId) {
+        this.supervisionId = supervisionId;
+    }*/
 
     public void setApproveDate(Date approveDate) {
         this.approveDate = approveDate;
