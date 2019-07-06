@@ -1,4 +1,7 @@
 <!--pages/user/user.wxml-->
 <text>user info</text>
  <van-button type="info" size="small" bindtap="gotoAdd">1</van-button> 
+<<<<<<< HEAD
  <van-button type="info" size="small" bindtap="gotoModify">修改密码</van-button> 
+=======
+>>>>>>> c49eca3613b8ef0a1a57be0a3d21d91ac6b20aec

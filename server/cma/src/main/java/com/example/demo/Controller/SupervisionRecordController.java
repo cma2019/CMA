@@ -160,3 +160,4 @@ public class SupervisionRecordController {
         return js;
     }
 }
+//select * from supervision_record;
