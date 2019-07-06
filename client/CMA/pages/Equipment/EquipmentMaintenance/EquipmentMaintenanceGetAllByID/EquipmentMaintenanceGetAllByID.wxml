@@ -1,15 +1,15 @@
 <!--pages/Equipment/EquipmentMaintenance/EquipmentMaintenanceGetAllByID/EquipmentMaintenanceGetAllByID.wxml-->
 <scroll-view scroll-y>
-  <van-cell-group title="Equipment Maintenance Management">
+  <van-cell-group title="仪器设备维修保养记录管理">
   <view wx:for="{{array}}" data-id="{{item.id}}" data-equipmentId="{{item.equipmentId}}" data-maintenanceDate="{{item.maintenanceDate}}" data-maintenanceContent="{{item.maintenanceContent}}" data-maintenancePerson="{{item.maintenancePerson}}" data-confirmer="{{item.confirmer}}" >
     <van-cell value="详情" is-link url='/pages/Equipment/EquipmentMaintenance/EquipmentMaintenanceGetOne/EquipmentMaintenanceGetOne?id={{item.id}}&equipmentId={{item.equipmentId}}&maintenanceDate={{item.maintenanceDate}}&maintenanceContent={{item.maintenanceContent}}&maintenancePerson={{item.maintenancePerson}}&confirmer={{item.confirmer}}' link-type='redirectTo'>
       <view slot="title">
         <view>id : {{item.id}}</view>
-        <view>equipmentId : {{item.equipmentId}}</view>
-        <view>maintenanceDate : {{item.maintenanceDate}}</view>
+        <view>机身编号 : {{item.equipmentId}}</view>
+        <view>记录日期 : {{item.maintenanceDate}}</view>
       </view>
     </van-cell>
   </view>
   </van-cell-group>
-  <van-button type="info" size="small" bindtap="gotoAdd">Add an equipment maintenance</van-button>
+  <van-button type="info" size="small" bindtap="gotoAdd">添加仪器设备维修保养记录</van-button>
 </scroll-view>

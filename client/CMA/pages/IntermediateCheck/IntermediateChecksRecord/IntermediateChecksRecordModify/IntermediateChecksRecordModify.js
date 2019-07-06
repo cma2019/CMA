@@ -27,7 +27,11 @@ Page({
       recordId: options.id
     })
   },
-
+  gotologin(e) {
+    wx.navigateBack({
+      delta: 1
+    })
+  },
   onShow :function (options){
     let url = app.globalData.url + 'IntermediateChecksRecord/getOneByRecordId'
     let postdata = {

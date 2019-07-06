@@ -11,14 +11,14 @@
           </view>
         </van-cell>
         <view>
-          <van-button type="info" size="small"id='{{item.year}}' bindtap="InternalAuditDelete">delete</van-button>
+          <van-button type="info" size="small"id='{{item.year}}' bindtap="InternalAuditDelete">删除</van-button>
         </view>
       </view>
     </view>
     <view wx:else>
-     <text>not have a InternalAudit yet</text>
+     <text>暂未含有内审内容</text>
     </view>
   </van-cell-group>
 </view>
-<van-button type="info" size="small" bindtap="gotoAdd">Add a InternalAudit</van-button>
-<van-button type="info" size="small" bindtap="goback">back</van-button>
+<van-button type="info" size="small" bindtap="gotoAdd">添加</van-button>
+<van-button type="info" size="small" bindtap="goback">返回</van-button>

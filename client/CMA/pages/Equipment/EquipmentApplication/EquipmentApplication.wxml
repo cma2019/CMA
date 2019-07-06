@@ -1,15 +1,15 @@
 <!--pages/Equipment/EquipmentApplication/EquipmentApplication.wxml-->
 <scroll-view scroll-y>
-  <van-cell-group title="Equipment Application Management">
+  <van-cell-group title="仪器设备使用申请记录管理">
   <view wx:for="{{array}}" data-id="{{item.id}}" data-applicant="{{item.applicant}}" data-applicationDate="{{item.applicationDate}}" data-applicationPurpose="{{item.applicationPurpose}}" data-equipmentUse="{{item.equipmentUse}}" data-equipmentNumber="{{item.equipmentNumber}}" data-softwareInfo="{{item.softwareInfo}}"  data-auditor="{{item.auditor}}" data-auditDate="{{item.auditDate}}" data-auditOpinion="{{item.auditOpinion}}">
     <van-cell value="详情" is-link url='/pages/Equipment/EquipmentApplication/EquipmentApplicationGetOne/EquipmentApplicationGetOne?id={{item.id}}&applicant={{item.applicant}}&applicationDate={{item.applicationDate}}&applicationPurpose={{item.applicationPurpose}}&equipmentUse={{item.equipmentUse}}&equipmentNumber={{item.equipmentNumber}}&softwareInfo={{item.softwareInfo}}&auditor={{item.auditor}}&auditDate={{item.auditDate}}&auditOpinion={{item.auditOpinion}}' link-type='redirectTo'>
       <view slot="title">
         <view>id : {{item.id}}</view>
-        <view>applicant : {{item.applicant}}</view>
-        <view>applicationDate : {{item.applicationDate}}</view>
+        <view>申请人 : {{item.applicant}}</view>
+        <view>申请日期 : {{item.applicationDate}}</view>
       </view>
     </van-cell>
   </view>
   </van-cell-group>
-  <van-button type="info" size="small" bindtap="gotoAdd">Add an equipment application</van-button>
+  <van-button type="info" size="small" bindtap="gotoAdd">添加仪器设备使用申请记录</van-button>
 </scroll-view>

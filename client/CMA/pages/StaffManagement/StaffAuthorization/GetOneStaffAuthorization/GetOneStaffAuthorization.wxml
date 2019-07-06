@@ -1,14 +1,14 @@
 <!--pages/TrainingApplication/PringOneApplication/PrintOneApplication.wxml-->
 <view>
   <van-cell-group>
-  <van-cell title="name" value="{{name}}" />
-  <van-cell title="department" value="{{department}}" />
-  <van-cell title="position" value="{{position}}" />
-  <van-cell title="authorizerId" value="{{authorizerId}}" />
-  <van-cell title="content" value="{{content}}" />
-  <van-cell title="authorizerName" value="{{authorizerName}}" />
-  <van-cell title="authorizerDate" value="{{authorizerDate}}" />
+  <van-cell title="姓名" value="{{name}}" />
+  <van-cell title="部门" value="{{department}}" />
+  <van-cell title="职位" value="{{position}}" />
+  <van-cell title="授权记录编号" value="{{authorizerId}}" />
+  <van-cell title="授权内容" value="{{content}}" />
+  <van-cell title="授权人姓名" value="{{authorizerName}}" />
+  <van-cell title="授权时间" value="{{authorizerDate}}" />
   </van-cell-group>
 </view>
-  <van-button type="info" size="small" bindtap="ModifyStaff">Modify</van-button> 
-  <van-button type="info" size="small" bindtap="DeleteStaff">Delete</van-button> 
+  <van-button type="info" size="small" bindtap="ModifyStaff">修改</van-button> 
+  <van-button type="info" size="small" bindtap="DeleteStaff">删除</van-button> 

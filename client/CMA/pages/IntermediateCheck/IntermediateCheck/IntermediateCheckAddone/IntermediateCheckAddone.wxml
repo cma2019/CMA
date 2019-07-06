@@ -1,18 +1,18 @@
 <!--pages/IntermediateCheck/IntermediateCheck.wxml-->
 <view>
   <form bindsubmit='InterCheckRegister'>
-    <van-cell-group title="input message">
+    <van-cell-group title="请输入信息">
       <van-field 
         name="object"
-        label="object"
-        placeholder="input object" 
+        label="核查对象"
+        placeholder="核查对象" 
         required
         clearable
       />
       <van-field 
         name="content"
-        label="content"
-        placeholder="input content"
+        label="核查内容"
+        placeholder="核查内容"
         required
         clearable
       />
@@ -20,9 +20,9 @@
           <view class='picker'>
             <van-field 
               name="date"
-              label="date"
+              label="计划核查时间"
               value='{{date}}'
-              placeholder="input date" 
+              placeholder="计划核查时间" 
               required
               clearable
             />
@@ -30,16 +30,16 @@
       </picker>      
       <van-field
         name="personInCharge"
-        label="personInCharge"
-        placeholder="input personInCharge"
+        label="	核查负责人"
+        placeholder="核查负责人"
         required
         clearable
         border = "{{false}}"
       />
     </van-cell-group>
     <view>
-      <button class='van-button--info' formType='submit'>register</button>
+      <button class='van-button--info' formType='submit'>确定</button>
     </view>
   </form>
 </view>
-<button class='van-button--info' bindtap="gotologin">go back</button>
+<button class='van-button--info' bindtap="gotologin">返回</button>

@@ -4,65 +4,65 @@
    <van-cell-group>
       <van-field 
         name="id"
-        label="id"
+        label="人员编号"
         value='{{id}}'
         readonly
         clearable
       />
       <van-field 
         name="name"
-        label="name"
+        label="姓名"
         value='{{name}}'
-        placeholder="input name" 
+        placeholder="姓名" 
         clearable
       />
       <van-field 
         name="gender"
-        label="gender"
+        label="性别"
         value='{{gender}}'
-        placeholder="input gender" 
+        placeholder="性别"
         clearable
       />
       <van-field 
         name="department"
-        label="department"
+        label="部门"
         value='{{department}}'
-        placeholder="input department" 
+        placeholder="部门" 
         clearable
       />
       <van-field 
         name="position"
-        label="position"
+        label="职位"
         value='{{position}}'
-        placeholder="input position" 
+        placeholder="职位" 
         clearable
       />
       <van-field 
         name="title"
-        label="title"
+        label="职称"
         value='{{title}}'
-        placeholder="input title" 
+        placeholder="职称" 
         clearable
       />
       <van-field 
         name="degree"
-        label="degree"
+        label="文化程度"
         value='{{degree}}'
-        placeholder="input degree" 
+        placeholder="文化程度" 
         clearable
       />
       <van-field 
         name="graduationSchool"
-        label="school"
+        label="毕业院校"
         value='{{graduationSchool}}'
-        placeholder="input graduationSchool" 
+        placeholder="毕业院校" 
         clearable
       />
       <van-field 
         name="graduationMajor"
-        label="major"
+        label="毕业专业"
         value='{{graduationMajor}}'
-        placeholder="input graduationMajor" 
+        placeholder="毕业专业"
         clearable
       />
       <view class="section">
@@ -70,7 +70,7 @@
         <picker name = 'date' mode='date' value='{{graduationDate}}' bindchange='bindDateChange'>
           <view class='picker'>
         <van-field 
-        label="date"
+        label="毕业时间"
         value='{{graduationDate}}'
        
       />
@@ -79,65 +79,17 @@
     </view>
       <van-field 
         name="workingYears"
-        label="workingYears"
+        label="工龄"
         value='{{workingYears}}'
-        placeholder="input workingYears" 
+        placeholder="工龄" 
         clearable
         
       />      
     </van-cell-group>
 
-<!--
-    <view class="section">
-      <view class="section__title">id</view>
-      <input name="id" value='{{id}}' placeholder="input id" />
-    </view>
-    <view class="section">
-      <view class="section__title">name</view>
-      <input name="name" value='{{name}}'placeholder="input name" />
-    </view>
-    <view class="section">
-      <view class="section__title">gender</view>
-      <input name="gender" value='{{gender}}'placeholder="input gender" />
-    </view>
-    <view class="section">
-      <view class="section__title">department</view>
-      <input name="department" value='{{department}}'placeholder="input department" />
-    </view>
-    <view class="section">
-      <view class="section__title">position</view>
-      <input name="position" value='{{position}}'placeholder="input position" />
-    </view>
-    <view class="section">
-      <view class="section__title">title</view>
-      <input name="title" value='{{title}}'placeholder="input title" />
-    </view>
-    <view class="section">
-      <view class="section__title">degree</view>
-      <input name="degree" value='{{degree}}'placeholder="input degree" />
-    </view>
-    <view class="section">
-      <view class="section__title">graduationSchool</view>
-      <input name="graduationSchool" value='{{graduationSchool}}'placeholder="input graduationSchool" />
-    </view>
-    <view class="section">
-      <view class="section__title">graduationMajor</view>
-      <input name="graduationMajor" value='{{graduationMajor}}'placeholder="input graduationMajor" />
-    </view>
-    <view class="section">
-      <view class="section__title">graduationDate</view>
-        <picker name = 'date' mode='date' value='{{graduationDate}}' bindchange='bindDateChange'>
-          <view class='picker'>date: {{graduationDate}}</view>
-        </picker>
-    </view>
-    <view class="section">
-      <view class="section__title">workingYears</view>
-      <input name="workingYears" value='{{workingYears}}' placeholder="input workingYears" />
-    </view>
-    -->
     <view>
-      <button class='van-button--info' formType='submit'>Modify Staff</button>
+      <button class='van-button--info' formType='submit'>确定</button>
     </view>
   </form>
 </view>
-<van-button type="info" size="small" bindtap="goback">go back</van-button>
+<van-button type="info" size="small" bindtap="goback">返回</van-button>

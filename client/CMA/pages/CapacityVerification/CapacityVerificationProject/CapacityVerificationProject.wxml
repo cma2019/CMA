@@ -1,15 +1,15 @@
 <!--pages/IntermediateCheck/IntermediateCheck.wxml-->
 <view>
   <form bindsubmit='GetProjects'>
-    <van-cell-group title="input message">
+    <van-cell-group title="请输入信息">
       <van-field 
         name="planId"
-        label="my planId"
-        placeholder="input planId"
+        label="项目序号"
+        placeholder="项目序号"
         required
         clearable
       />
     </van-cell-group>
-    <button class='van-button--info' formType='submit'>register</button>
+    <button class='van-button--info' formType='submit'>确认</button>
   </form>
 </view>

@@ -1,2 +1,16 @@
-<!--pages/StaffManagement/StaffQualification/PrintOneStaffQualification/PrintOneStaffQualification.wxml-->
-<text>pages/StaffManagement/StaffQualification/PrintOneStaffQualification/PrintOneStaffQualification.wxml</text>
+<!--pages/TrainingApplication/PringOneApplication/PrintOneApplication.wxml-->
+<view>
+  <van-cell-group>
+  <van-cell title="人员编号" value="{{staffId}}" />
+  <van-cell title="姓名" value="{{name}}" />
+  <van-cell title="部门" value="{{department}}" />
+  <van-cell title="职位" value="{{position}}" />
+  <van-cell title="资质编号" value="{{qualificationId}}" />
+  <van-cell title="资质名称" value="{{qualificationName}}" />
+  </van-cell-group>
+</view>
+<van-button type="info" size="small" bindtap="DownloadStaff">下载文件</van-button> 
+ <van-button type="info" size="small" bindtap="ModifyData">修改数据</van-button> 
+ <van-button type="info" size="small" bindtap="ModifyStaff">修改文件</van-button> 
+ <van-button type="info" size="small" bindtap="DeleteStaff">删除</van-button> 
+  <van-button type="info" size="small" bindtap="Search">全部资质信息</van-button> 

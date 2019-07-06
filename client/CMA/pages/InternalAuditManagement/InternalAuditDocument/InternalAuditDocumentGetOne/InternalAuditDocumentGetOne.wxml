@@ -1,13 +1,12 @@
 <view>
   <van-cell-group>
-      <van-field  label="year" value='{{detail.year}}' disabled input-align="right"/>
-      <van-field  label="fileName" value='{{detail.fileName}}' disabled input-align="right"/>
-      <van-field  label="file" value='{{detail.file}}' disabled input-align="right"/>
+      <van-field  label="内审年份" value='{{detail.year}}' disabled input-align="right"/>
+      <van-field  label="文档名称" value='{{detail.fileName}}' disabled input-align="right"/>
   </van-cell-group>
 </view>
 <view>
-  <van-button type="info" size="small" bindtap="deleteitem">Delete</van-button>
-  <van-button type="info" size="small" bindtap="downloaditem">Download</van-button>
-  <van-button type="info" size="small" bindtap="modifyitem">Modify</van-button>
-  <van-button type="info" size="small" bindtap="goback">Back</van-button>
+  <van-button type="info" size="small" bindtap="deleteitem">删除</van-button>
+  <van-button type="info" size="small" bindtap="downloaditem">下载文件</van-button>
+  <van-button type="info" size="small" bindtap="modifyitem">修改</van-button>
+  <van-button type="info" size="small" bindtap="goback">返回</van-button>
 </view>

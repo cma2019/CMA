@@ -4,49 +4,49 @@
   <van-cell-group>
       <van-field 
         name="name"
-        label="name"
+        label="项目名称"
         value='{{name}}'
-        placeholder="input name" 
+        placeholder="项目名称" 
         required
         clearable
       />
       <van-field 
         name="people"
-        label="people"
+        label="参与人员"
         value='{{people}}'
-        placeholder="input people" 
+        placeholder="参与人员" 
         required
         clearable
       />
       <van-field 
         name="trainingUnit"
-        label="trainingUnit"
+        label="培训单位"
         value='{{trainingUnit}}'
-        placeholder="input trainingUnit" 
+        placeholder="培训单位" 
         required
         clearable
       />
       <van-field 
         name="expense"
-        label="expense"
+        label="预计培训费"
         value='{{expense}}'
-        placeholder="input expense" 
+        placeholder="预计培训费" 
         required
         clearable
       />
       <van-field 
         name="reason"
-        label="reason"
+        label="申请理由"
         value='{{reason}}'
-        placeholder="input reason" 
+        placeholder="申请理由" 
         required
         clearable
       />
       <van-field 
         name="department"
-        label="department"
+        label="申请部门"
         value='{{department}}'
-        placeholder="input department" 
+        placeholder="申请部门" 
         required
         clearable
       />
@@ -54,7 +54,7 @@
         <picker name = 'date' mode='date' value='{{date}}' bindchange='bindDateChange'>
         <view class='picker'>
         <van-field 
-        label="date"
+        label="申请时间"
         value='{{createDate}}'
         required
       />
@@ -64,15 +64,15 @@
     </van-cell-group>
      <van-field 
         name="situation"
-        label="situation"
+        label="状态"
         value='{{situation}}'
         clearable
         readonly
       />
     <view>
-      <button class='van-button--info' formType='submit'>Modify Application</button>
+      <button class='van-button--info' formType='submit'>确定</button>
     </view>
   </form>
 </view>
-<van-button type="info" size="small" bindtap="goback">go back</van-button> 
+<van-button type="info" size="small" bindtap="goback">返回</van-button> 
 

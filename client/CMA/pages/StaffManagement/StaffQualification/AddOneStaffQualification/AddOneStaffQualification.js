@@ -1,66 +1,58 @@
-// pages/StaffManagement/StaffQualification/AddOneStaffQualification/AddOneStaffQualification.js
+const app = getApp()
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
+    //"year": null,
+    //"qualificationName": null,
+    //"fileName": null
+  },
+  onLoad: function () {
 
   },
+  newEquipment: function (e) {
+    console.log(e.detail.value)
+    var myurl1 = app.globalData.url + 'StaffQualification/addOne';
+    var myurl2 = app.globalData.url + 'StaffQualification/addOneFile';
+    var mydata = {
+      "staffId": e.detail.value.staffId,
+      "qualificationName": e.detail.value.qualificationName,
+      //"fileLocation": e.detail.value.fileLocation
+      //"fileName":e.detail.value.fileName
+    };
+    app.wxRequest(myurl1, 'POST', mydata, (res) => {
+      console.log(res)
+    }, (err) => {
+      console.log(err)
+    })
+    wx.chooseMessageFile({
+      count: 1,
+      type: 'all',
+      success: function (res) {
+        console.log("get file success")
+        console.log(res)
+        console.log(res.tempFiles)
+        console.log(res.tempFiles[0])
+        console.log(res.tempFiles[0].path)
+        //mypath = res.tempFiles[0].path
+        app.wxUploadFile(myurl2, res.tempFiles[0].path, null, (res) => {
+          console.log("upload file success")
+          console.log(res)
+          console.log(mydata)
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+        }, (err) => {
+          console.log(err)
+        })
+       /* wx.redirectTo({
+          url: '../PrintOneStaffQualification/PrintOneStaffQualification',
+        })*/
+      },
+      fail: function (err) {
+        console.log("get file failed")
+        console.log(err)
+      }
 
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
+    })
 
   }
+
 })

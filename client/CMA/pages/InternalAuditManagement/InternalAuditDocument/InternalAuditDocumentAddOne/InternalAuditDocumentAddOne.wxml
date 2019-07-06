@@ -2,10 +2,10 @@
  <form bindsubmit='InternalAuditDocumentAddOne'>
     <van-cell-group title="InternalAuditDocumentAddOne">
       <van-field label="内审年份" value="{{year}}"placeholder="{{year}}" disabled input-align="right"/>
-      <van-field v-model="fileName"  name="fileName" required clearable label="文档名称" placeholder="请输入文档名称"/>
+      <van-field v-model="fileName"  name="fileName" required clearable label="文档名称" placeholder="文档名称"/>
     </van-cell-group>
     <view>
-      <button class="van-button--info" formType="submit">完成</button>
+      <button class="van-button--info" formType="submit">确定</button>
     </view>
   </form>
 </view>

@@ -1,53 +1,53 @@
 <!--pages/IntermediateCheck/IntermediateCheck.wxml-->
 <view>
   <form bindsubmit='capacityplanmodify'>
-    <van-cell-group title="input message">
+    <van-cell-group title="请输入信息">
       <van-field 
         name="name"
-        label="name"
+        label="计划名称"
         value='{{name}}'
-        placeholder="input name" 
+        placeholder="计划名称" 
         required
         clearable
       />
       <van-field 
         name="organizer"
-        label="organizer"
+        label="组织方"
         value='{{organizer}}'
-        placeholder="input organizer" 
+        placeholder="组织方" 
         required
         clearable
       />
       <van-field 
         name="state"
-        label="state"
+        label="计划状态"
         value='{{state}}'
-        placeholder="input state" 
+        placeholder="计划状态" 
         required
         clearable
       />   
       <van-field 
         name="year"
-        label="year"
+        label="参加年度"
         value='{{year}}'
-        placeholder="input year" 
+        placeholder="参加年度" 
         type='number'
         required
         clearable
       />   
       <van-field 
         name="note"
-        label="note"
+        label="备注"
         value='{{note}}'
-        placeholder="input note" 
+        placeholder="备注" 
         required
         clearable
         border = "{{false}}"
       />    
     </van-cell-group>
     <view>
-      <button class='van-button--info' formType='submit'>register</button>
+      <button class='van-button--info' formType='submit'>确认</button>
     </view>
   </form>
 </view>
-<button class='van-button--info' bindtap="gotologin">go back</button>
+<button class='van-button--info' bindtap="gotologin">返回</button>

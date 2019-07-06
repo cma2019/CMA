@@ -1,26 +1,26 @@
 <!--pages/IntermediateCheck/IntermediateCheck.wxml-->
 <view>
   <form bindsubmit='AddOneTestAbility'>
-    <van-cell-group title="input message">
+    <van-cell-group title="请输入信息">
       <van-field 
         name="year"
-        label="my year"
-        placeholder="input year"
+        label="年份	"
+        placeholder="年份	"
         type='number'
         required
         clearable
       />
       <van-field 
         name="fileName"
-        label="my fileName"
-        placeholder="input fileName"
+        label="文件名"
+        placeholder="文件名"
         required
         clearable
       />    
     </van-cell-group>
     <view>
-      <button class='van-button--info' formType='submit'>register</button>
+      <button class='van-button--info' formType='submit'>确定</button>
     </view>
   </form>
 </view>
-<button class='van-button--info' bindtap="gotologin">go back</button>
+<button class='van-button--info' bindtap="gotologin">返回</button>

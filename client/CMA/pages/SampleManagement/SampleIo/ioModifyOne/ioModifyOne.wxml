@@ -28,7 +28,7 @@
       <van-field v-model="note"  name="note" clearable label="备注" placeholder="{{origindata.note}}" rows="1" autosize />
     </van-cell-group>
     <view>
-      <button class="van-button--info" formType="submit">完成</button>
+      <button class="van-button--info" formType="submit">确认</button>
     </view>
   </form>
 </view>

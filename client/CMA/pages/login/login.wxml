@@ -3,15 +3,15 @@
   <van-cell-group>
       <van-field 
         name="username"
-        label="username"
-        placeholder="input username" 
+        label="用户名"
+        placeholder="用户名" 
         required
         clearable
       />
       <van-field 
         name="password"
-        label="password"
-        placeholder="input password" 
+        label="密码"
+        placeholder="密码" 
         password
         required
         clearable
@@ -19,7 +19,7 @@
      
     </van-cell-group>
     <view>
-      <button class='van-button--info'formType = 'submit'>login           </button>
+      <button class='van-button--info'formType = 'submit'>登录</button>
     </view>
   </form>
 </view>

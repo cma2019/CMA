@@ -1,20 +1,20 @@
 <!--pages/IntermediateCheck/IntermediateCheck.wxml-->
 <view>
-  <form bindsubmit='intercheckmodify'>
-    <van-cell-group title="input message">
+  <form bindsubmit='期间核查计划修改'>
+    <van-cell-group title="请输入信息">
       <van-field 
         name="object"
-        label="object"
+        label="核查对象"
         value='{{object}}'
-        placeholder="input object" 
+        placeholder="核查对象" 
         required
         clearable
       />
       <van-field 
         name="content"
-        label="content"
+        label="核查内容"
         value='{{content}}'
-        placeholder="input content" 
+        placeholder="核查内容" 
         required
         clearable
       />
@@ -22,9 +22,9 @@
           <view class='picker'>
             <van-field 
               name="date"
-              label="date"
+              label="计划核查时间"
               value='{{checkDate}}'
-              placeholder="input date" 
+              placeholder="计划核查时间" 
               required
               clearable
             />
@@ -32,8 +32,8 @@
         </picker>      
       <van-field
         name="personInCharge"
-        label="personInCharge"
-        placeholder="input personInCharge"
+        label="	核查负责人"
+        placeholder="核查负责人"
         value='{{personInCharge}}'
         required
         clearable
@@ -41,8 +41,8 @@
       />
       <van-field
         name="state"
-        label="state"
-        placeholder="input state"
+        label="核查状态"
+        placeholder="核查状态"
         value='{{state}}'
         required
         clearable
@@ -50,8 +50,8 @@
       />
     </van-cell-group>
     <view>
-      <button class='van-button--info' formType='submit'>register</button>
+      <button class='van-button--info' formType='submit'>确定</button>
     </view>
   </form>
 </view>
-<button class='van-button--info' bindtap="gotologin">go back</button>
+<button class='van-button--info' bindtap="gotologin">返回</button>

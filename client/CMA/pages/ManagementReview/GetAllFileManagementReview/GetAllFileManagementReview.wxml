@@ -1,16 +1,16 @@
  <!--pages/StaffManagement/StaffManagement.wxml-->
 <view>
-  <van-cell-group title="ManagementReview">
+  <van-cell-group title="文档信息">
   <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
   <van-cell value="详情" bindtap='gotoOne' id='{{item.fileId}}' is-link>
       <view slot="title">
-        <view>year : {{item.year}}</view>
-        <view>fileId : {{item.fileId}}</view>
-        <view>fileName : {{item.fileName}}</view>
-        <view>file : {{item.file}}</view>
+        <view>评审年份 : {{item.year}}</view>
+        <view>文件编号 : {{item.fileId}}</view>
+        <view>文档名称 : {{item.fileName}}</view>
+        <view>文件 : {{item.file}}</view>
       </view>
   </van-cell>
 </view>
   </van-cell-group>
 </view>
-    <van-button type="info" size="small" bindtap="gotoAdd">Add</van-button>
+    <van-button type="info" size="small" bindtap="gotoAdd">添加</van-button>
