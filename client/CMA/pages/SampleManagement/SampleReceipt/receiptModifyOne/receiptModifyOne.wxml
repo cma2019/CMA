@@ -1,4 +1,3 @@
-<!--page_SampleIo/ioModifyOne/ioModifyOne.wxml-->
 <view>
  <form bindsubmit='SampleReceipt_modifyone'>
     <van-cell-group title="SampleReceipt_modifyone">
