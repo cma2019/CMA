@@ -2,35 +2,35 @@
 <scroll-view scroll-y>
   <van-cell>
     <view slot="title">
-      <view>testingInstitutionName : {{testingInstitutionName}}</view>
-      <view>testingInstitutionAddress : {{testingInstitutionAddress}}</view>
-      <view>postcode : {{postcode}}</view>
-      <view>fax : {{fax}}</view>
-      <view>email : {{email}}</view>
-      <view>tiPeopleInCharge : {{tiPeopleInCharge}}</view>
-      <view>tiPicPosition : {{tiPicPosition}}</view>
-      <view>tiPicTelephone : {{tiPicTelephone}}</view>
-      <view>tiPicMobilephone : {{tiPicMobilephone}}</view>
-      <view>liaison : {{liaison}}</view>
-      <view>liaisonPosition : {{liaisonPosition}}</view>
-      <view>liaisonTelephone : {{liaisonTelephone}}</view>
-      <view>liaisonMobilephone : {{liaisonMobilephone}}</view>
-      <view>socialCreditCode : {{socialCreditCode}}</view>
-      <view>legalEntityBelongedName : {{legalEntityBelongedName}}</view>
-      <view>legalEntityBelongedAddress : {{legalEntityBelongedAddress}}</view>
-      <view>lebPeopleInCharge : {{lebPeopleInCharge}}</view>
-      <view>lebPicPosition : {{lebPicPosition}}</view>
-      <view>lebPicTelephone : {{lebPicTelephone}}</view>
-      <view>lebSocialCreditCode : {{lebSocialCreditCode}}</view>
-      <view>competentDepartmentName : {{competentDepartmentName}}</view>
-      <view>competentDepartmentAddress : {{competentDepartmentAddress}}</view>
-      <view>cdPeopleInCharge : {{cdPeopleInCharge}}</view>
-      <view>cdPicPosition : {{cdPicPosition}}</view>
-      <view>cdPicTelephone : {{cdPicTelephone}}</view>
-      <view>characteristic : {{characteristic}}</view>
-      <view>legalEntity : {{legalEntity}}</view>
+      <view>检测检验机构名称 : {{testingInstitutionName}}</view>
+      <view>地址 : {{testingInstitutionAddress}}</view>
+      <view>邮编 : {{postcode}}</view>
+      <view>传真 : {{fax}}</view>
+      <view>电子邮箱 : {{email}}</view>
+      <view>负责人 : {{tiPeopleInCharge}}</view>
+      <view>负责人职务 : {{tiPicPosition}}</view>
+      <view>负责人固定电话 : {{tiPicTelephone}}</view>
+      <view>负责人手机 : {{tiPicMobilephone}}</view>
+      <view>联络人 : {{liaison}}</view>
+      <view>联络人职务 : {{liaisonPosition}}</view>
+      <view>联络人固定电话 : {{liaisonTelephone}}</view>
+      <view>联络人手机 : {{liaisonMobilephone}}</view>
+      <view>社会信用代码 : {{socialCreditCode}}</view>
+      <view>所属法人单位名称 : {{legalEntityBelongedName}}</view>
+      <view>地址 : {{legalEntityBelongedAddress}}</view>
+      <view>负责人 : {{lebPeopleInCharge}}</view>
+      <view>负责人职务 : {{lebPicPosition}}</view>
+      <view>负责人电话 : {{lebPicTelephone}}</view>
+      <view>社会信用代码 : {{lebSocialCreditCode}}</view>
+      <view>主管部门名称 : {{competentDepartmentName}}</view>
+      <view>地址 : {{competentDepartmentAddress}}</view>
+      <view>负责人 : {{cdPeopleInCharge}}</view>
+      <view>负责人职务 : {{cdPicPosition}}</view>
+      <view>负责人电话 : {{cdPicTelephone}}</view>
+      <view>检测机构设施特点 : {{characteristic}}</view>
+      <view>法人类别 : {{legalEntity}}</view>
 
     </view>
   </van-cell>
-  <van-button type="info" size="small" bindtap="viewDetail">Modify</van-button>
+  <van-button type="info" size="small" bindtap="viewDetail">修改</van-button>
 </scroll-view>
