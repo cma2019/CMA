@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.demo.Model.SampleReceive;
 import com.example.demo.Model.SampleReceipt;
 import java.util.List;
-import java.sql.Date;
+//import java.sql.Date;
 
 @Controller
 @RequestMapping(path="/cma/SampleReceive")
