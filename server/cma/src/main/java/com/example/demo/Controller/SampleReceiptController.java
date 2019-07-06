@@ -53,7 +53,7 @@ public class SampleReceiptController {
         int code=200;
         String msg="成功";
         JSONObject d=new JSONObject();
-        //System.out.println(data);
+        System.out.println(data);
         String idstr=(String)data.get("sampleId");
         //System.out.println(idstr);
         String testtypestr=data.getString("testType");
@@ -269,7 +269,7 @@ public class SampleReceiptController {
         Date receiveDate=java.sql.Date.valueOf(datestr);
         String sender=data.getString("sender");
         String receiver=data.getString("receiver");
-        JSONArray list=(JSONArray)data.get("materialList");
+        JSONArray list =data.getJSONArray("materialList");
         if(SampleReceiptRepository.findBySampleId(sampleId)==null)
         {
             code=532;
