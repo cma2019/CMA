@@ -1,4 +1,13 @@
-<!--pages/user/user.wxml-->
-<text>user info</text>
- <van-button type="info" size="small" bindtap="gotoAdd">1</van-button> 
+<!--pages/StaffManagement/PrintOneStaff/PrintOneStaff.wxml-->
+<view>
+  <van-cell-group title="{{username}}">
+  <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
+  <van-cell >
+      <view slot="title">
+        <view>{{item}}</view>
+      </view>
+  </van-cell>
+</view>
+  </van-cell-group>
+</view>
  <van-button type="info" size="small" bindtap="gotoModify">修改密码</van-button> 
