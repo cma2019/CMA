@@ -294,3 +294,4 @@ public class SampleIoController {
     }
 }
 //select * from sampleio;
+//alter table sampleio ENGINE =InnoDB;

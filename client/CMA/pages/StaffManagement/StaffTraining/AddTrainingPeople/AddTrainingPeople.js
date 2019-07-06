@@ -13,9 +13,9 @@ Page({
 
   },
   onShow: function () {
-    this.setData({
+    /*this.setData({
       trainingId: this.data.trainingId
-    })
+    })*/
   },
   ApplicationAdd: function (e) {
     {
@@ -32,25 +32,35 @@ Page({
         console.log(res)
         console.log(res.msg)
         console.log(res.code)
-        if(res.code==210)
-        {
+        if (res.msg == "无法找到该人员") {
           wx.showToast({
-            title: '添加失败!',
-            icon:"none",
-            duration:2000
+            title: '无法找到该人员',
+            image: '/icons/warning/warning.png',
+            duration: 1000
           })
         }
-        else
-        {
+        else if (res.msg == "已存在该人员") {
           wx.showToast({
-            title: '添加成功!',
-            icon: "success",
-            duration: 2000
-          })
-          wx.navigateTo({
-            url: '../GetOneTrainingPeople/GetOneTrainingPeople',
+            title: '已存在该人员',
+            image: '/icons/warning/warning.png',
+            duration: 1000
           })
         }
+        else {
+          wx.showToast({
+            title: '成功',
+            //icon: 'success',
+            image: '/icons/ok/ok.png',
+            duration: 1000,
+            success: function () {
+              setTimeout(function () {
+                wx.navigateTo({
+                  url: '../GetOneTrainingPeople/GetOneTrainingPeople',
+                })
+              }, 1000);
+            }
+          })
+        }   
       }, (err) => {
         console.log('fail intermediate check register')
       })

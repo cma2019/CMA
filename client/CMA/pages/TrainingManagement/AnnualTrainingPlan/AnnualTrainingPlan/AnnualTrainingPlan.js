@@ -41,7 +41,36 @@ Page({
       console.log('getone error')
     })
   },
-  onShow: function (options) {
+  onShow: function () {
+    console.log(this.data.year)
+    let url = app.globalData.url + 'AnnualTrainingPlan/getAll'
+    let postdata = {
+      "year": this.data.year
+    }
+    console.log(url)
+    console.log(postdata)
+    app.wxRequest(url, 'GET', postdata, (res) => {
+      //console.log('success')
+      console.log(res)
+      console.log('success')
+      console.log(res.code)
+      //console.log(res.msg)
+      console.log(res.data)
+      //var temp = res.data
+      //this.temp = temp
+      this.setData({
+        mess: res.data
+      })
+
+      console.log(this.data.mess)
+    }, (err) => {
+      //console.err('getone error')
+      wx.showToast({
+        title: 'getone error',
+        duration: 1500
+      })
+      console.log('getone error')
+    })
   },
 
   gotoAdd(e) {

@@ -27,29 +27,15 @@ Page({
       || e.detail.value.date == "" ||
       e.detail.value.workingYears == "") {
       wx.showToast({
-        title: '错误(空白输入)',
-        icon: 'none',
-        duration: 2000
+        title: '空白输入',
+        image: '/icons/warning/warning.png',
+        duration: 1000
+
       })
       console.log('错误(空白输入)')
     }
     else {
       console.log('form发生了add事件，携带数据为：', e.detail.value)
-      //console.log('form发生了add事件，携带数据为：', e.detail.value.id)
-
-      //var mydata = JSON.stringify(e.detail.value)
-      //console.log(mydata)
-
-      //wx.request({
-
-        //url: 'http://192.168.1.106:8004/StaffManagement/addOne',
-        //url: app.globalData.url +'StaffManagement/addOne',
-        //app.globalData.url + 'cma/getAll'
-        //method: 'POST',
-        /*header: {
-          'content-type': 'application/x-www-form-urlencoded',
-          'Accept': 'application/json'
-        },*/
       let url = app.globalData.url + 'StaffManagement/addOne'
       let data = {
         "name": e.detail.value.name,
@@ -70,6 +56,29 @@ Page({
         console.log(res)
         console.log(res.msg)
         console.log(res.code)
+        if (res.msg == "失败,已存在员工") {
+          wx.showToast({
+            title: '已存在员工',
+            image: '/icons/warning/warning.png',
+            duration: 1000
+          })
+        }
+        else {
+          wx.showToast({
+            title: '成功',
+            //icon: 'success',
+            image: '/icons/ok/ok.png',
+            duration: 1000,
+            success: function () {
+              setTimeout(function () {
+                wx.navigateTo({
+                  url: '../StaffManagement',
+                })
+              }, 1000);
+            }
+          })
+        }
+
       }, (err) => {
         console.log('fail intermediate check register')
       })

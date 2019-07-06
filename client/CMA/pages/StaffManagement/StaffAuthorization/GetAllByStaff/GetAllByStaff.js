@@ -11,6 +11,9 @@ Page({
     this.setData({
       id: options.id
     })
+    
+  },
+  onShow: function () {
     console.log(this.data.id)
     let url = app.globalData.url + 'StaffAuthorization/GetAllByStaff'
     let postdata = {
@@ -19,29 +22,32 @@ Page({
     console.log(url)
     console.log(postdata)
     app.wxRequest(url, 'GET', postdata, (res) => {
-      //console.log('success')
-      console.log(res)
-      console.log('success')
-      console.log(res.code)
-      //console.log(res.msg)
-      console.log(res.data)
-      //var temp = res.data
-      //this.temp = temp
       this.setData({
         mess: res.data
       })
 
-      console.log(this.mess)
+    /*  wx.showToast({
+        title: '成功',
+        //icon: 'success',
+        image: '/icons/ok/ok.png',
+        duration: '1000',
+        success: function () {
+          setTimeout(function () {
+            wx.navigateTo({
+              url: '../StaffAuthorization',
+            })
+          }, 1000);
+        }
+      })*/
     }, (err) => {
       //console.err('getone error')
       wx.showToast({
-        title: 'getallbystaff error',
-        duration: 1500
+        title: '失败',
+        image: '/icons/warning/warning.png',
+        duration: 1000
       })
       console.log('getone error')
     })
-  },
-  onShow: function (options) {
   },
 
   goback: function () {

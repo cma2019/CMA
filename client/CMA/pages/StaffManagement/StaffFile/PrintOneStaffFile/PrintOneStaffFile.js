@@ -11,6 +11,9 @@ Page({
       id: options.id
     })
     console.log('getone id')
+    
+  },
+  onShow: function () {
     console.log(this.data.id)
     let url = app.globalData.url + 'StaffFile/getOne'
     let postdata = {
@@ -22,41 +25,11 @@ Page({
       console.log(res)
       console.log(res.data)
       //console.log(res.data[0].id)
-      if(res.code==210)
-      {
-        wx.showToast({
-          title: '档案不存在!',
-          icon:'none',
-          duration:2000
-        })
-      }
-      this.setData({
-        staffId: res.data.staffId,
-        name: res.data.name,
-        fileId: res.data.fileId,
-        fileLocation: res.data.fileLocation,
-        fileImage: res.data.fileImage
-      })
-    }, (err) => {
-      console.err('get one error')
-    })
-  },
-  onShow: function () {
-   // console.log(options)
-    console.log(this.data.id)
-    let url0 = app.globalData.url + 'StaffFile/getOne'
-    let postdata0 = {
-      "staffId": this.data.id
-    }
-    app.wxRequest(url0, 'GET', postdata0, (res) => {
-      console.log(res)
-      console.log(res.data)
-      //console.log(res.data[0].id)
       if (res.code == 210) {
         wx.showToast({
           title: '档案不存在!',
-          icon: 'none',
-          duration: 2000
+          image: '/icons/warning/warning.png',
+          duration: 1000
         })
       }
       this.setData({
@@ -110,9 +83,10 @@ Page({
           console.log("upload file success")
           console.log(res)
           wx.showToast({
-            title: '修改成功!',
-            icon: 'success',
-            duration: 2000
+            title: '文件修改成功',
+            //icon: 'success',
+            image: '/icons/ok/ok.png',
+            duration: 1000
           })
           //console.log(mydata)
 
@@ -149,9 +123,10 @@ Page({
           myFilePath = res.savedFilePath
           console.log(myFilePath)
           wx.showToast({
-            title: '下载成功!',
-            icon: 'success',
-            duration: 2000
+            title: '文件下载成功',
+            //icon: 'success',
+            image: '/icons/ok/ok.png',
+            duration: 1000
           })
         },
         fail: function (err) {
@@ -170,10 +145,11 @@ Page({
     app.wxRequest(url2, 'POST', data2, (res) => {
       console.log('delete successfully')
       wx.showToast({
-        title: '删除成功!',
-        icon: 'success',
-        duration: 2000
+        title: '文件删除成功',
+        image: '/icons/ok/ok.png',
+        duration: 1000
       })
+
     }, (err) => {
       console.log('delete failed')
     })

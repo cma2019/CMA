@@ -1,6 +1,17 @@
 <!--pages/StaffManagement/PrintOneStaff/PrintOneStaff.wxml-->
 <view>
-  <van-cell-group title="{{username}}">
+  <van-cell-group title="用户信息">
+
+  <van-cell >
+      <view slot="title">
+        <view>用户名 : {{username}}</view>
+      </view>
+  </van-cell>
+  </van-cell-group>
+</view>
+
+<view>
+  <van-cell-group title="用户权限">
   <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
   <van-cell >
       <view slot="title">

@@ -46,7 +46,8 @@ public class SampleReceiptController {
         return js;
     }
     @PostMapping(path="/addOne",consumes="application/json",produces="application/json")
-    public @ResponseBody  JSONObject addOne(@RequestBody JSONObject data){
+    public @ResponseBody  JSONObject addOne(@RequestBody JSONObject data)
+    {
         JSONObject js= new JSONObject();
 
         int code=200;
@@ -214,8 +215,8 @@ public class SampleReceiptController {
         json.put("data",data);
         return json;
     }
-    @PostMapping(path="/modifyOne")
-    public @ResponseBody JSONObject modify(@RequestParam(value = "data",required = false) JSONObject data)
+    @PostMapping(path="/modifyOne",consumes="application/json",produces="application/json")
+    public @ResponseBody JSONObject modify(@RequestBody JSONObject data)
     {
         JSONObject js=new JSONObject();
         int code=200;
@@ -314,4 +315,5 @@ public class SampleReceiptController {
         return js;
     }
 }
-////select * from sample_receipt;
+//select * from sample_receipt;
+//alter table sample_receipt ENGINE =InnoDB;

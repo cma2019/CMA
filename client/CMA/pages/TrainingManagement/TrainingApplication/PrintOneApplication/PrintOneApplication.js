@@ -31,7 +31,38 @@ Page({
         department: res.data.department,
         createDate: res.data.createDate,
         approver: res.data.approver,
-        approveDate: (res.data.approver=="")?res.data.approver:res.data.approveDate
+        approveDate: (res.data.approver == "") ? res.data.approver : res.data.approveDate
+      })
+    }, (err) => {
+      console.err('get one error')
+    })
+  },
+  onShow:function()
+  {
+    console.log('getone id')
+    console.log(this.data.id)
+    let url = app.globalData.url + 'TrainingApplication/getOne'
+    let postdata = {
+      "id": this.data.id
+    }
+    console.log(url)
+    console.log(postdata)
+    app.wxRequest(url, 'GET', postdata, (res) => {
+      console.log(res)
+      console.log(res.data)
+      console.log(res.data.id)
+      //console.log(res.data[0].id)
+      this.setData({
+        name: res.data.name,
+        people: res.data.people,
+        trainingUnit: res.data.trainingUnit,
+        expense: res.data.expense,
+        reason: res.data.reason,
+        situation: res.data.situation,
+        department: res.data.department,
+        createDate: res.data.createDate,
+        approver: res.data.approver,
+        approveDate: (res.data.approver == "") ? res.data.approver : res.data.approveDate
       })
     }, (err) => {
       console.err('get one error')
@@ -60,6 +91,19 @@ Page({
     }
     app.wxRequest(url, 'POST', data, (res) => {
       console.log('delete successfully')
+      wx.showToast({
+        title: '删除成功',
+        //icon: 'success',
+        image: '/icons/ok/ok.png',
+        duration: 1000,
+        success: function () {
+          setTimeout(function () {
+            wx.navigateTo({
+              url: '../TrainingApplication',
+            })
+          }, 1000);
+        }
+      })
     }, (err) => {
       console.log('delete failed')
     })

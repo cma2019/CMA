@@ -88,9 +88,28 @@ Page({
       console.log(res)
       if(res.code == 200){
         console.log('successfully')
-        wx.redirectTo({
-          url: '/pages/login/login',
+        wx.showToast({
+          title: '注册成功',
+          //icon: 'success',
+          image: '/icons/ok/ok.png',
+          duration: 1000,
+          success: function () {
+            setTimeout(function () {
+              wx.redirectTo({
+                url: '/pages/login/login',
+              })
+            }, 1000);
+          }
         })
+      
+      }
+      else {
+        wx.showToast({
+          title: '两次密码不匹配',
+          image: '/icons/warning/warning.png',
+          duration: 1000
+        })
+
       }
     }, (err) => {
       console.log('fail intermediate check register')

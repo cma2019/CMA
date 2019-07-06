@@ -7,9 +7,12 @@ Page({
   onLoad: function (options) {
     console.log(options)
     this.setData({
-
       id: options.id
     })
+    
+  },
+  onShow:function()
+  {
     console.log('getone id')
     console.log(this.data.id)
     let url = app.globalData.url + 'StaffAuthorization/getOne'
@@ -34,8 +37,8 @@ Page({
     }, (err) => {
       console.err('get one error')
     })
-  },
-  ModifyStaff(e) {
+  } ,
+ ModifyStaff(e) {
     console.log(e)
     let target = this.data.id
     console.log(target)

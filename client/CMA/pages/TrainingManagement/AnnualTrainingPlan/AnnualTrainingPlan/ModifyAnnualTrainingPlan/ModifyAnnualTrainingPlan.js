@@ -32,6 +32,32 @@ Page({
       console.err('get one error')
     })
   },
+  onShow :function()
+  {
+    console.log(this.data.id)
+    let url = app.globalData.url + 'AnnualTrainingPlan/getOne'
+    let postdata = {
+      "planId": this.data.id
+    }
+    console.log(url)
+    console.log(postdata)
+    app.wxRequest(url, 'GET', postdata, (res) => {
+      console.log("data modify")
+      console.log(res.data.trainProject)
+      this.setData({
+        planId: res.data.planId,
+        trainProject: res.data.trainProject,
+        people: res.data.people,
+        method: res.data.method,
+        trainingTime: res.data.trainingTime,
+        startTime: res.data.startTime,
+        endTime: res.data.endTime,
+        note: res.data.note
+      })
+    }, (err) => {
+      console.err('get one error')
+    })
+  },
   bindDateChange1: function (e) {
     console.log("date")
     console.log(e.detail.value)
@@ -62,23 +88,42 @@ Page({
         "startTime": e.detail.value.startTime,
         "endTime": e.detail.value.endTime,
         "note": e.detail.value.note,
-
-
       };
       console.log(data)
+      if (e.detail.value.year == "" || e.detail.value.trainProject == ""
+        || e.detail.value.people == ""
+        || e.detail.value.method == "" || e.detail.value.trainingTime == ""
+        || e.detail.value.note == "" || e.detail.value.startTime == ""
+        || e.detail.value.endTime == ""
+      ) {
+        wx.showToast({
+          title: '空白输入',
+          image: '/icons/warning/warning.png',
+          duration: 1000
+        })
+        console.log('错误(空白输入)')
+      }
+      else {
       app.wxRequest(url, 'POST', data, (res) => {
         console.log('modify message successfully')
         console.log(res)
-        /*
-        if (res.data == "modify successfully.") {
-          wx.navigateBack({
-            delta: 1
-          })
-        }
-        */
+        wx.showToast({
+          title: '修改成功',
+          //icon: 'success',
+          image: '/icons/ok/ok.png',
+          duration: 1000,
+          success: function () {
+            setTimeout(function () {
+              wx.navigateTo({
+                url: '../PrintOneAnnualTrainingPlan/PrintOneAnnualTrainingPlan',
+              })
+            }, 1000);
+          }
+        })
       }, (err) => {
         console.log('fail modify')
       })
+    }
     }
   },
   goback: function () {
