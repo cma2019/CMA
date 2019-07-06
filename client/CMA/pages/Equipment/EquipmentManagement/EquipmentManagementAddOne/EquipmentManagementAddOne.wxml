@@ -1,31 +1,31 @@
 <scroll-view scroll-y>
   <form bindsubmit='newEquipment'>
     <view class="section">
-      <van-field name="name" value="{{equipment.name}}" required clearable label="name" placeholder="input name"></van-field>
+      <van-field name="name" value="{{equipment.name}}" required clearable label="设备名称" placeholder="设备名称"></van-field>
     </view>
     <view class="section">
-      <van-field name="model" value="{{equipment.model}}" required clearable label="model" placeholder="input model"></van-field>
+      <van-field name="model" value="{{equipment.model}}" required clearable label="型号" placeholder="型号"></van-field>
     </view>
     <view class="section">
-      <van-field name="cpu" value="{{equipment.cpu}}" required clearable label="cpu" placeholder="input cpu"></van-field>
+      <van-field name="cpu" value="{{equipment.cpu}}" required clearable label="CPU" placeholder="CPU"></van-field>
     </view>
     <view class="section">
-      <van-field name="memory" value="{{equipment.memory}}" required clearable label="memory" placeholder="input memory"></van-field>
+      <van-field name="memory" value="{{equipment.memory}}" required clearable label="内存" placeholder="内存"></van-field>
     </view>
     <view class="section">
-      <van-field name="hardDisk" value="{{equipment.hardDisk}}" required clearable label="hardDisk" placeholder="input hardDisk"></van-field>
+      <van-field name="hardDisk" value="{{equipment.hardDisk}}" required clearable label="硬盘" placeholder="硬盘"></van-field>
     </view>
     <view class="section">
-      <van-field name="equipmentNumber" value="{{equipment.equipmentNumber}}" required clearable label="equipmentNumber" placeholder="input equipmentNumber"></van-field>
+      <van-field name="equipmentNumber" value="{{equipment.equipmentNumber}}" required clearable label="机身编号" placeholder="机身编号"></van-field>
     </view>
     <view class="section">
-      <van-field name="application" value="{{equipment.application}}" required clearable label="application" placeholder="input application"></van-field>
+      <van-field name="application" value="{{equipment.application}}" required clearable label="用途" placeholder="用途"></van-field>
     </view>
     <view class="section">
-      <van-field name="state" value="{{equipment.state}}" required clearable label="state" placeholder="input state"></van-field>
+      <van-field name="state" value="{{equipment.state}}" required clearable label="使用情况" placeholder="使用情况"></van-field>
     </view>
     <view>
-      <button class='van-button--info' formType='submit'>new equipment</button>
+      <button class='van-button--info' formType='submit'>确定</button>
     </view>
   </form>
 </scroll-view>

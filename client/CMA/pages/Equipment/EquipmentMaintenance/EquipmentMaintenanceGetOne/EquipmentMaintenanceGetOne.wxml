@@ -3,15 +3,15 @@
   <van-cell>
     <view slot="title">
       <view>id : {{equipment.id}}</view>
-      <view>equipmentId : {{equipment.equipmentId}}</view>
-      <view>maintenanceDate : {{equipment.maintenanceDate}}</view>
-      <view>maintenanceContent : {{equipment.maintenanceContent}}</view>
-      <view>maintenancePerson : {{equipment.maintenancePerson}}</view>
-      <view>confirmer : {{equipment.confirmer}}</view>
+      <view>机身编号 : {{equipment.equipmentId}}</view>
+      <view>记录日期 : {{equipment.maintenanceDate}}</view>
+      <view>维护保养内容 : {{equipment.maintenanceContent}}</view>
+      <view>维护保养人 : {{equipment.maintenancePerson}}</view>
+      <view>确认人 : {{equipment.confirmer}}</view>
     </view>
   </van-cell>
-  <van-button type="info" size="small" bindtap="viewDetail">Modify</van-button>
-  <van-button type="info" size="small" bindtap="mydelete">Delete</van-button>
-  <van-button type="info" size="small" bindtap="getAllById">Get All By Equipment Id</van-button>
+  <van-button type="info" size="small" bindtap="viewDetail">修改</van-button>
+  <van-button type="info" size="small" bindtap="mydelete">删除</van-button>
+  <van-button type="info" size="small" bindtap="getAllById">此设备维护保养记录</van-button>
 </scroll-view>
 

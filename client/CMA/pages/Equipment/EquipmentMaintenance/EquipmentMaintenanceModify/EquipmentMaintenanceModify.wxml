@@ -2,16 +2,16 @@
 <scroll-view scroll-y>
   <form bindsubmit='mytest'>
     <view class="section">
-      <van-field name="equipmentId" value="{{equipmentId}}" required clearable label="equipmentId" placeholder="input equipmentId"></van-field>
+      <van-field name="equipmentId" value="{{equipmentId}}" required clearable label="机身编号" placeholder="机身编号"></van-field>
     </view>
     <view class="section">
       <picker name = 'maintenanceDate' mode='date' value='{{maintenanceDate}}' bindchange='bindDateChange'>
           <view class='picker'>
             <van-field 
               name="maintenanceDate"
-              label="maintenanceDate"
+              label="记录日期"
               value='{{maintenanceDate}}'
-              placeholder="input maintenanceDate" 
+              placeholder="记录日期" 
               required
               clearable
             />
@@ -19,16 +19,16 @@
       </picker> 
     </view>
     <view class="section">
-      <van-field name="maintenanceContent" value="{{maintenanceContent}}" required clearable label="maintenanceContent" placeholder="input maintenanceContent"></van-field>
+      <van-field name="maintenanceContent" value="{{maintenanceContent}}" required clearable label="维护保养内容" placeholder="维护保养内容"></van-field>
     </view>
     <view class="section">
-      <van-field name="maintenancePerson" value="{{maintenancePerson}}" required clearable label="maintenancePerson" placeholder="input maintenancePerson"></van-field>
+      <van-field name="maintenancePerson" value="{{maintenancePerson}}" required clearable label="维护保养人" placeholder="维护保养人"></van-field>
     </view>
     <view class="section">
-      <van-field name="confirmer" value="{{confirmer}}" required clearable label="confirmer" placeholder="input confirmer"></van-field>
+      <van-field name="confirmer" value="{{confirmer}}" required clearable label="确认人" placeholder="确认人"></van-field>
     </view>
     <view>
-      <button class='van-button--info' form-type='submit'>Modify</button>
+      <button class='van-button--info' form-type='submit'>确定</button>
     </view>
   </form>
 </scroll-view>

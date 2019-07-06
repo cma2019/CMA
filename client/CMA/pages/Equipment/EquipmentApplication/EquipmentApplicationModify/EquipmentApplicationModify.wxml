@@ -2,16 +2,16 @@
 <scroll-view scroll-y>
   <form bindsubmit='mytest'>
     <view class="section">
-      <van-field name="applicant" value="{{applicant}}" required clearable label="applicant" placeholder="input applicant"></van-field>
+      <van-field name="applicant" value="{{applicant}}" required clearable label="申请人" placeholder="申请人"></van-field>
     </view>
     <view class="section">
       <picker name = 'applicationDate' mode='date' value='{{applicationDate}}' bindchange='bindDateChange'>
           <view class='picker'>
             <van-field 
               name="applicationDate"
-              label="applicationDate"
+              label="申请日期"
               value='{{applicationDate}}'
-              placeholder="input applicationDate" 
+              placeholder="申请日期" 
               required
               clearable
             />
@@ -19,28 +19,28 @@
       </picker> 
     </view>
     <view class="section">
-      <van-field name="applicationPurpose" value="{{applicationPurpose}}" required clearable label="applicationPurpose" placeholder="input applicationPurpose"></van-field>
+      <van-field name="applicationPurpose" value="{{applicationPurpose}}" required clearable label="申请用途" placeholder="input 申请用途"></van-field>
     </view>
     <view class="section">
-      <van-field name="equipmentUse" value="{{equipmentUse}}" required clearable label="equipmentUse" placeholder="input equipmentUse"></van-field>
+      <van-field name="equipmentUse" value="{{equipmentUse}}" required clearable label="设备用途" placeholder="设备用途"></van-field>
     </view>
     <view class="section">
-      <van-field name="equipmentNumber" value="{{equipmentNumber}}" required clearable label="equipmentNumber" placeholder="input equipmentNumber"></van-field>
+      <van-field name="equipmentNumber" value="{{equipmentNumber}}" required clearable label="设备编号" placeholder="设备编号"></van-field>
     </view>
     <view class="section">
-      <van-field name="softwareInfo" value="{{softwareInfo}}" required clearable label="softwareInfo" placeholder="input softwareInfo"></van-field>
+      <van-field name="softwareInfo" value="{{softwareInfo}}" required clearable label="软件信息" placeholder="软件信息"></van-field>
     </view>
     <view class="section">
-      <van-field name="auditor" value="{{auditor}}" required clearable label="auditor" placeholder="input auditor"></van-field>
+      <van-field name="auditor" value="{{auditor}}" required clearable label="审核人" placeholder="审核人"></van-field>
     </view>
     <view class="section">
       <picker name = 'auditDate' mode='date' value='{{auditDate}}' bindchange='bindDateChange2'>
           <view class='picker'>
             <van-field 
               name="auditDate"
-              label="auditDate"
+              label="审核时间"
               value='{{auditDate}}'
-              placeholder="input auditDate" 
+              placeholder="审核时间" 
               required
               clearable
             />
@@ -48,10 +48,10 @@
       </picker> 
     </view>
     <view class="section">
-      <van-field name="auditOpinion" value="{{auditOpinion}}" required clearable label="auditOpinion" placeholder="input auditOpinion"></van-field>
+      <van-field name="auditOpinion" value="{{auditOpinion}}" required clearable label="审核意见" placeholder="审核意见"></van-field>
     </view>
     <view>
-      <button class='van-button--info' form-type='submit'>Modify</button>
+      <button class='van-button--info' form-type='submit'>修改</button>
     </view>
   </form>
 </scroll-view>
