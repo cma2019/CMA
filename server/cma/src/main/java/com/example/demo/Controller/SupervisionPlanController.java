@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.demo.Repository.SupervisionPlanRepository;
 import com.example.demo.Model.SupervisionPlan;
-
-import java.sql.Date;
+//import java.sql.Date;
 import java.util.List;
 
 @Controller
@@ -108,11 +107,12 @@ public class SupervisionPlanController {
         JSONObject json=new JSONObject();
         int code=200;
         String msg="成功";
-        JSONObject data=null;
+        JSONObject data=new JSONObject();
         SupervisionPlanRepository.deleteById(Long.parseLong(planId));
         json.put("code",code);
         json.put("msg",msg);
-        //json.put("data",data);
+        json.put("data",data);
         return json;
     }
 }
+//select * from supervision_plan;
