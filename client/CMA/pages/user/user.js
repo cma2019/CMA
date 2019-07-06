@@ -5,7 +5,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-
   },
 
   /**
@@ -66,6 +65,11 @@ Page({
   gotoAdd(e) {
     wx.redirectTo({
       url: '../login/login',
+    })
+  },
+  gotoModify(e) {
+    wx.redirectTo({
+      url: '../login/modifypassword/modifypassword',
     })
   }
 })

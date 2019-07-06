@@ -1,3 +1,4 @@
 <!--pages/home/home.wxml-->
-<text>Welcome to CMA-wechat</text>
+<image mode="{{mode}}" src="{{src}}"></image>
+<view class='container'>Welcome to CMA-wechat</view>
 
