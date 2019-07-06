@@ -3,16 +3,16 @@
     <view class="section">
       <van-field 
       name="staffId" 
-      label="staffId"
-      placeholder="input staffId" 
+      label="人员编号"
+      placeholder="人员编号" 
       required 
       clearable
        >
        </van-field>
        <van-field 
       name="qualificationName" 
-      label="qualificationName"
-      placeholder="input qualificationName" 
+      label="资质名称"
+      placeholder="资质名称" 
       required 
       clearable
        >
@@ -20,7 +20,7 @@
       </van-field>
     </view>  
     <view>
-      <button class='van-button--info' formType='submit'>Add File</button>
+      <button class='van-button--info' formType='submit'>上传文件</button>
     </view>
   </form>
 </scroll-view>

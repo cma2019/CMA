@@ -4,7 +4,7 @@
   <van-cell-group>
       <van-field 
         name="trainingId"
-        label="trainingId"
+        label="培训编号"
         value='{{trainingId}}'
         readonly
         required
@@ -12,9 +12,9 @@
       />
       <van-field 
         name="program"
-        label="program"
+        label="培训项目名称"
         value='{{program}}'
-        placeholder="input program" 
+        placeholder="培训项目名称" 
    required
         clearable
       />
@@ -22,7 +22,7 @@
         <picker name = 'trainingDate' mode='date' value='{{trainingDate}}' bindchange='bindDateChange'>
         <view class='picker'>
         <van-field 
-        label="trainingDate"
+        label="培训日期"
         value='{{trainingDate}}'
         />
         </view>
@@ -30,33 +30,33 @@
     </view>
       <van-field 
         name="place"
-        label="place"
+        label="培训地点"
         value='{{place}}'
-        placeholder="input place" 
+        placeholder="培训地点" 
        required
         clearable
       />
       <van-field 
         name="presenter"
-        label="presenter"
+        label="主讲人"
         value='{{presenter}}'
-        placeholder="input presenter" 
+        placeholder="主讲人" 
         required
         clearable
       />
       <van-field 
         name="content"
-        label="content"
+        label="培训内容"
         value='{{content}}'
-        placeholder="input content" 
+        placeholder="培训内容" 
        required
         clearable
       />
       <van-field 
         name="note"
-        label="note"
+        label="备注"
         value='{{note}}'
-        placeholder="input note" 
+        placeholder="备注" 
         required
         clearable
       />    
@@ -64,9 +64,9 @@
     
 
     <view>
-      <button class='van-button--info' formType='submit'>Modify Training</button>
+      <button class='van-button--info' formType='submit'>确定</button>
     </view>
   </form>
 </view>
-<van-button type="info" size="small" bindtap="goback">go back</van-button> 
+<van-button type="info" size="small" bindtap="goback">返回</van-button> 
 

@@ -1,18 +1,18 @@
 <!--pages/TrainingApplication/PringOneApplication/PrintOneApplication.wxml-->
 <view>
   <van-cell-group>
-  <van-cell title="trainingId" value="{{trainingId}}" />
-  <van-cell title="id" value="{{id}}" />
-  <van-cell title="name" value="{{name}}" />
-  <van-cell title="program" value="{{program}}" />
-  <van-cell title="place" value="{{place}}" />
-  <van-cell title="trainingDate" value="{{trainingDate}}" />
-  <van-cell title="result" value="{{result}}" />
-  <van-cell title="note" value="{{note}}" />
+  <van-cell title="培训编号" value="{{trainingId}}" />
+  <van-cell title="人员编号" value="{{id}}" />
+  <van-cell title="姓名" value="{{name}}" />
+  <van-cell title="培训项目名称" value="{{program}}" />
+  <van-cell title="培训地点" value="{{place}}" />
+  <van-cell title="培训日期" value="{{trainingDate}}" />
+  <van-cell title="培训结果" value="{{result}}" />
+  <van-cell title="备注" value="{{note}}" />
   </van-cell-group>
 </view>
 
-<van-button type="info" size="small" bindtap="AddResult">Add Result</van-button> 
-<van-button type="info" size="small" bindtap="ModifyResult">Moidfy Result</van-button> 
- <van-button type="info" size="small" bindtap="Delete">Delete</van-button> 
- <van-button type="info" size="small" bindtap="Search">Get All By Staff</van-button> 
+<van-button type="info" size="small" bindtap="AddResult">添加培训结果</van-button> 
+<van-button type="info" size="small" bindtap="ModifyResult">修改培训结果</van-button> 
+ <van-button type="info" size="small" bindtap="Delete">删除</van-button> 
+ <van-button type="info" size="small" bindtap="Search">全部培训记录</van-button> 

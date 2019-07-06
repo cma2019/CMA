@@ -4,15 +4,15 @@
    <van-cell-group>
       <van-field 
         name="trainingId"
-        label="trainingId"
-        placeholder="input trainingId" 
+        label="培训编号"
+        placeholder="培训编号" 
         required
         clearable
       />
       <van-field 
         name="program"
-        label="program"
-        placeholder="input program" 
+        label="培训项目名称"
+        placeholder="培训项目名称" 
         required
         clearable
       />
@@ -20,7 +20,7 @@
         <picker name = 'trainingDate' mode='date' value='{{trainingDate}}' bindchange='bindDateChange'>
           <view class='picker'>
         <van-field 
-        label="trainingDate"
+        label="培训日期"
         value='{{trainingDate}}'
         required
       />
@@ -29,38 +29,38 @@
     </view>
       <van-field 
         name="place"
-        label="place"
-        placeholder="input place" 
+        label="培训地点"
+        placeholder="培训地点" 
         required
         clearable
       />
       <van-field 
         name="presenter"
-        label="presenter"
-        placeholder="input presenter" 
+        label="主讲人"
+        placeholder="主讲人" 
         required
         clearable
       />
       <van-field 
         name="content"
-        label="content"
-        placeholder="input content" 
+        label="培训内容"
+        placeholder="培训内容" 
         required
         clearable
       />
       <van-field 
         name="note"
-        label="note"
-        placeholder="input note" 
+        label="备注"
+        placeholder="备注" 
         required
         clearable
       />
     </van-cell-group>
     <view>
-      <button class='van-button--info'  formType='submit'>Add</button>
+      <button class='van-button--info'  formType='submit'>确定</button>
     </view>
   </form>
 </view>
 <!--<van-button type="info" size="small" bindtap="addfile">add file</van-button> -->
 
- <van-button type="info" size="small" bindtap="goback">go back</van-button> 
+ <van-button type="info" size="small" bindtap="goback">返回</van-button> 

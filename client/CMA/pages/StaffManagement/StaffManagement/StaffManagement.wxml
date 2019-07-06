@@ -1,15 +1,15 @@
 <!--pages/StaffManagement/StaffManagement.wxml-->
 <view>
-  <van-cell-group title="StaffManagement">
+  <van-cell-group title="人员管理">
   <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
   <van-cell value="详情" bindtap='gotoOne' id='{{item.id}}' is-link>
       <view slot="title">
-        <view>name : {{item.name}}</view>
-        <view>gender : {{item.gender}}</view>
-        <view>department : {{item.department}}</view>
+        <view>姓名 : {{item.name}}</view>
+        <view>性别 : {{item.gender}}</view>
+        <view>部门 : {{item.department}}</view>
       </view>
   </van-cell>
 </view>
   </van-cell-group>
 </view>
-    <van-button type="info" size="small" bindtap="gotoAdd">Add Staff</van-button>
+    <van-button type="info" size="small" bindtap="gotoAdd">添加</van-button>
