@@ -17,6 +17,7 @@
             <text class="cart-count-num">{{item.materialType}}</text>
             <text class="cart-count-add" bindtap="addCount" data-index="{{index}}">+</text>
           </view>
+          <!--<van-stepper value="{{item.materialType}}" integer min="0" max="3" step="1"/>-->
           <view wx:if="{{index==8 && item.materialType != 0}}">
             <input  bindinput="bindmaterialName" placeholder="材料名" />
           </view>

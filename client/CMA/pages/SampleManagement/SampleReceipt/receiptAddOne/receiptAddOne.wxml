@@ -5,7 +5,9 @@
       <van-field v-model="applicationUnit"  name="applicationUnit"   required clearable label="申报单位名称" placeholder="申报单位名称" />
       <van-field v-model="version" name="version" required clearable label="版本号" placeholder="版本号"/>
       <van-field v-model="contractId"  name="contractId"  required clearable label="合同登记编号" placeholder="合同登记编号" />
-      <van-field v-model="testType"  name="testType"  required clearable label="检测类型" placeholder="检测类型"/>
+      <van-cell v-model="testType" name="testType" required title="检测类型">
+        <van-stepper value="{{testType}}"  name="testType" integer min="0"max="2"step="1"/>
+      </van-cell>
       <van-field v-model="electronicMedia" name="electronicMedia"  required clearable label="电子媒介" placeholder="电子媒介" />
       <!--<van-cell title="提交材料与类型" required>
         <view class="addone-icon">
@@ -19,12 +21,14 @@
       </view>
       <view wx:else>
         <van-cell title="提交材料与类型" required is-link value="已填写" url="../receiptAddOne/receiptTypeAdd"/>
-      </view>
-      <van-field v-model="softwareType" name="softwareType" required clearable label="软件类型" placeholder="软件类型"/>
+      </view>>
+      <van-cell v-model="softwareType" name="softwareType" required title="软件类型">
+        <van-stepper value="{{softwareType}}"  name="softwareType" integer min="0"max="3"step="1"/>
+      </van-cell>
       <van-field v-model="receiveUnit" name="receiveUnit" required clearable label="接收单位名称" placeholder="接收单位名称"/>
       <picker name = 'receiveDate' mode='date' value='{{receiveDate}}' bindchange='bindreceiveDateChange'>
         <view class='picker'>
-          <van-field  name="receiveDate" label="接收时间" value='{{receiveDate}}' placeholder="接收时间"  required clearable />
+          <van-field readonly name="receiveDate" label="接收时间" value='{{receiveDate}}' placeholder="接收时间"  required clearable />
         </view>
       </picker>
       <van-field v-model="sender" name="sender" required clearable label="报送人" placeholder="报送人"/>

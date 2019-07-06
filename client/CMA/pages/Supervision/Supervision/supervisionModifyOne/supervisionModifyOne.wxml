@@ -1,7 +1,7 @@
 <view>
  <form bindsubmit='Supervision_modifyone'>
     <van-cell-group title="Supervision_modifyone">
-      <van-field v-model="id" name="id" clearable label="标识编号" placeholder="{{origindata.id}}" />
+      <van-field v-model="id" name="id" clearable label="标识编号"disabled placeholder="{{origindata.id}}" />
 
       <van-field v-model="remark"  name="remark" clearable label="备注" placeholder="{{origindata.remark}}" rows="1" autosize />
     </van-cell-group>
