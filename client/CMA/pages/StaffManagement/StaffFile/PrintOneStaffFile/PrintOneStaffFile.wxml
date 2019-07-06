@@ -1,14 +1,14 @@
 <!--pages/TrainingApplication/PringOneApplication/PrintOneApplication.wxml-->
 <view>
   <van-cell-group>
-  <van-cell title="staffId" value="{{staffId}}" />
-  <van-cell title="name" value="{{name}}" />
-  <van-cell title="fileId" value="{{fileId}}" />
-  <van-cell title="fileLocation" value="{{fileLocation}}" />
-  <van-cell title="fileImage" value="{{fileImage}}" />
+  <van-cell title="人员编号" value="{{staffId}}" />
+  <van-cell title="姓名" value="{{name}}" />
+  <van-cell title="档案编号" value="{{fileId}}" />
+  <van-cell title="档案存放位置" value="{{fileLocation}}" />
+  <van-cell title="档案扫描名" value="{{fileImage}}" />
   </van-cell-group>
 </view>
-<van-button type="info" size="small" bindtap="DownloadStaff">Download File</van-button> 
- <van-button type="info" size="small" bindtap="ModifyData">Modify Data</van-button> 
- <van-button type="info" size="small" bindtap="ModifyStaff">Modify File</van-button> 
- <van-button type="info" size="small" bindtap="DeleteStaff">Delete File</van-button> 
+<van-button type="info" size="small" bindtap="DownloadStaff">下载文件</van-button> 
+ <van-button type="info" size="small" bindtap="ModifyData">修改数据</van-button> 
+ <van-button type="info" size="small" bindtap="ModifyStaff">修改文件</van-button> 
+ <van-button type="info" size="small" bindtap="DeleteStaff">删除</van-button> 

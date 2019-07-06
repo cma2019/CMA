@@ -1,30 +1,30 @@
 <view>
-  <van-cell-group title="AllAnnualPlan">
+  <van-cell-group title="人员授权管理">
   <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
   <van-cell value="详情" bindtap='gotoOne' id='{{item.authorizationId}}' is-link>
       <view slot="title">
-        <view>name : {{item.name}}</view>
-        <view>department : {{item.department}}</view>
-        <view>position : {{item.position}}</view>
+        <view>姓名 : {{item.name}}</view>
+        <view>部门 : {{item.department}}</view>
+        <view>职位 : {{item.position}}</view>
       </view>
   </van-cell>
 </view>
   </van-cell-group>
 </view>
-    <van-button type="info" size="small" bindtap="gotoAdd">Add AllAnnualPlan</van-button> 
+    <van-button type="info" size="small" bindtap="gotoAdd">添加</van-button> 
 <view>
   <form bindsubmit='ApplicationAdd'>
   <van-cell-group>
       <van-field 
         name="id"
-        label="id"
-        placeholder="input id" 
+        label="被授权人编号"
+        placeholder="被授权人编号" 
         required
         clearable
       />
     </van-cell-group>
      <view>
-      <button class='van-button--info'formType = 'submit'>get all by staff</button>
+      <button class='van-button--info'formType = 'submit'>获取全部授权记录</button>
     </view>
   </form>
 </view>

@@ -4,57 +4,57 @@
    <van-cell-group>
       <van-field 
         name="name"
-        label="name"
-        placeholder="input name" 
+        label="姓名"
+        placeholder="姓名" 
         required
         clearable
       />
       <van-field 
         name="gender"
-        label="gender"
-        placeholder="input gender" 
+        label="性别"
+        placeholder="性别" 
         required
         clearable
       />
       <van-field 
         name="department"
-        label="department"
-        placeholder="input department" 
+        label="部门"
+        placeholder="部门" 
         required
         clearable
       />
       <van-field 
         name="position"
-        label="position"
-        placeholder="input position" 
+        label="职位"
+        placeholder="职位" 
         required
         clearable
       />
       <van-field 
         name="title"
-        label="title"
-        placeholder="input title" 
+        label="职称"
+        placeholder="职称" 
         required
         clearable
       />
       <van-field 
         name="degree"
-        label="degree"
-        placeholder="input degree" 
+        label="文化程度"
+        placeholder="文化程度" 
         required
         clearable
       />
       <van-field 
         name="graduationSchool"
-        label="school"
-        placeholder="input graduationSchool" 
+        label="毕业院校"
+        placeholder="毕业院校" 
         required
         clearable
       />
       <van-field 
         name="graduationMajor"
-        label="major"
-        placeholder="input graduationMajor" 
+        label="毕业专业"
+        placeholder="毕业专业" 
         required
         clearable
       />
@@ -62,7 +62,7 @@
         <picker name = 'date' mode='date' value='{{date}}' bindchange='bindDateChange'>
           <view class='picker'>
         <van-field 
-        label="date"
+        label="毕业时间"
         value='{{date}}'
         required
       />
@@ -71,67 +71,17 @@
     </view>
       <van-field 
         name="workingYears"
-        label="workingYears"
-        placeholder="input workingYears" 
+        label="工龄"
+        placeholder="工龄" 
         required
         clearable
         
       />      
     </van-cell-group>
     <view>
-      <button class='van-button--info'  formType='submit'>Add</button>
+      <button class='van-button--info'  formType='submit'>确定</button>
     </view>
   </form>
 </view>
 
- <van-button type="info" size="small" bindtap="goback">go back</van-button> 
-<!--
-    <view class="section">
-      <view class="section__title">name</view>
-      <input name="name" placeholder="input name" />
-    </view>
-    <view class="section">
-      <view class="section__title">gender</view>
-      <input name="gender" placeholder="input gender" />
-    </view>
-    <view class="section">
-      <view class="section__title">department</view>
-      <input name="department" placeholder="input department" />
-    </view>
-    <view class="section">
-      <view class="section__title">position</view>
-      <input name="position" placeholder="input position" />
-    </view>
-    <view class="section">
-      <view class="section__title">title</view>
-      <input name="title" placeholder="input title" />
-    </view>
-    <view class="section">
-      <view class="section__title">degree</view>
-      <input name="degree" placeholder="input degree" />
-    </view>
-    <view class="section">
-      <view class="section__title">graduationSchool</view>
-      <input name="graduationSchool" placeholder="input graduationSchool" />
-    </view>
-    <view class="section">
-      <view class="section__title">graduationMajor</view>
-      <input name="graduationMajor" placeholder="input graduationMajor" />
-    </view>
-    <view class="section">
-      <view class="section__title">select date</view>
-        <picker name = 'date' mode='date' value='{{date}}' bindchange='bindDateChange'>
-          <view class='picker'>date: {{date}}</view>
-        </picker>
-    </view>
-<view class="section">
-      <view class="section__title">workingYears</view>
-      <input name="workingYears" placeholder="input workingYears" />
-    </view>
-    <view>
-      <button formType='submit'>添加人员信息</button>
-    </view>
-  </form>
-</view>
-<button bindtap="goback">返回</button>
--->
+ <van-button type="info" size="small" bindtap="goback">返回</van-button>
