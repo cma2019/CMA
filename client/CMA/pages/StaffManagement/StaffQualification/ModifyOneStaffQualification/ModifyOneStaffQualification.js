@@ -8,6 +8,10 @@ Page({
     this.setData({
       id: options.id
     })
+    
+  },
+  onShow:function()
+  {
     console.log(this.data.id)
     let url = app.globalData.url + 'StaffQualification/getOne'
     let postdata = {
@@ -42,6 +46,20 @@ Page({
       app.wxRequest(url, 'POST', data, (res) => {
         console.log('modify message successfully')
         console.log(res)
+        wx.showToast({
+          title: '成功',
+          //icon: 'success',
+          image: '/icons/ok/ok.png',
+          duration: 1000,
+          success: function () {
+            setTimeout(function () {
+              wx.redirectTo({
+                url: '../PrintOneStaffQualification/PrintOneStaffQualification',
+              })
+            }, 1000);
+          }
+
+        })
       }, (err) => {
         console.log('fail modify')
       })

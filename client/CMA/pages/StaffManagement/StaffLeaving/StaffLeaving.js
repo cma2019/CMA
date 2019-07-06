@@ -8,6 +8,9 @@ Page({
 
   onLoad: function (options) {
     //console.log(this.data.planId)
+   
+  },
+  onShow: function () {
     let url = app.globalData.url + 'StaffLeaving/getAll'
     let postdata = ''
     console.log(url)
@@ -28,14 +31,12 @@ Page({
       console.log(this.mess)
     }, (err) => {
       //console.err('getone error')
-      wx.showToast({
+      /*wx.showToast({
         title: 'getone error',
         duration: 1500
-      })
+      })*/
       console.log('getone error')
     })
-  },
-  onShow: function (options) {
   },
 
   gotoAdd(e) {

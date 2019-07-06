@@ -8,6 +8,9 @@ Page({
 
   onLoad: function (options) {
     //console.log(this.data.planId)
+    
+  },
+  onShow: function () {
     let url = app.globalData.url + 'StaffAuthorization/getAll'
     let postdata = ''
     console.log(url)
@@ -35,8 +38,6 @@ Page({
       console.log('getone error')
     })
   },
-  onShow: function (options) {
-  },
 
   gotoAdd(e) {
     wx.navigateTo({
@@ -45,11 +46,17 @@ Page({
   },
   ApplicationAdd: function (e) {
     if (e.detail.value.id == null) {
-      wx.showToast({
+      /*wx.showToast({
         title: '错误(空白输入)',
         icon: 'none',
         duration: 2000
+      })*/
+      wx.showToast({
+        title: '空白输入',
+        image: '/icons/warning/warning.png',
+        duration: 1000
       })
+
       console.log('错误(空白输入)')
     }
     else {

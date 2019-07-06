@@ -35,8 +35,23 @@ Page({
         {
           wx.showToast({
             title: 'id不存在',
-            icon: 'none',
-            duration: 1500
+            image: '/icons/warning/warning.png',
+            duration: 1000
+          })
+        }
+        else {
+          wx.showToast({
+            title: '成功',
+            //icon: 'success',
+            image: '/icons/ok/ok.png',
+            duration: 1000,
+            success: function () {
+              setTimeout(function () {
+                wx.navigateTo({
+                  url: '../StaffLeaving',
+                })
+              }, 1000);
+            }
           })
         }
       }, (err) => {
