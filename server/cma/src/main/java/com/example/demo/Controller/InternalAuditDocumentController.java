@@ -5,7 +5,7 @@ import com.example.demo.framework.Response;
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+//import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import com.example.demo.Repository.InternalAuditManagementRepository;
@@ -17,7 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.sql.Date;
+//import java.sql.Date;
 import java.util.List;
 
 @Controller
@@ -27,11 +27,11 @@ public class InternalAuditDocumentController {
     private InternalAuditManagementRepository InternalAuditManagementRepository;
     @Autowired
     private InternalAuditDocumentRepository InternalAuditDocumentRepository;
-    long add_year=0;
-    String add_name="null";
-    long modify_year=0;
-    String modify_name="null";
-    long modify_id=0;
+    private long add_year=0;
+    private String add_name="null";
+    private long modify_year=0;
+    private String modify_name="null";
+    private long modify_id=0;
     @PostMapping(path = "/deleteOne")
     public @ResponseBody JSONObject deleteOne(@RequestParam(value = "year",required = false) long year){
         int code=200;
@@ -218,4 +218,6 @@ public class InternalAuditDocumentController {
         }
     }
 }
+//select * from internal_audit_document;
+//delete from internal_audit_document where file_id=
 
