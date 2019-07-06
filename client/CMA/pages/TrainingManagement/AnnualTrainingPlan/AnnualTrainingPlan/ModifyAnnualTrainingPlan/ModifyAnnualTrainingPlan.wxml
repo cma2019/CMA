@@ -4,7 +4,7 @@
   <van-cell-group>
       <van-field 
         name="planId"
-        label="planId"
+        label="培训项目编号"
         value='{{planId}}'
         readonly
         required
@@ -12,33 +12,33 @@
       />
       <van-field 
         name="trainProject"
-        label="trainProject"
+        label="培训项目"
         value='{{trainProject}}'
-        placeholder="input trainProject" 
+        placeholder="培训项目" 
    
         clearable
       />
       <van-field 
         name="people"
-        label="people"
+        label="培训对象"
         value='{{people}}'
-        placeholder="input people" 
+        placeholder="培训对象" 
        
         clearable
       />
       <van-field 
         name="method"
-        label="method"
+        label="培训方式"
         value='{{method}}'
-        placeholder="input method" 
+        placeholder="培训方式" 
         
         clearable
       />
       <van-field 
         name="trainingTime"
-        label="trainingTime"
+        label="培训课时"
         value='{{trainingTime}}'
-        placeholder="input trainingTime" 
+        placeholder="培训课时" 
        
         clearable
       />
@@ -46,7 +46,7 @@
         <picker name = 'startTime' mode='date' value='{{startTime}}' bindchange='bindDateChange1'>
         <view class='picker'>
         <van-field 
-        label="startTime"
+        label="培训开始时间"
         value='{{startTime}}'
         />
         </view>
@@ -56,7 +56,7 @@
         <picker name = 'endTime' mode='date' value='{{endTime}}' bindchange='bindDateChange2'>
         <view class='picker'>
         <van-field 
-        label="endTime"
+        label="培训结束时间"
         value='{{endTime}}'
         />
         </view>
@@ -64,9 +64,9 @@
     </view>
       <van-field 
         name="note"
-        label="note"
+        label="备注"
         value='{{note}}'
-        placeholder="input note" 
+        placeholder="备注" 
        
         clearable
       />
@@ -75,9 +75,9 @@
     
 
     <view>
-      <button class='van-button--info' formType='submit'>Modify AnnualTrainingPlan</button>
+      <button class='van-button--info' formType='submit'>确定</button>
     </view>
   </form>
 </view>
-<van-button type="info" size="small" bindtap="goback">go back</van-button> 
+<van-button type="info" size="small" bindtap="goback">返回</van-button> 
 

@@ -1,16 +1,16 @@
 <!--pages/TrainingApplication/PringOneApplication/PrintOneApplication.wxml-->
 <view>
   <van-cell-group>
-  <van-cell title="year" value="{{year}}" />
-  <van-cell title="planId" value="{{planId}}" />
-  <van-cell title="trainProject" value="{{trainProject}}" />
-  <van-cell title="people" value="{{people}}" />
-  <van-cell title="method" value="{{method}}" />
-  <van-cell title="trainingTime" value="{{trainingTime}}" />
-  <van-cell title="startTime" value="{{startTime}}" />
-  <van-cell title="endTime" value="{{endTime}}" />
-  <van-cell title="note" value="{{note}}" />
+  <van-cell title="年份" value="{{year}}" />
+  <van-cell title="培训项目编号" value="{{planId}}" />
+  <van-cell title="培训项目" value="{{trainProject}}" />
+  <van-cell title="培训对象" value="{{people}}" />
+  <van-cell title="培训方式" value="{{method}}" />
+  <van-cell title="培训课时" value="{{trainingTime}}" />
+  <van-cell title="培训开始时间" value="{{startTime}}" />
+  <van-cell title="培训结束时间" value="{{endTime}}" />
+  <van-cell title="备注" value="{{note}}" />
   </van-cell-group>
 </view>
- <van-button type="info" size="small" bindtap="ModifyStaff">Modify</van-button> 
- <van-button type="info" size="small" bindtap="DeleteStaff">Delete</van-button> 
+ <van-button type="info" size="small" bindtap="ModifyStaff">修改</van-button> 
+ <van-button type="info" size="small" bindtap="DeleteStaff">删除</van-button> 

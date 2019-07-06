@@ -4,7 +4,7 @@
   <van-cell-group>
   <van-field 
         name="id"
-        label="id"
+        label="培训申请编号"
         value='{{id}}'
         clearable
         readonly
@@ -12,18 +12,18 @@
       
     <van-field 
         name="situation"
-        label="situation"
+        label="状态"
         value='{{situation}}'
-        placeholder="input situation" 
+        placeholder="状态" 
         required
         clearable
         
       />
       <van-field 
         name="approver"
-        label="approver"
+        label="批准人"
         value='{{approver}}'
-        placeholder="input approver" 
+        placeholder="批准人" 
         required
         clearable
       />
@@ -31,7 +31,7 @@
         <picker name = 'date' mode='date' value='{{approveDate}}' bindchange='bindDateChange'>
           <view class='picker'>
         <van-field 
-        label="date"
+        label="批准时间"
         value='{{approveDate}}'
         required
       />
@@ -39,29 +39,9 @@
         </picker>
     </view>
     </van-cell-group>
-    <!--
-    <view class="section">
-      <view class="section__title">id</view>
-      <input name="id" value='{{id}}' placeholder="input id" />
-    </view>
-    <view class="section">
-      <view class="section__title">situation</view>
-      <input name="situation" value='{{situation}}' placeholder="input situation" />
-    </view>
-    <view class="section">
-      <view class="section__title">approver</view>
-      <input name="approver" value='{{approver}}' placeholder="input approver" />
-    </view>
-    <view class="section">
-      <view class="section__title">approveDate</view>
-        <picker name = 'date' mode='date' value='{{approveDate}}' bindchange='bindDateChange'>
-          <view class='picker'>date: {{approveDate}}</view>
-        </picker>
-    </view>
-    -->
     <view>
-      <button class='van-button--info'  formType='submit'>submit</button>
+      <button class='van-button--info'  formType='submit'>确定</button>
     </view>
   </form>
 </view>
- <van-button type="info" size="small" bindtap="goback">go back</van-button> 
+ <van-button type="info" size="small" bindtap="goback">返回</van-button> 

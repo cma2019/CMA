@@ -1,15 +1,15 @@
 <!--pages/TrainingApplication/TrainingApplication.wxml-->
 <view>
-  <van-cell-group title="TrainingApplication">
+  <van-cell-group title="培训申请">
   <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
   <van-cell value="详情" bindtap='gotoOne' id='{{item.id}}' is-link>
       <view slot="title">
-        <view>name : {{item.name}}</view>
-        <view>people : {{item.people}}</view>
-        <view>trainingUnit : {{item.trainingUnit}}</view>
+        <view>项目名称 : {{item.name}}</view>
+        <view>参与人员 : {{item.people}}</view>
+        <view>预计培训费 : {{item.trainingUnit}}</view>
       </view>
   </van-cell>
 </view>
   </van-cell-group>
 </view>
-    <van-button type="info" size="small" bindtap="gotoAdd">Add TrainingApplication</van-button> 
+    <van-button type="info" size="small" bindtap="gotoAdd">添加</van-button> 
