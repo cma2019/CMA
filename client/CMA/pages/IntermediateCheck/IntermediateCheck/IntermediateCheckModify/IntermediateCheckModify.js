@@ -22,7 +22,11 @@ Page({
       planId: options.id
     })
   },
-
+  gotologin(e) {
+    wx.navigateBack({
+      delta: 1
+    })
+  },
   onShow:function(options){
     console.log(this.data.planId)
     let url = app.globalData.url + 'IntermediateChecksPlan/getOne'

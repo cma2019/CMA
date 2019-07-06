@@ -1,19 +1,19 @@
 <!--pages/IntermediateCheck/IntermediateCheck.wxml-->
 <view>
   <form bindsubmit='InterCheckRegister'>
-    <van-cell-group title="input message">
+    <van-cell-group title="请输入信息">
       <van-field 
         name="planId"
-        label="planId"
+        label="期间核查计划编号"
         type='number'
-        placeholder="input planId" 
+        placeholder="期间核查计划编号" 
         required
         clearable
       />
       <van-field 
         name="object"
-        label="object"
-        placeholder="input object" 
+        label="核查对象"
+        placeholder="核查对象" 
         required
         clearable
       />
@@ -21,9 +21,9 @@
         <view class='picker'>
           <van-field 
             name="checkDate"
-            label="checkDate"
+            label="核查时间"
             value='{{checkDate}}'
-            placeholder="input checkDate" 
+            placeholder="核查时间" 
             required
             clearable
           />
@@ -31,15 +31,15 @@
       </picker> 
       <van-field 
         name="processRecord"
-        label="processRecord"
-        placeholder="input processRecord" 
+        label="核查过程记录"
+        placeholder="核查过程记录" 
         required
         clearable
       />
       <van-field 
         name="processRecordPerson"
-        label="processRecordPerson"
-        placeholder="input processRecordPerson" 
+        label="核查过程记录人"
+        placeholder="核查过程记录人" 
         required
         clearable
       />
@@ -47,9 +47,9 @@
         <view class='picker'>
           <van-field 
             name="processRecordDate"
-            label="processRecordDate"
+            label="核查过程记录时间"
             value='{{processRecordDate}}'
-            placeholder="input processRecordDate" 
+            placeholder="核查过程记录时间" 
             required
             clearable
           />
@@ -57,15 +57,15 @@
       </picker>  
       <van-field 
         name="resultRecord"
-        label="resultRecord"
-        placeholder="input resultRecord" 
+        label="核查结论记录"
+        placeholder="核查结论记录" 
         required
         clearable
       />
       <van-field 
         name="resultRecordPerson"
-        label="resultRecordPerson"
-        placeholder="input resultRecordPerson" 
+        label="核查结论记录人"
+        placeholder="核查结论记录人" 
         required
         clearable
       />
@@ -73,9 +73,9 @@
         <view class='picker'>
           <van-field 
             name="resultRecordDate"
-            label="resultRecordDate"
+            label="	核查结论记录时间"
             value='{{resultRecordDate}}'
-            placeholder="input resultRecordDate" 
+            placeholder="核查结论记录时间" 
             required
             clearable
           />
@@ -83,15 +83,15 @@
       </picker>  
       <van-field 
         name="note"
-        label="note"
-        placeholder="input note" 
+        label="备注"
+        placeholder="备注" 
         required
         clearable
       />
     </van-cell-group>
     <view>
-      <button class='van-button--info' formType='submit'>register</button>
+      <button class='van-button--info' formType='submit'>确定</button>
     </view>
   </form>
 </view>
-<button class='van-button--info' bindtap="gotologin">go back</button>
+<button class='van-button--info' bindtap="gotologin">返回</button>

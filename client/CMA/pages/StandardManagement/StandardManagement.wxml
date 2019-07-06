@@ -4,11 +4,11 @@
   <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
     <van-cell value="详情" bindtap='gotoOne' id='{{item.fileId}}' is-link>
       <view slot="title">
-        <view>fileId : {{item.fileId}}</view>
-        <view>fileName : {{item.fileName}}</view>
+        <view>标准文件编号 : {{item.fileId}}</view>
+        <view>标准文件名称 : {{item.fileName}}</view>
       </view>
     </van-cell>
   </view>
   </van-cell-group>
 </view>
-<van-button type="info" size="small" bindtap="gotoAdd">Add an Standard Management File</van-button>
+<van-button type="info" size="small" bindtap="gotoAdd">添加标准管理文件</van-button>

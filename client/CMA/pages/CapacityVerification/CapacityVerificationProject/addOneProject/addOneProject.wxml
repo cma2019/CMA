@@ -1,32 +1,32 @@
 <!--pages/IntermediateCheck/IntermediateCheck.wxml-->
 <view>
   <form bindsubmit='AddNewProject'>
-    <van-cell-group title="input message">
+    <van-cell-group title="请输入信息">
       <van-field 
         name="name"
-        label="name"
-        placeholder="input name" 
+        label="项目名称"
+        placeholder="项目名称" 
         required
         clearable
       />
       <van-field 
         name="method"
-        label="method"
-        placeholder="input method"
+        label="验证方法"
+        placeholder="验证方法"
         required
         clearable
       />
       <van-field 
         name="note"
-        label="note"
-        placeholder="input note"
+        label="备注"
+        placeholder="备注"
         required
         clearable
       />
     </van-cell-group>
     <view>
-      <button class='van-button--info' formType='submit'>register</button>
+      <button class='van-button--info' formType='submit'>确认</button>
     </view>
   </form>
 </view>
-<button class='van-button--info' bindtap="goback">go back</button>
+<button class='van-button--info' bindtap="goback">返回</button>

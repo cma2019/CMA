@@ -1,14 +1,14 @@
 <!--pages/IntermediateCheck/IntermediateCheck.wxml-->
 <view>
   <van-cell-group title="testability">
-  <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
+  <view wx:for="{{temp}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
     <van-cell value="详情" bindtap='gotoOne' id='{{item.year}}'data-year = '{{item.year}}' data-name = '{{item.fileName}}' is-link>
       <view slot="title">
-        <view>year : {{item.year}}</view>
-        <view>fileName : {{item.fileName}}</view>
+        <view>年份 : {{item.year}}</view>
+        <view>文件名 : {{item.fileName}}</view>
       </view>
     </van-cell>
   </view>
   </van-cell-group>
 </view>
-<van-button type="info" size="small" bindtap="gotoAdd">Add an test ability</van-button>
+<van-button type="info" size="small" bindtap="gotoAdd">添加年度信息</van-button>
