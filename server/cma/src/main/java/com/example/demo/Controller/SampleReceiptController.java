@@ -331,3 +331,4 @@ public class SampleReceiptController {
 
     }*/
 }
+////select * from sample_receipt;
