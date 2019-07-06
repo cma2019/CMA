@@ -5,7 +5,7 @@ import com.example.demo.framework.Response;
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+//import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import com.example.demo.Repository.SelfInspectionRepository;
@@ -17,7 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.sql.Date;
+//import java.sql.Date;
 import java.util.List;
 
 @Controller
@@ -27,10 +27,10 @@ public class SelfInspectionController {
     private SelfInspectionRepository SelfInspectionRepository;
     @Autowired
     private SelfInspectionDocumentRepository SelfInspectionDocumentRepository;
-    String add_id="0";
-    String add_name="null";
-    String modify_Id="0";
-    String modify_name="null";
+    private String add_id="0";
+    private String add_name="null";
+    private String modify_Id="0";
+    private String modify_name="null";
     @GetMapping(path = "/getAll")
     public @ResponseBody JSONObject getAll(){
         List<SelfInspection> res=SelfInspectionRepository.findAll();
@@ -233,5 +233,7 @@ public class SelfInspectionController {
         }
     }
 }
+//select * from self_inspection;
+//delete from self_inspection where file_id=
 //select * from self_inspection_document;
 //delete from self_inspection_document where file_id=
