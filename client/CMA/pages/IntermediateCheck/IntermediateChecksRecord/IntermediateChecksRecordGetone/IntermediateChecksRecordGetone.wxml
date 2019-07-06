@@ -1,18 +1,18 @@
 <!--pages/IntermediateCheck/IntermediateCheckGetone/IntermediateCheckGetone.wxml-->
 <view>
-<van-cell-group title='message of {{recordId}}'>
-    <van-cell value="{{planId}}"title="planId"border="{{ false }}"/>
-    <van-cell value="{{object}}"title="object"border="{{ false }}"/>
-    <van-cell value="{{checkDate}}"title="checkDate"border="{{ false }}"/>
-    <van-cell value="{{processRecord}}"title="processRecord"border="{{ false }}"/>
-    <van-cell value="{{processRecordPerson}}"title="processRecordPerson"border="{{ false }}"/>
-    <van-cell value="{{processRecordDate}}"title="processRecordDate"border="{{ false }}"/>
-    <van-cell value="{{resultRecord}}"title="resultRecord"border="{{ false }}"/>
-    <van-cell value="{{resultRecordPerson}}"title="resultRecordPerson"border="{{ false }}"/>
-    <van-cell value="{{resultRecordDate}}"title="resultRecordDate"border="{{ false }}"/>
-    <van-cell value="{{note}}"title="note"/>
+<van-cell-group title='期间核查记录编号 : {{recordId}}'>
+    <van-cell value="{{planId}}"title="期间核查计划编号"border="{{ false }}"/>
+    <van-cell value="{{object}}"title="核查对象"border="{{ false }}"/>
+    <van-cell value="{{checkDate}}"title="核查时间"border="{{ false }}"/>
+    <van-cell value="{{processRecord}}"title="核查过程记录"border="{{ false }}"/>
+    <van-cell value="{{processRecordPerson}}"title="核查过程记录人"border="{{ false }}"/>
+    <van-cell value="{{processRecordDate}}"title="核查过程记录时间"border="{{ false }}"/>
+    <van-cell value="{{resultRecord}}"title="核查结论记录"border="{{ false }}"/>
+    <van-cell value="{{resultRecordPerson}}"title="核查结论记录人"border="{{ false }}"/>
+    <van-cell value="{{resultRecordDate}}"title="核查结论记录时间"border="{{ false }}"/>
+    <van-cell value="{{note}}"title="备注"/>
 
 </van-cell-group>
 </view>
-<button class='van-button--info'bindtap="modifyData">modify</button>
-<button class='van-button--info'bindtap="deleteData">delete</button>
+<button class='van-button--info'bindtap="modifyData">修改</button>
+<button class='van-button--info'bindtap="deleteData">删除</button>

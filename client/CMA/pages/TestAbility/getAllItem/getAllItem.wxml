@@ -1,17 +1,17 @@
 <!--pages/IntermediateCheck/IntermediateCheck.wxml-->
 <view>
-  <van-cell-group title="show all ability items">
+  <van-cell-group title="{{year}}年度的所有产品信息">
   <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
     <van-cell value="详情" bindtap='gotoOne' id='{{item.id}}' is-link>
       <view slot="title">
-        <view>id : {{item.id}}</view>
-        <view>productionName : {{item.productionName}}</view>
-        <view>ability : {{item.ability}}</view>
+        <view>系统编号 : {{item.id}}</view>
+        <view>产品名称 : {{item.productionName}}</view>
+        <view>产品能力 : {{item.ability}}</view>
       </view>
     </van-cell>
   </view>
   </van-cell-group>
 </view>
-<van-button type="info" size="small" bindtap="gotoAdd">Add an test ability</van-button>
-<van-button type="info" size="small" bindtap="gotoModify">Modify year message</van-button>
-<van-button type="info" size="small" bindtap="downloadAnnex">get ability annex</van-button>
+<van-button type="info" size="small" bindtap="gotoAdd">添加产品信息</van-button>
+<van-button type="info" size="small" bindtap="gotoModify">修改年度信息</van-button>
+<van-button type="info" size="small" bindtap="downloadAnnex">获取年度附件</van-button>

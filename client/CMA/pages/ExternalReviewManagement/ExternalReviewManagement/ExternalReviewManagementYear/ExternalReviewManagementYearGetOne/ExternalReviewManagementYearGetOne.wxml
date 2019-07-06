@@ -3,12 +3,12 @@
   <van-cell>
     <view slot="title">
       <view>id : {{id}}</view>
-      <view>year : {{year}}</view>
-      <view>fileId : {{fileId}}</view>
-      <view>fileName : {{fileName}}</view>
+      <view>外审年份 : {{year}}</view>
+      <view>文档编号 : {{fileId}}</view>
+      <view>文档名称 : {{fileName}}</view>
     </view>
   </van-cell>
-  <van-button type="info" size="small" bindtap="viewDetail">Modify</van-button>
-  <van-button type="info" size="small" bindtap="mydelete">Delete</van-button>
-  <van-button type="info" size="small" bindtap="mydownload">Download</van-button>
+  <van-button type="info" size="small" bindtap="viewDetail">修改</van-button>
+  <van-button type="info" size="small" bindtap="mydelete">删除</van-button>
+  <van-button type="info" size="small" bindtap="mydownload">下载文件</van-button>
 </scroll-view>

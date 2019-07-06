@@ -3,8 +3,8 @@
   <van-cell-group>
       <van-field 
         name="id"
-        label="id"
-        placeholder="input id" 
+        label="人员编号"
+        placeholder="人员编号" 
         required
         clearable
       />
@@ -13,7 +13,7 @@
         <picker name = 'leavingDate' mode='date' value='{{leavingDate}}' bindchange='bindDateChange1'>
           <view class='picker'>
         <van-field 
-        label="leavingDate"
+        label="离任日期"
         value='{{leavingDate}}'
         required
       />
@@ -22,9 +22,9 @@
     </view>
     </van-cell-group>
     <view>
-      <button class='van-button--info'formType = 'submit'>Add           </button>
+      <button class='van-button--info'formType = 'submit'>确定           </button>
     </view>
   </form>
 </view>
- <van-button type="info" size="small" bindtap="goback">go back</van-button> 
+ <van-button type="info" size="small" bindtap="goback">返回</van-button> 
 

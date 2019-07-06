@@ -8,20 +8,20 @@
       required 
       readonly
       clearable
-      label="year" >
+      label="评审年份" >
       </van-field>
       <van-field 
       name="fileName"  
       required 
       clearable
-      label="fileName" 
+      label="文档名称" 
       
       >
       </van-field>
     </view>
     
     <view>
-      <button class='van-button--info' formType='submit'>new quality manual</button>
+      <button class='van-button--info' formType='submit'>上传文件</button>
     </view>
   </form>
 </scroll-view>

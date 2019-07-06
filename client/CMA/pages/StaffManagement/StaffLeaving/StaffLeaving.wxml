@@ -1,15 +1,15 @@
 <view>
-  <van-cell-group title="StaffLeaving">
+  <van-cell-group title="离任管理">
   <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
   <van-cell  bindtap='gotoOne' id='{{item.id}}' >
       <view slot="title">
-        <view>name : {{item.name}}</view>
-        <view>department : {{item.department}}</view>
-        <view>position : {{item.position}}</view>
-        <view>leavingDate : {{item.leavingDate}}</view>
+        <view>姓名 : {{item.name}}</view>
+        <view>部门 : {{item.department}}</view>
+        <view>职位 : {{item.position}}</view>
+        <view>离任日期 : {{item.leavingDate}}</view>
       </view>
   </van-cell>
 </view>
   </van-cell-group>
 </view>
-    <van-button type="info" size="small" bindtap="gotoAdd">Add One Staff Leaving</van-button> 
+    <van-button type="info" size="small" bindtap="gotoAdd">添加</van-button> 

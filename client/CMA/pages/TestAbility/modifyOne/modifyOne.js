@@ -24,7 +24,11 @@ Page({
   onShow: function (options) {
     
   },
-
+  gotologin(e) {
+    wx.navigateBack({
+      delta: 1
+    })
+  },
   modifyTestAbility: function (e) {
     console.log('modify modify')
     if (e.detail.value.year == "" 

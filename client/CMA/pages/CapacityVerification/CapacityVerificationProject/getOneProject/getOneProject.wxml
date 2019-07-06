@@ -1,14 +1,14 @@
 <!--pages/IntermediateCheck/IntermediateCheckGetone/IntermediateCheckGetone.wxml-->
 <view>
-<van-cell-group title='message of {{id}}'>
-    <van-cell value="{{projectId}}"title="projectId"border="{{ false }}"/>
-    <van-cell value="{{planId}}"title="planId"border="{{ false }}"/>
-    <van-cell value="{{name}}"title="name"border="{{ false }}"/>
-    <van-cell value="{{method}}"title="method"border="{{ false }}"/>
-    <van-cell value="{{state}}"title="state"border="{{ false }}"/>
-    <van-cell value="{{note}}"title="note"/>
+<van-cell-group title='{{id}}号能力验证项目'>
+    <van-cell value="{{projectId}}"title="项目序号"border="{{ false }}"/>
+    <van-cell value="{{planId}}"title="所属计划序号"border="{{ false }}"/>
+    <van-cell value="{{name}}"title="项目名称"border="{{ false }}"/>
+    <van-cell value="{{method}}"title="验证方法"border="{{ false }}"/>
+    <van-cell value="{{state}}"title="项目状态"border="{{ false }}"/>
+    <van-cell value="{{note}}"title="备注"/>
 </van-cell-group>
 </view>
-<button class='van-button--info' bindtap="modifyData">modify</button>
-<button class='van-button--info' bindtap="deleteData">delete</button>
-<button class='van-button--info' bindtap="getPlans">get records</button>
+<button class='van-button--info' bindtap="modifyData">修改</button>
+<button class='van-button--info' bindtap="deleteData">删除</button>
+<button class='van-button--info' bindtap="getPlans">相关能力验证记录</button>

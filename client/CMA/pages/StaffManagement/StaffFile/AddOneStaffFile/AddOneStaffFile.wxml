@@ -3,31 +3,31 @@
     <view class="section">
       <van-field 
       name="staffId" 
-      label="staffId"
-      placeholder="input staffId" 
+      label="人员编号"
+      placeholder="人员编号" 
       required 
       clearable
        >
        </van-field>
        <van-field 
       name="fileId" 
-      label="fileId"
-      placeholder="input fileId" 
+      label="档案编号"
+      placeholder="档案编号" 
       required 
       clearable
        >
        </van-field>
        <van-field 
       name="fileLocation" 
-      label="fileLocation"
-      placeholder="input fileLocation" 
+      label="档案存放位置"
+      placeholder="档案存放位置" 
       required 
       clearable
        >
       </van-field>
     </view>  
     <view>
-      <button class='van-button--info' formType='submit'>Add File</button>
+      <button class='van-button--info' formType='submit'>上传文件</button>
     </view>
   </form>
 </scroll-view>

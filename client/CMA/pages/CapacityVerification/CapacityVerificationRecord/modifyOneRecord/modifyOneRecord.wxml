@@ -1,11 +1,11 @@
 <!--pages/IntermediateCheck/IntermediateCheck.wxml-->
 <view>
   <form bindsubmit='capacityrecordmodify'>
-    <van-cell-group title="input message">
+    <van-cell-group title="请输入信息">
       <van-field 
         name="projectId"
-        label="projectId"
-        placeholder="input projectId" 
+        label="所属项目编号"
+        placeholder="所属项目编号" 
         value='{{projectId}}'
         required
         clearable
@@ -14,9 +14,9 @@
           <view class='picker'>
             <van-field 
               name="date"
-              label="date"
+              label="执行时间"
               value='{{date}}'
-              placeholder="input date" 
+              placeholder="执行时间" 
               required
               clearable
             />
@@ -24,64 +24,64 @@
       </picker>
       <van-field 
         name="methodId"
-        label="methodId"
-        placeholder="input methodId" 
+        label="验证方法依据标准编号"
+        placeholder="验证方法依据标准编号" 
         value='{{methodId}}'
         required
         clearable
       />
       <van-field 
         name="equipmentName"
-        label="equipmentName"
-        placeholder="input equipmentName"
+        label="仪器设备名称"
+        placeholder="仪器设备名称"
         value='{{equipmentName}}'
         required
         clearable
       />
       <van-field 
         name="equipmentId"
-        label="equipmentId"
-        placeholder="input equipmentId"
+        label="仪器设备编号"
+        placeholder="仪器设备编号"
         value='{{equipmentId}}'
         required
         clearable
       />
       <van-field 
         name="experimenter"
-        label="experimenter"
-        placeholder="input experimenter"
+        label="试验人员"
+        placeholder="试验人员"
         value='{{experimenter}}'
         required
         clearable
       />
       <van-field 
         name="result"
-        label="result"
-        placeholder="input result"
+        label="结果"
+        placeholder="结果"
         value='{{result}}'
         required
         clearable
       />
       <van-field 
         name="resultDeal"
-        label="resultDeal"
-        placeholder="input resultDeal"
+        label="结果处理"
+        placeholder="结果处理"
         value='{{resultDeal}}'
         required
         clearable
       />
       <van-field 
         name="note"
-        label="note"
-        placeholder="input note"
+        label="备注"
+        placeholder="备注"
         value='{{note}}'
         required
         clearable
       />    
     </van-cell-group>
     <view>
-      <button class='van-button--info' formType='submit'>register</button>
+      <button class='van-button--info' formType='submit'>确定</button>
     </view>
   </form>
 </view>
-<button class='van-button--info' bindtap="gotologin">go back</button>
+<button class='van-button--info' bindtap="gotologin">返回</button>

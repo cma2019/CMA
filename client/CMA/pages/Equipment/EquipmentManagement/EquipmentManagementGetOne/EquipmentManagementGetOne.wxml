@@ -3,16 +3,16 @@
   <van-cell>
     <view slot="title">
       <view>id : {{equipment.id}}</view>
-      <view>name : {{equipment.name}}</view>
-      <view>model : {{equipment.model}}</view>
-      <view>cpu : {{equipment.cpu}}</view>
-      <view>memory : {{equipment.memory}}</view>
-      <view>hardDisk : {{equipment.hardDisk}}</view>
-      <view>equipmentNumber : {{equipment.equipmentNumber}}</view>
-      <view>application : {{equipment.application}}</view>
-      <view>state : {{equipment.state}}</view>
+      <view>设备名称 : {{equipment.name}}</view>
+      <view>型号 : {{equipment.model}}</view>
+      <view>CPU : {{equipment.cpu}}</view>
+      <view>内存 : {{equipment.memory}}</view>
+      <view>硬盘 : {{equipment.hardDisk}}</view>
+      <view>机身编号 : {{equipment.equipmentNumber}}</view>
+      <view>用途 : {{equipment.application}}</view>
+      <view>使用情况 : {{equipment.state}}</view>
     </view>
   </van-cell>
-  <van-button type="info" size="small" bindtap="viewDetail">Modify</van-button>
-  <van-button type="info" size="small" bindtap="mydelete">Delete</van-button>
+  <van-button type="info" size="small" bindtap="viewDetail">修改</van-button>
+  <van-button type="info" size="small" bindtap="mydelete">删除</van-button>
 </scroll-view>

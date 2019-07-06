@@ -2,10 +2,10 @@
 <scroll-view scroll-y>
   <form bindsubmit='newEquipment'>
     <view class="section">
-      <van-field name="year" value="{{year}}" required clearable label="year" placeholder="input year"></van-field>
+      <van-field name="year" value="{{year}}" required clearable label="外审年份" placeholder="外审年份"></van-field>
     </view>
     <view>
-      <button class='van-button--info' formType='submit'>new external review document</button>
+      <button class='van-button--info' formType='submit'>上传文件</button>
     </view>
   </form>
 </scroll-view>

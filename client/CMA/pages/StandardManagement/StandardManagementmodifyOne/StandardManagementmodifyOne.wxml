@@ -2,7 +2,7 @@
 <scroll-view scroll-y>
   <form bindsubmit='newEquipment'>
     <view>
-      <button class='van-button--info' formType='submit'>modify standard file</button>
+      <button class='van-button--info' formType='submit'>修改文件</button>
     </view>
   </form>
 </scroll-view>
