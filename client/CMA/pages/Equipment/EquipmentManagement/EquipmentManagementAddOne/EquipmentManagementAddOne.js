@@ -5,10 +5,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+  },
+  mygo:function(e){
+    wx.redirectTo({
+      url: '/pages/Equipment/EquipmentManagement/EquipmentManagement',
+    })
   },
   newEquipment:function(e)
   {
+    var that = this
     console.log(e.detail.value)
     var myurl = app.globalData.url + 'Equipment/add';
     var mydata = {
