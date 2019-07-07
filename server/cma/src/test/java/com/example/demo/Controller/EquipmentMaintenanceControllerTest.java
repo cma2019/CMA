@@ -54,7 +54,39 @@ public class EquipmentMaintenanceControllerTest {
             int code = Integer.parseInt(res.substring(8,11));
             Assert.assertEquals(200, (long)code);
         }
-
-
+   public void getOne() throws Exception{
+       String url="/cma/EquipmentMaintenance/getOne/66";
+       MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0])
+               .param("id","66"))
+               .andExpect(MockMvcResultMatchers.status().isOk())
+               .andDo(MockMvcResultHandlers.print()).andReturn();
+       String res = mvcResult.getResponse().getContentAsString();
+       int code = Integer.parseInt(res.substring(8,11));
+       Assert.assertEquals(200, (long)code);
+   }
+    public void getAll() throws Exception{
+        String url="/cma/EquipmentMaintenance/getAll";
+        MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(MockMvcResultHandlers.print()).andReturn();
+        String res = mvcResult.getResponse().getContentAsString();
+        int code = Integer.parseInt(res.substring(8,11));
+        Assert.assertEquals(200, (long)code);
+    }
+    public void modifyOne() throws Exception{
+        String url="/cma/EquipmentMaintenance/modifyOne/66";
+        MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0])
+                .param("id,","66")
+                .param("equipmentId","12345678")
+                .param("maintenanceDate","2019-6-29")
+                .param("maintenanceContent","较差")
+                .param("maintenancePerson","唐三")
+                .param("confirmer","李四")
+        )       .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(MockMvcResultHandlers.print()).andReturn();
+        String res = mvcResult.getResponse().getContentAsString();
+        int code = Integer.parseInt(res.substring(8,11));
+        Assert.assertEquals(200, (long)code);
+    }
 
 }
