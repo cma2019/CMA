@@ -28,7 +28,7 @@ import java.io.FileInputStream;
 public class InternalAuditDocumentControllerTest {
 
     @Autowired
-    InternalAuditDocumentController internalAuditDocumentController;
+    InternalAuditDocumentController internalAuditDocumentController=new InternalAuditDocumentController();
     MockMvc mockMvc;
 
     @Before
@@ -58,7 +58,7 @@ public class InternalAuditDocumentControllerTest {
     @Test
     public void addOneFile() throws Exception{
         MockMultipartFile firstFile = null;
-        File file = new File("E:/cma/test/2016文档01.docx");
+        File file = new File("E:/CMA/test/","2016年度01.docx");
         firstFile = new MockMultipartFile("testFile01", new FileInputStream(file));
         MockHttpServletRequestBuilder request = null;
         String url = "/cma/InternalAuditManagement/addOneFile";

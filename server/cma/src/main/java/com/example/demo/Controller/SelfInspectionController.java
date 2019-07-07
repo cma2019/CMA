@@ -220,7 +220,7 @@ public class SelfInspectionController {
         File newFile=new File(filepath,fileName+"."+suffix);
         if(newFile.exists())
         {
-            js.put("code",514);
+            js.put("code",512);
             js.put("msg","文件名已存在");
             js.put("data",null);
             return js;
