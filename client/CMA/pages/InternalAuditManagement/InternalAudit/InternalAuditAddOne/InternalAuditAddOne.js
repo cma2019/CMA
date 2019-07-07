@@ -1,18 +1,40 @@
 const app = getApp()
+var util = require('../../../../utils/util.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    date: ""
+    date: "",
+    year:"",
+    select:[],
+    currentYear:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var YEAR = util.formatYear(new Date())
+    this.setData({
+      currentYear: YEAR
+    })
+    console.log(this.data)
+    let select = this.data.select
+    for (let i = this.data.currentYear; i >= 1990;--i){
+      select.push(i)
+    }
+    this.setData({
+      select:select
+    })
+    console.log(this.data)
+  },
+  bindyearChange(e) {
+    let year = this.data.select[e.detail.value]
+    this.setData({
+      year: year
+    })
   },
   binddateChange(e) {
     this.setData({
@@ -25,10 +47,10 @@ Page({
       wx.showToast({
         title: '空白输入',
         image: '/icons/warning/warning.png',
-        duration: 2000,
+        duration: 500,
         success:function(){
           setTimeout(function(){
-          },2000)
+          },500)
         }
       })
       console.log('空白输入')
@@ -49,17 +71,16 @@ Page({
         success(res) {
           console.log(res.data)
           if (res.data.code == 200) {
-            console.log("45646546546546")
             wx.showToast({
               title: '成功',
               image: '/icons/ok/ok.png',
-              duration: 2000,
+              duration: 500,
               success: function () {
                 setTimeout(function () {
                   wx.navigateTo({
                     url: '../InternalAudit'
                   })
-                }, 2000)
+                }, 500)
               }
             })
             console.log("成功")
@@ -68,10 +89,10 @@ Page({
             wx.showToast({
               title: '添加失败',
               image: '/icons/warning/warning.png',
-              duration: 2000,
+              duration: 500,
               success: function () {
                 setTimeout(function () {
-                }, 2000)
+                }, 500)
               }
             })
             console.log("缺少必选请求参数")
@@ -80,10 +101,10 @@ Page({
             wx.showToast({
               title: '添加失败',
               image: '/icons/warning/warning.png',
-              duration: 2000,
+              duration: 500,
               success: function () {
                 setTimeout(function () {
-                }, 2000)
+                }, 500)
               }
             })
             console.log("添加重复数据")
@@ -92,22 +113,22 @@ Page({
             wx.showToast({
               title: '添加失败',
               image: '/icons/warning/warning.png',
-              duration: 2000,
+              duration: 500,
               success: function () {
                 setTimeout(function () {
-                }, 2000)
+                }, 500)
               }
             })
             console.log("添加数据不合法")
           }
           else{ //513
             wx.showToast({
-              title: '添加失败',
+              title: '内审年份重复',
               image: '/icons/warning/warning.png',
-              duration: 2000,
+              duration: 500,
               success: function () {
                 setTimeout(function () {
-                }, 2000)
+                }, 500)
               }
             })
             console.log("添加数据不符合一致性")

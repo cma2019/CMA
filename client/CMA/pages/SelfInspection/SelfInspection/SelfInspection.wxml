@@ -12,7 +12,6 @@
         </van-cell>
         <view>
           <van-button type="info" size="small"id='{{item.id}}' bindtap="SelfInspectionDelete">删除</van-button>
-          <van-button type="info" size="small"id='{{item.id}}' bindtap="SelfInspectionModify">删除</van-button>
         </view>
       </view>
     </view>

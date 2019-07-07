@@ -74,7 +74,8 @@ Page({
         if (res.data.code == 200) {
           wx.showToast({
             title: '删除成功',
-            duration: 1500
+            image: '/icons/ok/ok.png',
+            duration: 1000
           })
           wx.navigateTo({
             url: '/pages/InternalAuditManagement/InternalAudit/InternalAudit'
