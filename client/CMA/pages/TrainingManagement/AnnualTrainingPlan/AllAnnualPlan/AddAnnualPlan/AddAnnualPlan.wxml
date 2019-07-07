@@ -21,6 +21,7 @@
           <view class='picker'>
         <van-field 
         label="编写日期"
+        readonly
         value='{{createDate}}'
         required
       />

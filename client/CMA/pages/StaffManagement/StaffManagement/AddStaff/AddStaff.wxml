@@ -9,12 +9,14 @@
         required
         clearable
       />
+ 
       <van-field 
         name="gender"
         label="性别"
         placeholder="性别" 
         required
         clearable
+        
       />
       <van-field 
         name="department"
@@ -64,6 +66,7 @@
         <van-field 
         label="毕业时间"
         value='{{date}}'
+        readonly
         required
       />
       </view>

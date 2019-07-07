@@ -15,6 +15,11 @@ Page({
     "modifier": null,
     "modifyContent": null
   },
+  mygo: function (e) {
+    wx.redirectTo({
+      url: '/pages/QualityManual/QualityManual/QualityManual',
+    })
+  },
   bindDateChange: function (e) {
     console.log("date")
     console.log(e.detail.value)
@@ -45,8 +50,17 @@ Page({
           app.wxUploadFile(myurl2, mypath, null, (res) => {
             console.log("upload file success")
             console.log(res)
-            wx.redirectTo({
-              url: '/pages/QualityManual/QualityManual/QualityManual',
+            wx.showToast({
+              title: '添加成功',
+              icon: '/icons/ok/ok.png',
+              duration: 1000,
+              success: function () {
+                setTimeout(function () {
+                  wx.redirectTo({
+                    url: '/pages/QualityManual/QualityManual/QualityManual',
+                  })
+                }, 1000);
+              }
             })
           }, (err) => {
             console.log(err)

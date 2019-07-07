@@ -51,14 +51,14 @@ Page({
         }
         else {
           wx.showToast({
-            title: '成功',
+            title: '删除成功',
             //icon: 'success',
             image: '/icons/ok/ok.png',
             duration: 1000,
             success: function () {
               setTimeout(function () {
-                wx.navigateTo({
-                  url: '../GetOneTrainingPeople/GetOneTrainingPeople',
+                wx.navigateBack({
+                  delta: 1
                 })
               }, 1000);
             }

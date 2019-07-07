@@ -32,18 +32,26 @@ Page({
     app.wxRequest(url, 'GET', postdata, (res) => {
       console.log('record getone success')
       console.log(res)
-      this.setData({
-        planId: res.data[0].planId,
-        object: res.data[0].object,
-        checkDate: res.data[0].checkDate,
-        processRecord: res.data[0].processRecord,
-        processRecordPerson: res.data[0].processRecordPerson,
-        processRecordDate: res.data[0].processRecordDate,
-        resultRecord: res.data[0].resultRecord,
-        resultRecordPerson: res.data[0].resultRecordPerson,
-        resultRecordDate: res.data[0].resultRecordDate,
-        note: res.data[0].note
-      })
+      if(res.code == 200){
+        this.setData({
+          planId: res.data[0].planId,
+          object: res.data[0].object,
+          checkDate: res.data[0].checkDate,
+          processRecord: res.data[0].processRecord,
+          processRecordPerson: res.data[0].processRecordPerson,
+          processRecordDate: res.data[0].processRecordDate,
+          resultRecord: res.data[0].resultRecord,
+          resultRecordPerson: res.data[0].resultRecordPerson,
+          resultRecordDate: res.data[0].resultRecordDate,
+          note: res.data[0].note
+        })
+      }else{
+        wx.showToast({
+          title: '连接失败',
+          image: '/icons/warning/warning.png',
+          duration: 1000
+        })
+      }
     }, (err) => {
       console.err('getone error')
       wx.showToast({

@@ -18,7 +18,7 @@ Page({
   },
   
   ApplicationAdd: function (e) {
-
+    var regNum = new RegExp('[0-9]', 'g');
     if (e.detail.value.name == ""
       || e.detail.value.people == ""
       || e.detail.value.department == "" || e.detail.value.trainingUnit == ""
@@ -30,6 +30,14 @@ Page({
         duration: 1000
       })
       console.log('错误(空白输入)')
+    } 
+    else if (regNum.exec(e.detail.value.expense) == null) {
+      wx.showToast({
+        title: '培训费非数字',
+        image: '/icons/warning/warning.png',
+        duration: 1000
+
+      })
     }
     else {
       console.log('form发生了add事件，携带数据为：', e.detail.value)
@@ -73,19 +81,20 @@ Page({
           })
         }
         else {
-          wx.showToast({
-            title: '成功',
-            //icon: 'success',
-            image: '/icons/ok/ok.png',
-            duration: 1000,
-            success: function () {
-              setTimeout(function () {
-                wx.navigateTo({
-                  url: '../TrainingApplication',
-                })
-              }, 1000);
-            }
-          })
+    
+            wx.showToast({
+              title: '成功',
+              //icon: 'success',
+              image: '/icons/ok/ok.png',
+              duration: 1000,
+              success: function () {
+                setTimeout(function () {
+                  wx.navigateBack({
+                    delta: 1
+                  })
+                }, 1000);
+              }
+            })
         }
       }, (err) => {
         console.log('fail intermediate check register')

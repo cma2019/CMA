@@ -10,6 +10,11 @@ Page({
     "year": null,
     "date": null
   },
+  mygo: function (e) {
+    wx.redirectTo({
+      url: '/pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagement',
+    })
+  },
   bindDateChange: function (e) {
     console.log("date")
     console.log(e.detail.value)

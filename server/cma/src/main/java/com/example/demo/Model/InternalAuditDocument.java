@@ -14,6 +14,7 @@ public class InternalAuditDocument {
     private Long year; //这个文档所在的内审的年份
     private String fileName;     //文档名称
     String Dir="InternalAuditDocument";
+    //int flag=0;
 
     public void setFileId(Long fileId){
         this.fileId=fileId;
@@ -37,5 +38,13 @@ public class InternalAuditDocument {
     public String getDir() {
         return Dir;
     }
+
+    /*public void setFlag(int flag) {
+        this.flag = flag;
+    }
+
+    public int getFlag() {
+        return flag;
+    }*/
 }
 

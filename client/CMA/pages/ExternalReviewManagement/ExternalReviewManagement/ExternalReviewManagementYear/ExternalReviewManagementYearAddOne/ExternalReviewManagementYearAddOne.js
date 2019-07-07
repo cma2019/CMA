@@ -12,6 +12,12 @@ Page({
     "fileName": null,
     year:null
   },
+  mygo: function (e) {
+    var that = this
+    wx.redirectTo({
+      url: '/pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementYear/ExternalReviewManagementYear?year=' + that.data.year,
+    })
+  },
   newEquipment: function (e) {
     console.log(e.detail.value)
     var that = this

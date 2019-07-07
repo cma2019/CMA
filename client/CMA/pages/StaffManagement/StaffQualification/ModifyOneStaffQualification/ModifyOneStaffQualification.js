@@ -53,12 +53,11 @@ Page({
           duration: 1000,
           success: function () {
             setTimeout(function () {
-              wx.redirectTo({
-                url: '../PrintOneStaffQualification/PrintOneStaffQualification',
+              wx.navigateBack({
+                delta: 1
               })
             }, 1000);
           }
-
         })
       }, (err) => {
         console.log('fail modify')

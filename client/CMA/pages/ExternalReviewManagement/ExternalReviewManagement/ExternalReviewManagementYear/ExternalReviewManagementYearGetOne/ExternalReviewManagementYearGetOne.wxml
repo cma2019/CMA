@@ -11,4 +11,5 @@
   <van-button type="info" size="small" bindtap="viewDetail">修改</van-button>
   <van-button type="info" size="small" bindtap="mydelete">删除</van-button>
   <van-button type="info" size="small" bindtap="mydownload">下载文件</van-button>
+  <van-button type="info" size="small" bindtap="mygo">返回</van-button>
 </scroll-view>

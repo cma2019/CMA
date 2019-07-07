@@ -77,6 +77,13 @@ Page({
               }, 1000);
             }
           })
+        }else if(res.code == 300){
+          console.log('fail intermediate check register')
+          wx.showToast({
+            title: '相应记录已存在',
+            image: '/icons/warning/warning.png',
+            duration: 1000
+          })
         }else{
           console.log('fail intermediate check register')
           wx.showToast({

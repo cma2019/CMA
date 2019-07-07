@@ -67,13 +67,13 @@ public class UserController {
         System.out.println(tempUserName);
         user.setUsername(tempUserName);
         user.setPassword(password);
-        boolean[] temp = new boolean[20];
+        boolean[] temp = new boolean[15];
         if(tempUserName.equals("admin")){
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 15; i++)
                 temp[i] = true;
         }
         else {
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 15; i++)
                 temp[i] = false;
         }
         user.setPermission(temp);

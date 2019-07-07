@@ -22,7 +22,7 @@ Page({
     })
   },
   gotoModify(e) {
-    wx.redirectTo({
+    wx.navigateTo({
       url: '../login/modifypassword/modifypassword',
     })
   }

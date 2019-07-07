@@ -50,6 +50,7 @@ Page({
   },
   intercheckmodify: function (e) {
     console.log('modify modify')
+    var regNum = new RegExp('[0-9]', 'g');
     if (e.detail.value.name == ""
       || e.detail.value.people == ""
       || e.detail.value.department == "" || e.detail.value.trainingUnit == ""
@@ -61,6 +62,14 @@ Page({
         duration: 1000
       })
       console.log('错误(空白输入)')
+    }
+    else if (regNum.exec(e.detail.value.expense) == null) {
+      wx.showToast({
+        title: '培训费非数字',
+        image: '/icons/warning/warning.png',
+        duration: 1000
+
+      })
     }
     else {
       console.log('modify，携带数据为：', e.detail.value)
@@ -94,14 +103,14 @@ Page({
         }
         */
         wx.showToast({
-          title: '修改成功',
+          title: '成功',
           //icon: 'success',
           image: '/icons/ok/ok.png',
           duration: 1000,
           success: function () {
             setTimeout(function () {
-              wx.navigateTo({
-                url: '../PrintOneApplication/PrintOneApplication',
+              wx.navigateBack({
+                delta: 1
               })
             }, 1000);
           }

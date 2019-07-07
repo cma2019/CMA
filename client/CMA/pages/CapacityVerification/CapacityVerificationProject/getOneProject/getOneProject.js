@@ -33,14 +33,22 @@ Page({
     app.wxRequest(url, 'GET', postdata, (res) => {
       console.log(res)
       console.log('plan get one project success')
-      this.setData({
-        projectId: res.data.projectId,
-        planId: res.data.planId,
-        name: res.data.name,
-        method: res.data.method,
-        state: res.data.state,
-        note: res.data.note
-      })
+      if(res.code == 200){
+        this.setData({
+          projectId: res.data.projectId,
+          planId: res.data.planId,
+          name: res.data.name,
+          method: res.data.method,
+          state: res.data.state,
+          note: res.data.note
+        })
+      }else{
+        wx.showToast({
+          title: '连接失败',
+          image: '/icons/warning/warning.png',
+          duration: 1000
+        })
+      }
     }, (err) => {
       console.err('get one project error')
       wx.showToast({
