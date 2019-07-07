@@ -142,7 +142,7 @@ public class InternalAuditDocumentController {
         String suffix=str[str.length-1];
         iDoc.setYear(year);
         iDoc.setFileName(fileName+"."+suffix);
-        InternalAuditDocumentRepository.saveAndFlush(iDoc);
+        InternalAuditDocumentRepository.save(iDoc);
         //System.out.println(sDoc.getFileName());
         return  fileController.upload(file,request,iDoc.getFileName(),iDoc.getDir());
     }
