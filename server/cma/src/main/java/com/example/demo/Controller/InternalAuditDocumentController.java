@@ -184,7 +184,7 @@ public class InternalAuditDocumentController {
     public @ResponseBody Response modifyOneFile(@RequestParam("file") MultipartFile file,
                                                 @RequestParam(value = "fileId",required = false) long fileId,
                                                 @RequestParam(value = "year",required = false) long year,
-                                                @RequestParam(value = "fileName",required = false) long fileName,
+                                                @RequestParam(value = "fileName",required = false) String fileName,
                                                 HttpServletRequest request){
         FileController fileController=new FileController();
         InternalAuditDocument tmp= InternalAuditDocumentRepository.findByFileId(fileId);
