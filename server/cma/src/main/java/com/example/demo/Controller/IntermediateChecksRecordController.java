@@ -29,7 +29,7 @@ public class IntermediateChecksRecordController {
     @GetMapping(path="/getAll")
     /*public @ResponseBody String getAll(){
         return "Hello,World";*/
-    public @ResponseBody void getAllRecord(HttpServletRequest request,HttpServletResponse response) throws IOException, JSONException {
+    public @ResponseBody JSONObject getAllRecord(HttpServletRequest request,HttpServletResponse response) throws IOException, JSONException {
         JSONObject json=new JSONObject(new LinkedHashMap());
         if(IntermediateChecksRecordRepository.findAll().isEmpty())
         {
@@ -42,7 +42,7 @@ public class IntermediateChecksRecordController {
 
                 json.put("code",200);
                 json.put("msg","获取成功");
-                json.put("data:",IntermediateChecksRecordRepository.findAll());
+                json.put("data",IntermediateChecksRecordRepository.findAll());
 
 
             /*List<IntermediateChecksRecord> recordList= IntermediateChecksRecordRepository.findAll();
@@ -51,10 +51,10 @@ public class IntermediateChecksRecordController {
             for(IntermediateChecksRecord record:recordList){
                 JSONObject singlePlan=new JSONObject();
                 //JSONObject array=new JSONObject();
-                singlePlan.put("recordId",record.getrecordId());
-                singlePlan.put("planId",record.getplanID());
+                singlePlan.put("recordId",record.getRecordId());
+                singlePlan.put("planId",record.getPlanId());
                 singlePlan.put("object",record.getObject());
-                singlePlan.put("checkDate",record.getDate());
+                singlePlan.put("checkDate",record.getCheckDate());
                 singlePlan.put("processRecord",record.getProcessRecord());
                 singlePlan.put("processRecordPerson",record.getProcessRecordPerson());
                 singlePlan.put("processRecordDate",record.getProcessRecordDate());
@@ -68,15 +68,15 @@ public class IntermediateChecksRecordController {
             }
             json.put("data",array);*/
         }
-        response.setContentType("text/html;charset=utf-8");
-        response.getWriter().write(json.toString());
+        //response.setContentType("text/html;charset=utf-8");
+        //response.getWriter().write(json.toString());
         //System.out.println(json);
         //return json.toString();
-
+        return json;
     }
 
     @GetMapping(path="/getOneByRecordId")
-    public @ResponseBody void getOneByRecordId(HttpServletRequest request,HttpServletResponse response,
+    public @ResponseBody JSONObject getOneByRecordId(HttpServletRequest request,HttpServletResponse response,
                                      @RequestParam(value="recordId",required=false)Long recordId)throws IOException{
         JSONObject json=new JSONObject(new LinkedHashMap());
         IntermediateChecksRecord record=new IntermediateChecksRecord();
@@ -110,9 +110,9 @@ public class IntermediateChecksRecordController {
 
 
         }
-        response.setContentType("text/html;charset=utf-8");
-        response.getWriter().write(json.toString());
-        //return json;
+        //response.setContentType("text/html;charset=utf-8");
+        //response.getWriter().write(json.toString());
+        return json;
     }
 
 
@@ -142,9 +142,9 @@ public class IntermediateChecksRecordController {
             response.getWriter().write(json.toString());
             return;
         }
-        newRecord.setplanID(planId);
+        newRecord.setPlanId(planId);
         newRecord.setObject(object);
-        newRecord.setDate(checkDate);
+        newRecord.setCheckDate(checkDate);
         newRecord.setProcessRecord(processRecord);
         newRecord.setProcessRecordPerson(processRecordPerson);
         newRecord.setProcessRecordDate(processRecordDate);
@@ -224,7 +224,7 @@ public class IntermediateChecksRecordController {
     }
 
     @GetMapping(path="/getOneByPlanId")
-    public @ResponseBody void getOneByPlanId(HttpServletRequest request,HttpServletResponse response,
+    public @ResponseBody JSONObject getOneByPlanId(HttpServletRequest request,HttpServletResponse response,
                                      @RequestParam(value="planId",required=false)Long planId)throws IOException{
         JSONObject json=new JSONObject(new LinkedHashMap());
         IntermediateChecksRecord record=new IntermediateChecksRecord();
@@ -267,8 +267,8 @@ public class IntermediateChecksRecordController {
             }*/
 
         }
-        response.setContentType("text/html;charset=utf-8");
-        response.getWriter().write(json.toString());
-        //return json;
+        //response.setContentType("text/html;charset=utf-8");
+        //response.getWriter().write(json.toString());
+        return json;
     }
 }

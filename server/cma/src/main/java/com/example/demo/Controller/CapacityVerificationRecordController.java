@@ -61,7 +61,7 @@ public class CapacityVerificationRecordController {
     @PostMapping(path="/deleteOneRecord")
     public @ResponseBody JSONObject deleteRecord(@RequestParam(value="id",required=false)Long recordId){
         JSONObject json=new JSONObject(new LinkedHashMap());
-        if(CapacityVerificationRecordRepository.findById(recordId)==null)
+        if(!CapacityVerificationRecordRepository.findById(recordId).isPresent())
         {
             try{
                 json.put("code",500);
@@ -95,7 +95,7 @@ public class CapacityVerificationRecordController {
                                                   @RequestParam(value="resultDeal",required=false)String resultDeal,
                                                   @RequestParam(value="note",required=false)String note){
         JSONObject json=new JSONObject(new LinkedHashMap());
-        if(CapacityVerificationRecordRepository.findById(recordId)==null)
+        if(!CapacityVerificationRecordRepository.findById(recordId).isPresent())
         {
             try{
                 json.put("code",500);
@@ -126,7 +126,7 @@ public class CapacityVerificationRecordController {
     public @ResponseBody JSONObject getOneRecord(@RequestParam(value="id",required=false)Long recordId)throws IOException {
         JSONObject json=new JSONObject(new LinkedHashMap());
         CapacityVerificationRecord record=new CapacityVerificationRecord();
-        if(CapacityVerificationRecordRepository.findById(recordId)==null)
+        if(!CapacityVerificationRecordRepository.findById(recordId).isPresent())
         {
             try{
                 json.put("code",500);
@@ -175,7 +175,7 @@ public class CapacityVerificationRecordController {
     public @ResponseBody JSONObject getRecordByProjectId(@RequestParam(value="projectId",required=false)Long projectId)throws IOException{
         JSONObject json=new JSONObject(new LinkedHashMap());
         CapacityVerificationRecord record=new CapacityVerificationRecord();
-        if(CapacityVerificationRecordRepository.findAllByProjectId(projectId)==null)
+        /*if(CapacityVerificationRecordRepository.findAllByProjectId(projectId)==null)
         {
             try{
                 json.put("code",500);
@@ -185,7 +185,7 @@ public class CapacityVerificationRecordController {
             }
         }
         else
-        {
+        {*/
             json.put("code",200);
             json.put("msg","获取成功");
             json.put("data",CapacityVerificationRecordRepository.findAllByProjectId(projectId));
@@ -215,7 +215,7 @@ public class CapacityVerificationRecordController {
                 e.printStackTrace();
             }*/
 
-        }
+        //}
         return json;
     }
 
