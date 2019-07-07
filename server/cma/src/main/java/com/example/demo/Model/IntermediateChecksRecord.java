@@ -27,13 +27,13 @@ public class IntermediateChecksRecord {
     private Date resultRecordDate; //核查结论记录时间
     private String note;    //备注
 
-    public void setrecordId(long recordId){this.recordId=recordId;}
-    public long getrecordId(){return this.recordId;}
+    public void setRecordId(long recordId){this.recordId=recordId;}
+    public long getRecordId(){return this.recordId;}
 
-    public void setplanID(long planId){
+    public void setPlanId(long planId){
         this.planId=planId;
     }
-    public long getplanID(){
+    public long getPlanId(){
         return this.planId;
     }
 
@@ -44,10 +44,10 @@ public class IntermediateChecksRecord {
         return this.object;
     }
 
-    public void setDate(Date date){
+    public void setCheckDate(Date date){
         this.checkDate=date;
     }
-    public Date getDate(){
+    public Date getCheckDate(){
         return this.checkDate;
     }
 
