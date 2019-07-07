@@ -36,17 +36,25 @@ Page({
     app.wxRequest(url, 'GET', postdata, (res) => {
       console.log("plan modify success")
       console.log(res.data)
-      this.setData({
-        projectId: res.data.projectId,
-        date: res.data.date,
-        methodId: res.data.methodId,
-        equipmentName: res.data.equipmentName,
-        equipmentId: res.data.equipmentId,
-        experimenter: res.data.experimenter,
-        result: res.data.result,
-        resultDeal: res.data.resultDeal,
-        note: res.data.note
-      })
+      if(res.code == 200){
+        this.setData({
+          projectId: res.data.projectId,
+          date: res.data.date,
+          methodId: res.data.methodId,
+          equipmentName: res.data.equipmentName,
+          equipmentId: res.data.equipmentId,
+          experimenter: res.data.experimenter,
+          result: res.data.result,
+          resultDeal: res.data.resultDeal,
+          note: res.data.note
+        })
+      }else{
+        wx.showToast({
+          title: '连接失败',
+          image: '/icons/warning/warning.png',
+          duration: 1000
+        })
+      }
     }, (err) => {
       console.err('getone error')
       wx.showToast({

@@ -38,9 +38,17 @@ Page({
     console.log("show pros")
     console.log(this.data.planId)
     app.wxRequest(url, 'GET', data, (res) => {
-      this.setData({
-        mess: res.data
-      })
+      if(res.code == 200){
+        this.setData({
+          mess: res.data
+        })
+      }else{
+        wx.showToast({
+          title: '连接失败',
+          image: '/icons/warning/warning.png',
+          duration: 1000
+        })
+      }
       console.log(res)
       console.log('get projects from planid')
     }, (err) => {

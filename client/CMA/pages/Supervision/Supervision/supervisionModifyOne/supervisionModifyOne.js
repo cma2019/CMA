@@ -42,9 +42,6 @@ Page({
     console.log(mod)
     console.log('Supervision发生了modifyone事件，携带数据为：', e.detail.value)
     console.log(this.data)
-    if (e.detail.value.id != null && e.detail.value.id != "") {
-      mod.id = e.detail.value.id
-    }
     if (e.detail.value.remark != null && e.detail.value.remark != "") {
       mod.remark = e.detail.value.remark
     }

@@ -6,7 +6,7 @@
       <van-field v-model="supervisor" name="supervisor" clearable label="监督员" placeholder="{{supervisor}}"/>
       <picker name = 'superviseDate' mode='date' value='{{superviseDate}}' bindchange='bindsuperviseDateChange'>
         <view class='picker'>
-          <van-field  name="superviseDate" label="监督时间"   placeholder="{{superviseDate}}" clearable />
+          <van-field readonly name="superviseDate" label="监督时间"   placeholder="{{superviseDate}}" clearable />
         </view>
       </picker> 
 
@@ -18,7 +18,7 @@
       <van-field v-model="operator" name="operator" clearable label="操作人" placeholder="{{operator}}" />
       <picker name = 'recordDate' mode='date' value='{{recordDate}}' bindchange='bindrecordDateChange'>
         <view class='picker'>
-          <van-field  name="obtainDate" label="记录时间"  placeholder="{{recordDate}}" clearable />
+          <van-field readonly name="obtainDate" label="记录时间"  placeholder="{{recordDate}}" clearable />
         </view>
       </picker>
 

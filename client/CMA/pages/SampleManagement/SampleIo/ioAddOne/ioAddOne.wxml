@@ -2,12 +2,17 @@
 <view>
  <form bindsubmit='SampleIo_addone'>
     <van-cell-group title="SampleIo_addone">
-      <van-field v-model="sampleNumber" name="sampleNumber" required clearable label="样品编号" placeholder="样品编号" error-message="{{sampleNumberMessage}}" bind:change="sampleNumberChange"/>
+      <van-field wx:if="{{sampleNumber == null}}" v-model="sampleNumber" name="sampleNumber" required clearable label="样品编号" placeholder="样品编号" error-message="{{sampleNumberMessage}}" bind:change="sampleNumberChange"/>
+      <van-field  wx:else label="样品编号" value='{{sampleNumber}}' disabled input-align="right"/>
+      
+      <van-field wx:if="{{sampleName == null}}" v-model="sampleName"  name="sampleName" required clearable label="样品名称" placeholder="样品名称" error-message="{{sampleNameMessage}}" bind:change="sampleNameChange"/>
+      <van-field  wx:else label="样品名称" value='{{sampleName}}' disabled input-align="right"/>
 
-      <van-field v-model="sampleName"  name="sampleName" required clearable label="样品名称" placeholder="样品名称" error-message="{{sampleNameMessage}}" bind:change="sampleNameChange"/>
+      <van-cell wx:if="{{sampleAmount == null}}" v-model="sampleAmount" name="sampleAmount" required clearable label="样品数量" placeholder="样品数量"/>
+      <van-field  wx:else label="样品数量" value='{{sampleAmount}}' disabled input-align="right"/>
 
-      <van-field v-model="sampleAmount" name="sampleAmount" required clearable label="样品数量" placeholder="样品数量"/>
-      <van-field v-model="sampleState"  name="sampleState" required clearable label="样品状态" placeholder="样品状态" />
+      <van-field wx:if="{{sampleState == null}}" v-model="sampleState"  name="sampleState" required clearable label="样品状态" placeholder="样品状态" />
+      <van-field  wx:else label="样品状态" value='{{sampleState}}' disabled input-align="right"/>
 
       <van-field v-model="sender"  name="sender" required clearable label="送样人" placeholder="送样人姓名"error-message="{{senderMessage}}" bind:change="senderChange"/>
       <view wx:if="{{receiptId == 0}}">
@@ -15,7 +20,7 @@
       </view>
       <picker name = 'sendDate' mode='date' value='{{sendDate}}' bindchange='bindsendDateChange'>
         <view class='picker'>
-          <van-field  name="sendDate" label="送样日期" value='{{sendDate}}' placeholder="送样日期" required clearable error-message="{{sendDateMessage}}"/>
+          <van-field  readonly name="sendDate" label="送样日期" value='{{sendDate}}' placeholder="送样日期" required clearable error-message="{{sendDateMessage}}"/>
         </view>
       </picker>   
 
@@ -23,7 +28,7 @@
 
       <picker name = 'obtainDate' mode='date' value='{{obtainDate}}' bindchange='bindobtainDateChange'>
         <view class='picker'>
-          <van-field  name="obtainDate" label="领取日期" value='{{obtainDate}}' placeholder="领取日期" required clearable />
+          <van-field  readonly name="obtainDate" label="领取日期" value='{{obtainDate}}' placeholder="领取日期" required clearable />
         </view>
       </picker>
       

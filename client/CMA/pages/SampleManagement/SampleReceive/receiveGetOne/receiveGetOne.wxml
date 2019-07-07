@@ -15,6 +15,7 @@
   <van-button type="info" size="small" bindtap="modifyData">修改</van-button>
   <van-button type="info" size="small" bindtap="deleteData">删除</van-button>
   <van-button type="info" size="small" bindtap="looktoreceipt">查看接收单</van-button>
+  <van-button type="info" size="small" bindtap="addsampleIo">添加样品进出登记表</van-button>
 </view>
 <view>
   <van-button type="info" size="small" bindtap="goback">返回</van-button>

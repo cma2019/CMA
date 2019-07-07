@@ -18,7 +18,7 @@ import java.util.Arrays;
 public class Aes {
     /**
      *
-     * @author ngh
+     * @author lyt
      * AES128 算法
      *
      * CBC 模式

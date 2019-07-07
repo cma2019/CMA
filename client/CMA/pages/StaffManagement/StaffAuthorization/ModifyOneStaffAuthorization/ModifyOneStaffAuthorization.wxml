@@ -20,9 +20,9 @@
       />
       <van-field 
         name="authorizerId"
-        label="授权记录编号"
+        label="授权人编号"
         value='{{authorizerId}}'
-        placeholder="授权记录编号" 
+        placeholder="授权人编号" 
         clearable
       />
       <van-field 

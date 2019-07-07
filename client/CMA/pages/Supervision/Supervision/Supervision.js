@@ -77,5 +77,84 @@ Page({
     wx.navigateTo({
       url: 'supervisionAddOne/supervisionAddOne',
     })
+  },
+  supervisionPlanModify: function (e) {
+    console.log(e)
+    let i = e.currentTarget.dataset.index
+    let info = this.data.info
+    let id = this.data.id
+    let planId = info[i].planId
+    let content = info[i].content
+    let object = info[i].object
+    let dateFrequency = info[i].dateFrequency
+    wx.navigateTo({
+      url: '/pages/Supervision/SupervisionPlan/supervisionPlanModifyOne/supervisionPlanModifyOne?id=' + id + "&planId=" + planId + "&content=" + content + "&object=" + object + "&dateFrequency=" + dateFrequency
+    })
+  },
+  goback: function () {
+    wx.removeStorage({
+      key: 'supervisionPlaninfo',
+      success: function (res) {
+        console.log(res)
+      }
+    })
+    wx.navigateBack({
+      delta: 1
+    })
+  },
+  supervisionDelete: function (e) {
+    let id = e.currentTarget.id
+    const deleteoneRequest = wx.request({
+      url: app.globalData.url + 'Supervision/deleteOne',
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'Accept': 'application/json'
+      },
+      data: {
+        "id": id
+      },
+      success(res) {
+        console.log(res)
+        if (res.data.code == 200) {
+          wx.showToast({
+            title: '删除成功',
+            duration: 1500
+          })
+          wx.navigateTo({
+            url: '/pages/Supervision/Supervision/Supervision'
+          })
+        }
+        else if (res.data.code == 521) {
+          wx.showToast({
+            title: '未收到标识编号',
+            duration: 1500
+          })
+          console.log('未收到标识编号')
+        }
+        else {
+          wx.showToast({
+            title: '数据不存在',
+            duration: 1500
+          })
+          console.log('数据不存在')
+        }
+        wx.navigateBack({
+          delta: 1
+        })
+      },
+      fail(err) {
+        console.log('fail deleteone')
+      },
+      complete(fin) {
+        console.log('final deleteone')
+      }
+    })
+  },
+  supervisionModify: function (e) {
+    let id = e.currentTarget.id
+    wx.navigateTo({
+      url: '/pages/Supervision/Supervision/supervisionModifyOne/supervisionModifyOne?id=' + id
+    })
   }
 })

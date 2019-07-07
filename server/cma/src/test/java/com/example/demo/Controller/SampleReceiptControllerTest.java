@@ -1,5 +1,6 @@
 package com.example.demo.Controller;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.junit.After;
 import org.junit.Assert;
@@ -48,12 +49,34 @@ public class SampleReceiptControllerTest {
     public void addOne() throws Exception {
         String url = "/cma/SampleReceipt/addOne";
         JSONObject input=new JSONObject();
-        input.put("sampleId","");
+        JSONArray data=new JSONArray();
+        for(int i=5;i<10;i++)
+        {
+            JSONObject tmp=new JSONObject();
+            tmp.put("materialId",i);
+            tmp.put("materialType",i/3);
+            if(i==9)
+                tmp.put("materialName","《附加材料》");
+            data.add(tmp);
+        }
+        input.put("sampleId","2");
+        input.put("applicationUnit","nju02");
+        input.put("version","2.0.1");
+        input.put("contractId","2019002");
+        input.put("testType",1);
+        input.put("electronicMedia","cd01");
+        input.put("materialList",data);
+        input.put("softwareType",1);
+        input.put("receiveUnit","nju_test01");
+        input.put("receiveDate","2019-7-6");
+        input.put("sender","hcb01");
+        input.put("receiver","lb01");
         String requestJson=JSONObject.toJSONString(input);
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0]).contentType(MediaType.APPLICATION_JSON).content(requestJson))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print()).andReturn();
         String res = mvcResult.getResponse().getContentAsString();
+        System.out.println(requestJson);
         int code = Integer.parseInt(res.substring(19, 22));
         Assert.assertEquals(200L, (long)code);
     }
@@ -63,7 +86,7 @@ public class SampleReceiptControllerTest {
     public void deleteOne() throws Exception {
         String url = "/cma/SampleReceipt/deleteOne";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0])
-                .param("sampleId","")
+                .param("sampleId","1")
         )
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print()).andReturn();
@@ -91,7 +114,7 @@ public class SampleReceiptControllerTest {
     public void findOne() throws Exception {
         String url = "/cma/SampleReceipt/getOne";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get(url, new Object[0])
-                .param("sampleId","")
+                .param("sampleId","1")
         )
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print()).andReturn();
@@ -105,7 +128,28 @@ public class SampleReceiptControllerTest {
     public void modify() throws Exception {
         String url = "/cma/SampleReceipt/modifyOne";
         JSONObject input=new JSONObject();
-        input.put("sampleId","");
+        JSONArray data=new JSONArray();
+        for(int i=5;i<10;i++)
+        {
+            JSONObject tmp=new JSONObject();
+            tmp.put("materialId",i);
+            tmp.put("materialType",i/3);
+            if(i==9)
+                tmp.put("materialName","《附加材料》");
+            data.add(tmp);
+        }
+        input.put("sampleId","1");
+        input.put("applicationUnit","nju02");
+        input.put("version","2.0.1");
+        input.put("contractId","2019002");
+        input.put("testType",1);
+        input.put("electronicMedia","cd01");
+        input.put("materialList",data);
+        input.put("softwareType",1);
+        input.put("receiveUnit","nju_test01");
+        input.put("receiveDate","2019-7-6");
+        input.put("sender","hcb01");
+        input.put("receiver","lb01");
         String requestJson=JSONObject.toJSONString(input);
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0]).contentType(MediaType.APPLICATION_JSON).content(requestJson))
                 .andExpect(MockMvcResultMatchers.status().isOk())

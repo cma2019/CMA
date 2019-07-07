@@ -2,7 +2,7 @@
 <scroll-view scroll-y>
   <form bindsubmit='newEquipment'>
     <view class="section">
-      <van-field name="year" value="{{year}}" required clearable label="外审年份" placeholder="外审年份"></van-field>
+      <van-field name="year" value="{{year}}" required clearable label="外审年份" placeholder="外审年份" type='number' maxlength="4"></van-field>
     </view>
     <view class="section">
       <picker name = 'date' mode='date' value='{{date}}' bindchange='bindDateChange'>
@@ -22,4 +22,5 @@
       <button class='van-button--info' formType='submit'>确定</button>
     </view>
   </form>
+  <van-button type="info" size="small" bindtap="mygo">返回</van-button>
 </scroll-view>

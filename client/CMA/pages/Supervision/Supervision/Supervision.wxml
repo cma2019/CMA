@@ -22,6 +22,10 @@
               </view>
             </view>
           </view>
+          <view>
+          <van-button type="info" size="small" id='{{item.id}}' bindtap="supervisionModify">修改</van-button>
+          <van-button type="info" size="small" id='{{item.id}}' bindtap="supervisionDelete">删除</van-button>
+        </view>
         </van-cell>
       </view>
     </view>

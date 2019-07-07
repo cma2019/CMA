@@ -44,17 +44,17 @@ public class SampleIoControllerTest {
     public void addOne() throws Exception {
         String url = "/cma/SampleIo/addOne";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0])
-                .param("sampleNumber","2019004")
-                .param("sampleName","天猫超市")
+                .param("sampleNumber","2019003")
+                .param("sampleName","soft003")
                 .param("sampleAmount","1")
                 .param("sampleState","0")
-                .param("sender","nju")
-                .param("receiver","lb")
+                .param("sender","nju03")
+                .param("receiver","lb03")
                 .param("sendDate","2019-7-1")
-                .param("obtainer","hcb")
+                .param("obtainer","hcb03")
                 .param("obtainDate","2019-7-2")
                 .param("receiptId","0")
-                .param("note","none")
+                .param("note","none03")
         )
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print()).andReturn();
@@ -68,7 +68,7 @@ public class SampleIoControllerTest {
     public void deleteOne() throws Exception {
         String url = "/cma/SampleIo/deleteOne";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0])
-        .param("sampleIoId","4"))
+        .param("sampleIoId","126"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print()).andReturn();
         String res = mvcResult.getResponse().getContentAsString();
@@ -91,7 +91,7 @@ public class SampleIoControllerTest {
     public void findOne() throws Exception {
         String url = "/cma/SampleIo/getOne";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get(url, new Object[0])
-                .param("sampleIoId","4"))
+                .param("sampleIoId","126"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print()).andReturn();
         String res = mvcResult.getResponse().getContentAsString();
@@ -104,17 +104,17 @@ public class SampleIoControllerTest {
     public void modify() throws Exception {
         String url = "/cma/SampleIo/modifyOne";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0])
-                .param("sampleIoId","4")
-                .param("sampleNumber","2019004")
-                .param("sampleName","天猫超市")
+                .param("sampleIoId","126")
+                .param("sampleNumber","2019003")
+                .param("sampleName","soft003")
                 .param("sampleAmount","1")
                 .param("sampleState","0")
                 .param("sender","nju00")
-                .param("receiver","lb")
+                .param("receiver","lb00")
                 .param("sendDate","2019-7-1")
-                .param("obtainer","hcb")
+                .param("obtainer","hcb00")
                 .param("obtainDate","2019-7-2")
-                .param("note","none0")
+                .param("note","none00")
         )
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print()).andReturn();

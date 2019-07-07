@@ -23,6 +23,7 @@ Page({
   },
   ApplicationAdd: function (e) {
 {
+      var regNum = new RegExp('[0-9]', 'g');
       console.log('form发生了add事件，携带数据为：', e.detail.value)
       let url = app.globalData.url + 'AnnualTrainingPlan/addOne'
       let data = {
@@ -47,6 +48,14 @@ Page({
           duration: 1000
         })
         console.log('错误(空白输入)')
+      }
+      else if (regNum.exec(e.detail.value.trainingTime) == null) {
+        wx.showToast({
+          title: '培训课时非数字',
+          image: '/icons/warning/warning.png',
+          duration: 1000
+
+        })
       }
       else {
       console.log(url)

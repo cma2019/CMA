@@ -29,7 +29,7 @@ Page({
       }
       console.log(url)
       console.log(data)
-      if(id==""||authorizerId==""||content==""||authorizerDate=="")
+      if (e.detail.value.id == "" || e.detail.value.authorizerId == "" || e.detail.value.content == "" || e.detail.value.authorizerDate=="")
       {
         wx.showToast({
           title: '错误，空白输入',

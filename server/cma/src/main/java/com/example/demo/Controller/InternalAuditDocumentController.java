@@ -27,11 +27,11 @@ public class InternalAuditDocumentController {
     private InternalAuditManagementRepository InternalAuditManagementRepository;
     @Autowired
     private InternalAuditDocumentRepository InternalAuditDocumentRepository;
-    private long add_year=0;
+    /*private long add_year=0;
     private String add_name="null";
     private long modify_year=0;
     private String modify_name="null";
-    private long modify_id=0;
+    private long modify_id=0;*/
     @PostMapping(path = "/deleteOne")
     public @ResponseBody JSONObject deleteOne(@RequestParam(value = "year",required = false) long year){
         int code=200;
@@ -84,14 +84,20 @@ public class InternalAuditDocumentController {
         {
             for(int i=0;i<res.size();i++)
             {
-                JSONObject tmp=new JSONObject();
-                tmp.put("year",res.get(i).getYear());
-                tmp.put("fileId",res.get(i).getFileId());
-                String entire=res.get(i).getFileName();
-                //System.out.println(res.get(i).getFileName());
-                tmp.put("fileName",entire.substring(0,entire.indexOf(".")));
-                tmp.put("file",res.get(i).getFileName());
-                data.add(tmp);
+                if(res.get(i).getFlag()!=0)
+                {
+                    InternalAuditDocumentRepository.delete(res.get(i));
+                }
+                else {
+                    JSONObject tmp=new JSONObject();
+                    tmp.put("year",res.get(i).getYear());
+                    tmp.put("fileId",res.get(i).getFileId());
+                    String entire=res.get(i).getFileName();
+                    //System.out.println(res.get(i).getFileName());
+                    tmp.put("fileName",entire.substring(0,entire.indexOf(".")));
+                    tmp.put("file",res.get(i).getFileName());
+                    data.add(tmp);
+                }
             }
         }
         else
@@ -109,8 +115,11 @@ public class InternalAuditDocumentController {
                                      @RequestParam(value = "year",required = false) long year){
         JSONObject js=new JSONObject();
         System.out.println(fileName);
-        add_name=fileName;
-        add_year=year;
+        InternalAuditDocument iDoc=new InternalAuditDocument();
+        iDoc.setFlag(1);
+        iDoc.setYear(year);
+        iDoc.setFileName(fileName);
+        InternalAuditDocumentRepository.save(iDoc);
         /*
         if(InternalAuditDocumentRepository.findByYear(year)!=null)
         {
@@ -137,26 +146,27 @@ public class InternalAuditDocumentController {
         }
         */
         FileController fileController=new FileController();
-        InternalAuditDocument sDoc=new InternalAuditDocument();
-        sDoc.setYear(add_year);
+        InternalAuditDocument iDoc=InternalAuditDocumentRepository.findByFlag(1);
         //System.out.println(file.getOriginalFilename());
         String[] str=file.getOriginalFilename().split("\\.");
         //System.out.println(str[str.length-1]);
         String suffix=str[str.length-1];
-        sDoc.setFileName(add_name+"."+suffix);
-        InternalAuditDocumentRepository.save(sDoc);
+        iDoc.setFileName(iDoc.getFileName()+"."+suffix);
+        iDoc.setFlag(0);
+        InternalAuditDocumentRepository.saveAndFlush(iDoc);
         //System.out.println(sDoc.getFileName());
-        return  fileController.upload(file,request,sDoc.getFileName(),sDoc.getDir());
+        return  fileController.upload(file,request,iDoc.getFileName(),iDoc.getDir());
     }
     @RequestMapping(path="/modifyOneFormData",method= RequestMethod.POST)
     public @ResponseBody JSONObject modifyOneFormData(@RequestParam(value = "fileName",required = false) String fileName,
                                         @RequestParam(value = "year",required = false) long year,
                                         @RequestParam(value = "fileId",required = false) long fileId){
         JSONObject js=new JSONObject();
-        System.out.println(fileName);
-        modify_year=year;
-        modify_name=fileName;
-        modify_id=fileId;
+        InternalAuditDocument iDoc=new InternalAuditDocument();
+        iDoc.setFlag(2);
+        iDoc.setYear(year);
+        iDoc.setFileName(fileName);
+        iDoc.setFileId(fileId);
         js.put("code",200);
         js.put("msg","成功");
         js.put("data",null);
@@ -165,7 +175,7 @@ public class InternalAuditDocumentController {
     @PostMapping(path = "/modifyOneFile")
     public @ResponseBody Response modifyOneFile(@RequestParam("file") MultipartFile file, HttpServletRequest request){
         FileController fileController=new FileController();
-        InternalAuditDocument tmp=InternalAuditDocumentRepository.findByFileId(modify_id);
+        InternalAuditDocument tmp=InternalAuditDocumentRepository.findByFlag(2);
         /*if(InternalAuditDocumentRepository.findByYear(modify_year)!=null)
         {
             Response res=new Response();
@@ -179,8 +189,8 @@ public class InternalAuditDocumentController {
         String[] str=file.getOriginalFilename().split("\\.");
         //System.out.println(str[str.length-1]);
         String suffix=str[str.length-1];
-        tmp.setFileName(modify_name+"."+suffix);
-        tmp.setYear(modify_year);
+        tmp.setFileName(tmp.getFileName()+"."+suffix);
+        tmp.setFlag(0);
         InternalAuditDocumentRepository.saveAndFlush(tmp);
         return  fileController.upload(file,request,tmp.getFileName(),tmp.getDir());
     }

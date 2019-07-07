@@ -2,10 +2,28 @@
 <scroll-view scroll-y>
   <form bindsubmit='newEquipment'>
     <view class="section">
-      <van-field name="state" value="{{state}}" required clearable label="状态" placeholder="状态"></van-field>
+      <van-cell required title="状态">
+        <van-stepper
+          value="{{state}}"
+          integer
+          min="0"
+          max="2"
+          step="1"
+          name="state"
+        />
+      </van-cell>
     </view>
     <view class="section">
-      <van-field name="current" value="{{current}}" required clearable label="当前版本" placeholder="当前版本"></van-field>
+      <van-cell required title="当前版本">
+        <van-stepper
+          value="{{current}}"
+          integer
+          min="0"
+          max="1"
+          step="1"
+          name="current"
+        />
+      </van-cell>
     </view>
     <view class="section">
       <picker name = 'modifyTime' mode='date' value='{{modifyTime}}' bindchange='bindDateChange'>
@@ -31,4 +49,5 @@
       <button class='van-button--info' formType='submit'>确定</button>
     </view>
   </form>
+  <van-button type="info" size="small" bindtap="mygo">返回</van-button>
 </scroll-view>
