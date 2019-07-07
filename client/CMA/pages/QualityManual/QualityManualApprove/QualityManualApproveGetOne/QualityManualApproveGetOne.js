@@ -8,6 +8,11 @@ Page({
   data: {
     manual: {}
   },
+  mygo: function (e) {
+    wx.redirectTo({
+      url: '/pages/QualityManual/QualityManualApprove/QualityManualApprove',
+    })
+  },
   myapprove:function(e){
     var that = this
     var mydata = {
@@ -16,11 +21,20 @@ Page({
     var myurl = app.globalData.url + 'QualityManual/Approve/' + that.data.manual.id
     app.wxRequest(myurl, 'POST', mydata, (res) => {
       console.log(res)
+      wx.showToast({
+        title: '批准成功',
+        icon: '/icons/ok/ok.png',
+        duration: 1000,
+        success: function () {
+          setTimeout(function () {
+            wx.redirectTo({
+              url: '/pages/QualityManual/QualityManualApprove/QualityManualApprove',
+            })
+          }, 1000);
+        }
+      })
     }, (err) => {
       console.log(err)
-    })
-    wx.redirectTo({
-      url: '/pages/QualityManual/QualityManualApprove/QualityManualApprove',
     })
   },
   myreject: function (e) {
@@ -31,11 +45,20 @@ Page({
     var myurl = app.globalData.url + 'QualityManual/Approve/' + that.data.manual.id
     app.wxRequest(myurl, 'POST', mydata, (res) => {
       console.log(res)
+      wx.showToast({
+        title: '拒绝成功',
+        icon: '/icons/ok/ok.png',
+        duration: 1000,
+        success: function () {
+          setTimeout(function () {
+            wx.redirectTo({
+              url: '/pages/QualityManual/QualityManualApprove/QualityManualApprove',
+            })
+          }, 1000);
+        }
+      })
     }, (err) => {
       console.log(err)
-    })
-    wx.redirectTo({
-      url: '/pages/QualityManual/QualityManualApprove/QualityManualApprove',
     })
   },
 

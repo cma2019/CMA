@@ -73,8 +73,12 @@ public class TrainingApplication {
     }
 
     public String getApproveDate() {
-        DateFormat df=DateFormat.getDateInstance();
-        return df.format(this.approveDate);
+        if(approveDate!=null) {
+            DateFormat df = DateFormat.getDateInstance();
+            return df.format(this.approveDate);
+        }
+        else
+            return null;
     }
 
     public void setName(String name) {
@@ -99,9 +103,9 @@ public class TrainingApplication {
 
     public void setSituation(byte situation) throws ParseException {
         if(situation==0){
-            this.setApprover("");
-            SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-            this.setApproveDate(sdf.parse("2000-1-1"));
+            this.setApprover(null);
+            //SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+            this.setApproveDate(null);
         }
         this.situation = situation;
     }

@@ -9,18 +9,9 @@ Page({
 
   newEquipment: function (e) {
     console.log(e.detail.value)
-    var myurl1 = app.globalData.url + 'ManagementReview/addFileData';
-    var myurl2 = app.globalData.url + 'ManagementReview/addOneFile';
-    var mydata = {
-      "year": e.detail.value.year,
-      //"fileName":e.detail.value.fileName
-    };
-    app.wxRequest(myurl1, 'POST', mydata, (res) => {
-      console.log(res)
-      
-    }, (err) => {
-      console.log(err)
-    })
+    var myurl2 = app.globalData.url + 'ManagementReview/addOneFile?year=' + e.detail.value.year;
+   
+    
     wx.chooseMessageFile({
       count: 1,
       type: 'all',
@@ -34,7 +25,6 @@ Page({
         app.wxUploadFile(myurl2, res.tempFiles[0].path, null, (res) => {
           console.log("upload file success")
           console.log(res)
-          console.log(mydata)
           
         }, (err) => {
           console.log(err)
@@ -46,24 +36,35 @@ Page({
           duration: 1000,
           success: function () {
             setTimeout(function () {
-              wx.redirectTo({
-                url: '../GetAllFileManagementReview/GetAllFileManagementReview',
+              wx.navigateBack({
+                delta: 1
               })
             }, 1000);
           }
-
         })
       
       },
       fail: function (err) {
         console.log("get file failed")
         console.log(err)
+        if (err.errMsg == "chooseMessageFile:fail cancel") {
+          wx.showToast({
+            title: '取消上传',
+            image: '/icons/warning/warning.png',
+            duration: 1000
+          })
+        }
       }
       
     })
     
   },
   onLoad: function (options) {  
+    this.setData({
+
+      year: options.id
+    })
+
   }
   
 })

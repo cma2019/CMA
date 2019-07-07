@@ -25,7 +25,8 @@
             name="checkDate"
             label="核查时间"
             value='{{checkDate}}'
-            placeholder="核查时间" 
+            placeholder="核查时间"
+            readonly 
             required
             clearable
           />
@@ -53,7 +54,8 @@
             name="processRecordDate"
             label="核查过程记录时间"
             value='{{processRecordDate}}'
-            placeholder="核查过程记录时间" 
+            placeholder="核查过程记录时间"
+            readonly 
             required
             clearable
           />
@@ -81,7 +83,8 @@
             name="resultRecordDate"
             label="核查结论记录时间"
             value='{{resultRecordDate}}'
-            placeholder="核查结论记录时间" 
+            placeholder="核查结论记录时间"
+            readonly
             required
             clearable
           />

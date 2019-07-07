@@ -74,6 +74,7 @@ Page({
   },
   intercheckmodify: function (e) {
     console.log('modify modify')
+    var regNum = new RegExp('[0-9]', 'g');
     {
       let url = app.globalData.url + 'AnnualTrainingPlan/modifyOne';
       console.log(url)
@@ -103,6 +104,14 @@ Page({
         })
         console.log('错误(空白输入)')
       }
+      else if (regNum.exec(e.detail.value.trainingTime) == null) {
+        wx.showToast({
+          title: '培训课时非数字',
+          image: '/icons/warning/warning.png',
+          duration: 1000
+
+        })
+      }
       else {
       app.wxRequest(url, 'POST', data, (res) => {
         console.log('modify message successfully')
@@ -114,8 +123,8 @@ Page({
           duration: 1000,
           success: function () {
             setTimeout(function () {
-              wx.navigateTo({
-                url: '../PrintOneAnnualTrainingPlan/PrintOneAnnualTrainingPlan',
+              wx.navigateBack({
+                delta: 1
               })
             }, 1000);
           }

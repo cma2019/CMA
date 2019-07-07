@@ -1,38 +1,57 @@
 // pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementAddOne/ExternalReviewManagementAddOne.js
+//获取全局app实例
 const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
+  //测试用数据
   data: {
     "id": null,
     "year": null,
     "date": null
   },
+  //返回按钮的处理函数
+  mygo: function (e) {
+    //跳转回查找页面
+    wx.redirectTo({
+      url: '/pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagement',
+    })
+  },
+  //时间控件的处理函数
   bindDateChange: function (e) {
     console.log("date")
     console.log(e.detail.value)
+    //动态设置时间变量的值
     this.setData({
       'date': e.detail.value
     })
   },
+  //添加按钮的处理函数
   newEquipment: function (e) {
     console.log(e.detail.value)
+    //构造url
     var myurl = app.globalData.url + 'ExternalReviewManagement/addOne';
+    //构造参数
     var mydata = {
       "year": e.detail.value.year,
       "date": e.detail.value.date
     };
+    //请求后端
     app.wxRequest(myurl, 'POST', mydata, (res) => {
+      //成功处理函数
       console.log("add")
       console.log(res)
+      //成功提示
       wx.showToast({
         title: '添加成功',
         icon: '/icons/ok/ok.png',
         duration: 1000,
         success: function () {
+          //延时
           setTimeout(function () {
+            //跳转回查找界面
             wx.redirectTo({
               url: '/pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagement',
             })
@@ -40,6 +59,7 @@ Page({
         }
       })
     }, (err) => {
+      //失败处理函数
       console.log(err)
     })
   },

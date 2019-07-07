@@ -17,12 +17,9 @@ public class StaffQualification {
     private String department;       //人员部门
     private String position;         //人员职位
 
-    private int flag=0;
+    //private int flag=0;
     private String dir="StaffQualification";
 
-    public void setFlag(int flag) {
-        this.flag = flag;
-    }
 
     public String getDir() {
         return dir;

@@ -50,6 +50,7 @@ Page({
   },
   intercheckmodify: function (e) {
     console.log('modify modify')
+    var regNum = new RegExp('[0-9]', 'g');
     if (e.detail.value.name == ""
       || e.detail.value.people == ""
       || e.detail.value.department == "" || e.detail.value.trainingUnit == ""
@@ -62,6 +63,14 @@ Page({
       })
       console.log('错误(空白输入)')
     }
+    else if (regNum.exec(e.detail.value.expense) == null) {
+      wx.showToast({
+        title: '培训费非数字',
+        image: '/icons/warning/warning.png',
+        duration: 1000
+
+      })
+    }
     else {
       console.log('modify，携带数据为：', e.detail.value)
       console.log('modify，携带数据为：', e.detail.value.object)
@@ -71,14 +80,14 @@ Page({
       console.log(this.data.planId)
       let data = {
         //"id ":this.data.id,
-        "id": e.detail.value.id,
+        "id": this.data.id,
         "name": e.detail.value.name,
         "people": e.detail.value.people,
         "department": e.detail.value.department,
         "trainingUnit": e.detail.value.trainingUnit,
         "expense": e.detail.value.expense,
         "reason": e.detail.value.reason,
-        "createDate": e.detail.value.date,
+        "createDate": e.detail.value.createDate,
         
 
       };
@@ -86,26 +95,34 @@ Page({
       app.wxRequest(url, 'POST', data, (res) => {
         console.log('modify message successfully')
         console.log(res)
-        /*
-        if (res.data == "modify successfully.") {
-          wx.navigateBack({
-            delta: 1
+        
+        if (res.msg == "不可修改") {
+          wx.showToast({
+            title: '不可修改',
+            image: '/icons/warning/warning.png',
+            duration: 1000
+
           })
+
         }
-        */
+        else
+        {
+
+        
         wx.showToast({
-          title: '修改成功',
+          title: '成功',
           //icon: 'success',
           image: '/icons/ok/ok.png',
           duration: 1000,
           success: function () {
             setTimeout(function () {
-              wx.navigateTo({
-                url: '../PrintOneApplication/PrintOneApplication',
+              wx.navigateBack({
+                delta: 1
               })
             }, 1000);
           }
         })
+        }
       }, (err) => {
         console.log('fail modify')
       })

@@ -22,7 +22,7 @@
         name="result"
         label="培训结果"
         value='{{result}}'
-        placeholder="培训结果" 
+        placeholder="合格或未合格" 
         required
         clearable
       />

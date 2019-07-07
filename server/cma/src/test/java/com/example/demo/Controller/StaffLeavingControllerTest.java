@@ -1,5 +1,7 @@
 package com.example.demo.Controller; 
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.Before; 
@@ -18,24 +20,24 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 
 /** 
-* UserController Tester. 
+* StaffLeavingController Tester. 
 * 
 * @author <Authors name> 
-* @since <pre>六月 30, 2019</pre> 
+* @since <pre>七月 7, 2019</pre> 
 * @version 1.0 
 */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 @WebAppConfiguration
 @Transactional
-public class UserControllerTest {
-    MockMvc mockMvc;
+public class StaffLeavingControllerTest {
     @Autowired
-    UserController userController;
+    StaffLeavingController staffLeavingController;
+    MockMvc mockMvc;
 
 @Before
 public void before() throws Exception {
-    mockMvc= MockMvcBuilders.standaloneSetup(userController).build();
+    mockMvc = MockMvcBuilders.standaloneSetup(staffLeavingController).build();
 } 
 
 @After
@@ -44,38 +46,48 @@ public void after() throws Exception {
 
 /** 
 * 
-* Method: addUser(@RequestParam(value = "username", required = false)String username, @RequestParam(value = "email", required = false) String email, @RequestParam(value = "password", required = false) String password, @RequestParam(value = "password2", required = false) String password2) 
+* Method: getAll() 
 * 
 */ 
 @Test
-public void testAddUser() throws Exception { 
+public void testGetAll() throws Exception { 
 //TODO: Test goes here...
-    String url="/cma/user/add?username=abc&email=abc@163.com&password=123456&password2=123456";
-    MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post(url))
-            .andExpect(MockMvcResultMatchers.status().isOk())
-            .andDo(MockMvcResultHandlers.print())
-            .andReturn();
-    String res=mvcResult.getResponse().getContentAsString();
-    String temp="Sign up successfully.";
-    Assert.assertEquals(res,temp);
-} 
-
-/** 
-* 
-* Method: findUser(@RequestParam(value = "email", required = false) String email, @RequestParam(value = "password", required = false) String password) 
-* 
-*/ 
-@Test
-public void testFindUser() throws Exception { 
-//TODO: Test goes here...
-    String url="/cma/user/find?email=abc@163.com&password=123456";
+    String url="/cma/StaffLeaving/getAll";
     MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(url))
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andDo(MockMvcResultHandlers.print())
             .andReturn();
+
+    //int status=mvcResult.getResponse().getStatus();
+    //Assert.assertEquals(200,status);
     String res=mvcResult.getResponse().getContentAsString();
-    String temp="invalid email.";
-    Assert.assertEquals(res,temp);
+    JSONObject jsonObject= JSON.parseObject(res);
+    int code= (int) jsonObject.get("code");
+    System.out.println(code);
+    Assert.assertEquals(200,code);
+} 
+
+/** 
+* 
+* Method: addOne(@RequestParam(required = false,value = "id")long id, @RequestParam(required = false,value = "leavingDate")String leavingDate) 
+* 
+*/ 
+@Test
+public void testAddOne() throws Exception { 
+//TODO: Test goes here...
+    String url="/cma/StaffLeaving/addOne?id=1&leavingDate=2019-5-8";
+    MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post(url))
+            .andExpect(MockMvcResultMatchers.status().isOk())
+            .andDo(MockMvcResultHandlers.print())
+            .andReturn();
+
+    //int status=mvcResult.getResponse().getStatus();
+    //Assert.assertEquals(200,status);
+    String res=mvcResult.getResponse().getContentAsString();
+    JSONObject jsonObject= JSON.parseObject(res);
+    int code= (int) jsonObject.get("code");
+    System.out.println(code);
+    Assert.assertEquals(200,code);
 } 
 
 

@@ -102,6 +102,13 @@ public class TrainingApplicationController {
         }
         else{
             TrainingApplication trainingApplication=trainingApplicationRepository.getOne(id);
+            if(trainingApplication.getSituation()==2)
+            {
+                json.put("code",210);
+                json.put("msg","不可修改");
+                json.put("data",null);
+                return json;
+            }
             if(!name.equals(""))
                 trainingApplication.setName(name);
             if(!people.equals(""))
@@ -109,7 +116,7 @@ public class TrainingApplicationController {
             if(!trainingUnit.equals(""))
                 trainingApplication.setTrainingUnit(trainingUnit);
             if(!expense.equals(""))
-                trainingApplication.setExpense(Long.parseLong(expense));
+                trainingApplication.setExpense(Integer.parseInt(expense));
             if(!reason.equals(""))
                 trainingApplication.setReason(reason);
             if(!department.equals(""))
@@ -117,6 +124,12 @@ public class TrainingApplicationController {
             if(!createDate.equals("")){
                 SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
                 trainingApplication.setCreateDate(sdf.parse(createDate));
+            }
+            if(trainingApplication.getSituation()==1){
+                trainingApplication.setSituation((byte) 0);
+                //trainingApplication.setCreateDate(null);
+                //trainingApplication.setApproveDate(null);
+                //trainingApplication.setApprover(null);
             }
             json.put("code",200);
             json.put("msg","成功");
@@ -126,7 +139,7 @@ public class TrainingApplicationController {
         return json;
     }
     @PostMapping("approveOne")
-    public @ResponseBody JSONObject aprroveOne(@RequestParam(value = "id",required = false)long id,@RequestParam(value = "situation",required = false)Byte situation
+    public @ResponseBody JSONObject aprroveOne(@RequestParam(value = "id",required = false)long id,@RequestParam(value = "situation",required = false)int situation
             ,@RequestParam(value="approver",required = false)String approver,@RequestParam(value = "approveDate",required = false)String approveDate) throws ParseException {
         JSONObject json=new JSONObject();
         if(trainingApplicationRepository.existsById(id)==false){
@@ -137,7 +150,13 @@ public class TrainingApplicationController {
         else{
             TrainingApplication trainingApplication=trainingApplicationRepository.getOne(id);
             if(trainingApplication.getSituation()==0){
-                trainingApplication.setSituation(situation);
+                if(situation==0){
+                    json.put("code",210);
+                    json.put("msg","审查错误");
+                    json.put("data",null);
+                    return json;
+                }
+                trainingApplication.setSituation((byte) situation);
                 trainingApplication.setApprover(approver);
                 SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
                 trainingApplication.setApproveDate(sdf.parse(approveDate));

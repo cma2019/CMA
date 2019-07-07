@@ -2,7 +2,7 @@ const app = getApp()
 Page({
 
   data: {
-
+    radio: '1'
   },
 
   onLoad: function (options) {
@@ -16,8 +16,13 @@ Page({
       date: e.detail.value
     })
   },
+  onChange(event) {
+    this.setData({
+      checked: event.detail
+    });
+  },
   StaffAdd: function (e) {
-
+    var regNum = new RegExp('[0-9]', 'g');
     if (e.detail.value.name == ""
       || e.detail.value.gender == ""
       || e.detail.value.department == "" || e.detail.value.position == ""
@@ -33,6 +38,23 @@ Page({
 
       })
       console.log('错误(空白输入)')
+    }
+    else if (regNum.exec(e.detail.value.workingYears)==null)
+    {
+      wx.showToast({
+        title: '工龄非数字',
+        image: '/icons/warning/warning.png',
+        duration: 1000
+
+      })
+    }
+    else if (e.detail.value.gender != "男" &&e.detail.value.gender != "女") {
+      wx.showToast({
+        title: '性别输入错误',
+        image: '/icons/warning/warning.png',
+        duration: 1000
+
+      })
     }
     else {
       console.log('form发生了add事件，携带数据为：', e.detail.value)
@@ -71,8 +93,8 @@ Page({
             duration: 1000,
             success: function () {
               setTimeout(function () {
-                wx.navigateTo({
-                  url: '../StaffManagement',
+                wx.navigateBack({
+                  delta:1
                 })
               }, 1000);
             }

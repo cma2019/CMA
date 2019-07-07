@@ -10,7 +10,7 @@ import java.sql.Date;
 public class Supervision {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long supervisionId;
+    private Long id;
     private int situation;
     private String author;
     private Date createDate;
@@ -46,8 +46,8 @@ public class Supervision {
         this.remark = remark;
     }
 
-    public Long getSupervisionId() {
-        return supervisionId;
+    public Long getId() {
+        return id;
     }
 
     public Date getCreateDate() {

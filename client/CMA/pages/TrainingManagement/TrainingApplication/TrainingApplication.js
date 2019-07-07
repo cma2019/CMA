@@ -3,7 +3,7 @@ const app = getApp()
 Page({
 
   data: {
-    "mess": null
+    mess:[]
   },
 
   onLoad: function (options) {
@@ -25,7 +25,7 @@ Page({
         mess: res.data
       })
 
-      console.log(this.mess)
+      //console.log(this.mess)
     }, (err) => {
       console.log('getone error')
     })
@@ -48,7 +48,7 @@ Page({
         mess: res.data
       })
 
-      console.log(this.mess)
+      //console.log(this.mess)
     }, (err) => {
      
       console.log('getone error')

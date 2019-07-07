@@ -44,9 +44,17 @@ Page({
     console.log(postdata)
     app.wxRequest(url, 'GET', postdata, (res) => {
       console.log('record getall success')
-      this.setData({
-        mess: res.data
-      })
+      if(res.code == 200){
+        this.setData({
+          mess: res.data
+        })
+      }else{
+        wx.showToast({
+          title: '连接失败',
+          image: '/icons/warning/warning.png',
+          duration: 1000
+        })
+      }
       console.log(this.mess)
     }, (err) => {
       console.err('getone error')

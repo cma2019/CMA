@@ -17,7 +17,8 @@ Page({
     })
   },
   StaffAdd: function (e) {
-
+    var regNum = new RegExp('[0-9]', 'g');
+    
     if (e.detail.value.program == "" || e.detail.value.trainingId == ""
       || e.detail.value.trainingDate == ""
       || e.detail.value.place == "" || e.detail.value.presenter == ""
@@ -28,6 +29,14 @@ Page({
         duration: 1000
       })
       console.log('错误(空白输入)')
+    }
+    else if(regNum.exec(e.detail.value.trainingId) == null)
+    {
+      wx.showToast({
+        title: '非法输入',
+        image: '/icons/warning/warning.png',
+        duration: 1000
+      })
     }
     else {
       console.log('form发生了add事件，携带数据为：', e.detail.value)
@@ -66,8 +75,8 @@ Page({
             duration: 1000,
             success: function () {
               setTimeout(function () {
-                wx.redirectTo({
-                  url: '/pages/StaffManagement/StaffTraining/StaffTraining',
+                wx.navigateBack({
+                  delta: 1
                 })
               }, 1000);
             }

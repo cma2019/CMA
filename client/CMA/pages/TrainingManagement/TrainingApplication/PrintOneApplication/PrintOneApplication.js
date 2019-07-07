@@ -51,6 +51,19 @@ Page({
       console.log(res)
       console.log(res.data)
       console.log(res.data.id)
+      var s;
+      if (res.data.situation==0)
+      {
+          s="未审查"
+      }
+      else if (res.data.situation == 1)
+      {
+        s = "未通过"
+      }
+      else
+      {
+        s="已通过"
+      }
       //console.log(res.data[0].id)
       this.setData({
         name: res.data.name,
@@ -58,7 +71,7 @@ Page({
         trainingUnit: res.data.trainingUnit,
         expense: res.data.expense,
         reason: res.data.reason,
-        situation: res.data.situation,
+        situation: s,
         department: res.data.department,
         createDate: res.data.createDate,
         approver: res.data.approver,
@@ -98,8 +111,8 @@ Page({
         duration: 1000,
         success: function () {
           setTimeout(function () {
-            wx.navigateTo({
-              url: '../TrainingApplication',
+            wx.navigateBack({
+              delta: 1
             })
           }, 1000);
         }

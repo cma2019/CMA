@@ -9,6 +9,6 @@ public interface ManagementFileRepository extends JpaRepository<ManagementFile,L
     List<ManagementFile> findAllByYear(long year);
     ManagementFile findByFileId(long fileId);
     boolean existsByFileId(long fileId);
-    ManagementFile findByFlag(int flag);
+    //ManagementFile findByFlag(int flag);
     void deleteByFileId(long fileId);
 }

@@ -11,6 +11,7 @@ Page({
   },
   ApplicationAdd: function (e)
   {
+    var regNum = new RegExp('[0-9]', 'g');
     if (e.detail.value.year == null)
       {
       wx.showToast({
@@ -19,6 +20,14 @@ Page({
         duration: 1000
       })
       console.log('错误(空白输入)')
+    }
+    else if (regNum.exec(e.detail.value.year) == null) {
+      wx.showToast({
+        title: '请输入正确年份',
+        image: '/icons/warning/warning.png',
+        duration: 1000
+
+      })
     }
     else
     {

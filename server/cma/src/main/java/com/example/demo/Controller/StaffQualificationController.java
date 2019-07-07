@@ -38,7 +38,7 @@ public class StaffQualificationController {
         return json;
     }
 
-    @PostMapping(path = "addOne")
+    /*@PostMapping(path = "addOne")
     public @ResponseBody JSONObject addOne(@RequestParam(required = false,value = "staffId")long staffId, @RequestParam(required = false,value="qualificationName")String qualificationName){
         JSONObject json=new JSONObject();
         StaffQualification staffQualification=new StaffQualification();
@@ -54,22 +54,43 @@ public class StaffQualificationController {
         staffQualification.setName(staffManagement.getName());
         staffQualification.setPosition(staffManagement.getPosition());
         staffQualification.setQualificationName(qualificationName);
-        staffQualification.setFlag(1);
+        //staffQualification.setFlag(1);
         staffQualificationRepository.save(staffQualification);
         json.put("code",200);
         json.put("msg","成功");
         json.put("data",null);
         return json;
-    }
+    }*/
     @PostMapping(path = "addOneFile")
     public @ResponseBody
-    Response UpLoad(@RequestParam("file") MultipartFile file, HttpServletRequest request) {
+    JSONObject UpLoad(@RequestParam("file") MultipartFile file, HttpServletRequest request,
+            @RequestParam(required = false,value = "staffId")long staffId, @RequestParam(required = false,value="qualificationName")String qualificationName) {
+        JSONObject json=new JSONObject();
+        StaffQualification staffQualification=new StaffQualification();
+        if(staffManagementRepository.existsById(staffId)==false){
+            json.put("code",210);
+            json.put("msg","不存在人员");
+            json.put("data",null);
+            return json;
+        }
+        StaffManagement staffManagement=staffManagementRepository.getOne(staffId);
+        staffQualification.setStaffId(staffId);
+        staffQualification.setDepartment(staffManagement.getDepartment());
+        staffQualification.setName(staffManagement.getName());
+        staffQualification.setPosition(staffManagement.getPosition());
+        staffQualification.setQualificationName(qualificationName);
+        //staffQualification.setFlag(1);
+        staffQualificationRepository.save(staffQualification);
         FileController fileController = new FileController();
-        StaffQualification staffQualification = staffQualificationRepository.findByFlag(1);
-        staffQualification.setFlag(0);
+        //StaffQualification staffQualification = staffQualificationRepository.findByFlag(1);
+        //staffQualification.setFlag(0);
         staffQualification.setQualificationImage(staffQualification.getStaffId()+"_"+staffQualification.getQualificationName()+".jpg");
         staffQualificationRepository.save(staffQualification);
-        return fileController.upload(file, request, staffQualification.getQualificationImage(), staffQualification.getDir());
+        fileController.upload(file, request, staffQualification.getQualificationImage(), staffQualification.getDir());
+        json.put("code",200);
+        json.put("msg","成功");
+        json.put("data",null);
+        return json;
     }
 
     @PostMapping(path = "deleteOne")
@@ -117,16 +138,18 @@ public class StaffQualificationController {
     }
     @PostMapping(path = "modifyOneFile")
     public @ResponseBody
-    JSONObject modifyOneFile(@RequestParam(value = "qualificationId", required = false) long qualificationId) {
+    JSONObject modifyOneFile(@RequestParam("file") MultipartFile file, HttpServletRequest request,@RequestParam(value = "qualificationId", required = false) long qualificationId) {
         JSONObject json = new JSONObject();
         FileController fileController = new FileController();
         StaffQualification staffQualification=staffQualificationRepository.findByQualificationId(qualificationId);
         String name = staffQualification.getQualificationImage();
-        staffQualification.setFlag(1);
+        //staffQualification.setFlag(1);
         fileController.deletefile(name,staffQualification.getDir());
+        staffQualification.setQualificationImage(staffQualification.getStaffId()+"_"+staffQualification.getQualificationName()+".jpg");
         staffQualificationRepository.save(staffQualification);
+        fileController.upload(file, request, staffQualification.getQualificationImage(), staffQualification.getDir());
         json.put("code", 200);
-        json.put("msg", "已删除原文件");
+        json.put("msg", "修改成功");
         json.put("data", null);
         return json;
         //return fileController.upload(file,request,managementFile.getFileName(),managementFile.getDir());

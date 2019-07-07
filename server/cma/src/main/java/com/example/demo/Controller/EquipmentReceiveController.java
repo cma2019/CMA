@@ -35,7 +35,7 @@ public class EquipmentReceiveController {
     private EquipmentReceiveReporsitory ERRepository;
     private int attachment_Id=0;
 
-    @RequestMapping(path="add",method=RequestMethod.POST)
+    @RequestMapping(path="/add",method=RequestMethod.POST)
     @ResponseBody
     public Response addEquipment(
             @RequestParam (value="name",required=false)String name,

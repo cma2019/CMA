@@ -11,8 +11,9 @@ Page({
   },
   newEquipment: function (e) {
     console.log(e.detail.value)
-    var myurl1 = app.globalData.url + 'StaffFile/addOne';
-    var myurl2 = app.globalData.url + 'StaffFile/addOneFile';
+    //var myurl1 = app.globalData.url + 'StaffFile/addOne';
+    var myurl2 = app.globalData.url + 'StaffFile/addOneFile?staffId=' + e.detail.value.staffId + '&fileId=' + e.detail.value.fileId + '&fileLocation=' + e.detail.value.fileLocation;
+    /*
     var mydata = {
       "staffId": e.detail.value.staffId,
       "fileId": e.detail.value.fileId,
@@ -35,7 +36,7 @@ Page({
           duration: 1000
         })
       }
-      else
+      else*/
       {
         wx.chooseMessageFile({
           count: 1,
@@ -48,9 +49,26 @@ Page({
             console.log(res.tempFiles[0].path)
             //mypath = res.tempFiles[0].path
             app.wxUploadFile(myurl2, res.tempFiles[0].path, null, (res) => {
+              var obj=JSON.parse(res)
               console.log("upload file success")
               console.log(res)
-              console.log(mydata)
+              //console.log(res.msg)
+              if (obj.msg == "人员不存在") {
+                wx.showToast({
+                  title: '人员不存在',
+                  image: '/icons/warning/warning.png',
+                  duration: 1000
+                })
+              }
+              else if (obj.msg == "失败,已存在") {
+                wx.showToast({
+                  title: '人员已存在',
+                  image: '/icons/warning/warning.png',
+                  duration: 1000
+                })
+              }
+              else
+              {
               wx.showToast({
                 title: '成功',
                 //icon: 'success',
@@ -58,13 +76,13 @@ Page({
                 duration: 1000,
                 success: function () {
                   setTimeout(function () {
-                    wx.redirectTo({
-                      url: '../PrintOneStaffFile/PrintOneStaffFile',
+                    wx.navigateBack({
+                      delta:1
                     })
                   }, 1000);
                 }
 
-              })
+              })}
             }, (err) => {
               console.log(err)
             })
@@ -72,6 +90,13 @@ Page({
           },
           fail: function (err) {
             console.log("get file failed")
+            if (err.errMsg == "chooseMessageFile:fail cancel") {
+              wx.showToast({
+                title: '取消上传',
+                image: '/icons/warning/warning.png',
+                duration: 1000
+              })
+            }
             console.log(err)
           }
 
@@ -94,9 +119,7 @@ Page({
 
         })
       }*/
-    }, (err) => {
-      console.log(err)
-    })
+    
     
   }
 

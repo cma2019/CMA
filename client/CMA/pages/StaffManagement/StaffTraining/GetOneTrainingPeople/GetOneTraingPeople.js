@@ -114,19 +114,18 @@ Page({
     app.wxRequest(url1, 'POST', data1, (res) => {
       console.log('delete successfully')
       wx.showToast({
-        title: '成功',
+        title: '删除成功',
         //icon: 'success',
         image: '/icons/ok/ok.png',
         duration: 1000,
         success: function () {
           setTimeout(function () {
-            wx.navigateTo({
-              url: '../GetTrainingPeople/GetTrainingPeople',
+            wx.navigateBack({
+              delta: 1
             })
           }, 1000);
         }
       })
-
     }, (err) => {
       console.log('delete failed')
     })

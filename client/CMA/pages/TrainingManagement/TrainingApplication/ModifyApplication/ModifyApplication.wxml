@@ -32,6 +32,7 @@
         value='{{expense}}'
         placeholder="预计培训费" 
         required
+        type="number"
         clearable
       />
       <van-field 
@@ -51,24 +52,19 @@
         clearable
       />
       <view class="section">
-        <picker name = 'date' mode='date' value='{{date}}' bindchange='bindDateChange'>
+        <picker name = 'createDate' mode='date' value='{{createDate}}' bindchange='bindDateChange'>
         <view class='picker'>
         <van-field 
         label="申请时间"
         value='{{createDate}}'
+        readonly
         required
       />
       </view>
         </picker>
     </view>
     </van-cell-group>
-     <van-field 
-        name="situation"
-        label="状态"
-        value='{{situation}}'
-        clearable
-        readonly
-      />
+     
     <view>
       <button class='van-button--info' formType='submit'>确定</button>
     </view>

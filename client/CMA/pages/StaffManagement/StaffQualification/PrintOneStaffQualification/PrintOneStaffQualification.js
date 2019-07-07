@@ -38,7 +38,8 @@ Page({
         department: res.data.department,
         position: res.data.position,
         qualificationId: res.data.qualificationId,
-        qualificationName: res.data.qualificationName
+        qualificationName: res.data.qualificationName,
+        qualificationImage: res.data.qualificationImage
       })
     }, (err) => {
       console.err('get one error')
@@ -67,7 +68,8 @@ Page({
     console.log(e)
     //let target = this.data.id
     //console.log(target)
-    let url1 = app.globalData.url + 'StaffQualification/modifyOneFile'
+    let url1 = app.globalData.url + 'StaffQualification/modifyOneFile?qualificationId=' + this.data.id
+    /*
     let postdata1 = {
       "qualificationId": this.data.id
     }
@@ -78,8 +80,8 @@ Page({
       //console.log(res.data[0].id)
     }, (err) => {
       console.err('get one error')
-    })
-    var myurl2 = app.globalData.url + 'StaffQualification/addOneFile';
+    })*/
+   
     wx.chooseMessageFile({
       count: 1,
       type: 'all',
@@ -90,18 +92,33 @@ Page({
         console.log(res.tempFiles[0])
         console.log(res.tempFiles[0].path)
         //mypath = res.tempFiles[0].path
-        app.wxUploadFile(myurl2, res.tempFiles[0].path, null, (res) => {
+        app.wxUploadFile(url1, res.tempFiles[0].path, null, (res) => {
           console.log("upload file success")
           console.log(res)
           wx.showToast({
-            title: '修改成功!',
+            title: '文件修改成功',
+            //icon: 'success',
             image: '/icons/ok/ok.png',
-            duration: 2000
+            duration: 1000,
+            success: function () {
+              setTimeout(function () {
+                wx.navigateBack({
+                  delta: 1
+                })
+              }, 1000);
+            }
           })
           //console.log(mydata)
 
         }, (err) => {
           console.log(err)
+          if (err.errMsg == "chooseMessageFile:fail cancel") {
+            wx.showToast({
+              title: '取消上传',
+              image: '/icons/warning/warning.png',
+              duration: 1000
+            })
+          }
         })
         /*console.log(this.data.year)
         console.log(this.year)
@@ -154,9 +171,17 @@ Page({
     app.wxRequest(url2, 'POST', data2, (res) => {
       console.log('delete successfully')
       wx.showToast({
-        title: '删除成功!',
-        icon: 'success',
-        duration: 2000
+        title: '删除成功',
+        //icon: 'success',
+        image: '/icons/ok/ok.png',
+        duration: 1000,
+        success: function () {
+          setTimeout(function () {
+            wx.navigateBack({
+              delta: 1
+            })
+          }, 1000);
+        }
       })
     }, (err) => {
       console.log('delete failed')

@@ -60,8 +60,8 @@ Page({
     console.log(e)
     //let target = this.data.id
     //console.log(target)
-    let url1 = app.globalData.url + 'ManagementReview/modifyOneFile'
-    let postdata1 = {
+    let url1 = app.globalData.url + 'ManagementReview/modifyOneFile?fileId=' + this.data.id
+    /*let postdata1 = {
       "fileId": this.data.id
     }
     console.log(postdata1)
@@ -71,8 +71,8 @@ Page({
       //console.log(res.data[0].id)
     }, (err) => {
       console.err('get one error')
-    })
-    var myurl2 = app.globalData.url + 'ManagementReview/addOneFile';
+    })*/
+    
     wx.chooseMessageFile({
       count: 1,
       type: 'all',
@@ -83,13 +83,21 @@ Page({
         console.log(res.tempFiles[0])
         console.log(res.tempFiles[0].path)
         //mypath = res.tempFiles[0].path
-        app.wxUploadFile(myurl2, res.tempFiles[0].path, null, (res) => {
+        app.wxUploadFile(url1, res.tempFiles[0].path, null, (res) => {
           console.log("upload file success")
           console.log(res)
           wx.showToast({
             title: '文件修改成功',
+            //icon: 'success',
             image: '/icons/ok/ok.png',
-            duration: 1000
+            duration: 1000,
+            success: function () {
+              setTimeout(function () {
+                wx.navigateBack({
+                  delta: 1
+                })
+              }, 1000);
+            }
           })
           //console.log(mydata)
           
@@ -105,6 +113,13 @@ Page({
       fail: function (err) {
         console.log("get file failed")
         console.log(err)
+        if (err.errMsg == "chooseMessageFile:fail cancel") {
+          wx.showToast({
+            title: '取消上传',
+            image: '/icons/warning/warning.png',
+            duration: 1000
+          })
+        }
       }
     })
 
@@ -148,14 +163,14 @@ Page({
     app.wxRequest(url2, 'POST', data2, (res) => {
       console.log('delete successfully')
       wx.showToast({
-        title: '成功',
+        title: '删除成功',
         //icon: 'success',
         image: '/icons/ok/ok.png',
         duration: 1000,
         success: function () {
           setTimeout(function () {
-            wx.navigateTo({
-              url: '../GetAllFileManagementReview/GetAllFileManagementReview',
+            wx.navigateBack({
+              delta: 1
             })
           }, 1000);
         }
