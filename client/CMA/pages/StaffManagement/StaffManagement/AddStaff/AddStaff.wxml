@@ -9,20 +9,15 @@
         required
         clearable
       />
-   <!--    <view class="section">
-        <van-radio-group value="{{ radio }}" bind:change="onChange1">
-  <van-radio name="1">男</van-radio>
-  <van-radio name="2">女</van-radio>
-
-        <van-field 
+ 
+      <van-field 
         name="gender"
         label="性别"
+        placeholder="性别" 
         required
-       readonly
+        clearable
+        
       />
-        </van-radio-group>
-    </view>
-    -->
       <van-field 
         name="department"
         label="部门"
@@ -71,6 +66,7 @@
         <van-field 
         label="毕业时间"
         value='{{date}}'
+        readonly
         required
       />
       </view>
