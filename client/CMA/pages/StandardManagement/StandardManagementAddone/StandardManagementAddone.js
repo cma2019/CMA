@@ -57,7 +57,7 @@ Page({
         console.log("get file failed")
         console.log(err)
         wx.showToast({
-          title: '添加失败',
+          title: '添加取消',
           image: '/icons/warning/warning.png',
           duration: 1000
         })

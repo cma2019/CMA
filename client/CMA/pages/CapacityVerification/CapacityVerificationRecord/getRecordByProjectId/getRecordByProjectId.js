@@ -1,65 +1,62 @@
-// pages/IntermediateCheck/IntermediateCheck.js
+// pages/IntermediateCheck/IntermediateCheckGetone/IntermediateCheckGetone.js
 const app = getApp()
 Page({
 
+  /**
+   * 页面的初始数据
+   */
   data: {
-    "projectId": null,
-    "mess": null,
-    "temp":
-      [{
-        "recordId": 3,
-        "date": "2",
-        "methodId": "namename",
-        "equipmentName": "22",
-        "equipmentId": "2000",
-        "experimenter": "note",
-        "result": "note",
-        "resultDeal": "note",
-        "note": "note"
-      },
-      {
-        "recordId": 5,
-        "date": "33",
-        "methodId": "methodIdmethodId",
-        "equipmentName": "2321",
-        "equipmentId": "232",
-        "experimenter": "noeate",
-        "result": "notdsade",
-        "resultDeal": "noasaste",
-        "note": "nodsaste"
-      }]
+    "recordId": "null",
+    "projectId": "null",
+    "date": "null",
+    "methodId": "null",
+    "equipmentName": "null",
+    "equipmentId": "null",
+    "experimenter": "null",
+    "result": "null",
+    "resultDeal": "null",
+    "note": "null"
   },
 
   onLoad: function (options) {
+    console.log('getone options')
+    console.log(options)
     this.setData({
       projectId: options.id
     })
   },
 
   onShow: function (options) {
-    console.log("record list")
     let url = app.globalData.url + 'CapacityVerification/getRecordByProjectId'
-    let data = {
-      "projectId": this.data.projectId,
+    let postdata = {
+      "projectId": this.data.projectId
     }
-    console.log(data)
-    app.wxRequest(url, 'GET', data, (res) => {
-      if(res.code == 200){
+    console.log(url)
+    console.log(postdata)
+    app.wxRequest(url, 'GET', postdata, (res) => {
+      console.log(res)
+      console.log('plan get one project success')
+      if (res.code == 200) {
         this.setData({
-          mess: res.data
+          recordId: res.data.recordId,
+          date: res.data.date,
+          methodId: res.data.methodId,
+          equipmentName: res.data.equipmentName,
+          equipmentId: res.data.equipmentId,
+          experimenter: res.data.experimenter,
+          result: res.data.result,
+          resultDeal: res.data.resultDeal,
+          note: res.data.note
         })
-      }else{
+      } else {
         wx.showToast({
           title: '连接失败',
           image: '/icons/warning/warning.png',
           duration: 1000
         })
       }
-      console.log(res)
-      console.log(this.data.mess)
-      console.log('get projects from planid')
     }, (err) => {
-      console.log('fail projects from planid')
+      console.err('get one project error')
       wx.showToast({
         title: '连接失败',
         image: '/icons/warning/warning.png',
@@ -67,24 +64,65 @@ Page({
       })
     })
   },
-
-  gotoAdd(e) {
+  modifyData(e) {
     console.log(e)
-    let target = this.data.projectId
-    console.log('getone id')
+    let target = this.data.recordId
     console.log(target)
     wx.navigateTo({
-      url: '../addOneRecord/addOneRecord?id=' + target,
+      url: '../modifyOneRecord/modifyOneRecord?id=' + target
     })
   },
 
-  gotoOne(e) {
-    console.log(e)
-    let target = e.currentTarget.id
-    console.log('getone record id')
-    console.log(target)
-    wx.navigateTo({
-      url: '../getOneRecord/getOneRecord?id=' + target
+  deleteData(e) {
+    let url = app.globalData.url + 'CapacityVerification/deleteOneRecord'
+    let data = {
+      "id": this.data.recordId
+    }
+    app.wxRequest(url, 'POST', data, (res) => {
+      if (res.code == 200) {
+        console.log('delete record successfully')
+        let url2 = app.globalData.url + 'CapacityVerification/modifyState'
+        let data2 = {
+          "projectId": this.data.projectId,
+          "state": 0
+        }
+        app.wxRequest(url2, 'POST', data2, (res) => {
+          if (res.code == 200) {
+            let mypro = this.data.projectId
+            wx.showToast({
+              title: '删除成功',
+              image: '/icons/ok/ok.png',
+              duration: 1000,
+              success: function () {
+                setTimeout(function () {
+                  wx.navigateTo({
+                    url: '../../CapacityVerificationProject/getOneProject/getOneProject?id=' + mypro,
+                  })
+                }, 1000);
+              }
+            })
+          } else {
+            wx.showToast({
+              title: '修改状态失败',
+              image: '/icons/warning/warning.png',
+              duration: 1000
+            })
+          }
+        })
+      } else {
+        wx.showToast({
+          title: '删除失败',
+          image: '/icons/warning/warning.png',
+          duration: 1000
+        })
+      }
+    }, (err) => {
+      console.log('delete plan failed')
+      wx.showToast({
+        title: '连接失败',
+        image: '/icons/warning/warning.png',
+        duration: 1000
+      })
     })
   }
 })

@@ -1,7 +1,7 @@
 <!--pages/IntermediateCheck/IntermediateCheck.wxml-->
 <view>
-  <van-cell-group title="testability">
-  <view wx:for="{{temp}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
+  <van-cell-group title="检验检测能力">
+  <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
     <van-cell value="详情" bindtap='gotoOne' id='{{item.year}}'data-year = '{{item.year}}' data-name = '{{item.fileName}}' is-link>
       <view slot="title">
         <view>年份 : {{item.year}}</view>

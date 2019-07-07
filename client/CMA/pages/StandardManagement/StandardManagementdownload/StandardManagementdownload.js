@@ -107,7 +107,10 @@ Page({
         success: function (res) {
           console.log("download now")
           console.log(res)
-          if(res.code == 200){
+          var obj = JSON.parse(res);
+          console.log(obj)
+          console.log(obj.code)
+          if (obj.code == 200){
             myFilePath = res.savedFilePath
             console.log(myFilePath)
             wx.showToast({

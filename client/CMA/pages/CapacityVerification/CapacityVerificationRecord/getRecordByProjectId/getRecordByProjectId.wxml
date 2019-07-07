@@ -1,15 +1,16 @@
-<!--pages/CapacityVerificationPlan/CapacityVerificationPlan.wxml-->
+<!--pages/IntermediateCheck/IntermediateCheckGetone/IntermediateCheckGetone.wxml-->
 <view>
-  <van-cell-group title="能力验证记录号 : {{projectId}}">
-  <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
-    <van-cell value="详情" bindtap='gotoOne'  id='{{item.recordId}}' is-link>
-      <view slot="title">
-        <view>记录编号 : {{item.recordId}}</view>
-        <view>执行时间 : {{item.date}}</view>
-        <view>结果 : {{item.result}}</view>
-      </view>
-    </van-cell>
-  </view>
-  </van-cell-group>
+<van-cell-group title='记录编号 : {{recordId}}'>
+    <van-cell value="{{projectId}}"title="所属项目编号"border="{{ false }}"/>
+    <van-cell value="{{date}}"title="执行时间"border="{{ false }}"/>
+    <van-cell value="{{methodId}}"title="验证方法依据标准编号"border="{{ false }}"/>
+    <van-cell value="{{equipmentName}}"title="仪器设备名称"border="{{ false }}"/>
+    <van-cell value="{{equipmentId}}"title="仪器设备编号"border="{{ false }}"/>
+    <van-cell value="{{experimenter}}"title="试验人员"border="{{ false }}"/>
+    <van-cell value="{{result}}"title="结果"border="{{ false }}"/>
+    <van-cell value="{{resultDeal}}"title="结果处理"border="{{ false }}"/>
+    <van-cell value="{{note}}"title="备注"/>
+</van-cell-group>
 </view>
-<van-button type="info" size="small" bindtap="gotoAdd">添加能力验证记录</van-button>
+<button class='van-button--info' bindtap="modifyData">修改</button>
+<button class='van-button--info' bindtap="deleteData">删除</button>

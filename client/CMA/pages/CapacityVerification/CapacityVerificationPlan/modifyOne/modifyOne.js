@@ -81,7 +81,7 @@ Page({
       "id": this.data.planId,
       "name": e.detail.value.name,
       "organizer": e.detail.value.organizer,
-      "state": e.detail.value.state,
+      //"state": e.detail.value.state,
       "year": e.detail.value.year,
       "note": e.detail.value.note,
     };

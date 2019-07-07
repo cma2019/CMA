@@ -15,7 +15,7 @@ Page({
     let target = e.detail.value.planId
     console.log(target)
     wx.navigateTo({
-      url: 'showProjects/showProjects?id=' + target
+      url: 'getOneProject/getOneProject?id=' + target
     })
   }
 })

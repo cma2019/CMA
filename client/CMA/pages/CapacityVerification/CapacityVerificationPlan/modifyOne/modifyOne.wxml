@@ -17,15 +17,7 @@
         placeholder="组织方" 
         required
         clearable
-      />
-      <van-field 
-        name="state"
-        label="计划状态"
-        value='{{state}}'
-        placeholder="计划状态" 
-        required
-        clearable
-      />   
+      />  
       <van-field 
         name="year"
         label="参加年度"

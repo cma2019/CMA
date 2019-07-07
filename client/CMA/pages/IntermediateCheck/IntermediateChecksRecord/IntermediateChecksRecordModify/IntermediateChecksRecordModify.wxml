@@ -1,6 +1,6 @@
 <!--pages/IntermediateCheck/IntermediateCheck.wxml-->
 <view>
-  <form bindsubmit='期间核查记录修改'>
+  <form bindsubmit='intercheckmodify'>
     <van-cell-group title="请输入信息">
       <van-field 
         name="planId"
