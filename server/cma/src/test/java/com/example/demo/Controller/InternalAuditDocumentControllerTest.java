@@ -1,14 +1,18 @@
 package com.example.demo.Controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mock.web.MockHttpSession;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
+import org.springframework.test.web.servlet.request.MockMultipartHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
@@ -24,12 +28,12 @@ import java.io.FileInputStream;
 public class InternalAuditDocumentControllerTest {
 
     @Autowired
-    InternalAuditDocumentController InternalAuditDocumentController;
+    InternalAuditDocumentController internalAuditDocumentController;
     MockMvc mockMvc;
 
     @Before
     public void setUp() {
-        this.mockMvc = MockMvcBuilders.standaloneSetup(new Object[]{this.InternalAuditDocumentController}).build();
+        this.mockMvc = MockMvcBuilders.standaloneSetup(new Object[]{this.internalAuditDocumentController}).build();
     }
 
     @After
@@ -58,16 +62,16 @@ public class InternalAuditDocumentControllerTest {
         firstFile = new MockMultipartFile("testFile01", new FileInputStream(file));
         MockHttpServletRequestBuilder request = null;
         String url = "/cma/InternalAuditManagement/addOneFile";
-        MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.fileUpload(url, new Object[0])
+        request= MockMvcRequestBuilders.fileUpload(url, new Object[0])
                 .file(firstFile)
                 .param("fileName","2016文档01")
-                .param("year","2016")
-        )
+                .param("year","2016");
+        MvcResult result = this.mockMvc.perform(request)
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print()).andReturn();
-        String res = mvcResult.getResponse().getContentAsString();
-        int code = Integer.parseInt(res.substring(19, 22));
-        Assert.assertEquals(200L, (long)code);
+        String res = result.getResponse().getContentAsString();
+        JSONObject js= JSONObject.parseObject(res);
+        Assert.assertEquals(200L, js.getString("code"));
     }
     /*
     @Test

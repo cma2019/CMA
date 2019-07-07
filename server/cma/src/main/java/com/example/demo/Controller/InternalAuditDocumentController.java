@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 //import java.sql.Date;
+import java.io.File;
 import java.util.List;
 
 @Controller
@@ -152,8 +153,26 @@ public class InternalAuditDocumentController {
                                         @RequestParam(value = "fileId",required = false) long fileId){
         JSONObject js=new JSONObject();
         InternalAuditDocument iDoc=InternalAuditDocumentRepository.findByFileId(fileId);
+        String oldName=iDoc.getFileName();
+        String path="E:/CMA/FileSystem/";
+        String filepath=path+iDoc.getDir()+"/";
+        File oldFile = new File(filepath, oldName);
+        String[] str=oldName.split("\\.");
+        //System.out.println(str[str.length-1]);
+        String suffix=str[str.length-1];
+        File newFile=new File(filepath,fileName+"."+suffix);
+        if(newFile.exists())
+        {
+            js.put("code",514);
+            js.put("msg","文件名已存在");
+            js.put("data",null);
+            return js;
+        }
+        else
+            oldFile.renameTo(newFile);
         iDoc.setYear(year);
-        iDoc.setFileName(fileName);
+        iDoc.setFileName(fileName+"."+suffix);
+        InternalAuditDocumentRepository.saveAndFlush(iDoc);
         js.put("code",200);
         js.put("msg","成功");
         js.put("data",null);
