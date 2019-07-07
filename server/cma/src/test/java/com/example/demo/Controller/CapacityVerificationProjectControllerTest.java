@@ -50,7 +50,7 @@ public void after() throws Exception {
 @Test
 public void testGetAllProject() throws Exception { 
 //TODO: Test goes here...
-    String url = "/cma/CapacityVerification/getAllProject?planId?=80";
+    String url = "/cma/CapacityVerification/getAllProject?planId=80";
     MvcResult mvcResult = mockMvc.perform((MockMvcRequestBuilders.get(url)))
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andDo(MockMvcResultHandlers.print())
@@ -107,7 +107,7 @@ public void testDeleteProject() throws Exception {
 @Test
 public void testModifyProject() throws Exception { 
 //TODO: Test goes here...
-    String url = "/cma/CapacityVerification/modifyOneProject?id=92&planId=79&name=名称1&method=方法2&state=1&note=备注2";
+    String url = "/cma/CapacityVerification/modifyOneProject?id=92&planId=80&name=test&method=test&state=1&note=test";
     MvcResult mvcResult = mockMvc.perform((MockMvcRequestBuilders.post(url)))
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andDo(MockMvcResultHandlers.print())

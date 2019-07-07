@@ -23,10 +23,10 @@ public class IntermediateChecksPlan {
     private String personInCharge;
     private long state;//状态值默认为0
 
-    public void setplanID(long id){
+    public void setPlanId(long id){
         this.planID=id;
     }
-    public long getID(){
+    public long getPlanId(){
         return this.planID;
     }
 
@@ -44,10 +44,10 @@ public class IntermediateChecksPlan {
         return this.content;
     }
 
-    public void setDate(Date date){
+    public void setCheckDate(Date date){
         this.checkDate=date;
     }
-    public Date getDate(){
+    public Date getCheckDate(){
         return this.checkDate;
     }
 

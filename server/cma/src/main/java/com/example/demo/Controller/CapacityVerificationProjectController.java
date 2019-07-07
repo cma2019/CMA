@@ -28,14 +28,14 @@ public class CapacityVerificationProjectController {
     @GetMapping(path="/getAllProject")
     public @ResponseBody JSONObject getAllProject(@RequestParam(value="planId",required = false)Long planId) throws JSONException {
         JSONObject json = new JSONObject(new LinkedHashMap());
-        if (CapacityVerificationProjectRepository.findAllByPlanId(planId)==null) {
+        /*if (CapacityVerificationProjectRepository.findAllByPlanId(planId).isEmpty()) {
             try {
                 json.put("code", 500);
                 json.put("msg", "查找不到");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-        } else {
+        } else {*/
             try {
                 json.put("code", 200);
                 json.put("msg", "获取成功");
@@ -43,7 +43,7 @@ public class CapacityVerificationProjectController {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-        }
+        //}
         /*List<CapacityVerificationProject> projectList= CapacityVerificationProjectRepository.findAllByPlanId(planId);
         JSONObject data=new JSONObject();
         JSONArray array=new JSONArray();
@@ -77,7 +77,7 @@ public class CapacityVerificationProjectController {
         newProject.setNote(note);
         newProject.setState(0);
         CapacityVerificationProjectRepository.save(newProject);
-
+        CapacityVerificationProjectRepository.updatePlanState(0,planId);
         JSONObject json = new JSONObject(new LinkedHashMap());
         try {
             json.put("code", 200);
@@ -91,7 +91,7 @@ public class CapacityVerificationProjectController {
     @PostMapping(path="/deleteOneProject")
     public @ResponseBody JSONObject deleteProject(@RequestParam(value="id",required=false)Long projectId){
         JSONObject json=new JSONObject(new LinkedHashMap());
-        if(CapacityVerificationProjectRepository.findById(projectId)==null)
+        if(!CapacityVerificationProjectRepository.findById(projectId).isPresent())
         {
             try{
                 json.put("code",500);
@@ -102,6 +102,9 @@ public class CapacityVerificationProjectController {
         }
         else
         {
+
+            if(CapacityVerificationProjectRepository.findById(projectId).get().getState()==1)
+                CapacityVerificationProjectRepository.deleteRecord(projectId);
             CapacityVerificationProjectRepository.deleteById(projectId);
             try{
                 json.put("code",200);
@@ -121,7 +124,7 @@ public class CapacityVerificationProjectController {
                                                @RequestParam(value="state",required=false)Long state,
                                                @RequestParam(value="note",required=false)String note){
         JSONObject json=new JSONObject(new LinkedHashMap());
-        if(CapacityVerificationProjectRepository.findById(projectId)==null)
+        if(!CapacityVerificationProjectRepository.findById(projectId).isPresent())
         {
             try{
                 json.put("code",500);
@@ -132,10 +135,58 @@ public class CapacityVerificationProjectController {
         }
         else
         {
-
+            long tempState=CapacityVerificationProjectRepository.findById(projectId).get().getState();
             CapacityVerificationProjectRepository.updateById(projectId,planId,name,method,state,note);
             //content,checkDate,personInCharge,state
             //System.out.println("changed object");
+            //long tempState=CapacityVerificationProjectRepository.findAllByPlanId(planId).get().getState();
+            if(CapacityVerificationProjectRepository.findAllByPlanIdAndState(planId,0).isEmpty())
+                CapacityVerificationProjectRepository.updatePlanState(1,planId);
+            if(tempState==0&&state==1)
+            {
+                json.put("code",300);
+                json.put("msg","修改成功");
+                return json;
+            }
+            if(tempState==1&&state==0)
+            {
+                CapacityVerificationProjectRepository.deleteRecord(projectId);
+                CapacityVerificationProjectRepository.updatePlanState(0,planId);
+            }
+            try{
+                json.put("code",200);
+                json.put("msg","修改成功");
+            }catch (JSONException e){
+                e.printStackTrace();
+            }
+
+        }
+
+        return json;
+    }
+
+    @PostMapping(path="/modifyState")
+    public @ResponseBody JSONObject modifyState(@RequestParam(value="projectId",required=false)Long projectId,
+                                                @RequestParam(value="state",required = false)Long state){
+        JSONObject json=new JSONObject(new LinkedHashMap());
+        if(!CapacityVerificationProjectRepository.findById(projectId).isPresent())
+        {
+            try{
+                json.put("code",500);
+                json.put("msg","查找不到");
+            }catch (JSONException e){
+                e.printStackTrace();
+            }
+        }
+        else
+        {
+            CapacityVerificationProjectRepository.updateProjectState(projectId,state);
+            //content,checkDate,personInCharge,state
+            //System.out.println("changed object");
+            //long tempState=CapacityVerificationProjectRepository.findAllByPlanId(planId).get().getState();
+            Long planId=CapacityVerificationProjectRepository.findById(projectId).get().getplanId();
+            if(CapacityVerificationProjectRepository.findAllByPlanIdAndState(planId,0).isEmpty())
+                CapacityVerificationProjectRepository.updatePlanState(1,planId);
             try{
                 json.put("code",200);
                 json.put("msg","修改成功");
@@ -152,7 +203,7 @@ public class CapacityVerificationProjectController {
     public @ResponseBody JSONObject getOneProject(@RequestParam(value="id",required=false)Long projectId)throws IOException {
         JSONObject json=new JSONObject(new LinkedHashMap());
         CapacityVerificationProject project=new CapacityVerificationProject();
-        if(CapacityVerificationProjectRepository.findById(projectId)==null)
+        if(!CapacityVerificationProjectRepository.findById(projectId).isPresent())
         {
             try{
                 json.put("code",500);
