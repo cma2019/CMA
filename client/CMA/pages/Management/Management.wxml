@@ -65,9 +65,6 @@
     </view>
     <!--<view wx:if="{{mess[7]}}">-->
     <view wx:if="{{true}}">
-    </view>
-    <!--<view wx:if="{{mess[7]}}">-->
-    <view wx:if="{{true}}">
     <van-collapse-item title="培训管理" name="9">
       <van-cell-group>
         <van-cell title="培训申请" boarder="{{false}}" is-link  center="{{true}}" bindtap="goTrainingApplication"></van-cell>
@@ -96,14 +93,6 @@
         <van-cell title="仪器设备使用申请记录管理" boarder="{{false}}" is-link  center="{{true}}" bindtap="gotoEquipment5"></van-cell>
       </van-cell-group>
     </van-collapse-item>
-    </view>
-    <!--<view wx:if="{{mess[11]}}">-->
-    <view wx:if="{{true}}">
- 
-    </view>
-    <!--<view wx:if="{{mess[12]}}">-->
-    <view wx:if="{{true}}">
-
     </view>
     <!--<view wx:if="{{mess[10]}}">-->
     <view wx:if="{{true}}">
