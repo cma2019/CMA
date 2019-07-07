@@ -23,6 +23,7 @@
               label="计划核查时间"
               value='{{date}}'
               placeholder="计划核查时间" 
+              readonly
               required
               clearable
             />

@@ -17,7 +17,7 @@ Page({
     })
   },
   StaffAdd: function (e) {
-
+    var regNum = new RegExp('[0-9]', 'g');
     if (e.detail.value.name == ""
       || e.detail.value.gender == ""
       || e.detail.value.department == "" || e.detail.value.position == ""
@@ -33,6 +33,15 @@ Page({
 
       })
       console.log('错误(空白输入)')
+    }
+    else if (regNum.exec(e.detail.value.workingYears)==null)
+    {
+      wx.showToast({
+        title: '工龄非数字',
+        image: '/icons/warning/warning.png',
+        duration: 1000
+
+      })
     }
     else {
       console.log('form发生了add事件，携带数据为：', e.detail.value)

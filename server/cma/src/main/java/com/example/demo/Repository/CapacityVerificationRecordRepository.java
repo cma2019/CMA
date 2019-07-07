@@ -9,10 +9,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Transactional
 public interface CapacityVerificationRecordRepository extends JpaRepository<CapacityVerificationRecord,Long> {
-    List<CapacityVerificationRecord> findAllByProjectId(Long projectId);
+    Optional<CapacityVerificationRecord> findAllByProjectId(Long projectId);
     @Modifying
 
     @Query(value="update Capacity_Verification_Record set project_id=:projectid,"+

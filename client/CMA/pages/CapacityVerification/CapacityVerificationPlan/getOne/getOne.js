@@ -33,14 +33,22 @@ Page({
     app.wxRequest(url, 'GET', postdata, (res) => {
       console.log(res)
       console.log('plan getone success')
-      this.setData({
-        name: res.data.name,
-        organizer: res.data.organizer,
-        state: res.data.state,
-        year: res.data.year,
-        note: res.data.note,
-        analysis: res.data.analysis
-      })
+      if(res.code == 200){
+        this.setData({
+          name: res.data.name,
+          organizer: res.data.organizer,
+          state: res.data.state,
+          year: res.data.year,
+          note: res.data.note,
+          analysis: res.data.analysis
+        })
+      }else{
+        wx.showToast({
+          title: '连接失败',
+          image: '/icons/warning/warning.png',
+          duration: 1000
+        })
+      }
     }, (err) => {
       console.err('getone error')
       wx.showToast({
