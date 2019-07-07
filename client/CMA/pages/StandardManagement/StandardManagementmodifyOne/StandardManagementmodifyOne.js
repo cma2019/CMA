@@ -31,7 +31,10 @@ Page({
         app.wxUploadFile(myurl, mypath, formdata, (res) => {
           console.log("upload file success")
           console.log(res)
-          if(res.code == 200){
+          var obj = JSON.parse(res);
+          console.log(obj)
+          console.log(obj.code)
+          if (obj.code == 200){
             wx.showToast({
               title: '修改成功',
               image: '/icons/ok/ok.png',

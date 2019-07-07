@@ -107,23 +107,13 @@ Page({
         success: function (res) {
           console.log("download now")
           console.log(res)
-          var obj = JSON.parse(res);
-          console.log(obj)
-          console.log(obj.code)
-          if (obj.code == 200){
+          if (res.errMsg == "saveFile:ok"){
             myFilePath = res.savedFilePath
             console.log(myFilePath)
             wx.showToast({
               title: '下载成功',
               image: '/icons/ok/ok.png',
-              duration: 1000,
-              success: function () {
-                setTimeout(function () {
-                  wx.navigateBack({
-                    delta: 1
-                  })
-                }, 1000);
-              }
+              duration: 1000
             })
           }else{
             wx.showToast({
