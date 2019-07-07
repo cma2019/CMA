@@ -137,12 +137,14 @@ public class InternalAuditDocumentController {
     {
         FileController fileController=new FileController();
         InternalAuditDocument iDoc=new InternalAuditDocument();
-        //System.out.println(file.getOriginalFilename());
+        System.out.println(file.getOriginalFilename());
         String[] str=file.getOriginalFilename().split("\\.");
         //System.out.println(str[str.length-1]);
         String suffix=str[str.length-1];
         iDoc.setYear(year);
         iDoc.setFileName(fileName+"."+suffix);
+        System.out.println(year);
+        System.out.println(iDoc.getFileName());
         InternalAuditDocumentRepository.save(iDoc);
         //System.out.println(sDoc.getFileName());
         return  fileController.upload(file,request,iDoc.getFileName(),iDoc.getDir());
