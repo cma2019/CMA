@@ -38,7 +38,8 @@ Page({
         department: res.data.department,
         position: res.data.position,
         qualificationId: res.data.qualificationId,
-        qualificationName: res.data.qualificationName
+        qualificationName: res.data.qualificationName,
+        qualificationImage: res.data.qualificationImage
       })
     }, (err) => {
       console.err('get one error')
@@ -102,6 +103,13 @@ Page({
 
         }, (err) => {
           console.log(err)
+          if (err.errMsg == "chooseMessageFile:fail cancel") {
+            wx.showToast({
+              title: '取消上传',
+              image: '/icons/warning/warning.png',
+              duration: 1000
+            })
+          }
         })
         /*console.log(this.data.year)
         console.log(this.year)

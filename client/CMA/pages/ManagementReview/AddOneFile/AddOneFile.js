@@ -57,12 +57,24 @@ Page({
       fail: function (err) {
         console.log("get file failed")
         console.log(err)
+        if (err.errMsg == "chooseMessageFile:fail cancel") {
+          wx.showToast({
+            title: '取消上传',
+            image: '/icons/warning/warning.png',
+            duration: 1000
+          })
+        }
       }
       
     })
     
   },
   onLoad: function (options) {  
+    this.setData({
+
+      year: options.id
+    })
+
   }
   
 })
