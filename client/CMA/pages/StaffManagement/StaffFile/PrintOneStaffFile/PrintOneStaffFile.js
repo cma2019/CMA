@@ -56,7 +56,8 @@ Page({
     console.log(e)
     //let target = this.data.id
     //console.log(target)
-    let url1 = app.globalData.url + 'StaffFile/modifyOneFile'
+    let url1 = app.globalData.url + 'StaffFile/modifyOneFile?staffId='+this.data.id
+    /*
     let postdata1 = {
       "staffId": this.data.id
     }
@@ -67,8 +68,8 @@ Page({
       //console.log(res.data[0].id)
     }, (err) => {
       console.err('get one error')
-    })
-    var myurl2 = app.globalData.url + 'StaffFile/addOneFile';
+    })*/
+    //var myurl2 = app.globalData.url + 'StaffFile/addOneFile';
     wx.chooseMessageFile({
       count: 1,
       type: 'all',
@@ -79,14 +80,21 @@ Page({
         console.log(res.tempFiles[0])
         console.log(res.tempFiles[0].path)
         //mypath = res.tempFiles[0].path
-        app.wxUploadFile(myurl2, res.tempFiles[0].path, null, (res) => {
+        app.wxUploadFile(url1, res.tempFiles[0].path, null, (res) => {
           console.log("upload file success")
           console.log(res)
           wx.showToast({
             title: '文件修改成功',
             //icon: 'success',
             image: '/icons/ok/ok.png',
-            duration: 1000
+            duration: 1000,
+            success: function () {
+              setTimeout(function () {
+                wx.navigateBack({
+                  delta: 1
+                })
+              }, 1000);
+            }
           })
           //console.log(mydata)
 
