@@ -32,13 +32,21 @@ Page({
     }
     app.wxRequest(url, 'GET', postdata, (res) => {
       console.log("plan modify success")
-      this.setData({
-        planId: res.data.planId,
-        name: res.data.name,
-        method: res.data.method,
-        state: res.data.state,
-        note: res.data.note,
-      })
+      if(res.code == 200){
+        this.setData({
+          planId: res.data.planId,
+          name: res.data.name,
+          method: res.data.method,
+          state: res.data.state,
+          note: res.data.note,
+        })
+      }else{
+        wx.showToast({
+          title: '连接失败',
+          image: '/icons/warning/warning.png',
+          duration: 1000
+        })
+      }
     }, (err) => {
       console.err('getone error')
       wx.showToast({

@@ -23,6 +23,7 @@
         <view class='picker'>
         <van-field 
         label="培训日期"
+        readonly
         value='{{trainingDate}}'
         />
         </view>

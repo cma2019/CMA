@@ -112,7 +112,9 @@
     "pages/TestingInstitutionManagement/Certificate/CertificateAddOne/CertificateAddOne",
     "pages/TestingInstitutionManagement/Certificate/CertificateGetOne/CertificateGetOne",
     "pages/TestingInstitutionManagement/TestingInstitutionResource/TestingInstitutionResource",
+    "pages/TestingInstitutionManagement/TestingInstitutionResource/TestingInstitutionResourceModify/TestingInstitutionResourceModify",
     "pages/TestingInstitutionManagement/TestingInstitutionInformation/TestingInstitutionInformation",
+    "pages/TestingInstitutionManagement/TestingInstitutionInformation/TestingInstitutionInformationModify/TestingInstitutionInformationModify",
     "pages/StaffManagement/StaffAuthorization/StaffAuthorization",
     "pages/StaffManagement/StaffAuthorization/AddOneStaffAuthorization/AddOneStaffAuthorization",
     "pages/StaffManagement/StaffAuthorization/ModifyOneStaffAuthorization/ModifyOneStaffAuthorization",
@@ -173,7 +175,8 @@
     "pages/StaffManagement/StaffQualification/PrintOneStaffQualification/PrintOneStaffQualification",
     "pages/StaffManagement/StaffQualification/GetAllByStaff/GetAllByStaff",
     "pages/StaffManagement/StaffQualification/ModifyOneStaffQualification/ModifyOneStaffQualification",
-    "pages/login/modifypassword/modifypassword"
+    "pages/login/modifypassword/modifypassword",
+    "pages/IntermediateCheck/IntermediateChecksRecord/IntermediateChecksRecordGetonePlan/IntermediateChecksRecordGetonePlan"
   ],
   "window": {
     "backgroundTextStyle": "light",

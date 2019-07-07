@@ -1,5 +1,7 @@
 package com.example.demo.Controller; 
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.Before; 
@@ -59,7 +61,9 @@ public void testGetAll() throws Exception {
     //int status=mvcResult.getResponse().getStatus();
     //Assert.assertEquals(200,status);
     String res=mvcResult.getResponse().getContentAsString();
-    int code=Integer.parseInt(res.substring(19,22));
+    JSONObject jsonObject= JSON.parseObject(res);
+    int code= (int) jsonObject.get("code");
+    System.out.println(code);
     Assert.assertEquals(200,code);
 } 
 
@@ -80,7 +84,9 @@ public void testAddOne() throws Exception {
     //int status=mvcResult.getResponse().getStatus();
     //Assert.assertEquals(200,status);
     String res=mvcResult.getResponse().getContentAsString();
-    int code=Integer.parseInt(res.substring(19,22));
+    JSONObject jsonObject= JSON.parseObject(res);
+    int code= (int) jsonObject.get("code");
+    System.out.println(code);
     Assert.assertEquals(200,code);
 } 
 
@@ -101,7 +107,9 @@ public void testGet() throws Exception {
     //int status=mvcResult.getResponse().getStatus();
     //Assert.assertEquals(200,status);
     String res=mvcResult.getResponse().getContentAsString();
-    int code=Integer.parseInt(res.substring(19,22));
+    JSONObject jsonObject= JSON.parseObject(res);
+    int code= (int) jsonObject.get("code");
+    System.out.println(code);
     Assert.assertEquals(200,code);
 } 
 
@@ -122,7 +130,9 @@ public void testDeleteOne() throws Exception {
     //int status=mvcResult.getResponse().getStatus();
     //Assert.assertEquals(200,status);
     String res=mvcResult.getResponse().getContentAsString();
-    int code=Integer.parseInt(res.substring(19,22));
+    JSONObject jsonObject= JSON.parseObject(res);
+    int code= (int) jsonObject.get("code");
+    System.out.println(code);
     Assert.assertEquals(200,code);
 } 
 
@@ -143,7 +153,9 @@ public void testModifyOne() throws Exception {
     //int status=mvcResult.getResponse().getStatus();
     //Assert.assertEquals(200,status);
     String res=mvcResult.getResponse().getContentAsString();
-    int code=Integer.parseInt(res.substring(19,22));
+    JSONObject jsonObject= JSON.parseObject(res);
+    int code= (int) jsonObject.get("code");
+    System.out.println(code);
     Assert.assertEquals(200,code);
 } 
 

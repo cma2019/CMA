@@ -12,49 +12,49 @@ Page({
     "fileName": null,
     year:null
   },
+  mygo: function (e) {
+    var that = this
+    wx.redirectTo({
+      url: '/pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementYear/ExternalReviewManagementYear?year=' + that.data.year,
+    })
+  },
   newEquipment: function (e) {
     console.log(e.detail.value)
     var that = this
-    var myurl1 = app.globalData.url + 'ExternalReviewDocument/addOneFormData';
-    var myurl2 = app.globalData.url + 'ExternalReviewDocument/addOneFile';
     var mydata = {
       "year": e.detail.value.year
     };
-    app.wxRequest(myurl1, 'POST', mydata, (res) => {
-      console.log(res)
-      wx.chooseMessageFile({
-        count: 1,
-        type: 'all',
-        success: function (res) {
-          console.log("get file success")
+    var myurl = app.globalData.url + 'ExternalReviewDocument/addFile?year=' + mydata.year;
+    wx.chooseMessageFile({
+      count: 1,
+      type: 'all',
+      success: function (res) {
+        console.log("get file success")
+        console.log(res)
+        var mypath = res.tempFiles[0].path
+        app.wxUploadFile(myurl, mypath, null, (res) => {
+          console.log("upload file success")
           console.log(res)
-          var mypath = res.tempFiles[0].path
-          app.wxUploadFile(myurl2, mypath, null, (res) => {
-            console.log("upload file success")
-            console.log(res)
-            wx.showToast({
-              title: '上传成功',
-              icon: '/icons/ok/ok.png',
-              duration: 1000,
-              success: function () {
-                setTimeout(function () {
-                  wx.redirectTo({
-                    url: '/pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementYear/ExternalReviewManagementYear?year=' + that.data.year,
-                  })
-                }, 1000);
-              }
-            })
-          }, (err) => {
-            console.log(err)
+          wx.showToast({
+            title: '上传成功',
+            icon: '/icons/ok/ok.png',
+            duration: 1000,
+            success: function () {
+              setTimeout(function () {
+                wx.redirectTo({
+                  url: '/pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementYear/ExternalReviewManagementYear?year=' + that.data.year,
+                })
+              }, 1000);
+            }
           })
-        },
-        fail: function (err) {
-          console.log("get file failed")
+        }, (err) => {
           console.log(err)
-        }
-      })
-    }, (err) => {
-      console.log(err)
+        })
+      },
+      fail: function (err) {
+        console.log("get file failed")
+        console.log(err)
+      }
     })
   },
 

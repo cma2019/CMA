@@ -15,6 +15,11 @@ Page({
     "modifier": null,
     "modifyContent": null
   },
+  mygo: function (e) {
+    wx.redirectTo({
+      url: '/pages/QualityManual/QualityManual/QualityManual',
+    })
+  },
   bindDateChange: function (e) {
     console.log("date")
     console.log(e.detail.value)
@@ -24,8 +29,6 @@ Page({
   },
   newEquipment: function (e) {
     console.log(e.detail.value)
-    var myurl1 = app.globalData.url + 'QualityManual/addOneFormData';
-    var myurl2 = app.globalData.url + 'QualityManual/addOneFile';
     var mydata = {
       "state": e.detail.value.state,
       "current": e.detail.value.current,
@@ -33,32 +36,37 @@ Page({
       "modifier": e.detail.value.modifier,
       "modifyContent": e.detail.value.modifyContent,
     };
-    app.wxRequest(myurl1,'POST',mydata,(res) => {
-      console.log(res)
-      wx.chooseMessageFile({
-        count: 1,
-        type: 'all',
-        success: function (res) {
-          console.log("get file success")
+    var myurl = app.globalData.url + 'QualityManual/addFile?state=' + mydata.state + '&current=' + mydata.current + '&modifyTime=' + mydata.modifyTime + '&modifier=' + mydata.modifier + '&modifyContent=' + mydata.modifyContent;
+    wx.chooseMessageFile({
+      count: 1,
+      type: 'all',
+      success: function (res) {
+        console.log("get file success")
+        console.log(res)
+        var mypath = res.tempFiles[0].path
+        app.wxUploadFile(myurl, mypath, null, (res) => {
+          console.log("upload file success")
           console.log(res)
-          var mypath = res.tempFiles[0].path
-          app.wxUploadFile(myurl2, mypath, null, (res) => {
-            console.log("upload file success")
-            console.log(res)
-            wx.redirectTo({
-              url: '/pages/QualityManual/QualityManual/QualityManual',
-            })
-          }, (err) => {
-            console.log(err)
+          wx.showToast({
+            title: '添加成功',
+            icon: '/icons/ok/ok.png',
+            duration: 1000,
+            success: function () {
+              setTimeout(function () {
+                wx.redirectTo({
+                  url: '/pages/QualityManual/QualityManual/QualityManual',
+                })
+              }, 1000);
+            }
           })
-        },
-        fail: function (err) {
-          console.log("get file failed")
+        }, (err) => {
           console.log(err)
-        }
-      })
-    },(err) => {
-      console.log(err)
+        })
+      },
+      fail: function (err) {
+        console.log("get file failed")
+        console.log(err)
+      }
     })
   },
   /**

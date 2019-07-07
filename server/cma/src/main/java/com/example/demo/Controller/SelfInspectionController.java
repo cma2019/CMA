@@ -27,10 +27,10 @@ public class SelfInspectionController {
     private SelfInspectionRepository SelfInspectionRepository;
     @Autowired
     private SelfInspectionDocumentRepository SelfInspectionDocumentRepository;
-    private String add_id="0";
+    /*private String add_id="0";
     private String add_name="null";
     private String modify_Id="0";
-    private String modify_name="null";
+    private String modify_name="null";*/
     @GetMapping(path = "/getAll")
     public @ResponseBody JSONObject getAll(){
         List<SelfInspection> res=SelfInspectionRepository.findAll();
@@ -155,53 +155,84 @@ public class SelfInspectionController {
         js.put("data",data);
         return js;
     }
+    /*
     @RequestMapping(path="/addOneFormData",method= RequestMethod.POST)
     public @ResponseBody JSONObject addOneFormData(@RequestParam(value = "fileName",required = false) String fileName,
                                      @RequestParam(value = "id",required = false) String id){
         JSONObject js=new JSONObject();
-        //System.out.println(fileName);
-        add_name=fileName;
-        add_id=id;
+        if(fileName==null||fileName.equals(""))
+        {
+            js.put("code",511);
+            js.put("msg","缺少请求参数");
+            js.put("data",null);
+            return js;
+        }
+        SelfInspectionDocument sdoc=new SelfInspectionDocument();
+        sdoc.setFlag(1);
+        sdoc.setFileName(fileName);
+        sdoc.setId(Long.parseLong(id));
+        SelfInspectionDocumentRepository.save(sdoc);
         js.put("code",200);
         js.put("msg","成功");
         js.put("data",null);
         return js;
-    }
+    }*/
     @PostMapping(path = "/addOneFile")
-    public @ResponseBody Response addOneFile(@RequestParam("file") MultipartFile file, HttpServletRequest request){
+    public @ResponseBody Response addOneFile(@RequestParam("file") MultipartFile file,
+                                             @RequestParam(value = "id",required = false) long id,
+                                             @RequestParam(value = "fileName",required = false) String fileName,
+                                             HttpServletRequest request){
+        //JSONObject js=new JSONObject();
+        if(fileName==null||fileName.equals(""))
+        {
+            Response res=new Response();
+            res.code=511;
+            res.msg="缺少请求参数";
+            res.data=null;
+            return res;
+        }
         FileController fileController=new FileController();
         SelfInspectionDocument sDoc=new SelfInspectionDocument();
-        sDoc.setId(Long.parseLong(add_id));
         String[] str=file.getOriginalFilename().split("\\.");
         String suffix=str[str.length-1];
-        sDoc.setFileName(add_name+"."+suffix);
+        sDoc.setFileName(fileName+"."+suffix);
+        sDoc.setId(id);
+        //System.out.println("???");
         SelfInspectionDocumentRepository.save(sDoc);
         //System.out.println(sDoc.getFileName());
         //System.out.println("??");
         return  fileController.upload(file,request,sDoc.getFileName(),sDoc.getDir());
     }
+    /*
     @RequestMapping(path="/modifyOneFormData",method= RequestMethod.POST)
     public @ResponseBody JSONObject modifyOneFormData(@RequestParam(value = "fileName",required = false) String fileName,
                                      @RequestParam(value = "fileId",required = false) String fileId){
         JSONObject js=new JSONObject();
         //System.out.println(fileName);
-        modify_Id=fileId;
-        modify_name=fileName;
+        SelfInspectionDocument sdoc=SelfInspectionDocumentRepository.findByFileId(Long.parseLong(fileId));
+        sdoc.setFlag(2);
+        sdoc.setFileName(fileName);
+        SelfInspectionDocumentRepository.saveAndFlush(sdoc);
         js.put("code",200);
         js.put("msg","成功");
         js.put("data",null);
         return js;
-    }
+    }*/
     @PostMapping(path = "/modifyOneFile")
-    public @ResponseBody Response modifyOneFile(@RequestParam("file") MultipartFile file, HttpServletRequest request){
+    public @ResponseBody Response modifyOneFile(@RequestParam("file") MultipartFile file,
+                                                @RequestParam(value ="fileId",required = false) long fileId,
+                                                @RequestParam(value = "fileName",required = false) String fileName,
+                                                @RequestParam(value = "id",required = false) long id,
+                                                HttpServletRequest request){
         FileController fileController=new FileController();
-        SelfInspectionDocument tmp=SelfInspectionDocumentRepository.findByFileId(Long.parseLong(modify_Id));
+        SelfInspectionDocument tmp=SelfInspectionDocumentRepository.findByFileId(fileId);
         String oldName=tmp.getFileName();
         fileController.deletefile(oldName,tmp.getDir());
         String[] str=file.getOriginalFilename().split("\\.");
         //System.out.println(str[str.length-1]);
         String suffix=str[str.length-1];
-        tmp.setFileName(modify_name+"."+suffix);
+        tmp.setId(id);
+        tmp.setFileName(fileName+"."+suffix);
         SelfInspectionDocumentRepository.saveAndFlush(tmp);
         return  fileController.upload(file,request,tmp.getFileName(),tmp.getDir());
     }
@@ -240,7 +271,7 @@ public class SelfInspectionController {
                 throw new Exception("doesn't exist");
             SelfInspectionDocument temp=SelfInspectionDocumentRepository.findByFileId(fileId);
             String name=temp.getFileName();
-            System.out.println(name+"????");
+            //System.out.println(name+"????");
             return  fileController.downloadFile(response,name,temp.getDir());
         }catch(Exception e){
             e.printStackTrace();

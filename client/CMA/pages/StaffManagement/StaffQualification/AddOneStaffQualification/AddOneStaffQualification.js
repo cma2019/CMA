@@ -51,9 +51,10 @@ Page({
                 duration: 1000,
                 success: function () {
                   setTimeout(function () {
-                    wx.redirectTo({
-                      url: '../StaffQualification',
+                    wx.navigateBack({
+                      delta:1
                     })
+                    
                   }, 1000);
                 }
 
@@ -67,6 +68,14 @@ Page({
           },
           fail: function (err) {
             console.log("get file failed")
+            if (err.errMsg =="chooseMessageFile:fail cancel")
+            {
+              wx.showToast({
+                title: '取消上传',
+                image: '/icons/warning/warning.png',
+                duration: 1000
+              })
+            }
             console.log(err)
           }
 

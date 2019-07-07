@@ -50,6 +50,14 @@ Page({
       })
       console.log('wrong message')
     }
+    else if (e.detail.value.situation != "1" && e.detail.value.situation != "2") {
+      wx.showToast({
+        title: '状态输入错误',
+        image: '/icons/warning/warning.png',
+        duration: 1000
+
+      })
+    }
     else {
       console.log('modify，携带数据为：', e.detail.value)
       console.log('modify，携带数据为：', e.detail.value.object)
@@ -90,8 +98,8 @@ Page({
             duration: 1000,
             success: function () {
               setTimeout(function () {
-                wx.navigateTo({
-                  url: '../PrintOneApplication/PrintOneApplication',
+                wx.navigateBack({
+                  delta: 1
                 })
               }, 1000);
             }

@@ -2,7 +2,7 @@
 const app = getApp()
 Page({
   data: {
-    list: ['用户管理', '质量体系管理', '管理评审','内审管理','自查管理','监督','期间核查','档案管理','培训管理','样品管理','设备管理','人员管理','授权签字人管理','检测检验能力管理','能力验证管理','客户意见与投诉管理','标准管理','外部评审与上报管理','检测机构管理'],
+    list: ['用户管理', '质量体系管理', '管理评审','内审管理','自查管理','监督','期间核查','培训管理','样品管理','设备管理','检测检验能力管理','能力验证管理','标准管理','外部评审与上报管理','检测机构管理'],
     'result': null
   },
   onChange(event) {
@@ -52,18 +52,14 @@ Page({
       per[4] = e.detail.value["自查管理"]
       per[5] = e.detail.value["监督"]
       per[6] = e.detail.value["期间核查"]
-      per[7] = e.detail.value["档案管理"]
-      per[8] = e.detail.value["培训管理"]
-      per[9] = e.detail.value["样品管理"]
-      per[10] = e.detail.value["设备管理"]
-      per[11] = e.detail.value["人员管理"]
-      per[12] = e.detail.value["授权签字人管理"]
-      per[13] = e.detail.value["检测检验能力管理"]
-      per[14] = e.detail.value["能力验证管理"]
-      per[15] = e.detail.value["客户意见与投诉管理"]
-      per[16] = e.detail.value["标准管理"]
-      per[17] = e.detail.value["外部评审与上报管理"]
-      per[18] = e.detail.value["检测机构管理"]
+      per[7] = e.detail.value["培训管理"]
+      per[8] = e.detail.value["样品管理"]
+      per[9] = e.detail.value["设备管理"]
+      per[10] = e.detail.value["检测检验能力管理"]
+      per[11] = e.detail.value["能力验证管理"]
+      per[12] = e.detail.value["标准管理"]
+      per[13] = e.detail.value["外部评审与上报管理"]
+      per[14] = e.detail.value["检测机构管理"]
      console.log(per)
 
       let data = {
@@ -81,8 +77,8 @@ Page({
           duration: 1000,
           success: function () {
             setTimeout(function () {
-              wx.navigateTo({
-                url: '../printoneadmin/printoneadmin',
+              wx.navigateBack({
+                delta: 1
               })
             }, 1000);
           }

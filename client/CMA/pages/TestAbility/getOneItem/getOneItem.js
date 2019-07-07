@@ -26,13 +26,21 @@ Page({
     app.wxRequest(url, 'GET', postdata, (res) => {
       console.log('test ability getone success')
       console.log(res)
-      this.setData({
-        year: res.data.year,
-        id: res.data.id,
-        productionName: res.data.productionName,
-        ability: res.data.ability,
-        referrence: res.data.referrence,
-      })
+      if(res.code == 200){
+        this.setData({
+          year: res.data.year,
+          id: res.data.id,
+          productionName: res.data.productionName,
+          ability: res.data.ability,
+          referrence: res.data.referrence,
+        })
+      }else{
+        wx.showToast({
+          title: '连接失败',
+          image: '/icons/warning/warning.png',
+          duration: 1000
+        })
+      }
     }, (err) => {
       console.err('getone error')
       wx.showToast({

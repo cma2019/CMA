@@ -66,8 +66,8 @@ Page({
             duration: 1000,
             success: function () {
               setTimeout(function () {
-                wx.redirectTo({
-                  url: '/pages/StaffManagement/StaffTraining/StaffTraining',
+                wx.navigateBack({
+                  delta: 1
                 })
               }, 1000);
             }

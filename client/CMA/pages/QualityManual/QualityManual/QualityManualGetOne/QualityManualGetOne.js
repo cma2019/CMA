@@ -8,16 +8,30 @@ Page({
   data: {
     manual:{}
   },
+  mygo: function (e) {
+    wx.redirectTo({
+      url: '/pages/QualityManual/QualityManual/QualityManual',
+    })
+  },
   mydelete: function (e) {
     var that = this
     var myurl = app.globalData.url + 'QualityManual/deleteOne/' + that.data.manual.id;
     app.wxRequest(myurl, 'GET', null, (res) => {
       console.log(res)
+      wx.showToast({
+        title: '删除成功',
+        icon: '/icons/ok/ok.png',
+        duration: 1000,
+        success: function () {
+          setTimeout(function () {
+            wx.redirectTo({
+              url: '/pages/QualityManual/QualityManual/QualityManual',
+            })
+          }, 1000);
+        }
+      })
     }, (err) => {
       console.log(err)
-    })
-    wx.redirectTo({
-      url: '/pages/QualityManual/QualityManual/QualityManual',
     })
   },
   mydownload:function(e){
@@ -31,6 +45,15 @@ Page({
         success: function (res) {
           myFilePath = res.savedFilePath
           console.log(myFilePath)
+          wx.showToast({
+            title: '下载成功',
+            icon: '/icons/ok/ok.png',
+            duration: 1000,
+            success: function () {
+              setTimeout(function () {
+              }, 1000);
+            }
+          })
         },
         fail: function (err) {
           console.log(err)

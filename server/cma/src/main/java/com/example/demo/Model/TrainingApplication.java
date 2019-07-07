@@ -99,9 +99,9 @@ public class TrainingApplication {
 
     public void setSituation(byte situation) throws ParseException {
         if(situation==0){
-            this.setApprover("");
-            SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-            this.setApproveDate(sdf.parse("2000-1-1"));
+            this.setApprover(null);
+            //SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+            this.setApproveDate(null);
         }
         this.situation = situation;
     }

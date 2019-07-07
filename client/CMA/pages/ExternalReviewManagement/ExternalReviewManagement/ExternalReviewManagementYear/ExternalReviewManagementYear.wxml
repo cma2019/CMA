@@ -13,4 +13,5 @@
   </van-cell-group>
   <van-button type="info" size="small" bindtap="gotoAdd">添加外部评审与上报文档</van-button>
   <van-button type="info" size="small" bindtap="gotoDelete">删除此文档集</van-button>
+  <van-button type="info" size="small" bindtap="mygo">返回</van-button>
 </scroll-view>
