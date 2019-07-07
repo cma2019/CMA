@@ -1,5 +1,7 @@
 package com.example.demo.Controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -54,6 +56,8 @@ public class EquipmentMaintenanceControllerTest {
             int code = Integer.parseInt(res.substring(8,11));
             Assert.assertEquals(200, (long)code);
         }
+    @Test
+    @Transactional
    public void getOne() throws Exception{
        String url="/cma/EquipmentMaintenance/getOne/66";
        MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0])
@@ -64,6 +68,8 @@ public class EquipmentMaintenanceControllerTest {
        int code = Integer.parseInt(res.substring(8,11));
        Assert.assertEquals(200, (long)code);
    }
+    @Test
+    @Transactional
     public void getAll() throws Exception{
         String url="/cma/EquipmentMaintenance/getAll";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url))
@@ -73,6 +79,8 @@ public class EquipmentMaintenanceControllerTest {
         int code = Integer.parseInt(res.substring(8,11));
         Assert.assertEquals(200, (long)code);
     }
+    @Test
+    @Transactional
     public void modifyOne() throws Exception{
         String url="/cma/EquipmentMaintenance/modifyOne/66";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0])
@@ -85,7 +93,21 @@ public class EquipmentMaintenanceControllerTest {
         )       .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print()).andReturn();
         String res = mvcResult.getResponse().getContentAsString();
-        int code = Integer.parseInt(res.substring(8,11));
+        JSONObject jsonObject= JSON.parseObject(res);
+        int code= (int) jsonObject.get("code");
+        Assert.assertEquals(200, (long)code);
+    }
+    @Test
+    @Transactional
+    public void deleteOne() throws Exception{
+        String url="/cma/EquipmentMaintenance/deleteOne/66";
+        MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0])
+                .param("id,","66")
+        )       .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(MockMvcResultHandlers.print()).andReturn();
+        String res = mvcResult.getResponse().getContentAsString();
+        JSONObject jsonObject= JSON.parseObject(res);
+        int code= (int) jsonObject.get("code");
         Assert.assertEquals(200, (long)code);
     }
 

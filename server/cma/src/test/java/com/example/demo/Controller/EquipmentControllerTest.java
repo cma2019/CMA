@@ -1,9 +1,10 @@
 package com.example.demo.Controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.example.demo.DemoApplication;
 import com.example.demo.Model.AllAnnualPlan;
 import com.example.demo.Repository.AllAnnualPlanRepository;
-import net.minidev.json.JSONObject;
 import org.codehaus.jackson.JsonProcessingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.After;
@@ -54,8 +55,8 @@ public class EquipmentControllerTest {
         //Assert.assertEquals(200,status);
         //JSONObject json=mvcResult.getResponse().get
         String res=mvcResult.getResponse().getContentAsString();
-        System.out.println(res);
-        int code=Integer.parseInt(res.substring(8,11));
+        JSONObject jsonObject= JSON.parseObject(res);
+        int code= (int) jsonObject.get("code");
         Assert.assertEquals(200,code);
     }
     @Test
