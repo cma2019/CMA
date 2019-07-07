@@ -2,7 +2,7 @@ const app = getApp()
 Page({
 
   data: {
-
+    radio: '1'
   },
 
   onLoad: function (options) {
@@ -15,6 +15,11 @@ Page({
     this.setData({
       date: e.detail.value
     })
+  },
+  onChange(event) {
+    this.setData({
+      checked: event.detail
+    });
   },
   StaffAdd: function (e) {
     var regNum = new RegExp('[0-9]', 'g');
@@ -38,6 +43,14 @@ Page({
     {
       wx.showToast({
         title: '工龄非数字',
+        image: '/icons/warning/warning.png',
+        duration: 1000
+
+      })
+    }
+    else if (e.detail.value.gender != "男" &&e.detail.value.gender != "女") {
+      wx.showToast({
+        title: '性别输入错误',
         image: '/icons/warning/warning.png',
         duration: 1000
 
@@ -80,8 +93,8 @@ Page({
             duration: 1000,
             success: function () {
               setTimeout(function () {
-                wx.navigateTo({
-                  url: '../StaffManagement',
+                wx.navigateBack({
+                  delta:1
                 })
               }, 1000);
             }

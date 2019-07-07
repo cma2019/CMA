@@ -103,14 +103,14 @@ Page({
         }
         */
         wx.showToast({
-          title: '修改成功',
+          title: '成功',
           //icon: 'success',
           image: '/icons/ok/ok.png',
           duration: 1000,
           success: function () {
             setTimeout(function () {
-              wx.navigateTo({
-                url: '../PrintOneApplication/PrintOneApplication',
+              wx.navigateBack({
+                delta: 1
               })
             }, 1000);
           }

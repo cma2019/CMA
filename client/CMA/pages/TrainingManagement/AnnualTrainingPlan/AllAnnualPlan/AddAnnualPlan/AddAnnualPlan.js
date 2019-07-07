@@ -19,6 +19,7 @@ Page({
   
   ApplicationAdd: function (e) {
     {
+      var regNum = new RegExp('[0-9]', 'g');
       console.log('form发生了add事件，携带数据为：', e.detail.value)
       let url = app.globalData.url + 'AnnualTrainingPlan/addAnnualPlan'
       let data = {
@@ -35,6 +36,16 @@ Page({
           duration: 1000
         })
         console.log('错误(空白输入)')
+      }
+      
+      
+      else if (regNum.exec(e.detail.value.year) == null) {
+        wx.showToast({
+          title: '请输入正确年份',
+          image: '/icons/warning/warning.png',
+          duration: 1000
+
+        })
       }
       else {
       console.log(url)
@@ -59,8 +70,8 @@ Page({
             duration: 1000,
             success: function () {
               setTimeout(function () {
-                wx.navigateTo({
-                  url: '../AllAnnualPlan',
+                wx.navigateBack({
+                  delta: 1
                 })
               }, 1000);
             }
