@@ -14,7 +14,7 @@
         name="situation"
         label="状态"
         value='{{situation}}'
-        placeholder="状态" 
+        placeholder="1未通过，2已通过" 
         required
         clearable
         
@@ -32,6 +32,7 @@
           <view class='picker'>
         <van-field 
         label="批准时间"
+        readonly
         value='{{approveDate}}'
         required
       />

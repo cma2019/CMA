@@ -77,8 +77,8 @@ Page({
           duration: 1000,
           success: function () {
             setTimeout(function () {
-              wx.navigateTo({
-                url: '../printoneadmin/printoneadmin',
+              wx.navigateBack({
+                delta: 1
               })
             }, 1000);
           }

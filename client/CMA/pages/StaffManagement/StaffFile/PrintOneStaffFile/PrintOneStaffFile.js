@@ -101,6 +101,13 @@ Page({
       },
       fail: function (err) {
         console.log("get file failed")
+        if (err.errMsg == "chooseMessageFile:fail cancel") {
+          wx.showToast({
+            title: '取消上传',
+            image: '/icons/warning/warning.png',
+            duration: 1000
+          })
+        }
         console.log(err)
       }
     })
@@ -146,8 +153,16 @@ Page({
       console.log('delete successfully')
       wx.showToast({
         title: '文件删除成功',
+        //icon: 'success',
         image: '/icons/ok/ok.png',
-        duration: 1000
+        duration: 1000,
+        success: function () {
+          setTimeout(function () {
+            wx.navigateBack({
+              delta: 1
+            })
+          }, 1000);
+        }
       })
 
     }, (err) => {

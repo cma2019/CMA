@@ -12,7 +12,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MockMvcBuilder;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
@@ -21,24 +20,24 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 
 /** 
-* TrainingApplicationController Tester. 
+* StaffAuthorizationController Tester. 
 * 
 * @author <Authors name> 
-* @since <pre>六月 16, 2019</pre> 
+* @since <pre>七月 7, 2019</pre> 
 * @version 1.0 
 */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 @WebAppConfiguration
 @Transactional
-public class TrainingApplicationControllerTest {
-    MockMvc mockMvc;
+public class StaffAuthorizationControllerTest {
     @Autowired
-    TrainingApplicationController trainingApplicationController;
+    StaffAuthorizationController staffAuthorizationController;
+    MockMvc mockMvc;
 
 @Before
 public void before() throws Exception {
-    mockMvc= MockMvcBuilders.standaloneSetup(trainingApplicationController).build();
+    mockMvc = MockMvcBuilders.standaloneSetup(staffAuthorizationController).build();
 } 
 
 @After
@@ -51,9 +50,9 @@ public void after() throws Exception {
 * 
 */ 
 @Test
-public void testGetAll() throws Exception {
+public void testGetAll() throws Exception { 
 //TODO: Test goes here...
-    String url="/cma/TrainingApplication/getAll";
+    String url="/cma/StaffAuthorization/getAll";
     MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(url))
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andDo(MockMvcResultHandlers.print())
@@ -70,13 +69,13 @@ public void testGetAll() throws Exception {
 
 /** 
 * 
-* Method: getOne(@RequestParam(value="id",required = false)long id) 
+* Method: getOne(@RequestParam(value="authorizationId",required = false)long authorizationId) 
 * 
 */ 
 @Test
 public void testGetOne() throws Exception { 
 //TODO: Test goes here...
-    String url="/cma/TrainingApplication/getOne?id=2";
+    String url="/cma/StaffAuthorization/getOne?authorizationId=25";
     MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(url))
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andDo(MockMvcResultHandlers.print())
@@ -93,13 +92,13 @@ public void testGetOne() throws Exception {
 
 /** 
 * 
-* Method: addOne(@RequestParam(value = "name",required = false) String name, @RequestParam(value = "people",required = false)String people, @RequestParam(value = "trainingUnit",required = false)String trainingUnit, @RequestParam(value = "expense",required = false)long expense, @RequestParam(value="reason",required = false)String reason, @RequestParam(value = "department",required = false)String department, @RequestParam(value = "createDate",required = false)String createDate) 
+* Method: addOne(@RequestParam(value = "id",required = false) long id, @RequestParam(value = "authorizerId",required = false)long authorizerId, @RequestParam(value = "content",required = false)String content, @RequestParam(value = "authorizerDate",required = false)String authorizerDate) 
 * 
 */ 
 @Test
 public void testAddOne() throws Exception { 
 //TODO: Test goes here...
-    String url="/cma/TrainingApplication/addOne?name=jacky&people=技术部部员&trainingUnit=南京大学&expense=15000&reason=太菜了&department=技术部&createDate=2019-6-3";
+    String url="/cma/StaffAuthorization/addOne?id=2&authorizerId=1&content=培训授权&authorizerDate=2019-7-1";
     MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post(url))
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andDo(MockMvcResultHandlers.print())
@@ -116,13 +115,13 @@ public void testAddOne() throws Exception {
 
 /** 
 * 
-* Method: deleteOne(@RequestParam(value = "id",required = false)long id) 
+* Method: deleteOne(@RequestParam(value = "authorizationId",required = false)long authorizationId) 
 * 
 */ 
 @Test
 public void testDeleteOne() throws Exception { 
 //TODO: Test goes here...
-    String url="/cma/TrainingApplication/deleteOne?id=2";
+    String url="/cma/StaffAuthorization/deleteOne?authorizationId=3";
     MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post(url))
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andDo(MockMvcResultHandlers.print())
@@ -139,13 +138,13 @@ public void testDeleteOne() throws Exception {
 
 /** 
 * 
-* Method: modifyOne(@RequestParam(value = "id",required = false)long id, @RequestParam(value = "name",required = false) String name, @RequestParam(value = "people",required = false)String people, @RequestParam(value = "trainingUnit",required = false)String trainingUnit, @RequestParam(value = "expense",required = false)String expense, @RequestParam(value="reason",required = false)String reason, @RequestParam(value = "department",required = false)String department, @RequestParam(value = "createDate",required = false)String createDate) 
+* Method: modifyOne(@RequestParam(value = "authorizationId",required = false)long authorizationId, @RequestParam(value = "id",required = false) String id, @RequestParam(value = "authorizerId",required = false)String authorizerId, @RequestParam(value = "content",required = false)String content, @RequestParam(value = "authorizerDate",required = false)String authorizerDate) 
 * 
 */ 
 @Test
 public void testModifyOne() throws Exception { 
 //TODO: Test goes here...
-    String url="/cma/TrainingApplication/modifyOne?id=2&name=&people=&trainingUnit=南昌大学&expense=&reason=&department=&createDate=";
+    String url="/cma/StaffAuthorization/modifyOne?authorizationId=2&id=3&authorizerId=1&content=培训授权&authorizerDate=2019-7-1";
     MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post(url))
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andDo(MockMvcResultHandlers.print())
@@ -162,14 +161,14 @@ public void testModifyOne() throws Exception {
 
 /** 
 * 
-* Method: aprroveOne(@RequestParam(value = "id",required = false)long id, @RequestParam(value = "situation",required = false)Byte situation, @RequestParam(value="approver",required = false)String approver, @RequestParam(value = "approveDate",required = false)String approveDate) 
+* Method: getallbystaff(@RequestParam(required = false,value = "id")long id) 
 * 
 */ 
 @Test
-public void testAprroveOne() throws Exception { 
+public void testGetallbystaff() throws Exception { 
 //TODO: Test goes here...
-    String url="/cma/TrainingApplication/approveOne?id=8&situation=2&approver=ddd&approveDate=2019-6-9";
-    MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post(url))
+    String url="/cma/StaffAuthorization/getByAllStaff?id=25";
+    MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(url))
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andDo(MockMvcResultHandlers.print())
             .andReturn();
@@ -180,7 +179,7 @@ public void testAprroveOne() throws Exception {
     JSONObject jsonObject= JSON.parseObject(res);
     int code= (int) jsonObject.get("code");
     System.out.println(code);
-    Assert.assertEquals(210,code);
+    Assert.assertEquals(200,code);
 } 
 
 

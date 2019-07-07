@@ -1,5 +1,6 @@
 package com.example.demo.Controller;
 
+import com.alibaba.fastjson.JSON;
 import com.example.demo.DemoApplication;
 import com.example.demo.Model.Equipment;
 import com.example.demo.Repository.EquipmentRepository;
@@ -74,7 +75,9 @@ public void testAddAnnualPlan() throws Exception {
    //Assert.assertEquals(200,status);
     //JSONObject json=mvcResult.getResponse().get
     String res=mvcResult.getResponse().getContentAsString();
-    int code=Integer.parseInt(res.substring(19,22));
+    JSONObject jsonObject= JSON.parseObject(res);
+    int code= (int) jsonObject.get("code");
+    System.out.println(code);
     Assert.assertEquals(210,code);
 } 
 
@@ -96,7 +99,9 @@ public void testApprove() throws Exception {
     //Assert.assertEquals(200,status);
     //JSONObject json=mvcResult.getResponse().get
     String res=mvcResult.getResponse().getContentAsString();
-    int code=Integer.parseInt(res.substring(19,22));
+    JSONObject jsonObject= JSON.parseObject(res);
+    int code= (int) jsonObject.get("code");
+    System.out.println(code);
     Assert.assertEquals(200,code);
 } 
 
@@ -117,7 +122,9 @@ public void testGetOne() throws Exception {
     //int status=mvcResult.getResponse().getStatus();
     //Assert.assertEquals(200,status);
     String res=mvcResult.getResponse().getContentAsString();
-    int code=Integer.parseInt(res.substring(19,22));
+    JSONObject jsonObject= JSON.parseObject(res);
+    int code= (int) jsonObject.get("code");
+    System.out.println(code);
     Assert.assertEquals(200,code);
 } 
 
@@ -137,7 +144,9 @@ public void testGetAll() throws Exception {
     //int status=mvcResult.getResponse().getStatus();
     //Assert.assertEquals(200,status);
     String res=mvcResult.getResponse().getContentAsString();
-    int code=Integer.parseInt(res.substring(19,22));
+    JSONObject jsonObject= JSON.parseObject(res);
+    int code= (int) jsonObject.get("code");
+    System.out.println(code);
     Assert.assertEquals(200,code);
 } 
 

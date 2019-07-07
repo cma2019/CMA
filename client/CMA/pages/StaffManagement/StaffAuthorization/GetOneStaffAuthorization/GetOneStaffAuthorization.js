@@ -74,9 +74,23 @@ Page({
     let url = app.globalData.url + 'StaffAuthorization/deleteOne'
     let data = {
       "authorizationId": this.data.id
+      
     }
     app.wxRequest(url, 'POST', data, (res) => {
       console.log('delete successfully')
+      wx.showToast({
+        title: '删除成功',
+        //icon: 'success',
+        image: '/icons/ok/ok.png',
+        duration: 1000,
+        success: function () {
+          setTimeout(function () {
+            wx.navigateBack({
+              delta: 1
+            })
+          }, 1000);
+        }
+      })
     }, (err) => {
       console.log('delete failed')
     })

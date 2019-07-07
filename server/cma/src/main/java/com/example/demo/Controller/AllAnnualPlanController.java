@@ -58,6 +58,13 @@ public class AllAnnualPlanController {
     public @ResponseBody JSONObject approve(@RequestParam(value="year",required = false)long year,@RequestParam(value = "approver",required = false)String approver,
                                             @RequestParam(value = "approveDate",required = false)String approveDate){
         AllAnnualPlan allAnnualPlan=allAnnualPlanRepository.findByYear(year);
+        JSONObject json=new JSONObject();
+        if(allAnnualPlan==null) {
+            json.put("code", 210);
+            json.put("msg", "失败");
+            json.put("data", null);
+            return json;
+        }
         allAnnualPlan.setApprover(approver);
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
         try {
@@ -66,7 +73,6 @@ public class AllAnnualPlanController {
             e.printStackTrace();
         }
         allAnnualPlanRepository.save(allAnnualPlan);
-        JSONObject json=new JSONObject();
         json.put("code",200);
         json.put("msg","成功");
         json.put("data",null);

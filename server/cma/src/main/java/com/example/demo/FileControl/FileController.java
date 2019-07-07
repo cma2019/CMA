@@ -169,6 +169,9 @@ public class FileController {
             return true;
         } else {
             // 首先得到当前的路径
+            if(!file.exists()){
+                return false;
+            }
             String[] childFilePaths = file.list();
             for (String childFilePath : childFilePaths) {
                 File childFile = new File(file.getAbsolutePath() + "/" + childFilePath);
