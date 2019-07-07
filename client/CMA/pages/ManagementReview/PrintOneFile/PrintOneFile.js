@@ -148,14 +148,14 @@ Page({
     app.wxRequest(url2, 'POST', data2, (res) => {
       console.log('delete successfully')
       wx.showToast({
-        title: '成功',
+        title: '删除成功',
         //icon: 'success',
         image: '/icons/ok/ok.png',
         duration: 1000,
         success: function () {
           setTimeout(function () {
-            wx.navigateTo({
-              url: '../GetAllFileManagementReview/GetAllFileManagementReview',
+            wx.navigateBack({
+              delta: 1
             })
           }, 1000);
         }

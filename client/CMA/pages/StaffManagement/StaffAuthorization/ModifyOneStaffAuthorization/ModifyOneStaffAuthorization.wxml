@@ -37,6 +37,7 @@
         <view class='picker'>
         <van-field 
         label="授权时间"
+        readonly
         value='{{authorizerDate}}'
         required
       />

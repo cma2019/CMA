@@ -7,6 +7,6 @@ import java.util.List;
 public interface SelfInspectionDocumentRepository extends JpaRepository<SelfInspectionDocument, Long>{
     List<SelfInspectionDocument> findAllById(long id);
     SelfInspectionDocument findByFileId(long fileId);
-    SelfInspectionDocument findByFlag(int flag);
+    //SelfInspectionDocument findByFlag(int flag);
     //boolean deleteByFileId(long fileId);
 }
