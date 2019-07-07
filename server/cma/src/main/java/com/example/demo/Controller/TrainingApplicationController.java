@@ -102,6 +102,13 @@ public class TrainingApplicationController {
         }
         else{
             TrainingApplication trainingApplication=trainingApplicationRepository.getOne(id);
+            if(trainingApplication.getSituation()==2)
+            {
+                json.put("code",210);
+                json.put("msg","不可修改");
+                json.put("data",null);
+                return json;
+            }
             if(!name.equals(""))
                 trainingApplication.setName(name);
             if(!people.equals(""))
@@ -109,7 +116,7 @@ public class TrainingApplicationController {
             if(!trainingUnit.equals(""))
                 trainingApplication.setTrainingUnit(trainingUnit);
             if(!expense.equals(""))
-                trainingApplication.setExpense(Long.parseLong(expense));
+                trainingApplication.setExpense(Integer.parseInt(expense));
             if(!reason.equals(""))
                 trainingApplication.setReason(reason);
             if(!department.equals(""))
