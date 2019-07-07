@@ -28,6 +28,7 @@
         label="预计培训费"
         placeholder="预计培训费" 
         required
+        type="number"
         clearable
       />
       <van-field 
