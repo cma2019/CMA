@@ -15,12 +15,14 @@
         name="id"
         label="被授权人编号"
         value='{{id}}'
+        type="number"
         placeholder="被授权人编号" 
         clearable
       />
       <van-field 
         name="authorizerId"
         label="授权人编号"
+        type="number"
         value='{{authorizerId}}'
         placeholder="授权人编号" 
         clearable

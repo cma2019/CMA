@@ -5,6 +5,7 @@
         name="id"
         label="人员编号"
         placeholder="人员编号" 
+        type="number"
         required
         clearable
       />
