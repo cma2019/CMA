@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
@@ -53,11 +54,14 @@ public class InternalAuditDocumentControllerTest {
     @Test
     public void addOneFile() throws Exception{
         MockMultipartFile firstFile = null;
-        File file = new File("E:/cma/test/2016年度.docx");
+        File file = new File("E:/cma/test/2016文档01.docx");
         firstFile = new MockMultipartFile("testFile01", new FileInputStream(file));
+        MockHttpServletRequestBuilder request = null;
         String url = "/cma/InternalAuditManagement/addOneFile";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.fileUpload(url, new Object[0])
                 .file(firstFile)
+                .param("fileName","2016文档01")
+                .param("year","2016")
         )
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print()).andReturn();

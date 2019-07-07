@@ -146,24 +146,19 @@ public class InternalAuditDocumentController {
         //System.out.println(sDoc.getFileName());
         return  fileController.upload(file,request,iDoc.getFileName(),iDoc.getDir());
     }
-    /*
     @RequestMapping(path="/modifyOneFormData",method= RequestMethod.POST)
     public @ResponseBody JSONObject modifyOneFormData(@RequestParam(value = "fileName",required = false) String fileName,
                                         @RequestParam(value = "year",required = false) long year,
                                         @RequestParam(value = "fileId",required = false) long fileId){
         JSONObject js=new JSONObject();
-        InternalAuditDocument iDoc=new InternalAuditDocument();
-        iDoc.setFlag(2);
+        InternalAuditDocument iDoc=InternalAuditDocumentRepository.findByFileId(fileId);
         iDoc.setYear(year);
         iDoc.setFileName(fileName);
-        iDoc.setFileId(fileId);
         js.put("code",200);
         js.put("msg","成功");
         js.put("data",null);
         return js;
     }
-
-     */
     @PostMapping(path = "/modifyOneFile")
     public @ResponseBody Response modifyOneFile(@RequestParam("file") MultipartFile file,
                                                 @RequestParam(value = "fileId",required = false) long fileId,

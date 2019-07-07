@@ -203,21 +203,19 @@ public class SelfInspectionController {
         //System.out.println("??");
         return  fileController.upload(file,request,sDoc.getFileName(),sDoc.getDir());
     }
-    /*
     @RequestMapping(path="/modifyOneFormData",method= RequestMethod.POST)
     public @ResponseBody JSONObject modifyOneFormData(@RequestParam(value = "fileName",required = false) String fileName,
                                      @RequestParam(value = "fileId",required = false) String fileId){
         JSONObject js=new JSONObject();
         //System.out.println(fileName);
         SelfInspectionDocument sdoc=SelfInspectionDocumentRepository.findByFileId(Long.parseLong(fileId));
-        sdoc.setFlag(2);
         sdoc.setFileName(fileName);
         SelfInspectionDocumentRepository.saveAndFlush(sdoc);
         js.put("code",200);
         js.put("msg","成功");
         js.put("data",null);
         return js;
-    }*/
+    }
     @PostMapping(path = "/modifyOneFile")
     public @ResponseBody Response modifyOneFile(@RequestParam("file") MultipartFile file,
                                                 @RequestParam(value ="fileId",required = false) long fileId,
