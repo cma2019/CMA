@@ -37,6 +37,7 @@
         <view class='picker'>
         <van-field 
         label="批准日期"
+        readonly
         value='{{approveDate}}'
         />
         </view>

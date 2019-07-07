@@ -42,6 +42,7 @@
         <van-field 
         label="培训开始时间"
         value='{{startTime}}'
+        readonly
         required
       />
       </view>
@@ -52,6 +53,7 @@
           <view class='picker'>
         <van-field 
         label="培训结束时间"
+        readonly
         value='{{endTime}}'
         required
       />

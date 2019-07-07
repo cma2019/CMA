@@ -108,13 +108,13 @@ Page({
       }
       else {
         wx.showToast({
-          title: '修改成功',
+          title: '密码修改成功',
           //icon: 'success',
           image: '/icons/ok/ok.png',
           duration: 1000,
           success: function () {
             setTimeout(function () {
-              wx.navigateTo({
+              wx.redirectTo({
                 url: '/pages/login/login',
               })
             }, 1000);
