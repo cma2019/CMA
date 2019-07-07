@@ -4,7 +4,7 @@
       <van-field  label="样品编号" value='{{info.sampleNumber}}' disabled input-align="right"/>
       <van-field  label="样品名称" value='{{info.sampleName}}' disabled input-align="right"/>
       <van-field  label="样品数量" value='{{info.sampleAmount}}' disabled input-align="right"/>
-      <van-field  label="样品状态" value='{{info.sampleState}}' disabled input-align="right"/>
+      <van-field  label="样品状态" value='{{array[info.sampleState]}}' disabled input-align="right"/>
       <van-field  label="送样人" value='{{info.sender}}' disabled input-align="right"/>
       <van-field  label="接收人" value='{{info.receiver}}' disabled input-align="right"/>
       <van-field  label="送样日期" value='{{info.sendDate}}' disabled input-align="right"/>

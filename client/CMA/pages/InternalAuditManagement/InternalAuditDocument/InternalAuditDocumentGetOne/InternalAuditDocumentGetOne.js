@@ -33,6 +33,15 @@ Page({
         success: function (res) {
           myFilePath = res.savedFilePath
           console.log(myFilePath)
+          wx.showToast({
+            title: '下载成功',
+            image: '/icons/ok/ok.png',
+            duration: 2000,
+            success: function () {
+              setTimeout(function () {
+              }, 2000)
+            }
+          })
         },
         fail: function (err) {
           console.log(err)

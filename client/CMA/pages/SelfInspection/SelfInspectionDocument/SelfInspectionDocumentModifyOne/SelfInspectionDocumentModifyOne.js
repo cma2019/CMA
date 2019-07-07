@@ -8,7 +8,8 @@ Page({
   data: {
     fileId:'',
     fileName:'',
-    id:''
+    id:'',
+    year:''
   },
 
   /**
@@ -18,7 +19,8 @@ Page({
     this.setData({
       fileId:options.fileId,
       fileName:options.fileName,
-      id:options.id
+      id:options.id,
+      year:options.year
     })
   },
   SelfInspectionDocumentModifyOne: function (e) {
@@ -27,40 +29,74 @@ Page({
     if (fileName == null || fileName == ""){
       fileName = this.data.fileName
     }
-    var myurl1 = app.globalData.url + 'SelfInspection/modifyOneFormData';
-    var myurl2 = app.globalData.url + 'SelfInspection/modifyOneFile';
-    var mydata = {
-      "fileId": this.data.fileId,
-      "fileName": fileName //大于等于4位
-    };
     var id = this.data.id
-    console.log('SelfInspectionDocument发生了ModifyOne事件，携带数据为：',  mydata)
-    app.wxRequest(myurl1, 'POST', mydata, (res) => {
-      console.log(res)
-      wx.chooseMessageFile({
-        count: 1,
-        type: 'all',
-        success: function (res) {
-          console.log("get file success")
+    var fileId = this.data.fileId
+    var myurl = app.globalData.url + 'SelfInspection/modifyOneFile?fileId='+fileId+'&fileName='+fileName+'&id='+id
+    console.log('SelfInspectionDocument发生了ModifyOne事件，携带数据为：', fileName)
+    wx.chooseMessageFile({
+      count: 1,
+      type: 'all',
+      success: function (res) {
+        console.log("get file success")
+        console.log(res)
+        var mypath = res.tempFiles[0].path
+        app.wxUploadFile(myurl, mypath, null, (res) => {
+          console.log("upload file success")
           console.log(res)
-          var mypath = res.tempFiles[0].path
-          app.wxUploadFile(myurl2, mypath, null, (res) => {
-            console.log("upload file success")
-            console.log(res)
+          wx.showToast({
+            title: '修改成功',
+            image: '/icons/ok/ok.png',
+            duration: 1000,
+            success: function () {
+              setTimeout(function () {
+              }, 1000)
+            }
+          })
+          wx.redirectTo({
+            url: '/pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocument?id=' + id,
+          })
+        }, (err) => {
+          console.log(err)
+        })
+      },
+      fail: function (err) {
+        console.log("get file failed")
+        wx.request({
+          url: app.globalData.url + 'SelfInspection/modifyOneFormData',
+          method: 'POST',
+          header: {
+            'content-type': 'application/x-www-form-urlencoded',
+            'Accept': 'application/json'
+          },
+          data: {
+            "id": id,
+            "fileId": fileId,
+            "fileName": fileName
+          },
+          success(res) {
+            console.log(res.data)
+            console.log('success modifyonefileformdata')
+            wx.showToast({
+              title: '修改成功',
+              image: '/icons/ok/ok.png',
+              duration: 1000,
+              success: function () {
+                setTimeout(function () {
+                }, 1000)
+              }
+            })
             wx.redirectTo({
               url: '/pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocument?id=' + id,
             })
-          }, (err) => {
-            console.log(err)
-          })
-        },
-        fail: function (err) {
-          console.log("get file failed")
-          console.log(err)
-        }
-      })
-    }, (err) => {
-      console.log(err)
+          },
+          fail(err) {
+            console.log('fail modifyonefileformdata')
+          },
+          complete(fin) {
+            console.log('final modifyonefileformdata')
+          }
+        })
+      }
     })
   },
   goback: function () {

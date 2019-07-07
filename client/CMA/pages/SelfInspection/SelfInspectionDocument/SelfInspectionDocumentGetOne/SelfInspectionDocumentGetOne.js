@@ -32,6 +32,15 @@ Page({
         success: function (res) {
           myFilePath = res.savedFilePath
           console.log(myFilePath)
+          wx.showToast({
+            title: '下载成功',
+            image: '/icons/ok/ok.png',
+            duration: 1000,
+            success: function () {
+              setTimeout(function () {
+              }, 1000)
+            }
+          })
         },
         fail: function (err) {
           console.log(err)
@@ -44,7 +53,12 @@ Page({
                     console.log(res)
                     wx.showToast({
                       title: '请重新下载',
-                      duration: 1500
+                      image: '/icons/warning/warning.png',
+                      duration: 1000,
+                      success: function () {
+                        setTimeout(function () {
+                        }, 1000)
+                      }
                     })
                   }
                 })
@@ -60,7 +74,7 @@ Page({
   modifyitem: function (e) {
     var that = this.data.detail
     wx.redirectTo({
-      url: '/pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocumentModifyOne/SelfInspectionDocumentModifyOne?fileId=' + that.fileId+"&fileName="+that.fileName+"&id="+that.id
+      url: '/pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocumentModifyOne/SelfInspectionDocumentModifyOne?fileId=' + that.fileId+"&fileName="+that.fileName+"&id="+that.id+'&year='+that.year
     })
   },
   /**

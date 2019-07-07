@@ -31,13 +31,15 @@ Page({
       })
     }
     else{
-      this.setData({
-        receiptId: 0,
-        sampleNumber: options.sampleNumber,
-        sampleName: options.sampleName,
-        sampleAmount: options.sampleAmount,
-        sampleState: options.sampleState
-      })
+      if(options.sampleNumber !=undefined){
+        this.setData({
+          receiptId: 0,
+          sampleNumber: options.sampleNumber,
+          sampleName: options.sampleName,
+          sampleAmount: options.sampleAmount,
+          sampleState: options.sampleState
+        })
+      }
     }
     console.log("fsdgdf")
     console.log(this.data)
