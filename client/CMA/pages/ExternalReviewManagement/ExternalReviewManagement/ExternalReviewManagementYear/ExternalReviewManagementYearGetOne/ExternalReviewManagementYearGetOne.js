@@ -11,6 +11,12 @@ Page({
     fileId:1,
     fileName:"1.pdf"
   },
+  mygo: function (e) {
+    var that = this
+    wx.redirectTo({
+      url: '/pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagementYear/ExternalReviewManagementYear?year=' + that.data.year,
+    })
+  },
   mydelete: function (e) {
     var that = this
     var myurl = app.globalData.url + 'ExternalReviewDocument/deleteOne/' + that.data.id;

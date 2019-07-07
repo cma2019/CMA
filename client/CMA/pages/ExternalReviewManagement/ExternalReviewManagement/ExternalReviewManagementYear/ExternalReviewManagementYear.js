@@ -20,6 +20,11 @@ Page({
     }],
     year:null
   },
+  mygo: function (e) {
+    wx.redirectTo({
+      url: '/pages/ExternalReviewManagement/ExternalReviewManagement/ExternalReviewManagement',
+    })
+  },
   gotoAdd: function (e) {
     var that = this
     wx.redirectTo({
