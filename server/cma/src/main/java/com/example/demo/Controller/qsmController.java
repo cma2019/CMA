@@ -24,6 +24,7 @@ import java.util.List;
 public class qsmController {
     @Autowired
     private qsmRepository QRepository;
+    
     @RequestMapping(path="addOneFormData",method= RequestMethod.POST)
     @ResponseBody
     public Response addOneFormData(
@@ -58,6 +59,35 @@ public class qsmController {
             response.code=200;
             return response;
     }
+
+    @RequestMapping(path="addFile",method= RequestMethod.POST)
+    @ResponseBody
+    public Response addOneFile(@RequestParam("file") MultipartFile file, HttpServletRequest request,
+                               @RequestParam (value="state",required=false)Byte state,
+                               @RequestParam (value="current",required=false)Byte current,
+                               @RequestParam (value="modifyTime",required=false) Date modifyTime,
+                               @RequestParam (value="modifier",required=false)String modifier,
+                               @RequestParam (value="modifyContent",required=false)String modifyContent){
+        FileController fileController=new FileController();
+        qsm Qsm=new qsm();
+        Qsm.setState(state);
+        Qsm.setCurrent(current);
+        Qsm.setModifyTime(modifyTime);
+        Qsm.setModifier(modifier);
+        Qsm.setModifyContent(modifyContent);
+        if(current-1==0)
+        {
+            qsm temp=QRepository.findByCurrent(current);
+            temp.setCurrent((byte)0);
+            QRepository.save(temp);
+        }
+        QRepository.save(Qsm);
+        Qsm.setFileName(Qsm.getId()+".pdf");
+        Qsm.setFileId(Qsm.getId());
+        QRepository.save(Qsm);
+        return  fileController.upload(file,request,Qsm.getFileName(),Qsm.getDir());
+    }
+
     @RequestMapping(path="addOneFile",method= RequestMethod.POST)
     @ResponseBody
     public Response addOneFile(@RequestParam("file") MultipartFile file, HttpServletRequest request){
