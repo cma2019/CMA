@@ -56,7 +56,7 @@ public class StaffFileController {
         return json;
     }
 
-    @PostMapping(path = "addOne")
+    /*@PostMapping(path = "addOne")
     public @ResponseBody
     JSONObject addOne(@RequestParam(value = "staffId", required = false) long staffId, @RequestParam(value = "fileId", required = false) String fileId, @RequestParam(value = "fileLocation", required = false) String fileLocation) {
         StaffFile staffFile = new StaffFile();
@@ -89,17 +89,47 @@ public class StaffFileController {
             json.put("data", null);
         }
         return json;
-    }
+    }*/
 
     @PostMapping(path = "addOneFile")
-    public @ResponseBody
-    Response UpLoad(@RequestParam("file") MultipartFile file, HttpServletRequest request) {
-        FileController fileController = new FileController();
-        StaffFile staffFile = staffFileRepository.findByFlag(1);
-        staffFile.setFileImage(staffFile.getStaffId() + "_" + staffFile.getFileId() + ".jpg");
-        staffFile.setFlag(0);
-        staffFileRepository.save(staffFile);
-        return fileController.upload(file, request, staffFile.getFileImage(), staffFile.getDir());
+    public @ResponseBody JSONObject UpLoad(@RequestParam("file") MultipartFile file, HttpServletRequest request,
+                                           @RequestParam(value = "staffId", required = false) long staffId, @RequestParam(value = "fileId", required = false) String fileId, @RequestParam(value = "fileLocation", required = false) String fileLocation) {
+        StaffFile staffFile = new StaffFile();
+        JSONObject json = new JSONObject();
+        if (!staffManagementRepository.existsById(staffId)) {
+            json.put("code", 210);
+            json.put("msg", "人员不存在");
+            json.put("data", null);
+        } else {
+            StaffManagement staffManagement = staffManagementRepository.getOne(staffId);
+            staffFile.setStaffId(staffId);
+            staffFile.setName(staffManagement.getName());
+            staffFile.setDepartment(staffManagement.getDepartment());
+            staffFile.setPosition(staffManagement.getPosition());
+            staffFile.setFileId(fileId);
+            staffFile.setFileLocation(fileLocation);
+            //staffFile.setFlag(1);
+            List<StaffFile> list = staffFileRepository.findAll();
+            for (int i = 0; i < list.size(); i++) {
+                if (list.get(i).getStaffId()==staffId) {
+                    json.put("code", 210);
+                    json.put("msg", "失败,已存在");
+                    json.put("data", null);
+                    return json;
+                }
+            }
+            FileController fileController = new FileController();
+            //StaffFile staffFile = staffFileRepository.findByFlag(1);
+            staffFile.setFileImage(staffFile.getStaffId() + "_" + staffFile.getFileId() + ".jpg");
+            //staffFile.setFlag(0);
+            staffFileRepository.save(staffFile);
+            fileController.upload(file, request, staffFile.getFileImage(), staffFile.getDir());
+            staffFileRepository.save(staffFile);
+            json.put("code", 200);
+            json.put("msg", "收到数据");
+            json.put("data", null);
+        }
+        return json;
     }
 
     @PostMapping(path = "deleteOne")
@@ -149,17 +179,18 @@ public class StaffFileController {
     }
 
     @PostMapping(path = "modifyOneFile")
-    public @ResponseBody
-    JSONObject modifyOneFile(@RequestParam(value = "staffId", required = false) long staffId) {
+    public @ResponseBody JSONObject modifyOneFile(@RequestParam(value = "staffId", required = false) long staffId,@RequestParam("file") MultipartFile file, HttpServletRequest request) {
         JSONObject json = new JSONObject();
         FileController fileController = new FileController();
         StaffFile staffFile = staffFileRepository.findByStaffId(staffId);
         String name = staffFile.getFileImage();
-        staffFile.setFlag(1);
-        fileController.deletefile(name,staffFile.getDir());
+        //managementFile.setFlag(1);
+        fileController.deletefile(name, staffFile.getDir());
+        staffFile.setFileImage(staffFile.getStaffId() + "_" + staffFile.getFileId() + ".jpg");
         staffFileRepository.save(staffFile);
+        fileController.upload(file, request, staffFile.getFileImage(), staffFile.getDir());
         json.put("code", 200);
-        json.put("msg", "已删除原文件");
+        json.put("msg", "修改成功");
         json.put("data", null);
         return json;
         //return fileController.upload(file,request,managementFile.getFileName(),managementFile.getDir());

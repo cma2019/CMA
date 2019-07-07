@@ -9,18 +9,9 @@ Page({
 
   newEquipment: function (e) {
     console.log(e.detail.value)
-    var myurl1 = app.globalData.url + 'ManagementReview/addFileData';
-    var myurl2 = app.globalData.url + 'ManagementReview/addOneFile';
-    var mydata = {
-      "year": e.detail.value.year,
-      //"fileName":e.detail.value.fileName
-    };
-    app.wxRequest(myurl1, 'POST', mydata, (res) => {
-      console.log(res)
-      
-    }, (err) => {
-      console.log(err)
-    })
+    var myurl2 = app.globalData.url + 'ManagementReview/addOneFile?year=' + e.detail.value.year;
+   
+    
     wx.chooseMessageFile({
       count: 1,
       type: 'all',
@@ -34,7 +25,6 @@ Page({
         app.wxUploadFile(myurl2, res.tempFiles[0].path, null, (res) => {
           console.log("upload file success")
           console.log(res)
-          console.log(mydata)
           
         }, (err) => {
           console.log(err)

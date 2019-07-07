@@ -39,7 +39,7 @@ public class EquipmentApplicationController {
             @RequestParam (value="softwareInfo",required=false)String softwareInfo,
             @RequestParam (value="auditor",required=false)String auditor,
             @RequestParam (value="auditOpinion",required=false)String auditOpinion,
-            @RequestParam (value="auditDater",required=false)Date auditDate
+            @RequestParam (value="auditDate",required=false)Date auditDate
             ){
         Response response=new Response();
         EquipmentApplication equipmentApplication = new EquipmentApplication();
@@ -50,6 +50,7 @@ public class EquipmentApplicationController {
         equipmentApplication.setAuditOpinion(auditOpinion);
         equipmentApplication.setEquipmentNumber(equipmentNumber);
         equipmentApplication.setSoftwareInfo(softwareInfo);
+        equipmentApplication.setAuditor(auditor);
         equipmentApplication.setEquipmentUse(equipmentUse);
 
         EARepository.save(equipmentApplication);
@@ -78,6 +79,7 @@ public class EquipmentApplicationController {
         }catch(Exception e){
             e.printStackTrace();
             response.code=500;
+            response.data=null;
             response.msg=e.getMessage();
         }
         return response;
@@ -117,7 +119,7 @@ public class EquipmentApplicationController {
             @RequestParam (value="softwareInfo",required=false)String softwareInfo,
             @RequestParam (value="auditor",required=false)String auditor,
             @RequestParam (value="auditOpinion",required=false)String auditOpinion,
-            @RequestParam (value="auditDater",required=false)Date auditDate){
+            @RequestParam (value="auditDate",required=false)Date auditDate){
         Response response=new Response();
         try{
             if (EARepository.findById(id)==null)
@@ -131,6 +133,7 @@ public class EquipmentApplicationController {
             equipmentApplication.setEquipmentNumber(equipmentNumber);
             equipmentApplication.setSoftwareInfo(softwareInfo);
             equipmentApplication.setEquipmentUse(equipmentUse);
+            equipmentApplication.setAuditor(auditor);
             JSONObject ejson = JSONObject.parseObject(JSONObject.toJSONString(equipmentApplication));
             EARepository.save(equipmentApplication);
             response.code=200;

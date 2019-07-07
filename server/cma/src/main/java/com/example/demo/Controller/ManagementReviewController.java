@@ -105,7 +105,7 @@ public class ManagementReviewController {
         return json;
     }
 
-    @PostMapping(path = "addFileData")
+    /*@PostMapping(path = "addFileData")
     public @ResponseBody
     JSONObject addOneFile(@RequestParam(value = "year", required = false) long year) {
         //JSONObject json=new JSONObject();
@@ -121,7 +121,7 @@ public class ManagementReviewController {
         json.put("msg", "收到数据");
         json.put("data", null);
         return json;
-    }
+    }*/
 
     @GetMapping(path = "getOne")
     public @ResponseBody
@@ -141,27 +141,33 @@ public class ManagementReviewController {
 
     @PostMapping(path = "addOneFile")
     public @ResponseBody
-    Response UpLoad(@RequestParam("file") MultipartFile file, HttpServletRequest request) {
+    Response UpLoad(@RequestParam("file") MultipartFile file, HttpServletRequest request,@RequestParam(value = "year", required = false) long year) {
         FileController fileController = new FileController();
-        ManagementFile managementFile = managementFileRepository.findByFlag(1);
-        managementFile.setFile(managementFile.getFileName() + ".doc");
-        managementFile.setFlag(0);
+        ManagementFile managementFile = new ManagementFile();
+        managementFile.setYear(year);
+        //managementFile.setFlag(1);
+        managementFileRepository.save(managementFile);
+        managementFile.setFileName(managementFile.getFileId() + "_" + managementFile.getYear());
+        //ManagementFile managementFile = managementFileRepository.findByFlag(1);
+        managementFile.setFile(managementFile.getFileId() + "_" + managementFile.getYear() + ".doc");
+        //managementFile.setFlag(0);
         managementFileRepository.save(managementFile);
         return fileController.upload(file, request, managementFile.getFile(), managementFile.getDir());
     }
 
     @PostMapping(path = "modifyOneFile")
     public @ResponseBody
-    JSONObject modifyOneFile(@RequestParam(value = "fileId", required = false) long fileId) {
+    JSONObject modifyOneFile(@RequestParam(value = "fileId", required = false) long fileId,@RequestParam("file") MultipartFile file, HttpServletRequest request) {
         JSONObject json = new JSONObject();
         FileController fileController = new FileController();
         ManagementFile managementFile = managementFileRepository.findByFileId(fileId);
         String name = managementFile.getFile();
-        managementFile.setFlag(1);
+        //managementFile.setFlag(1);
         fileController.deletefile(name, managementFile.getDir());
         managementFileRepository.save(managementFile);
+        fileController.upload(file, request, managementFile.getFile(), managementFile.getDir());
         json.put("code", 200);
-        json.put("msg", "已删除原文件");
+        json.put("msg", "修改成功");
         json.put("data", null);
         return json;
         //return fileController.upload(file,request,managementFile.getFileName(),managementFile.getDir());

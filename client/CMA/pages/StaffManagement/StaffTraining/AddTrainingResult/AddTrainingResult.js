@@ -35,8 +35,16 @@ Page({
         "id": e.detail.value.id,
         "result":e.detail.value.result
       }
-      console.log(url)
-      console.log(data)
+      if (e.detail.value.result != "合格" && e.detail.value.result != "不合格")
+      {
+        wx.showToast({
+          title: '培训结果错误',
+          image: '/icons/warning/warning.png',
+          duration: 1000
+        })
+      }
+      else
+      {
       app.wxRequest(url, 'POST', data, (res) => {
         console.log('successfully')
         console.log(res)
@@ -68,7 +76,7 @@ Page({
       }, (err) => {
         console.log('fail intermediate check register')
       })
-
+      }
     }
 
   },

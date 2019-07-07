@@ -4,7 +4,8 @@
       <van-field 
         name="year"
         label="年份"
-        placeholder="年份" 
+        value="{{year}}"
+       readonly
         required
         clearable
       />
