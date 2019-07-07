@@ -43,6 +43,7 @@ public class EquipmentControllerTest {
     public void after() throws Exception {
     }
     @Test
+    @Transactional
     public void testEquipmentAdd() throws Exception {
 //TODO: Test goes here...
         String url="/cma/Equipment/add?name=13&model=1111&cpu=1&memory=1&hardDisk=1&equipmentNumber=1&application=1&state=1";
@@ -60,6 +61,7 @@ public class EquipmentControllerTest {
         Assert.assertEquals(200,code);
     }
     @Test
+    @Transactional
     public void testGetAll() throws Exception {
         String url="/cma/Equipment/getAll";
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(url))
