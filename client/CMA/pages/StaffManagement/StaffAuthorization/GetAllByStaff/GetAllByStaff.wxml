@@ -1,7 +1,7 @@
 <view>
   <van-cell-group title="授权记录">
   <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
-  <van-cell value="详情" id='{{item.id}}'>
+  <van-cell  id='{{item.id}}'>
       <view slot="title">
         <view>姓名 : {{item.name}}</view>
         <view>部门 : {{item.department}}</view>

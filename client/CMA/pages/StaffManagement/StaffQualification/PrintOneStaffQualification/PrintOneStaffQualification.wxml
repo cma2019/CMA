@@ -7,6 +7,7 @@
   <van-cell title="职位" value="{{position}}" />
   <van-cell title="资质编号" value="{{qualificationId}}" />
   <van-cell title="资质名称" value="{{qualificationName}}" />
+  <van-cell title="文件扫描名" value="{{qualificationImage}}" />
   </van-cell-group>
 </view>
 <van-button type="info" size="small" bindtap="DownloadStaff">下载文件</van-button> 
