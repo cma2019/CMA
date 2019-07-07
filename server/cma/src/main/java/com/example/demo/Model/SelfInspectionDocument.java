@@ -14,7 +14,7 @@ public class SelfInspectionDocument {
     private Long  id;       //自查编号
     private String fileName;     //文档名称
     String dir="SelfInspectionDocument";
-    private int flag=0;
+    //private int flag=0;
 
     public String getDir(){
         return dir;
@@ -37,8 +37,9 @@ public class SelfInspectionDocument {
     public String getFileName() {
         return fileName;
     }
+    /*
     public int getFlag(){return flag;}
     public void setFlag(int flag){
         this.flag=flag;
-    }
+    }*/
 }
