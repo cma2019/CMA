@@ -8,6 +8,7 @@
         placeholder="年份"
         value='{{year}}'
         type='number'
+        readonly
         required
         clearable
       />

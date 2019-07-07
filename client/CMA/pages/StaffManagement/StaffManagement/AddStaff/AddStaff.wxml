@@ -6,6 +6,7 @@
         name="name"
         label="姓名"
         placeholder="姓名" 
+        
         required
         clearable
       />
@@ -76,6 +77,7 @@
         name="workingYears"
         label="工龄"
         placeholder="工龄" 
+        type="number"
         required
         clearable
         

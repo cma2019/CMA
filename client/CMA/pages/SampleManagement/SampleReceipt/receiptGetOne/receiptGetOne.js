@@ -6,8 +6,10 @@ Page({
    */
   data: {
     sampleId: "",
+    activeNames: ['0'],
     mess: null,
-    array: ['《用户手册》', '《计算机软件产品登记检测申请表》', '《材料交接单》', '《软件产品功能列表》', '《软件名称与版本号确认单》', '《受测软件产品简介》', '《自主产权保证书》', '软件样品一套', '其它'],
+    array: ['0','《用户手册》', '《计算机软件产品登记检测申请表》', '《材料交接单》', '《软件产品功能列表》', '《软件名称与版本号确认单》', '《受测软件产品简介》', '《自主产权保证书》', '软件样品一套', '其它'],
+    array1:['没有材料','仅有电子文档','仅有书面文档','既有电子文档，又有书面文档']
   },
 
   /**
@@ -20,7 +22,12 @@ Page({
     console.log("fsdgdf")
     console.log(this.data.sampleId)
   },
-
+  onChange:function(event){
+    this.setData({
+      activeNames: event.detail
+    })
+    console.log("9999999999999")
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -124,6 +131,7 @@ Page({
             data: res.data.data
           })
           console.log(thispage.data.mess)
+          console.log(thispage.data.mess.data)
           console.log("hhhhh")
         }
         else if (res.data.code == 521) {
@@ -152,7 +160,6 @@ Page({
   modifyData: function (e) {
     console.log(e)
     console.log(this.data.sampleId)
-    console.log("6666666666")
     wx.navigateTo({
       url: '/pages/SampleManagement/SampleReceipt/receiptModifyOne/receiptModifyOne?id=' + this.data.sampleId
     })

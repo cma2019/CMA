@@ -6,7 +6,9 @@
         name="planId"
         label="期间核查计划编号"
         type='number'
+        value='{{planId}}'
         placeholder="期间核查计划编号" 
+        readonly
         required
         clearable
       />

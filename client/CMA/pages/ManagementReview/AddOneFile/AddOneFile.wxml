@@ -8,6 +8,7 @@
       required 
       readonly
       clearable
+      
       label="评审年份" >
       </van-field>
     </view>  

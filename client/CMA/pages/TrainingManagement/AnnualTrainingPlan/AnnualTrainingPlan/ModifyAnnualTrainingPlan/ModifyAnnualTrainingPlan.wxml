@@ -39,7 +39,7 @@
         label="培训课时"
         value='{{trainingTime}}'
         placeholder="培训课时" 
-       
+       type="number"
         clearable
       />
       <view class="section">

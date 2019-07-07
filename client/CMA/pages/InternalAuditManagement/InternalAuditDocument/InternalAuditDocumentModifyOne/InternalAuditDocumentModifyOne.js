@@ -27,44 +27,73 @@ Page({
     if (fileName == null || fileName == "") {
       fileName = this.data.fileName
     }
-    console.log("4564654645654")
-    console.log(this.data.year)
-    var myurl1 = app.globalData.url + 'InternalAuditManagement/modifyOneFormData';
-    var myurl2 = app.globalData.url + 'InternalAuditManagement/modifyOneFile';
-    var mydata = {
-      "year":this.data.year,
-      "fileId": this.data.fileId,
-      "fileName": fileName //大于等于4位
-    };
     var year = this.data.year
-    console.log('InternalAuditDocument发生了ModifyOne事件，携带数据为：', mydata)
-    app.wxRequest(myurl1, 'POST', mydata, (res) => {
-      console.log(res)
-      wx.chooseMessageFile({
-        count: 1,
-        type: 'all',
-        success: function (res) {
-          console.log("get file success")
-          console.log(res)
-          var mypath = res.tempFiles[0].path
-          app.wxUploadFile(myurl2, mypath, null, (res) => {
-            console.log("upload file success")
-            console.log(res)
-            console.log(year)
+    var fileId = this.data.fileId
+    var myurl = app.globalData.url + 'InternalAuditManagement/modifyOneFile?year='+year+'&fileId='+fileId+'&fileName='+fileName
+    console.log('InternalAuditDocument发生了ModifyOne事件，携带数据为：', fileName)
+    wx.chooseMessageFile({
+      count: 1,
+      type: 'all',
+      success: function (res) {
+        console.log("get file success")
+        console.log(res)
+        var mypath = res.tempFiles[0].path
+        app.wxUploadFile(myurl, mypath, null, (res) => {
+          console.log("upload file success")
+          wx.showToast({
+            title: '修改成功',
+            image: '/iconsok/ok.png',
+            duration: 1000,
+            success: function () {
+              setTimeout(function () {
+              }, 1000)
+            }
+          })
+          wx.redirectTo({
+            url: '/pages/InternalAuditManagement/InternalAuditDocument/InternalAuditDocument?id=' + year,
+          })
+        }, (err) => {
+          console.log(err)
+        })
+      },
+      fail: function (err) {
+        console.log("get file failed")
+        wx.request({
+          url: app.globalData.url + 'InternalAuditManagement/modifyOneFormData',
+          method: 'POST',
+          header: {
+            'content-type': 'application/x-www-form-urlencoded',
+            'Accept': 'application/json'
+          },
+          data: {
+            "year": year,
+            "fileId": fileId,
+            "fileName": e.detail.value.fileName
+          },
+          success(res) {
+            console.log(res.data)
+            console.log('success modifyonefileformdata')
+            wx.showToast({
+              title: '修改成功',
+              image: '/iconsok/ok.png',
+              duration: 1000,
+              success: function () {
+                setTimeout(function () {
+                }, 1000)
+              }
+            })
             wx.redirectTo({
               url: '/pages/InternalAuditManagement/InternalAuditDocument/InternalAuditDocument?id=' + year,
             })
-          }, (err) => {
-            console.log(err)
-          })
-        },
-        fail: function (err) {
-          console.log("get file failed")
-          console.log(err)
-        }
-      })
-    }, (err) => {
-      console.log(err)
+          },
+          fail(err) {
+            console.log('fail modifyonefileformdata')
+          },
+          complete(fin) {
+            console.log('final modifyonefileformdata')
+          }
+        })
+      }
     })
   },
   goback: function () {

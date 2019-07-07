@@ -38,10 +38,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onShow: function (options) {
+    console.log("Supervision发生了getAll事件")
     let url = app.globalData.url + 'Supervision/getAll'
     let postdata = ''
-    console.log(url)
-    console.log(postdata)
     app.wxRequest(url, 'GET', postdata, (res) => {
       if(res.code == 522){
         this.setData({
@@ -53,8 +52,6 @@ Page({
           mess: res.data,
           flag: 1
         })
-        console.log(this.data.mess)
-        console.log("abcdefg")
       }
     }, (err) => {
       wx.showToast({
@@ -66,11 +63,9 @@ Page({
   },
   gotoOne: function (e) {
     console.log(e)
-    let target = e.currentTarget.id
-    console.log(target)
-    console.log("fhsdjkhfk")
+    let id = e.currentTarget.id
     wx.navigateTo({
-      url: 'supervisionGetOne/supervisionGetOne?id=' + target  //==SupervisionPlan/getAll
+      url: 'supervisionGetOne/supervisionGetOne?id=' + id  //==SupervisionPlan/getAll
     })
   },
   gotoAdd: function () {
@@ -104,7 +99,8 @@ Page({
   },
   supervisionDelete: function (e) {
     let id = e.currentTarget.id
-    const deleteoneRequest = wx.request({
+    console.log("supervision发生了deleteOne事件，携带数据为",id)
+    wx.request({
       url: app.globalData.url + 'Supervision/deleteOne',
       method: 'POST',
       header: {
@@ -139,9 +135,6 @@ Page({
           })
           console.log('数据不存在')
         }
-        wx.navigateBack({
-          delta: 1
-        })
       },
       fail(err) {
         console.log('fail deleteone')

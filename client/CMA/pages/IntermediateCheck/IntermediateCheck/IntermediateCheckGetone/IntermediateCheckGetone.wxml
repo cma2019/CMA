@@ -11,3 +11,4 @@
 <button class='van-button--info' bindtap="modifyData">修改</button>
 <button class='van-button--info' bindtap="deleteData">删除</button>
 <button class='van-button--info' bindtap="getRecord">对应记录</button>
+<button class='van-button--info' bindtap="addRecord">添加记录</button>

@@ -1,66 +1,118 @@
-// pages/IntermediateCheck/IntermediateChecksRecord/IntermediateChecksRecordGetonePlan/IntermediateChecksRecordGetonePlan.js
+// pages/IntermediateCheck/IntermediateCheckGetone/IntermediateCheckGetone.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    "recordId": "null",
+    "planId": "null",
+    "object": "null",
+    "checkDate": "null",
+    "processRecord": "null",
+    "processRecordPerson": "null",
+    "processRecordDate": "null",
+    "resultRecord": "null",
+    "resultRecordPerson": "null",
+    "resultRecordDate": "null",
+    "note": "null"
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-
+    this.setData({
+      planId: options.id
+    })
+  },
+  onShow: function (options) {
+    let url = app.globalData.url + 'IntermediateChecksRecord/getOneByPlanId'
+    let postdata = {
+      "planId": this.data.planId
+    }
+    app.wxRequest(url, 'GET', postdata, (res) => {
+      console.log('record getone success')
+      console.log(res)
+      if (res.code == 200) {
+        this.setData({
+          planId: res.data.planId,
+          recordId: res.data.recordId,
+          object: res.data.object,
+          checkDate: res.data.checkDate,
+          processRecord: res.data.processRecord,
+          processRecordPerson: res.data.processRecordPerson,
+          processRecordDate: res.data.processRecordDate,
+          resultRecord: res.data.resultRecord,
+          resultRecordPerson: res.data.resultRecordPerson,
+          resultRecordDate: res.data.resultRecordDate,
+          note: res.data.note
+        })
+      }else if(res.code == 100){
+        wx.showToast({
+          title: '记录不存在',
+          image: '/icons/warning/warning.png',
+          duration: 1000
+        })
+      }else {
+        wx.showToast({
+          title: '连接失败',
+          image: '/icons/warning/warning.png',
+          duration: 1000
+        })
+      }
+    }, (err) => {
+      console.err('getone error')
+      wx.showToast({
+        title: '连接失败',
+        image: '/icons/warning/warning.png',
+        duration: 1000
+      })
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  modifyData(e) {
+    console.log(e)
+    let target = this.data.recordId
+    console.log(target)
+    wx.navigateTo({
+      url: '../IntermediateChecksRecordModify/IntermediateChecksRecordModify?id=' + target
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  deleteData(e) {
+    let url = app.globalData.url + 'IntermediateChecksRecord/deleteOne'
+    let data = {
+      "recordId": this.data.recordId
+    }
+    app.wxRequest(url, 'POST', data, (res) => {
+      if (res.code == 200) {
+        console.log('delete successfully')
+        wx.showToast({
+          title: '删除成功',
+          image: '/icons/ok/ok.png',
+          duration: 1000,
+          success: function () {
+            setTimeout(function () {
+              wx.navigateBack({
+                delta: 1
+              })
+            }, 1000);
+          }
+        })
+      } else {
+        wx.showToast({
+          title: '删除失败',
+          image: '/icons/warning/warning.png',
+          duration: 1000
+        })
+      }
+    }, (err) => {
+      console.log('delete failed')
+      wx.showToast({
+        title: '连接失败',
+        image: '/icons/warning/warning.png',
+        duration: 1000
+      })
+    })
   }
+
 })

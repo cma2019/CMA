@@ -18,14 +18,18 @@
         required
         clearable
       />
-      <van-field 
-        name="state"
-        label="项目状态"
-        value='{{state}}'
-        placeholder="项目状态" 
-        required
-        clearable
-      />   
+      <view class="section">
+      <van-cell required title="项目状态">
+        <van-stepper
+          value="{{state}}"
+          integer
+          min="0"
+          max="3"
+          step="1"
+          name="state"
+        />
+      </van-cell>
+      </view>
       <van-field 
         name="note"
         label="备注"

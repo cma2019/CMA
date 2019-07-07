@@ -81,16 +81,32 @@ Page({
     app.wxRequest(url, 'POST', data, (res) => {
       if (res.code == 200) {
         console.log('delete record successfully')
-        wx.showToast({
-          title: '删除成功',
-          image: '/icons/ok/ok.png',
-          duration: 1000,
-          success: function () {
-            setTimeout(function () {
-              wx.navigateBack({
-                delta: 1
-              })
-            }, 1000);
+        let url2 = app.globalData.url + 'CapacityVerification/modifyState'
+        let data2 = {
+          "projectId" : this.data.projectId,
+          "state": 0
+        }
+        app.wxRequest(url2,'POST',data2,(res)=>{
+          if(res.code == 200){
+            let mypro = this.data.projectId
+            wx.showToast({
+              title: '删除成功',
+              image: '/icons/ok/ok.png',
+              duration: 1000,
+              success: function () {
+                setTimeout(function () {
+                  wx.navigateTo({
+                    url: '../../CapacityVerificationProject/getOneProject/getOneProject?id='+mypro,
+                  })
+                }, 1000);
+              }
+            })
+          }else{
+            wx.showToast({
+              title: '修改状态失败',
+              image: '/icons/warning/warning.png',
+              duration: 1000
+            })
           }
         })
       }else{

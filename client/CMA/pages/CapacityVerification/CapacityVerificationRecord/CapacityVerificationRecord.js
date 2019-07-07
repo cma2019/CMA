@@ -12,10 +12,10 @@ Page({
 
   GetPlans(e) {
     console.log("get plans")
-    let target = e.detail.value.projectId
+    let target = e.detail.value.id
     console.log(target)
     wx.navigateTo({
-      url: 'getRecordByProjectId/getRecordByProjectId?id=' + target
+      url: 'getOneRecord/getOneRecord?id=' + target
     })
   }
 })

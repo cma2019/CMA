@@ -71,6 +71,7 @@
           <view class='picker'>
         <van-field 
         label="毕业时间"
+        type="number"
         value='{{graduationDate}}'
        
       />

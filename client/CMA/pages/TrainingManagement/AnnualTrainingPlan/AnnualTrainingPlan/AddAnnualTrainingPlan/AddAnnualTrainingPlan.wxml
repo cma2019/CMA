@@ -35,6 +35,7 @@
         label="培训课时"
         placeholder="培训课时" 
         required
+        type="number"
         clearable
       />
       <view class="section">
