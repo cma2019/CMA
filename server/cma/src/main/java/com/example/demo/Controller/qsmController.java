@@ -38,6 +38,12 @@ public class qsmController {
             qsm Qsm=new qsm();
             Qsm.setState(state);
             Qsm.setCurrent(current);
+            if(current-1==0)
+            {
+               qsm temp=QRepository.findByCurrent(current);
+               temp.setCurrent((byte)0);
+               QRepository.save(temp);
+            }
             Qsm.setModifyTime(modifyTime);
             Qsm.setModifier(modifier);
             Qsm.setModifyContent(modifyContent);
