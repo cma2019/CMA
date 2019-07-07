@@ -41,9 +41,20 @@ Page({
         console.log(res)
         console.log(res.msg)
         console.log(res.code)
-        wx.redirectTo({
-          url: '../ManagementReview',
+        wx.showToast({
+          title: '成功',
+          //icon: 'success',
+          image: '/icons/ok/ok.png',
+          duration: 1000,
+          success: function () {
+            setTimeout(function () {
+              wx.redirectTo({
+                url: '../ManagementReview',
+              })
+            }, 1000);
+          }
         })
+        
       }, (err) => {
         console.log('fail intermediate check register')
       })

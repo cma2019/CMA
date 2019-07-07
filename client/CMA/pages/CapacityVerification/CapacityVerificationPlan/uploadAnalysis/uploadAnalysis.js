@@ -46,21 +46,53 @@ Page({
               app.wxUploadFile(myurl, mypath, null, (res) => {
                 console.log("upload file success")
                 console.log(res)
-                wx.navigateBack({
-                  delta: 1
-                })
+                if(res.code == 200){
+                  wx.showToast({
+                    title: '上传成功',
+                    image: '/icons/ok/ok.png',
+                    duration: 1000,
+                    success: function () {
+                      setTimeout(function () {
+                        wx.navigateBack({
+                          delta: 1
+                        })
+                      }, 1000);
+                    }
+                  })
+                }else{
+                  wx.showToast({
+                    title: '上传失败',
+                    image: '/icons/warning/warning.png',
+                    duration: 1000
+                  })
+                }
               }, (err) => {
                 console.log(err)
+                wx.showToast({
+                  title: '上传失败',
+                  image: '/icons/warning/warning.png',
+                  duration: 1000
+                })
               })
             },
             fail: function (err) {
               console.log("get file failed")
               console.log(err)
+              wx.showToast({
+                title: '上传失败',
+                image: '/icons/warning/warning.png',
+                duration: 1000
+              })
             }
           })
         }
       }, (err) => {
         console.log('fail intermediate check register')
+        wx.showToast({
+          title: '连接失败',
+          image: '/icons/warning/warning.png',
+          duration: 1000
+        })
       })
   },
   /**

@@ -27,12 +27,6 @@ Page({
 
       console.log(this.mess)
     }, (err) => {
-      //console.err('getone error')
-      wx.showToast({
-        title: '失败',
-        icon:'none',
-        duration: 1500
-      })
       console.log('getone error')
     })
   },
@@ -57,12 +51,6 @@ Page({
 
       console.log(this.mess)
     }, (err) => {
-      //console.err('getone error')
-      wx.showToast({
-        title: '失败',
-        icon: 'none',
-        duration: 1500
-      })
       console.log('getone error')
     })
   },

@@ -182,6 +182,8 @@ public class CapacityVerificationPlanController {
         }
         else
         {
+            json.put("code",200);
+            json.put("msg","获取成功");
             json.put("data",CapacityVerificationPlanRepository.findById(planId));
             /*plan= CapacityVerificationPlanRepository.getOne(planId);
             JSONObject data=new JSONObject(new LinkedHashMap());
@@ -239,7 +241,7 @@ public class CapacityVerificationPlanController {
     }
 
     @RequestMapping(value="/downloadAnalysis/{id}",method=RequestMethod.GET)
-    public @ResponseBody String downloadStandard(@PathVariable("id")Long id, HttpServletResponse response){
+    public @ResponseBody String downloadAnalysis(@PathVariable("id")Long id, HttpServletResponse response){
         System.out.println("Download In");
         FileController fileController=new FileController();
         try{
@@ -257,7 +259,7 @@ public class CapacityVerificationPlanController {
     }
 
     @PostMapping(path="/deleteAnalysis")
-    public @ResponseBody JSONObject deleteStandard(@RequestParam(value="id",required =false)Long id){
+    public @ResponseBody JSONObject deleteAnalysis(@RequestParam(value="id",required =false)Long id){
         JSONObject json=new JSONObject();
         if(CapacityVerificationPlanRepository.findById(id)==null){
             json.put("code",500);

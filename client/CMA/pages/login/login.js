@@ -129,11 +129,35 @@ Page({
     app.wxRequest(url, 'GET', adddata, (res) => {
 
       console.log(res)
-      if (res.code == 200) {
-        app.globalData.username1 = e.detail.value.username
-        console.log('successfully')
-        wx.switchTab({
-          url: '../home/home',
+      if (res.msg == "不存在的用户") {
+        wx.showToast({
+          title: '用户不存在',
+          image: '/icons/warning/warning.png',
+          duration: 1000
+        })
+      }
+      else if (res.msg == "密码错误") {
+        wx.showToast({
+          title: '密码错误',
+          image: '/icons/warning/warning.png',
+          duration: 1000
+        })
+      }
+      else {
+        wx.showToast({
+          title: '成功',
+          //icon: 'success',
+          image: '/icons/ok/ok.png',
+          duration: 1000,
+          success: function () {
+            setTimeout(function () {
+              app.globalData.username1 = e.detail.value.username
+              console.log('successfully')
+              wx.switchTab({
+                url: '../home/home',
+              })
+            }, 1000);
+          }
         })
       }
     }, (err) => {

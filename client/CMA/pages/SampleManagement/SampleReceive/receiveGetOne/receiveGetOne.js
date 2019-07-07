@@ -188,6 +188,13 @@ Page({
       })
     }
   },
+  addsampleIo:function(){
+    console.log("dasfdsf")
+    console.log(this.data)
+    wx.navigateTo({
+      url: '/pages/SampleManagement/SampleIo/ioAddOne/ioAddOne?sampleNumber=' + this.data.info.sampleNumber+"&sampleName="+this.data.info.sampleName+"&sampleAmount="+this.data.info.sampleAmount+"&sampleState="+this.data.info.sampleState+"&receiptId="+this.data.receiptId
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

@@ -18,7 +18,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 
 /** 
-* CapacityVerificationPlanController Tester. 
+* CapacityVerificationRecordController Tester. 
 * 
 * @author <Authors name> 
 * @since <pre>七月 6, 2019</pre> 
@@ -28,15 +28,14 @@ import org.springframework.transaction.annotation.Transactional;
 @SpringBootTest
 @WebAppConfiguration
 @Transactional
-public class CapacityVerificationPlanControllerTest { 
+public class CapacityVerificationRecordControllerTest { 
 
     @Autowired
-    CapacityVerificationPlanController capacityVerificationPlanController;
+    CapacityVerificationRecordController capacityVerificationRecordController;
     MockMvc mockMvc;
-
 @Before
 public void before() throws Exception {
-    mockMvc= MockMvcBuilders.standaloneSetup(capacityVerificationPlanController).build();
+    mockMvc = MockMvcBuilders.standaloneSetup(capacityVerificationRecordController).build();
 } 
 
 @After
@@ -45,13 +44,70 @@ public void after() throws Exception {
 
 /** 
 * 
-* Method: getAllPlan() 
+* Method: addRecord(@RequestParam(value = "projectId", required = false) Long projectId, @RequestParam(value = "date", required = false) Date date, @RequestParam(value = "methodId", required = false) String methodId, @RequestParam(value = "equipmentName", required = false) String equipmentName, @RequestParam(value = "equipmentId", required = false) String equipmentId, @RequestParam(value = "experimenter", required = false) String experimenter, @RequestParam(value = "result", required = false) String result, @RequestParam(value = "resultDeal", required = false) String resultDeal, @RequestParam(value = "note", required = false) String note) 
 * 
 */ 
 @Test
-public void testGetAllPlan() throws Exception { 
+public void testAddRecord() throws Exception {
 //TODO: Test goes here...
-    String url = "/cma/CapacityVerification/getAll";
+    String url = "/cma/CapacityVerification/addOneRecord?projectId=92&date=2019-7-7&methodId=1&equipmentName=设备1&equipmentId=1&experimenter=实验人&result=结果&resultDeal=结果处理&note=备注";
+    MvcResult mvcResult = mockMvc.perform((MockMvcRequestBuilders.post(url)))
+            .andExpect(MockMvcResultMatchers.status().isOk())
+            .andDo(MockMvcResultHandlers.print())
+            .andReturn();
+
+    String res = mvcResult.getResponse().getContentAsString();
+    int code = Integer.parseInt(res.substring(8, 11));
+    Assert.assertEquals(200, code);
+} 
+
+/** 
+* 
+* Method: deleteRecord(@RequestParam(value="id",required=false)Long recordId) 
+* 
+*/ 
+@Test
+public void testDeleteRecord() throws Exception { 
+//TODO: Test goes here...
+    String url = "/cma/CapacityVerification/deleteOneRecord?id=95";
+    MvcResult mvcResult = mockMvc.perform((MockMvcRequestBuilders.post(url)))
+            .andExpect(MockMvcResultMatchers.status().isOk())
+            .andDo(MockMvcResultHandlers.print())
+            .andReturn();
+
+    String res = mvcResult.getResponse().getContentAsString();
+    int code = Integer.parseInt(res.substring(8, 11));
+    Assert.assertEquals(200, code);
+} 
+
+/** 
+* 
+* Method: modifyRecord(@RequestParam(value="id",required=false)Long recordId, @RequestParam(value="projectId",required = false)Long projectId, @RequestParam(value="date",required=false)Date date, @RequestParam(value="methodId",required=false)String methodId, @RequestParam(value="equipmentName",required=false)String equipmentName, @RequestParam(value="equipmentId",required=false)String equipmentId, @RequestParam(value="experimenter",required=false)String experimenter, @RequestParam(value="result",required=false)String result, @RequestParam(value="resultDeal",required=false)String resultDeal, @RequestParam(value="note",required=false)String note) 
+* 
+*/ 
+@Test
+public void testModifyRecord() throws Exception { 
+//TODO: Test goes here...
+    String url = "/cma/CapacityVerification/modifyOneRecord?id=95&projectId=92&date=2019-7-7&methodId=2&equipmentName=设备2&equipmentId=2&experimenter=实验人2&result=结果2&resultDeal=结果处理2&note=备注2";
+    MvcResult mvcResult = mockMvc.perform((MockMvcRequestBuilders.post(url)))
+            .andExpect(MockMvcResultMatchers.status().isOk())
+            .andDo(MockMvcResultHandlers.print())
+            .andReturn();
+
+    String res = mvcResult.getResponse().getContentAsString();
+    int code = Integer.parseInt(res.substring(8, 11));
+    Assert.assertEquals(200, code);
+} 
+
+/** 
+* 
+* Method: getOneRecord(@RequestParam(value="id",required=false)Long recordId) 
+* 
+*/ 
+@Test
+public void testGetOneRecord() throws Exception { 
+//TODO: Test goes here...
+    String url = "/cma/CapacityVerification/getOneRecord?id=95";
     MvcResult mvcResult = mockMvc.perform((MockMvcRequestBuilders.get(url)))
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andDo(MockMvcResultHandlers.print())
@@ -64,70 +120,13 @@ public void testGetAllPlan() throws Exception {
 
 /** 
 * 
-* Method: addPlan(@RequestParam(value = "name", required = false) String name, @RequestParam(value = "organizer", required = false) String organizer, @RequestParam(value = "year", required = false) String year, @RequestParam(value = "note", required = false) String note) 
+* Method: getRecordByProjectId(@RequestParam(value="projectId",required=false)Long projectId) 
 * 
 */ 
 @Test
-public void testAddPlan() throws Exception { 
+public void testGetRecordByProjectId() throws Exception { 
 //TODO: Test goes here...
-    String url = "/cma/CapacityVerification/addOne?name=名称&organizer=组织者&year=2019&note=备注";
-    MvcResult mvcResult = mockMvc.perform((MockMvcRequestBuilders.post(url)))
-            .andExpect(MockMvcResultMatchers.status().isOk())
-            .andDo(MockMvcResultHandlers.print())
-            .andReturn();
-
-    String res = mvcResult.getResponse().getContentAsString();
-    int code = Integer.parseInt(res.substring(8, 11));
-    Assert.assertEquals(200, code);
-} 
-
-/** 
-* 
-* Method: deletePlan(@RequestParam(value="id",required=false)Long planId) 
-* 
-*/ 
-@Test
-public void testDeletePlan() throws Exception { 
-//TODO: Test goes here...
-    String url = "/cma/CapacityVerification/deleteOne?id=79";
-    MvcResult mvcResult = mockMvc.perform((MockMvcRequestBuilders.post(url)))
-            .andExpect(MockMvcResultMatchers.status().isOk())
-            .andDo(MockMvcResultHandlers.print())
-            .andReturn();
-
-    String res = mvcResult.getResponse().getContentAsString();
-    int code = Integer.parseInt(res.substring(8, 11));
-    Assert.assertEquals(200, code);
-} 
-
-/** 
-* 
-* Method: modifyPlan(@RequestParam(value="id",required=false)Long planId, @RequestParam(value="name",required=false)String name, @RequestParam(value="organizer",required=false)String organizer, @RequestParam(value="state",required=false)Long state, @RequestParam(value="year",required=false)String year, @RequestParam(value="note",required=false)String note) 
-* 
-*/ 
-@Test
-public void testModifyPlan() throws Exception { 
-//TODO: Test goes here...
-    String url = "/cma/CapacityVerification/modifyOne?id=79&name=名称&organizer=组织者&state=1&year=2019&note=备注";
-    MvcResult mvcResult = mockMvc.perform((MockMvcRequestBuilders.post(url)))
-            .andExpect(MockMvcResultMatchers.status().isOk())
-            .andDo(MockMvcResultHandlers.print())
-            .andReturn();
-
-    String res = mvcResult.getResponse().getContentAsString();
-    int code = Integer.parseInt(res.substring(8, 11));
-    Assert.assertEquals(200, code);
-} 
-
-/** 
-* 
-* Method: getOnePlan(@RequestParam(value="id",required=false)Long planId) 
-* 
-*/ 
-@Test
-public void testGetOnePlan() throws Exception { 
-//TODO: Test goes here...
-    String url = "/cma/CapacityVerification/getOne?id=80";
+    String url = "/cma/CapacityVerification/getRecordByProjectId?projectId=92";
     MvcResult mvcResult = mockMvc.perform((MockMvcRequestBuilders.get(url)))
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andDo(MockMvcResultHandlers.print())
@@ -136,55 +135,6 @@ public void testGetOnePlan() throws Exception {
     String res = mvcResult.getResponse().getContentAsString();
     int code = Integer.parseInt(res.substring(8, 11));
     Assert.assertEquals(200, code);
-} 
-
-/** 
-* 
-* Method: uploadAnalysis(@RequestParam(value="id",required = false)Long id) 
-* 
-*/ 
-@Test
-public void testUploadAnalysis() throws Exception { 
-//TODO: Test goes here...
-    String url = "/cma/CapacityVerification/uploadAnalysis?id=79";
-    MvcResult mvcResult = mockMvc.perform((MockMvcRequestBuilders.post(url)))
-            .andExpect(MockMvcResultMatchers.status().isOk())
-            .andDo(MockMvcResultHandlers.print())
-            .andReturn();
-
-    String res = mvcResult.getResponse().getContentAsString();
-    int code = Integer.parseInt(res.substring(23, 26));
-    Assert.assertEquals(200, code);
-} 
-
-/** 
-* 
-* Method: addAnalysis(@RequestParam(value="file",required = false)MultipartFile file, HttpServletRequest request) 
-* 
-*/ 
-@Test
-public void testAddAnalysis() throws Exception { 
-//TODO: Test goes here... 
-} 
-
-/** 
-* 
-* Method: downloadAnalysis(@PathVariable("id")Long id, HttpServletResponse response)
-* 
-*/ 
-@Test
-public void testDownloadAnalysis() throws Exception {
-//TODO: Test goes here... 
-} 
-
-/** 
-* 
-* Method: deleteAnalysis(@RequestParam(value="id",required =false)Long id)
-* 
-*/ 
-@Test
-public void testDeleteAnalysis() throws Exception {
-//TODO: Test goes here... 
 } 
 
 

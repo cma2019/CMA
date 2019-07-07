@@ -4,7 +4,7 @@
       <van-field v-model="year" name="year" required clearable label="内审年份 	" placeholder="内审年份" />
       <picker name = 'date' mode='date' value='{{date}}' bindchange='binddateChange'>
         <view class='picker'>
-          <van-field  name="date" label="内审日期" value='{{date}}' placeholder="内审日期" required clearable />
+          <van-field readonly name="date" label="内审日期" value='{{date}}' placeholder="内审日期" required clearable />
         </view>
       </picker>
     </van-cell-group>

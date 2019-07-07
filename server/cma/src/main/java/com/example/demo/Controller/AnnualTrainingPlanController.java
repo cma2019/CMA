@@ -69,7 +69,7 @@ public class AnnualTrainingPlanController {
             if(list.get(i).Equals(annualTrainingPlan))
             {
                 json.put("code",210);
-                json.put("msg","失败,已存在");
+                json.put("msg","已存在");
                 json.put("data",null);
                 return json;
             }
@@ -86,7 +86,7 @@ public class AnnualTrainingPlanController {
         JSONObject json=new JSONObject();
         if(annualTrainingPlanRepository.existsById(planId)==false){
             json.put("code",210);
-            json.put("msg","失败,无法找到");
+            json.put("msg","无法找到");
             json.put("data",null);
         }
         else{
@@ -106,7 +106,7 @@ public class AnnualTrainingPlanController {
         JSONObject json=new JSONObject();
         if(annualTrainingPlanRepository.existsById(planId)==false){
             json.put("code",210);
-            json.put("msg","失败,无法找到");
+            json.put("msg","无法找到");
             json.put("data",null);
         }
         else {

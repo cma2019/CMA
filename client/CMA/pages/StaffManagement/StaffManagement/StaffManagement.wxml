@@ -4,6 +4,7 @@
   <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
   <van-cell value="详情" bindtap='gotoOne' id='{{item.id}}' is-link>
       <view slot="title">
+        <view>用户编号 : {{item.id}}</view>
         <view>姓名 : {{item.name}}</view>
         <view>性别 : {{item.gender}}</view>
         <view>部门 : {{item.department}}</view>

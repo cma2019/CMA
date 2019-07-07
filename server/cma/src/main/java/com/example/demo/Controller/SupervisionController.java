@@ -73,7 +73,7 @@ public class SupervisionController {
         int code=200;
         String msg="成功";
         JSONObject data=new JSONObject();
-        System.out.println(supervisionId);
+        //System.out.println(supervisionId);
         SupervisionRepository.deleteById(Long.parseLong(supervisionId));
         json.put("code",code);
         json.put("msg",msg);
@@ -163,8 +163,8 @@ public class SupervisionController {
                                            @RequestParam(value = "remark",required = false) String remark
                                            )
     {
-        System.out.println(supervisionId);
-        System.out.println(remark);
+        //System.out.println(supervisionId);
+        //System.out.println(remark);
         JSONObject js=new JSONObject();
         int code=200;
         String msg="成功";
@@ -204,3 +204,4 @@ public class SupervisionController {
     }
 }
 //select * from supervision;
+//alter table supervision ENGINE =InnoDB;

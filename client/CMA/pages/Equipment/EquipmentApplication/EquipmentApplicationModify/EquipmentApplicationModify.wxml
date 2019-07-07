@@ -22,7 +22,16 @@
       <van-field name="applicationPurpose" value="{{applicationPurpose}}" required clearable label="申请用途" placeholder="input 申请用途"></van-field>
     </view>
     <view class="section">
-      <van-field name="equipmentUse" value="{{equipmentUse}}" required clearable label="设备用途" placeholder="设备用途"></van-field>
+      <van-cell required title="设备用途">
+        <van-stepper
+          value="{{equipmentUse}}"
+          integer
+          min="0"
+          max="3"
+          step="1"
+          name="equipmentUse"
+        />
+      </van-cell>
     </view>
     <view class="section">
       <van-field name="equipmentNumber" value="{{equipmentNumber}}" required clearable label="设备编号" placeholder="设备编号"></van-field>
@@ -54,4 +63,5 @@
       <button class='van-button--info' form-type='submit'>修改</button>
     </view>
   </form>
+  <van-button type="info" size="small" bindtap="mygo">返回</van-button>
 </scroll-view>

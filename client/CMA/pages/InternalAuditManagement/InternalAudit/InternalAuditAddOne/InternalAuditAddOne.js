@@ -23,11 +23,15 @@ Page({
     console.log(e.detail.value)
     if (e.detail.value.year == "" || e.detail.value.date == "") {
       wx.showToast({
-        title: '错误（空白输入）',
-        icon: 'none',
-        duration: 2000
+        title: '空白输入',
+        image: '/icons/warning/warning.png',
+        duration: 2000,
+        success:function(){
+          setTimeout(function(){
+          },2000)
+        }
       })
-      console.log('错误（空白输入）')
+      console.log('空白输入')
     }
     else {
       console.log('InternalAudit发生了addone事件，携带数据为：', e.detail.value)
@@ -45,21 +49,68 @@ Page({
         success(res) {
           console.log(res.data)
           if (res.data.code == 200) {
+            console.log("45646546546546")
             wx.showToast({
               title: '成功',
-              icon: 'none',
-              duration: 1500
+              image: '/icons/ok/ok.png',
+              duration: 2000,
+              success: function () {
+                setTimeout(function () {
+                  wx.navigateTo({
+                    url: '../InternalAudit'
+                  })
+                }, 2000)
+              }
             })
-            wx.navigateTo({
-              url: '../InternalAudit'
-            })
+            console.log("成功")
           }
-          else {
+          else if(res.data.code == 511){
             wx.showToast({
-              title: '添加错误',
-              duration: 1500
+              title: '添加失败',
+              image: '/icons/warning/warning.png',
+              duration: 2000,
+              success: function () {
+                setTimeout(function () {
+                }, 2000)
+              }
             })
-            console.log('添加错误')
+            console.log("缺少必选请求参数")
+          }
+          else if (res.data.code == 512) {
+            wx.showToast({
+              title: '添加失败',
+              image: '/icons/warning/warning.png',
+              duration: 2000,
+              success: function () {
+                setTimeout(function () {
+                }, 2000)
+              }
+            })
+            console.log("添加重复数据")
+          }
+          else if (res.data.code == 513) {
+            wx.showToast({
+              title: '添加失败',
+              image: '/icons/warning/warning.png',
+              duration: 2000,
+              success: function () {
+                setTimeout(function () {
+                }, 2000)
+              }
+            })
+            console.log("添加数据不合法")
+          }
+          else{ //513
+            wx.showToast({
+              title: '添加失败',
+              image: '/icons/warning/warning.png',
+              duration: 2000,
+              success: function () {
+                setTimeout(function () {
+                }, 2000)
+              }
+            })
+            console.log("添加数据不符合一致性")
           }
         },
         fail(err) {

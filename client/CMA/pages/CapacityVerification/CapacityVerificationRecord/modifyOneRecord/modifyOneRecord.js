@@ -49,6 +49,11 @@ Page({
       })
     }, (err) => {
       console.err('getone error')
+      wx.showToast({
+        title: '连接失败',
+        image: '/icons/warning/warning.png',
+        duration: 1000
+      })
     })
   },
   bindDateChange: function (e) {
@@ -93,12 +98,32 @@ Page({
     app.wxRequest(url, 'POST', data, (res) => {
       if (res.code == 200) {
         console.log('modify record successfully')
-        wx.navigateBack({
-          delta: 1
+        wx.showToast({
+          title: '修改成功',
+          image: '/icons/ok/ok.png',
+          duration: 1000,
+          success: function () {
+            setTimeout(function () {
+              wx.navigateBack({
+                delta: 1
+              })
+            }, 1000);
+          }
+        })
+      }else{
+        wx.showToast({
+          title: '修改失败',
+          image: '/icons/warning/warning.png',
+          duration: 1000
         })
       }
     }, (err) => {
       console.log('fail modify record')
+      wx.showToast({
+        title: '连接失败',
+        image: '/icons/warning/warning.png',
+        duration: 1000
+      })
     })
   }
   //}

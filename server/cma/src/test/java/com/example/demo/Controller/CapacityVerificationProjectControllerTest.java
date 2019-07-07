@@ -18,7 +18,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 
 /** 
-* CapacityVerificationPlanController Tester. 
+* CapacityVerificationProjectController Tester. 
 * 
 * @author <Authors name> 
 * @since <pre>七月 6, 2019</pre> 
@@ -28,15 +28,14 @@ import org.springframework.transaction.annotation.Transactional;
 @SpringBootTest
 @WebAppConfiguration
 @Transactional
-public class CapacityVerificationPlanControllerTest { 
+public class CapacityVerificationProjectControllerTest {
 
     @Autowired
-    CapacityVerificationPlanController capacityVerificationPlanController;
+    CapacityVerificationProjectController capacityVerificationProjectController;
     MockMvc mockMvc;
-
 @Before
 public void before() throws Exception {
-    mockMvc= MockMvcBuilders.standaloneSetup(capacityVerificationPlanController).build();
+    mockMvc = MockMvcBuilders.standaloneSetup(capacityVerificationProjectController).build();
 } 
 
 @After
@@ -45,13 +44,13 @@ public void after() throws Exception {
 
 /** 
 * 
-* Method: getAllPlan() 
+* Method: getAllProject(@RequestParam(value="planId",required = false)Long planId) 
 * 
 */ 
 @Test
-public void testGetAllPlan() throws Exception { 
+public void testGetAllProject() throws Exception { 
 //TODO: Test goes here...
-    String url = "/cma/CapacityVerification/getAll";
+    String url = "/cma/CapacityVerification/getAllProject?planId?=80";
     MvcResult mvcResult = mockMvc.perform((MockMvcRequestBuilders.get(url)))
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andDo(MockMvcResultHandlers.print())
@@ -64,13 +63,13 @@ public void testGetAllPlan() throws Exception {
 
 /** 
 * 
-* Method: addPlan(@RequestParam(value = "name", required = false) String name, @RequestParam(value = "organizer", required = false) String organizer, @RequestParam(value = "year", required = false) String year, @RequestParam(value = "note", required = false) String note) 
+* Method: addProject(@RequestParam(value = "planId", required = false) Long planId, @RequestParam(value = "name", required = false) String name, @RequestParam(value = "method", required = false) String method, @RequestParam(value = "note", required = false) String note) 
 * 
 */ 
 @Test
-public void testAddPlan() throws Exception { 
+public void testAddProject() throws Exception { 
 //TODO: Test goes here...
-    String url = "/cma/CapacityVerification/addOne?name=名称&organizer=组织者&year=2019&note=备注";
+    String url = "/cma/CapacityVerification/addOneProject?planId=80&name=名称&method=方法&note=备注";
     MvcResult mvcResult = mockMvc.perform((MockMvcRequestBuilders.post(url)))
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andDo(MockMvcResultHandlers.print())
@@ -83,13 +82,13 @@ public void testAddPlan() throws Exception {
 
 /** 
 * 
-* Method: deletePlan(@RequestParam(value="id",required=false)Long planId) 
+* Method: deleteProject(@RequestParam(value="id",required=false)Long projectId) 
 * 
 */ 
 @Test
-public void testDeletePlan() throws Exception { 
+public void testDeleteProject() throws Exception { 
 //TODO: Test goes here...
-    String url = "/cma/CapacityVerification/deleteOne?id=79";
+    String url = "/cma/CapacityVerification/deleteOneProject?id=92";
     MvcResult mvcResult = mockMvc.perform((MockMvcRequestBuilders.post(url)))
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andDo(MockMvcResultHandlers.print())
@@ -102,13 +101,13 @@ public void testDeletePlan() throws Exception {
 
 /** 
 * 
-* Method: modifyPlan(@RequestParam(value="id",required=false)Long planId, @RequestParam(value="name",required=false)String name, @RequestParam(value="organizer",required=false)String organizer, @RequestParam(value="state",required=false)Long state, @RequestParam(value="year",required=false)String year, @RequestParam(value="note",required=false)String note) 
+* Method: modifyProject(@RequestParam(value="id",required=false)Long projectId, @RequestParam(value="planId",required = false)Long planId, @RequestParam(value="name",required=false)String name, @RequestParam(value="method",required=false)String method, @RequestParam(value="state",required=false)Long state, @RequestParam(value="note",required=false)String note) 
 * 
 */ 
 @Test
-public void testModifyPlan() throws Exception { 
+public void testModifyProject() throws Exception { 
 //TODO: Test goes here...
-    String url = "/cma/CapacityVerification/modifyOne?id=79&name=名称&organizer=组织者&state=1&year=2019&note=备注";
+    String url = "/cma/CapacityVerification/modifyOneProject?id=92&planId=79&name=名称1&method=方法2&state=1&note=备注2";
     MvcResult mvcResult = mockMvc.perform((MockMvcRequestBuilders.post(url)))
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andDo(MockMvcResultHandlers.print())
@@ -121,13 +120,13 @@ public void testModifyPlan() throws Exception {
 
 /** 
 * 
-* Method: getOnePlan(@RequestParam(value="id",required=false)Long planId) 
+* Method: getOneProject(@RequestParam(value="id",required=false)Long projectId) 
 * 
 */ 
 @Test
-public void testGetOnePlan() throws Exception { 
+public void testGetOneProject() throws Exception { 
 //TODO: Test goes here...
-    String url = "/cma/CapacityVerification/getOne?id=80";
+    String url = "/cma/CapacityVerification/getOneProject?id=92";
     MvcResult mvcResult = mockMvc.perform((MockMvcRequestBuilders.get(url)))
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andDo(MockMvcResultHandlers.print())
@@ -136,55 +135,6 @@ public void testGetOnePlan() throws Exception {
     String res = mvcResult.getResponse().getContentAsString();
     int code = Integer.parseInt(res.substring(8, 11));
     Assert.assertEquals(200, code);
-} 
-
-/** 
-* 
-* Method: uploadAnalysis(@RequestParam(value="id",required = false)Long id) 
-* 
-*/ 
-@Test
-public void testUploadAnalysis() throws Exception { 
-//TODO: Test goes here...
-    String url = "/cma/CapacityVerification/uploadAnalysis?id=79";
-    MvcResult mvcResult = mockMvc.perform((MockMvcRequestBuilders.post(url)))
-            .andExpect(MockMvcResultMatchers.status().isOk())
-            .andDo(MockMvcResultHandlers.print())
-            .andReturn();
-
-    String res = mvcResult.getResponse().getContentAsString();
-    int code = Integer.parseInt(res.substring(23, 26));
-    Assert.assertEquals(200, code);
-} 
-
-/** 
-* 
-* Method: addAnalysis(@RequestParam(value="file",required = false)MultipartFile file, HttpServletRequest request) 
-* 
-*/ 
-@Test
-public void testAddAnalysis() throws Exception { 
-//TODO: Test goes here... 
-} 
-
-/** 
-* 
-* Method: downloadAnalysis(@PathVariable("id")Long id, HttpServletResponse response)
-* 
-*/ 
-@Test
-public void testDownloadAnalysis() throws Exception {
-//TODO: Test goes here... 
-} 
-
-/** 
-* 
-* Method: deleteAnalysis(@RequestParam(value="id",required =false)Long id)
-* 
-*/ 
-@Test
-public void testDeleteAnalysis() throws Exception {
-//TODO: Test goes here... 
 } 
 
 

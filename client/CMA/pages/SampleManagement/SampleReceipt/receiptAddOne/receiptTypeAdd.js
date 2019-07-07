@@ -59,6 +59,8 @@ Page({
     })
   },
   materialList_addone:function(e){
+    console.log(this.data.materialList)
+    console.log(e)
     var that = this
     wx.setStorage({
       key: 'materialListinfo',

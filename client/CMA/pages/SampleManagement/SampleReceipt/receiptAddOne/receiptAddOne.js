@@ -32,6 +32,7 @@ Page({
     })
   },
   SampleReceipt_addone: function (e) {
+    console.log(e)
     let receipttmp = e.detail.value
     if (receipttmp.sampleName != "" && receipttmp.applicationUnit != "" && receipttmp.version != "" && receipttmp.contractId != "" && receipttmp.testType != "" && receipttmp.electronicMedia != "" && receipttmp.softwareType != "" && receipttmp.receiveUnit != "" && receipttmp.receiveDate != "" && receipttmp.sender != "" && receipttmp.receiver != ""){
     var that = this

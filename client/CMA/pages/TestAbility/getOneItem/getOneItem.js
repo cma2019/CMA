@@ -35,6 +35,11 @@ Page({
       })
     }, (err) => {
       console.err('getone error')
+      wx.showToast({
+        title: '连接失败',
+        image: '/icons/warning/warning.png',
+        duration: 1000
+      })
     })
   },
 
@@ -46,12 +51,32 @@ Page({
     app.wxRequest(url, 'POST', data, (res) => {
       console.log('delete successfully')
       if (res.code == 200) {
-        wx.navigateBack({
-          delta: 1
+        wx.showToast({
+          title: '删除成功',
+          image: '/icons/ok/ok.png',
+          duration: 1000,
+          success: function () {
+            setTimeout(function () {
+              wx.navigateBack({
+                delta: 1
+              })
+            }, 1000);
+          }
+        })
+      }else{
+        wx.showToast({
+          title: '删除失败',
+          image: '/icons/warning/warning.png',
+          duration: 1000
         })
       }
     }, (err) => {
       console.log('delete failed')
+      wx.showToast({
+        title: '连接失败',
+        image: '/icons/warning/warning.png',
+        duration: 1000
+      })
     })
   }
 

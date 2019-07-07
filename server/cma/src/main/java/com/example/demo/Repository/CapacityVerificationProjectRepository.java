@@ -8,10 +8,11 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Transactional
 public interface CapacityVerificationProjectRepository extends JpaRepository<CapacityVerificationProject,Long>{
-    List<CapacityVerificationProject> findAllByPlanId(Long planId);
+    Optional<CapacityVerificationProject> findAllByPlanId(Long planId);
     CapacityVerificationProject findByPlanId(Long planId);
 
     @Modifying

@@ -37,7 +37,7 @@ public class InternalAuditDocumentController {
         int code=200;
         String msg="成功";
         JSONObject js=new JSONObject();
-        //JSONObject data=null;
+        JSONObject data=new JSONObject();
         /*
         try{
             Long.parseLong(year);
@@ -64,7 +64,7 @@ public class InternalAuditDocumentController {
         InternalAuditManagementRepository.delete(iam);
         js.put("code",code);
         js.put("msg",msg);
-        js.put("data",null);
+        js.put("data",data);
         return js;
     }
     /*
@@ -88,7 +88,7 @@ public class InternalAuditDocumentController {
                 tmp.put("year",res.get(i).getYear());
                 tmp.put("fileId",res.get(i).getFileId());
                 String entire=res.get(i).getFileName();
-                System.out.println(res.get(i).getFileName());
+                //System.out.println(res.get(i).getFileName());
                 tmp.put("fileName",entire.substring(0,entire.indexOf(".")));
                 tmp.put("file",res.get(i).getFileName());
                 data.add(tmp);
@@ -96,8 +96,8 @@ public class InternalAuditDocumentController {
         }
         else
         {
-            code=522;
-            msg="数据不存在";
+            code=210;
+            msg="无有效信息返回";
         }
         js.put("code",code);
         js.put("msg",msg);
@@ -105,8 +105,7 @@ public class InternalAuditDocumentController {
         return js;
     }
     @RequestMapping(path="/addOneFormData",method= RequestMethod.POST)
-    @ResponseBody
-    public JSONObject addOneFormData(@RequestParam(value = "fileName",required = false) String fileName,
+    public @ResponseBody JSONObject addOneFormData(@RequestParam(value = "fileName",required = false) String fileName,
                                      @RequestParam(value = "year",required = false) long year){
         JSONObject js=new JSONObject();
         System.out.println(fileName);
@@ -140,20 +139,17 @@ public class InternalAuditDocumentController {
         FileController fileController=new FileController();
         InternalAuditDocument sDoc=new InternalAuditDocument();
         sDoc.setYear(add_year);
-        System.out.println("?");
-        System.out.println(file.getOriginalFilename());
+        //System.out.println(file.getOriginalFilename());
         String[] str=file.getOriginalFilename().split("\\.");
-        System.out.println(str[str.length-1]);
+        //System.out.println(str[str.length-1]);
         String suffix=str[str.length-1];
         sDoc.setFileName(add_name+"."+suffix);
         InternalAuditDocumentRepository.save(sDoc);
-        System.out.println(sDoc.getFileName());
-        System.out.println("??");
+        //System.out.println(sDoc.getFileName());
         return  fileController.upload(file,request,sDoc.getFileName(),sDoc.getDir());
     }
     @RequestMapping(path="/modifyOneFormData",method= RequestMethod.POST)
-    @ResponseBody
-    public JSONObject modifyOneFormData(@RequestParam(value = "fileName",required = false) String fileName,
+    public @ResponseBody JSONObject modifyOneFormData(@RequestParam(value = "fileName",required = false) String fileName,
                                         @RequestParam(value = "year",required = false) long year,
                                         @RequestParam(value = "fileId",required = false) long fileId){
         JSONObject js=new JSONObject();
@@ -181,20 +177,33 @@ public class InternalAuditDocumentController {
         String oldName=tmp.getFileName();
         fileController.deletefile(oldName,tmp.getDir());
         String[] str=file.getOriginalFilename().split("\\.");
-        System.out.println(str[str.length-1]);
+        //System.out.println(str[str.length-1]);
         String suffix=str[str.length-1];
         tmp.setFileName(modify_name+"."+suffix);
+        tmp.setYear(modify_year);
         InternalAuditDocumentRepository.saveAndFlush(tmp);
         return  fileController.upload(file,request,tmp.getFileName(),tmp.getDir());
     }
     @PostMapping(path = "/deleteOneFile")
     public @ResponseBody JSONObject deleteOneFile(@RequestParam(value = "fileId",required = false) long fileId){
         JSONObject js=new JSONObject();
-        System.out.println(fileId);
         InternalAuditDocument s=InternalAuditDocumentRepository.findByFileId(fileId);
+        if(s==null)
+        {
+            js.put("code",522);
+            js.put("msg","数据不存在");
+            js.put("data",null);
+            return js;
+        }
         FileController fileController=new FileController();
-        System.out.println(s.getFileName());
-        fileController.deletefile(s.getFileName(), s.getDir());
+        boolean res=fileController.deletefile(s.getFileName(), s.getDir());
+        if(!res)
+        {
+            js.put("code",522);
+            js.put("msg","文件不存在");
+            js.put("data",null);
+            return js;
+        }
         InternalAuditDocumentRepository.delete(s);
         js.put("code",200);
         js.put("msg","成功");
@@ -204,7 +213,7 @@ public class InternalAuditDocumentController {
     @GetMapping(path = "/downloadFile/{fileId}")
     public @ResponseBody String downloadFile(@PathVariable("fileId") long fileId, HttpServletResponse response) {
         FileController fileController=new FileController();
-        System.out.println(fileId);
+        //System.out.println(fileId);
         try{
             if(InternalAuditDocumentRepository.findByFileId(fileId)==null)
                 throw new Exception("doesn't exist");
@@ -220,4 +229,5 @@ public class InternalAuditDocumentController {
 }
 //select * from internal_audit_document;
 //delete from internal_audit_document where file_id=
+//alter table internal_audit_document ENGINE =InnoDB;
 

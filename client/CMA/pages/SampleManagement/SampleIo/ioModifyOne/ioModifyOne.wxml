@@ -6,8 +6,13 @@
 
       <van-field v-model="sampleName" name="sampleName" clearable label="样品名称" placeholder="{{origindata.sampleName}}" />
 
-      <van-field v-model="sampleAmount" name="sampleAmount" clearable label="样品数量" placeholder="{{origindata.sampleAmount}}"/>
-      <van-field v-model="sampleState" name="sampleState"clearable label="样品状态" placeholder="{{origindata.sampleState}}" />
+      <van-cell v-model="sampleAmount" name="sampleAmount" title="样品数量">
+        <van-stepper value="{{origindata.sampleAmount}}"  name="sampleAmount" integer min="1" step="1"/>
+      </van-cell>
+
+      <van-cell v-model="sampleState" name="sampleState" title="样品状态">
+        <van-stepper value="{{origindata.sampleState}}"  name="sampleState" integer min="0" max="2"step="1"/>
+      </van-cell>
 
       <van-field v-model="sender"  name="sender" clearable label="送样人" placeholder="{{origindata.sender}}"/>
 
@@ -15,13 +20,13 @@
 
       <picker name = 'sendDate' mode='date' value='{{sendDate}}' bindchange='bindsendDateChange'>
         <view class='picker'>
-          <van-field  name="sendDate" label="送样日期"  value='{{sendDate}}' placeholder="{{origindata.sendDate}}" clearable />
+          <van-field readonly name="sendDate" label="送样日期"  value='{{sendDate}}' placeholder="{{origindata.sendDate}}" clearable />
         </view>
       </picker>  
       <van-field v-model="obtainer" name="obtainer" clearable label="领取人" placeholder="{{origindata.obtainer}}" />
       <picker name = 'obtainDate' mode='date' value='{{obtainDate}}' bindchange='bindobtainDateChange'>
         <view class='picker'>
-          <van-field  name="obtainDate" label="领取日期" value='{{obtainDate}}' placeholder="{{origindata.obtainDate}}" clearable />
+          <van-field readonly name="obtainDate" label="领取日期" value='{{obtainDate}}' placeholder="{{origindata.obtainDate}}" clearable />
         </view>
       </picker>
 

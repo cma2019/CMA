@@ -8,6 +8,10 @@ Page({
     this.setData({
       id: options.id
     })
+    
+  },
+  onShow:function()
+  {
     console.log(this.data.id)
     let url = app.globalData.url + 'TrainingApplication/getOne'
     let postdata = {
@@ -46,15 +50,19 @@ Page({
   },
   intercheckmodify: function (e) {
     console.log('modify modify')
-   /* if (e.detail.value.object == "" || e.detail.value.content == "" ||
-      e.detail.value.date == "" || e.detail.value.personInCharge == "" || e.detail.value.state == "") {
+    if (e.detail.value.name == ""
+      || e.detail.value.people == ""
+      || e.detail.value.department == "" || e.detail.value.trainingUnit == ""
+      || e.detail.value.expense == "" || e.detail.value.reason == ""
+      || e.detail.value.createDate == "") {
       wx.showToast({
-        title: 'wrong message',
-        duration: 2000
+        title: '空白输入',
+        image: '/icons/warning/warning.png',
+        duration: 1000
       })
-      console.log('wrong message')
+      console.log('错误(空白输入)')
     }
-    else */{
+    else {
       console.log('modify，携带数据为：', e.detail.value)
       console.log('modify，携带数据为：', e.detail.value.object)
 
@@ -85,6 +93,19 @@ Page({
           })
         }
         */
+        wx.showToast({
+          title: '修改成功',
+          //icon: 'success',
+          image: '/icons/ok/ok.png',
+          duration: 1000,
+          success: function () {
+            setTimeout(function () {
+              wx.navigateTo({
+                url: '../PrintOneApplication/PrintOneApplication',
+              })
+            }, 1000);
+          }
+        })
       }, (err) => {
         console.log('fail modify')
       })

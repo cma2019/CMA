@@ -18,7 +18,7 @@
       />
      <van-field 
         name="password2"
-        label="重新输入密码"
+        label="再次输入密码"
         placeholder="密码" 
         password
         required

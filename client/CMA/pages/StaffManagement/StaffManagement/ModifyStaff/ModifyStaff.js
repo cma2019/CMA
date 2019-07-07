@@ -26,6 +26,9 @@ Page({
     this.setData({
       id: options.id
     })
+  },
+  
+  onShow: function (options) {
     console.log(this.data.id)
     let url = app.globalData.url + 'StaffManagement/getOne'
     let postdata = {
@@ -42,39 +45,6 @@ Page({
         checkDate: res.data[0].checkDate,
         personInCharge: res.data[0].personInCharge,
         state: res.data[0].state*/
-        id :res.data.id,
-        name: res.data.name,
-        gender: res.data.gender,
-        department: res.data.department,
-        position: res.data.position,
-        title: res.data.title,
-        degree: res.data.degree,
-        graduationSchool: res.data.graduationSchool,
-        graduationMajor: res.data.graduationMajor,
-        graduationDate: res.data.graduationDate,
-        workingYears: res.data.workingYears
-      })
-    }, (err) => {
-      console.err('getone error')
-    })
-  },
-  /*
-  onShow: function (options) {
-    this.setData({
-      id: options.id
-    })
-    console.log(this.data.id)
-    let url = app.globalData.url + 'StaffManagement/getOne'
-    let postdata = {
-      "id": this.data.id
-    }
-    console.log(url)
-    console.log(postdata)
-    app.wxRequest(url, 'GET', postdata, (res) => {
-      console.log("data modify")
-      console.log(res.data.name)
-      this.setData({
-       
         id: res.data.id,
         name: res.data.name,
         gender: res.data.gender,
@@ -90,7 +60,7 @@ Page({
     }, (err) => {
       console.err('getone error')
     })
-  },*/
+  },
   bindDateChange: function (e) {
     console.log("date")
     console.log(e.detail.value)
@@ -141,6 +111,20 @@ Page({
           })
         }
         */
+        wx.showToast({
+          title: '成功',
+          //icon: 'success',
+          image: '/icons/ok/ok.png',
+          duration: 1000,
+          success: function () {
+            setTimeout(function () {
+              wx.navigateTo({
+                url: '../StaffManagement',
+              })
+            }, 1000);
+          }
+        })
+
       }, (err) => {
         console.log('fail modify')
       })
