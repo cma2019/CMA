@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 //import java.sql.Date;
+import java.io.File;
 import java.util.List;
 
 @Controller
@@ -203,21 +204,36 @@ public class SelfInspectionController {
         //System.out.println("??");
         return  fileController.upload(file,request,sDoc.getFileName(),sDoc.getDir());
     }
-    /*
     @RequestMapping(path="/modifyOneFormData",method= RequestMethod.POST)
     public @ResponseBody JSONObject modifyOneFormData(@RequestParam(value = "fileName",required = false) String fileName,
                                      @RequestParam(value = "fileId",required = false) String fileId){
         JSONObject js=new JSONObject();
         //System.out.println(fileName);
-        SelfInspectionDocument sdoc=SelfInspectionDocumentRepository.findByFileId(Long.parseLong(fileId));
-        sdoc.setFlag(2);
-        sdoc.setFileName(fileName);
-        SelfInspectionDocumentRepository.saveAndFlush(sdoc);
+        SelfInspectionDocument sDoc=SelfInspectionDocumentRepository.findByFileId(Long.parseLong(fileId));
+        String oldName=sDoc.getFileName();
+        String path="E:/CMA/FileSystem/";
+        String filepath=path+sDoc.getDir()+"/";
+        File oldFile = new File(filepath, oldName);
+        String[] str=oldName.split("\\.");
+        //System.out.println(str[str.length-1]);
+        String suffix=str[str.length-1];
+        File newFile=new File(filepath,fileName+"."+suffix);
+        if(newFile.exists())
+        {
+            js.put("code",514);
+            js.put("msg","文件名已存在");
+            js.put("data",null);
+            return js;
+        }
+        else
+            oldFile.renameTo(newFile);
+        sDoc.setFileName(fileName+"."+suffix);
+        SelfInspectionDocumentRepository.saveAndFlush(sDoc);
         js.put("code",200);
         js.put("msg","成功");
         js.put("data",null);
         return js;
-    }*/
+    }
     @PostMapping(path = "/modifyOneFile")
     public @ResponseBody Response modifyOneFile(@RequestParam("file") MultipartFile file,
                                                 @RequestParam(value ="fileId",required = false) long fileId,

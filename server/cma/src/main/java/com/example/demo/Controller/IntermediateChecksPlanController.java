@@ -67,7 +67,7 @@ public class IntermediateChecksPlanController {
     public @ResponseBody void deletePlan(HttpServletRequest request,HttpServletResponse response,
                                                @RequestParam(value="planId",required=false)Long planId)throws IOException{
         JSONObject json=new JSONObject(new LinkedHashMap());
-        if(IntermediateChecksPlanRepository.findById(planId)==null)
+        if(!IntermediateChecksPlanRepository.findById(planId).isPresent())
         {
             try{
                 json.put("code",100);
@@ -100,7 +100,7 @@ public class IntermediateChecksPlanController {
                                          @RequestParam(value="personInCharge",required=false)String personInCharge,
                                          @RequestParam(value="state",required=false)byte state)throws IOException{
         JSONObject json=new JSONObject(new LinkedHashMap());
-        if(IntermediateChecksPlanRepository.findById(planId)==null)
+        if(!IntermediateChecksPlanRepository.findById(planId).isPresent())
         {
             try{
                 json.put("code",100);
@@ -141,7 +141,7 @@ public class IntermediateChecksPlanController {
                                      @RequestParam(value="planId",required=false)Long planId)throws IOException{
         JSONObject json=new JSONObject(new LinkedHashMap());
         IntermediateChecksPlan plan=new IntermediateChecksPlan();
-        if(IntermediateChecksPlanRepository.findById(planId)==null)
+        if(!IntermediateChecksPlanRepository.findById(planId).isPresent())
         {
             try{
                 json.put("code",100);
@@ -185,7 +185,7 @@ public class IntermediateChecksPlanController {
         return "Hello,World";*/
     public @ResponseBody void getAll(HttpServletRequest request,HttpServletResponse response) throws IOException, JSONException {
         JSONObject json=new JSONObject(new LinkedHashMap());
-        if(IntermediateChecksPlanRepository.findAll()==null)
+        if(IntermediateChecksPlanRepository.findAll().isEmpty())
         {
             try{
                 json.put("code",100);

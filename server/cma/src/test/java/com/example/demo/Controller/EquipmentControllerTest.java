@@ -1,9 +1,10 @@
 package com.example.demo.Controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.example.demo.DemoApplication;
 import com.example.demo.Model.AllAnnualPlan;
 import com.example.demo.Repository.AllAnnualPlanRepository;
-import net.minidev.json.JSONObject;
 import org.codehaus.jackson.JsonProcessingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.After;
@@ -42,6 +43,7 @@ public class EquipmentControllerTest {
     public void after() throws Exception {
     }
     @Test
+    @Transactional
     public void testEquipmentAdd() throws Exception {
 //TODO: Test goes here...
         String url="/cma/Equipment/add?name=13&model=1111&cpu=1&memory=1&hardDisk=1&equipmentNumber=1&application=1&state=1";
@@ -54,11 +56,12 @@ public class EquipmentControllerTest {
         //Assert.assertEquals(200,status);
         //JSONObject json=mvcResult.getResponse().get
         String res=mvcResult.getResponse().getContentAsString();
-        System.out.println(res);
-        int code=Integer.parseInt(res.substring(8,11));
+        JSONObject jsonObject= JSON.parseObject(res);
+        int code= (int) jsonObject.get("code");
         Assert.assertEquals(200,code);
     }
     @Test
+    @Transactional
     public void testGetAll() throws Exception {
         String url="/cma/Equipment/getAll";
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(url))

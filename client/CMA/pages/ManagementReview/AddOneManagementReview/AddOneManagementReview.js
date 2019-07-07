@@ -17,15 +17,25 @@ Page({
     })
   },
   StaffAdd: function (e) {
-
+    var regNum = new RegExp('[a-zA-Z]', 'g');
     if (e.detail.value.year == "" ||
       e.detail.value.date == "") {
       wx.showToast({
-        title: '错误(空白输入)',
-        icon: 'none',
-        duration: 2000
+        title: '空白输入',
+        image: '/icons/warning/warning.png',
+        //icon: 'none',
+        duration: 1000
       })
       console.log('错误(空白输入)')
+    } 
+    else if (regNum.exec(e.detail.value.year) != null) {
+
+      wx.showToast({
+        title: '年份输入数字',
+        //icon: 'none',
+        image: '/icons/warning/warning.png',
+        duration: 2000
+      })
     }
     else {
       console.log('form发生了add事件，携带数据为：', e.detail.value)
@@ -41,6 +51,16 @@ Page({
         console.log(res)
         console.log(res.msg)
         console.log(res.code)
+        if(res.msg=="已存在")
+        {
+          wx.showToast({
+            title: '已存在',
+            image: '/icons/warning/warning.png',
+            //icon: 'none',
+            duration: 1000
+          })
+        }
+        else{
         wx.showToast({
           title: '成功',
           //icon: 'success',
@@ -53,7 +73,7 @@ Page({
               })
             }, 1000);
           }
-        })
+        })}
         
       }, (err) => {
         console.log('fail intermediate check register')
