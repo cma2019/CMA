@@ -9,12 +9,14 @@
         required
         clearable
       />
-      <van-field 
+      <van-field
+      
         name="gender"
         label="性别"
         placeholder="性别" 
         required
         clearable
+        
       />
       <van-field 
         name="department"

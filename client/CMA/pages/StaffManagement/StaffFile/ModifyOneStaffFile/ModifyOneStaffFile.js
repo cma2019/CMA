@@ -52,7 +52,7 @@ Page({
           duration: 1000,
           success: function () {
             setTimeout(function () {
-              wx.redirectTo({
+              wx.navigateTo({
                 url: '../PrintOneStaffFile/PrintOneStaffFile',
               })
             }, 1000);

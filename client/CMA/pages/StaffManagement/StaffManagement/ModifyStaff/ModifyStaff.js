@@ -70,6 +70,7 @@ Page({
   },
   intercheckmodify: function (e) {
     console.log('modify modify')
+    var regNum = new RegExp('[0-9]', 'g');
    /* if (e.detail.value.object == "" || e.detail.value.content == "" ||
       e.detail.value.date == "" || e.detail.value.personInCharge == "" || e.detail.value.state == "") {
       wx.showToast({
@@ -77,8 +78,17 @@ Page({
         duration: 2000
       })
       console.log('wrong message')
-    }
-    else */{
+    }*/
+    if(regNum.exec(e.detail.value.workingYears) == null)
+{
+  wx.showToast({
+    title: '工龄非数字',
+    image: '/icons/warning/warning.png',
+    duration: 1000
+
+  })
+}
+    else {
       console.log('modify，携带数据为：', e.detail.value)
       console.log('modify，携带数据为：', e.detail.value.object)
 

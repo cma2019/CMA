@@ -65,11 +65,8 @@
     </view>
     <!--<view wx:if="{{mess[7]}}">-->
     <view wx:if="{{true}}">
-    <van-collapse-item title="档案管理" name="8">
-      
-    </van-collapse-item>
     </view>
-    <!--<view wx:if="{{mess[8]}}">-->
+    <!--<view wx:if="{{mess[7]}}">-->
     <view wx:if="{{true}}">
     <van-collapse-item title="培训管理" name="9">
       <van-cell-group>
@@ -78,7 +75,7 @@
       </van-cell-group>
     </van-collapse-item>
     </view>
-    <!--<view wx:if="{{mess[9]}}">-->
+    <!--<view wx:if="{{mess[8]}}">-->
     <view wx:if="{{true}}">
     <van-collapse-item title="样品管理"  name="10">
       <van-cell-group>
@@ -88,7 +85,7 @@
       </van-cell-group>
     </van-collapse-item>
     </view>
-    <!--<view wx:if="{{mess[10]}}">-->
+    <!--<view wx:if="{{mess[9]}}">-->
     <view wx:if="{{true}}">
     <van-collapse-item title="设备管理" name="11">
       <van-cell-group>
@@ -102,17 +99,13 @@
     </view>
     <!--<view wx:if="{{mess[11]}}">-->
     <view wx:if="{{true}}">
-    <van-collapse-item title="人员管理" name="12">
-      
-    </van-collapse-item>
+ 
     </view>
     <!--<view wx:if="{{mess[12]}}">-->
     <view wx:if="{{true}}">
-    <van-collapse-item title="授权签字人管理" name="13">
-      
-    </van-collapse-item>
+
     </view>
-    <!--<view wx:if="{{mess[13]}}">-->
+    <!--<view wx:if="{{mess[10]}}">-->
     <view wx:if="{{true}}">
     <van-collapse-item title="检测检验能力管理" name="14">
       <van-cell-group>
@@ -120,7 +113,7 @@
       </van-cell-group>
     </van-collapse-item>
     </view>
-    <!--<view wx:if="{{mess[14]}}">-->
+    <!--<view wx:if="{{mess[11]}}">-->
     <view wx:if="{{true}}">
     <van-collapse-item title="能力验证管理" name="15">
       <van-cell-group>
@@ -130,13 +123,10 @@
       </van-cell-group>
     </van-collapse-item>
     </view>
-    <!--<view wx:if="{{mess[15]}}">-->
+    <!--<view wx:if="{{mess[12]}}">-->
     <view wx:if="{{true}}">
-    <van-collapse-item title="客户意见与投诉管理" name="16">
-      
-    </van-collapse-item>
     </view>
-    <!--<view wx:if="{{mess[16]}}">-->
+    <!--<view wx:if="{{mess[12]}}">-->
     <view wx:if="{{true}}">
     <van-collapse-item title="标准管理" name="17">
       <van-cell-group>
@@ -144,13 +134,13 @@
       </van-cell-group>
     </van-collapse-item>
     </view>
-    <!--<view wx:if="{{mess[17]}}">-->
+    <!--<view wx:if="{{mess[13]}}">-->
     <view wx:if="{{true}}">
     <van-collapse-item title="外部评审与上报管理" name="18">
       <van-cell title="外部评审与上报管理" boarder="{{false}}" is-link  center="{{true}}" bindtap="gotoERM"></van-cell>
     </van-collapse-item>
     </view>
-    <!--<view wx:if="{{mess[18]}}">-->
+    <!--<view wx:if="{{mess[14]}}">-->
     <view wx:if="{{true}}">
     <van-collapse-item title="检测机构管理" name="19">
       <van-cell-group>
