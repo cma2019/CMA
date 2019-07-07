@@ -28,10 +28,18 @@ Page({
     app.wxRequest(url, 'GET', postdata, (res) => {
       console.log(res)
       console.log('plan getone success')
-      this.setData({
-        fileId: res.data.fileId,
-        fileName: res.data.fileName,
-      })
+      if(res.code == 200){
+        this.setData({
+          fileId: res.data.fileId,
+          fileName: res.data.fileName,
+        })
+      }else{
+        wx.showToast({
+          title: '连接失败',
+          image: '/icons/warning/warning.png',
+          duration: 1000
+        })
+      }
     }, (err) => {
       console.err('getone error')
       wx.showToast({

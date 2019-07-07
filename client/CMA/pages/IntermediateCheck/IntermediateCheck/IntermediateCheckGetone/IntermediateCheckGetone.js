@@ -32,13 +32,21 @@ Page({
     app.wxRequest(url, 'GET', postdata, (res) => {
       console.log(res)
       console.log('plan getone success')
-      this.setData({
-        object: res.data[0].object,
-        content: res.data[0].content,
-        checkDate: res.data[0].checkDate,
-        personInCharge: res.data[0].personInCharge,
-        state: res.data[0].state
-      })
+      if(res.code == 200){
+        this.setData({
+          object: res.data[0].object,
+          content: res.data[0].content,
+          checkDate: res.data[0].checkDate,
+          personInCharge: res.data[0].personInCharge,
+          state: res.data[0].state
+        })
+    }else{
+        wx.showToast({
+          title: '连接失败',
+          image: '/icons/warning/warning.png',
+          duration: 1000
+        })
+    }
     }, (err) => {
       console.err('getone error')
       wx.showToast({
@@ -56,7 +64,14 @@ Page({
       url: '../IntermediateCheckModify/IntermediateCheckModify?id=' + target
     })
   },
-
+  getRecord(e) {
+    console.log(e)
+    let target = this.data.planId
+    console.log(target)
+    wx.navigateTo({
+      url: '../IntermediateCheckModify/IntermediateCheckModify?id=' + target
+    })
+  },
   deleteData(e){
     let url = app.globalData.url + 'IntermediateChecksPlan/deleteOne'
     let data = {

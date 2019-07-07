@@ -26,6 +26,7 @@
               value='{{checkDate}}'
               placeholder="计划核查时间" 
               required
+              readonly
               clearable
             />
           </view>
@@ -45,6 +46,7 @@
         placeholder="核查状态"
         value='{{state}}'
         required
+        type = 'number'
         clearable
         border = "{{false}}"
       />
