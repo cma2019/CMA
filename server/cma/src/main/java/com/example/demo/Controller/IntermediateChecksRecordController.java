@@ -1,11 +1,11 @@
 package com.example.demo.Controller;
 
+import com.alibaba.fastjson.JSONObject;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.json.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,26 +31,21 @@ public class IntermediateChecksRecordController {
         return "Hello,World";*/
     public @ResponseBody void getAllRecord(HttpServletRequest request,HttpServletResponse response) throws IOException, JSONException {
         JSONObject json=new JSONObject(new LinkedHashMap());
-        if(IntermediateChecksRecordRepository.findAll()==null)
+        if(IntermediateChecksRecordRepository.findAll().isEmpty())
         {
-            try{
+
                 json.put("code",100);
                 json.put("msg","查找不到");
-            }catch (JSONException e){
-                e.printStackTrace();
-            }
         }
         else
         {
-            try{
+
                 json.put("code",200);
                 json.put("msg","获取成功");
-                //json.put("data:",IntermediateChecksPlanRepository.findAll());
-            }catch (JSONException e){
-                e.printStackTrace();
-            }
+                json.put("data:",IntermediateChecksRecordRepository.findAll());
 
-            List<IntermediateChecksRecord> recordList= IntermediateChecksRecordRepository.findAll();
+
+            /*List<IntermediateChecksRecord> recordList= IntermediateChecksRecordRepository.findAll();
             JSONObject data=new JSONObject();
             JSONArray array=new JSONArray();
             for(IntermediateChecksRecord record:recordList){
@@ -71,7 +66,7 @@ public class IntermediateChecksRecordController {
                 //System.out.println(array);
 
             }
-            json.put("data",array);
+            json.put("data",array);*/
         }
         response.setContentType("text/html;charset=utf-8");
         response.getWriter().write(json.toString());
@@ -85,21 +80,17 @@ public class IntermediateChecksRecordController {
                                      @RequestParam(value="recordId",required=false)Long recordId)throws IOException{
         JSONObject json=new JSONObject(new LinkedHashMap());
         IntermediateChecksRecord record=new IntermediateChecksRecord();
-        if(IntermediateChecksRecordRepository.findById(recordId)==null)
+        if(!IntermediateChecksRecordRepository.findById(recordId).isPresent())
         {
-            try{
                 json.put("code",100);
                 json.put("msg","查找不到");
-            }catch (JSONException e){
-                e.printStackTrace();
-            }
+
         }
         else
         {
-            record= IntermediateChecksRecordRepository.getOne(recordId);
+            /*record= IntermediateChecksRecordRepository.getOne(recordId);
             JSONObject data=new JSONObject(new LinkedHashMap());
             JSONArray array=new JSONArray();
-            try{
                 data.put("recordId",record.getrecordId());
                 data.put("planId",record.getplanID());
                 data.put("object",record.getObject());
@@ -111,17 +102,12 @@ public class IntermediateChecksRecordController {
                 data.put("resultRecordPerson",record.getResultRecordPerson());
                 data.put("resultRecordDate",record.getResultRecordDate());
                 data.put("note",record.getNote());
-            }catch (JSONException e){
-                e.printStackTrace();
-            }
-            array.put(data);
-            try{
+
+            array.put(data);*/
                 json.put("code",200);
                 json.put("msg","获取成功");
-                json.put("data",array);
-            }catch (JSONException e){
-                e.printStackTrace();
-            }
+                json.put("data",IntermediateChecksRecordRepository.findById(recordId));
+
 
         }
         response.setContentType("text/html;charset=utf-8");
@@ -145,6 +131,17 @@ public class IntermediateChecksRecordController {
                  @RequestParam(value = "resultRecordDate", required = false) Date resultRecordDate,
                  @RequestParam(value = "note", required = false) String note) throws IOException {
         IntermediateChecksRecord newRecord = new IntermediateChecksRecord();
+        JSONObject json = new JSONObject(new LinkedHashMap());
+        if(IntermediateChecksRecordRepository.findByPlanId(planId).isPresent())
+        {
+
+                json.put("code", 300);
+                json.put("msg", "存在记录");
+
+            response.setContentType("text/html;charset=utf-8");
+            response.getWriter().write(json.toString());
+            return;
+        }
         newRecord.setplanID(planId);
         newRecord.setObject(object);
         newRecord.setDate(checkDate);
@@ -157,13 +154,11 @@ public class IntermediateChecksRecordController {
         newRecord.setNote(note);
         IntermediateChecksRecordRepository.save(newRecord);
 
-        JSONObject json = new JSONObject(new LinkedHashMap());
-        try {
+
+
             json.put("code", 200);
             json.put("msg", "添加成功");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+
         response.setContentType("text/html;charset=utf-8");
         response.getWriter().write(json.toString());
     }
@@ -172,24 +167,19 @@ public class IntermediateChecksRecordController {
     public @ResponseBody void deleteRecord(HttpServletRequest request,HttpServletResponse response,
                                          @RequestParam(value="recordId",required=false)Long recordId)throws IOException{
         JSONObject json=new JSONObject(new LinkedHashMap());
-        if(IntermediateChecksRecordRepository.findById(recordId)==null)
+        if(!IntermediateChecksRecordRepository.findById(recordId).isPresent())
         {
-            try{
                 json.put("code",100);
                 json.put("msg","查找不到");
-            }catch (JSONException e){
-                e.printStackTrace();
-            }
+
         }
         else
         {
             IntermediateChecksRecordRepository.deleteById(recordId);
-            try{
+
                 json.put("code",200);
                 json.put("msg","删除成功");
-            }catch (JSONException e){
-                e.printStackTrace();
-            }
+
         }
         response.setContentType("text/html;charset=utf-8");
         response.getWriter().write(json.toString());
@@ -210,26 +200,22 @@ public class IntermediateChecksRecordController {
                                          @RequestParam(value = "resultRecordDate", required = false) Date resultRecordDate,
                                          @RequestParam(value = "note", required = false) String note)throws IOException{
         JSONObject json=new JSONObject(new LinkedHashMap());
-        if(IntermediateChecksRecordRepository.findById(recordId)==null)
+        if(!IntermediateChecksRecordRepository.findById(recordId).isPresent())
         {
-            try{
+
                 json.put("code",100);
                 json.put("msg","查找不到");
-            }catch (JSONException e){
-                e.printStackTrace();
-            }
+
         }
         else
         {
             IntermediateChecksRecordRepository.updateById(recordId,planId,object,checkDate,processRecord,processRecordPerson,processRecordDate,resultRecord,resultRecordPerson,resultRecordDate,note);
             //content,checkDate,personInCharge,state
             //System.out.println("changed object");
-            try{
+
                 json.put("code",200);
                 json.put("msg","修改成功");
-            }catch (JSONException e){
-                e.printStackTrace();
-            }
+
 
         }
         response.setContentType("text/html;charset=utf-8");
@@ -242,18 +228,18 @@ public class IntermediateChecksRecordController {
                                      @RequestParam(value="planId",required=false)Long planId)throws IOException{
         JSONObject json=new JSONObject(new LinkedHashMap());
         IntermediateChecksRecord record=new IntermediateChecksRecord();
-        if(IntermediateChecksRecordRepository.findByPlanId(planId)==null)
+        if(!IntermediateChecksRecordRepository.findByPlanId(planId).isPresent())
         {
-            try{
                 json.put("code",100);
                 json.put("msg","查找不到");
-            }catch (JSONException e){
-                e.printStackTrace();
-            }
+
         }
         else
         {
-            record= IntermediateChecksRecordRepository.findByPlanId(planId);
+            json.put("code",200);
+            json.put("msg","获取成功");
+            json.put("data",IntermediateChecksRecordRepository.findByPlanId(planId));
+            /*record= IntermediateChecksRecordRepository.findOnePlanId(planId);
             JSONObject data=new JSONObject(new LinkedHashMap());
             JSONArray array=new JSONArray();
             try{
@@ -278,7 +264,7 @@ public class IntermediateChecksRecordController {
                 json.put("data",array);
             }catch (JSONException e){
                 e.printStackTrace();
-            }
+            }*/
 
         }
         response.setContentType("text/html;charset=utf-8");

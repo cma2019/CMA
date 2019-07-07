@@ -59,7 +59,7 @@ public void testGetAllRecord() throws Exception {
             .andReturn();
 
     String res = mvcResult.getResponse().getContentAsString();
-    int code = Integer.parseInt(res.substring(21, 24));
+    int code = Integer.parseInt(res.substring(8, 11));
     Assert.assertEquals(200, code);
 }
 
@@ -78,7 +78,7 @@ public void testGetOneByRecordId() throws Exception {
             .andReturn();
 
     String res = mvcResult.getResponse().getContentAsString();
-    int code = Integer.parseInt(res.substring(21, 24));
+    int code = Integer.parseInt(res.substring(8, 11));
     Assert.assertEquals(200, code);
 }
 
@@ -90,14 +90,14 @@ public void testGetOneByRecordId() throws Exception {
 @Test
 public void testAddRecord() throws Exception { 
 //TODO: Test goes here...
-    String url = "/cma/IntermediateChecksRecord/addOne?planId=4&object=对象&checkDate=2019-5-30&processRecord=处理记录&processRecordPerson=处理人&processRecordDate=2019-7-7&resultRecord=结果记录&resultRecordPerson=结果记录人&resultRecordDate=2019-7-9&note=test1";
+    String url = "/cma/IntermediateChecksRecord/addOne?planId=25&object=对象&checkDate=2019-5-30&processRecord=处理记录&processRecordPerson=处理人&processRecordDate=2019-7-7&resultRecord=结果记录&resultRecordPerson=结果记录人&resultRecordDate=2019-7-9&note=test1";
     MvcResult mvcResult = mockMvc.perform((MockMvcRequestBuilders.post(url)))
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andDo(MockMvcResultHandlers.print())
             .andReturn();
 
     String res = mvcResult.getResponse().getContentAsString();
-    int code = Integer.parseInt(res.substring(21, 24));
+    int code = Integer.parseInt(res.substring(8, 11));
     Assert.assertEquals(200, code);
 
 } 
@@ -110,14 +110,14 @@ public void testAddRecord() throws Exception {
 @Test
 public void testDeleteRecord() throws Exception { 
 //TODO: Test goes here...
-    String url = "/cma/IntermediateChecksRecord/deleteOne?recordId=85";
+    String url = "/cma/IntermediateChecksRecord/deleteOne?recordId=86";
     MvcResult mvcResult = mockMvc.perform((MockMvcRequestBuilders.post(url)))
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andDo(MockMvcResultHandlers.print())
             .andReturn();
 
     String res = mvcResult.getResponse().getContentAsString();
-    int code = Integer.parseInt(res.substring(21, 24));
+    int code = Integer.parseInt(res.substring(8, 11));
     Assert.assertEquals(200, code);
 } 
 
@@ -129,14 +129,14 @@ public void testDeleteRecord() throws Exception {
 @Test
 public void testModifyRecord() throws Exception { 
 //TODO: Test goes here...
-    String url = "/cma/IntermediateChecksRecord/modifyOne?recordId=85&planId=4&object=对象1&checkDate=2019-5-30&processRecord=处理记录2&processRecordPerson=处理人3&processRecordDate=2019-7-7&resultRecord=结果记录4&resultRecordPerson=结果记录人5&resultRecordDate=2019-7-9&note=test1";
+    String url = "/cma/IntermediateChecksRecord/modifyOne?recordId=86&planId=17&object=对象1&checkDate=2019-5-30&processRecord=处理记录2&processRecordPerson=处理人3&processRecordDate=2019-7-7&resultRecord=结果记录4&resultRecordPerson=结果记录人5&resultRecordDate=2019-7-9&note=test1";
     MvcResult mvcResult = mockMvc.perform((MockMvcRequestBuilders.post(url)))
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andDo(MockMvcResultHandlers.print())
             .andReturn();
 
     String res = mvcResult.getResponse().getContentAsString();
-    int code = Integer.parseInt(res.substring(21, 24));
+    int code = Integer.parseInt(res.substring(8, 11));
     Assert.assertEquals(200, code);
 } 
 
@@ -148,14 +148,14 @@ public void testModifyRecord() throws Exception {
 @Test
 public void testGetOneByPlanId() throws Exception { 
 //TODO: Test goes here...
-    String url = "/cma/IntermediateChecksRecord/getOneByPlanId?planId=3";
+    String url = "/cma/IntermediateChecksRecord/getOneByPlanId?planId=17";
     MvcResult mvcResult = mockMvc.perform((MockMvcRequestBuilders.get(url)))
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andDo(MockMvcResultHandlers.print())
             .andReturn();
 
     String res = mvcResult.getResponse().getContentAsString();
-    int code = Integer.parseInt(res.substring(21, 24));
+    int code = Integer.parseInt(res.substring(8, 11));
     Assert.assertEquals(200, code);
 } 
 
