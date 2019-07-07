@@ -1,3 +1,4 @@
+//获取全局app实例
 const app = getApp()
 Page({
 
@@ -7,39 +8,23 @@ Page({
   data: {
     equipment:{}
   },
+  //返回按钮的处理函数
   mygo: function (e) {
+    //跳转回查找页面
     wx.redirectTo({
       url: '/pages/Equipment/EquipmentManagement/EquipmentManagement',
     })
   },
-  mydelete:function(e)
-  {
-    var that = this
-    var myurl = app.globalData.url + 'Equipment/deleteOne/' + that.data.equipment.id;
-    app.wxRequest(myurl, 'POST', null, (res) => {
-      console.log(res)
-    }, (err) => {
-      console.log(err)
-    })
-    wx.redirectTo({
-      url: '/pages/Equipment/EquipmentManagement/EquipmentManagement',
-    })
-  },
-  submit: function(e){
-    var that = this
-    console.log(that.data)
-  },
-  myChange: function(e){
-    console.log("change")
-    console.log(e)
-  },
+  //确定按钮的处理函数
   mytest: function(e){
+    //保存指针
     var that = this
     
     console.log("Modify")
     console.log(e)
-
+    //构造url
     var myurl = app.globalData.url + 'Equipment/modifyOne/' + that.data.equipment.id;
+    //构造参数
     var mydata = {
       "name": e.detail.value.name,
       "model": e.detail.value.model,
@@ -50,14 +35,19 @@ Page({
       "application": e.detail.value.application,
       "state": e.detail.value.state
     }
+    //请求后端
     app.wxRequest(myurl, 'POST', mydata, (res) => {
+      //成功处理函数
       console.log(res)
+      //成功提示
       wx.showToast({
         title: '修改成功',
         icon: '/icons/ok/ok.png',
         duration: 1000,
         success: function () {
+          //延时
           setTimeout(function () {
+            //跳转回查找界面
             wx.redirectTo({
               url: '/pages/Equipment/EquipmentManagement/EquipmentManagement',
             })
@@ -65,6 +55,7 @@ Page({
         }
       })
     }, (err) => {
+      //失败处理函数
       console.log(err)
     })  
   },
@@ -72,8 +63,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (option) {
+    //保存指针
     var that = this;
     console.log(option)
+    //存储页面跳转时传递的参数
     that.setData({
       equipment:option
     })
