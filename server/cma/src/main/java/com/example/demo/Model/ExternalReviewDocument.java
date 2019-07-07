@@ -12,11 +12,6 @@ public class ExternalReviewDocument {
     private long fileId;    //文档编号
     private String fileName;     //文档名称
     private String dir="ExternalReviewDocument";
-    int flag=0;
-
-    public void setFlag(int flag) {
-        this.flag = flag;
-    }
 
     public void setYear(long year) {
         this.year = year;
