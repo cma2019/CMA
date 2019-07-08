@@ -21,8 +21,8 @@ public class StaffTraining {
     private String note;         //备注
     private String result;       //结果
 
-    private long id;
-    private String name;
+    private long id;             //人员id
+    private String name;         //人员姓名
 
 
     public String getName() {
