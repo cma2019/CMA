@@ -81,8 +81,8 @@ Page({
           duration: 1000,
           success: function () {
             setTimeout(function () {
-              wx.navigateBack({
-                delta: 1
+              wx.navigateTo({
+                url: '../CapacityVerificationPlan',
               })
             }, 1000);
           }
@@ -128,43 +128,36 @@ Page({
     app.wxDownloadFile(myurl, (res) => {
       console.log("download one now")
       console.log(res)
-      wx.saveFile({
-        tempFilePath: res.tempFilePath,
-        success: function (res) {
-          console.log("download ability annex now")
-          console.log(res)
-          if(res.code == 200){
-            myFilePath = res.savedFilePath
-            console.log(myFilePath)
+        wx.saveFile({
+          tempFilePath: res.tempFilePath,
+          success: function (res) {
+            console.log("download ability annex now")
+            console.log(res)
+            if (res.errMsg == "saveFile:ok"){
+              myFilePath = res.savedFilePath
+              console.log(myFilePath)
+              wx.showToast({
+                title: '下载成功',
+                image: '/icons/ok/ok.png',
+                duration: 1000,
+              })
+            }else{
+              wx.showToast({
+                title: '下载失败',
+                image: '/icons/warning/warning.png',
+                duration: 1000
+              })
+            }
+          },
+          fail: function (err) {
+            console.log(err)
             wx.showToast({
-              title: '下载成功',
-              image: '/icons/ok/ok.png',
-              duration: 1000,
-              success: function () {
-                setTimeout(function () {
-                  wx.navigateBack({
-                    delta: 1
-                  })
-                }, 1000);
-              }
-            })
-          }else{
-            wx.showToast({
-              title: '下载失败',
+              title: '添加失败',
               image: '/icons/warning/warning.png',
               duration: 1000
             })
           }
-        },
-        fail: function (err) {
-          console.log(err)
-          wx.showToast({
-            title: '添加失败',
-            image: '/icons/warning/warning.png',
-            duration: 1000
-          })
-        }
-      })
+        })
     }, (err) => {
       console.log(err)
       wx.showToast({
@@ -185,14 +178,7 @@ Page({
         wx.showToast({
           title: '删除成功',
           image: '/icons/ok/ok.png',
-          duration: 1000,
-          success: function () {
-            setTimeout(function () {
-              wx.navigateBack({
-                delta: 1
-              })
-            }, 1000);
-          }
+          duration: 1000
         })
       }else{
         wx.showToast({

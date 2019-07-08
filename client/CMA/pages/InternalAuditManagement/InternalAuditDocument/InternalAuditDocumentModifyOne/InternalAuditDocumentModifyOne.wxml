@@ -1,7 +1,7 @@
 <view>
  <form bindsubmit='InternalAuditDocumentModifyOne'>
     <van-cell-group title="InternalAuditDocumentModifyOne">
-      <van-field v-model="fileName"  name="fileName" required clearable label="文档名称" placeholder="文档名称"/>
+      <van-field v-model="fileName"  name="fileName" required clearable label="文档名称" placeholder="{{fileName}}"/>
     </van-cell-group>
     <view>
       <button class="van-button--info" formType="submit">确定</button>

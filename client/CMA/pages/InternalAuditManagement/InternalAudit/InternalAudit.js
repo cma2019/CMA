@@ -16,21 +16,18 @@ Page({
     console.log('InternalAudit发生了getAll事件，携带数据为：', options)
     let url = app.globalData.url + 'InternalAuditManagement/getAll'
     let postdata = ''
-    console.log(url)
-    console.log(postdata)
     app.wxRequest(url, 'GET', postdata, (res) => {
-      if (res.code == 522) {
-        this.setData({
-          mess: ""
-        })
-      }
-      else {
+      if (res.code == 200) {
         this.setData({
           mess: res.data,
           flag: 1
         })
-        console.log(this.data.mess)
-        console.log("abcdefg")
+      }
+      else {
+        this.setData({
+          mess: null,
+          flag: 0
+        })
       }
     }, (err) => {
       wx.showToast({
@@ -77,7 +74,8 @@ Page({
         if (res.data.code == 200) {
           wx.showToast({
             title: '删除成功',
-            duration: 1500
+            image: '/icons/ok/ok.png',
+            duration: 1000
           })
           wx.navigateTo({
             url: '/pages/InternalAuditManagement/InternalAudit/InternalAudit'
@@ -118,18 +116,17 @@ Page({
     console.log(url)
     console.log(postdata)
     app.wxRequest(url, 'GET', postdata, (res) => {
-      if (res.code == 522) {
-        this.setData({
-          mess: ""
-        })
-      }
-      else {
+      if (res.code == 200) {
         this.setData({
           mess: res.data,
           flag: 1
         })
-        console.log(this.data.mess)
-        console.log("abcdefg")
+      }
+      else {
+        this.setData({
+          mess: null,
+          flag: 0
+        })
       }
     }, (err) => {
       wx.showToast({

@@ -35,9 +35,11 @@ Page({
   onShow: function (options) {
     let url = app.globalData.url + 'TestAbility/getAllItem'
     let data = {
-      "year": this.data.year,
+      "year": this.data.year
     }
     app.wxRequest(url, 'GET', data, (res) => {
+      console.log("test abbbb")
+      console.log(res)
       if(res.code == 200){
         this.setData({
           mess: res.data
@@ -101,20 +103,13 @@ Page({
         success: function (res) {
           console.log("download ability annex now")
           console.log(res)
-          if (res.code == 200) {
+          if (res.errMsg == "saveFile:ok") {
             myFilePath = res.savedFilePath
             console.log(myFilePath)
             wx.showToast({
               title: '添加成功',
               image: '/icons/ok/ok.png',
-              duration: 1000,
-              success: function () {
-                setTimeout(function () {
-                  wx.navigateBack({
-                    delta: 1
-                  })
-                }, 1000);
-              }
+              duration: 1000
             })
           } else {
             wx.showToast({

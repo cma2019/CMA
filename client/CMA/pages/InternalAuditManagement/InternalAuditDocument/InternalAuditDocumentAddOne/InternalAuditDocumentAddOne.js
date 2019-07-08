@@ -11,16 +11,21 @@ Page({
   },
   InternalAuditDocumentAddOne: function (e) {
     console.log(e.detail.value)
-    var myurl1 = app.globalData.url + 'InternalAuditManagement/addOneFormData';
-    var myurl2 = app.globalData.url + 'InternalAuditManagement/addOneFile';
-    var mydata = {
-      "year": this.data.year,
-      "fileName": e.detail.value.fileName //大于等于4位
-    };
-    var year = this.data.year
-    console.log('InternalAuditDocument发生了addone事件，携带数据为：', mydata)
-    app.wxRequest(myurl1, 'POST', mydata, (res) => {
-      console.log(res)
+    if (e.detail.value.fileName == null || e.detail.value.fileName == '') {
+      wx.showToast({
+        title: '文件名称为空',
+        image: '/icons/warning/warning.png',
+        duration: 2000,
+        success: function () {
+          setTimeout(function () {
+          }, 2000)
+        }
+      })
+    }
+    else{
+      var myurl = app.globalData.url + 'InternalAuditManagement/addOneFile?year='+this.data.year+'&fileName='+e.detail.value.fileName;
+      var year = this.data.year
+      console.log('InternalAuditDocument发生了addone事件，携带数据为：', e.detail.value.fileName)
       wx.chooseMessageFile({
         count: 1,
         type: 'all',
@@ -28,9 +33,17 @@ Page({
           console.log("get file success")
           console.log(res)
           var mypath = res.tempFiles[0].path
-          app.wxUploadFile(myurl2, mypath, null, (res) => {
+          app.wxUploadFile(myurl, mypath, null, (res) => {
             console.log("upload file success")
-            console.log(res)
+            wx.showToast({
+              title: '上传成功',
+              image: '/icons/ok/ok.png',
+              duration: 2000,
+              success: function () {
+                setTimeout(function () {
+                }, 2000)
+              }
+            })
             wx.redirectTo({
               url: '/pages/InternalAuditManagement/InternalAuditDocument/InternalAuditDocument?id=' + year,
             })
@@ -40,12 +53,9 @@ Page({
         },
         fail: function (err) {
           console.log("get file failed")
-          console.log(err)
         }
       })
-    }, (err) => {
-      console.log(err)
-    })
+    }
   },
   /**
    * 生命周期函数--监听页面加载
@@ -55,7 +65,11 @@ Page({
       year:options.id
     })
   },
-
+  goback: function () {
+    wx.navigateBack({
+      delta: 1
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

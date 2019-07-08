@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface StaffQualificationRepository extends JpaRepository<StaffQualification,Long> {
     List<StaffQualification> findAllByStaffId(long id);
-    StaffQualification findByFlag(int flag);
+    //StaffQualification findByFlag(int flag);
     StaffQualification findByQualificationId(long qualificationId);
     void deleteByQualificationId(long qualificationId);
 }

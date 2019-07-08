@@ -3,9 +3,10 @@
   <form bindsubmit='GetPlans'>
     <van-cell-group title="请输入信息">
       <van-field 
-        name="projectId"
+        name="id"
         label="项目编号"
         placeholder="项目编号"
+        type = 'number'
         required
         clearable
       />

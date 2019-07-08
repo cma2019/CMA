@@ -15,6 +15,7 @@
         label="档案编号"
         value='{{fileId}}'
         placeholder="档案编号" 
+        
     required
         clearable
       />

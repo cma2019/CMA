@@ -47,14 +47,15 @@ Page({
       app.wxRequest(url, 'POST', data, (res) => {
         if (res.code == 200) {
           console.log('add record successfully')
+          let mypro = this.data.projectId
           wx.showToast({
             title: '添加成功',
             image: '/icons/ok/ok.png',
             duration: 1000,
             success: function () {
               setTimeout(function () {
-                wx.navigateBack({
-                  delta: 1
+                wx.navigateTo({
+                  url: '../getRecordByProjectId/getRecordByProjectId?id='+mypro,
                 })
               }, 1000);
             }

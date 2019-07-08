@@ -44,9 +44,10 @@ Page({
     console.log(postdata)
     app.wxRequest(url, 'GET', postdata, (res) => {
       console.log('record getall success')
+      console.log(res)
       if(res.code == 200){
         this.setData({
-          mess: res.data
+          mess : res.data
         })
       }else{
         wx.showToast({
@@ -55,7 +56,6 @@ Page({
           duration: 1000
         })
       }
-      console.log(this.mess)
     }, (err) => {
       console.err('getone error')
       wx.showToast({
@@ -63,12 +63,6 @@ Page({
         image: '/icons/warning/warning.png',
         duration: 1000
       })
-    })
-  },
-
-  gotoAdd(e) {
-    wx.navigateTo({
-      url: 'IntermediateChecksRecordAddone/IntermediateChecksRecordAddone',
     })
   },
 

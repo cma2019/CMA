@@ -8,6 +8,9 @@ import com.example.demo.FileControl.FileController;
 import com.example.demo.Repository.ExternalReviewDocumentRepository;
 import com.google.appengine.repackaged.com.google.gson.JsonObject;
 import com.mysql.cj.xdevapi.JsonArray;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +18,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.util.Iterator;
 import java.util.List;
 
 @Controller
@@ -48,7 +53,6 @@ public class ExternalReviewDocumentCoontroller {
         ExternalReviewDocument externalReviewDocument=new ExternalReviewDocument();
         Response response=new Response();
         externalReviewDocument.setYear(year);
-        externalReviewDocument.setFlag(1);
         ERDRepository.save(externalReviewDocument);
         externalReviewDocument.setFileId(externalReviewDocument.getId());
         externalReviewDocument.setFileName(externalReviewDocument.getId()+".pdf");
@@ -58,7 +62,20 @@ public class ExternalReviewDocumentCoontroller {
         response.msg="收到数据";
         return response;
     }
-    @RequestMapping(path="/addOneFile",method = RequestMethod.POST)
+    @RequestMapping(path="/addFile",method = RequestMethod.POST)
+    @ResponseBody
+    public  Response addFile(@RequestParam("file") MultipartFile file, HttpServletRequest request,
+    @RequestParam(value ="year" ,required = false)long year){
+        FileController fileController=new FileController();
+        ExternalReviewDocument externalReviewDocument=new ExternalReviewDocument();
+        externalReviewDocument.setYear(year);
+        ERDRepository.save(externalReviewDocument);
+        externalReviewDocument.setFileId(externalReviewDocument.getId());
+        externalReviewDocument.setFileName(externalReviewDocument.getId()+".pdf");
+        ERDRepository.save(externalReviewDocument);
+        return  fileController.upload(file,request,externalReviewDocument.getFileName(),externalReviewDocument.getDir());
+    }
+   @RequestMapping(path="/addOneFile",method = RequestMethod.POST)
     @ResponseBody
     public  Response addOneFile(@RequestParam("file") MultipartFile file, HttpServletRequest request){
 

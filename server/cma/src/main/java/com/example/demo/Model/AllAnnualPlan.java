@@ -23,6 +23,8 @@ public class AllAnnualPlan {
     }
 
     public String getApproveDate() {
+        if(this.approveDate==null)
+            return null;
         DateFormat df=DateFormat.getDateInstance();
         return df.format(this.approveDate);
     }

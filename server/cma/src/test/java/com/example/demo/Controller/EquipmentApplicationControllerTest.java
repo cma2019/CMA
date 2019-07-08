@@ -1,10 +1,12 @@
 package com.example.demo.Controller;
 
 import static org.junit.Assert.*;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.example.demo.DemoApplication;
 import com.example.demo.Model.AllAnnualPlan;
 import com.example.demo.Repository.AllAnnualPlanRepository;
-import net.minidev.json.JSONObject;
 import org.codehaus.jackson.JsonProcessingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.After;
@@ -43,6 +45,7 @@ public class EquipmentApplicationControllerTest {
     public void after() throws Exception {
     }
     @Test
+    @Transactional
     public void testEquipmentAdd() throws Exception {
 //TODO: Test goes here...
         String url="/cma/Equipment/add?name=13&model=1111&cpu=1&memory=1&hardDisk=1&equipmentNumber=1&application=1&state=1";
@@ -60,6 +63,7 @@ public class EquipmentApplicationControllerTest {
         Assert.assertEquals(200,code);
     }
     @Test
+    @Transactional
     public void testGetAll() throws Exception {
         String url="/cma/Equipment/getAll";
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(url))
@@ -74,5 +78,19 @@ public class EquipmentApplicationControllerTest {
         System.out.println(res.substring(8,11));
         int code=Integer.parseInt(res.substring(8,11));
         Assert.assertEquals(200,code);
+    }
+    @Test
+    @Transactional
+    public void deleteOne()throws Exception{
+        String url="/cma/Equipment/deleteOne/76";
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(url,new Object[0])
+        .param("id","76"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(MockMvcResultHandlers.print())
+                .andReturn();
+        String res = mvcResult.getResponse().getContentAsString();
+        JSONObject jsonObject= JSON.parseObject(res);
+        int code= (int) jsonObject.get("code");
+        Assert.assertEquals(200, (long)code);
     }
 }

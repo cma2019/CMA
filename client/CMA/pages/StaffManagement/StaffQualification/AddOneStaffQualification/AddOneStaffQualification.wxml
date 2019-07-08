@@ -6,6 +6,7 @@
       label="人员编号"
       placeholder="人员编号" 
       required 
+      type="number"
       clearable
        >
        </van-field>

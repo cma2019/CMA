@@ -11,24 +11,29 @@ Page({
   },
   SelfInspectionDocumentAddOne: function (e) {
     console.log(e.detail.value)
-    var myurl1 = app.globalData.url + 'SelfInspection/addOneFormData';
-    var myurl2 = app.globalData.url + 'SelfInspection/addOneFile';
-    var mydata = {
-      "id": this.data.id,
-      "fileName": e.detail.value.fileName //大于等于4位
-    };
-    var id = this.data.id
-    console.log('SelfInspectionDocument发生了AddOne事件，携带数据为：',  mydata)
-    app.wxRequest(myurl1, 'POST', mydata, (res) => {
-      console.log(res)
+    if(e.detail.value.fileName == null||e.detail.value.fileName == ''){
+      wx.showToast({
+        title:'文件名称为空',
+        image:'/icons/warning/warning.png',
+        duration:2000,
+        success:function(){
+          setTimeout(function(){
+          },2000)
+        }
+      })
+    }
+    else{
+      var myurl = app.globalData.url + 'SelfInspection/addOneFile?id='+this.data.id+'&fileName='+e.detail.value.fileName
+      var id = this.data.id
+      console.log('SelfInspectionDocument发生了AddOne事件，携带数据为：', e.detail.value.fileName)
       wx.chooseMessageFile({
         count: 1,
         type: 'all',
-        success: function (res) {
+        success(res) {
           console.log("get file success")
           console.log(res)
           var mypath = res.tempFiles[0].path
-          app.wxUploadFile(myurl2, mypath, null, (res) => {
+          app.wxUploadFile(myurl, mypath, null, (res) => {
             console.log("upload file success")
             console.log(res)
             wx.redirectTo({
@@ -43,9 +48,7 @@ Page({
           console.log(err)
         }
       })
-    }, (err) => {
-      console.log(err)
-    })
+    }
   },
   goback: function () {
     wx.navigateBack({

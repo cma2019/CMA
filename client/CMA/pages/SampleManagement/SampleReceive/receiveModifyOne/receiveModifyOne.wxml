@@ -6,12 +6,11 @@
 
       <van-field v-model="sampleName" name="sampleName" clearable label="样品名称" placeholder="{{origindata.sampleName}}" />
 
-      <van-field v-model="sampleAmount" name="sampleAmount" clearable label="样品数量" placeholder="{{origindata.sampleAmount}}"/>
-      <van-cell v-model="sampleAmount" name="sampleAmount" title="样品数量">
+      <van-cell v-model="sampleAmount" name="sampleAmount" title="样品数量"label="至少为1">
         <van-stepper value="{{origindata.sampleAmount}}"  name="sampleAmount" integer min="1" step="1"/>
       </van-cell>
 
-      <van-cell v-model="sampleState" name="sampleState" title="样品状态">
+      <van-cell v-model="sampleState" name="sampleState" title="样品状态"label="0表示待处理，1表示在测，2表示测毕">
         <van-stepper value="{{origindata.sampleState}}"  name="sampleState" integer min="0" max="2"step="1"/>
       </van-cell>
 

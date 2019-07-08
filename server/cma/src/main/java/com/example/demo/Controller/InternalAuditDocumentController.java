@@ -137,12 +137,14 @@ public class InternalAuditDocumentController {
     {
         FileController fileController=new FileController();
         InternalAuditDocument iDoc=new InternalAuditDocument();
-        //System.out.println(file.getOriginalFilename());
+        System.out.println(file.getOriginalFilename());
         String[] str=file.getOriginalFilename().split("\\.");
         //System.out.println(str[str.length-1]);
         String suffix=str[str.length-1];
         iDoc.setYear(year);
         iDoc.setFileName(fileName+"."+suffix);
+        System.out.println(year);
+        System.out.println(iDoc.getFileName());
         InternalAuditDocumentRepository.save(iDoc);
         //System.out.println(sDoc.getFileName());
         return  fileController.upload(file,request,iDoc.getFileName(),iDoc.getDir());
@@ -163,7 +165,7 @@ public class InternalAuditDocumentController {
         File newFile=new File(filepath,fileName+"."+suffix);
         if(newFile.exists())
         {
-            js.put("code",514);
+            js.put("code",512);
             js.put("msg","文件名已存在");
             js.put("data",null);
             return js;
@@ -182,7 +184,7 @@ public class InternalAuditDocumentController {
     public @ResponseBody Response modifyOneFile(@RequestParam("file") MultipartFile file,
                                                 @RequestParam(value = "fileId",required = false) long fileId,
                                                 @RequestParam(value = "year",required = false) long year,
-                                                @RequestParam(value = "fileName",required = false) long fileName,
+                                                @RequestParam(value = "fileName",required = false) String fileName,
                                                 HttpServletRequest request){
         FileController fileController=new FileController();
         InternalAuditDocument tmp= InternalAuditDocumentRepository.findByFileId(fileId);

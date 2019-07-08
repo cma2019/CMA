@@ -7,5 +7,5 @@ public interface StaffFileRepository extends JpaRepository<StaffFile,Long> {
     boolean existsByStaffId(long id);
     StaffFile findByStaffId(long id);
     void deleteByStaffId(long id);
-    StaffFile findByFlag(int flag);
+    //StaffFile findByFlag(int flag);
 }

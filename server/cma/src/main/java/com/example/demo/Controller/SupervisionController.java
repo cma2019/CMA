@@ -67,14 +67,14 @@ public class SupervisionController {
         }
     }
     @PostMapping (path="/deleteOne")
-    public @ResponseBody JSONObject deleteOne(@RequestParam(value="supervisionId",required = false) String supervisionId)
+    public @ResponseBody JSONObject deleteOne(@RequestParam(value="id",required = false) String id)
     {
         JSONObject json=new JSONObject();
         int code=200;
         String msg="成功";
         JSONObject data=new JSONObject();
         //System.out.println(supervisionId);
-        SupervisionRepository.deleteById(Long.parseLong(supervisionId));
+        SupervisionRepository.deleteById(Long.parseLong(id));
         json.put("code",code);
         json.put("msg",msg);
         json.put("data",data);
@@ -93,7 +93,7 @@ public class SupervisionController {
             for (int i=0;i<res.size();i++)
             {
                 JSONObject tmp=new JSONObject();
-                tmp.put("id",res.get(i).getSupervisionId());
+                tmp.put("id",res.get(i).getId());
                 tmp.put("situation",res.get(i).getSituation());
                 tmp.put("author",res.get(i).getAuthor());
                 tmp.put("createDate",res.get(i).getCreateDate());
@@ -119,7 +119,7 @@ public class SupervisionController {
         }
     }
     @PostMapping(path="/approveOne")
-    public @ResponseBody JSONObject approveOne(@RequestParam(value="supervisionId",required = false) String supervisionId,
+    public @ResponseBody JSONObject approveOne(@RequestParam(value="id",required = false) String id,
                                             @RequestParam(value = "approver",required = false)String approver,
                                             @RequestParam(value = "approveDate",required = false)String approveDate)
     {
@@ -129,7 +129,7 @@ public class SupervisionController {
         JSONObject data=new JSONObject();
         try {
             java.sql.Date.valueOf(approveDate);
-            Long.parseLong(supervisionId);
+            Long.parseLong(id);
         }catch (NumberFormatException e){
             code=513;
             msg="某项数据错误";
@@ -138,7 +138,7 @@ public class SupervisionController {
             json.put("data",data);
             return json;
         }
-        if(approveDate.equals("")||supervisionId.equals(""))
+        if(approveDate.equals("")||id.equals(""))
         {
             code=511;
             msg="缺少请求参数";
@@ -147,7 +147,7 @@ public class SupervisionController {
             json.put("data",data);
             return json;
         }
-        Supervision sv= SupervisionRepository.findBySupervisionId(Long.parseLong(supervisionId));
+        Supervision sv= SupervisionRepository.findById(Long.parseLong(id));
         sv.setSituation(1);
         sv.setApprover(approver);
         sv.setApproveDate(java.sql.Date.valueOf(approveDate));
@@ -159,7 +159,7 @@ public class SupervisionController {
 
     }
     @PostMapping(path="/modifyOne")
-    public @ResponseBody JSONObject modify(@RequestParam(value="supervisionId",required = false) String supervisionId,
+    public @ResponseBody JSONObject modify(@RequestParam(value="id",required = false) String id,
                                            @RequestParam(value = "remark",required = false) String remark
                                            )
     {
@@ -170,7 +170,7 @@ public class SupervisionController {
         String msg="成功";
         JSONObject data=new JSONObject();
         try {
-            Long.parseLong(supervisionId);
+            Long.parseLong(id);
         }catch (NumberFormatException E){
             code=534;
             msg="参数错误";
@@ -179,7 +179,7 @@ public class SupervisionController {
             js.put("data",data);
             return js;
         }
-        Supervision sv=SupervisionRepository.findBySupervisionId(Long.parseLong(supervisionId));
+        Supervision sv=SupervisionRepository.findById(Long.parseLong(id));
         sv.setRemark(remark);
         SupervisionRepository.saveAndFlush(sv);
         js.put("code",code);
@@ -188,13 +188,13 @@ public class SupervisionController {
         return js;
     }
     @GetMapping(path="/executeOne")
-    public @ResponseBody JSONObject executeOne(@RequestParam(value="supervisionId",required = false) String supervisionId)
+    public @ResponseBody JSONObject executeOne(@RequestParam(value="id",required = false) String id)
     {
         JSONObject json=new JSONObject();
         int code=200;
         String msg="成功";
         JSONObject data=new JSONObject();
-        Supervision sv= SupervisionRepository.findBySupervisionId(Long.parseLong(supervisionId));
+        Supervision sv= SupervisionRepository.findById(Long.parseLong(id));
         sv.setSituation(2);
         SupervisionRepository.saveAndFlush(sv);
         json.put("code",code);

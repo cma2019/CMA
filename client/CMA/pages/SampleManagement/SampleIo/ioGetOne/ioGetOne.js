@@ -7,6 +7,7 @@ Page({
   data: {
     "sampleIoId":"null",
     "receiptId":"null",
+    array:['待处理','在测','测毕'],
     "info":{},
     tmp: [{
       "sampleIoId": 2,

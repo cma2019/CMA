@@ -24,6 +24,7 @@ import java.util.List;
 public class qsmController {
     @Autowired
     private qsmRepository QRepository;
+
     @RequestMapping(path="addOneFormData",method= RequestMethod.POST)
     @ResponseBody
     public Response addOneFormData(
@@ -38,13 +39,19 @@ public class qsmController {
             qsm Qsm=new qsm();
             Qsm.setState(state);
             Qsm.setCurrent(current);
+            if(current-1==0)
+            {
+               qsm temp=QRepository.findByCurrent(current);
+               temp.setCurrent((byte)0);
+               QRepository.save(temp);
+            }
             Qsm.setModifyTime(modifyTime);
             Qsm.setModifier(modifier);
             Qsm.setModifyContent(modifyContent);
             QRepository.save(Qsm);
             Qsm.setFileName(Qsm.getId()+".pdf");
             Qsm.setFileId(Qsm.getId());
-            Qsm.setFlag(1);
+            //Qsm.setFlag(1);
             QRepository.save(Qsm);
             JSONObject ejson = JSONObject.parseObject(JSONObject.toJSONString(Qsm));
             response.data=ejson;
@@ -52,7 +59,39 @@ public class qsmController {
             response.code=200;
             return response;
     }
-    @RequestMapping(path="addOneFile",method= RequestMethod.POST)
+
+    @RequestMapping(path="addFile",method= RequestMethod.POST)
+    @ResponseBody
+    public Response addOneFile(@RequestParam("file") MultipartFile file, HttpServletRequest request,
+                               @RequestParam (value="state",required=false)Byte state,
+                               @RequestParam (value="current",required=false)Byte current,
+                               @RequestParam (value="modifyTime",required=false) Date modifyTime,
+                               @RequestParam (value="modifier",required=false)String modifier,
+                               @RequestParam (value="modifyContent",required=false)String modifyContent){
+        FileController fileController=new FileController();
+        qsm Qsm=new qsm();
+        Qsm.setState(state);
+        Qsm.setCurrent(current);
+        Qsm.setModifyTime(modifyTime);
+        Qsm.setModifier(modifier);
+        Qsm.setModifyContent(modifyContent);
+        if(current-1==0)
+        {
+            qsm temp=QRepository.findByCurrent(current);
+            if(temp!=null){
+                temp.setCurrent((byte) 0);
+                QRepository.save(temp);
+            }
+        }
+        QRepository.save(Qsm);
+        Qsm.setFileName(Qsm.getId()+".pdf");
+        Qsm.setFileId(Qsm.getId());
+        QRepository.save(Qsm);
+
+        return  fileController.upload(file,request,Qsm.getFileName(),Qsm.getDir());
+    }
+
+    /*@RequestMapping(path="addOneFile",method= RequestMethod.POST)
     @ResponseBody
     public Response addOneFile(@RequestParam("file") MultipartFile file, HttpServletRequest request){
         FileController fileController=new FileController();
@@ -63,7 +102,7 @@ public class qsmController {
         temp.setFlag(0);
         QRepository.save(temp);
         return  fileController.upload(file,request,temp.getFileName(),temp.getDir());
-    }
+    }*/
     @RequestMapping(value="/getCurrent",method=RequestMethod.GET)
     @ResponseBody
     public Response getOne(){

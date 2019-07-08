@@ -6,11 +6,22 @@
     <text class="search-btn" bindtap="cancelSearch">取消</text>
   -->
     <van-cell-group>
+      <van-field  label="样品编号" value='{{sampleId}}' disabled input-align="right"/>
       <van-field  label="申报单位名称" value='{{mess.applicationUnit}}' disabled input-align="right"/>
       <van-field  label="版本号" value='{{mess.version}}' disabled input-align="right"/>
       <van-field  label="合同登记编号" value='{{mess.contractId}}' disabled input-align="right"/>
       <van-field  label="检测类型" value='{{mess.testType}}' disabled input-align="right"/>
       <van-field  label="电子媒介" value='{{mess.electronicMedia}}' disabled input-align="right"/>
+      <van-collapse value="{{ activeNames }}" bind:change="onChange">
+        <view wx:if="{{true}}">
+        <van-collapse-item title="提交材料与类型" name="1">
+          <view wx:for="{{mess.data}}" wx:for-item="item" wx:key="unique">
+            <view>{{array[item.materialId]}}: {{array1[item.materialType]}}</view>
+          </view>
+        </van-collapse-item>
+        </view>
+      </van-collapse>
+      <!-->
       <van-cell-group>
         <view wx:for="{{mess.materialList}}"wx:key="{{index}}">
           <van-cell title="{{array[mess.materialList[index].materialId]}}" >
@@ -20,7 +31,7 @@
             </view>
           </van-cell>
         </view>
-      </van-cell-group>
+      </van-cell-group>-->
       <van-field  label="软件类型" value='{{mess.softwareType}}' disabled input-align="right"/>
       <van-field  label="接收单位名称" value='{{mess.receiveUnit}}' disabled input-align="right"/>
       <van-field  label="接收时间" value='{{mess.receiveDate}}' disabled input-align="right"/>

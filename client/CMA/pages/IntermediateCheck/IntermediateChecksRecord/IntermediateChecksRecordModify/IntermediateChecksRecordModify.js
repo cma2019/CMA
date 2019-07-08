@@ -41,16 +41,16 @@ Page({
       console.log('record modify success')
       if(res.code == 200){
         this.setData({
-          planId: res.data[0].planId,
-          object: res.data[0].object,
-          checkDate: res.data[0].checkDate,
-          processRecord: res.data[0].processRecord,
-          processRecordPerson: res.data[0].processRecordPerson,
-          processRecordDate: res.data[0].processRecordDate,
-          resultRecord: res.data[0].resultRecord,
-          resultRecordPerson: res.data[0].resultRecordPerson,
-          resultRecordDate: res.data[0].resultRecordDate,
-          note: res.data[0].note
+          planId: res.data.planId,
+          object: res.data.object,
+          checkDate: res.data.checkDate,
+          processRecord: res.data.processRecord,
+          processRecordPerson: res.data.processRecordPerson,
+          processRecordDate: res.data.processRecordDate,
+          resultRecord: res.data.resultRecord,
+          resultRecordPerson: res.data.resultRecordPerson,
+          resultRecordDate: res.data.resultRecordDate,
+          note: res.data.note
         })
       }else{
         wx.showToast({

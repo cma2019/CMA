@@ -14,6 +14,7 @@
       <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
         <van-cell value="详情" bindtap='gotoOne' id='{{item.sampleId}}' is-link>
           <view slot="title">
+            <view>样品编号:{{item.sampleId}} </view>
             <view>样品名称:{{item.sampleName}}  </view>
             <view>申报单位名称:{{item.applicationUnit}}</view>
             <view>版本号:{{item.version}}</view>

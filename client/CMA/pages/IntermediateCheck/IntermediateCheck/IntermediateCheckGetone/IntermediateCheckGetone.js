@@ -64,12 +64,20 @@ Page({
       url: '../IntermediateCheckModify/IntermediateCheckModify?id=' + target
     })
   },
+  addRecord(e) {
+    console.log(e)
+    let target = this.data.planId
+    console.log(target)
+    wx.navigateTo({
+      url: '../../IntermediateChecksRecord/IntermediateChecksRecordAddone/IntermediateChecksRecordAddone?id=' + target
+    })
+  },
   getRecord(e) {
     console.log(e)
     let target = this.data.planId
     console.log(target)
     wx.navigateTo({
-      url: '../IntermediateCheckModify/IntermediateCheckModify?id=' + target
+      url: '../../IntermediateChecksRecord/IntermediateChecksRecordGetonePlan/IntermediateChecksRecordGetonePlan?id=' + target
     })
   },
   deleteData(e){

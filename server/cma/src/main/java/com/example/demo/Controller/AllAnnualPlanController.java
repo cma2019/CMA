@@ -30,12 +30,8 @@ public class AllAnnualPlanController {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        allAnnualPlan.setApprover("");
-        try {
-            allAnnualPlan.setApproveDate(sdf.parse("2000-1-1"));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        allAnnualPlan.setApprover(null);
+        allAnnualPlan.setApproveDate(null);
         JSONObject json=new JSONObject();
         List<AllAnnualPlan> list=allAnnualPlanRepository.findAll();
         for(int i=0;i<list.size();i++){

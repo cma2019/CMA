@@ -21,7 +21,7 @@
       <van-field 
         name="result"
         label="培训结果"
-        placeholder="培训结果"
+        placeholder="合格或不合格"
         required
         clearable
       />
