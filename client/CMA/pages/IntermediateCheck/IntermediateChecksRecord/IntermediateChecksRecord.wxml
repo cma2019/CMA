@@ -13,4 +13,3 @@
   </view>
 </van-cell-group>
 </view>
-<van-button type="info" size="small" bindtap="gotoAdd">添加期间核查记录</van-button>

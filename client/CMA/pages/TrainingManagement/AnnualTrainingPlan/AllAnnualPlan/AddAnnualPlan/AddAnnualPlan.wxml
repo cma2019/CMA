@@ -6,6 +6,7 @@
         label="年份"
         placeholder="年份" 
         required
+        type="number"
         clearable
       />
       <van-field 

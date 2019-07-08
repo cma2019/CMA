@@ -1,7 +1,8 @@
 <view>
  <form bindsubmit='SelfInspectionDocumentModifyOne'>
     <van-cell-group title="SelfInspectionDocumentModifyOne">
-      <van-field v-model="fileName"  name="fileName" required clearable label="文档名称" placeholder="文档名称"/>
+      <van-field  label="自查年份" value='{{year}}' disabled input-align="right"/>
+      <van-field v-model="fileName"  name="fileName" clearable label="文档名称" placeholder="{{fileName}}"/>
     </van-cell-group>
     <view>
       <button class="van-button--info" formType="submit">确定</button>

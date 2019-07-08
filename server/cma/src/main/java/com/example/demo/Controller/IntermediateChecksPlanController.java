@@ -43,7 +43,7 @@ public class IntermediateChecksPlanController {
         IntermediateChecksPlan newPlan=new IntermediateChecksPlan();
         newPlan.setObject(object);
         newPlan.setContent(content);
-        newPlan.setDate(checkDate);
+        newPlan.setCheckDate(checkDate);
         newPlan.setPersonInCharge(personInCharge);
         newPlan.setState(0);
         IntermediateChecksPlanRepository.save(newPlan);
@@ -156,10 +156,10 @@ public class IntermediateChecksPlanController {
             JSONObject data=new JSONObject(new LinkedHashMap());
             JSONArray array=new JSONArray();
             try{
-                data.put("planId",plan.getID());
+                data.put("planId",plan.getPlanId());
                 data.put("object",plan.getObject());
                 data.put("content",plan.getContent());
-                data.put("checkDate",plan.getDate());
+                data.put("checkDate",plan.getCheckDate());
                 data.put("personInCharge",plan.getPersonInCharge());
                 data.put("state",plan.getState());
             }catch (JSONException e){
@@ -210,10 +210,10 @@ public class IntermediateChecksPlanController {
             for(IntermediateChecksPlan plan:planList){
                 JSONObject singlePlan=new JSONObject();
                 //JSONObject array=new JSONObject();
-                singlePlan.put("planId",plan.getID());
+                singlePlan.put("planId",plan.getPlanId());
                 singlePlan.put("object",plan.getObject());
                 singlePlan.put("content",plan.getContent());
-                singlePlan.put("checkDate",plan.getDate());
+                singlePlan.put("checkDate",plan.getCheckDate());
                 singlePlan.put("personInCharge",plan.getPersonInCharge());
                 singlePlan.put("state",plan.getState());
                 array.put(singlePlan);

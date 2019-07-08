@@ -36,7 +36,7 @@ public class CapacityVerificationPlanController {
     @GetMapping(path="/getAll")
     public @ResponseBody JSONObject getAllPlan() throws JSONException {
         JSONObject json=new JSONObject(new LinkedHashMap());
-        if(CapacityVerificationPlanRepository.findAll()==null)
+        /*if(CapacityVerificationPlanRepository.findAll()==null)
         {
             try{
                 json.put("code",500);
@@ -46,7 +46,7 @@ public class CapacityVerificationPlanController {
             }
         }
         else
-        {
+        {*/
             try{
                 json.put("code",200);
                 json.put("msg","获取成功");
@@ -74,7 +74,7 @@ public class CapacityVerificationPlanController {
 
             }
             json.put("data",array);*/
-        }
+        //}
         return json;
         /*response.setContentType("text/html;charset=utf-8");
         response.getWriter().write(json.toString());*/
@@ -121,6 +121,8 @@ public class CapacityVerificationPlanController {
         }
         else
         {
+            //TODO:删除分析文件,project下的Record
+            CapacityVerificationPlanRepository.deleteProject(planId);
             CapacityVerificationPlanRepository.deleteById(planId);
             try{
                 json.put("code",200);
@@ -136,7 +138,6 @@ public class CapacityVerificationPlanController {
     public @ResponseBody JSONObject modifyPlan(@RequestParam(value="id",required=false)Long planId,
                                          @RequestParam(value="name",required=false)String name,
                                          @RequestParam(value="organizer",required=false)String organizer,
-                                         @RequestParam(value="state",required=false)Long state,
                                          @RequestParam(value="year",required=false)String year,
                                          @RequestParam(value="note",required=false)String note){
         JSONObject json=new JSONObject(new LinkedHashMap());
@@ -152,7 +153,7 @@ public class CapacityVerificationPlanController {
         else
         {
 
-            CapacityVerificationPlanRepository.updateById(planId,name,organizer,state,year,note);
+            CapacityVerificationPlanRepository.updateById(planId,name,organizer,year,note);
             //content,checkDate,personInCharge,state
             //System.out.println("changed object");
             try{
@@ -251,6 +252,8 @@ public class CapacityVerificationPlanController {
             CapacityVerificationPlan temp=CapacityVerificationPlanRepository.findByPlanId(id);
             String name=temp.getAnalysis();
             System.out.println(name);
+            if(name==null)
+                return null;
             return  fileController.downloadFile(response,name,temp.getDir());
         }catch(Exception e){
             e.printStackTrace();

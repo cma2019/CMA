@@ -74,6 +74,7 @@ Page({
     }
     app.wxRequest(url, 'POST', data, (res) => {
       if (res.code == 200) {
+        let myid = this.data.planId
         console.log('delete successfully')
         wx.showToast({
           title: '删除成功',
@@ -81,8 +82,8 @@ Page({
           duration: 1000,
           success: function () {
             setTimeout(function () {
-              wx.navigateBack({
-                delta: 1
+              wx.navigateTo({
+                url: '../showProjects/showProjects?id='+myid,
               })
             }, 1000);
           }
@@ -107,8 +108,16 @@ Page({
     console.log("get projects")
     let target = this.data.projectId
     console.log(target)
-    wx.navigateTo({
-      url: '../../CapacityVerificationRecord/getRecordByProjectId/getRecordByProjectId?id=' + target
-    })
+    if(this.data.state == 1){
+      wx.navigateTo({
+        url: '../../CapacityVerificationRecord/getRecordByProjectId/getRecordByProjectId?id=' + target
+      })
+    }else{
+      wx.showToast({
+        title: '记录不存在',
+        image: '/icons/warning/warning.png',
+        duration: 1000
+      })
+    }
   }
 })

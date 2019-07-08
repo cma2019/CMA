@@ -75,7 +75,7 @@ Page({
 
   gotoAdd(e) {
     wx.navigateTo({
-      url: 'AddAnnualTrainingPlan/AddAnnualTrainingPlan',
+      url: 'AddAnnualTrainingPlan/AddAnnualTrainingPlan?id='+this.data.year,
     })
   },
 

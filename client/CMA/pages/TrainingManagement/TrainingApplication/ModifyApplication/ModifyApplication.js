@@ -80,14 +80,14 @@ Page({
       console.log(this.data.planId)
       let data = {
         //"id ":this.data.id,
-        "id": e.detail.value.id,
+        "id": this.data.id,
         "name": e.detail.value.name,
         "people": e.detail.value.people,
         "department": e.detail.value.department,
         "trainingUnit": e.detail.value.trainingUnit,
         "expense": e.detail.value.expense,
         "reason": e.detail.value.reason,
-        "createDate": e.detail.value.date,
+        "createDate": e.detail.value.createDate,
         
 
       };

@@ -6,7 +6,9 @@ Page({
   },
 
   onLoad: function (options) {
-    
+    this.setData({
+      year: options.id
+    })
   },
   onShow: function (options) {
 

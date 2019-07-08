@@ -3,11 +3,13 @@ const app = getApp()
 Page({
 
   data: {
-
+    "planId": "null",
   },
 
   onLoad: function (options) {
-
+    this.setData({
+      planId: options.id
+    })
   },
   gotologin(e) {
     wx.navigateBack({
@@ -49,7 +51,7 @@ Page({
     else {
       let url = app.globalData.url + 'IntermediateChecksRecord/addOne'
       let data = {
-        "planId": e.detail.value.planId,
+        "planId": this.data.planId,
         "object": e.detail.value.object,
         "checkDate": e.detail.value.checkDate,
         "processRecord": e.detail.value.processRecord,

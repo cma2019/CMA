@@ -46,7 +46,10 @@ Page({
               app.wxUploadFile(myurl, mypath, null, (res) => {
                 console.log("upload file success")
                 console.log(res)
-                if(res.code == 200){
+                var obj = JSON.parse(res);
+                console.log(obj)
+                console.log(obj.code)
+                if (obj.code == 200){
                   wx.showToast({
                     title: '上传成功',
                     image: '/icons/ok/ok.png',
@@ -54,7 +57,7 @@ Page({
                     success: function () {
                       setTimeout(function () {
                         wx.navigateBack({
-                          delta: 1
+                          delta:1
                         })
                       }, 1000);
                     }
@@ -79,7 +82,7 @@ Page({
               console.log("get file failed")
               console.log(err)
               wx.showToast({
-                title: '上传失败',
+                title: '上传取消',
                 image: '/icons/warning/warning.png',
                 duration: 1000
               })

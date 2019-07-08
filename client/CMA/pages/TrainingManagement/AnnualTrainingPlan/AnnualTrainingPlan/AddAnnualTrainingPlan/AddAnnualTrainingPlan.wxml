@@ -4,7 +4,8 @@
       <van-field 
         name="year"
         label="年份"
-        placeholder="年份" 
+        value="{{year}}"
+       readonly
         required
         clearable
       />
@@ -34,6 +35,7 @@
         label="培训课时"
         placeholder="培训课时" 
         required
+        type="number"
         clearable
       />
       <view class="section">

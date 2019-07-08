@@ -73,8 +73,12 @@ public class TrainingApplication {
     }
 
     public String getApproveDate() {
-        DateFormat df=DateFormat.getDateInstance();
-        return df.format(this.approveDate);
+        if(approveDate!=null) {
+            DateFormat df = DateFormat.getDateInstance();
+            return df.format(this.approveDate);
+        }
+        else
+            return null;
     }
 
     public void setName(String name) {

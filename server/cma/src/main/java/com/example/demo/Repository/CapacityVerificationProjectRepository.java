@@ -12,8 +12,9 @@ import java.util.Optional;
 
 @Transactional
 public interface CapacityVerificationProjectRepository extends JpaRepository<CapacityVerificationProject,Long>{
-    Optional<CapacityVerificationProject> findAllByPlanId(Long planId);
-    CapacityVerificationProject findByPlanId(Long planId);
+    List<CapacityVerificationProject> findAllByPlanId(Long planId);
+    Optional<CapacityVerificationProject> findByPlanId(Long planId);
+    List<CapacityVerificationProject> findAllByPlanIdAndState(Long planId,long state);
 
     @Modifying
 
@@ -28,4 +29,20 @@ public interface CapacityVerificationProjectRepository extends JpaRepository<Cap
                     @Param("method")String method,
                     @Param("state")Long state,
                     @Param("note") String note);
+
+    @Modifying
+
+    @Query(value="update Capacity_Verification_Plan set state = :state where plan_id=:planid",nativeQuery=true)
+    void updatePlanState(@Param("state")long state,
+                    @Param("planid")Long planid);
+
+    @Modifying
+
+    @Query(value="update Capacity_Verification_Project set state = :state where project_id=:projectid",nativeQuery=true)
+    void updateProjectState(@Param("projectid")Long projectid,
+                    @Param("state")Long state);
+
+    @Modifying
+    @Query(value="delete from Capacity_Verification_Record where project_id=:projectid",nativeQuery = true)
+    void deleteRecord(@Param("projectid")Long projectid);
 }

@@ -4,15 +4,27 @@
     <van-cell-group title="SampleIo_addone">
       <van-field wx:if="{{sampleNumber == null}}" v-model="sampleNumber" name="sampleNumber" required clearable label="样品编号" placeholder="样品编号" error-message="{{sampleNumberMessage}}" bind:change="sampleNumberChange"/>
       <van-field  wx:else label="样品编号" value='{{sampleNumber}}' disabled input-align="right"/>
-      
+           
       <van-field wx:if="{{sampleName == null}}" v-model="sampleName"  name="sampleName" required clearable label="样品名称" placeholder="样品名称" error-message="{{sampleNameMessage}}" bind:change="sampleNameChange"/>
       <van-field  wx:else label="样品名称" value='{{sampleName}}' disabled input-align="right"/>
 
-      <van-cell wx:if="{{sampleAmount == null}}" v-model="sampleAmount" name="sampleAmount" required clearable label="样品数量" placeholder="样品数量"/>
-      <van-field  wx:else label="样品数量" value='{{sampleAmount}}' disabled input-align="right"/>
+      <view wx:if="{{sampleAmount == null}}" >
+        <van-cell v-model="sampleAmount" name="sampleAmount" required title="样品数量"label="至少为1">
+           <van-stepper value="{{sampleAmount}}"  name="sampleAmount" integer min="1" step="1"/>
+        </van-cell>
+      </view>
+      <view wx:else>
+        <van-field label="样品数量" value='{{sampleAmount}}' disabled input-align="right"/>
+      </view>
 
-      <van-field wx:if="{{sampleState == null}}" v-model="sampleState"  name="sampleState" required clearable label="样品状态" placeholder="样品状态" />
-      <van-field  wx:else label="样品状态" value='{{sampleState}}' disabled input-align="right"/>
+      <view wx:if="{{sampleState == null}}" >
+        <van-cell v-model="sampleState" name="sampleState" required title="样品状态"label="0表示待处理，1表示在测，2表示测毕">
+           <van-stepper value="{{sampleState}}"  name="sampleState" integer min="0" max="2" step="1"/>
+        </van-cell>
+      </view>
+      <view wx:else>
+        <van-field label="样品状态" value='{{sampleState}}' disabled input-align="right"/>
+      </view>
 
       <van-field v-model="sender"  name="sender" required clearable label="送样人" placeholder="送样人姓名"error-message="{{senderMessage}}" bind:change="senderChange"/>
       <view wx:if="{{receiptId == 0}}">

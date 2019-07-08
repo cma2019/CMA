@@ -52,7 +52,7 @@
         clearable
       />
       <view class="section">
-        <picker name = 'date' mode='date' value='{{date}}' bindchange='bindDateChange'>
+        <picker name = 'createDate' mode='date' value='{{createDate}}' bindchange='bindDateChange'>
         <view class='picker'>
         <van-field 
         label="申请时间"

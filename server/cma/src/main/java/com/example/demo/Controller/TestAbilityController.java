@@ -104,7 +104,7 @@ public class TestAbilityController {
             fileController.deletefile(fileName, temp.getDir());
             //StandardManagementRepository.deleteById(fileId);
             System.out.println("delete success");
-
+            //TODO:改后缀名
             temp.setFileName(tempFileName);
             System.out.println(temp.getFileName());
             System.out.println(temp.getYear());

@@ -19,6 +19,7 @@
         name="id"
         label="被授权人编号"
         placeholder="被授权人编号" 
+        type="number"
         required
         clearable
       />

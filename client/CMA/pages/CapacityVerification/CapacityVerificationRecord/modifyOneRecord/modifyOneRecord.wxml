@@ -8,6 +8,8 @@
         placeholder="所属项目编号" 
         value='{{projectId}}'
         required
+        readonly
+        type = 'number'
         clearable
       />
       <picker name = 'date' mode='date' value='{{date}}' bindchange='bindDateChange'>
@@ -17,6 +19,7 @@
               label="执行时间"
               value='{{date}}'
               placeholder="执行时间" 
+              readonly
               required
               clearable
             />

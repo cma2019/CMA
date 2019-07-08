@@ -84,9 +84,26 @@ Page({
       "state": e.detail.value.state,
       "note": e.detail.value.note
     };
+    let thisstate = e.detail.value.state
     console.log(data)
     app.wxRequest(url, 'POST', data, (res) => {
-      if (res.code == 200) {
+      if (res.code == 300) {
+        console.log('modify successfully')
+        let thisid = this.data.id
+        wx.showToast({
+          title: '请输入记录信息',
+          image: '/icons/ok/ok.png',
+          duration: 1000,
+          success: function () {
+            setTimeout(function () {
+            let target = thisid
+             wx.navigateTo({
+               url: '../../CapacityVerificationRecord/addOneRecord/addOneRecord?id='+target,
+             })
+            }, 1000);
+          }
+        })
+      }else if(res.code == 200){
         console.log('modify successfully')
         wx.showToast({
           title: '修改成功',
@@ -95,7 +112,7 @@ Page({
           success: function () {
             setTimeout(function () {
               wx.navigateBack({
-                delta: 1
+                delta : 1
               })
             }, 1000);
           }

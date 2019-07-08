@@ -124,6 +124,7 @@ Page({
     let i = e.currentTarget.dataset.index
     let planId = this.data.info[i].planId
     let id = this.data.id
+    console.log("supervisionPlan发生了deleteOne事件，携带数据为",planId)
     const deleteoneRequest = wx.request({
       url: app.globalData.url + 'SupervisionPlan/deleteOne',
       method: 'POST',

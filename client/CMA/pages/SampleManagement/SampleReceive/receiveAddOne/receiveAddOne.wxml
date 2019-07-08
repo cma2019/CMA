@@ -5,11 +5,11 @@
 
       <van-field v-model="sampleName"  name="sampleName" required clearable label="样品名称" placeholder="样品名称" error-message="{{sampleNameMessage}}" bind:change="sampleNameChange"/>
 
-      <van-cell v-model="sampleAmount" name="sampleAmount" required title="样品数量">
+      <van-cell v-model="sampleAmount" name="sampleAmount" required title="样品数量"label="至少为1">
         <van-stepper value="{{sampleAmount}}"  name="sampleAmount" integer min="1" step="1"/>
       </van-cell>
 
-      <van-cell v-model="sampleState" name="sampleState" required title="样品状态">
+      <van-cell v-model="sampleState" name="sampleState" required title="样品状态"label="0表示待处理，1表示在测，2表示测毕">
         <van-stepper value="{{sampleState}}"  name="sampleState" integer min="0" max="2"step="1"/>
       </van-cell>
 

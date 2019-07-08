@@ -16,6 +16,7 @@
         value='{{situation}}'
         placeholder="1未通过，2已通过" 
         required
+        type="number"
         clearable
         
       />

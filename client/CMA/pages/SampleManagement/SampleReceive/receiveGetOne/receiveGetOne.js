@@ -8,6 +8,7 @@ Page({
     "sampleId": "null",
     "receiptId":"null",
     "info":{},
+    array:['待处理','在测','测毕'],
     tmp: [{
       "sampleId": 2,
       "sampleNumber": "20180602",
