@@ -78,6 +78,7 @@ public class IntermediateChecksPlanController {
         }
         else
         {
+            IntermediateChecksPlanRepository.deleteRecord(planId);
             IntermediateChecksPlanRepository.deleteById(planId);
             try{
                 json.put("code",200);

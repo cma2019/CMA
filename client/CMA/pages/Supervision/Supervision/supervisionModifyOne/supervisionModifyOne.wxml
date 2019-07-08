@@ -1,9 +1,8 @@
 <view>
  <form bindsubmit='Supervision_modifyone'>
     <van-cell-group title="Supervision_modifyone">
-      <van-field v-model="id" name="id" clearable label="标识编号"disabled placeholder="{{origindata.id}}" />
-
-      <van-field v-model="remark"  name="remark" clearable label="备注" placeholder="{{origindata.remark}}" rows="1" autosize />
+      <van-field  label="标识编号" value='{{id}}' disabled input-align="right"/>
+      <van-field v-model="remark"  name="remark" clearable label="备注" placeholder="{{remark}}" rows="1" autosize />
     </van-cell-group>
     <view>
       <button class="van-button--info" formType="submit">确定</button>

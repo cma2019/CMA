@@ -16,58 +16,87 @@ Page({
     this.setData({
       id:options.id
     })
-    console.log(this.data.id)
-    console.log("fsdgfd")
   },
   SupervisionPlan_addone:function(e){
-    console.log('SupervisionPlan发生了addone事件，携带数据为：', e.detail.value)
-    let id = this.data.id
-    wx.request({
-      url: app.globalData.url + 'SupervisionPlan/addOne',
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json'
-      },
-      data: {
-        "id":id,
+    if (e.detail.value.content == null || e.detail.value.object == null || e.detail.value.dateFrequency == null) {
+      wx.showToast({
+        title: '空白输入',
+        image: '/icons/warning/warning.png',
+        duration: 500,
+        success: function () {
+          setTimeout(function () {
+          }, 300)
+        }
+      })
+      console.log('空白输入')
+    }
+    else {
+      console.log('SupervisionPlan发生了addone事件，携带数据为：', e.detail.value)
+      let url = app.globalData.url + 'SupervisionPlan/addOne'
+      let id = this.data.id
+      let postdata = {
+        "id": id,
         "content": e.detail.value.content,
         "object": e.detail.value.object,
         "dateFrequency": e.detail.value.dateFrequency
-      },
-      success(res) {
-        console.log(res.data)
-        if (res.data.code == 200) {
+      }
+      app.wxRequest(url, 'POST', postdata, (res) => {
+        console.log(res)
+        if (res.code == 200) {
           wx.showToast({
-            title: '成功',
-            icon: 'none',
-            duration: 1500
+            title: '添加成功',
+            image: '/icons/ok/ok.png',
+            duration: 500,
+            success: function () {
+              setTimeout(function () {
+                wx.navigateTo({
+                  url: '/pages/Supervision/Supervision/supervisionGetOne/supervisionGetOne?id=' + id
+                })
+              }, 300)
+            }
           })
-          wx.navigateTo({
-            url: '/pages/Supervision/Supervision/supervisionGetOne/supervisionGetOne?id='+id
-          })
+          console.log("添加成功")
         }
-        else if(res.data.code == 513){
+        else if (res.code == 511) {
           wx.showToast({
-            title: '某项数据错误',
-            duration: 1500
+            title: '空白输入',
+            image: '/icons/warning/warning.png',
+            duration: 500,
+            success: function () {
+              setTimeout(function () {
+              }, 300)
+            }
           })
+          console.log("空白输入")
+        }
+        else if(res.code == 513){
+          wx.showToast({
+            title: '添加失败',
+            image: '/icons/warning/warning.png',
+            duration: 500,
+            success: function () {
+              setTimeout(function () {
+              }, 300)
+            }
+          })
+          console.log("某项数据错误")
         }
         else {
           wx.showToast({
             title: '添加失败',
-            duration: 1500
+            image: '/icons/warning/warning.png',
+            duration: 500,
+            success: function () {
+              setTimeout(function () {
+              }, 300)
+            }
           })
-          console.log('添加失败')
+          console.log("添加失败")
         }
-      },
-      fail(err) {
+      }, (err) => {
         console.log('fail addone')
-      },
-      complete(fin) {
-        console.log('final addone')
-      }
-    })
+      })
+    }
   },
   goback: function () {
     wx.navigateTo({
