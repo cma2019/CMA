@@ -36,7 +36,12 @@ Page({
   onLoad: function (options) {
     
   },
-
+  gotomenu(e) {
+    console.log('go back')
+    wx.switchTab({
+      url: '../../Management/Management',
+    })
+  },
   onShow: function (options){
     let url = app.globalData.url + 'IntermediateChecksRecord/getAll'
     let postdata = ''

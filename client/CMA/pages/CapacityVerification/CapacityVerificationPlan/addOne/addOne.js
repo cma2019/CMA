@@ -17,11 +17,22 @@ Page({
   },
 
   AddNewPlan(e) {
-    if (e.detail.value.object == "" ||
-      e.detail.value.date == "" ||
-      e.detail.value.content == "" ||
-      e.detail.value.personInCharge == "") {
+    console.log("plan")
+    console.log(e.detail)
+    if (e.detail.value.name == null ||
+      e.detail.value.organizer == null ||
+      e.detail.value.year == null ||
+      e.detail.value.note == null || 
+      e.detail.value.name == "" ||
+      e.detail.value.organizer == "" ||
+      e.detail.value.year == "" ||
+      e.detail.value.note == "") {
       console.log("message error")
+      wx.showToast({
+        title: '添加失败',
+        image: '/icons/warning/warning.png',
+        duration: 1000
+      })
     }
     else {
       let url = app.globalData.url + 'CapacityVerification/addOne'

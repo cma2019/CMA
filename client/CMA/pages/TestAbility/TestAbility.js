@@ -59,7 +59,12 @@ Page({
       url: 'addOne/addOne',
     })
   },
-
+  gotomenu(e) {
+    console.log('go back')
+    wx.switchTab({
+      url: '/pages/Management/Management',
+    })
+  },
   gotoOne(e) {
     console.log(e)
     let target = e.currentTarget.dataset.name
