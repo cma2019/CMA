@@ -5,7 +5,7 @@
       <van-field name="applicant" value="{{applicant}}" required clearable label="申请人" placeholder="申请人"></van-field>
     </view>
     <view class="section">
-      <picker name = 'applicationDate' mode='date' value='{{applicationDate}}' bindchange='bindDateChange'>
+      <picker readonly name = 'applicationDate' mode='date' value='{{applicationDate}}' bindchange='bindDateChange'>
           <view class='picker'>
             <van-field 
               name="applicationDate"
@@ -14,6 +14,7 @@
               placeholder="申请日期" 
               required
               clearable
+              readonly
             />
           </view>
       </picker> 
@@ -43,7 +44,7 @@
       <van-field name="auditor" value="{{auditor}}" required clearable label="审核人" placeholder="审核人"></van-field>
     </view>
     <view class="section">
-      <picker name = 'auditDate' mode='date' value='{{auditDate}}' bindchange='bindDateChange2'>
+      <picker readonly name = 'auditDate' mode='date' value='{{auditDate}}' bindchange='bindDateChange2'>
           <view class='picker'>
             <van-field 
               name="auditDate"
@@ -52,6 +53,7 @@
               placeholder="审核时间" 
               required
               clearable
+              readonly
             />
           </view>
       </picker> 

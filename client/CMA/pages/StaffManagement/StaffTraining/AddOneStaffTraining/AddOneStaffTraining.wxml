@@ -15,6 +15,7 @@
         label="培训项目名称"
         placeholder="培训项目名称" 
         required
+        type=""
         clearable
       />
       <view class="section">

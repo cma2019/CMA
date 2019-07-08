@@ -51,7 +51,7 @@ public class qsmController {
             QRepository.save(Qsm);
             Qsm.setFileName(Qsm.getId()+".pdf");
             Qsm.setFileId(Qsm.getId());
-            Qsm.setFlag(1);
+            //Qsm.setFlag(1);
             QRepository.save(Qsm);
             JSONObject ejson = JSONObject.parseObject(JSONObject.toJSONString(Qsm));
             response.data=ejson;

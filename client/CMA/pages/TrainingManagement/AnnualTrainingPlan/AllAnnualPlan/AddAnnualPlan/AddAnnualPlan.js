@@ -1,15 +1,35 @@
 const app = getApp()
+var util = require('../../../../../utils/util.js');
 Page({
 
   data: {
-
+    year: "",
+    select: [],
+    currentYear: ''
   },
 
   onLoad: function (options) {
-
+    var YEAR = util.formatYear(new Date())
+    this.setData({
+      currentYear: YEAR
+    })
+    console.log(this.data)
+    let select = this.data.select
+    for (let i = this.data.currentYear + 3; i >= 1990; --i) {
+      select.push(i)
+    }
+    this.setData({
+      select: select
+    })
   },
   onShow: function (options) {
 
+  },
+  bindyearChange(e) {
+    let year = this.data.select[e.detail.value]
+    this.setData({
+      year: year
+    })
   },
   bindDateChange1(e) {
     this.setData({

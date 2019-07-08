@@ -20,7 +20,7 @@
         name="gender"
         label="性别"
         value='{{gender}}'
-        placeholder="性别"
+        placeholder="男或女"
         clearable
       />
       <van-field 
