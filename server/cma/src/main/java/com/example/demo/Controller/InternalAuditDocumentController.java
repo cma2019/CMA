@@ -130,10 +130,11 @@ public class InternalAuditDocumentController {
         return js;
     }*/
     @PostMapping(path = "/addOneFile")
-    public @ResponseBody Response addOneFile(@RequestParam("file") MultipartFile file,
-                                             @RequestParam(value = "fileName",required = false) String fileName,
-                                             @RequestParam(value = "year",required = false) long year,
-                                             HttpServletRequest request)
+    public @ResponseBody
+    com.alibaba.fastjson.JSONObject addOneFile(@RequestParam("file") MultipartFile file,
+                                               @RequestParam(value = "fileName",required = false) String fileName,
+                                               @RequestParam(value = "year",required = false) long year,
+                                               HttpServletRequest request)
     {
         FileController fileController=new FileController();
         InternalAuditDocument iDoc=new InternalAuditDocument();
@@ -147,7 +148,12 @@ public class InternalAuditDocumentController {
         System.out.println(iDoc.getFileName());
         InternalAuditDocumentRepository.save(iDoc);
         //System.out.println(sDoc.getFileName());
-        return  fileController.upload(file,request,iDoc.getFileName(),iDoc.getDir());
+        Response res= fileController.upload(file,request,iDoc.getFileName(),iDoc.getDir());
+        com.alibaba.fastjson.JSONObject js=new com.alibaba.fastjson.JSONObject();
+        js.put("code",res.code);
+        js.put("msg",res.msg);
+        js.put("id",iDoc.getFileId());
+        return js;
     }
     @RequestMapping(path="/modifyOneFormData",method= RequestMethod.POST)
     public @ResponseBody JSONObject modifyOneFormData(@RequestParam(value = "fileName",required = false) String fileName,
