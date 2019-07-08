@@ -2,14 +2,19 @@
 <view>
   <form bindsubmit='ApplicationAdd'>
   <van-cell-group>
-      <van-field 
+    <!--  <van-field 
         name="year"
         label="年份"
         placeholder="年份" 
         required
         type="number"
         clearable
-      />
+      />-->
+       <picker name='year' value='{{year}}'bindchange='bindyearChange'range='{{select}}'>
+        <view class='picker'>
+          <van-field readonly name="select[year]" label="评审年份" value='{{year}}' placeholder="评审年份" required clearable />
+        </view>
+      </picker>
     </van-cell-group>
      <view>
       <button class='van-button--info'formType = 'submit'>年度培训计划</button>
