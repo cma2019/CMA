@@ -53,7 +53,6 @@ public class ExternalReviewDocumentCoontroller {
         ExternalReviewDocument externalReviewDocument=new ExternalReviewDocument();
         Response response=new Response();
         externalReviewDocument.setYear(year);
-        externalReviewDocument.setFlag(1);
         ERDRepository.save(externalReviewDocument);
         externalReviewDocument.setFileId(externalReviewDocument.getId());
         externalReviewDocument.setFileName(externalReviewDocument.getId()+".pdf");
@@ -76,7 +75,7 @@ public class ExternalReviewDocumentCoontroller {
         ERDRepository.save(externalReviewDocument);
         return  fileController.upload(file,request,externalReviewDocument.getFileName(),externalReviewDocument.getDir());
     }
-    @RequestMapping(path="/addOneFile",method = RequestMethod.POST)
+   @RequestMapping(path="/addOneFile",method = RequestMethod.POST)
     @ResponseBody
     public  Response addOneFile(@RequestParam("file") MultipartFile file, HttpServletRequest request){
 
