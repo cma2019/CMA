@@ -87,7 +87,7 @@ public void testGetOne() throws Exception {
     JSONObject jsonObject= JSON.parseObject(res);
     int code= (int) jsonObject.get("code");
     System.out.println(code);
-    Assert.assertEquals(200,code);
+    Assert.assertEquals(210,code);
 } 
 
 /** 
@@ -110,7 +110,7 @@ public void testAddOne() throws Exception {
     JSONObject jsonObject= JSON.parseObject(res);
     int code= (int) jsonObject.get("code");
     System.out.println(code);
-    Assert.assertEquals(200,code);
+    Assert.assertEquals(210,code);
 } 
 
 /** 
@@ -133,7 +133,7 @@ public void testDeleteOne() throws Exception {
     JSONObject jsonObject= JSON.parseObject(res);
     int code= (int) jsonObject.get("code");
     System.out.println(code);
-    Assert.assertEquals(200,code);
+    Assert.assertEquals(210,code);
 } 
 
 /** 
@@ -156,7 +156,7 @@ public void testModifyOne() throws Exception {
     JSONObject jsonObject= JSON.parseObject(res);
     int code= (int) jsonObject.get("code");
     System.out.println(code);
-    Assert.assertEquals(200,code);
+    Assert.assertEquals(210,code);
 } 
 
 /** 
@@ -167,7 +167,7 @@ public void testModifyOne() throws Exception {
 @Test
 public void testGetallbystaff() throws Exception { 
 //TODO: Test goes here...
-    String url="/cma/StaffAuthorization/getByAllStaff?id=25";
+    String url="/cma/StaffAuthorization/GetAllByStaff?id=25";
     MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(url))
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andDo(MockMvcResultHandlers.print())
