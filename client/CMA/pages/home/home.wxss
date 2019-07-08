@@ -2,3 +2,6 @@
 .container{
   text-align: center;
 }
+.imgClass{
+  width: 100vw;
+}

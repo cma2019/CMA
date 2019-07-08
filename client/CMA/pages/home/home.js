@@ -6,7 +6,7 @@ Page({
    */
   data: {
     src:'../../images/home.jpg',
-    mode:'scaleToFill'
+    mode:'aspectFill'
   },
 
   /**

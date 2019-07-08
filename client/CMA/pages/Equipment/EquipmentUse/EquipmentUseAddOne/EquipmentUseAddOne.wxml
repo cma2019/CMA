@@ -5,7 +5,7 @@
       <van-field name="equipmentId" value="{{equipmentId}}" required clearable label="机身编号" placeholder="机身编号" type='number' maxlength="8"></van-field>
     </view>
     <view class="section">
-      <picker name = 'useDate' mode='date' value='{{useDate}}' bindchange='bindDateChange'>
+      <picker readonly name = 'useDate' mode='date' value='{{useDate}}' bindchange='bindDateChange'>
           <view class='picker'>
             <van-field 
               name="useDate"
@@ -14,12 +14,13 @@
               placeholder="使用日期" 
               required
               clearable
+              readonly
             />
           </view>
       </picker> 
     </view>
     <view class="section">
-      <picker name = 'openDate' mode='date' value='{{openDate}}' bindchange='bindDateChange2'>
+      <picker readonly name = 'openDate' mode='date' value='{{openDate}}' bindchange='bindDateChange2'>
           <view class='picker'>
             <van-field 
               name="openDate"
@@ -28,12 +29,13 @@
               placeholder="开机时间" 
               required
               clearable
+              readonly
             />
           </view>
       </picker> 
     </view>
     <view class="section">
-      <picker name = 'closeDate' mode='date' value='{{closeDate}}' bindchange='bindDateChange3'>
+      <picker readonly name = 'closeDate' mode='date' value='{{closeDate}}' bindchange='bindDateChange3'>
           <view class='picker'>
             <van-field 
               name="closeDate"
@@ -42,6 +44,7 @@
               placeholder="关机时间" 
               required
               clearable
+              readonly
             />
           </view>
       </picker> 

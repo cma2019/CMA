@@ -26,7 +26,7 @@
       </van-cell>
     </view>
     <view class="section">
-      <picker name = 'modifyTime' mode='date' value='{{modifyTime}}' bindchange='bindDateChange'>
+      <picker readonly name = 'modifyTime' mode='date' value='{{modifyTime}}' bindchange='bindDateChange'>
           <view class='picker'>
             <van-field 
               name="modifyTime"
@@ -35,6 +35,7 @@
               placeholder="最后修改时间" 
               required
               clearable
+              readonly
             />
           </view>
       </picker> 

@@ -16,7 +16,7 @@ Page({
       authorizerDate: e.detail.value
     })
   },
-
+/* add*/
   ApplicationAdd: function (e) {
     {
       console.log('form发生了add事件，携带数据为：', e.detail.value)

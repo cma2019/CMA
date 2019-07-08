@@ -5,7 +5,7 @@
       <van-field name="year" value="{{year}}" required clearable label="外审年份" placeholder="外审年份" type='number' maxlength="4"></van-field>
     </view>
     <view class="section">
-      <picker name = 'date' mode='date' value='{{date}}' bindchange='bindDateChange'>
+      <picker readonly name = 'date' mode='date' value='{{date}}' bindchange='bindDateChange'>
           <view class='picker'>
             <van-field 
               name="date"
@@ -14,6 +14,7 @@
               placeholder="外审管理日期" 
               required
               clearable
+              readonly
             />
           </view>
       </picker> 
