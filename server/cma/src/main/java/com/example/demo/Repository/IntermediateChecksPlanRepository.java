@@ -16,11 +16,12 @@ public interface IntermediateChecksPlanRepository extends JpaRepository<Intermed
     @Query(value="update Intermediate_Checks_Plan set object = :object,content = :content,check_Date = :checkDate,person_In_Charge = :personInCharge,state = :state where planid=:planid",nativeQuery=true)
     void updateById(@Param("planid")Long id,@Param("object")String object,@Param("content")String content,@Param("checkDate") Date checkDate,@Param("personInCharge")String personInCharge,@Param("state")byte state);
 
-   /* @Query(value="update Intermediate_Checks_Plan set content = :content where planid=:planid",nativeQuery=true)
-    void updatecontentById(@Param("planid")Long id,@Param("content")String content);
+    @Modifying
+    @Query(value="delete from Intermediate_Checks_Record where plan_id=:planid",nativeQuery = true)
+    void deleteRecord(@Param("planid")Long planid);
 
 
-    @Query(value="update Intermediate_Checks_Plan set checkDate = :checkDate where planid=:planid",nativeQuery=true)
+    /*@Query(value="update Intermediate_Checks_Plan set checkDate = :checkDate where planid=:planid",nativeQuery=true)
     void updateDateById(@Param("planid")Long id,@Param("checkDate") Date checkDate);
 
 
