@@ -1,4 +1,4 @@
 <!--pages/home/home.wxml-->
-<image mode="{{mode}}" src="{{src}}"></image>
-<view class='container'>Welcome to CMA-wechat</view>
+<image class="imgClass" mode="{{mode}}" src="{{src}}"></image>
+<view class='container'>欢迎使用CMA微信小程序</view>
 
