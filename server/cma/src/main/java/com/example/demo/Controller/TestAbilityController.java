@@ -86,7 +86,7 @@ public class TestAbilityController {
     public @ResponseBody Response modifyAbilityFile(@RequestParam(value="file") MultipartFile file, HttpServletRequest request){
         Response response=new Response();
         FileController fileController=new FileController();
-        if(TestAbilityRepository.findById(tempYear)==null)
+        if(!TestAbilityRepository.findById(tempYear).isPresent())
         {
             response.code=500;
             response.msg="不存在的文件";
@@ -105,6 +105,8 @@ public class TestAbilityController {
             //StandardManagementRepository.deleteById(fileId);
             System.out.println("delete success");
             //TODO:改后缀名
+            //String suffix = fileName.substring(fileName.lastIndexOf(".") + 1);
+
             temp.setFileName(tempFileName);
             System.out.println(temp.getFileName());
             System.out.println(temp.getYear());

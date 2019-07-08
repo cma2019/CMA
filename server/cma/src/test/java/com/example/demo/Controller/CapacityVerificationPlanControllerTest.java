@@ -178,6 +178,8 @@ public void testAddAnalysis() throws Exception {
             .isOk()).andReturn();
     String res=mvcResult.getResponse().getContentAsString();
     System.out.println(res);
+    int code = Integer.parseInt(res.substring(8, 11));
+    Assert.assertEquals(200, code);
 }
 
 /** 
