@@ -5,7 +5,7 @@
       <van-field name="equipmentId" value="{{equipmentId}}" required clearable label="机身编号" placeholder="机身编号" type='number' maxlength="8"></van-field>
     </view>
     <view class="section">
-      <picker name = 'maintenanceDate' mode='date' value='{{maintenanceDate}}' bindchange='bindDateChange'>
+      <picker readonly name = 'maintenanceDate' mode='date' value='{{maintenanceDate}}' bindchange='bindDateChange'>
           <view class='picker'>
             <van-field 
               name="maintenanceDate"
@@ -14,6 +14,7 @@
               placeholder="记录日期" 
               required
               clearable
+              readonly
             />
           </view>
       </picker> 

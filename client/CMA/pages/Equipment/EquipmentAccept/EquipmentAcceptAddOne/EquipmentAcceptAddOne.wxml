@@ -16,7 +16,7 @@
       <van-field name="recipient" value="{{recipient}}" required clearable label="接收人" placeholder="接收人"></van-field>
     </view>
     <view class="section">
-      <picker name = 'receiveDate' mode='date' value='{{receiveDate}}' bindchange='bindDateChange'>
+      <picker readonly name = 'receiveDate' mode='date' value='{{receiveDate}}' bindchange='bindDateChange'>
           <view class='picker'>
             <van-field 
               name="receiveDate"
@@ -25,6 +25,7 @@
               placeholder="接收日期" 
               required
               clearable
+              readonly
             />
           </view>
       </picker> 
@@ -39,7 +40,7 @@
       <van-field name="acceptancePerson" value="{{acceptancePerson}}" required clearable label="验收人" placeholder="验收人"></van-field>
     </view>
     <view class="section">
-      <picker name = 'acceptanceDate' mode='date' value='{{acceptanceDate}}' bindchange='bindDateChange2'>
+      <picker readonly name = 'acceptanceDate' mode='date' value='{{acceptanceDate}}' bindchange='bindDateChange2'>
           <view class='picker'>
             <van-field 
               name="acceptanceDate"
@@ -48,6 +49,7 @@
               placeholder="验收日期" 
               required
               clearable
+              readonly
             />
           </view>
       </picker>
