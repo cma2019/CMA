@@ -36,8 +36,10 @@ Page({
       date: e.detail.value
     })
   },
+  //添加
   StaffAdd: function (e) {
     var regNum = new RegExp('[a-zA-Z]', 'g');
+    //空白输入判断
     if (e.detail.value.year == "" ||
       e.detail.value.date == "") {
       wx.showToast({
@@ -48,6 +50,7 @@ Page({
       })
       console.log('错误(空白输入)')
     } 
+    //年份必须是数字
     else if (regNum.exec(e.detail.value.year) != null) {
 
       wx.showToast({
@@ -66,6 +69,7 @@ Page({
       }
       console.log(url)
       console.log(data)
+      //上传数据
       app.wxRequest(url, 'POST', data, (res) => {
         console.log('send intermediate check message successfully')
         console.log(res)
@@ -81,6 +85,7 @@ Page({
           })
         }
         else{
+          //上传成功，打印信息
         wx.showToast({
           title: '成功',
           //icon: 'success',
