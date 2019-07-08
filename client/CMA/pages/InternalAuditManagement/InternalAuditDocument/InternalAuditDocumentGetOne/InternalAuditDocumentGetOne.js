@@ -13,9 +13,26 @@ Page({
     var myurl = app.globalData.url + 'InternalAuditManagement/deleteOneFile?fileId=' + that.data.detail.fileId
     app.wxRequest(myurl, 'POST', null, (res) => {
       console.log(res)
-      console.log("aaaaaaaaaaaaa")
+      wx.showToast({
+        title: '删除成功',
+        image: '/icons/ok/ok.png',
+        duration: 500,
+        success: function () {
+          setTimeout(function () {
+          }, 500)
+        }
+      })
     }, (err) => {
       console.log(err)
+      wx.showToast({
+        title: '删除失败',
+        image: '/icons/warning/warning.png',
+        duration: 500,
+        success: function () {
+          setTimeout(function () {
+          }, 500)
+        }
+      })
     })
     wx.redirectTo({
       url: '/pages/InternalAuditManagement/InternalAuditDocument/InternalAuditDocument?id=' + that.data.detail.year
@@ -36,15 +53,24 @@ Page({
           wx.showToast({
             title: '下载成功',
             image: '/icons/ok/ok.png',
-            duration: 2000,
+            duration: 500,
             success: function () {
               setTimeout(function () {
-              }, 2000)
+              }, 500)
             }
           })
         },
         fail: function (err) {
           console.log(err)
+          wx.showToast({
+            title: '请重新下载',
+            image: '/icons/ok/ok.png',
+            duration: 500,
+            success: function () {
+              setTimeout(function () {
+              }, 500)
+            }
+          })
           wx.getSavedFileList({
             success:function(res){
               if(res.fileList.length > 0){
