@@ -9,7 +9,7 @@ Page({
     activeNames: ['0'],
     username2: '',
     admin1: "admin",
-    mess: []
+    mess: [],
   },
 
   onChange(event) {
