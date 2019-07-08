@@ -9,6 +9,7 @@
         type='number'
         placeholder="期间核查计划编号" 
         required
+        readonly
         clearable
       />
       <van-field 

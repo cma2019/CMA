@@ -73,17 +73,31 @@ Page({
   },
   capacityrecordmodify: function (e) {
     console.log('modify projects')
-    /*
-    if(e.detail.value.object ==""||e.detail.value.content==""||
-       e.detail.value.date == ""||e.detail.value.personInCharge==""||e.detail.value.state==""){
-        wx.showToast({
-          title: 'wrong message',
-          duration: 2000
+    if (e.detail.value.date == null ||
+      e.detail.value.methodId == null ||
+      e.detail.value.equipmentName == null ||
+      e.detail.value.equipmentId == null ||
+      e.detail.value.experimenter == null ||
+      e.detail.value.result == null ||
+      e.detail.value.resultDeal == null ||
+      e.detail.value.note == null ||
+      e.detail.value.date == "" ||
+      e.detail.value.methodId == "" ||
+      e.detail.value.equipmentName == "" ||
+      e.detail.value.equipmentId == "" ||
+      e.detail.value.experimenter == "" ||
+      e.detail.value.result == "" ||
+      e.detail.value.resultDeal == "" ||
+      e.detail.value.note == "") {
+      console.log("message error")
+      wx.showToast({
+        title: '修改失败',
+        image: '/icons/warning/warning.png',
+        duration: 1000
       })
-      console.log('wrong message')
     }
     else{
-    */
+    
     console.log('modify，携带数据为：', e.detail.value)
     console.log('modify，携带数据为：', e.detail.value.object)
 
@@ -134,7 +148,7 @@ Page({
       })
     })
   }
-  //}
+  }
 })
 
 

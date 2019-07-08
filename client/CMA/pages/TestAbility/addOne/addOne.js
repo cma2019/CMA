@@ -20,11 +20,16 @@ Page({
     })
   },
   AddOneTestAbility(e) {
-    if (e.detail.value.year == "" ||
-      e.detail.value.fileName == ""){
+    if (e.detail.value.year == null ||
+      e.detail.value.fileName == null ||
+      e.detail.value.year == "" ||
+      e.detail.value.fileName == "") {
       console.log("message error")
-      console.log(e.detail.value.year)
-      console.log(e.detail.value.fileName)
+      wx.showToast({
+        title: '添加失败',
+        image: '/icons/warning/warning.png',
+        duration: 1000
+      })
     }
     else {
       let url = app.globalData.url + 'TestAbility/addOne'

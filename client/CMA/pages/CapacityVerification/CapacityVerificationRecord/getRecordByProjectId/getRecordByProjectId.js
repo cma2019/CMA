@@ -25,7 +25,12 @@ Page({
       projectId: options.id
     })
   },
-
+  gotologin(e) {
+    let p = this.data.projectId
+    wx.navigateTo({
+      url: '../../CapacityVerificationProject/getOneProject/getOneProject?id=' + p,
+    })
+  },
   onShow: function (options) {
     let url = app.globalData.url + 'CapacityVerification/getRecordByProjectId'
     let postdata = {

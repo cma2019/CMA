@@ -9,7 +9,12 @@ Page({
   onLoad: function (options) {
 
   },
-
+  gotomenu(e) {
+    console.log('go back')
+    wx.switchTab({
+      url: '../../Management/Management',
+    })
+  },
   GetProjects(e) {
     console.log("get projects")
     let target = e.detail.value.planId

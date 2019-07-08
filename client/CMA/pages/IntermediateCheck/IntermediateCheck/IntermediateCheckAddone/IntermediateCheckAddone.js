@@ -21,15 +21,21 @@ Page({
   },
 
   InterCheckRegister(e) {
-    if (e.detail.value.object == "" ||
-      e.detail.value.date == "" ||
-      e.detail.value.content == "" ||
-      e.detail.value.personInCharge == "") {
+    console.log(e.detail)
+    if (e.detail.value.object == null ||
+      e.detail.value.content == null ||
+      e.detail.value.date == null ||
+      e.detail.value.personInCharge == null ||
+      e.detail.value.name == "" ||
+      e.detail.value.method == "" ||
+      e.detail.value.personInCharge == "" ||
+      e.detail.value.date == "") {
       console.log("message error")
-      console.log(e.detail.value.object)
-      console.log(e.detail.value.content)
-      console.log(e.detail.value.date)
-      console.log(e.detail.value.personInCharge)
+      wx.showToast({
+        title: '添加失败',
+        image: '/icons/warning/warning.png',
+        duration: 1000
+      })
     }
     else {
       let url = app.globalData.url + 'IntermediateChecksPlan/addOne'

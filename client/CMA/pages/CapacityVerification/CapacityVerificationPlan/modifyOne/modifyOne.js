@@ -23,7 +23,12 @@ Page({
       planId: options.id
     })
   },
-
+  gotologin(e) {
+    console.log('go back')
+    wx.navigateBack({
+      delta : 1
+    })
+  },
   onShow: function (options) {
     console.log(this.data.planId)
     let url = app.globalData.url + 'CapacityVerification/getOne'
@@ -60,17 +65,24 @@ Page({
   },
   capacityplanmodify: function (e) {
     console.log('modify modify')
-    /*
-    if(e.detail.value.object ==""||e.detail.value.content==""||
-       e.detail.value.date == ""||e.detail.value.personInCharge==""||e.detail.value.state==""){
-        wx.showToast({
-          title: 'wrong message',
-          duration: 2000
+    
+    if (e.detail.value.name == null ||
+      e.detail.value.organizer == null ||
+      e.detail.value.year == null ||
+      e.detail.value.note == null ||
+      e.detail.value.name == "" ||
+      e.detail.value.organizer == "" ||
+      e.detail.value.year == "" ||
+      e.detail.value.note == "") {
+      console.log("message error")
+      wx.showToast({
+        title: '修改失败',
+        image: '/icons/warning/warning.png',
+        duration: 1000
       })
-      console.log('wrong message')
     }
     else{
-    */
+    
     console.log('modify，携带数据为：', e.detail.value)
     console.log('modify，携带数据为：', e.detail.value.object)
 
@@ -117,7 +129,7 @@ Page({
       })
     })
   }
-  //}
+  }
 })
 
 

@@ -15,3 +15,4 @@
 <button class='van-button--info' bindtap="deleteAna">删除分析报告</button>
 <button class='van-button--info' bindtap="downloadAnnex">下载分析报告</button>
 <button class='van-button--info' bindtap="getProjects">相关能力验证项目</button>
+<button class='van-button--info' bindtap="goback">返回</button>

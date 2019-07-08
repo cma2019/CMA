@@ -38,15 +38,30 @@ Page({
   },
 
   InterCheckRegister(e) {
-    if (e.detail.value.object == "" ||
-      e.detail.value.date == "" ||
-      e.detail.value.content == "" ||
-      e.detail.value.personInCharge == "") {
+    if (e.detail.value.object == null ||
+      e.detail.value.checkDate == null ||
+      e.detail.value.processRecord == null ||
+      e.detail.value.processRecordPerson == null ||
+      e.detail.value.processRecordDate == null ||
+      e.detail.value.resultRecord == null ||
+      e.detail.value.resultRecordPerson == null ||
+      e.detail.value.resultRecordDate == null ||
+      e.detail.value.note == null ||
+      e.detail.value.object == "" ||
+      e.detail.value.checkDate == "" ||
+      e.detail.value.processRecord == "" ||
+      e.detail.value.processRecordPerson == "" ||
+      e.detail.value.processRecordDate == "" ||
+      e.detail.value.resultRecord == "" ||
+      e.detail.value.resultRecordPerson == "" ||
+      e.detail.value.resultRecordDate == "" ||
+      e.detail.value.note == "" ) {
       console.log("message error")
-      console.log(e.detail.value.object)
-      console.log(e.detail.value.content)
-      console.log(e.detail.value.date)
-      console.log(e.detail.value.personInCharge)
+      wx.showToast({
+        title: '添加失败',
+        image: '/icons/warning/warning.png',
+        duration: 1000
+      })
     }
     else {
       let url = app.globalData.url + 'IntermediateChecksRecord/addOne'

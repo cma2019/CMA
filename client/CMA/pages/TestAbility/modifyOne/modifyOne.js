@@ -31,13 +31,16 @@ Page({
   },
   modifyTestAbility: function (e) {
     console.log('modify modify')
-    if (e.detail.value.year == "" 
-    || e.detail.value.fileName == ""){
+    if (e.detail.value.year == null ||
+      e.detail.value.fileName == null ||
+      e.detail.value.year == "" ||
+      e.detail.value.fileName == "") {
+      console.log("message error")
       wx.showToast({
-        title: 'wrong message',
-        duration: 2000
+        title: '修改失败',
+        image: '/icons/warning/warning.png',
+        duration: 1000
       })
-      console.log('wrong message')
     }
     else {
       console.log('modify，携带数据为：', e.detail.value)

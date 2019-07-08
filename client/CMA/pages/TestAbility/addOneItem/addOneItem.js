@@ -13,13 +13,18 @@ Page({
   },
 
   AddoneTestItem(e) {
-    if (e.detail.value.productionName == "" ||
+    if (e.detail.value.productionName == null ||
+      e.detail.value.ability == null ||
+      e.detail.value.referrence == null ||
+      e.detail.value.productionName == "" ||
       e.detail.value.ability == "" ||
       e.detail.value.referrence == "") {
       console.log("message error")
-      console.log(e.detail.value.productionName)
-      console.log(e.detail.value.ability)
-      console.log(e.detail.value.referrence)
+      wx.showToast({
+        title: '添加失败',
+        image: '/icons/warning/warning.png',
+        duration: 1000
+      })
     }
     else {
       let url = app.globalData.url + 'TestAbility/addOneItem'
