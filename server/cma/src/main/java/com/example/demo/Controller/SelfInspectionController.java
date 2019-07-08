@@ -75,6 +75,13 @@ public class SelfInspectionController {
             js.put("data",data);
             return js;
         }
+        if(SelfInspectionRepository.findByName(name)!=null)
+        {
+            js.put("code",514);
+            js.put("msg","数据重复");
+            js.put("data",data);
+            return js;
+        }
         String year=date.substring(0,4);
         String rname=year+"年度第"+name+"次自查文档集";
         SelfInspection s=new SelfInspection();
@@ -127,8 +134,16 @@ public class SelfInspectionController {
     */
     @GetMapping(path = "/getAllFile")
     public @ResponseBody JSONObject getAllFile(@RequestParam(value = "id",required = false) String id){
-        List<SelfInspectionDocument> res= SelfInspectionDocumentRepository.findAllById(Long.parseLong(id));
         JSONObject js=new JSONObject();
+        try{
+            Long.parseLong(id);
+        }catch (NumberFormatException E){
+            js.put("code",511);
+            js.put("msg","缺少请求参数");
+            js.put("data",null);
+            return js;
+        }
+        List<SelfInspectionDocument> res= SelfInspectionDocumentRepository.findAllById(Long.parseLong(id));
         JSONArray data=new JSONArray();
         int code=200;
         String msg="成功";
