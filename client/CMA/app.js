@@ -1,14 +1,15 @@
 //app.js
 const CryptoJS = require("/utils/cryptojs.js")
 
+//全局app
 App({
-
+  //全局预设数据
   globalData: {
     userInfo: null,
     url: 'http://192.168.1.109:8004/cma/',
     username1: "admin"
   },
-
+  //wx.request的封装接口
   wxRequest(url, method, data, callback, errfun) {
     //data = CryptoJS.Encrypt(data)
     wx.request({
@@ -29,6 +30,7 @@ App({
       }
     })
   },
+  //wx.uploadFile的封装接口
   wxUploadFile(url, filePath, data, callback, errfun) {
     wx.uploadFile({
       url: url,
@@ -46,6 +48,7 @@ App({
       }
     })
   },
+  //wx.downloadFile的封装接口
   wxDownloadFile(url, callback, errfun) {
     wx.downloadFile({
       url: url,
