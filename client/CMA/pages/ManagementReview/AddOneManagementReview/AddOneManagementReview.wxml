@@ -2,14 +2,19 @@
 <view>
   <form bindsubmit='StaffAdd'>
    <van-cell-group>
-      <van-field 
+      <!--<van-field 
         name="year"
         label="评审年份"
         placeholder="评审年份" 
         required
         type="number"
         clearable
-      />
+      />-->
+       <picker name='year' value='{{year}}'bindchange='bindyearChange'range='{{select}}'>
+        <view class='picker'>
+          <van-field readonly name="select[year]" label="评审年份" value='{{year}}' placeholder="评审年份" required clearable />
+        </view>
+      </picker>
       <view class="section">
         <picker name = 'date' mode='date' value='{{date}}' bindchange='bindDateChange'>
           <view class='picker'>

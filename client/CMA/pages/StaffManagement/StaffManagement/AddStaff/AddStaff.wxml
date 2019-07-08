@@ -14,7 +14,7 @@
       <van-field 
         name="gender"
         label="性别"
-        placeholder="性别" 
+        placeholder="男或女"" 
         required
         clearable
         
