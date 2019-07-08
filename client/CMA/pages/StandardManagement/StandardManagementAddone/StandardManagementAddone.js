@@ -11,6 +11,7 @@ Page({
   },
 
   newEquipment: function (e) {
+    //上传文件需要调用choosemessagefile接口，该接口将会调用系统的文件选择器
     console.log('begin add')
     var myurl = app.globalData.url + 'StandardManagement/addOne';
     var mypath;
@@ -21,9 +22,13 @@ Page({
         console.log("get file success")
         console.log(res)
         mypath = res.tempFiles[0].path
+        //文件路径获取成功
         app.wxUploadFile(myurl, mypath, null, (res) => {
           console.log("upload file success")
           console.log(res)
+          //后端返回的不是json结构体而是json字符串
+          //此处调用JSON.parse将res转化为json字符串再读取code
+          //code==200时，显示添加成功，返回上一界面
           var obj = JSON.parse(res);
           console.log(obj)
           console.log(obj.code)
@@ -57,6 +62,8 @@ Page({
         })
       },
       fail: function (err) {
+        //在文件选择其中取消时，将会调用这一部分代码
+        //显示添加取消，保持在原界面不动
         console.log("get file failed")
         console.log(err)
         wx.showToast({
