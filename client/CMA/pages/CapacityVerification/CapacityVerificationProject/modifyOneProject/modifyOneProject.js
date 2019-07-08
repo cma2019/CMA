@@ -22,7 +22,11 @@ Page({
       id: options.id
     })
   },
-
+  gotologin(e){
+    wx.navigateBack({
+      delta:1
+    })
+  },
   onShow: function (options) {
     console.log("plan modify")
     console.log(this.data.planId)
