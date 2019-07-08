@@ -20,11 +20,14 @@ Page({
   },
 
   onLoad: function (options) {
+    //初始化数据来源于其他界面
     this.setData({
       recordId: options.id
     })
   },
   onShow: function (options){
+    //此处getone需要传递的是recordid
+    //这一界面来源于展示所有record的列表，调用getonebyrecordid接口
     let url = app.globalData.url + 'IntermediateChecksRecord/getOneByRecordId'
     let postdata = {
       "recordId": this.data.recordId
@@ -32,6 +35,7 @@ Page({
     app.wxRequest(url, 'GET', postdata, (res) => {
       console.log('record getone success')
       console.log(res)
+      //getone成功时，返回rescode==200，填写数据
       if(res.code == 200){
         this.setData({
           planId: res.data.planId,
@@ -63,6 +67,7 @@ Page({
   },
   
   modifyData(e) {
+    //modifyone传递recordid给modify界面
     console.log(e)
     let target = this.data.recordId
     console.log(target)
@@ -72,11 +77,14 @@ Page({
   },
 
   deleteData(e) {
+    //delete功能传递recordid
     let url = app.globalData.url + 'IntermediateChecksRecord/deleteOne'
     let data = {
       "recordId": this.data.recordId
     }
     app.wxRequest(url, 'POST', data, (res) => {
+      //删除成功时，返回rescode==200
+      //删除成功时，显示删除成功，返回上一界面
       if (res.code == 200) {
         console.log('delete successfully')
         wx.showToast({

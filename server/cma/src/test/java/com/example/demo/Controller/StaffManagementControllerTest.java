@@ -110,7 +110,7 @@ public void testGet() throws Exception {
     JSONObject jsonObject= JSON.parseObject(res);
     int code= (int) jsonObject.get("code");
     System.out.println(code);
-    Assert.assertEquals(200,code);
+    Assert.assertEquals(210,code);
 } 
 
 /** 
@@ -133,7 +133,7 @@ public void testDeleteOne() throws Exception {
     JSONObject jsonObject= JSON.parseObject(res);
     int code= (int) jsonObject.get("code");
     System.out.println(code);
-    Assert.assertEquals(200,code);
+    Assert.assertEquals(210,code);
 } 
 
 /** 
@@ -156,7 +156,7 @@ public void testModifyOne() throws Exception {
     JSONObject jsonObject= JSON.parseObject(res);
     int code= (int) jsonObject.get("code");
     System.out.println(code);
-    Assert.assertEquals(200,code);
+    Assert.assertEquals(210,code);
 } 
 
 

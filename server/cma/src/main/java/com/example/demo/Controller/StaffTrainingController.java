@@ -132,6 +132,10 @@ public class StaffTrainingController {
         JSONObject json=new JSONObject();
         json.put("code",200);
         json.put("msg","成功");
+        if(staffTrainingRepository.existsByTrainingId(trainingId)==false){
+            json.put("data",null);
+            return json;
+        }
         List<StaffTraining> list=staffTrainingRepository.findAllByTrainingId(trainingId);
         json.put("data",list.get(0));
         return json;
