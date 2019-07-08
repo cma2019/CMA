@@ -13,7 +13,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log('InternalAudit发生了getAll事件，携带数据为：', options)
+    console.log('InternalAudit发生了getAll事件')
     let url = app.globalData.url + 'InternalAuditManagement/getAll'
     let postdata = ''
     app.wxRequest(url, 'GET', postdata, (res) => {
@@ -22,12 +22,14 @@ Page({
           mess: res.data,
           flag: 1
         })
+        console.log("InternalAudit-getAll成功")
       }
-      else {
+      else { //210
         this.setData({
           mess: null,
           flag: 0
         })
+        console.log("InternalAudit-getAll无有效信息")
       }
     }, (err) => {
       wx.showToast({
@@ -38,10 +40,7 @@ Page({
     })
   },
   gotoFile: function (e) {
-    console.log(e)
     let year = e.currentTarget.id
-    console.log(year)
-    console.log("fhsdjkhfk")
     wx.navigateTo({
       url: '/pages/InternalAuditManagement/InternalAuditDocument/InternalAuditDocument?id=' + year  
     })
@@ -59,45 +58,31 @@ Page({
   InternalAuditDelete: function (e) {
     let year = e.currentTarget.id
     console.log('InternalAudit发生了deleteOne事件，携带数据为：', year)
-    const deleteoneRequest = wx.request({
-      url: app.globalData.url + 'InternalAuditManagement/deleteOne',
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json'
-      },
-      data: {
-        "year": year
-      },
-      success(res) {
-        console.log(res)
-        if (res.data.code == 200) {
-          wx.showToast({
-            title: '删除成功',
-            image: '/icons/ok/ok.png',
-            duration: 1000
-          })
-          wx.navigateTo({
-            url: '/pages/InternalAuditManagement/InternalAudit/InternalAudit'
-          })
-        }
-        else {
-          wx.showToast({
-            title: '删除失败',
-            duration: 1500
-          })
-          console.log('删除失败')
-        }
-        wx.navigateBack({
-          delta: 1
+    let url = app.globalData.url + 'InternalAuditManagement/deleteOne'
+    let postdata = {
+      "year": year
+    }
+    app.wxRequest(url, 'POST', postdata, (res) => {
+      if (res.code == 200) {
+        wx.showToast({
+          title: '删除成功',
+          image: '/icons/ok/ok.png',
+          duration: 500
         })
-      },
-      fail(err) {
-        console.log('fail deleteone')
-      },
-      complete(fin) {
-        console.log('final deleteone')
       }
+      else {
+        wx.showToast({
+          title: '删除失败',
+          image: '/icons/warning/warning.png',
+          duration: 500
+        })
+        console.log('删除失败')
+      }
+    }, (err) => {
+      console.log('fail deleteone')
+    })
+    wx.redirectTo({
+      url: '/pages/InternalAuditManagement/InternalAudit/InternalAudit'
     })
   },
   /**
@@ -113,8 +98,6 @@ Page({
   onShow: function () {
     let url = app.globalData.url + 'InternalAuditManagement/getAll'
     let postdata = ''
-    console.log(url)
-    console.log(postdata)
     app.wxRequest(url, 'GET', postdata, (res) => {
       if (res.code == 200) {
         this.setData({

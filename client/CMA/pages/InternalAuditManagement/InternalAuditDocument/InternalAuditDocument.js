@@ -14,8 +14,6 @@ Page({
     const index = e.currentTarget.dataset.index
     console.log(index)
     let that = this.data.array
-    console.log(that[index])
-    console.log("456456465465465")
     wx.redirectTo({
       url: '/pages/InternalAuditManagement/InternalAuditDocument/InternalAuditDocumentGetOne/InternalAuditDocumentGetOne?year=' + this.data.year + "&fileId=" + that[index].fileId +"&file=" + that[index].file+"&fileName=" + that[index].fileName
     })
@@ -43,13 +41,19 @@ Page({
     var myurl1 = app.globalData.url + 'InternalAuditManagement/getAllFile?year=' + year
     app.wxRequest(myurl1, 'GET', null, (res) => {
       console.log(res)
-     // if(res.data.code == 200){
+      if(res.code == 200){
         that.setData({
           array: res.data,
           flag: 1
         })
-     // }
-      console.log(that.data)
+        console.log("InternalAudit-GetAllFile成功")
+      }
+      else{//210
+        that.setData({
+          array:[]
+        })
+        console.log("InternalAudit-GetAllFile无有效信息")
+      }
     }, (err) => {
       console.log(err)
     })

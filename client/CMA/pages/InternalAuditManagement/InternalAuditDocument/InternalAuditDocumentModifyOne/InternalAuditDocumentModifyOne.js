@@ -58,40 +58,30 @@ Page({
       },
       fail: function (err) {
         console.log("get file failed")
-        wx.request({
-          url: app.globalData.url + 'InternalAuditManagement/modifyOneFormData',
-          method: 'POST',
-          header: {
-            'content-type': 'application/x-www-form-urlencoded',
-            'Accept': 'application/json'
-          },
-          data: {
-            "year": year,
-            "fileId": fileId,
-            "fileName": e.detail.value.fileName
-          },
-          success(res) {
-            console.log(res.data)
-            console.log('success modifyonefileformdata')
-            wx.showToast({
-              title: '修改成功',
-              image: '/iconsok/ok.png',
-              duration: 1000,
-              success: function () {
-                setTimeout(function () {
-                }, 1000)
-              }
-            })
-            wx.redirectTo({
-              url: '/pages/InternalAuditManagement/InternalAuditDocument/InternalAuditDocument?id=' + year,
-            })
-          },
-          fail(err) {
-            console.log('fail modifyonefileformdata')
-          },
-          complete(fin) {
-            console.log('final modifyonefileformdata')
-          }
+        console.log("InternalAuditManagement发生了modifyOneFormData事件")
+        let url = app.globalData.url + 'InternalAuditManagement/modifyOneFormData'
+        let postdata = {
+          "year": year,
+          "fileId": fileId,
+          "fileName": e.detail.value.fileName
+        }
+        app.wxRequest(url, 'POST', postdata, (res) => {
+          console.log(res.data)
+          console.log('success modifyonefileformdata')
+          wx.showToast({
+            title: '修改成功',
+            image: '/iconsok/ok.png',
+            duration: 1000,
+            success: function () {
+              setTimeout(function () {
+              }, 1000)
+            }
+          })
+          wx.redirectTo({
+            url: '/pages/InternalAuditManagement/InternalAuditDocument/InternalAuditDocument?id=' + year,
+          })
+        }, (err) => {
+          console.log('fail modifyonefileformdata')
         })
       }
     })
