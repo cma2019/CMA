@@ -15,10 +15,10 @@ Page({
       wx.showToast({
         title: '文件名称为空',
         image: '/icons/warning/warning.png',
-        duration: 2000,
+        duration: 500,
         success: function () {
           setTimeout(function () {
-          }, 2000)
+          }, 500)
         }
       })
     }
@@ -38,10 +38,10 @@ Page({
             wx.showToast({
               title: '上传成功',
               image: '/icons/ok/ok.png',
-              duration: 2000,
+              duration: 500,
               success: function () {
                 setTimeout(function () {
-                }, 2000)
+                }, 500)
               }
             })
             wx.redirectTo({
@@ -49,10 +49,28 @@ Page({
             })
           }, (err) => {
             console.log(err)
+            wx.showToast({
+              title: '上传失败',
+              image: '/icons/warning/warning.png',
+              duration: 500,
+              success: function () {
+                setTimeout(function () {
+                }, 500)
+              }
+            })
           })
         },
         fail: function (err) {
           console.log("get file failed")
+          wx.showToast({
+            title: '未选择文件',
+            image: '/icons/warning/warning.png',
+            duration: 500,
+            success: function () {
+              setTimeout(function () {
+              }, 500)
+            }
+          })
         }
       })
     }

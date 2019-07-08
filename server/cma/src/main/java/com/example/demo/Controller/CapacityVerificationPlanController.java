@@ -122,6 +122,13 @@ public class CapacityVerificationPlanController {
         else
         {
             //TODO:删除分析文件,project下的Record
+            if(CapacityVerificationPlanRepository.findById(planId).get().getAnalysis()!=null){
+                FileController fileController=new FileController();
+                CapacityVerificationPlan temp=CapacityVerificationPlanRepository.findByPlanId(planId);
+                String fileName=temp.getAnalysis();
+                fileController.deletefile(fileName,temp.getDir());
+                CapacityVerificationPlanRepository.updateAnalysis(null,planId);
+            }
             CapacityVerificationPlanRepository.deleteProject(planId);
             CapacityVerificationPlanRepository.deleteById(planId);
             try{

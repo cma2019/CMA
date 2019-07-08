@@ -20,7 +20,7 @@ Page({
     console.log(postdata)
     app.wxRequest(url, 'GET', postdata, (res) => {
       console.log(res)
-      console.log(res.data)
+      //console.log(res.data)
       //console.log(res.data[0].id)
       this.setData({
         year: res.data.year,
@@ -29,23 +29,23 @@ Page({
         file: res.data.file
       })
     }, (err) => {
-      console.err('get one error')
+      //console.err('get one error')
     })
   },
   onShow :function()
   {
-    console.log('getone id')
-    console.log(this.data.id)
+    //console.log('getone id')
+    //console.log(this.data.id)
     let url = app.globalData.url + 'ManagementReview/getOne'
     let postdata = {
       "fileId": this.data.id
     }
-    console.log(url)
-    console.log(postdata)
+    //console.log(url)
+    //console.log(postdata)
     app.wxRequest(url, 'GET', postdata, (res) => {
-      console.log(res)
-      console.log(res.data)
-      //console.log(res.data[0].id)
+      //console.log(res)
+      //console.log(res.data)
+      ////console.log(res.data[0].id)
       this.setData({
         year: res.data.year,
         fileId: res.data.fileId,
@@ -53,40 +53,42 @@ Page({
         file: res.data.file
       })
     }, (err) => {
-      console.err('get one error')
+      //console.err('get one error')
     })
   },
   ModifyStaff(e) {
-    console.log(e)
+    //console.log(e)
     //let target = this.data.id
-    //console.log(target)
+    ////console.log(target)
     let url1 = app.globalData.url + 'ManagementReview/modifyOneFile?fileId=' + this.data.id
     /*let postdata1 = {
       "fileId": this.data.id
     }
-    console.log(postdata1)
+    //console.log(postdata1)
     app.wxRequest(url1, 'POST', postdata1, (res) => {
-      console.log(res)
-      console.log(res.data)
-      //console.log(res.data[0].id)
+      //console.log(res)
+      //console.log(res.data)
+      ////console.log(res.data[0].id)
     }, (err) => {
-      console.err('get one error')
+      //console.err('get one error')
     })*/
     
     wx.chooseMessageFile({
       count: 1,
       type: 'all',
       success: function (res) {
-        console.log("get file success")
-        console.log(res)
-        console.log(res.tempFiles)
-        console.log(res.tempFiles[0])
-        console.log(res.tempFiles[0].path)
+        //console.log("get file success")
+        //console.log(res)
+        //console.log(res.tempFiles)
+        //console.log(res.tempFiles[0])
+        //console.log(res.tempFiles[0].path)
         //mypath = res.tempFiles[0].path
+        //上传文件
         app.wxUploadFile(url1, res.tempFiles[0].path, null, (res) => {
           console.log("upload file success")
           console.log(res)
           wx.showToast({
+            //打印报错信息，文件修改成功
             title: '文件修改成功',
             //icon: 'success',
             image: '/icons/ok/ok.png',
@@ -110,10 +112,12 @@ Page({
           url: '../GetAllFileManagementReview/GetAllFileManagementReview?id=' + this.data.year,
         })*/
       },
+      //上传失败
       fail: function (err) {
         console.log("get file failed")
         console.log(err)
         if (err.errMsg == "chooseMessageFile:fail cancel") {
+          //打印报错信息，取消上传
           wx.showToast({
             title: '取消上传',
             image: '/icons/warning/warning.png',

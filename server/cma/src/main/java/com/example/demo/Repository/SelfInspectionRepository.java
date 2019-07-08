@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface SelfInspectionRepository extends JpaRepository<SelfInspection, Long>{
     SelfInspection findById(long id);
+    SelfInspection findByName(String name);
     List<SelfInspection> findAll();
 }

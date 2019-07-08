@@ -29,6 +29,7 @@ Page({
       console.err('get one error')
     })
   },
+  //修改数据
   intercheckmodify: function (e) {
     console.log('modify modify')
     {
@@ -45,6 +46,7 @@ Page({
       app.wxRequest(url, 'POST', data, (res) => {
         console.log('modify message successfully')
         console.log(res)
+        //修改成功提示
         wx.showToast({
           title: '成功',
           //icon: 'success',

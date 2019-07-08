@@ -31,12 +31,12 @@ import org.springframework.web.context.WebApplicationContext;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 
-/** 
-* AllAnnualPlanController Tester. 
-* 
-* @author <Authors name> 
-* @since <pre>六月 12, 2019</pre> 
-* @version 1.0 
+/**
+* AllAnnualPlanController Tester.
+*
+* @author <Authors name>
+* @since <pre>六月 12, 2019</pre>
+* @version 1.0
 */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
@@ -57,11 +57,11 @@ public void setUp() throws Exception {
 public void after() throws Exception { 
 } 
 
-/** 
-* 
-* Method: addAnnualPlan(@RequestParam(value = "year",required = false)long year, @RequestParam(value = "author",required = false)String author, @RequestParam(value = "createDate",required = false)String createDate) 
-* 
-*/ 
+/**
+*
+* Method: addAnnualPlan(@RequestParam(value = "year",required = false)long year, @RequestParam(value = "author",required = false)String author, @RequestParam(value = "createDate",required = false)String createDate)
+*
+*/
 @Test
 public void testAddAnnualPlan() throws Exception { 
 //TODO: Test goes here...

@@ -60,7 +60,12 @@ Page({
       url: 'IntermediateCheckAddone/IntermediateCheckAddone',
     })
   },
-  
+  gotomenu(e) {
+    console.log('go back')
+    wx.switchTab({
+      url: '../../Management/Management',
+    })
+  },
   gotoOne(e){
     console.log(e)
     let target = e.currentTarget.id

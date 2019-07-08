@@ -66,6 +66,25 @@ Page({
     console.log('modify modify')
     console.log('modify，携带数据为：', e.detail.value)
     console.log('modify，携带数据为：', e.detail.value.object)
+    console.log(e.detail.value.state)
+    
+    if (e.detail.value.object == null ||
+      e.detail.value.content == null ||
+      e.detail.value.date == null ||
+      e.detail.value.personInCharge == null ||
+      e.detail.value.object == "" ||
+      e.detail.value.content == "" ||
+      e.detail.value.personInCharge == "" ||
+      (e.detail.value.state == "" && e.detail.value.state != 0)||
+      e.detail.value.date == "") {
+      console.log("message error")
+      wx.showToast({
+        title: '修改失败',
+        image: '/icons/warning/warning.png',
+        duration: 1000
+      })
+    }
+    else{
 
     let url = app.globalData.url + 'IntermediateChecksPlan/modifyOne';
     console.log(url)
@@ -110,7 +129,7 @@ Page({
       })
     })
   }
-  //}
+  }
 })
 
 

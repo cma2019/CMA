@@ -65,7 +65,7 @@ public class ExternalReviewDocumentCoontroller {
     @RequestMapping(path="/addFile",method = RequestMethod.POST)
     @ResponseBody
     public  Response addFile(@RequestParam("file") MultipartFile file, HttpServletRequest request,
-    @RequestParam(value ="year" ,required = false)long year){
+                             @RequestParam(value ="year" ,required = false)long year){
         FileController fileController=new FileController();
         ExternalReviewDocument externalReviewDocument=new ExternalReviewDocument();
         externalReviewDocument.setYear(year);
@@ -75,7 +75,7 @@ public class ExternalReviewDocumentCoontroller {
         ERDRepository.save(externalReviewDocument);
         return  fileController.upload(file,request,externalReviewDocument.getFileName(),externalReviewDocument.getDir());
     }
-   @RequestMapping(path="/addOneFile",method = RequestMethod.POST)
+    @RequestMapping(path="/addOneFile",method = RequestMethod.POST)
     @ResponseBody
     public  Response addOneFile(@RequestParam("file") MultipartFile file, HttpServletRequest request){
 
@@ -99,14 +99,14 @@ public class ExternalReviewDocumentCoontroller {
         try{
             if(ERDRepository.findById(id)==null)
                 throw new Exception("doesn't exist");
-        ExternalReviewDocument temp=ERDRepository.findById(id);
-        temp.setFileId(fileId);
-        temp.setYear(year);
-        temp.setFlag(1);
-        ERDRepository.save(temp);
-        response.code=200;
-        response.msg="收到数据";
-        response.data=null;
+            ExternalReviewDocument temp=ERDRepository.findById(id);
+            temp.setFileId(fileId);
+            temp.setYear(year);
+            temp.setFlag(1);
+            ERDRepository.save(temp);
+            response.code=200;
+            response.msg="收到数据";
+            response.data=null;
         }catch (Exception e){
             e.printStackTrace();
             response.msg="查找失败";
@@ -189,12 +189,12 @@ public class ExternalReviewDocumentCoontroller {
             response.msg = "数据删除成功";
             response.code = 200;
             boolean F=fileController.deletefile(name, temp.getDir());
-                 if (!F){
-                        throw new Exception("数据删除成功，文档删除失败");
+            if (!F){
+                throw new Exception("数据删除成功，文档删除失败");
             } else if(F){
-                     response.data = null;
-                     response.msg = "数据删除成功,文档删除成功";
-                     response.code = 200;
+                response.data = null;
+                response.msg = "数据删除成功,文档删除成功";
+                response.code = 200;
             }
         }catch(Exception e){
             e.printStackTrace();

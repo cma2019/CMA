@@ -25,9 +25,9 @@ import static org.junit.Assert.*;
 @SpringBootTest
 @WebAppConfiguration
 @Transactional
-public class ExternalReviewManagementControllerTest {
+public class TestingInstitutionInformationControllerTest {
     @Autowired
-    ExternalReviewManagementController equipmentMaintenanceController;
+    TestingInstitutionInformationController equipmentMaintenanceController;
     MockMvc mockMvc;
 
     @Before
@@ -38,25 +38,15 @@ public class ExternalReviewManagementControllerTest {
     @After
     public void after() throws Exception {
     }
+
     @Test
     @Transactional
-    public void add() throws Exception{
-        String url="/cma/ExternalReviewManagement/addOne";
-        MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0])
-                .param("year","2018")
-                .param("date","2019-6-29")
+    public void add() throws Exception {
+        String url = "/cma/TestingInstitutionInformation/get";
+        MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url)
         )       .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print()).andReturn();
-        String res = mvcResult.getResponse().getContentAsString();
-        int code = Integer.parseInt(res.substring(8,11));
-        Assert.assertEquals(200, (long)code);
-    }
-    public void delete() throws Exception{
-        String url="/cma/ExternalReviewManagement/deleteOne/2020";
-        MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0])
-                .param("year","2018")
-        )       .andExpect(MockMvcResultMatchers.status().isOk())
-                .andDo(MockMvcResultHandlers.print()).andReturn();
+
         String res = mvcResult.getResponse().getContentAsString();
         int code = Integer.parseInt(res.substring(8,11));
         Assert.assertEquals(200, (long)code);

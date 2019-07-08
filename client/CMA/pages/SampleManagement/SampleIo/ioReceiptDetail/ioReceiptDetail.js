@@ -37,24 +37,17 @@ Page({
   onShow: function () {
     var thispage = this
     console.log('ioReceiptDetail发生了事件，携带数据为：', this.data.receiptId)
-    wx.request({
-      url: app.globalData.url + 'SampleReceipt/getOne',
-      method: 'GET',
-      data: {
-        "sampleId": thispage.data.receiptId
-      },
-      header: {
-        'content-type': 'application/json',
-        'Accept': 'application/json'
-      },
-      success(res) {
-        thispage.setData({
-          mess: res.data.data
-        })
-      },
-      fail(err) {
-        console.log('no data')
-      }
+    let url = app.globalData.url + 'SampleReceipt/getOne'
+    let postdata = {
+      "sampleId": thispage.data.receiptId
+    }
+    app.wxRequest(url, 'GET', postdata, (res) => {
+      console.log(res)
+      thispage.setData({
+        mess: res.data.data
+      })
+    }, (err) => {
+      console.log('no data')
     })
   },
   goback: function () {

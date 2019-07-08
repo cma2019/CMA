@@ -66,7 +66,11 @@ Page({
       url: '../modifyOne/modifyOne?id=' + target
     })
   },
-
+  goback(e){
+    wx.redirectTo({
+      url: '../CapacityVerificationPlan',
+    })
+  },
   deleteData(e) {
     let url = app.globalData.url + 'CapacityVerification/deleteOne'
     let data = {

@@ -50,6 +50,7 @@ Page({
   },
 
   gotoAdd(e) {
+    //去addfile页面
     console.log(e)
     let target = this.data.year
     wx.navigateTo({

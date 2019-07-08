@@ -46,13 +46,13 @@ Page({
       console.log('getone error')
     })
   },
-
+//跳转按钮，去添加界面
   gotoAdd(e) {
     wx.navigateTo({
       url: 'AddOneManagementReview/AddOneManagementReview',
     })
   },
-
+//跳转按钮，跳转到getone界面
   gotoOne(e) {
     console.log(e)
     let target = e.currentTarget.id

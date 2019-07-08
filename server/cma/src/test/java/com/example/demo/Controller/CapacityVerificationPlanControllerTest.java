@@ -7,15 +7,21 @@ import org.junit.After;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.ResultActions;
+import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.io.File;
+import java.io.FileInputStream;
 
 /** 
 * CapacityVerificationPlanController Tester. 
@@ -164,8 +170,17 @@ public void testUploadAnalysis() throws Exception {
 */ 
 @Test
 public void testAddAnalysis() throws Exception { 
-//TODO: Test goes here... 
-} 
+//TODO: Test goes here...
+    testUploadAnalysis();
+    ResultActions resultActions=mockMvc.perform(MockMvcRequestBuilders.fileUpload("/cma/CapacityVerification/uploadAnalysisFile")
+    .file(new MockMultipartFile("file","test.pdf","application/pdf",new FileInputStream(new File("C:/Users/user/Desktop/test.pdf")))));
+    MvcResult mvcResult=resultActions.andDo(MockMvcResultHandlers.print()).andExpect(MockMvcResultMatchers.status()
+            .isOk()).andReturn();
+    String res=mvcResult.getResponse().getContentAsString();
+    System.out.println(res);
+    int code = Integer.parseInt(res.substring(8, 11));
+    Assert.assertEquals(200, code);
+}
 
 /** 
 * 
@@ -184,7 +199,17 @@ public void testDownloadAnalysis() throws Exception {
 */ 
 @Test
 public void testDeleteAnalysis() throws Exception {
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    String url = "/cma/CapacityVerification/deleteAnalysis?id=79";
+    MvcResult mvcResult = mockMvc.perform((MockMvcRequestBuilders.post(url)))
+            .andExpect(MockMvcResultMatchers.status().isOk())
+            .andDo(MockMvcResultHandlers.print())
+            .andReturn();
+
+    String res = mvcResult.getResponse().getContentAsString();
+    int code = Integer.parseInt(res.substring(21, 24));
+    Assert.assertEquals(200, code);
+
 } 
 
 

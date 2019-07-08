@@ -12,6 +12,9 @@
       </view>
     </van-cell-group>
   </view>
+  <view wx:else>
+    <text>暂未含有内审文件</text>
+  </view>
   <van-button type="info" size="small" id="{{id}}" bindtap="gotoAdd">上传文件</van-button>
   <van-button type="info" size="small" bindtap="goback">返回</van-button>
 </scroll-view>

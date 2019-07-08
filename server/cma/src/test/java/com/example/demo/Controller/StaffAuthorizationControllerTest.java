@@ -19,12 +19,12 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 
-/** 
-* StaffAuthorizationController Tester. 
-* 
-* @author <Authors name> 
-* @since <pre>七月 7, 2019</pre> 
-* @version 1.0 
+/**
+* StaffAuthorizationController Tester.
+*
+* @author <Authors name>
+* @since <pre>七月 7, 2019</pre>
+* @version 1.0
 */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
@@ -44,11 +44,11 @@ public void before() throws Exception {
 public void after() throws Exception { 
 } 
 
-/** 
-* 
-* Method: getAll() 
-* 
-*/ 
+/**
+*
+* Method: getAll()
+*
+*/
 @Test
 public void testGetAll() throws Exception { 
 //TODO: Test goes here...
@@ -67,11 +67,11 @@ public void testGetAll() throws Exception {
     Assert.assertEquals(200,code);
 } 
 
-/** 
-* 
-* Method: getOne(@RequestParam(value="authorizationId",required = false)long authorizationId) 
-* 
-*/ 
+/**
+*
+* Method: getOne(@RequestParam(value="authorizationId",required = false)long authorizationId)
+*
+*/
 @Test
 public void testGetOne() throws Exception { 
 //TODO: Test goes here...
@@ -90,11 +90,11 @@ public void testGetOne() throws Exception {
     Assert.assertEquals(210,code);
 } 
 
-/** 
-* 
-* Method: addOne(@RequestParam(value = "id",required = false) long id, @RequestParam(value = "authorizerId",required = false)long authorizerId, @RequestParam(value = "content",required = false)String content, @RequestParam(value = "authorizerDate",required = false)String authorizerDate) 
-* 
-*/ 
+/**
+*
+* Method: addOne(@RequestParam(value = "id",required = false) long id, @RequestParam(value = "authorizerId",required = false)long authorizerId, @RequestParam(value = "content",required = false)String content, @RequestParam(value = "authorizerDate",required = false)String authorizerDate)
+*
+*/
 @Test
 public void testAddOne() throws Exception { 
 //TODO: Test goes here...
@@ -113,11 +113,11 @@ public void testAddOne() throws Exception {
     Assert.assertEquals(210,code);
 } 
 
-/** 
-* 
-* Method: deleteOne(@RequestParam(value = "authorizationId",required = false)long authorizationId) 
-* 
-*/ 
+/**
+*
+* Method: deleteOne(@RequestParam(value = "authorizationId",required = false)long authorizationId)
+*
+*/
 @Test
 public void testDeleteOne() throws Exception { 
 //TODO: Test goes here...
@@ -136,11 +136,11 @@ public void testDeleteOne() throws Exception {
     Assert.assertEquals(210,code);
 } 
 
-/** 
-* 
-* Method: modifyOne(@RequestParam(value = "authorizationId",required = false)long authorizationId, @RequestParam(value = "id",required = false) String id, @RequestParam(value = "authorizerId",required = false)String authorizerId, @RequestParam(value = "content",required = false)String content, @RequestParam(value = "authorizerDate",required = false)String authorizerDate) 
-* 
-*/ 
+/**
+*
+* Method: modifyOne(@RequestParam(value = "authorizationId",required = false)long authorizationId, @RequestParam(value = "id",required = false) String id, @RequestParam(value = "authorizerId",required = false)String authorizerId, @RequestParam(value = "content",required = false)String content, @RequestParam(value = "authorizerDate",required = false)String authorizerDate)
+*
+*/
 @Test
 public void testModifyOne() throws Exception { 
 //TODO: Test goes here...
@@ -159,11 +159,11 @@ public void testModifyOne() throws Exception {
     Assert.assertEquals(210,code);
 } 
 
-/** 
-* 
-* Method: getallbystaff(@RequestParam(required = false,value = "id")long id) 
-* 
-*/ 
+/**
+*
+* Method: getallbystaff(@RequestParam(required = false,value = "id")long id)
+*
+*/
 @Test
 public void testGetallbystaff() throws Exception { 
 //TODO: Test goes here...

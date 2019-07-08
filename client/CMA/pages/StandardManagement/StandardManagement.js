@@ -17,7 +17,12 @@ Page({
 
   onLoad: function (options) {
   },
-
+  gotomenu(e) {
+    console.log('go back')
+    wx.switchTab({
+      url: '/pages/Management/Management',
+    })
+  },
   onShow: function (options) {
     let url = app.globalData.url + 'StandardManagement/getAll'
     let postdata = ''
