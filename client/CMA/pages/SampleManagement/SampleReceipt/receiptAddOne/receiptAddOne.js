@@ -54,8 +54,6 @@ Page({
       }
     }),
     console.log('SampleReceipt发生了addone事件，携带数据为：', e.detail.value)
-    console.log("lkokokko")
-    console.log(this.data.materialList)
     let materialList = this.data.materialList
     var newmaterialList = []
     for(let i = 0;i< 9;++i){
@@ -64,7 +62,6 @@ Page({
       }
     }
     console.log(newmaterialList)
-
     wx.request({
       url: app.globalData.url + 'SampleReceipt/addOne',
       method: 'POST',
@@ -140,7 +137,6 @@ Page({
       key: 'materialListinfo',
       success: function (res) {
         console.log(res)
-        console.log("qewrwuwndcjcncj")
       }
     })
   },

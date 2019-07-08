@@ -19,7 +19,6 @@ Page({
     this.setData({
       sampleIoId: options.id
     })
-    //console.log(this.data.sampleIoId)
     console.log("fdsf")
   },
 
@@ -44,15 +43,11 @@ Page({
     wx.getStorage({
       key: 'ioGetOneinfo',
       success: function (res) {
-        console.log("fdsgfgdhjkgh")
-        console.log(res)
         that.setData({
           'origindata': res.data
         })
       }
-    }),
-    console.log(this.data)
-    console.log("456789")
+    })
   },
 
   SampleIo_modifyone: function (e) {
@@ -90,83 +85,68 @@ Page({
     if (e.detail.value.note != null && e.detail.value.note != "") {
         mod.note =  e.detail.value.note
     }
-    console.log("dfg")
-    console.log(this.data)
-    console.log(mod)
-    wx.request({
-      url: app.globalData.url+ 'SampleIo/modifyOne',
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json'
-      },
-      data: {
-        "sampleIoId": this.data.sampleIoId,
-        "sampleNumber": mod.sampleNumber,
-        "sampleName":mod.sampleName,
-        "sampleAmount": mod.sampleAmount,
-        "sampleState": mod.sampleState,
-        "sender": mod.sender,
-        "receiver": mod.receiver,
-        "sendDate": mod.sendDate,
-        "obtainer": mod.obtainer,
-        "obtainDate": mod.obtainDate,
-        "note": mod.note
-      },
-      success(res) {
-        console.log(res)
-        if (res.data.code == 200) {
-          wx.showToast({
-            title: '修改成功',
-            duration: 1500
-          })
-          wx.removeStorage({
-            key: 'ioGetOneinfo',
-            success: function (res) {
-              console.log(res)
-            }
-          })
-          wx.navigateTo({
-            url: '../SampleIo'
-          })
-        }
-        else if (res.data.code == 531) {
-          wx.showToast({
-            title: '未收到标识编号',
-            duration: 1500
-          })
-          console.log('未收到标识编号')
-        }
-        else if (res.data.code == 532) {
-          wx.showToast({
-            title: '数据不存在',
-            duration: 1500
-          })
-          console.log('数据不存在')
-        }
-        else if (res.data.code == 533) {
-          wx.showToast({
-            title: '修改后数据错误',
-            duration: 1500
-          })
-          console.log('修改后数据错误')
-        }
-        else {
-          wx.showToast({
-            title: '修改后数据不合法',
-            duration: 1500
-          })
-          console.log('修改后数据不合法')
-        }
-      },
-      fail(err) {
-        console.log('fail modifyone')
-      },
-      complete(fin) {
-        console.log('final modifyone')
+    let url = app.globalData.url + 'SampleIo/modifyOne'
+    let postdata = {
+      "sampleIoId": this.data.sampleIoId,
+      "sampleNumber": mod.sampleNumber,
+      "sampleName": mod.sampleName,
+      "sampleAmount": mod.sampleAmount,
+      "sampleState": mod.sampleState,
+      "sender": mod.sender,
+      "receiver": mod.receiver,
+      "sendDate": mod.sendDate,
+      "obtainer": mod.obtainer,
+      "obtainDate": mod.obtainDate,
+      "note": mod.note
+    }
+    app.wxRequest(url, 'POST', postdata, (res) => {
+      console.log(res)
+      if (res.data.code == 200) {
+        wx.showToast({
+          title: '修改成功',
+          duration: 1500
+        })
+        wx.removeStorage({
+          key: 'ioGetOneinfo',
+          success: function (res) {
+            console.log(res)
+          }
+        })
+        wx.navigateTo({
+          url: '../SampleIo'
+        })
       }
+      else if (res.data.code == 531) {
+        wx.showToast({
+          title: '未收到标识编号',
+          duration: 1500
+        })
+        console.log('未收到标识编号')
+      }
+      else if (res.data.code == 532) {
+        wx.showToast({
+          title: '数据不存在',
+          duration: 1500
+        })
+        console.log('数据不存在')
+      }
+      else if (res.data.code == 533) {
+        wx.showToast({
+          title: '修改后数据错误',
+          duration: 1500
+        })
+        console.log('修改后数据错误')
+      }
+      else {
+        wx.showToast({
+          title: '修改后数据不合法',
+          duration: 1500
+        })
+        console.log('修改后数据不合法')
+      }
+    }, (err) => {
+      console.log('fail modifyone')
     })
-
   },
   goback: function () {
     wx.navigateBack({

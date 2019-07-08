@@ -20,7 +20,6 @@ Page({
     this.setData({
       currentYear: YEAR
     })
-    console.log(this.data)
     let select = this.data.select
     for (let i = this.data.currentYear; i >= 1990;--i){
       select.push(i)
@@ -28,7 +27,6 @@ Page({
     this.setData({
       select:select
     })
-    console.log(this.data)
   },
   bindyearChange(e) {
     let year = this.data.select[e.detail.value]
@@ -57,89 +55,78 @@ Page({
     }
     else {
       console.log('InternalAudit发生了addone事件，携带数据为：', e.detail.value)
-      wx.request({
-        url: app.globalData.url + 'InternalAuditManagement/addOne',
-        method: 'POST',
-        header: {
-          'content-type': 'application/x-www-form-urlencoded',
-          'Accept': 'application/json'
-        },
-        data: {
+      let url = app.globalData.url + 'InternalAuditManagement/addOne'
+      let postdata={
           "year": e.detail.value.year,
           "date": e.detail.value.date
-        },
-        success(res) {
-          console.log(res.data)
-          if (res.data.code == 200) {
-            wx.showToast({
-              title: '成功',
-              image: '/icons/ok/ok.png',
-              duration: 500,
-              success: function () {
-                setTimeout(function () {
-                  wx.navigateTo({
-                    url: '../InternalAudit'
-                  })
-                }, 500)
-              }
-            })
-            console.log("成功")
-          }
-          else if(res.data.code == 511){
-            wx.showToast({
-              title: '添加失败',
-              image: '/icons/warning/warning.png',
-              duration: 500,
-              success: function () {
-                setTimeout(function () {
-                }, 500)
-              }
-            })
-            console.log("缺少必选请求参数")
-          }
-          else if (res.data.code == 512) {
-            wx.showToast({
-              title: '添加失败',
-              image: '/icons/warning/warning.png',
-              duration: 500,
-              success: function () {
-                setTimeout(function () {
-                }, 500)
-              }
-            })
-            console.log("添加重复数据")
-          }
-          else if (res.data.code == 513) {
-            wx.showToast({
-              title: '添加失败',
-              image: '/icons/warning/warning.png',
-              duration: 500,
-              success: function () {
-                setTimeout(function () {
-                }, 500)
-              }
-            })
-            console.log("添加数据不合法")
-          }
-          else{ //513
-            wx.showToast({
-              title: '内审年份重复',
-              image: '/icons/warning/warning.png',
-              duration: 500,
-              success: function () {
-                setTimeout(function () {
-                }, 500)
-              }
-            })
-            console.log("添加数据不符合一致性")
-          }
-        },
-        fail(err) {
-          console.log('fail addone')
-        },
-        complete(fin) {
-          console.log('final addone')
+      }
+      app.wxRequest(url, 'POST', postdata, (res) => {
+        console.log(res)
+        if (res.code == 200) {
+          wx.showToast({
+            title: '成功',
+            image: '/icons/ok/ok.png',
+            duration: 500,
+            success: function () {
+              setTimeout(function () {
+                wx.navigateTo({
+                  url: '../InternalAudit'
+                })
+              }, 500)
+            }
+          })
+          console.log("成功")
         }
+        else if (res.data.code == 511) {
+          wx.showToast({
+            title: '添加失败',
+            image: '/icons/warning/warning.png',
+            duration: 500,
+            success: function () {
+              setTimeout(function () {
+              }, 500)
+            }
+          })
+          console.log("缺少必选请求参数")
+        }
+        else if (res.data.code == 512) {
+          wx.showToast({
+            title: '添加失败',
+            image: '/icons/warning/warning.png',
+            duration: 500,
+            success: function () {
+              setTimeout(function () {
+              }, 500)
+            }
+          })
+          console.log("添加重复数据")
+        }
+        else if (res.data.code == 513) {
+          wx.showToast({
+            title: '添加失败',
+            image: '/icons/warning/warning.png',
+            duration: 500,
+            success: function () {
+              setTimeout(function () {
+              }, 500)
+            }
+          })
+          console.log("添加数据不合法")
+        }
+        else { //513
+          wx.showToast({
+            title: '内审年份重复',
+            image: '/icons/warning/warning.png',
+            duration: 500,
+            success: function () {
+              setTimeout(function () {
+              }, 500)
+            }
+          })
+          console.log("添加数据不符合一致性")
+        }
+      }, (err) => {
+        console.log('fail addone')
       })
     }
   },
