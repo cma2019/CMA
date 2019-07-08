@@ -22,6 +22,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //修改之前，需要初始化id信息
     this.setData({
       id: options.id
     })
@@ -33,6 +34,7 @@ Page({
     let postdata = {
       "id": this.data.id
     }
+    //使用id来getone，初始化所有的输入框
     app.wxRequest(url, 'GET', postdata, (res) => {
       console.log("plan modify success")
       console.log(res.data)
@@ -72,6 +74,7 @@ Page({
     })
   },
   capacityrecordmodify: function (e) {
+    //修改时，所有输入不能为空
     console.log('modify projects')
     if (e.detail.value.date == null ||
       e.detail.value.methodId == null ||
@@ -118,6 +121,8 @@ Page({
     };
     console.log(data)
     app.wxRequest(url, 'POST', data, (res) => {
+      //返回rescode==200时，修改成功
+      //显示修改成功，返回上一界面
       if (res.code == 200) {
         console.log('modify record successfully')
         wx.showToast({
