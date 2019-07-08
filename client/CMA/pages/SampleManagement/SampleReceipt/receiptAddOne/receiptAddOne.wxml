@@ -21,7 +21,7 @@
       </view>
       <view wx:else>
         <van-cell title="提交材料与类型" required is-link value="已填写" url="../receiptAddOne/receiptTypeAdd"/>
-      </view>>
+      </view>
       <van-cell v-model="softwareType" name="softwareType" required title="软件类型">
         <van-stepper value="{{softwareType}}"  name="softwareType" integer min="0"max="3"step="1"/>
       </van-cell>

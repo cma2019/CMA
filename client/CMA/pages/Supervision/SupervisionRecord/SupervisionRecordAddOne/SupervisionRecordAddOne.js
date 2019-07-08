@@ -34,70 +34,87 @@ Page({
   SupervisionRecord_addone: function (e) {
     let planid = this.data.planid
     let thispage = this
-    if (e.detail.value.superviseDate == "") {
+    if (e.detail.value.superviseDate == "" || e.detail.value.recordDate == "" ) {
       wx.showToast({
-        title: '错误（空白输入）',
-        icon: 'none',
-        duration: 2000
+        title: '空白输入',
+        image: '/icons/warning/warning.png',
+        duration: 500,
+        success: function () {
+          setTimeout(function () {
+          }, 300)
+        }
       })
-      console.log('错误（空白输入）')
+      console.log('空白输入')
     }
     else {
-      console.log(planid)
       console.log('SupervisionRecord发生了addone事件，携带数据为：', e.detail.value)
-      wx.request({
-        url: app.globalData.url + 'SupervisionRecord/addOne',
-        method: 'POST',
-        header: {
-          'content-type': 'application/x-www-form-urlencoded',
-          'Accept': 'application/json'
-        },
-        data: {
-          "planId": planid,
-          "department": e.detail.value.department,
-          "supervisor": e.detail.value.supervisor,
-          "superviseDate": e.detail.value.superviseDate,
-          "supervisedPerson": e.detail.value.supervisedPerson,
-          "record": e.detail.value.record,
-          "conclusion": e.detail.value.conclusion,
-          "operator": e.detail.value.operator,
-          "recordDate": e.detail.value.recordDate
-        },
-        success(res) {
-          console.log(res.data)
-          if (res.data.code == 200) {
-            wx.showToast({
-              title: '成功',
-              icon: 'none',
-              duration: 1500
-            })
-            wx.navigateTo({
-              url: '/pages/Supervision/SupervisionRecord/SupervisionRecord?id=' + planid
-            })
-          }
-          else if (res.data.code == 512) {
-            wx.showToast({
-              title: '监督计划编号已存在',
-              duration: 1500
-            })
-            console.log('监督计划编号已存在')
-          }
-          else {
-            console.log(planid)
-            console.log("fsdgf465465")
-            wx.showToast({
-              title: '某项数据错误',
-              duration: 1500
-            })
-            console.log('某项数据错误')
-          }
-        },
-        fail(err) {
-          console.log('fail addone')
-        },
-        complete(fin) {
-          console.log('final addone')
+      let url = app.globalData.url + 'SupervisionRecord/addOne'
+      let postdata = {
+        "planId": planid,
+        "department": e.detail.value.department,
+        "supervisor": e.detail.value.supervisor,
+        "superviseDate": e.detail.value.superviseDate,
+        "supervisedPerson": e.detail.value.supervisedPerson,
+        "record": e.detail.value.record,
+        "conclusion": e.detail.value.conclusion,
+        "operator": e.detail.value.operator,
+        "recordDate": e.detail.value.recordDate
+      }
+      app.wxRequest(url, 'POST', postdata, (res) => {
+        console.log(res)
+        if (res.code == 200) {
+          wx.showToast({
+            title: '添加成功',
+            image: '/icons/ok/ok.png',
+            duration: 500,
+            success: function () {
+              setTimeout(function () {
+                wx.navigateTo({
+                  url: '/pages/Supervision/SupervisionRecord/SupervisionRecord?id=' + planid
+                })
+              }, 300)
+            }
+          })
+          console.log("添加成功")
         }
+        else if (res.code == 511) {
+          wx.showToast({
+            title: '空白输入',
+            image: '/icons/warning/warning.png',
+            duration: 500,
+            success: function () {
+              setTimeout(function () {
+              }, 300)
+            }
+          })
+          console.log("空白输入")
+        }
+        else if (res.code == 513) {
+          wx.showToast({
+            title: '添加失败',
+            image: '/icons/warning/warning.png',
+            duration: 500,
+            success: function () {
+              setTimeout(function () {
+              }, 300)
+            }
+          })
+          console.log("某项数据错误")
+        }
+        else {
+          wx.showToast({
+            title: '添加失败',
+            image: '/icons/warning/warning.png',
+            duration: 500,
+            success: function () {
+              setTimeout(function () {
+              }, 300)
+            }
+          })
+          console.log("添加失败")
+        }
+      }, (err) => {
+        console.log('fail addone')
       })
     }
   },
@@ -117,7 +134,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log("465465456465")
+    
   },
 
   /**

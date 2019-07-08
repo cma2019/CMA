@@ -5,13 +5,13 @@
         <van-cell value="详情" data-index ='{{index}}'bindtap='gotoOne' is-link>
           <view slot="title">
             <view>自查年份: {{item.year}}</view>
-            <view>文档名称: {{item.fileName}}</view>
-            <view>文件实际名称: {{item.file}}</view>
+            <view>文件名称: {{item.file}}</view>
           </view>
         </van-cell>
       </view>
     </van-cell-group>
   </view>
+  <view wx:else>暂未含有自查文件</view>
   <van-button type="info" size="small" id="{{id}}" bindtap="gotoAdd">上传文件</van-button>
    <van-button type="info" size="small" bindtap="goback">返回</van-button>
 </scroll-view>

@@ -52,17 +52,17 @@ Page({
     }
     app.wxRequest(url, 'GET', postdata, (res) => {
       console.log(res)
-      if (res.data.code == 200) {
+      if (res.code == 200) {
         thispage.setData({
-          info: res.data.data,
-          receiptId: res.data.data.receiptId
+          info: res.data,
+          receiptId: res.data.receiptId
         })
         wx.setStorage({
           key: 'ioGetOneinfo',
-          data: res.data.data
+          data: res.data
         })
       }
-      else if (res.data.code == 521) {
+      else if (res.code == 521) {
         console.log(res.data.msg)
         wx.showToast({
           title: '未收到标识编号',
@@ -71,7 +71,7 @@ Page({
         console.log('未收到标识编号')
       }
       else {//522
-        console.log(res.data.msg)
+        console.log(res.msg)
         console.log("12")
         wx.showToast({
           title: '数据不存在',

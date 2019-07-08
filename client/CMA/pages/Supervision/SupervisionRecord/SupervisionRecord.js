@@ -34,38 +34,31 @@ Page({
   onShow: function () {
     var thispage = this
     console.log('SupervisionRecord发生了getAll事件，携带数据为：', this.data.planId)
-    wx.request({
-      url: app.globalData.url + 'SupervisionRecord/getAll',
-      method: 'GET',
-      data: {
-        "planId": thispage.data.planId
-      },
-      header: {
-        'content-type': 'application/json',
-        'Accept': 'application/json'
-      },
-      success(res) {
-        console.log(res)
-        if(res.data.code == 200){
-          thispage.setData({
-            mess: res.data.data,
-            flag: 1
-          })
-        }
-        else{
-          thispage.setData({
-            mess: ""
-          })
-          wx.showToast({
-            title: '暂未含有SupervisionRecord',
-            duration: 1500
-          })
-          console.log('暂未含有SupervisionRecord')
-        }
-      },
-      fail(err) {
-        console.log('no data')
+    let url = app.globalData.url + 'SupervisionRecord/getAll'
+    let postdata = {
+      "planId": thispage.data.planId
+    }
+    app.wxRequest(url, 'GET', postdata, (res) => {
+      if (res.code == 200) {
+        this.setData({
+          mess: res.data,
+          flag: 1
+        })
+        console.log("SupervisionRecord-getAll成功")
       }
+      else { //210
+        this.setData({
+          mess: null,
+          flag: 0
+        })
+        console.log("SupervisionRecord-getAll无有效信息")
+      }
+    }, (err) => {
+      wx.showToast({
+        title: 'getall error',
+        duration: 1500
+      })
+      console.log('getall error')
     })
   },
   supervisionRecordModify: function (e) {

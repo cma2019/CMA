@@ -5,8 +5,7 @@
         <van-cell value="详情" data-index ='{{index}}'bindtap='gotoOne' is-link>
           <view slot="title">
             <view>内审年份: {{item.year}}</view>
-            <view>文档名称: {{item.fileName}}</view>
-            <view>文件实际名称: {{item.file}}</view>
+            <view>文件名称: {{item.file}}</view>
           </view>
         </van-cell>
       </view>
