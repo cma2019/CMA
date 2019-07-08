@@ -11,12 +11,25 @@ Page({
       planId: options.id
     })
   },
-
+  gotologin(e) {
+    console.log('go back')
+    wx.navigateBack({
+      delta: 1
+    })
+  },
   AddNewProject(e) {
-    if (e.detail.value.name == "" ||
+    if (e.detail.value.name == null ||
+      e.detail.value.method == null ||
+      e.detail.value.note == null ||
+      e.detail.value.name == "" ||
       e.detail.value.method == "" ||
       e.detail.value.note == "") {
       console.log("message error")
+      wx.showToast({
+        title: '添加失败',
+        image: '/icons/warning/warning.png',
+        duration: 1000
+      })
     }
     else {
       let url = app.globalData.url + 'CapacityVerification/addOneProject'

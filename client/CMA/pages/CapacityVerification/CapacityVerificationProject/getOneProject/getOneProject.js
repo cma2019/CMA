@@ -22,7 +22,12 @@ Page({
       id: options.id
     })
   },
-
+  goback(e){
+    let target = this.data.planId
+    wx.redirectTo({
+      url: '../showProjects/showProjects?id=' + target,
+    })
+  },
   onShow: function (options) {
     let url = app.globalData.url + 'CapacityVerification/getOneProject'
     let postdata = {

@@ -92,13 +92,30 @@ Page({
 
   intercheckmodify: function (e) {
     console.log('modify modify')
-    if (e.detail.value.object == "" || e.detail.value.content == "" ||
-      e.detail.value.date == "" || e.detail.value.personInCharge == "" || e.detail.value.state == "") {
+    if (e.detail.value.object == null ||
+      e.detail.value.checkDate == null ||
+      e.detail.value.processRecord == null ||
+      e.detail.value.processRecordPerson == null ||
+      e.detail.value.processRecordDate == null ||
+      e.detail.value.resultRecord == null ||
+      e.detail.value.resultRecordPerson == null ||
+      e.detail.value.resultRecordDate == null ||
+      e.detail.value.note == null ||
+      e.detail.value.object == "" ||
+      e.detail.value.checkDate == "" ||
+      e.detail.value.processRecord == "" ||
+      e.detail.value.processRecordPerson == "" ||
+      e.detail.value.processRecordDate == "" ||
+      e.detail.value.resultRecord == "" ||
+      e.detail.value.resultRecordPerson == "" ||
+      e.detail.value.resultRecordDate == "" ||
+      e.detail.value.note == "") {
+      console.log("message error")
       wx.showToast({
-        title: 'wrong message',
-        duration: 2000
+        title: '修改失败',
+        image: '/icons/warning/warning.png',
+        duration: 1000
       })
-      console.log('wrong message')
     }
     else {
       console.log('modify，携带数据为：', e.detail.value)

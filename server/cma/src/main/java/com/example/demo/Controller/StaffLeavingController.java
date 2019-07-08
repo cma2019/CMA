@@ -42,7 +42,7 @@ public class StaffLeavingController {
             json.put("code",210);
             json.put("msg","不存在员工");
             json.put("data",null);
-            return null;
+            return json;
         }
         StaffManagement staff=staffManagementRepository.getOne(id);
         StaffLeaving staffLeaving=new StaffLeaving();

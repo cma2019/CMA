@@ -12,3 +12,4 @@
 <button class='van-button--info' bindtap="modifyData">修改</button>
 <button class='van-button--info' bindtap="deleteData">删除</button>
 <button class='van-button--info' bindtap="getPlans">相关能力验证记录</button>
+<button class='van-button--info' bindtap="goback">返回</button>
