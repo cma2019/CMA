@@ -57,16 +57,16 @@ public class TestAbilityController {
     public @ResponseBody JSONObject getAllAbility(){
         JSONObject json=new JSONObject();
         System.out.println("get All in");
-        if(TestAbilityRepository.findAll()==null)
+        /*if(TestAbilityRepository.findAll()==null)
         {
             json.put("code",500);
             json.put("msg","无文件");
         }
-        else {
+        else {*/
             json.put("code", 200);
             json.put("msg","获取成功");
             json.put("data",TestAbilityRepository.findAll());
-        }
+        //}
         return json;
     }
 
