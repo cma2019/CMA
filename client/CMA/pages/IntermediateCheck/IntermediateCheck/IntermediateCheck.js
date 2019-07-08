@@ -29,10 +29,11 @@ Page({
   onShow:function(options){
     let url = app.globalData.url + 'IntermediateChecksPlan/getAll'
     let postdata = ''
-    
+    //getall不需要传递任何数据，置为''
     app.wxRequest(url, 'GET', postdata, (res) => {
       console.log(res)
       console.log(res.data)
+      //getall成功时，code==200，初始化数据
       if(res.code == 200){
         this.setData({
           mess: res.data
@@ -60,7 +61,12 @@ Page({
       url: 'IntermediateCheckAddone/IntermediateCheckAddone',
     })
   },
-  
+  gotomenu(e) {
+    console.log('go back')
+    wx.switchTab({
+      url: '../../Management/Management',
+    })
+  },
   gotoOne(e){
     console.log(e)
     let target = e.currentTarget.id

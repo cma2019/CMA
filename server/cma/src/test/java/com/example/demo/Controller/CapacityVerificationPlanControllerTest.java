@@ -173,11 +173,13 @@ public void testAddAnalysis() throws Exception {
 //TODO: Test goes here...
     testUploadAnalysis();
     ResultActions resultActions=mockMvc.perform(MockMvcRequestBuilders.fileUpload("/cma/CapacityVerification/uploadAnalysisFile")
-    .file(new MockMultipartFile("file","test.pdf","application/pdf",new FileInputStream(new File("C:/Users/user/Desktop/test.pdf")))));
+            .file(new MockMultipartFile("file","test.pdf","application/pdf",new FileInputStream(new File("C:/Users/user/Desktop/test.pdf")))));
     MvcResult mvcResult=resultActions.andDo(MockMvcResultHandlers.print()).andExpect(MockMvcResultMatchers.status()
             .isOk()).andReturn();
     String res=mvcResult.getResponse().getContentAsString();
     System.out.println(res);
+    int code = Integer.parseInt(res.substring(8, 11));
+    Assert.assertEquals(200, code);
 }
 
 /** 

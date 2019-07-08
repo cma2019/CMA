@@ -29,7 +29,12 @@ Page({
       planId: options.id
     })
   },
-
+  goback(e){
+    let target = this.data.planId
+    wx.redirectTo({
+      url: '../../CapacityVerificationPlan/getOne/getOne?id='+target,
+    })
+  },
   onShow: function (options) {  
     let url = app.globalData.url + 'CapacityVerification/getAllProject'
     let data = {

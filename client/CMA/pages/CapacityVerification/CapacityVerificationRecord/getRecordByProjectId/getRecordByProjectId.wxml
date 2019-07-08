@@ -14,3 +14,4 @@
 </view>
 <button class='van-button--info' bindtap="modifyData">修改</button>
 <button class='van-button--info' bindtap="deleteData">删除</button>
+<button class='van-button--info' bindtap="gotologin">返回</button>

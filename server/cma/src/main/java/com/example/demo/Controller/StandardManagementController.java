@@ -43,16 +43,16 @@ public class StandardManagementController {
     public @ResponseBody JSONObject getAllStandard(){
         JSONObject json=new JSONObject();
         System.out.println("get All in");
-        if(StandardManagementRepository.findAll()==null){
+        /*if(StandardManagementRepository.findAll()==null){
             json.put("code",500);
             json.put("msg","无文件");
         }
         else
-        {
+        {*/
             json.put("code",200);
             json.put("msg","获得成功");
             json.put("data",StandardManagementRepository.findAll());
-        }
+        //}
         return json;
 
     }
@@ -131,6 +131,8 @@ public class StandardManagementController {
             fileController.deletefile(fileName, temp.getDir());
             //StandardManagementRepository.deleteById(fileId);
             System.out.println("delete success");
+            //TODO:改后缀名
+            //String suffix = fileName.substring(fileName.lastIndexOf(".") + 1);
 
             StandardManagement standard = new StandardManagement();
             standard.setFileName(fileName);

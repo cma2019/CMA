@@ -25,7 +25,7 @@ Page({
       recordId: options.id
     })
   },
-
+  
   onShow: function (options) {
     let url = app.globalData.url + 'CapacityVerification/getOneRecord'
     let postdata = {

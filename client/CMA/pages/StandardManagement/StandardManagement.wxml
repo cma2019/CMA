@@ -1,6 +1,6 @@
 <!--pages/IntermediateCheck/IntermediateCheck.wxml-->
 <view>
-  <van-cell-group title="Standard Management">
+  <van-cell-group title="标准管理">
   <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
     <van-cell value="详情" bindtap='gotoOne' id='{{item.fileId}}' is-link>
       <view slot="title">
@@ -12,3 +12,4 @@
   </van-cell-group>
 </view>
 <van-button type="info" size="small" bindtap="gotoAdd">添加标准管理文件</van-button>
+<van-button type="info" size="small" bindtap="gotomenu">返回</van-button>

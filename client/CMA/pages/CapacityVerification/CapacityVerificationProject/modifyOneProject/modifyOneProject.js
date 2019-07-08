@@ -22,7 +22,11 @@ Page({
       id: options.id
     })
   },
-
+  gotologin(e){
+    wx.navigateBack({
+      delta:1
+    })
+  },
   onShow: function (options) {
     console.log("plan modify")
     console.log(this.data.planId)
@@ -59,17 +63,23 @@ Page({
 
   capacityprojectmodify: function (e) {
     console.log('modify projects')
-    /*
-    if(e.detail.value.object ==""||e.detail.value.content==""||
-       e.detail.value.date == ""||e.detail.value.personInCharge==""||e.detail.value.state==""){
-        wx.showToast({
-          title: 'wrong message',
-          duration: 2000
+    if (e.detail.value.name == null ||
+      e.detail.value.method == null ||
+      e.detail.value.note == null ||
+      e.detail.value.state == null ||
+      e.detail.value.name == "" ||
+      e.detail.value.method == "" ||
+      e.detail.value.note == ""||
+      e.detail.value.state == "") {
+      console.log("message error")
+      wx.showToast({
+        title: '修改失败',
+        image: '/icons/warning/warning.png',
+        duration: 1000
       })
-      console.log('wrong message')
     }
     else{
-    */
+    
     console.log('modify，携带数据为：', e.detail.value)
     console.log('modify，携带数据为：', e.detail.value.object)
 
@@ -133,5 +143,5 @@ Page({
       })
     })
   }
-  //}
+  }
 })

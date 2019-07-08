@@ -17,7 +17,13 @@ Page({
 
   onLoad: function (options) {
   },
-
+  gotomenu(e) {
+    //主界面是使用switchbar的界面，无法使用navigateto或redirectto跳转
+    console.log('go back')
+    wx.switchTab({
+      url: '/pages/Management/Management',
+    })
+  },
   onShow: function (options) {
     let url = app.globalData.url + 'StandardManagement/getAll'
     let postdata = ''
@@ -25,6 +31,8 @@ Page({
     app.wxRequest(url, 'GET', postdata, (res) => {
       console.log(res)
       console.log(res.data)
+      //getall成功时，服务器端返回rescode==200
+      //收到该信息后，初始化数据
       if(res.code == 200){
         this.setData({
           mess: res.data

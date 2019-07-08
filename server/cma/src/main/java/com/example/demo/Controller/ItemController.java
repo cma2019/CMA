@@ -39,16 +39,16 @@ public class ItemController {
     @GetMapping(path="/getAllItem")
     public @ResponseBody JSONObject getAllItem(@RequestParam(value="year",required = false)Long year){
         JSONObject json=new JSONObject();
-        if(ItemRepository.findAllByYear(year)==null){
+        /*if(ItemRepository.findAllByYear(year)==null){
             json.put("code",500);
             json.put("msg","信息不存在");
         }
         else
-        {
+        {*/
             json.put("code",200);
             json.put("msg","获取成功");
             json.put("data",ItemRepository.findAllByYear(year));
-        }
+        //}
         return json;
     }
 

@@ -76,6 +76,7 @@ Page({
                 duration: 1000,
                 success: function () {
                   setTimeout(function () {
+                    //跳转到上个界面
                     wx.navigateBack({
                       delta:1
                     })
@@ -88,6 +89,7 @@ Page({
             })
 
           },
+          //上传失败
           fail: function (err) {
             console.log("get file failed")
             if (err.errMsg == "chooseMessageFile:fail cancel") {

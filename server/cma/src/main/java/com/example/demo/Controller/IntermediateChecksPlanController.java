@@ -78,6 +78,7 @@ public class IntermediateChecksPlanController {
         }
         else
         {
+            IntermediateChecksPlanRepository.deleteRecord(planId);
             IntermediateChecksPlanRepository.deleteById(planId);
             try{
                 json.put("code",200);
@@ -185,7 +186,7 @@ public class IntermediateChecksPlanController {
         return "Hello,World";*/
     public @ResponseBody void getAll(HttpServletRequest request,HttpServletResponse response) throws IOException, JSONException {
         JSONObject json=new JSONObject(new LinkedHashMap());
-        if(IntermediateChecksPlanRepository.findAll().isEmpty())
+        /*if(IntermediateChecksPlanRepository.findAll().isEmpty())
         {
             try{
                 json.put("code",100);
@@ -195,7 +196,7 @@ public class IntermediateChecksPlanController {
             }
         }
         else
-        {
+        {*/
             try{
                 json.put("code",200);
                 json.put("msg","获取成功");
@@ -221,7 +222,7 @@ public class IntermediateChecksPlanController {
 
             }
             json.put("data",array);
-        }
+        //}
         response.setContentType("text/html;charset=utf-8");
         response.getWriter().write(json.toString());
         System.out.println(json);

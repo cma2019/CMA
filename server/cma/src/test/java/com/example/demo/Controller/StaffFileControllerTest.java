@@ -9,6 +9,8 @@ import org.junit.After;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.mock.web.MockMultipartFile;
+import org.springframework.mock.web.MockMultipartHttpServletRequest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
@@ -19,25 +21,28 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.File;
+import java.io.FileInputStream;
+
 /** 
-* StaffManagementController Tester. 
+* StaffFileController Tester. 
 * 
 * @author <Authors name> 
-* @since <pre>六月 16, 2019</pre> 
+* @since <pre>七月 8, 2019</pre> 
 * @version 1.0 
 */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 @WebAppConfiguration
 @Transactional
-public class StaffManagementControllerTest {
+public class StaffFileControllerTest {
     @Autowired
-    StaffManagementController staffManagementController;
+    StaffFileController staffFileController;
     MockMvc mockMvc;
 
 @Before
 public void before() throws Exception {
-    mockMvc = MockMvcBuilders.standaloneSetup(staffManagementController).build();
+    mockMvc= MockMvcBuilders.standaloneSetup(staffFileController).build();
 } 
 
 @After
@@ -52,7 +57,7 @@ public void after() throws Exception {
 @Test
 public void testGetAll() throws Exception { 
 //TODO: Test goes here...
-    String url="/cma/StaffManagement/getAll";
+    String url="/cma/StaffFile/getAll";
     MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(url))
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andDo(MockMvcResultHandlers.print())
@@ -69,14 +74,14 @@ public void testGetAll() throws Exception {
 
 /** 
 * 
-* Method: addOne(@RequestParam(value="name",required = false)String name, @RequestParam(value = "gender",required = false)int gender, @RequestParam(value = "department",required = false)String department, @RequestParam(value = "position",required = false)String position, @RequestParam(value="title",required = false)String title, @RequestParam(value = "degree",required = false)String degree, @RequestParam(value = "graduationSchool",required = false)String graduationSchool, @RequestParam(value = "graduationMajor",required = false)String graduationMajor, @RequestParam(value = "graduationDate",required = false)String graduationDate, @RequestParam(value = "workingYears",required = false)int workingYears) 
+* Method: getOne(@RequestParam(value = "staffId", required = false) long staffId) 
 * 
 */ 
 @Test
-public void testAddOne() throws Exception { 
+public void testGetOne() throws Exception { 
 //TODO: Test goes here...
-    String url="/cma/StaffManagement/addOne?name=Judy&gender=1&department=财务部&position=部员&title=导师&degree=硕士研究生&graduationSchool=河南大学&graduationMajor=会计&graduationDate=2006-6-28&workingYears=8";
-    MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post(url))
+    String url="/cma/StaffFile/getOne?staffId=1";
+    MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(url))
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andDo(MockMvcResultHandlers.print())
             .andReturn();
@@ -92,36 +97,33 @@ public void testAddOne() throws Exception {
 
 /** 
 * 
-* Method: get(@RequestParam(value = "id",required = false)long id) 
+* Method: UpLoad(@RequestParam("file") MultipartFile file, HttpServletRequest request, @RequestParam(value = "staffId", required = false) long staffId, @RequestParam(value = "fileId", required = false) String fileId, @RequestParam(value = "fileLocation", required = false) String fileLocation) 
 * 
 */ 
 @Test
-public void testGet() throws Exception { 
+public void testUpLoad() throws Exception { 
 //TODO: Test goes here...
-    String url="/cma/StaffManagement/getOne?id=23";
-    MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(url))
-            .andExpect(MockMvcResultMatchers.status().isOk())
-            .andDo(MockMvcResultHandlers.print())
-            .andReturn();
-
-    //int status=mvcResult.getResponse().getStatus();
-    //Assert.assertEquals(200,status);
-    String res=mvcResult.getResponse().getContentAsString();
-    JSONObject jsonObject= JSON.parseObject(res);
-    int code= (int) jsonObject.get("code");
-    System.out.println(code);
-    Assert.assertEquals(210,code);
+    File file = new File("E:/CMA/test/","test.jpg");
+    MockMultipartFile firstFile = new MockMultipartFile("E:/CMA/test/","test.jpg","multipart/form-data",new FileInputStream(file));
+    MockMultipartHttpServletRequest request=new MockMultipartHttpServletRequest();
+    //String url = "/cma/InternalAuditManagement/addOneFile";
+        /*MvcResult result = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0])
+        )
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(MockMvcResultHandlers.print()).andReturn();*/
+    net.minidev.json.JSONObject jsonObject=this.staffFileController.UpLoad(firstFile,request,2018,"test","place1");
+    Assert.assertEquals(210, jsonObject.get("code"));
 } 
 
 /** 
 * 
-* Method: deleteOne(@RequestParam(value = "id",required = false)Long id) 
+* Method: deleteOne(@RequestParam(value = "staffId", required = false) long staffId) 
 * 
 */ 
 @Test
 public void testDeleteOne() throws Exception { 
 //TODO: Test goes here...
-    String url="/cma/StaffManagement/deleteOne?id=23";
+    String url="/cma/StaffFile/deleteOne?staffId=1";
     MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post(url))
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andDo(MockMvcResultHandlers.print())
@@ -134,17 +136,18 @@ public void testDeleteOne() throws Exception {
     int code= (int) jsonObject.get("code");
     System.out.println(code);
     Assert.assertEquals(210,code);
+
 } 
 
 /** 
 * 
-* Method: modifyOne(@RequestParam(value="id",required = false)long id, @RequestParam(value="name",required = false)String name, @RequestParam(value = "gender",required = false)String gender, @RequestParam(value = "department",required = false)String department, @RequestParam(value = "position",required = false)String position, @RequestParam(value="title",required = false)String title, @RequestParam(value = "degree",required = false)String degree, @RequestParam(value = "graduationSchool",required = false)String graduationSchool, @RequestParam(value = "graduationMajor",required = false)String graduationMajor, @RequestParam(value = "graduationDate",required = false)String graduationDate, @RequestParam(value = "workingYears",required = false)String workingYears) 
+* Method: modifyOne(@RequestParam(value = "staffId", required = false) long staffId, @RequestParam(value = "fileId", required = false) String fileId, @RequestParam(value = "fileLocation", required = false) String fileLocation) 
 * 
 */ 
 @Test
 public void testModifyOne() throws Exception { 
 //TODO: Test goes here...
-    String url="/cma/StaffManagement/modifyOne?id=24&name=Kate&gender=&department=&position=&title=&degree=博士研究生&graduationSchool=&graduationMajor=&graduationDate=&workingYears=";
+    String url="/cma/StaffFile/modifyOne?staffId=1&fileId=sfd&fileLocation=sdf";
     MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post(url))
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andDo(MockMvcResultHandlers.print())
@@ -157,6 +160,37 @@ public void testModifyOne() throws Exception {
     int code= (int) jsonObject.get("code");
     System.out.println(code);
     Assert.assertEquals(210,code);
+
+} 
+
+/** 
+* 
+* Method: modifyOneFile(@RequestParam(value = "staffId", required = false) long staffId, @RequestParam("file") MultipartFile file, HttpServletRequest request) 
+* 
+*/ 
+@Test
+public void testModifyOneFile() throws Exception { 
+//TODO: Test goes here...
+    File file = new File("E:/CMA/test/","test.jpg");
+    MockMultipartFile firstFile = new MockMultipartFile("E:/CMA/test/","test.jpg","multipart/form-data",new FileInputStream(file));
+    MockMultipartHttpServletRequest request=new MockMultipartHttpServletRequest();
+    //String url = "/cma/InternalAuditManagement/addOneFile";
+        /*MvcResult result = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0])
+        )
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(MockMvcResultHandlers.print()).andReturn();*/
+    net.minidev.json.JSONObject jsonObject=this.staffFileController.modifyOneFile(2018,firstFile,request);
+    Assert.assertEquals(210, jsonObject.get("code"));
+} 
+
+/** 
+* 
+* Method: downloadFile(@PathVariable("staffId")long staffId, HttpServletResponse response) 
+* 
+*/ 
+@Test
+public void testDownloadFile() throws Exception { 
+//TODO: Test goes here... 
 } 
 
 

@@ -18,15 +18,28 @@ Page({
   },
 
   AddNewRecord(e) {
-    if (e.detail.value.date == "" ||
+    if (e.detail.value.date == null ||
+      e.detail.value.methodId == null ||
+      e.detail.value.equipmentName == null||
+      e.detail.value.equipmentId == null ||
+      e.detail.value.experimenter == null ||
+      e.detail.value.result == null ||
+      e.detail.value.resultDeal == null ||
+      e.detail.value.note == null || 
+      e.detail.value.date == "" ||
       e.detail.value.methodId == "" ||
-      e.detail.value.equipmentName == ""||
+      e.detail.value.equipmentName == "" ||
       e.detail.value.equipmentId == "" ||
       e.detail.value.experimenter == "" ||
       e.detail.value.result == "" ||
       e.detail.value.resultDeal == "" ||
       e.detail.value.note == "") {
       console.log("message error")
+      wx.showToast({
+        title: '添加失败',
+        image: '/icons/warning/warning.png',
+        duration: 1000
+      })
     }
     else {
       let url = app.globalData.url + 'CapacityVerification/addOneRecord'

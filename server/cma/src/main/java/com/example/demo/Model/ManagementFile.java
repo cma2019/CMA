@@ -9,13 +9,13 @@ import javax.persistence.Id;
 public class ManagementFile {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
-    private long fileId;
-    private long year;
-    private String fileName;
-    private String file;
+    private long fileId; //文件编号
+    private long year;  //年份
+    private String fileName; //文件名
+    private String file;  //文件名及格式
     //private int flag=0;
 
-    private String dir="managementFile";
+    private String dir="managementFile"; //保存路径
 
     public String getDir() {
         return dir;

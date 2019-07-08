@@ -9,7 +9,12 @@ Page({
   onLoad: function (options) {
 
   },
-
+  gotomenu(e) {
+    console.log('go back')
+    wx.switchTab({
+      url: '../../Management/Management',
+    })
+  },
   GetPlans(e) {
     console.log("get plans")
     let target = e.detail.value.id

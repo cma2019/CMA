@@ -31,14 +31,14 @@ public class IntermediateChecksRecordController {
         return "Hello,World";*/
     public @ResponseBody JSONObject getAllRecord(HttpServletRequest request,HttpServletResponse response) throws IOException, JSONException {
         JSONObject json=new JSONObject(new LinkedHashMap());
-        if(IntermediateChecksRecordRepository.findAll().isEmpty())
+        /*if(IntermediateChecksRecordRepository.findAll().isEmpty())
         {
 
                 json.put("code",100);
                 json.put("msg","查找不到");
         }
         else
-        {
+        {*/
 
                 json.put("code",200);
                 json.put("msg","获取成功");
@@ -67,7 +67,7 @@ public class IntermediateChecksRecordController {
 
             }
             json.put("data",array);*/
-        }
+        //}
         //response.setContentType("text/html;charset=utf-8");
         //response.getWriter().write(json.toString());
         //System.out.println(json);

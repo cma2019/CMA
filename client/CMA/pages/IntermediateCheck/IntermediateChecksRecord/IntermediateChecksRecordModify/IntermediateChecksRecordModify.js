@@ -23,6 +23,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //修改数据需要知道修改record的编号，此数据来源于其他界面
     this.setData({
       recordId: options.id
     })
@@ -39,6 +40,8 @@ Page({
     }
     app.wxRequest(url, 'GET', postdata, (res) => {
       console.log('record modify success')
+      //modify之前，我们需要将已有的数据预先填在输入框中
+      //为了做到这一点，在各个界面之间不传递过多数据的情况下，我们需要首先调用getone接口
       if(res.code == 200){
         this.setData({
           planId: res.data.planId,
@@ -92,14 +95,33 @@ Page({
 
   intercheckmodify: function (e) {
     console.log('modify modify')
-    if (e.detail.value.object == "" || e.detail.value.content == "" ||
-      e.detail.value.date == "" || e.detail.value.personInCharge == "" || e.detail.value.state == "") {
+    if (e.detail.value.object == null ||
+      e.detail.value.checkDate == null ||
+      e.detail.value.processRecord == null ||
+      e.detail.value.processRecordPerson == null ||
+      e.detail.value.processRecordDate == null ||
+      e.detail.value.resultRecord == null ||
+      e.detail.value.resultRecordPerson == null ||
+      e.detail.value.resultRecordDate == null ||
+      e.detail.value.note == null ||
+      e.detail.value.object == "" ||
+      e.detail.value.checkDate == "" ||
+      e.detail.value.processRecord == "" ||
+      e.detail.value.processRecordPerson == "" ||
+      e.detail.value.processRecordDate == "" ||
+      e.detail.value.resultRecord == "" ||
+      e.detail.value.resultRecordPerson == "" ||
+      e.detail.value.resultRecordDate == "" ||
+      e.detail.value.note == "") {
+      console.log("message error")
       wx.showToast({
-        title: 'wrong message',
-        duration: 2000
+        title: '修改失败',
+        image: '/icons/warning/warning.png',
+        duration: 1000
       })
-      console.log('wrong message')
     }
+    //保证所有输入不为空，再向后端传递
+    //有输入为空时，显示修改失败
     else {
       console.log('modify，携带数据为：', e.detail.value)
       console.log('modify，携带数据为：', e.detail.value.object)
@@ -122,6 +144,8 @@ Page({
       };
       console.log(data)
       app.wxRequest(url, 'POST', data, (res) => {
+        //修改成功时，后端发送code==200
+        //显示修改成功，跳转到上一界面
         if (res.code == 200) {
           console.log('modify successfully')
           wx.showToast({
