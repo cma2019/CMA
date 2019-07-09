@@ -206,7 +206,7 @@ public class SupervisionController {
         js.put("data",data);
         return js;
     }
-    @GetMapping(path="/executeOne")
+    @PostMapping(path="/executeOne")
     public @ResponseBody JSONObject executeOne(@RequestParam(value="id",required = false) String id)
     {
         JSONObject json=new JSONObject();
