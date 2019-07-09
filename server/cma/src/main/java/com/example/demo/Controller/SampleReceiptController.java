@@ -162,32 +162,24 @@ public class SampleReceiptController
         int code=200;
         String msg="成功";
         //System.out.println(sampleId);
-        /*
-            参数判空
-         */
+        //参数判空
         if(sampleId==null||sampleId.equals(""))
         {
             code=521;
             msg="未收到标识编号";
         }
-        /*
-            删除不存在的数据报错
-        */
+        // 删除不存在的数据报错
         else if(SampleReceiptRepository.findBySampleId(Long.parseLong(sampleId))==null) //此样品接收登记的id不在表中
         {
             code=522;
             msg="数据不存在";
         }
-        /*
-            参数完整且合法，正常删除
-         */
+        //参数完整且合法，正常删除
         else
         {
             SampleReceiptRepository.deleteById(Long.parseLong(sampleId));
         }
-         /*
-            返回json，前端解析code,msg,data然后与用户交互
-         */
+        //返回json，前端解析code,msg,data然后与用户交互
         json.put("code",code);
         json.put("msg",msg);
         json.put("data",null);

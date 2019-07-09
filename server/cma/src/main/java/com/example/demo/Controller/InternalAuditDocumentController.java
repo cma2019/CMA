@@ -29,11 +29,13 @@ public class InternalAuditDocumentController
     private InternalAuditManagementRepository InternalAuditManagementRepository;
     @Autowired
     private InternalAuditDocumentRepository InternalAuditDocumentRepository;
-    /*private long add_year=0;
+    /*
+    private long add_year=0;
     private String add_name="null";
     private long modify_year=0;
     private String modify_name="null";
-    private long modify_id=0;*/
+    private long modify_id=0;
+    */
     @PostMapping(path = "/deleteOne")
     //删除某项内审
     public @ResponseBody JSONObject deleteOne(@RequestParam(value = "year",required = false) long year)
@@ -45,14 +47,16 @@ public class InternalAuditDocumentController
         /*
         try{
             Long.parseLong(year);
-        }catch (NumberFormatException e){
+        }catch (NumberFormatException e)
+        {
             code=513;
             msg="某项数据错误";
             js.put("code",code);
             js.put("msg",msg);
             js.put("data",null);
             return js;
-        }*/
+        }
+        */
         //调用findAll获取某项内审记录下的内审文档列表
         List<InternalAuditDocument> res= InternalAuditDocumentRepository.findAllByYear(year);
         //遍历list，删除内审文档
