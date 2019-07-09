@@ -9,6 +9,8 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/admin/admin",
+    "pages/admin/printoneadmin/printoneadmin",
+    "pages/admin/modifyoneadmin/modifyoneadmin",
     "pages/IntermediateCheck/IntermediateCheck/IntermediateCheck",
     "pages/IntermediateCheck/IntermediateCheck/IntermediateCheckAddone/IntermediateCheckAddone",
     "pages/IntermediateCheck/IntermediateCheck/IntermediateCheckGetone/IntermediateCheckGetone",
