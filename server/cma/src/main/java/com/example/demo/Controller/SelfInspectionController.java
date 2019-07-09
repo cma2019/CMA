@@ -24,7 +24,8 @@ import java.util.List;
 
 @Controller
 @RequestMapping(path="/cma/SelfInspection")
-public class SelfInspectionController {
+public class SelfInspectionController
+{
     @Autowired
     private SelfInspectionRepository SelfInspectionRepository;
     @Autowired
@@ -76,9 +77,12 @@ public class SelfInspectionController {
         JSONObject js=new JSONObject();
         JSONObject data=new JSONObject();
         //以字符串接受参数，对数据做格式合法性判断
-        try {
+        try
+        {
             java.sql.Date.valueOf(date);
-        }catch (NumberFormatException e){
+        }
+        catch (NumberFormatException e)
+        {
             js.put("code",513);
             js.put("msg","数据不合法");
             js.put("data",data);
@@ -114,9 +118,12 @@ public class SelfInspectionController {
         JSONObject js=new JSONObject();
         JSONObject data=new JSONObject();
         //以字符串接受参数，做参数格式合法性判断
-        try{
+        try
+        {
             Long.parseLong(id);
-        }catch (NumberFormatException e){
+        }
+        catch (NumberFormatException e)
+        {
             code=513;
             msg="某项数据错误";
             js.put("code",code);
@@ -157,9 +164,12 @@ public class SelfInspectionController {
     {
         JSONObject js=new JSONObject();
         //以字符串接受参数，做参数格式合法性判断
-        try{
+        try
+        {
             Long.parseLong(id);
-        }catch (NumberFormatException E){
+        }
+        catch (NumberFormatException E)
+        {
             js.put("code",511);
             js.put("msg","缺少请求参数");
             js.put("data",null);
@@ -377,7 +387,8 @@ public class SelfInspectionController {
         FileController fileController=new FileController();
         //System.out.println(fileId);
         //数据库中不存在文档记录报错
-        try{
+        try
+        {
             if(SelfInspectionDocumentRepository.findByFileId(fileId)==null)
                 throw new Exception("doesn't exist");
             SelfInspectionDocument temp=SelfInspectionDocumentRepository.findByFileId(fileId);
@@ -386,7 +397,9 @@ public class SelfInspectionController {
             //文档记录存在，调用downloadFile函数下载文件并返回
             fileController.downloadFile(response,name,temp.getDir());
             return "下载成功";
-        }catch(Exception e){
+        }
+        catch(Exception e)
+        {
             e.printStackTrace();
             return "下载失败";
         }

@@ -20,7 +20,8 @@ import java.util.List;
 
 @Controller
 @RequestMapping(path="/cma/InternalAuditManagement")
-public class InternalAuditManagementController {
+public class InternalAuditManagementController
+{
     @Autowired
     private InternalAuditManagementRepository InternalAuditManagementRepository;
     /*
@@ -73,10 +74,12 @@ public class InternalAuditManagementController {
         JSONObject js=new JSONObject();
         JSONObject data=new JSONObject();
         //以字符串接受参数，做参数格式合法性判断
-        try{
+        try
+        {
             Long.parseLong(year);
             java.sql.Date.valueOf(date);
-        }catch (NumberFormatException e)
+        }
+        catch (NumberFormatException e)
         {
             code=513;
             msg="数据不合法";

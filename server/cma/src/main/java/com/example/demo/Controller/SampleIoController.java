@@ -46,13 +46,16 @@ public class SampleIoController
         int code=200;
         String msg="成功";
         // * 由于以String类型解析参数，因此要做数据合法性的判断，比如String转Date，String转Long
-        try {
+        try
+        {
             Long.parseLong(receiptId);
             Integer.parseInt(sampleState);
             Integer.parseInt(sampleAmount);
             java.sql.Date.valueOf(sendDate);
             java.sql.Date.valueOf(obtainDate);
-        }catch (NumberFormatException e){
+        }
+        catch (NumberFormatException e)
+        {
             code=513;
             msg="某项数据错误";
         }
@@ -267,12 +270,15 @@ public class SampleIoController
         int code=200;
         String msg="成功";
         //以字符串接受各种参数，对需要做类型转换的参数做合法性判断
-        try {
+        try
+        {
             Integer.parseInt(sampleState);
             Integer.parseInt(sampleAmount);
             java.sql.Date.valueOf(sendDate);
             java.sql.Date.valueOf(obtainDate);
-        }catch (NumberFormatException e){
+        }
+        catch (NumberFormatException e)
+        {
             code=534;
             msg="修改后数据不合法";
         }

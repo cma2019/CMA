@@ -15,7 +15,8 @@ import java.util.List;
 
 @Controller
 @RequestMapping(path="/cma/SupervisionRecord")
-public class SupervisionRecordController {
+public class SupervisionRecordController
+{
     @Autowired
     private SupervisionRecordRepository SupervisionRecordRepository;
     @GetMapping(path = "/getAll")
@@ -47,7 +48,8 @@ public class SupervisionRecordController {
             }
         }
         //监督记录列表为空
-        else {
+        else
+        {
             code=210;
             msg="无有效信息返回";
             //data=null;
@@ -75,11 +77,14 @@ public class SupervisionRecordController {
         JSONObject js=new JSONObject();
         JSONObject data=new JSONObject();
         //确保参数合法
-        try{
+        try
+        {
             Long.parseLong(planId);
             java.sql.Date.valueOf(superviseDate);
             java.sql.Date.valueOf(recordDate);
-        }catch (NumberFormatException e){
+        }
+        catch (NumberFormatException e)
+        {
             code=513;
             msg="某项数据错误";
             js.put("code",code);
@@ -134,11 +139,14 @@ public class SupervisionRecordController {
         JSONObject js=new JSONObject();
         JSONObject data=new JSONObject();
         //确保参数格式合法
-        try{
+        try
+        {
             Long.parseLong(recordId);
             java.sql.Date.valueOf(superviseDate);
             java.sql.Date.valueOf(recordDate);
-        }catch (NumberFormatException e){
+        }
+        catch (NumberFormatException e)
+        {
             code=513;
             msg="某项数据错误";
             js.put("code",code);
@@ -183,9 +191,12 @@ public class SupervisionRecordController {
         JSONObject js=new JSONObject();
         JSONObject data=new JSONObject();
         //确保参数格式合法
-        try{
+        try
+        {
             Long.parseLong(recordId);
-        }catch (NumberFormatException e){
+        }
+        catch (NumberFormatException e)
+        {
             code=513;
             msg="某项数据错误";
             js.put("code",code);

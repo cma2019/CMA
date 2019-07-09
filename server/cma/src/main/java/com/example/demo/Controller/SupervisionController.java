@@ -18,7 +18,8 @@ import java.util.List;
 
 @Controller
 @RequestMapping(path="/cma/Supervision")
-public class SupervisionController {
+public class SupervisionController
+{
     @Autowired
     private SupervisionRepository SupervisionRepository;
     @Autowired
@@ -37,12 +38,12 @@ public class SupervisionController {
         String msg;
         JSONObject js=new JSONObject();
         JSONObject data=new JSONObject();
-        /*
-            以字符串获取前端参数，做参数格式合法性判断
-         */
+        //以字符串获取前端参数，做参数格式合法性判断
         try {
             java.sql.Date.valueOf(createDate);
-        }catch (NumberFormatException e){
+        }
+        catch (NumberFormatException e)
+        {
             code=513;
             msg="某项数据错误";
             js.put("code",code);
@@ -50,9 +51,7 @@ public class SupervisionController {
             js.put("data",data);
             return js;
         }
-        /*
-            参数判空
-         */
+        //参数判空
         if(author.equals(""))
         {
             code=511;
@@ -62,9 +61,7 @@ public class SupervisionController {
             js.put("data",data);
             return js;
         }
-        /*
-            参数完整且合法，正常添加
-         */
+        //参数完整且合法，正常添加
         else
         {
             code=200;
@@ -82,9 +79,7 @@ public class SupervisionController {
             js.put("data",data);
             return js;
         }
-        /*
-            返回json，前端解析code获取请求结果，解析data获取需要的数据
-         */
+        //返回json，前端解析code获取请求结果，解析data获取需要的数据
     }
     @PostMapping (path="/deleteOne")
     //删除一项监督
@@ -96,7 +91,9 @@ public class SupervisionController {
        //参数格式合法性判断
         try {
             Long.parseLong(id);
-        }catch (NumberFormatException E){
+        }
+        catch (NumberFormatException E)
+        {
             json.put("code",500);
             json.put("msg","缺少请求参数");
             json.put("data",null);
@@ -178,7 +175,9 @@ public class SupervisionController {
         try {
             java.sql.Date.valueOf(approveDate);
             Long.parseLong(id);
-        }catch (NumberFormatException e){
+        }
+        catch (NumberFormatException e)
+        {
             code=513;
             msg="某项数据错误";
             json.put("code",code);
@@ -224,7 +223,9 @@ public class SupervisionController {
         //确保参数合法
         try {
             Long.parseLong(id);
-        }catch (NumberFormatException E){
+        }
+        catch (NumberFormatException E)
+        {
             code=534;
             msg="参数错误";
             js.put("code",code);

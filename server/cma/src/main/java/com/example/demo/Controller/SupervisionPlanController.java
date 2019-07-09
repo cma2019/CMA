@@ -18,7 +18,8 @@ import java.util.List;
 
 @Controller
 @RequestMapping(path="/cma/SupervisionPlan")
-public class SupervisionPlanController {
+public class SupervisionPlanController
+{
     @Autowired
     private SupervisionPlanRepository SupervisionPlanRepository;
     @Autowired
@@ -73,7 +74,9 @@ public class SupervisionPlanController {
         //确保参数合法
         try{
             Long.parseLong(id);
-        }catch (NumberFormatException e){
+        }
+        catch (NumberFormatException e)
+        {
             code=513;
             msg="某项数据错误";
             js.put("code",code);
@@ -137,7 +140,9 @@ public class SupervisionPlanController {
         //确保参数合法
         try {
             Long.parseLong(planId);
-        }catch (NumberFormatException E){
+        }
+        catch (NumberFormatException E)
+        {
             json.put("code",500);
             json.put("msg","缺少请求参数");
             json.put("data",null);

@@ -19,7 +19,8 @@ import java.util.List;
 
 @Controller
 @RequestMapping(path="/cma/SampleReceive")
-public class SampleReceiveController {
+public class SampleReceiveController 
+{
     @Autowired
     private SampleReceiveRepository sampleReceiveRepository;
     @Autowired
