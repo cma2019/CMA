@@ -20,6 +20,7 @@ Page({
   },
 
   onLoad: function (options) {
+    //此界面使用planid来getone，此数据来源于其他界面
     this.setData({
       planId: options.id
     })
@@ -32,6 +33,8 @@ Page({
     app.wxRequest(url, 'GET', postdata, (res) => {
       console.log('record getone success')
       console.log(res)
+      //此处getone需要传递的是planid
+      //这一界面来源于每个plan，调用getonebyplanid接口
       if (res.code == 200) {
         this.setData({
           planId: res.data.planId,

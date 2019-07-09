@@ -64,7 +64,7 @@ Page({
         console.log(res)
         if (res.code == 200) {
           wx.showToast({
-            title: '成功',
+            title: '添加成功',
             image: '/icons/ok/ok.png',
             duration: 500,
             success: function () {
@@ -72,10 +72,10 @@ Page({
                 wx.navigateTo({
                   url: '../InternalAudit'
                 })
-              }, 500)
+              }, 300)
             }
           })
-          console.log("成功")
+          console.log("添加成功")
         }
         else if (res.data.code == 511) {
           wx.showToast({
@@ -113,14 +113,17 @@ Page({
           })
           console.log("添加数据不合法")
         }
-        else { //513
+        else { //514
           wx.showToast({
             title: '内审年份重复',
             image: '/icons/warning/warning.png',
             duration: 500,
             success: function () {
               setTimeout(function () {
-              }, 500)
+                wx.navigateTo({
+                  url: '../InternalAudit'
+                })
+              }, 300)
             }
           })
           console.log("添加数据不符合一致性")

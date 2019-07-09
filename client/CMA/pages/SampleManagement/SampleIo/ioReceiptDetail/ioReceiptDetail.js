@@ -44,7 +44,7 @@ Page({
     app.wxRequest(url, 'GET', postdata, (res) => {
       console.log(res)
       thispage.setData({
-        mess: res.data.data
+        mess: res.data
       })
     }, (err) => {
       console.log('no data')

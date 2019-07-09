@@ -31,10 +31,12 @@ Page({
   onShow: function (options) {
     let url = app.globalData.url + 'CapacityVerification/getAll'
     let postdata = ''
+    //getall无须数据
     app.wxRequest(url, 'GET', postdata, (res) => {
       console.log(res)
       console.log(res.code)
       console.log(res.data)
+      //接收到后端传递的rescode==200后，得知getall成功，设置mess
       if(res.code == 200){
         this.setData({
           mess: res.data
@@ -74,6 +76,7 @@ Page({
     console.log(e.currentTarget)
     console.log('getone id')
     console.log(target)
+    //getone需要得知自身的id信息
     wx.navigateTo({
       url: 'getOne/getOne?id=' + target
     })

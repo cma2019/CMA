@@ -13,7 +13,7 @@ Page({
     console.log(e.detail.value)
     if (e.detail.value.fileName == null || e.detail.value.fileName == '') {
       wx.showToast({
-        title: '文件名称为空',
+        title: '文档名称为空',
         image: '/icons/warning/warning.png',
         duration: 500,
         success: function () {
@@ -35,17 +35,18 @@ Page({
           var mypath = res.tempFiles[0].path
           app.wxUploadFile(myurl, mypath, null, (res) => {
             console.log("upload file success")
+            console.log(res)
             wx.showToast({
               title: '上传成功',
               image: '/icons/ok/ok.png',
               duration: 500,
               success: function () {
                 setTimeout(function () {
-                }, 500)
+                  wx.redirectTo({
+                    url: '/pages/InternalAuditManagement/InternalAuditDocument/InternalAuditDocument?id=' + year,
+                  })
+                }, 300)
               }
-            })
-            wx.redirectTo({
-              url: '/pages/InternalAuditManagement/InternalAuditDocument/InternalAuditDocument?id=' + year,
             })
           }, (err) => {
             console.log(err)
@@ -55,7 +56,7 @@ Page({
               duration: 500,
               success: function () {
                 setTimeout(function () {
-                }, 500)
+                }, 300)
               }
             })
           })

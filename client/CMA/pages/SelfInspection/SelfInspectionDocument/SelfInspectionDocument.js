@@ -17,6 +17,8 @@ Page({
     })
   },
   gotoAdd: function (e) {
+    const index = e.currentTarget.dataset.index
+    let that = this.data.array
     wx.redirectTo({
       url: '/pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocumentAddOne/SelfInspectionDocumentAddOne?id='+this.data.id,
     })
@@ -32,16 +34,22 @@ Page({
     var id = this.data.id
     var that = this
     console.log('SelfInspection发生了getAllFile事件，携带数据为：', id)
-    var myurl1 = app.globalData.url + 'SelfInspection/getAllFile?id=' + id
-    app.wxRequest(myurl1, 'GET', null, (res) => {
+    var myurl = app.globalData.url + 'SelfInspection/getAllFile?id=' + id
+    app.wxRequest(myurl, 'GET', null, (res) => {
       console.log(res)
-      if(res.code == 200){
+      if (res.code == 200) {
         that.setData({
           array: res.data,
           flag: 1
         })
+        console.log("SelfInspection-GetAllFile成功")
       }
-      console.log(that.data)
+      else {//210
+        that.setData({
+          array: []
+        })
+        console.log("SelfInspection-GetAllFile无有效信息")
+      }
     }, (err) => {
       console.log(err)
     })

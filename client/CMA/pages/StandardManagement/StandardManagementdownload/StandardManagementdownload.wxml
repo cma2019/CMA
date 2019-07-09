@@ -1,6 +1,6 @@
 <!--pages/IntermediateCheck/IntermediateCheckGetone/IntermediateCheckGetone.wxml-->
 <view>
-<van-cell-group title='message of {{planId}}'>
+<van-cell-group title='标准管理详情'>
     <van-cell value="{{fileId}}"title="标准文件编号"border="{{ false }}"/>
     <van-cell value="{{fileName}}"title="标准文件名称"border="{{ false }}"/>
 </van-cell-group>

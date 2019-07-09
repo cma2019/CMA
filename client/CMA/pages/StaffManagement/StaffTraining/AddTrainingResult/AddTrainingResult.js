@@ -59,7 +59,7 @@ Page({
         }
         else {
           wx.showToast({
-            title: '删除成功',
+            title: '成功',
             //icon: 'success',
             image: '/icons/ok/ok.png',
             duration: 1000,

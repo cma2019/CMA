@@ -1,8 +1,7 @@
 <view>
   <van-cell-group>
       <van-field  label="自查年份" value='{{detail.year}}' disabled input-align="right"/>
-      <van-field  label="文档名称" value='{{detail.fileName}}' disabled input-align="right"/>
-      <van-field  label="文件实际名称" value='{{detail.file}}' disabled input-align="right"/>
+      <van-field  label="文件名称" value='{{detail.file}}' disabled input-align="right"/>
   </van-cell-group>
 </view>
 <view>

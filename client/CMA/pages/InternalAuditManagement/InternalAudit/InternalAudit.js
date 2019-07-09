@@ -67,7 +67,14 @@ Page({
         wx.showToast({
           title: '删除成功',
           image: '/icons/ok/ok.png',
-          duration: 500
+          duration: 500,
+          success:function(){
+            setTimeout(function(){
+              wx.redirectTo({
+                url: '/pages/InternalAuditManagement/InternalAudit/InternalAudit'
+              })
+            },500)
+          }
         })
       }
       else {
@@ -81,9 +88,6 @@ Page({
     }, (err) => {
       console.log('fail deleteone')
     })
-    wx.redirectTo({
-      url: '/pages/InternalAuditManagement/InternalAudit/InternalAudit'
-    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -96,28 +100,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    let url = app.globalData.url + 'InternalAuditManagement/getAll'
-    let postdata = ''
-    app.wxRequest(url, 'GET', postdata, (res) => {
-      if (res.code == 200) {
-        this.setData({
-          mess: res.data,
-          flag: 1
-        })
-      }
-      else {
-        this.setData({
-          mess: null,
-          flag: 0
-        })
-      }
-    }, (err) => {
-      wx.showToast({
-        title: 'getall error',
-        duration: 1500
-      })
-      console.log('getall error')
-    })
   },
 
   /**

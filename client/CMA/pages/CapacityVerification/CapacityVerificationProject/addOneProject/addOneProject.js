@@ -7,6 +7,7 @@ Page({
   },
 
   onLoad: function (options) {
+    //添加project时，需要知道添加至哪一个plan下
     this.setData({
       planId: options.id
     })
@@ -18,6 +19,7 @@ Page({
     })
   },
   AddNewProject(e) {
+    //所有输入不应为空
     if (e.detail.value.name == null ||
       e.detail.value.method == null ||
       e.detail.value.note == null ||
@@ -41,8 +43,11 @@ Page({
         "method": e.detail.value.method,
         "note": e.detail.value.note,
       }
+      //传递4个参数，其他参数自动生成，state默认为0
       console.log(data)
       app.wxRequest(url, 'POST', data, (res) => {
+        //rescode==200时，添加成功
+        //显示添加成功，并且返回上一界面
         if (res.code == 200) {
           console.log('add one project successfully')
           wx.showToast({

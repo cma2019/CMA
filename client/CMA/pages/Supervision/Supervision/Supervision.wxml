@@ -1,7 +1,7 @@
 <view>
   <van-cell-group title="Supervision">
     <view wx:if="{{flag == 1}}">
-      <view wx:for="{{mess}}" wx:for-index="id" wx:for-item="item" wx:key="unique">
+      <view wx:for="{{mess}}"   wx:key="{{index}}">
         <van-cell value="详情" bindtap='gotoOne' id='{{item.id}}' is-link>
           <view slot="title">
             <view>
@@ -24,7 +24,7 @@
           </view>
         </van-cell>
         <view>
-          <van-button type="info" size="small" id='{{item.id}}' bindtap="supervisionModify">修改</van-button>
+          <van-button type="info" size="small" data-index="{{index}}" bindtap="supervisionModify">修改</van-button>
           <van-button type="info" size="small" id='{{item.id}}' bindtap="supervisionDelete">删除</van-button>
         </view>
       </view>
