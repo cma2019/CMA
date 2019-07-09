@@ -164,6 +164,12 @@ public class EquipmentMaintenanceController {
         response.code=200;
         return response;
     }
+
+    /**
+     * 通过equipmentID查询当前ID对应的所有信息
+     * @param id
+     * @return
+     */
     @RequestMapping(value="/getAllByEquipmentId/{equipmentId}",method = RequestMethod.GET)
     @ResponseBody
     public Response getAllByEquipmentId(@PathVariable("equipmentId") Long id)
