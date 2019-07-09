@@ -19,6 +19,7 @@ Page({
   },
 
   fun1: function (e) {
+    //修改密码的流程，与注册基本相同，此处不做过多注释
     let codeurl = app.globalData.url + 'user/getCodeModify'
     console.log("wx login")
     let userdata = {
