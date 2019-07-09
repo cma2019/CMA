@@ -214,10 +214,14 @@ public class SelfInspectionController {
         sDoc.setFileName(fileName+"."+suffix);
         sDoc.setId(id);
         //System.out.println("???");
-        SelfInspectionDocumentRepository.save(sDoc);
         //System.out.println(sDoc.getFileName());
         //System.out.println("??");
-        return  fileController.upload(file,request,sDoc.getFileName(),sDoc.getDir());
+        Response res=  fileController.upload(file,request,sDoc.getFileName(),sDoc.getDir());
+        if(res.code==200)
+        {
+            SelfInspectionDocumentRepository.save(sDoc);
+        }
+        return res;
     }
     @RequestMapping(path="/modifyOneFormData",method= RequestMethod.POST)
     public @ResponseBody JSONObject modifyOneFormData(@RequestParam(value = "fileName",required = false) String fileName,
