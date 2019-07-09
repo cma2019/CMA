@@ -101,46 +101,83 @@ Page({
     }
     app.wxRequest(url, 'POST', postdata, (res) => {
       console.log(res)
-      if (res.data.code == 200) {
-        wx.showToast({
-          title: '修改成功',
-          duration: 1500
-        })
+      if (res.code == 200) {
         wx.removeStorage({
           key: 'ioGetOneinfo',
           success: function (res) {
             console.log(res)
           }
         })
-        wx.navigateTo({
-          url: '../SampleIo'
+        wx.showToast({
+          title: '修改成功',
+          image: '/icons/ok/ok.png',
+          duration: 500,
+          success: function () {
+            setTimeout(function () {
+              wx.redirectTo({
+                url: '../SampleIo'
+              })
+            }, 300)
+          }
         })
       }
-      else if (res.data.code == 531) {
+      else if (res.code == 531) {
         wx.showToast({
-          title: '未收到标识编号',
-          duration: 1500
+          title: '修改失败',
+          image: '/icons/warning/warning.png',
+          duration: 500,
+          success: function () {
+            setTimeout(function () {
+            }, 300)
+          }
         })
         console.log('未收到标识编号')
       }
-      else if (res.data.code == 532) {
+      else if (res.code == 532) {
         wx.showToast({
-          title: '数据不存在',
-          duration: 1500
+          title: '修改失败',
+          image: '/icons/warning/warning.png',
+          duration: 500,
+          success: function () {
+            setTimeout(function () {
+            }, 300)
+          }
         })
         console.log('数据不存在')
       }
-      else if (res.data.code == 533) {
+      else if (res.code == 533) {
         wx.showToast({
-          title: '修改后数据错误',
-          duration: 1500
+          title: '修改失败',
+          image: '/icons/warning/warning.png',
+          duration: 500,
+          success: function () {
+            setTimeout(function () {
+            }, 300)
+          }
         })
         console.log('修改后数据错误')
       }
+      else if (res.code == 514) {
+        wx.showToast({
+          title: '修改失败',
+          image: '/icons/warning/warning.png',
+          duration: 500,
+          success: function () {
+            setTimeout(function () {
+            }, 300)
+          }
+        })
+        console.log('添加数据与登记表不符')
+      }
       else {
         wx.showToast({
-          title: '修改后数据不合法',
-          duration: 1500
+          title: '修改失败',
+          image: '/icons/warning/warning.png',
+          duration: 500,
+          success: function () {
+            setTimeout(function () {
+            }, 300)
+          }
         })
         console.log('修改后数据不合法')
       }

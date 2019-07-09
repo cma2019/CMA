@@ -6,7 +6,7 @@
       <van-field v-model="version" name="version" clearable label="版本号" placeholder="{{origindata.version}}" />
 
       <van-field v-model="contractId" name="contractId" clearable label="合同登记编号" placeholder="{{origindata.contractId}}"/>
-      <van-cell v-model="testType" name="testType" title="检测类型">
+      <van-cell v-model="testType" name="testType" title="检测类型"label="0:登记检测,1:确认检测,2:验收检测">
         <van-stepper value="{{origindata.testType}}"  name="testType" integer min="0"max="2"step="1"/>
       </van-cell>
 
@@ -19,7 +19,7 @@
         <van-cell title="提交材料与类型"  is-link value="已填写" url="../receiptModifyOne/receiptTypeModify"/>
       </view>
 
-       <van-cell v-model="softwareType" name="softwareType" required title="软件类型">
+       <van-cell v-model="softwareType" name="softwareType" title="软件类型"label="0:系统软件,1:支持软件,2:应用软件,3:其他软件">
         <van-stepper value="{{origindata.softwareType}}"  name="softwareType" integer min="0"max="3"step="1"/>
       </van-cell>
 

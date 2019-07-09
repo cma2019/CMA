@@ -29,25 +29,44 @@ Page({
       wx.chooseMessageFile({
         count: 1,
         type: 'all',
-        success: function (res) {
-          console.log("get file success")
-          console.log(res)
-          var mypath = res.tempFiles[0].path
+        success: function (res1) {
+          var mypath = res1.tempFiles[0].path
           app.wxUploadFile(myurl, mypath, null, (res) => {
-            console.log("upload file success")
             console.log(res)
-            wx.showToast({
-              title: '上传成功',
-              image: '/icons/ok/ok.png',
-              duration: 500,
-              success: function () {
-                setTimeout(function () {
-                  wx.redirectTo({
-                    url: '/pages/InternalAuditManagement/InternalAuditDocument/InternalAuditDocument?id=' + year,
-                  })
-                }, 300)
-              }
-            })
+            console.log(res.code)
+            console.log(res.msg)
+            console.log(res.id)
+            if(res.code == 200){
+              console.log("上传成功")
+              wx.showToast({
+                title: '上传成功',
+                image: '/icons/ok/ok.png',
+                duration: 500,
+                success: function () {
+                  setTimeout(function () {
+                    wx.redirectTo({
+                      url: '/pages/InternalAuditManagement/InternalAuditDocument/InternalAuditDocument?id=' + year,
+                    })
+                  }, 300)
+                }
+              })
+            }
+            else{//500
+              console.log(res)
+              console.log("已有同名文件")
+              wx.showToast({
+                title: '已有同名文件',
+                image: '/icons/warning/warning.png',
+                duration: 500,
+                success: function () {
+                  setTimeout(function () {
+                    wx.redirectTo({
+                      url: '/pages/InternalAuditManagement/InternalAuditDocument/InternalAuditDocument?id=' + year,
+                    })
+                  }, 300)
+                }
+              })
+            }
           }, (err) => {
             console.log(err)
             wx.showToast({

@@ -13,6 +13,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onShow: function (options) {
+    console.log("SampleIo发生了getAll事件")
     let url = app.globalData.url + 'SampleIo/getAll'
     let postdata = ''
     app.wxRequest(url, 'GET', postdata, (res) => {

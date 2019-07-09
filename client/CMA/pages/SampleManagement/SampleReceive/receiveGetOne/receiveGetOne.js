@@ -8,19 +8,7 @@ Page({
     "sampleId": "null",
     "receiptId":"null",
     "info":{},
-    array:['待处理','在测','测毕'],
-    tmp: [{
-      "sampleId": 2,
-      "sampleNumber": "20180602",
-      "sampleName": "天猫超市",
-      "sampleAmount": 1,
-      "sampleState": 0,
-      "requster": "张三",
-      "receiver": "李四",
-      "receiveDate": "2018-06-16",
-      "obtainer": "王五",
-      "obtainDate": "2018-06-17"
-    }]
+    array:['待处理','在测','测毕']
   },
 
   /**
@@ -31,8 +19,6 @@ Page({
     this.setData({
       sampleId: options.id
     })
-    console.log("fsdgdf")
-    console.log(this.data.sampleId)
   },
 
   /**
@@ -58,6 +44,7 @@ Page({
         'Accept': 'application/json'
       },
       success(res) {
+        console.log(res)
         if (res.data.code == 200) {
           thispage.setData({
             info : res.data.data,
@@ -66,18 +53,9 @@ Page({
           wx.setStorage({
             key:'receiveGetOneinfo',
             data:res.data.data
-          })/*,
-          wx.removeStorage({
-            key: 'receiveGetOneinfo',
-            success: function (res) {
-              console.log(res)
-            }
           })
-          */
-          //console.log(info)
         }
         else if (res.data.code == 521) {
-          console.log(res.data.msg)
           wx.showToast({
             title: '未收到标识编号',
             duration: 1500
@@ -85,8 +63,6 @@ Page({
           console.log('未收到标识编号')
         }
         else {//522
-          console.log(res.data.msg)
-          console.log("12")
           wx.showToast({
             title: '数据不存在',
             duration: 1500
@@ -102,65 +78,50 @@ Page({
 
   modifyData: function (e) {
     console.log(e)
-    let target = this.data.sampleId
-    //console.log("dfdg")
-    //console.log(target)
+    let sampleId = this.data.sampleId
     wx.navigateTo({
-      url: '../receiveModifyOne/receiveModifyOne?id='+target
+      url: '../receiveModifyOne/receiveModifyOne?id=' + sampleId
     })
   },
 
   deleteData: function (e) {
-    const deleteoneRequest = wx.request({
-      url: app.globalData.url + 'SampleReceive/deleteOne',
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json'
-      },
-      data: {
-        "sampleId": this.data.sampleId
-      },
-      success(res) {
-        console.log(res)
-        if (res.data.code == 200) {
-          wx.removeStorage({
-            key: 'receiveGetOneinfo',
-            success: function (res) {
-              console.log(res)
-            }
-          }),
-          wx.showToast({
-            title: '删除成功',
-            duration: 1500
-          })
-        }
-        else if (res.data.code == 521) {
-          wx.showToast({
-            title: '未收到标识编号',
-            duration: 1500
-          })
-          console.log('未收到标识编号')
-        }
-        else {
-          wx.showToast({
-            title: '数据不存在',
-            duration: 1500
-          })
-          console.log('数据不存在')
-        }
-        wx.navigateBack({
-          delta: 1
+    let url = app.globalData.url + 'SampleReceive/deleteOne'
+    let postdata = {
+      "sampleId": this.data.sampleId
+    }
+    app.wxRequest(url, 'POST', postdata, (res) => {
+      console.log(res)
+      if (res.code == 200) {
+        wx.removeStorage({
+          key: 'receiveGetOneinfo',
+          success: function (res) {
+            console.log(res)
+          }
         })
-      },
-      fail(err) {
-        console.log('fail deleteone')
-      },
-      complete(fin) {
-        console.log('final deleteone')
+        wx.showToast({
+          title: '删除成功',
+          image: '/icons/ok/ok.png',
+          duration: 500,
+          success: function () {
+            setTimeout(function () {
+              wx.redirectTo({
+                url: '/pages/SampleManagement/SampleReceive/SampleReceive'
+              })
+            }, 300)
+          }
+        })
       }
+      else {
+        wx.showToast({
+          title: '删除失败',
+          image: '/icons/warning/warning.png',
+          duration: 300
+        })
+        console.log('删除失败')
+      }
+    }, (err) => {
+      console.log('fail deleteone')
     })
-
   },
 
   goback: function () {
@@ -184,14 +145,17 @@ Page({
     }
     else {
       wx.showToast({
-        title: '不含有对应的接收单',
-        duration: 1500
+        title: '未对应接收单',
+        image: '/icons/warning/warning.png',
+        duration: 500,
+        success: function () {
+          setTimeout(function () {
+          }, 300)
+        }
       })
     }
   },
   addsampleIo:function(){
-    console.log("dasfdsf")
-    console.log(this.data)
     wx.navigateTo({
       url: '/pages/SampleManagement/SampleIo/ioAddOne/ioAddOne?sampleNumber=' + this.data.info.sampleNumber+"&sampleName="+this.data.info.sampleName+"&sampleAmount="+this.data.info.sampleAmount+"&sampleState="+this.data.info.sampleState+"&receiptId="+this.data.receiptId
     })
