@@ -103,6 +103,7 @@ public class InternalAuditDocumentController {
         js.put("code",code);
         js.put("msg",msg);
         js.put("data",data);
+        System.out.println(js);
         return js;
     }
     /*
@@ -156,6 +157,7 @@ public class InternalAuditDocumentController {
         js.put("code",res.code);
         js.put("msg",res.msg);
         js.put("id",iDoc.getFileId());
+        System.out.println(js);
         return js;
     }
     @RequestMapping(path="/modifyOneFormData",method= RequestMethod.POST)
