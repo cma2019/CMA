@@ -41,15 +41,11 @@ public class SampleReceiveController {
                           @RequestParam(value="receiptId",required = false) String receiptId){
         //System.out.println(sampleNumber);
         //System.out.println(obtainer);
-        /*
-         * 参数列表包括所有必填信息，以String类型解析前端传过来的参数，便于做判空操作
-         */
+        //参数列表包括所有必填信息，以String类型解析前端传过来的参数，便于做判空操作
         JSONObject js=new JSONObject();
         int code=200;
         String msg="成功";
-        /*
-         * 由于以String类型解析参数，因此要做数据合法性的判断，比如String转Date，String转Long
-         */
+        //由于以String类型解析参数，因此要做数据合法性的判断，比如String转Date，String转Long
         try{
             Long.parseLong(receiptId);
             Integer.parseInt(sampleAmount);
@@ -60,35 +56,27 @@ public class SampleReceiveController {
             code=513;
             msg="某项数据错误";
         }
-        /*
-            参数为空字符串或者前端传参出错没有传过来
-         */
+       //参数为空字符串或者前端传参出错没有传过来
         if(sampleNumber==null||sampleName==null||requester==null||receiver==null||obtainer==null||
         sampleNumber.equals("")||sampleName.equals("")||requester.equals("")||receiver.equals("")||obtainer.equals(""))
         {
             code=511;
             msg="缺少请求参数";
         }
-        /*
-            样品编号是唯一的，如果数据库中已经存在，不可添加
-         */
+        //样品编号是唯一的，如果数据库中已经存在，不可添加
         else if(sampleReceiveRepository.findBySampleNumber(sampleNumber)!=null)
         {
             code=512;
             msg="样品编号已存在";
         }
-        /*
-            参数长度有限制
-         */
+        //参数长度有限制
         else if(sampleNumber.length()>10||sampleName.length()>20||
                 requester.length()>45||receiver.length()>20||obtainer.length()>20||(Integer.parseInt(sampleState)!=0&&Integer.parseInt(sampleState)!=1&&Integer.parseInt(sampleState)!=2))
         {
             code=513;
             msg="某项数据错误";
         }
-        /*
-            参数完整且合法，生成一个表项对象，根据输入参数实例化，并将对象主体存到数据库中
-         */
+       //参数完整且合法，生成一个表项对象，根据输入参数实例化，并将对象主体存到数据库中
         else
         {
             SampleReceive receive=new SampleReceive();
@@ -120,9 +108,7 @@ public class SampleReceiveController {
         return js;
     }
     @PostMapping (path="/deleteOne")
-    /*
-        删除一项样品登记表表项
-     */
+   //删除一项样品登记表表项
     public @ResponseBody JSONObject deleteOne(@RequestParam(value="sampleId",required = false) String sampleId)
     {
         JSONObject json=new JSONObject();
@@ -148,46 +134,34 @@ public class SampleReceiveController {
             code=521;
             msg="未收到标识编号";
         }
-        /*
-            如果传输的参数在数据库中没有对应数据需要报错
-         */
+       //如果传输的参数在数据库中没有对应数据需要报错
         else if(sampleReceiveRepository.findBySampleId(Long.parseLong(sampleId))==null) //此样品接收登记的id不在表中
         {
             code=522;
             msg="数据不存在";
         }
-        /*
-            传输的参数合法且完整，正常从数据库中删除对应表项
-         */
+        //传输的参数合法且完整，正常从数据库中删除对应表项
         else
         {
             sampleReceiveRepository.deleteById(Long.parseLong(sampleId));
         }
-        /*
-            返回json，前端解析code,msg,data然后与用户交互
-         */
+       //返回json，前端解析code,msg,data然后与用户交互
         json.put("code",code);
         json.put("msg",msg);
         json.put("data",null);
         return json;
     }
     @GetMapping(path="/getAll")
-    /*
-        获取数据库中存在的样品登记表完整列表
-     */
+   //获取数据库中存在的样品登记表完整列表
     public @ResponseBody JSONObject findALL()
     {
-        /*
-            调用findAll()方法获取登记表列表
-         */
+       //调用findAll()方法获取登记表列表
         List<SampleReceive> res= sampleReceiveRepository.findAll();
         JSONObject js=new JSONObject();
         JSONArray data=new JSONArray();
         int code=200;
         String msg="成功";
-        /*
-            遍历登记表列表，将需要的信息存放在data中
-         */
+       // 遍历登记表列表，将需要的信息存放在data中
         if(res.size()>0)
         {
             for(int i=0;i<res.size();i++)
@@ -206,36 +180,28 @@ public class SampleReceiveController {
                 data.add(tmp);
             }
         }
-        /*
-            列表为空
-         */
+        //列表为空
         else
         {
             code=210;
             msg="无有效信息返回";
             //data=null;
         }
-        /*
-            返回json，前端通过解析json中的code获取请求结果，前端解析json中的data获取需要展示的数据
-         */
+        //返回json，前端通过解析json中的code获取请求结果，前端解析json中的data获取需要展示的数据
         js.put("code",code);
         js.put("msg",msg);
         js.put("data",data);
         return js;
     }
     @GetMapping(path="/getOne")
-    /*
-        获取样品登记表列表中的某一表项
-     */
+   //获取样品登记表列表中的某一表项
     public @ResponseBody JSONObject findOne(@RequestParam(value = "sampleId",required = false) String  sampleId)
     {
             JSONObject json=new JSONObject();
             int code=200;
             String msg="成功";
             JSONObject data=new JSONObject();
-            /*
-                前端传过来的参数为空字符串（没有判断前端手滑没传参数的情况）
-             */
+           //前端传过来的参数为空字符串（没有判断前端手滑没传参数的情况）
             if(sampleId.equals(""))
             {
                 code=500;
@@ -250,9 +216,7 @@ public class SampleReceiveController {
                 code=500;
                 msg="数据不存在";
             }
-            /*
-                参数完整且正确时，将各种必须数据放在data中
-             */
+           //参数完整且正确时，将各种必须数据放在data中
             else {
             SampleReceive recv= sampleReceiveRepository.findBySampleId(Long.parseLong(sampleId));
             data.put("sampleNumber",recv.getSampleNumber());
@@ -266,18 +230,14 @@ public class SampleReceiveController {
             data.put("obtainDate",recv.getObtainDate().toString());
             data.put("receiptId",recv.getReceiptId());
         }
-        /*
-            返回json，前端通过解析code获取请求结果，通过解析data获取需要展示的信息
-         */
+        //返回json，前端通过解析code获取请求结果，通过解析data获取需要展示的信息
         json.put("code",code);
         json.put("msg",msg);
         json.put("data",data);
         return json;
     }
     @PostMapping(path="/modifyOne")
-    /*
-        用户输入需要修改的参数修改样品登记表中某表项
-     */
+    //用户输入需要修改的参数修改样品登记表中某表项
     public @ResponseBody JSONObject modify(@RequestParam(value = "sampleId",required = false)String sampleId,
                                            @RequestParam(value = "sampleNumber", required = false)String sampleNumber,
                                            @RequestParam(value = "sampleName", required = false) String sampleName,
@@ -292,9 +252,7 @@ public class SampleReceiveController {
         JSONObject js=new JSONObject();
         int code=200;
         String msg="成功";
-        /*
-            以字符串接受各种参数，对需要做类型转换的参数做合法性判断
-         */
+        //以字符串接受各种参数，对需要做类型转换的参数做合法性判断
         try{
             Integer.parseInt(sampleAmount);
             Integer.parseInt(sampleState);
@@ -324,18 +282,14 @@ public class SampleReceiveController {
             code =533;
             msg="修改后数据错误";
         }
-        /*
-            某些参数有长度限制
-         */
+       //某些参数有长度限制
         else if((sampleNumber.length()>10)||(sampleName!=null&&sampleName.length()>20)||(requester!=null&&requester.length()>45)
                 ||(receiver!=null&&receiver.length()>20)||(obtainer!=null&&obtainer.length()>20)||(Integer.parseInt(sampleState)!=2)&&(Integer.parseInt(sampleState)!=0&&Integer.parseInt(sampleState)!=1))
         {
             code=534;
             msg="修改后数据不合法";
         }
-        /*
-            参数完整且合法，正常修改并更新数据库中的表项
-         */
+        //参数完整且合法，正常修改并更新数据库中的表项
         else
         {
             SampleReceive recv= sampleReceiveRepository.findBySampleId(Integer.parseInt(sampleId));
@@ -378,9 +332,7 @@ public class SampleReceiveController {
                 //recv.setSampleName(recv.getSampleName());
             sampleReceiveRepository.saveAndFlush(recv);
         }
-        /*
-            返回json，前端解析code获取请求结果，解析data获取需要的数据
-         */
+       //返回json，前端解析code获取请求结果，解析data获取需要的数据
         js.put("code",code);
         js.put("msg",msg);
         js.put("data",null);
