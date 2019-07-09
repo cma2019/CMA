@@ -11,6 +11,7 @@
     "pages/admin/admin",
     "pages/admin/printoneadmin/printoneadmin",
     "pages/admin/modifyoneadmin/modifyoneadmin",
+    "pages/admin/modifyadmin/modifyadmin",
     "pages/IntermediateCheck/IntermediateCheck/IntermediateCheck",
     "pages/IntermediateCheck/IntermediateCheck/IntermediateCheckAddone/IntermediateCheckAddone",
     "pages/IntermediateCheck/IntermediateCheck/IntermediateCheckGetone/IntermediateCheckGetone",
