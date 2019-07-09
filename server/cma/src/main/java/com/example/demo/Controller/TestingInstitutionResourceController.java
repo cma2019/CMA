@@ -21,6 +21,11 @@ import org.springframework.web.context.request.WebRequest;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * @author YXP
+ * 检测机构资源管理
+ */
+
 @Controller
 @RequestMapping(path="/cma/TestingInstitutionResource")
 public class TestingInstitutionResourceController {
@@ -49,7 +54,7 @@ public class TestingInstitutionResourceController {
     }
 
 
-
+    //修改一个
     @RequestMapping(value="/modifyOne",method = RequestMethod.POST)
     @ResponseBody
     public Response modifyOne(

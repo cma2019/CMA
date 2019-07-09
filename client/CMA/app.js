@@ -6,7 +6,11 @@ App({
   //全局预设数据
   globalData: {
     userInfo: null,
+<<<<<<< HEAD
     url: 'http://192.168.1.110:8004/cma/',
+=======
+    url: 'http://192.168.1.100:8004/cma/',
+>>>>>>> 374e408ef07038baca8fbc3cf83041fec10c8c31
     username1: "admin"
   },
   //wx.request的封装接口

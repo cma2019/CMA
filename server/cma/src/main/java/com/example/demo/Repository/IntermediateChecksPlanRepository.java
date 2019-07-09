@@ -11,11 +11,12 @@ import java.sql.Date;
 
 @Transactional
 public interface IntermediateChecksPlanRepository extends JpaRepository<IntermediateChecksPlan,Long> {
+//用@Query自定义对数据库操作，修改、删除操作添加@Modifying
         @Modifying
-
+//修改信息
     @Query(value="update Intermediate_Checks_Plan set object = :object,content = :content,check_Date = :checkDate,person_In_Charge = :personInCharge,state = :state where planid=:planid",nativeQuery=true)
     void updateById(@Param("planid")Long id,@Param("object")String object,@Param("content")String content,@Param("checkDate") Date checkDate,@Param("personInCharge")String personInCharge,@Param("state")byte state);
-
+//删除对应plan的record
     @Modifying
     @Query(value="delete from Intermediate_Checks_Record where plan_id=:planid",nativeQuery = true)
     void deleteRecord(@Param("planid")Long planid);

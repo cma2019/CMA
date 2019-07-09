@@ -8,20 +8,7 @@ Page({
     "sampleIoId":"null",
     "receiptId":"null",
     array:['待处理','在测','测毕'],
-    "info":{},
-    tmp: [{
-      "sampleIoId": 2,
-      "sampleNumber": "20180602",
-      "sampleName": "天猫超市",
-      "sampleAmount": 1,
-      "sampleState": 0,
-      "sender": "张三",
-      "receiver": "李四",
-      "sendDate": "2018-06-16",
-      "obtainer": "王五",
-      "obtainDate": "2018-06-17",
-      "note":"fdgsfg"
-    }]
+    "info":{}
   },
 
   /**
@@ -102,29 +89,28 @@ Page({
       console.log(res)
       if (res.data.code == 200) {
         wx.showToast({
-          title: '删除成功',
-          duration: 1500
-        })
-      }
-      else if (res.data.code == 521) {
-        wx.showToast({
-          title: '未收到标识编号',
-          duration: 1500
-        })
-        console.log('未收到标识编号')
-      }
-      else {
-        wx.showToast({
-          title: '数据不存在',
-          duration: 1500
-        })
-        console.log('数据不存在')
-      }
-      wx.navigateBack({
-        delta: 1
-      })
+        title: '删除成功',
+        image: '/icons/ok/ok.png',
+        duration: 500,
+        success: function () {
+          setTimeout(function () {
+            wx.redirectTo({
+              url: '/pages/SampleManagement/SampleIo/SampleIo'
+            })
+          }, 300)
+        }
+       })
+     }
+     else {
+       wx.showToast({
+         title: '删除失败',
+         image: '/icons/warning/warning.png',
+         duration: 300
+       })
+       console.log('删除失败')
+     }
     }, (err) => {
-      console.log('fail deleteone')
+     console.log('fail deleteone')
     })
   },
 
@@ -150,7 +136,12 @@ Page({
     else{
       wx.showToast({
         title: '未对应接收单',
-        duration: 1500
+        image: '/icons/warning/warning.png',
+        duration: 500,
+        success: function () {
+          setTimeout(function () {
+          }, 300)
+        }
       })
     }
   },

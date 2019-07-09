@@ -17,6 +17,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * @author YXP
+ * 外部审查管理
+ */
 @Controller
 @RequestMapping(path="cma/ExternalReviewManagement")
 public class ExternalReviewManagementController {
@@ -54,6 +58,12 @@ public class ExternalReviewManagementController {
         response.msg="成功";
         return  response;
     }
+
+    /**
+     * 根据年份删除
+     * @param year
+     * @return
+     */
     @RequestMapping(path="deleteOne/{year}",method = RequestMethod.POST)
     @ResponseBody
     public Response deleteOne(@PathVariable("year")long year)

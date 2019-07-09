@@ -12,9 +12,9 @@ import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.security.Security;
 import java.util.Arrays;
-
-
 //CSDN博客https://www.cnblogs.com/memphis-f/p/10109027.html
+
+//注意前后端加密解密时密文的大小写是否一致
 public class Aes {
     /**
      *
@@ -28,10 +28,10 @@ public class Aes {
      * CBC模式需要添加偏移量参数iv，必须16位
      * 密钥 sessionKey，必须16位
      *
-     * 介于java 不支持PKCS7Padding，只支持PKCS5Padding 但是PKCS7Padding 和 PKCS5Padding 没有什么区别
-     * 要实现在java端用PKCS7Padding填充，需要用到bouncycastle组件来实现
+     * java不支持PKCS7Padding，只支持PKCS5Padding
+     * java端用PKCS7Padding填充，需要用到bouncycastle组件来实现
      */
-    private String sessionKey = "123456789abcdef1";
+    private String sessionKey = "123456789abcdef1";//默认密钥
     // 偏移量 16位
     private final String iv = "1fedcba987654321";
 
@@ -47,8 +47,8 @@ public class Aes {
     private Cipher cipher;
     boolean isInited = false;
 
-    public void init() {//←传userKey进来(?)
-        // 如果密钥不足16位，那么就补足.  这个if 中的内容很重要
+    public void init() {
+        // 如果密钥不足16位，那么就补足.
         System.out.println(sessionKey);
         keybytes = sessionKey.getBytes();
         ivByte = iv.getBytes();
@@ -79,7 +79,7 @@ public class Aes {
             e.printStackTrace();
         }
     }
-    public String encrypt(String content) {
+    public String encrypt(String content) {//加密方法
         byte[] encryptedText = null;
         byte[] contentByte = content.getBytes();
         init();
@@ -93,7 +93,7 @@ public class Aes {
         return new String(Hex.encode(encryptedText));
     }
 
-    public String decrypt(String encryptedData) {
+    public String decrypt(String encryptedData) {//解秘方法
         byte[] encryptedText = null;
         byte[] encryptedDataByte = Hex.decode(encryptedData);
         init();
@@ -107,7 +107,7 @@ public class Aes {
         return new String(encryptedText);
     }
 
-    public void changeKey(String newKey){
+    public void changeKey(String newKey){//修改密钥
         System.out.println("current Key:"+sessionKey);
         /*if(newKey.length()>16)
             newKey=KeyCut(newKey);*/
@@ -119,7 +119,7 @@ public class Aes {
 
     }
 
-    public String KeyCut(String key){
+    public String KeyCut(String key){//密钥太长的情况下要截掉只剩16位
         key=key.substring(0,16);
         return key;
     }

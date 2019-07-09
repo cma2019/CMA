@@ -21,12 +21,12 @@ import com.example.demo.Repository.IntermediateChecksRecordRepository;
  *
  */
 @Controller//Controller
-@RequestMapping(path="/cma/IntermediateChecksRecord")
+@RequestMapping(path="/cma/IntermediateChecksRecord")//接口定义
 public class IntermediateChecksRecordController {
     @Autowired
     private IntermediateChecksRecordRepository IntermediateChecksRecordRepository;
 
-    @GetMapping(path="/getAll")
+    @GetMapping(path="/getAll")//获取所有信息
     /*public @ResponseBody String getAll(){
         return "Hello,World";*/
     public @ResponseBody JSONObject getAllRecord(HttpServletRequest request,HttpServletResponse response) throws IOException, JSONException {
@@ -38,7 +38,7 @@ public class IntermediateChecksRecordController {
                 json.put("msg","查找不到");
         }
         else
-        {*/
+        {*///不判断为空理由见IntermediateChecksPlanController的getAll方法w
 
                 json.put("code",200);
                 json.put("msg","获取成功");
@@ -75,12 +75,12 @@ public class IntermediateChecksRecordController {
         return json;
     }
 
-    @GetMapping(path="/getOneByRecordId")
+    @GetMapping(path="/getOneByRecordId")//获取单个信息
     public @ResponseBody JSONObject getOneByRecordId(HttpServletRequest request,HttpServletResponse response,
                                      @RequestParam(value="recordId",required=false)Long recordId)throws IOException{
         JSONObject json=new JSONObject(new LinkedHashMap());
         IntermediateChecksRecord record=new IntermediateChecksRecord();
-        if(!IntermediateChecksRecordRepository.findById(recordId).isPresent())
+        if(!IntermediateChecksRecordRepository.findById(recordId).isPresent())//判断是否为空
         {
                 json.put("code",100);
                 json.put("msg","查找不到");
@@ -117,7 +117,7 @@ public class IntermediateChecksRecordController {
 
 
 
-    @PostMapping(path = "/addOne")
+    @PostMapping(path = "/addOne")//添加信息
     public @ResponseBody
     void addRecord(HttpServletRequest request, HttpServletResponse response,
                  @RequestParam(value = "planId", required = false) Long planId,
@@ -132,7 +132,7 @@ public class IntermediateChecksRecordController {
                  @RequestParam(value = "note", required = false) String note) throws IOException {
         IntermediateChecksRecord newRecord = new IntermediateChecksRecord();
         JSONObject json = new JSONObject(new LinkedHashMap());
-        if(IntermediateChecksRecordRepository.findByPlanId(planId).isPresent())
+        if(IntermediateChecksRecordRepository.findByPlanId(planId).isPresent())//判断是否已存在plan对应的记录，plan与record一对一
         {
 
                 json.put("code", 300);
@@ -152,7 +152,7 @@ public class IntermediateChecksRecordController {
         newRecord.setResultRecordPerson(resultRecordPerson);
         newRecord.setResultRecordDate(resultRecordDate);
         newRecord.setNote(note);
-        IntermediateChecksRecordRepository.save(newRecord);
+        IntermediateChecksRecordRepository.save(newRecord);//保存record,记录id自动生成
 
 
 
@@ -163,11 +163,11 @@ public class IntermediateChecksRecordController {
         response.getWriter().write(json.toString());
     }
 
-    @PostMapping(path="/deleteOne")
+    @PostMapping(path="/deleteOne")//删除记录
     public @ResponseBody void deleteRecord(HttpServletRequest request,HttpServletResponse response,
                                          @RequestParam(value="recordId",required=false)Long recordId)throws IOException{
         JSONObject json=new JSONObject(new LinkedHashMap());
-        if(!IntermediateChecksRecordRepository.findById(recordId).isPresent())
+        if(!IntermediateChecksRecordRepository.findById(recordId).isPresent())//判断是否为空
         {
                 json.put("code",100);
                 json.put("msg","查找不到");
@@ -186,7 +186,7 @@ public class IntermediateChecksRecordController {
         //return json;
     }
 
-    @PostMapping(path="/modifyOne")
+    @PostMapping(path="/modifyOne")//修改信息
     public @ResponseBody void modifyRecord(HttpServletRequest request,HttpServletResponse response,
                                          @RequestParam(value="recordId",required=false)Long recordId,
                                          @RequestParam(value = "planId", required = false) Long planId,
@@ -200,7 +200,7 @@ public class IntermediateChecksRecordController {
                                          @RequestParam(value = "resultRecordDate", required = false) Date resultRecordDate,
                                          @RequestParam(value = "note", required = false) String note)throws IOException{
         JSONObject json=new JSONObject(new LinkedHashMap());
-        if(!IntermediateChecksRecordRepository.findById(recordId).isPresent())
+        if(!IntermediateChecksRecordRepository.findById(recordId).isPresent())//判断是否为空
         {
 
                 json.put("code",100);
@@ -223,12 +223,12 @@ public class IntermediateChecksRecordController {
         //return json;
     }
 
-    @GetMapping(path="/getOneByPlanId")
+    @GetMapping(path="/getOneByPlanId")//获取对应plan的record
     public @ResponseBody JSONObject getOneByPlanId(HttpServletRequest request,HttpServletResponse response,
                                      @RequestParam(value="planId",required=false)Long planId)throws IOException{
         JSONObject json=new JSONObject(new LinkedHashMap());
         IntermediateChecksRecord record=new IntermediateChecksRecord();
-        if(!IntermediateChecksRecordRepository.findByPlanId(planId).isPresent())
+        if(!IntermediateChecksRecordRepository.findByPlanId(planId).isPresent())//判断是否为空
         {
                 json.put("code",100);
                 json.put("msg","查找不到");

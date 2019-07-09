@@ -74,7 +74,6 @@ Page({
     let conclusion = info[i].conclusion
     let operator = info[i].operator
     let recordDate = info[i].recordDate
-    console.log(superviseDate)
     wx.navigateTo({
       url: '/pages/Supervision/SupervisionRecord/SupervisionRecordModifyOne/SupervisionRecordModifyOne?planId=' + planId + "&recordId=" + recordId + "&department=" + department + "&supervisor=" + supervisor + "&superviseDate=" + superviseDate + "&supervisedPerson=" + supervisedPerson + "&record=" + record + "&conclusion=" + conclusion + "&operator=" + operator + "&recordDate=" + recordDate
     })
@@ -88,56 +87,40 @@ Page({
     let i = e.currentTarget.dataset.index
     let recordId = this.data.mess[i].recordId
     let planId = this.data.planId
+    let url = app.globalData.url + 'SupervisionRecord/deleteOne'
+    let postdata = {
+      "recordId": recordId
+    }
     console.log('SupervisionRecord发生了deleteOne事件，携带数据为：', recordId)
-    const deleteoneRequest = wx.request({
-      url: app.globalData.url + 'SupervisionRecord/deleteOne',
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json'
-      },
-      data: {
-        "recordId": recordId
-      },
-      success(res) {
-        console.log(res)
-        if (res.data.code == 200) {
-          wx.showToast({
-            title: '删除成功',
-            duration: 1500
-          })
-          wx.navigateTo({
-            url: '/pages/Supervision/SupervisionRecord/SupervisionRecord?id=' + planId
-          })
-        }
-        else if (res.data.code == 521) {
-          wx.showToast({
-            title: '未收到标识编号',
-            duration: 1500
-          })
-          console.log('未收到标识编号')
-        }
-        else {
-          wx.showToast({
-            title: '数据不存在',
-            duration: 1500
-          })
-          console.log('数据不存在')
-        }
-        wx.navigateBack({
-          delta: 1
+    app.wxRequest(url, 'POST', postdata, (res) => {
+      console.log(res)
+      if (res.code == 200) {
+        wx.showToast({
+          title: '删除成功',
+          image: '/icons/ok/ok.png',
+          duration: 500,
+          success: function () {
+            setTimeout(function () {
+              wx.navigateTo({
+                url: '/pages/Supervision/SupervisionRecord/SupervisionRecord?id=' + planId
+              })
+            }, 300)
+          }
         })
-      },
-      fail(err) {
-        console.log('fail deleteone')
-      },
-      complete(fin) {
-        console.log('final deleteone')
       }
+      else {
+        wx.showToast({
+          title: '删除失败',
+          image: '/icons/warning/warning.png',
+          duration: 300
+        })
+        console.log('删除失败')
+      }
+    }, (err) => {
+      console.log('fail deleteone')
     })
   },
   supervisionRecordAdd: function () {
-    console.log(this.data.planId)
     wx.navigateTo({
       url: '/pages/Supervision/SupervisionRecord/SupervisionRecordAddOne/SupervisionRecordAddOne?id=' + this.data.planId
     })

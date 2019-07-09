@@ -117,6 +117,13 @@ public class FileController {
         return "所有文件上传成功";
     }*/
 
+    /**
+     * 单文件下载
+     * @param response
+     * @param fileName
+     * @param dir
+     * @return
+     */
     public String downloadFile( HttpServletResponse response,String fileName,String dir) {
        // Response myresponse=new Response();
         if (fileName != null) {

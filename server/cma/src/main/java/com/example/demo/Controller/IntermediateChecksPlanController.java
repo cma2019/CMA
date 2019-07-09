@@ -29,12 +29,12 @@ import com.example.demo.Model.IntermediateChecksPlan;
 import com.example.demo.Repository.IntermediateChecksPlanRepository;
 
 @Controller//Controller
-@RequestMapping(path="/cma/IntermediateChecksPlan")
+@RequestMapping(path="/cma/IntermediateChecksPlan")//接口定义
 public class IntermediateChecksPlanController {
     @Autowired
     private IntermediateChecksPlanRepository IntermediateChecksPlanRepository;
 
-    @PostMapping(path="/addOne")
+    @PostMapping(path="/addOne")//添加计划
     public @ResponseBody void addPlan(HttpServletRequest request,HttpServletResponse response,
                                       @RequestParam(value="object",required=false)String object,
                                       @RequestParam(value="content",required=false)String content,
@@ -46,7 +46,7 @@ public class IntermediateChecksPlanController {
         newPlan.setCheckDate(checkDate);
         newPlan.setPersonInCharge(personInCharge);
         newPlan.setState(0);
-        IntermediateChecksPlanRepository.save(newPlan);
+        IntermediateChecksPlanRepository.save(newPlan);//以上，保存完成，数据库自动生成planId
 
         JSONObject json=new JSONObject(new LinkedHashMap());
         try{
@@ -56,18 +56,18 @@ public class IntermediateChecksPlanController {
             e.printStackTrace();
         }
         response.setContentType("text/html;charset=utf-8");
-        response.getWriter().write(json.toString());
+        response.getWriter().write(json.toString());//可用其他JSONObject包（参考CapacityVerification)直接返回JSONObject格式数据，此处返回json式样的字符串
         /*System.out.println("json:"+json);
         System.out.println("------");*/
         //return "Add Success";
-        //return json;
+        //return json;//←直接返回JSONObject，前端同样收到json数据
     }
 
-    @PostMapping(path="/deleteOne")
+    @PostMapping(path="/deleteOne")//删除计划
     public @ResponseBody void deletePlan(HttpServletRequest request,HttpServletResponse response,
                                                @RequestParam(value="planId",required=false)Long planId)throws IOException{
         JSONObject json=new JSONObject(new LinkedHashMap());
-        if(!IntermediateChecksPlanRepository.findById(planId).isPresent())
+        if(!IntermediateChecksPlanRepository.findById(planId).isPresent())//判断是否存在
         {
             try{
                 json.put("code",100);
@@ -78,8 +78,8 @@ public class IntermediateChecksPlanController {
         }
         else
         {
-            IntermediateChecksPlanRepository.deleteRecord(planId);
-            IntermediateChecksPlanRepository.deleteById(planId);
+            IntermediateChecksPlanRepository.deleteRecord(planId);//删除对应record
+            IntermediateChecksPlanRepository.deleteById(planId);//删除plan
             try{
                 json.put("code",200);
                 json.put("msg","删除成功");
@@ -92,7 +92,7 @@ public class IntermediateChecksPlanController {
         //return json;
     }
 
-    @PostMapping(path="/modifyOne")
+    @PostMapping(path="/modifyOne")//修改计划信息
     public @ResponseBody void modifyPlan(HttpServletRequest request,HttpServletResponse response,
                                          @RequestParam(value="planId",required=false)Long planId,
                                          @RequestParam(value="object",required=false)String object,
@@ -101,7 +101,7 @@ public class IntermediateChecksPlanController {
                                          @RequestParam(value="personInCharge",required=false)String personInCharge,
                                          @RequestParam(value="state",required=false)byte state)throws IOException{
         JSONObject json=new JSONObject(new LinkedHashMap());
-        if(!IntermediateChecksPlanRepository.findById(planId).isPresent())
+        if(!IntermediateChecksPlanRepository.findById(planId).isPresent())//判断是否存在，虽然前端似乎是无法传不存在planId到后端的，安全起见加上判断。
         {
             try{
                 json.put("code",100);
@@ -122,7 +122,7 @@ public class IntermediateChecksPlanController {
                 IntermediateChecksPlanRepository.updatePersonById(planId,personInCharge);
             if(state!=IntermediateChecksPlanRepository.getOne(planId).getState())
                 IntermediateChecksPlanRepository.updateStateById(planId,state);*/
-                IntermediateChecksPlanRepository.updateById(planId,object,content,checkDate,personInCharge,state);
+                IntermediateChecksPlanRepository.updateById(planId,object,content,checkDate,personInCharge,state);//似乎可以用JpaRepository的save方法直接修改
             //content,checkDate,personInCharge,state
             //System.out.println("changed object");
             try{
@@ -137,12 +137,12 @@ public class IntermediateChecksPlanController {
         response.getWriter().write(json.toString());
         //return json;
     }
-    @GetMapping(path="/getOne")
+    @GetMapping(path="/getOne")//返回单个计划信息
     public @ResponseBody void getOne(HttpServletRequest request,HttpServletResponse response,
                                      @RequestParam(value="planId",required=false)Long planId)throws IOException{
         JSONObject json=new JSONObject(new LinkedHashMap());
         IntermediateChecksPlan plan=new IntermediateChecksPlan();
-        if(!IntermediateChecksPlanRepository.findById(planId).isPresent())
+        if(!IntermediateChecksPlanRepository.findById(planId).isPresent())//判断是否存在
         {
             try{
                 json.put("code",100);
@@ -170,7 +170,7 @@ public class IntermediateChecksPlanController {
             try{
                 json.put("code",200);
                 json.put("msg","获取成功");
-                json.put("data",array);
+                json.put("data",array);//可以直接在data标签下传入通过Repository的find方法找到的数据
             }catch (JSONException e){
                 e.printStackTrace();
             }
@@ -196,7 +196,7 @@ public class IntermediateChecksPlanController {
             }
         }
         else
-        {*/
+        {*///此处不必判断是否为空，否则可能导致前端出问题。数据库为空时返回的数据也为空。
             try{
                 json.put("code",200);
                 json.put("msg","获取成功");
@@ -221,7 +221,7 @@ public class IntermediateChecksPlanController {
                 //System.out.println(array);
 
             }
-            json.put("data",array);
+            json.put("data",array);//可以在data标签下直接返回JpaRepository的findAll方法的数据
         //}
         response.setContentType("text/html;charset=utf-8");
         response.getWriter().write(json.toString());
