@@ -27,6 +27,7 @@ public class IntermediateChecksRecord {
     private Date resultRecordDate; //核查结论记录时间
     private String note;    //备注
 
+    //提供get,set方法
     public void setRecordId(long recordId){this.recordId=recordId;}
     public long getRecordId(){return this.recordId;}
 

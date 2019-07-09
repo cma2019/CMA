@@ -124,7 +124,7 @@ Page({
     console.log(target)
     //跳转到对应的record界面，projcet和record一一对应，此处传递projectid跳转
     if(this.data.state == 1){
-      wx.navigateTo({
+      wx.redirectTo({
         url: '../../CapacityVerificationRecord/getRecordByProjectId/getRecordByProjectId?id=' + target
       })
     }else{

@@ -105,7 +105,7 @@ Page({
               duration: 1000,
               success: function () {
                 setTimeout(function () {
-                  wx.navigateTo({
+                  wx.redirectTo({
                     url: '../../CapacityVerificationProject/getOneProject/getOneProject?id='+mypro,
                   })
                 }, 1000);

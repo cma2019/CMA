@@ -12,9 +12,9 @@ import java.util.Optional;
 
 @Transactional
 public interface IntermediateChecksRecordRepository extends JpaRepository<IntermediateChecksRecord,Long>{
-    Optional<IntermediateChecksRecord> findByPlanId(Long planId);
+    Optional<IntermediateChecksRecord> findByPlanId(Long planId);//自定义查询方法，用planId查找
 
-    @Modifying
+    @Modifying//修改record数据
 
     @Query(value="update Intermediate_Checks_Record set plan_id=:planid," +
             "object = :object," +

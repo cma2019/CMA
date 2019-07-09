@@ -144,7 +144,7 @@ public void testDeleteOne() throws Exception {
 @Test
 public void testModifyOne() throws Exception { 
 //TODO: Test goes here...
-    String url="/cma/StaffManagement/modifyOne?id=24&name=Kate&gender=&department=&position=&title=&degree=博士研究生&graduationSchool=&graduationMajor=&graduationDate=&workingYears=";
+    String url="/cma/StaffManagement/modifyOne?id=30&name=Kate&gender=&department=&position=&title=&degree=博士研究生&graduationSchool=&graduationMajor=&graduationDate=&workingYears=";
     MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post(url))
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andDo(MockMvcResultHandlers.print())
@@ -156,7 +156,7 @@ public void testModifyOne() throws Exception {
     JSONObject jsonObject= JSON.parseObject(res);
     int code= (int) jsonObject.get("code");
     System.out.println(code);
-    Assert.assertEquals(210,code);
+    Assert.assertEquals(200,code);
 } 
 
 
