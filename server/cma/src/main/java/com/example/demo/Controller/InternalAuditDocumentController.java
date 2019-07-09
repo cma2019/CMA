@@ -103,6 +103,7 @@ public class InternalAuditDocumentController {
         js.put("code",code);
         js.put("msg",msg);
         js.put("data",data);
+        System.out.println(js);
         return js;
     }
     /*
@@ -138,6 +139,7 @@ public class InternalAuditDocumentController {
     {
         FileController fileController=new FileController();
         InternalAuditDocument iDoc=new InternalAuditDocument();
+        com.alibaba.fastjson.JSONObject js=new com.alibaba.fastjson.JSONObject();
         System.out.println(file.getOriginalFilename());
         String[] str=file.getOriginalFilename().split("\\.");
         //System.out.println(str[str.length-1]);
@@ -146,13 +148,16 @@ public class InternalAuditDocumentController {
         iDoc.setFileName(fileName+"."+suffix);
         System.out.println(year);
         System.out.println(iDoc.getFileName());
-        InternalAuditDocumentRepository.save(iDoc);
         //System.out.println(sDoc.getFileName());
         Response res= fileController.upload(file,request,iDoc.getFileName(),iDoc.getDir());
-        com.alibaba.fastjson.JSONObject js=new com.alibaba.fastjson.JSONObject();
+        if(res.code==200)
+        {
+            InternalAuditDocumentRepository.save(iDoc);
+        }
         js.put("code",res.code);
         js.put("msg",res.msg);
         js.put("id",iDoc.getFileId());
+        System.out.println(js);
         return js;
     }
     @RequestMapping(path="/modifyOneFormData",method= RequestMethod.POST)

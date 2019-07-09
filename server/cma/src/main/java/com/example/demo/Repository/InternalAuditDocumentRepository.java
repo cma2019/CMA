@@ -7,7 +7,7 @@ import java.util.List;
 public interface InternalAuditDocumentRepository extends JpaRepository<InternalAuditDocument, Long>{
     List<InternalAuditDocument> findAllByYear(long year);
     InternalAuditDocument findByFileId(long fileId);
-    //InternalAuditDocument findByFlag(int flag);
+    InternalAuditDocument findByFileName(String fileName);
     //InternalAuditDocument findByYear(long year);
     //boolean deleteByFileId(long fileId);
 }
