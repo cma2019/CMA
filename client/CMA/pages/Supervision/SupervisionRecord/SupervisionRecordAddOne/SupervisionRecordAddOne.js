@@ -34,7 +34,7 @@ Page({
   SupervisionRecord_addone: function (e) {
     let planid = this.data.planid
     let thispage = this
-    if (e.detail.value.superviseDate == "" || e.detail.value.recordDate == "" ) {
+    if (e.detail.value.superviseDate == "" || e.detail.value.recordDate == "") {
       wx.showToast({
         title: '空白输入',
         image: '/icons/warning/warning.png',
@@ -134,7 +134,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+
   },
 
   /**

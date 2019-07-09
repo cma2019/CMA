@@ -73,8 +73,8 @@ Page({
       e.detail.value.state == null ||
       e.detail.value.name == "" ||
       e.detail.value.method == "" ||
-      e.detail.value.note == ""||
-      e.detail.value.state == "") {
+      e.detail.value.note == "" ||
+    (e.detail.value.state == "" && e.detail.value.state != 0)){
       console.log("message error")
       wx.showToast({
         title: '修改失败',
@@ -106,9 +106,11 @@ Page({
       //显示请输入记录信息，跳转到添加界面
       //若plan相应的所有project的state都变为了1，则该plan的state变为1
       //相对的，state从1变为0时，plan的state变为0，删除对应的record
+      console.log(res.code)
       if (res.code == 300) {
         console.log('modify successfully')
         let thisid = this.data.id
+        console.log(thisid)
         wx.showToast({
           title: '请输入记录信息',
           image: '/icons/ok/ok.png',
@@ -116,8 +118,9 @@ Page({
           success: function () {
             setTimeout(function () {
             let target = thisid
+            console.log(thisid)
             //跳转到添加record的界面
-             wx.navigateTo({
+             wx.redirectTo({
                url: '../../CapacityVerificationRecord/addOneRecord/addOneRecord?id='+target,
              })
             }, 1000);

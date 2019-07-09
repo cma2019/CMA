@@ -180,6 +180,7 @@ public class CapacityVerificationProjectController {
         }
         else
         {
+            long tempState=CapacityVerificationProjectRepository.findById(projectId).get().getState();
             CapacityVerificationProjectRepository.updateProjectState(projectId,state);
             //content,checkDate,personInCharge,state
             //System.out.println("changed object");
@@ -187,6 +188,17 @@ public class CapacityVerificationProjectController {
             Long planId=CapacityVerificationProjectRepository.findById(projectId).get().getplanId();
             if(CapacityVerificationProjectRepository.findAllByPlanIdAndState(planId,0).isEmpty())
                 CapacityVerificationProjectRepository.updatePlanState(1,planId);
+            if(tempState==0&&state==1)
+            {
+                json.put("code",300);
+                json.put("msg","修改成功");
+                return json;
+            }
+            if(tempState==1&&state==0)
+            {
+                CapacityVerificationProjectRepository.deleteRecord(projectId);
+                CapacityVerificationProjectRepository.updatePlanState(0,planId);
+            }
             try{
                 json.put("code",200);
                 json.put("msg","修改成功");

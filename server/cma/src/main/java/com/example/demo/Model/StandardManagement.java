@@ -14,16 +14,18 @@ import javax.persistence.Id;
 public class StandardManagement {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private long fileId;
-    private String filename;
-    String dir="Standard";
+    private long fileId;//标准文档Id,主键
+    private String filename;//文件名（带后缀）
+    String dir="Standard";//存储时的路径
 
+    //get,set方法
     public long getFileId(){return this.fileId;}
     public void setFileId(long fileId){this.fileId=fileId;}
 
     public String getFileName(){return this.filename;}
     public void setFileName(String fileName){this.filename=fileName;}
 
+    //获得存储路径
     public String getDir(){return dir;}
 
 }

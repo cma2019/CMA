@@ -59,6 +59,7 @@ Page({
   },
 
   fun1: function (e) {
+    //登录的流程，在前端的视角中，与注册相似，此处不做过多注释
     let codeurl = app.globalData.url + 'user/logingetCode'
     console.log("wx login")
     let userdata = {

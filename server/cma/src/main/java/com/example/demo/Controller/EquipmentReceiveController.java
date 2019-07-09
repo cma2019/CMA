@@ -244,6 +244,12 @@ public class EquipmentReceiveController {
         }
         return file;
     }*/
+
+    /**
+     *绑定Date实体类型的编辑器
+     * @param request
+     * @param binder
+     */
     @InitBinder
     protected void init(HttpServletRequest request, ServletRequestDataBinder binder) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
