@@ -9,7 +9,9 @@ Page({
     activeNames: ['0'],
     mess: null,
     array: ['0','《用户手册》', '《计算机软件产品登记检测申请表》', '《材料交接单》', '《软件产品功能列表》', '《软件名称与版本号确认单》', '《受测软件产品简介》', '《自主产权保证书》', '软件样品一套', '其它'],
-    array1:['没有材料','仅有电子文档','仅有书面文档','既有电子文档，又有书面文档']
+    array1:['没有材料','仅有电子文档','仅有书面文档','既有电子文档，又有书面文档'],
+    testTypeArray:["登记检测","确定检测","验收检测"],
+    softTypeArray:["系统软件","支持软件","应用软件","其他软件"]
   },
 
   /**
@@ -26,7 +28,6 @@ Page({
     this.setData({
       activeNames: event.detail
     })
-    console.log("9999999999999")
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -122,6 +123,7 @@ Page({
         'Accept': 'application/json'
       },
       success(res) {
+        console.log(res)
         if (res.data.code == 200) {
           thispage.setData({
             mess: res.data.data
@@ -130,11 +132,8 @@ Page({
             key: 'receiptGetOneinfo',
             data: res.data.data
           })
-          console.log(thispage.data.mess)
-          console.log(thispage.data.mess.data)
-          console.log("hhhhh")
         }
-        else if (res.data.code == 521) {
+        else if (res.data.code  == 521) {
           console.log(res.data.msg)
           wx.showToast({
             title: '未收到标识编号',
@@ -159,57 +158,44 @@ Page({
 
   modifyData: function (e) {
     console.log(e)
-    console.log(this.data.sampleId)
     wx.navigateTo({
       url: '/pages/SampleManagement/SampleReceipt/receiptModifyOne/receiptModifyOne?id=' + this.data.sampleId
     })
   },
 
   deleteData: function (e) {
-    const deleteoneRequest = wx.request({
-      url: app.globalData.url + 'SampleReceipt/deleteOne',
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json'
-      },
-      data: {
-        "sampleId": this.data.sampleId
-      },
-      success(res) {
-        console.log(res)
-        if (res.data.code == 200) {
-          wx.showToast({
-            title: '删除成功',
-            duration: 1500
-          })
-        }
-        else if (res.data.code == 521) {
-          wx.showToast({
-            title: '未收到标识编号',
-            duration: 1500
-          })
-          console.log('未收到标识编号')
-        }
-        else {
-          wx.showToast({
-            title: '数据不存在',
-            duration: 1500
-          })
-          console.log('数据不存在')
-        }
-        wx.navigateBack({
-          delta: 1
+    let url = app.globalData.url + 'SampleReceipt/deleteOne'
+    let postdata = {
+      "sampleId": this.data.sampleId
+    }
+    console.log("SampleReceipt发生了deleteOne事件，携带数据为：",this.data.sampleId)
+    app.wxRequest(url, 'POST', postdata, (res) => {
+      console.log(res)
+      if (res.code == 200) {
+        wx.showToast({
+          title: '删除成功',
+          image: '/icons/ok/ok.png',
+          duration: 500,
+          success: function () {
+            setTimeout(function () {
+              wx.redirectTo({
+                url: '/pages/SampleManagement/SampleReceipt/SampleReceipt'
+              })
+            }, 300)
+          }
         })
-      },
-      fail(err) {
-        console.log('fail deleteone')
-      },
-      complete(fin) {
-        console.log('final deleteone')
       }
+      else {
+        wx.showToast({
+          title: '删除失败',
+          image: '/icons/warning/warning.png',
+          duration: 1000
+        })
+        console.log('删除失败')
+      }
+    }, (err) => {
+      console.log('fail deleteone')
     })
-
   },
 
   goback: function () {

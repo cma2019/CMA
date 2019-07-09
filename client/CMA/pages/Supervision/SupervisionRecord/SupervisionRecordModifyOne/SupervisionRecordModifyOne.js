@@ -34,8 +34,6 @@ Page({
       operator: options.operator,
       recordDate: options.recordDate
     })
-    console.log(this.data)
-    console.log("fdsf")
   },
 
   bindsuperviseDateChange(e) {
@@ -43,14 +41,12 @@ Page({
     this.setData({
       superviseDate: e.detail.value
     })
-    console.log(this.superviseDate)
   },
 
   bindrecordDateChange(e) {
     this.setData({
       recordDate: e.detail.value
     })
-    console.log(this.recordDate)
   },
   /**
    * 生命周期函数--监听页面显示
@@ -60,8 +56,6 @@ Page({
 
   SupervisionRecord_modifyone: function (e) {
     let mod = this.data
-    console.log('SupervisionRecord发生了modifyone事件，携带数据为：', e.detail.value)
-    console.log(this.data)
     if (e.detail.value.department != null && e.detail.value.department != "") {
       mod.department = e.detail.value.department
     }
@@ -86,74 +80,51 @@ Page({
     if (e.detail.value.recordDate != null && e.detail.value.recordDate != "") {
       mod.recordDate = e.detail.value.recordDate
     }
-    console.log("dfg")
-    console.log(this.data)
-    wx.request({
-      url: app.globalData.url + 'SupervisionRecord/modifyOne',
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json'
-      },
-      data: {
-        "recordId": mod.recordId,
-        "department": mod.department,
-        "supervisor": mod.supervisor,
-        "superviseDate": mod.superviseDate,
-        "supervisedPerson": mod.supervisedPerson,
-        "record": mod.record,
-        "conclusion": mod.conclusion,
-        "operator": mod.operator,
-        "recordDate": mod.recordDate
-      },
-      success(res) {
-        console.log(res)
-        if (res.data.code == 200) {
-          wx.showToast({
-            title: '修改成功',
-            duration: 1500
-          })
-          wx.navigateTo({
-            url: '/pages/Supervision/SupervisionRecord/SupervisionRecord?id=' + mod.planId
-          })
-        }
-        else if (res.data.code == 531) {
-          wx.showToast({
-            title: '未收到标识编号',
-            duration: 1500
-          })
-          console.log('未收到标识编号')
-        }
-        else if (res.data.code == 532) {
-          wx.showToast({
-            title: '数据不存在',
-            duration: 1500
-          })
-          console.log('数据不存在')
-        }
-        else if (res.data.code == 533) {
-          wx.showToast({
-            title: '修改后数据错误',
-            duration: 1500
-          })
-          console.log('修改后数据错误')
-        }
-        else {
-          wx.showToast({
-            title: '修改后数据不合法',
-            duration: 1500
-          })
-          console.log('修改后数据不合法')
-        }
-      },
-      fail(err) {
-        console.log('fail modifyone')
-      },
-      complete(fin) {
-        console.log('final modifyone')
+    console.log('SupervisionRecord发生了modifyone事件，携带数据为：', mod)
+    let url = app.globalData.url + 'SupervisionRecord/modifyOne'
+    let postdata = {
+      "recordId": mod.recordId,
+      "department": mod.department,
+      "supervisor": mod.supervisor,
+      "superviseDate": mod.superviseDate,
+      "supervisedPerson": mod.supervisedPerson,
+      "record": mod.record,
+      "conclusion": mod.conclusion,
+      "operator": mod.operator,
+      "recordDate": mod.recordDate
+    }
+    app.wxRequest(url, 'POST', postdata, (res) => {
+      console.log(res)
+      if (res.code == 200) {
+        wx.showToast({
+          title: '修改成功',
+          image: '/icons/ok/ok.png',
+          duration: 500,
+          success: function () {
+            setTimeout(function () {
+              wx.navigateTo({
+                url: '/pages/Supervision/SupervisionRecord/SupervisionRecord?id=' + mod.planId
+              })
+            }, 300)
+          }
+        })
+        console.log("修改成功")
       }
+      else {
+        wx.showToast({
+          title: '修改失败',
+          image: '/icons/warning/warning.png',
+          duration: 500,
+          success: function () {
+            setTimeout(function () {
+            }, 300)
+          }
+        })
+        console.log("修改失败")
+      }
+    }, (err) => {
+      console.log('fail modifyone')
     })
-
   },
   goback: function () {
     wx.navigateBack({

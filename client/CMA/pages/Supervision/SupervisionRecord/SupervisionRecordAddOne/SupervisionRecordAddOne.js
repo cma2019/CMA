@@ -87,7 +87,7 @@ Page({
               }, 300)
             }
           })
-          console.log("空白输入")
+          console.log("缺少请求参数")
         }
         else if (res.code == 513) {
           wx.showToast({
