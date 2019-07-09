@@ -21,6 +21,8 @@ Page({
   onLoad: function (options) {
     console.log('getone options')
     console.log(options)
+    //此界面通过recordid来获得record信息
+    //此界面通过查找recordid到达
     this.setData({
       recordId: options.id
     })
@@ -31,11 +33,13 @@ Page({
     let postdata = {
       "id": this.data.recordId
     }
+    //传递recordid信息，获取record信息
     console.log(url)
     console.log(postdata)
     app.wxRequest(url, 'GET', postdata, (res) => {
       console.log(res)
       console.log('plan get one project success')
+      //rescode == 200时，获取成功
       if(res.code == 200){
         this.setData({
           projectId: res.data.projectId,
@@ -68,6 +72,7 @@ Page({
     console.log(e)
     let target = this.data.recordId
     console.log(target)
+    //修改时，需要传递需要修改的recordid
     wx.navigateTo({
       url: '../modifyOneRecord/modifyOneRecord?id=' + target
     })
@@ -78,6 +83,8 @@ Page({
     let data = {
       "id": this.data.recordId
     }
+    //删除时，需要传递需要删除的recordid
+    //这一操作会改变相应project的state
     app.wxRequest(url, 'POST', data, (res) => {
       if (res.code == 200) {
         console.log('delete record successfully')
@@ -86,7 +93,10 @@ Page({
           "projectId" : this.data.projectId,
           "state": 0
         }
+        //调用修改state的接口，通过前端的请求改变相应project的state
         app.wxRequest(url2,'POST',data2,(res)=>{
+          //两个步骤都完成时，rescode==200
+          //显示删除成功，返回对应project界面
           if(res.code == 200){
             let mypro = this.data.projectId
             wx.showToast({

@@ -6,25 +6,7 @@ Page({
    */
   data: {
     "mess":null,
-    "flag":0,
-    tmp: [{
-      "id": 1,
-      "situation ": 2,
-      "author": "老王",
-      "createDate": "2018-05-08",
-      "approver": "老李",
-      "approveDate": "2018-06-08",
-      "remark ": "无",
-    },
-    {
-      "id": 3,
-      "situation ": 5,
-      "author": "老块",
-      "createDate": "2016-06-08",
-      "approver": "老八",
-      "approveDate": "2018-07-08",
-      "remark ": "happy",
-    }]
+    "flag":0
   },
   onLoad:function(){
     wx.removeStorage({
@@ -42,16 +24,19 @@ Page({
     let url = app.globalData.url + 'Supervision/getAll'
     let postdata = ''
     app.wxRequest(url, 'GET', postdata, (res) => {
-      if(res.code == 522){
-        this.setData({
-          mess : ""
-        })
-      }
-      else{
+      if (res.code == 200) {
         this.setData({
           mess: res.data,
           flag: 1
         })
+        console.log("Supervision-getAll成功")
+      }
+      else { //210
+        this.setData({
+          mess: null,
+          flag: 0
+        })
+        console.log("Supervision-getAll无有效信息")
       }
     }, (err) => {
       wx.showToast({
@@ -100,54 +85,44 @@ Page({
   supervisionDelete: function (e) {
     let id = e.currentTarget.id
     console.log("supervision发生了deleteOne事件，携带数据为",id)
-    wx.request({
-      url: app.globalData.url + 'Supervision/deleteOne',
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json'
-      },
-      data: {
-        "id": id
-      },
-      success(res) {
-        console.log(res)
-        if (res.data.code == 200) {
-          wx.showToast({
-            title: '删除成功',
-            duration: 1500
-          })
-          wx.navigateTo({
-            url: '/pages/Supervision/Supervision/Supervision'
-          })
-        }
-        else if (res.data.code == 521) {
-          wx.showToast({
-            title: '未收到标识编号',
-            duration: 1500
-          })
-          console.log('未收到标识编号')
-        }
-        else {
-          wx.showToast({
-            title: '数据不存在',
-            duration: 1500
-          })
-          console.log('数据不存在')
-        }
-      },
-      fail(err) {
-        console.log('fail deleteone')
-      },
-      complete(fin) {
-        console.log('final deleteone')
+    let url = app.globalData.url + 'Supervision/deleteOne'
+    let postdata={
+      "id": id
+    }
+    app.wxRequest(url, 'POST', postdata, (res) => {
+      console.log(res)
+      if (res.code == 200) {
+        wx.showToast({
+          title: '删除成功',
+          image: '/icons/ok/ok.png',
+          duration: 500,
+          success: function () {
+            setTimeout(function () {
+              wx.redirectTo({
+                url: '/pages/Supervision/Supervision/Supervision'
+              })
+            }, 300)
+          }
+        })
       }
+      else {
+        wx.showToast({
+          title: '删除失败',
+          image: '/icons/warning/warning.png',
+          duration: 300
+        })
+        console.log('删除失败')
+      }
+    }, (err) => {
+      console.log('fail deleteone')
     })
   },
   supervisionModify: function (e) {
-    let id = e.currentTarget.id
+    console.log(e)
+    let index = e.currentTarget.dataset.index
+    let id = this.data.mess[index].id
     wx.navigateTo({
-      url: '/pages/Supervision/Supervision/supervisionModifyOne/supervisionModifyOne?id=' + id
+      url: '/pages/Supervision/Supervision/supervisionModifyOne/supervisionModifyOne?id=' + id+'&remark='+this.data.mess[index].remark
     })
   }
 })

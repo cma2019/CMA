@@ -19,6 +19,7 @@ Page({
   AddNewPlan(e) {
     console.log("plan")
     console.log(e.detail)
+    //addone时，需要保证所有输入不为空
     if (e.detail.value.name == null ||
       e.detail.value.organizer == null ||
       e.detail.value.year == null ||
@@ -42,8 +43,11 @@ Page({
         "year": e.detail.value.year,
         "note": e.detail.value.note,
       }
+      //addone需要传递四个参数，其他参数自动生成
       console.log(data)
       app.wxRequest(url, 'POST', data, (res) => {
+        //服务器端返回rescode==200时，添加成功
+        //显示添加成功，并且返回上一界面
         if (res.code == 200) {
           console.log('add plan successfully')
           wx.showToast({

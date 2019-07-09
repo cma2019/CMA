@@ -17,6 +17,7 @@
         </view>
       </view>
     </view>
+    <view wx:else>暂未含有监督计划</view>
   </van-cell-group>
 </view>
 <view>

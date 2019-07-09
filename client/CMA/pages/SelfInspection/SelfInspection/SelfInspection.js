@@ -17,26 +17,27 @@ Page({
     console.log('SelfInspection发生了getAll事件，携带数据为：', options)
     let url = app.globalData.url + 'SelfInspection/getAll'
     let postdata = ''
-    console.log(url)
-    console.log(postdata)
     app.wxRequest(url, 'GET', postdata, (res) => {
-      if (res.code == 522) {
-        this.setData({
-          mess: ""
-        })
-      }
-      else {
+      if (res.code == 200) {
         this.setData({
           mess: res.data,
           flag: 1
         })
+        console.log("SelfInspection-getAll成功")
+      }
+      else { //210
+        this.setData({
+          mess: null,
+          flag: 0
+        })
+        console.log("SelfInspection-getAll无有效信息")
       }
     }, (err) => {
       wx.showToast({
-        title: 'getall error',
+        title: 'SelfInspection-getAll error',
         duration: 1500
       })
-      console.log('getall error')
+      console.log('SelfInspection-getAll error')
     })
   },
   gotoFile: function (e) {
@@ -73,22 +74,25 @@ Page({
         if (res.data.code == 200) {
           wx.showToast({
             title: '删除成功',
-            duration: 1500
-          })
-          wx.navigateTo({
-            url: '/pages/SelfInspection/SelfInspection/SelfInspection'
+            image: '/icons/ok/ok.png',
+            duration: 500,
+            success: function () {
+              setTimeout(function () {
+                wx.redirectTo({
+                  url: '/pages/SelfInspection/SelfInspection/SelfInspection'
+                })
+              }, 500)
+            }
           })
         }
         else {
           wx.showToast({
             title: '删除失败',
-            duration: 1500
+            image: '/icons/warning/warning.png',
+            duration: 500
           })
           console.log('删除失败')
         }
-        wx.navigateBack({
-          delta: 1
-        })
       },
       fail(err) {
         console.log('fail deleteone')
@@ -109,29 +113,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    let url = app.globalData.url + 'SelfInspection/getAll'
-    let postdata = ''
-    console.log(url)
-    console.log(postdata)
-    app.wxRequest(url, 'GET', postdata, (res) => {
-      if (res.code == 522) {
-        this.setData({
-          mess: ""
-        })
-      }
-      else {
-        this.setData({
-          mess: res.data,
-          flag: 1
-        })
-      }
-    }, (err) => {
-      wx.showToast({
-        title: 'getall error',
-        duration: 1500
-      })
-      console.log('getall error')
-    })
   },
 
   /**

@@ -15,6 +15,7 @@
         </view>
       </view>
     </view>
+    <view wx:else>暂未含有监督记录</view>
   </van-cell-group>
 </view>
 <view>

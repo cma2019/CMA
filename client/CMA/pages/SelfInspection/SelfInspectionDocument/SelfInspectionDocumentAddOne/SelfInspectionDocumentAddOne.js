@@ -9,36 +9,71 @@ Page({
     "fileId": null,
     "fileName": null,
   },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    this.setData({
+      id: options.id
+    })
+  },
+
   SelfInspectionDocumentAddOne: function (e) {
     console.log(e.detail.value)
     if(e.detail.value.fileName == null||e.detail.value.fileName == ''){
       wx.showToast({
         title:'文件名称为空',
         image:'/icons/warning/warning.png',
-        duration:2000,
+        duration:500,
         success:function(){
           setTimeout(function(){
-          },2000)
+          },300)
         }
       })
     }
     else{
-      var myurl = app.globalData.url + 'SelfInspection/addOneFile?id='+this.data.id+'&fileName='+e.detail.value.fileName
       var id = this.data.id
       console.log('SelfInspectionDocument发生了AddOne事件，携带数据为：', e.detail.value.fileName)
+      var myurl = app.globalData.url + 'SelfInspection/addOneFile?id=' + this.data.id + '&fileName=' +e.detail.value.fileName
       wx.chooseMessageFile({
         count: 1,
         type: 'all',
         success(res) {
-          console.log("get file success")
-          console.log(res)
           var mypath = res.tempFiles[0].path
           app.wxUploadFile(myurl, mypath, null, (res) => {
-            console.log("upload file success")
             console.log(res)
-            wx.redirectTo({
-              url: '/pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocument?id='+id,
-            })
+            if(res.code == 200){
+              console.log("上传成功")
+              wx.showToast({
+                title: '上传成功',
+                image: '/icons/ok/ok.png',
+                duration: 500,
+                success: function () {
+                  setTimeout(function () {
+                    wx.redirectTo({
+                      url: '/pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocument?id=' + id,
+                    })
+                  }, 300)
+                }
+              })
+            }
+            else{ //500
+              console.log("已有同名文件")
+              wx.showToast({
+                title: '已有同名文件！',
+                image: '/icons/warning/warning.png',
+                duration: 500,
+                success: function () {
+                  setTimeout(function () {
+                    wx.redirectTo({
+                      url: '/pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocument?id=' + id,
+                    })
+                  }, 300)
+                }
+              })
+
+            }
           }, (err) => {
             console.log(err)
           })
@@ -53,14 +88,6 @@ Page({
   goback: function () {
     wx.navigateBack({
       delta: 1
-    })
-  },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    this.setData({
-      id:options.id
     })
   },
 

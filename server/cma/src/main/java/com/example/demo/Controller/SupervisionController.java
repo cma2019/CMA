@@ -1,5 +1,7 @@
 package com.example.demo.Controller;
 //import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.example.demo.Model.SupervisionPlan;
+import com.example.demo.Repository.SupervisionPlanRepository;
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,8 @@ import java.util.List;
 public class SupervisionController {
     @Autowired
     private SupervisionRepository SupervisionRepository;
+    @Autowired
+    private SupervisionPlanRepository SupervisionPlanRepository;
     @PostMapping(path="/addOne")
     public @ResponseBody
     JSONObject addOne(@RequestParam(value = "author", required = false)String author,
@@ -72,8 +76,23 @@ public class SupervisionController {
         JSONObject json=new JSONObject();
         int code=200;
         String msg="成功";
+        try {
+            Long.parseLong(id);
+        }catch (NumberFormatException E){
+            json.put("code",500);
+            json.put("msg","缺少请求参数");
+            json.put("data",null);
+        }
         JSONObject data=new JSONObject();
         //System.out.println(supervisionId);
+        List<SupervisionPlan>res=SupervisionPlanRepository.findAllById(Long.parseLong(id));
+        if(res.size()>0)
+        {
+            for(int i=0;i<res.size();i++)
+            {
+                SupervisionPlanRepository.delete(res.get(i));
+            }
+        }
         SupervisionRepository.deleteById(Long.parseLong(id));
         json.put("code",code);
         json.put("msg",msg);
@@ -187,7 +206,7 @@ public class SupervisionController {
         js.put("data",data);
         return js;
     }
-    @GetMapping(path="/executeOne")
+    @PostMapping(path="/executeOne")
     public @ResponseBody JSONObject executeOne(@RequestParam(value="id",required = false) String id)
     {
         JSONObject json=new JSONObject();

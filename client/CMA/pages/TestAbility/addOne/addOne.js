@@ -20,6 +20,7 @@ Page({
     })
   },
   AddOneTestAbility(e) {
+    //addone时，保证数据不为空
     if (e.detail.value.year == null ||
       e.detail.value.fileName == null ||
       e.detail.value.year == "" ||
@@ -42,6 +43,7 @@ Page({
       app.wxRequest(url, 'POST', data, (res) => {
         console.log('add ability test successfully')
         console.log(res)
+        //添加成功时，rescode==200，继续选择文件
         if(res.code == 200){
           console.log('begin add testability')
           var myurl = app.globalData.url + 'TestAbility/addOneFile';
@@ -59,6 +61,8 @@ Page({
                 var obj = JSON.parse(res);
                 console.log(obj)
                 console.log(obj.code)
+                //后端返回了一个json字符串，此处需要转化为json结构体
+                //转化后得到code，若为200，则添加成功，显示添加成功，返回上一界面
                 if (obj.code == 200){
                   wx.showToast({
                     title: '添加成功',

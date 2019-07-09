@@ -19,7 +19,10 @@ Page({
         duration: 500,
         success: function () {
           setTimeout(function () {
-          }, 500)
+            wx.redirectTo({
+              url: '/pages/InternalAuditManagement/InternalAuditDocument/InternalAuditDocument?id=' + that.data.detail.year
+            })
+          }, 300)
         }
       })
     }, (err) => {
@@ -33,9 +36,6 @@ Page({
           }, 500)
         }
       })
-    })
-    wx.redirectTo({
-      url: '/pages/InternalAuditManagement/InternalAuditDocument/InternalAuditDocument?id=' + that.data.detail.year
     })
   },
   downloaditem: function (e) {

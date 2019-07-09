@@ -1,5 +1,7 @@
 package com.example.demo.Controller;
 //import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.example.demo.Model.SupervisionRecord;
+import com.example.demo.Repository.SupervisionRecordRepository;
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,8 @@ import java.util.List;
 public class SupervisionPlanController {
     @Autowired
     private SupervisionPlanRepository SupervisionPlanRepository;
+    @Autowired
+    private SupervisionRecordRepository SupervisionRecordRepository;
     @GetMapping(path="/getAll")
     public @ResponseBody JSONObject getAll(@RequestParam(value = "id",required = false) String id){
         List<SupervisionPlan> res=SupervisionPlanRepository.findAllById(Long.parseLong(id));
@@ -117,7 +121,22 @@ public class SupervisionPlanController {
         JSONObject json=new JSONObject();
         int code=200;
         String msg="成功";
+        try {
+            Long.parseLong(planId);
+        }catch (NumberFormatException E){
+            json.put("code",500);
+            json.put("msg","缺少请求参数");
+            json.put("data",null);
+        }
         JSONObject data=new JSONObject();
+        List<SupervisionRecord>res=SupervisionRecordRepository.findAllByPlanId(Long.parseLong(planId));
+        if(res.size()>0)
+        {
+            for(int i=0;i<res.size();i++)
+            {
+                SupervisionRecordRepository.delete(res.get(i));
+            }
+        }
         SupervisionPlanRepository.deleteById(Long.parseLong(planId));
         json.put("code",code);
         json.put("msg",msg);
