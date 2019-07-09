@@ -4,6 +4,7 @@ package com.example.demo.Controller;
 import com.example.demo.framework.Response;
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
+//import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -120,7 +121,7 @@ public class SelfInspectionController {
                 SelfInspectionDocumentRepository.delete(tmp);
             }
         }
-        SelfInspectionRepository.deleteById(Long.parseLong(id));
+        SelfInspectionRepository.delete(SelfInspectionRepository.findById(Long.parseLong(id)));
         js.put("code",code);
         js.put("msg",msg);
         js.put("data",data);
@@ -194,18 +195,22 @@ public class SelfInspectionController {
         return js;
     }*/
     @PostMapping(path = "/addOneFile")
-    public @ResponseBody Response addOneFile(@RequestParam("file") MultipartFile file,
-                                             @RequestParam(value = "id",required = false) long id,
-                                             @RequestParam(value = "fileName",required = false) String fileName,
-                                             HttpServletRequest request){
-        //JSONObject js=new JSONObject();
+    public @ResponseBody
+    com.alibaba.fastjson.JSONObject addOneFile(@RequestParam("file") MultipartFile file,
+                                               @RequestParam(value = "id",required = false) long id,
+                                               @RequestParam(value = "fileName",required = false) String fileName,
+                                               HttpServletRequest request){
+        com.alibaba.fastjson.JSONObject js=new com.alibaba.fastjson.JSONObject();
         if(fileName==null||fileName.equals(""))
         {
             Response res=new Response();
             res.code=511;
             res.msg="缺少请求参数";
             res.data=null;
-            return res;
+            js.put("code",res.code);
+            js.put("msg",res.msg);
+            js.put("data",res.data);
+            return js;
         }
         FileController fileController=new FileController();
         SelfInspectionDocument sDoc=new SelfInspectionDocument();
@@ -221,7 +226,10 @@ public class SelfInspectionController {
         {
             SelfInspectionDocumentRepository.save(sDoc);
         }
-        return res;
+        js.put("code",res.code);
+        js.put("msg",res.msg);
+        js.put("data",sDoc.getFileId());
+        return js;
     }
     @RequestMapping(path="/modifyOneFormData",method= RequestMethod.POST)
     public @ResponseBody JSONObject modifyOneFormData(@RequestParam(value = "fileName",required = false) String fileName,

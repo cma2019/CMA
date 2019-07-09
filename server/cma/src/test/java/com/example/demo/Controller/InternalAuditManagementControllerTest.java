@@ -5,7 +5,11 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -16,6 +20,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 //import static org.junit.Assert.*;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest
+@WebAppConfiguration
 @Transactional
 public class InternalAuditManagementControllerTest {
 
@@ -47,8 +54,8 @@ public class InternalAuditManagementControllerTest {
     public void addOne() throws Exception{
         String url = "/cma/InternalAuditManagement/addOne";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0])
-                .param("year","2019")
-                .param("date","2019-7-1")
+                .param("year","1997")
+                .param("date","1997-7-1")
         )
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print()).andReturn();
