@@ -21,6 +21,10 @@ import org.springframework.web.context.request.WebRequest;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * @author YXP
+ * 检测机构信息
+ */
 @Controller
 @RequestMapping(path="/cma/TestingInstitutionInformation")
 public class TestingInstitutionInformationController {
