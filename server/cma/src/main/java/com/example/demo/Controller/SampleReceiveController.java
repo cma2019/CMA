@@ -38,7 +38,8 @@ public class SampleReceiveController {
                           @RequestParam(value="receiveDate",required = false) String receiveDate,
                           @RequestParam(value="obtainer",required = false)String obtainer,
                           @RequestParam(value = "obtainDate",required = false)String obtainDate,
-                          @RequestParam(value="receiptId",required = false) String receiptId){
+                          @RequestParam(value="receiptId",required = false) String receiptId)
+    {
         //System.out.println(sampleNumber);
         //System.out.println(obtainer);
         //参数列表包括所有必填信息，以String类型解析前端传过来的参数，便于做判空操作
