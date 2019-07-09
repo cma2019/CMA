@@ -70,4 +70,3 @@
     </view>
   </form>
 </view>
-<button class='van-button--info' bindtap="goback">返回</button>
