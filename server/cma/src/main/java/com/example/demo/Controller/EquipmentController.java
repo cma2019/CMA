@@ -13,6 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * @author YXP
+ * 设备管理
+ */
 @Controller
 @RequestMapping(path="cma/Equipment")
 public class EquipmentController {
@@ -101,8 +105,8 @@ public class EquipmentController {
             @RequestParam (value="model",required=false)String model,
             @RequestParam (value="cpu",required=false)String cpu,
             @RequestParam (value="memory",required=false)String memory,
-           // @RequestParam (value="hardDisk",required=false)String harddisk,
-           // @RequestParam (value="equipmentNumber",required=false)String equipmentnumber,
+            @RequestParam (value="hardDisk",required=false)String harddisk,
+            @RequestParam (value="equipmentNumber",required=false)String equipmentnumber,
             @RequestParam (value="application",required=false)String application,
             @RequestParam (value="state",required=false)Byte state){
         Response response=new Response();
@@ -112,8 +116,10 @@ public class EquipmentController {
             Equipment equipment=ERepository.findById(id);
             equipment.setState(state);
             equipment.setApplication(application);
-          //  equipment.setEquipmentNumber(equipmentnumber);
-           // equipment.setHardDisk(harddisk);
+            equipment.setEquipmentNumber(equipmentnumber);
+            System.out.println(harddisk);
+            System.out.println(equipmentnumber);
+            equipment.setHardDisk(harddisk);
             equipment.setMemory(memory);
             equipment.setModel(model);
             equipment.setCpu(cpu);

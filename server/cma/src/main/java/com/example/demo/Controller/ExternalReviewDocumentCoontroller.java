@@ -22,6 +22,10 @@ import java.io.File;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * @author YXP
+ * 外部审查文档
+ */
 @Controller
 @RequestMapping(path="cma/ExternalReviewDocument")
 public class ExternalReviewDocumentCoontroller {
@@ -115,6 +119,13 @@ public class ExternalReviewDocumentCoontroller {
         }
         return response;
     }
+
+    /**
+     * 修改文件，首先需要查询旧文件，在服务器删除旧文件后上传新文件
+     * @param file
+     * @param request
+     * @return
+     */
     @RequestMapping(path="/modifyFile",method = RequestMethod.POST)
     @ResponseBody
     public Response modifyFormData(@RequestParam("file") MultipartFile file, HttpServletRequest request
@@ -173,6 +184,12 @@ public class ExternalReviewDocumentCoontroller {
         }
         return response;
     }*/
+
+    /**
+     * 删除数据和文档
+     * @param id
+     * @return
+     */
     @RequestMapping(value="/deleteOne/{id}",method=RequestMethod.POST)
     @ResponseBody
     public Response deleteOneFile(@PathVariable("id") long id)
