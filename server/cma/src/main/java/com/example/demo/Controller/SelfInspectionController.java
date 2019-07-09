@@ -315,7 +315,8 @@ public class SelfInspectionController {
             SelfInspectionDocument temp=SelfInspectionDocumentRepository.findByFileId(fileId);
             String name=temp.getFileName();
             //System.out.println(name+"????");
-            return  fileController.downloadFile(response,name,temp.getDir());
+            fileController.downloadFile(response,name,temp.getDir());
+            return "下载成功";
         }catch(Exception e){
             e.printStackTrace();
             return "下载失败";

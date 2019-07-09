@@ -77,7 +77,7 @@ public class SelfInspectionControllerTest {
     public void t9_deleteOne() throws Exception{
         String url = "/cma/SelfInspection/deleteOne";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0])
-                .param("id","188")
+                .param("id","226")
         )
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print()).andReturn();
@@ -91,7 +91,7 @@ public class SelfInspectionControllerTest {
     public void t4_getAllFile() throws Exception{
         String url = "/cma/SelfInspection/getAllFile";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get(url, new Object[0])
-                .param("id","188")
+                .param("id","226")
         )
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print()).andReturn();
@@ -110,7 +110,7 @@ public class SelfInspectionControllerTest {
         )
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print()).andReturn();*/
-        JSONObject res=selfInspectionController.addOneFile(firstFile,188,"test01",request);
+        JSONObject res=selfInspectionController.addOneFile(firstFile,226,"test01",request);
         fileId=res.getString("data");
         Assert.assertEquals("200", res.getString("code"));
     }
