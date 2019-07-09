@@ -1,4 +1,7 @@
 var CryptoJS = require('./aes.js'); 
+//调用CryptoJS，用于实现与后端相对应的加密解密
+//key为密钥，默认值为123456789abcdef1，用户登录注册时会拥有新的key
+//iv为偏移量，默认值为1fedcba987654321,该值一直不变
 var key = CryptoJS.enc.Utf8.parse("123456789abcdef1"); 
 var iv = CryptoJS.enc.Utf8.parse("1fedcba987654321");
 var username;
@@ -33,6 +36,8 @@ function SetKey(codekey){
   this.key = CryptoJS.enc.Utf8.parse(codekey); 
   console.log(this.key)
   */
+  //若是想要中途变化key的值，不能直接改变key
+  //需要使用CryptoJS.enc.Utf8.parse将key转化为统一格式
   console.log(key)
   //key = CryptoJS.enc.Utf8.parse("3333444422221111"); 
   key = CryptoJS.enc.Utf8.parse(codekey);
@@ -43,8 +48,6 @@ function SetKey(codekey){
 //暴露接口
 module.exports.Decrypt = Decrypt;
 module.exports.Encrypt = Encrypt;
-//module.exports.myDecrypt = myDecrypt;
-//module.exports.myEncrypt = myEncrypt;
 module.exports.SetKey = SetKey;
 /*
 module.exports = {
