@@ -29,12 +29,20 @@ import java.io.FileInputStream;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 @WebAppConfiguration
+//设定执行测试函数的顺序为按字典序
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
+/*
+    不对整个类做事物回滚操作，
+    因为增删改文件时，数据库的操作可以回滚，
+    但是对文件的操作不能回滚
+ */
 public class InternalAuditDocumentControllerTest {
 
+    //实例化一个controller对象
     @Autowired
     InternalAuditDocumentController internalAuditDocumentController=new InternalAuditDocumentController();
     MockMvc mockMvc;
+    //维护一个静态变量，用于让设计文件操作的测试共享
     static String id="none";
 
     @Before
@@ -48,6 +56,10 @@ public class InternalAuditDocumentControllerTest {
 
 
     @Test
+    //测试addOneFile()方法
+    //没有回滚，数据库中有新增记录，同时本地文件有上传
+    //没有使用mockmvc模拟请求，mockmvc也有提供的模拟方法，但是比较麻烦
+    //直接调用controller层的方法
     public void t_1_addOneFile() throws Exception{
         File file = new File("E:/CMA/test/","1997年度01.docx");
         MockMultipartFile firstFile = new MockMultipartFile("E:/CMA/test/","1997年度01.docx","multipart/form-data",new FileInputStream(file));
@@ -58,12 +70,14 @@ public class InternalAuditDocumentControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print()).andReturn();*/
         JSONObject res=this.internalAuditDocumentController.addOneFile(firstFile,"1997a01",1997,request);
+        //设置静态变量的值为文件编号
         id=res.getString("id");
         Assert.assertEquals("200", res.getString("code"));
     }
 
     @Test
     @Transactional
+    //测试getALLFile()方法
     public void t_2_getAllFile() throws Exception{
         String url = "/cma/InternalAuditManagement/getAllFile";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get(url, new Object[0])
@@ -77,6 +91,11 @@ public class InternalAuditDocumentControllerTest {
     }
 
     @Test
+    //测试modifyOneFile()方法
+    //直接调用controller层的方法
+    //需要本地有文件用于上传
+    //本地文件的路径和名称用于填充file参数
+    //id用维护的静态变量
     public void t_3_modifyOneFormData() throws Exception{
         System.out.println(this.id);
         String url = "/cma/InternalAuditManagement/modifyOneFormData";
@@ -93,6 +112,10 @@ public class InternalAuditDocumentControllerTest {
     }
 
     @Test
+    //测试modifyOneFormData()方法
+    //参数使用静态变量保持的id
+    //需要本地有文件用于上传
+    //本地文件的路径和名称用于填充file参数
     public void t_4_modifyOneFile() throws Exception{
         File file = new File("E:/CMA/test/","1997年度02.docx");
         MockMultipartFile firstFile = new MockMultipartFile("E:/CMA/test/","1997年度02.docx","multipart/form-data",new FileInputStream(file));
@@ -108,6 +131,8 @@ public class InternalAuditDocumentControllerTest {
 
     @Test
     @Transactional
+    //测试downloadOneFile()接口
+    //断言返回的字符串是否符合预期
     public void t_5_downloadFile() {
         MockHttpServletResponse response=new MockHttpServletResponse();
         String res=this.internalAuditDocumentController.downloadFile(Long.parseLong(this.id),response);
@@ -115,6 +140,7 @@ public class InternalAuditDocumentControllerTest {
     }
 
     @Test
+    //测试deleteOneFile()接口
     public void t_6_deleteOneFile() throws Exception{
         String url = "/cma/InternalAuditManagement/deleteOneFile";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0])
@@ -130,6 +156,7 @@ public class InternalAuditDocumentControllerTest {
 
     @Test
     @Transactional
+    //测试deleteOne()方法
     public void t_7_deleteOne() throws Exception{
         String url = "/cma/InternalAuditManagement/deleteOne";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0])

@@ -24,6 +24,7 @@ import org.springframework.transaction.annotation.Transactional;
 @SpringBootTest
 @WebAppConfiguration
 @Transactional
+//回滚类中各测试方法对数据库的事物操作
 public class SupervisionPlanControllerTest {
 
     @Autowired
@@ -40,6 +41,7 @@ public class SupervisionPlanControllerTest {
     }
 
     @Test
+    //测试getAll()方法
     public void getAll() throws Exception{
         String url = "/cma/SupervisionPlan/getAll";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get(url, new Object[0])
@@ -53,6 +55,7 @@ public class SupervisionPlanControllerTest {
     }
 
     @Test
+    //测试addOne()方法
     public void addOne() throws Exception{
         String url = "/cma/SupervisionPlan/addOne";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0])
@@ -69,6 +72,7 @@ public class SupervisionPlanControllerTest {
     }
 
     @Test
+    //测试modifyOne()方法
     public void modifyOne() throws Exception{
         String url = "/cma/SupervisionPlan/modifyOne";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0])
@@ -85,6 +89,7 @@ public class SupervisionPlanControllerTest {
     }
 
     @Test
+    //测试deleteOne()方法
     public void deleteOne() throws Exception{
         String url = "/cma/SupervisionPlan/deleteOne";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0])
