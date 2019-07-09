@@ -15,6 +15,7 @@ Page({
     var myurl = app.globalData.url + 'StandardManagement/modifyOne';
     var mypath;
     var myfileId = this.data.fileId
+    //用户仅仅需要选择文件，其他信息由前端自动填写。
     wx.chooseMessageFile({
       count: 1,
       type: 'all',
@@ -31,6 +32,10 @@ Page({
         app.wxUploadFile(myurl, mypath, formdata, (res) => {
           console.log("upload file success")
           console.log(res)
+          //由于modify也是一种上传，此处有一样的问题
+          //后端返回的不是json结构体而是json字符串
+          //此处调用JSON.parse将res转化为json字符串再读取code
+          //code==200时，显示添加成功，返回上一界面
           var obj = JSON.parse(res);
           console.log(obj)
           console.log(obj.code)

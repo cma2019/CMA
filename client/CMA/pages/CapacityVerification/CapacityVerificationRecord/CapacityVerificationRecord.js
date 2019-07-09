@@ -19,6 +19,7 @@ Page({
     console.log("get plans")
     let target = e.detail.value.id
     console.log(target)
+    //在该界面输入recordid信息，到达相应record界面
     wx.navigateTo({
       url: 'getOneRecord/getOneRecord?id=' + target
     })

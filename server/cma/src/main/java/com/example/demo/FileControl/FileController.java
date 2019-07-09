@@ -42,6 +42,13 @@ public class FileController {
         if (!file.isEmpty()) {
             String filepath=path+dir+"/";
             File saveFile = new File(filepath + saveFileName);
+            if(saveFile.exists())
+            {
+                response.code=500;
+                response.msg="上传失败,已有同名文件";
+                response.data=null;
+                return response;
+            }
             if (!saveFile.getParentFile().exists()) {
                 saveFile.getParentFile().mkdirs();
             }

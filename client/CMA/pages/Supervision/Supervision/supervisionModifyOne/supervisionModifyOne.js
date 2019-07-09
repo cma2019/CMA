@@ -7,7 +7,7 @@ Page({
 
   data: {
     "id": "",
-    "origindata":{}
+    "remark":''
   },
 
   /**
@@ -15,103 +15,95 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      id: options.id
+      id: options.id,
+      remark:options.remark
     })
-    console.log("fdsf")
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var that = this
-    wx.getStorage({
-      key: 'supervisionGetOneinfo',
-      success: function (res) {
-        that.setData({
-          'origindata': res.data
-        })
-      }
-    }),
-    console.log(this.data)
-    console.log("456789")
   },
 
   Supervision_modifyone: function (e) {
-    var mod = this.data.origindata
-    console.log(mod)
-    console.log('Supervision发生了modifyone事件，携带数据为：', e.detail.value)
-    console.log(this.data)
-    if (e.detail.value.remark != null && e.detail.value.remark != "") {
-      mod.remark = e.detail.value.remark
+    let remark =e.detail.value.remark
+    if (remark == null || remark == "") {
+      remark = this.data.remark
     }
-    console.log("dfg")
-    console.log(this.data)
-    wx.request({
-      url: app.globalData.url+ 'Supervision/modifyOne',
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json'
-      },
-      data: {
-        "id": this.data.id,
-        "remark": mod.remark
-      },
-      success(res) {
-        console.log(res)
-        if (res.data.code == 200) {
-          wx.showToast({
-            title: '修改成功',
-            duration: 1500
-          })
-          wx.removeStorage({
-            key: 'supervisionGetOneinfo',
-            success: function (res) {
-              console.log(res)
-            }
-          })
-          wx.navigateTo({
-            url: '../Supervision'
-          })
-        }
-        else if (res.data.code == 531) {
-          wx.showToast({
-            title: '未收到标识编号',
-            duration: 1500
-          })
-          console.log('未收到标识编号')
-        }
-        else if (res.data.code == 532) {
-          wx.showToast({
-            title: '数据不存在',
-            duration: 1500
-          })
-          console.log('数据不存在')
-        }
-        else if (res.data.code == 533) {
-          wx.showToast({
-            title: '修改后数据错误',
-            duration: 1500
-          })
-          console.log('修改后数据错误')
-        }
-        else {
-          wx.showToast({
-            title: '修改后数据不合法',
-            duration: 1500
-          })
-          console.log('修改后数据不合法')
-        }
-      },
-      fail(err) {
-        console.log('fail modifyone')
-      },
-      complete(fin) {
-        console.log('final modifyone')
+    let url = app.globalData.url + 'Supervision/modifyOne'
+    let postdata={
+      "id": this.data.id,
+      "remark": remark
+    }
+    console.log('Supervision发生了modifyone事件，携带数据为：', e.detail.value)
+    app.wxRequest(url, 'POST', postdata, (res) => {
+      console.log(res)
+      if (res.code == 200) {
+        wx.showToast({
+          title: '修改成功',
+          image: '/icons/ok/ok.png',
+          duration: 500,
+          success: function () {
+            setTimeout(function () {
+              wx.redirectTo({
+                url: '../Supervision'
+              })
+            }, 300)
+          }
+        })
       }
+      else if (res.code == 531) {
+        wx.showToast({
+          title: '修改失败',
+          image: '/icons/warning/warning.png',
+          duration: 500,
+          success: function () {
+            setTimeout(function () {
+            }, 300)
+          }
+        })
+        console.log('未收到标识编号')
+      }
+      else if (res.code == 532) {
+        wx.showToast({
+          title: '修改失败',
+          image: '/icons/warning/warning.png',
+          duration: 500,
+          success: function () {
+            setTimeout(function () {
+            }, 300)
+          }
+        })
+        console.log('数据不存在')
+      }
+      else if (res.code == 533) {
+        wx.showToast({
+          title: '修改失败',
+          image: '/icons/warning/warning.png',
+          duration: 500,
+          success: function () {
+            setTimeout(function () {
+            }, 300)
+          }
+        })
+        console.log('修改后数据错误')
+      }
+      else {
+        wx.showToast({
+          title: '修改失败',
+          image: '/icons/warning/warning.png',
+          duration: 500,
+          success: function () {
+            setTimeout(function () {
+            }, 300)
+          }
+        })
+        console.log('修改后数据不合法')
+      }
+    }, (err) => {
+      console.log('fail modifyone')
     })
-
   },
   goback: function () {
     wx.navigateBack({

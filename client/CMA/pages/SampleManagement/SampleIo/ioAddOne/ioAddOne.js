@@ -41,8 +41,6 @@ Page({
         })
       }
     }
-    console.log("fsdgdf")
-    console.log(this.data)
   },
   sampleNumberChange: function (event) {
     const no = event.detail
@@ -52,7 +50,8 @@ Page({
       if (no.length == 0) {
         message = '样品编号不能为空'
         disable = true
-      } else {
+      } 
+      else {
         message = '样品编号长度有误'
         disable = true
       }
@@ -75,7 +74,8 @@ Page({
       if (no.length == 0) {
         message = '样品名称不能为空'
         disable = true
-      } else {
+      } 
+      else {
         message = '样品名称长度有误'
         disable = true
       }
@@ -98,7 +98,8 @@ Page({
       if (no.length == 0) {
         message = '送样人不能为空'
         disable = true
-      } else {
+      } 
+      else {
         message = '送样人长度有误'
         disable = true
       }
@@ -121,7 +122,8 @@ Page({
       if (no.length == 0) {
         message = '接收人不能为空'
         disable = true
-      } else {
+      } 
+      else {
         message = '接收人长度有误'
         disable = true
       }
@@ -144,7 +146,8 @@ Page({
       if (no.length == 0) {
         message = '领取人不能为空'
         disable = true
-      } else {
+      } 
+      else {
         message = '领取人长度有误'
         disable = true
       }
@@ -174,74 +177,131 @@ Page({
     console.log(this.data.dis)
     if (this.data.dis == true|| e.detail.value.obtainDate == "") {
       wx.showToast({
-        title: '错误（空白输入）',
-        icon: 'none',
-        duration: 2000
+        title: '空白输入',
+        image: '/icons/warning/warning.png',
+        duration: 500,
+        success: function () {
+          setTimeout(function () {
+          }, 500)
+        }
       })
-      console.log('错误（空白输入）')
+      console.log('空白输入')
     }
     else {
-      let sampleNumber = this.data.sampleNumber
-      let sampleName = this.data.sampleName
-      let sampleAmount = this.data.sampleAmount
-      let sampleState = this.data.sampleState
-      if (this.data.sampleNumber == '' || this.data.sampleNumber == null) {
-        sampleNumber = e.detail.value.sampleNumber
-        sampleName = e.detail.value.sampleName
-        sampleAmount = e.detail.value.sampleAmount
-        sampleState = e.detail.value.sampleState
+      console.log(this.data.receiptId)
+      if (this.data.receiptId == 0) {
+        wx.showToast({
+          title: '未找到接收单',
+          image: '/icons/warning/warning.png',
+          duration: 500,
+          success: function () {
+            setTimeout(function () {
+              wx.redirectTo({
+                url: '../SampleIo'
+              })
+            }, 500)
+          }
+        })
+        console.log("样品接收登记表与接收单未对应")
       }
-      console.log('SampleIo发生了addone事件，携带数据为：', e.detail.value)
-      let url = app.globalData.url + 'SampleIo/addOne'
-      let postdata = {
-        "receiptId": this.data.receiptId,
-        "sampleNumber": sampleNumber,
-        "sampleName": sampleName,
-        "sampleAmount": sampleAmount,
-        "sampleState": sampleState,
-        "sender": e.detail.value.sender,
-        "receiver": e.detail.value.receiver,
-        "sendDate": e.detail.value.sendDate,
-        "obtainer": e.detail.value.obtainer,
-        "obtainDate": e.detail.value.obtainDate,
-        "note": e.detail.value.note
+      else{
+        let sampleNumber = this.data.sampleNumber
+        let sampleName = this.data.sampleName
+        let sampleAmount = this.data.sampleAmount
+        let sampleState = this.data.sampleState
+        if (this.data.sampleNumber == '' || this.data.sampleNumber == null) {
+          sampleNumber = e.detail.value.sampleNumber
+          sampleName = e.detail.value.sampleName
+          sampleAmount = e.detail.value.sampleAmount
+          sampleState = e.detail.value.sampleState
+        }
+        console.log('SampleIo发生了addone事件，携带数据为：', e.detail.value)
+        let url = app.globalData.url + 'SampleIo/addOne'
+        let postdata = {
+          "receiptId": this.data.receiptId,
+          "sampleNumber": sampleNumber,
+          "sampleName": sampleName,
+          "sampleAmount": sampleAmount,
+          "sampleState": sampleState,
+          "sender": e.detail.value.sender,
+          "receiver": e.detail.value.receiver,
+          "sendDate": e.detail.value.sendDate,
+          "obtainer": e.detail.value.obtainer,
+          "obtainDate": e.detail.value.obtainDate,
+          "note": e.detail.value.note
+        }
+        app.wxRequest(url, 'POST', postdata, (res) => {
+          console.log(res.data)
+          if (res.data.code == 200) {
+            wx.showToast({
+              title: '添加成功',
+              image: '/icons/ok/ok.png',
+              duration: 500,
+              success: function () {
+                setTimeout(function () {
+                  wx.redirectTo({
+                    url: '../SampleIo'
+                  })
+                }, 300)
+              }
+            })
+            console.log("添加成功")
+          }
+          else if (res.data.code == 511) {
+            wx.showToast({
+              title: '添加失败',
+              image: '/icons/warning/warning.png',
+              duration: 500,
+              success: function () {
+                setTimeout(function () {
+                }, 500)
+              }
+            })
+            console.log("缺少必选请求参数")
+          }
+          else if (res.data.code == 512) {
+            wx.showToast({
+              title: '样品编号已存在',
+              image: '/icons/warning/warning.png',
+              duration: 500,
+              success: function () {
+                setTimeout(function () {
+                }, 500)
+              }
+            })
+            console.log("样品编号已存在")
+          }
+          else if (res.data.code == 513) {
+            wx.showToast({
+              title: '某项数据错误',
+              image: '/icons/warning/warning.png',
+              duration: 500,
+              success: function () {
+                setTimeout(function () {
+                }, 500)
+              }
+            })
+            console.log("某项数据错误")
+          }
+          else { //514
+            wx.showToast({
+              title: '与接收单不一致',
+              image: '/icons/warning/warning.png',
+              duration: 500,
+              success: function () {
+                setTimeout(function () {
+                  wx.redirectTo({
+                    url: '../SampleIo'
+                  })
+                }, 300)
+              }
+            })
+            console.log("样品数据与接收单不一致")
+          }
+        }, (err) => {
+          console.log('fail addone')
+        })
       }
-      app.wxRequest(url, 'POST', postdata, (res) => {
-        console.log(res.data)
-        if (res.data.code == 200) {
-          wx.showToast({
-            title: '成功',
-            icon: 'none',
-            duration: 1500
-          })
-          wx.navigateTo({
-            url: '../SampleIo'
-          })
-        }
-        else if (res.data.code == 512) {
-          wx.showToast({
-            title: '样品编号已存在',
-            duration: 1500
-          })
-          console.log('样品编号已存在')
-        }
-        else if (res.data.code == 513) {
-          wx.showToast({
-            title: '某项数据错误',
-            duration: 1500
-          })
-          console.log('某项数据错误')
-        }
-        else {//514
-          wx.showToast({
-            title: '样品数据与接收单不一致',
-            duration: 1500
-          })
-          console.log('样品数据与接收单不一致')
-        }
-      }, (err) => {
-        console.log('fail addone')
-      })
     }
   },
   goback: function () {

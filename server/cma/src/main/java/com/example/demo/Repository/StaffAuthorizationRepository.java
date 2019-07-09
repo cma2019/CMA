@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface StaffAuthorizationRepository extends JpaRepository<StaffAuthorization,Long> {
     List<StaffAuthorization> findAllById(long id);
+    //按照人员id获取全部信息
 }

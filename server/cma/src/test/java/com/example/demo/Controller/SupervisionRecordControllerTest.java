@@ -5,7 +5,11 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -17,6 +21,9 @@ import javax.transaction.Transactional;
 
 //import static org.junit.Assert.*;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest
+@WebAppConfiguration
 @Transactional
 public class SupervisionRecordControllerTest {
 
@@ -36,8 +43,8 @@ public class SupervisionRecordControllerTest {
     @Test
     public void getAll() throws Exception{
         String url = "/cma/SupervisionRecord/getAll";
-        MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0])
-                .param("planId","0")
+        MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get(url, new Object[0])
+                .param("planId","170")
         )
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print()).andReturn();
@@ -50,7 +57,7 @@ public class SupervisionRecordControllerTest {
     public void addOne() throws Exception{
         String url = "/cma/SupervisionRecord/addOne";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0])
-                .param("planId","0")
+                .param("planId","170")
                 .param("department","d1")
                 .param("supervisor","s1")
                 .param("superviseDate","2019-7-1")
@@ -71,7 +78,7 @@ public class SupervisionRecordControllerTest {
     public void modifyOne() throws Exception{
         String url = "/cma/SupervisionRecord/modifyOne";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0])
-                .param("recordId","0")
+                .param("recordId","171")
                 .param("department","d1")
                 .param("supervisor","s1")
                 .param("superviseDate","2019-7-1")
@@ -92,7 +99,7 @@ public class SupervisionRecordControllerTest {
     public void deleteOne() throws Exception{
         String url = "/cma/SupervisionRecord/deleteOne";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0])
-                .param("recordId","0")
+                .param("recordId","171")
         )
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print()).andReturn();

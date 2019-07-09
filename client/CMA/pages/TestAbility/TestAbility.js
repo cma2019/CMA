@@ -31,7 +31,9 @@ Page({
   onShow: function (options) {
     let url = app.globalData.url + 'TestAbility/getAll'
     let postdata = ''
+    //getall方法不需要传递任何参数
     app.wxRequest(url, 'GET', postdata, (res) => {
+      //getall成功以后，后端返回rescode==200，初始化数据
       if(res.code == 200){
         this.setData({
           mess: res.data
@@ -74,6 +76,8 @@ Page({
     console.log(target)
     console.log(target2)
     var myurl = "1"
+    //getone时，需要将name和year两个信息都传递过去
+    //同时还需要保证这两个值都不为空
     if (target != "" && target2 != "") {
       myurl = 'getAllItem/getAllItem?name=' + target + '&year=' + target2
       console.log("myurl")

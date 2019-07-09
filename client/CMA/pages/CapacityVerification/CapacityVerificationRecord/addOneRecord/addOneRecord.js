@@ -7,6 +7,8 @@ Page({
   },
 
   onLoad: function (options) {
+    //新的record需要知道自身所属的project
+    //该界面只能由project的state从0变为1进入
     this.setData({
       projectId: options.id
     })
@@ -18,6 +20,7 @@ Page({
   },
 
   AddNewRecord(e) {
+    //所有输入不能为空
     if (e.detail.value.date == null ||
       e.detail.value.methodId == null ||
       e.detail.value.equipmentName == null||
@@ -56,8 +59,11 @@ Page({
         "resultDeal": e.detail.value.resultDeal,
         "note": e.detail.value.note
       }
+      //传递所有信息
       console.log(data)
       app.wxRequest(url, 'POST', data, (res) => {
+        //rescode==200时，添加成功
+        //显示添加成功，对应的project界面
         if (res.code == 200) {
           console.log('add record successfully')
           let mypro = this.data.projectId

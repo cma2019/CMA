@@ -131,6 +131,8 @@ public class StandardManagementController {
             fileController.deletefile(fileName, temp.getDir());
             //StandardManagementRepository.deleteById(fileId);
             System.out.println("delete success");
+            //TODO:改后缀名
+            //String suffix = fileName.substring(fileName.lastIndexOf(".") + 1);
 
             StandardManagement standard = new StandardManagement();
             standard.setFileName(fileName);

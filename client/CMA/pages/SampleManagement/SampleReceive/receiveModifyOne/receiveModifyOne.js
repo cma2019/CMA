@@ -19,8 +19,6 @@ Page({
     this.setData({
       sampleId: options.id
     })
-   // console.log(this.data.sampleId)
-    console.log("fdsf")
   },
 
   bindreceiveDateChange(e) {
@@ -28,7 +26,6 @@ Page({
     this.setData({
       receiveDate: e.detail.value
     })
-    console.log(this.receiveDate)
   },
 
   bindobtainDateChange(e) {
@@ -48,16 +45,11 @@ Page({
           'origindata': res.data
         })
       }
-    }),
-    console.log(this.data)
-    console.log("456789")
+    })
   },
 
   SampleReceive_modifyone: function (e) {
     var mod = this.data.origindata //modifydata
-    var ori = this.data.origindata
-    console.log(mod)
-    console.log('SampleReceive发生了modifyone事件，携带数据为：', e.detail.value)
     if (e.detail.value.sampleNumber != null){
       mod.sampleNumber = e.detail.value.sampleNumber
     }
@@ -85,79 +77,94 @@ Page({
     if (e.detail.value.obtainDate != "") {
       mod.obtainDate = e.detail.value.obtainDate
     }
-    wx.request({
-      url: app.globalData.url + 'SampleReceive/modifyOne',
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json'
-      },
-      data: {
-        "sampleId": this.data.sampleId,
-        "sampleNumber": mod.sampleNumber,
-        "sampleName": mod.sampleName,
-        "sampleAmount": mod.sampleAmount,
-        "sampleState": mod.sampleState,
-        "requester": mod.requester,
-        "receiver": mod.receiver,
-        "receiveDate": mod.receiveDate,
-        "obtainer": mod.obtainer,
-        "obtainDate": mod.obtainDate
-      },
-      success(res) {
+    console.log('SampleReceive发生了modifyone事件，携带数据为：', mod)
+    let url = app.globalData.url + 'SampleReceive/modifyOne'
+    let postdata = {
+      "sampleId": this.data.sampleId,
+      "sampleNumber": mod.sampleNumber,
+      "sampleName": mod.sampleName,
+      "sampleAmount": mod.sampleAmount,
+      "sampleState": mod.sampleState,
+      "requester": mod.requester,
+      "receiver": mod.receiver,
+      "receiveDate": mod.receiveDate,
+      "obtainer": mod.obtainer,
+      "obtainDate": mod.obtainDate
+    }
+    app.wxRequest(url, 'POST', postdata, (res) => {
+      console.log(res)
+      if (res.code == 200) {
         console.log(res)
-        if (res.data.code == 200) {
-          wx.showToast({
-            title: '修改成功',
-            duration: 1500
-          })
-          wx.removeStorage({
-            key: 'receiveGetOneinfo',
-            success: function (res) {
-              console.log(res)
-            }
-          })
-          wx.navigateTo({
-            url: '../SampleReceive'
-          })
-        }
-        else if (res.data.code == 531) {
-          wx.showToast({
-            title: '未收到标识编号',
-            duration: 1500
-          })
-          console.log('未收到标识编号')
-        }
-        else if (res.data.code == 532) {
-          wx.showToast({
-            title: '数据不存在',
-            duration: 1500
-          })
-          console.log('数据不存在')
-        }
-        else if (res.data.code == 533) {
-          wx.showToast({
-            title: '修改后数据错误',
-            duration: 1500
-          })
-          console.log('修改后数据错误')
-        }
-        else {
-          wx.showToast({
-            title: '修改后数据不合法',
-            duration: 1500
-          })
-          console.log('修改后数据不合法')
-        }
-      },
-      fail(err) {
-        console.log('fail modifyone')
-      },
-      complete(fin) {
-        console.log('final modifyone')
+        wx.removeStorage({
+          key: 'receiveGetOneinfo',
+          success: function (res) {
+            console.log(res)
+          }
+        })
+        wx.showToast({
+          title: '修改成功',
+          image: '/icons/ok/ok.png',
+          duration: 500,
+          success: function () {
+            setTimeout(function () {
+              wx.redirectTo({
+                url: '../SampleReceive'
+              })
+            }, 300)
+          }
+        })
       }
+      else if (res.code == 531) {
+        wx.showToast({
+          title: '修改失败',
+          image: '/icons/warning/warning.png',
+          duration: 500,
+          success: function () {
+            setTimeout(function () {
+            }, 300)
+          }
+        })
+        console.log('未收到标识编号')
+      }
+      else if (res.code == 532) {
+        wx.showToast({
+          title: '修改失败',
+          image: '/icons/warning/warning.png',
+          duration: 500,
+          success: function () {
+            setTimeout(function () {
+            }, 300)
+          }
+        })
+        console.log('数据不存在')
+      }
+      else if (res.code == 533) {
+        wx.showToast({
+          title: '修改失败',
+          image: '/icons/warning/warning.png',
+          duration: 500,
+          success: function () {
+            setTimeout(function () {
+            }, 300)
+          }
+        })
+        console.log('修改后数据错误')
+      }
+      else {
+        wx.showToast({
+          title: '修改失败',
+          image: '/icons/warning/warning.png',
+          duration: 500,
+          success: function () {
+            setTimeout(function () {
+            }, 300)
+          }
+        })
+        console.log('修改后数据不合法')
+      }
+    }, (err) => {
+      console.log('fail modifyone')
     })
-
   },
   goback: function () {
     wx.navigateBack({

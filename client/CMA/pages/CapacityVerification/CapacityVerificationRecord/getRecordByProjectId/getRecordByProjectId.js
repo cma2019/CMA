@@ -21,6 +21,9 @@ Page({
   onLoad: function (options) {
     console.log('getone options')
     console.log(options)
+    //此界面通过projectid来获得record信息
+    //此界面通过相应的project到达
+    //其他部分完全相同，不再仔细描述
     this.setData({
       projectId: options.id
     })

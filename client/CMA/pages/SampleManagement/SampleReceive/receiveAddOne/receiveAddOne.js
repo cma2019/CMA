@@ -30,8 +30,6 @@ Page({
         receiptId: 0
       })
     }
-    console.log("fsdgdf")
-    console.log(this.data.receiptId)
   },
   sampleNumberChange: function (event) {
     const no = event.detail
@@ -52,7 +50,8 @@ Page({
     })
     if (this.data.dis == true) {
       return false;
-    } else {
+    } 
+    else {
       return true;
     }
   },
@@ -88,7 +87,8 @@ Page({
       if (no.length == 0) {
         message = '委托单位不能为空'
         disable = true
-      } else {
+      } 
+      else {
         message = '委托单位长度有误'
         disable = true
       }
@@ -99,7 +99,8 @@ Page({
     })
     if (this.data.dis == true) {
       return false;
-    } else {
+    } 
+    else {
       return true;
     }
   },
@@ -111,7 +112,8 @@ Page({
       if (no.length == 0) {
         message = '接收人不能为空'
         disable = true
-      } else {
+      } 
+      else {
         message = '接收人长度有误'
         disable = true
       }
@@ -122,7 +124,8 @@ Page({
     })
     if (this.data.dis == true) {
       return false;
-    } else {
+    } 
+    else {
       return true;
     }
   },
@@ -134,7 +137,8 @@ Page({
       if (no.length == 0) {
         message = '领取人不能为空'
         disable = true
-      } else {
+      } 
+      else {
         message = '领取人长度有误'
         disable = true
       }
@@ -145,7 +149,8 @@ Page({
     })
     if (this.data.dis == true) {
       return false;
-    } else {
+    } 
+    else {
       return true;
     }
   },
@@ -164,24 +169,38 @@ Page({
     console.log(this.data.dis)
     if (this.data.dis == true || e.detail.value.obtainDate == ""){
       wx.showToast({
-        title: '错误（空白输入）',
-        icon: 'none',
-        duration: 2000
+        title: '空白输入',
+        image: '/icons/warning/warning.png',
+        duration: 500,
+        success: function () {
+          setTimeout(function () {
+          }, 500)
+        }
       })
-      console.log('错误（空白输入）')
+      console.log('空白输入')
     }
     else {
-      console.log('SampleReceive发生了add事件，携带数据为：', e.detail.value)
       console.log(this.data.receiptId)
-      wx.request({
-        url: app.globalData.url + 'SampleReceive/addOne',
-        method: 'POST',
-        header: {
-          'content-type': 'application/x-www-form-urlencoded',
-          'Accept': 'application/json'
-        },
-        data: {
-          "receiptId":this.data.receiptId,
+      if(this.data.receiptId == 0){
+        wx.showToast({
+          title: '未找到接收单',
+          image: '/icons/warning/warning.png',
+          duration: 500,
+          success: function () {
+            setTimeout(function () {
+              wx.redirectTo({
+                url: '../SampleReceive'
+              })
+            }, 500)
+          }
+        })
+        console.log("样品接收登记表与接收单未对应")
+      }
+      else { 
+        console.log('SampleReceive发生了add事件，携带数据为：', e.detail.value)
+        let url = app.globalData.url + 'SampleReceive/addOne'
+        let postdata = {
+          "receiptId": this.data.receiptId,
           "sampleNumber": e.detail.value.sampleNumber,
           "sampleName": e.detail.value.sampleName,
           "sampleAmount": e.detail.value.sampleAmount,
@@ -191,48 +210,79 @@ Page({
           "receiveDate": e.detail.value.receiveDate,
           "obtainer": e.detail.value.obtainer,
           "obtainDate": e.detail.value.obtainDate
-        },
-        success(res) {
-          console.log(res.data)
-          if (res.data.code == 200) {
+        }
+        app.wxRequest(url, 'POST', postdata, (res) => {
+          console.log(res)
+          if (res.code == 200) {
             wx.showToast({
-              title: '成功',
-              icon: 'none',
-              duration: 1500
+              title: '添加成功',
+              image: '/icons/ok/ok.png',
+              duration: 500,
+              success: function () {
+                setTimeout(function () {
+                  wx.redirectTo({
+                    url: '../SampleReceive'
+                  })
+                }, 300)
+              }
             })
-            wx.navigateTo({
-              url: '../SampleReceive'
+            console.log("添加成功")
+          }
+          else if (res.data.code == 511) {
+            wx.showToast({
+              title: '添加失败',
+              image: '/icons/warning/warning.png',
+              duration: 500,
+              success: function () {
+                setTimeout(function () {
+                }, 500)
+              }
             })
+            console.log("缺少必选请求参数")
           }
           else if (res.data.code == 512) {
             wx.showToast({
               title: '样品编号已存在',
-              duration: 1500
+              image: '/icons/warning/warning.png',
+              duration: 500,
+              success: function () {
+                setTimeout(function () {
+                }, 500)
+              }
             })
-            console.log('样品编号已存在')
+            console.log("样品编号已存在")
           }
           else if (res.data.code == 513) {
             wx.showToast({
               title: '某项数据错误',
-              duration: 1500
+              image: '/icons/warning/warning.png',
+              duration: 500,
+              success: function () {
+                setTimeout(function () {
+                }, 500)
+              }
             })
-            console.log('某项数据错误')
+            console.log("某项数据错误")
           }
-          else {//514
+          else { //514
             wx.showToast({
-              title: '样品数据与接收单不一致',
-              duration: 1500
+              title: '与接收单不一致',
+              image: '/icons/warning/warning.png',
+              duration: 500,
+              success: function () {
+                setTimeout(function () {
+                  wx.redirectTo({
+                    url: '../SampleReceive'
+                  })
+                }, 300)
+              }
             })
-            console.log('样品数据与接收单不一致')
+            console.log("样品数据与接收单不一致")
           }
-        },
-        fail(err) {
+        }, (err) => {
           console.log('fail addone')
-        },
-        complete(fin) {
-          console.log('final addone')
-        }
-      })
+        })
+      }
     }
   },
   goback: function () {

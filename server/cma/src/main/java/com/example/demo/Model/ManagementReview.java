@@ -12,8 +12,8 @@ public class ManagementReview {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private long id;
-    private long year;
-    private Date date;
+    private long year;  //年份
+    private Date date;  //日期
 
     public long getYear() {
         return year;

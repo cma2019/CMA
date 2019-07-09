@@ -12,9 +12,9 @@ public class User {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
-    private String username;
-    private String password;
-    private boolean []permission=new boolean[15];
+    private String username;    //用户名
+    private String password;    //密码
+    private boolean []permission=new boolean[15];   //权限
 
     public void setId(long id){
         this.id=id;

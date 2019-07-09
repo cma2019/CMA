@@ -6,31 +6,7 @@ Page({
    */
   data: {
     "mess": null,
-    "flag":0, //0:database empty;  1:database not empty
-    tmp: [{
-      "sampleId": 2,
-      "sampleNumber": "20180602",
-      "sampleName": "天猫超市",
-      "sampleAmount": 1,
-      "sampleState": 0,
-      "requester": "阿里巴巴责任有限公司",
-      "receiver": "黄四郎",
-      "receiveDate": "2018-06-10",
-      "obtainer": "张麻子",
-      "obtainDate": "2018-06-15"
-    },
-    {
-      "sampleId": 5,
-      "sampleNumber": "20170612",
-      "sampleName": "教育超市",
-      "sampleAmount": 2,
-      "sampleState": 2,
-      "requester": "百度",
-      "receiver": "长的",
-      "receiveDate": "2003-10-6",
-      "obtainer": "海门",
-      "obtainDate": "2014-09-7"
-    }]
+    "flag":0 //0:database empty;  1:database not empty
   },
 
   /**
@@ -43,17 +19,19 @@ Page({
     console.log(postdata)
     app.wxRequest(url, 'GET', postdata, (res) => {
       console.log(res)
-      console.log('success')
-      if(res.code == 522){
-        this.setData({
-          mess : ""
-        })
-      }
-      else{
+      if (res.code == 200) {
         this.setData({
           mess: res.data,
           flag: 1
         })
+        console.log("SampleReceive-getAll成功")
+      }
+      else { //210
+        this.setData({
+          mess: null,
+          flag: 0
+        })
+        console.log("SampleReceive-getAll无有效信息")
       }
     }, (err) => {
       wx.showToast({
@@ -65,16 +43,13 @@ Page({
   },
   gotoOne: function (e) {
     console.log(e)
-    let target = e.currentTarget.id
-    console.log('getone id')
-    console.log(target)
-    console.log("dfdsfs")
+    let id = e.currentTarget.id
     wx.navigateTo({
-      url: 'receiveGetOne/receiveGetOne?id=' + target
+      url: 'receiveGetOne/receiveGetOne?id=' + id
     })
   },
   gotoAdd: function () {
-    wx.navigateTo({
+    wx.redirectTo({
       url: 'receiveAddOne/receiveAddOne',
     })
   }

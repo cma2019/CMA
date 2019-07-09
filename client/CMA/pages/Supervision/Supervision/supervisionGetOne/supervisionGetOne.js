@@ -7,21 +7,7 @@ Page({
   data: {
     id:null,
     info:[],
-    flag:0,
-    tmp: [{
-      "planId ": 5,
-      "id": 1,
-      "content": "操作规范",
-      "object": "张三",
-      "dateFrequency": ""
-    },
-    {
-      "planId ": 6,
-      "id": 1,
-      "content": "仪器使用规范",
-      "object": "李四",
-      "dateFrequency": ""
-    }]
+    flag:0
   },
 
   /**
@@ -52,49 +38,36 @@ Page({
   onShow: function (options) {
     var thispage = this
     console.log('SupervisionPlan发生了getAll事件，携带数据为：', thispage.data.id)
-    wx.request({
-      url: app.globalData.url + 'SupervisionPlan/getAll',
-      method: 'GET',
-      data: {
-        "id": thispage.data.id
-      },
-      header: {
-        'content-type': 'application/json',
-        'Accept': 'application/json'
-      },
-      success(res) {
-        if (res.data.code == 200) {
-
-          thispage.setData({
-            info : res.data.data,
-            flag: 1
-          })
-          wx.setStorage({
-            key:'supervisionPlaninfo',
-            data:res.data.data
-          })
-        }/*
-        else if (res.data.code == 521) {
-          console.log(res)
-          wx.showToast({
-            title: '未收到标识编号',
-            duration: 1500
-          })
-          console.log('未收到标识编号')
-        }*/
-        else {//522
-          wx.showToast({
-            title: '暂未含有SupervisionPlan',
-            duration: 1500
-          })
-          console.log('暂未含有SupervisionPlan')
-        }
-      },
-      fail(err) {
-        console.log('no data')
+    let url = app.globalData.url + 'SupervisionPlan/getAll'
+    let postdata = {
+      "id": thispage.data.id
+    }
+    app.wxRequest(url, 'GET', postdata, (res) => {
+      if (res.code == 200) {
+        this.setData({
+          info: res.data,
+          flag: 1
+        })
+        wx.setStorage({
+          key: 'supervisionPlaninfo',
+          data: res.data.data
+        })
+        console.log("SupervisionPlan-getAll成功")
       }
+      else { //210
+        this.setData({
+          info: null,
+          flag: 0
+        })
+        console.log("SupervisionPlan-getAll无有效信息")
+      }
+    }, (err) => {
+      wx.showToast({
+        title: 'SupervisionPlan-getAll error',
+        duration: 1500
+      })
+      console.log('SupervisionPlan-getAll error')
     })
-  
   },
   supervisionPlanModify:function(e){
     console.log(e)
@@ -125,53 +98,36 @@ Page({
     let planId = this.data.info[i].planId
     let id = this.data.id
     console.log("supervisionPlan发生了deleteOne事件，携带数据为",planId)
-    const deleteoneRequest = wx.request({
-      url: app.globalData.url + 'SupervisionPlan/deleteOne',
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json'
-      },
-      data: {
-        "planId": planId
-      },
-      success(res) {
-        console.log(res)
-        if (res.data.code == 200) {
-          wx.showToast({
-            title: '删除成功',
-            duration: 1500
-          })
-          wx.navigateTo({
-            url: '/pages/Supervision/Supervision/supervisionGetOne/supervisionGetOne?id=' + id
-          })
-        }
-        else if (res.data.code == 521) {
-          wx.showToast({
-            title: '未收到标识编号',
-            duration: 1500
-          })
-          console.log('未收到标识编号')
-        }
-        else {
-          wx.showToast({
-            title: '数据不存在',
-            duration: 1500
-          })
-          console.log('数据不存在')
-        }
-        wx.navigateBack({
-          delta: 1
+    let url = app.globalData.url + 'SupervisionPlan/deleteOne'
+    let postdata = {
+      "planId": planId
+    }
+    app.wxRequest(url, 'POST', postdata, (res) => {
+      if (res.code == 200) {
+        wx.showToast({
+          title: '删除成功',
+          image: '/icons/ok/ok.png',
+          duration: 500,
+          success: function () {
+            setTimeout(function () {
+              wx.navigateTo({
+                url: '/pages/Supervision/Supervision/supervisionGetOne/supervisionGetOne?id=' + id
+              })
+            }, 500)
+          }
         })
-      },
-      fail(err) {
-        console.log('fail deleteone')
-      },
-      complete(fin) {
-        console.log('final deleteone')
       }
+      else {
+        wx.showToast({
+          title: '删除失败',
+          image: '/icons/warning/warning.png',
+          duration: 500
+        })
+        console.log('删除失败')
+      }
+    }, (err) => {
+      console.log('fail deleteone')
     })
-
   },
   supervisionPlanAdd:function(){
     wx.navigateTo({
