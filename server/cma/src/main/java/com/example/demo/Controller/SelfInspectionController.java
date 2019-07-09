@@ -34,15 +34,15 @@ public class SelfInspectionController {
     private String modify_Id="0";
     private String modify_name="null";*/
     @GetMapping(path = "/getAll")
-    /*
-        获取数据库中的自查列表
-     */
-    public @ResponseBody JSONObject getAll(){
+    //获取数据库中的自查列表
+    public @ResponseBody JSONObject getAll()
+    {
         List<SelfInspection> res=SelfInspectionRepository.findAll();
         JSONObject js=new JSONObject();
         JSONArray data=new JSONArray();
         int code=200;
         String msg="成功";
+        //遍历列表
         if(res.size()>0)
         {
             for(int i=0;i<res.size();i++)
@@ -54,7 +54,9 @@ public class SelfInspectionController {
                 data.add(tmp);
             }
         }
-        else{
+        //列表为空
+        else
+        {
             code=210;
             msg="无有效信息返回";
             //data=null;
@@ -65,18 +67,15 @@ public class SelfInspectionController {
         return js;
     }
     @PostMapping(path = "/addOne")
-    /*
-        添加一项自查表项
-     */
+    //添加一项自查表项
     public @ResponseBody JSONObject addOne(@RequestParam(value = "name",required = false) String name,
-                                           @RequestParam(value = "date",required = false) String date){
+                                           @RequestParam(value = "date",required = false) String date)
+    {
         int code=200;
         String msg="成功";
         JSONObject js=new JSONObject();
         JSONObject data=new JSONObject();
-        /*
-            以字符串接受参数，对数据做格式合法性判断
-         */
+        //以字符串接受参数，对数据做格式合法性判断
         try {
             java.sql.Date.valueOf(date);
         }catch (NumberFormatException e){
@@ -85,9 +84,7 @@ public class SelfInspectionController {
             js.put("data",data);
             return js;
         }
-        /*
-            名字应该是不可重复的，确保数据唯一性
-         */
+        //名字应该是不可重复的，确保数据唯一性
         if(SelfInspectionRepository.findByName(name)!=null)
         {
             js.put("code",514);
@@ -95,35 +92,28 @@ public class SelfInspectionController {
             js.put("data",data);
             return js;
         }
-        /*
-            参数完整且合法，正常添加
-         */
+        //参数完整且合法，正常添加
         String year=date.substring(0,4);
         String rname=year+"年度第"+name+"次自查文档集";
         SelfInspection s=new SelfInspection();
         s.setDate(java.sql.Date.valueOf(date));
         s.setName(rname);
         SelfInspectionRepository.save(s);
-         /*
-            返回json，前端解析code获取请求结果，解析data获取需要的数据
-         */
+        //返回json，前端解析code获取请求结果，解析data获取需要的数据
         js.put("code",code);
         js.put("msg",msg);
         js.put("data",data);
         return js;
     }
     @PostMapping(path = "/deleteOne")
-    /*
-        删除某项自查
-     */
-    public @ResponseBody JSONObject deleteOne(@RequestParam(value = "id",required = false) String id){
+    //删除某项自查
+    public @ResponseBody JSONObject deleteOne(@RequestParam(value = "id",required = false) String id)
+    {
         int code=200;
         String msg="成功";
         JSONObject js=new JSONObject();
         JSONObject data=new JSONObject();
-        /*
-        以字符串接受参数，做参数格式合法性判断
-                */
+        //以字符串接受参数，做参数格式合法性判断
         try{
             Long.parseLong(id);
         }catch (NumberFormatException e){
@@ -134,13 +124,9 @@ public class SelfInspectionController {
             js.put("data",data);
             return js;
         }
-        /*
-            调用findAll方法，获取自查下的自查文档列表
-         */
+       //调用findAll方法，获取自查下的自查文档列表
         List<SelfInspectionDocument> res= SelfInspectionDocumentRepository.findAllById(Long.parseLong(id));
-        /*
-            遍历自查文档列表，调用后续的deleteOneFile方法，删除自查文档
-         */
+        //遍历自查文档列表，调用后续的deleteOneFile方法，删除自查文档
         if(res.size()>0)
         {
             for(int i=0;i<res.size();i++)
@@ -151,13 +137,9 @@ public class SelfInspectionController {
                 SelfInspectionDocumentRepository.delete(tmp);
             }
         }
-        /*
-            自查文档删除完成后，删除自查
-         */
+        //自查文档删除完成后，删除自查
         SelfInspectionRepository.delete(SelfInspectionRepository.findById(Long.parseLong(id)));
-         /*
-            返回json，前端解析code获取请求结果，解析data获取需要的数据
-         */
+         //返回json，前端解析code获取请求结果，解析data获取需要的数据
         js.put("code",code);
         js.put("msg",msg);
         js.put("data",data);
@@ -170,14 +152,11 @@ public class SelfInspectionController {
     }
     */
     @GetMapping(path = "/getAllFile")
-    /*
-        获取某项自查下的全部文档
-     */
-    public @ResponseBody JSONObject getAllFile(@RequestParam(value = "id",required = false) String id){
+    //获取某项自查下的全部文档
+    public @ResponseBody JSONObject getAllFile(@RequestParam(value = "id",required = false) String id)
+    {
         JSONObject js=new JSONObject();
-        /*
-        以字符串接受参数，做参数格式合法性判断
-        */
+        //以字符串接受参数，做参数格式合法性判断
         try{
             Long.parseLong(id);
         }catch (NumberFormatException E){
@@ -186,16 +165,12 @@ public class SelfInspectionController {
             js.put("data",null);
             return js;
         }
-        /*
-            调用findAll方法，获取自查下的自查文档列表
-         */
+        //调用findAll方法，获取自查下的自查文档列表
         List<SelfInspectionDocument> res= SelfInspectionDocumentRepository.findAllById(Long.parseLong(id));
         JSONArray data=new JSONArray();
         int code=200;
         String msg="成功";
-         /*
-            遍历自查文档列表，将必要信息存放到data中
-         */
+        //遍历自查文档列表，将必要信息存放到data中
         if(res.size()>0)
         {
             for(int i=0;i<res.size();i++)
@@ -210,17 +185,13 @@ public class SelfInspectionController {
                 data.add(tmp);
             }
         }
-        /*
-            自查下无自查文档
-         */
+       //自查下无自查文档
         else
         {
             code=210;
             msg="无有效信息返回";
         }
-         /*
-            返回json，前端解析code获取请求结果，解析data获取需要的数据
-         */
+         //返回json，前端解析code获取请求结果，解析data获取需要的数据
         js.put("code",code);
         js.put("msg",msg);
         js.put("data",data);
@@ -249,21 +220,16 @@ public class SelfInspectionController {
         return js;
     }*/
     @PostMapping(path = "/addOneFile")
-    /*
-        在某项自查下添加自查文档
-     */
+    //在某项自查下添加自查文档
     public @ResponseBody
     com.alibaba.fastjson.JSONObject addOneFile(@RequestParam("file") MultipartFile file,
                                                @RequestParam(value = "id",required = false) long id,
                                                @RequestParam(value = "fileName",required = false) String fileName,
-                                               HttpServletRequest request){
-        /*
-            前端需要传递自查编号，文件名，文件
-         */
+                                               HttpServletRequest request)
+    {
+        //前端需要传递自查编号，文件名，文件
         com.alibaba.fastjson.JSONObject js=new com.alibaba.fastjson.JSONObject();
-        /*
-            参数判空
-         */
+        //参数判空
         if(fileName==null||fileName.equals(""))
         {
             Response res=new Response();
@@ -275,24 +241,18 @@ public class SelfInspectionController {
             js.put("data",res.data);
             return js;
         }
-        /*
-            获取前端传递文件的后缀
-         */
+        //获取前端传递文件的后缀
         FileController fileController=new FileController();
         SelfInspectionDocument sDoc=new SelfInspectionDocument();
         String[] str=file.getOriginalFilename().split("\\.");
         String suffix=str[str.length-1];
-        /*
-            将后缀拼接到文件名中
-         */
+        //将后缀拼接到文件名中
         sDoc.setFileName(fileName+"."+suffix);
         sDoc.setId(id);
         //System.out.println("???");
         //System.out.println(sDoc.getFileName());
         //System.out.println("??");
-        /*
-            传递参数调用文件上传接口
-         */
+        //传递参数调用文件上传接口
         Response res=  fileController.upload(file,request,sDoc.getFileName(),sDoc.getDir());
         /*
             根据调用结果判断文件上传是否成功，
@@ -304,7 +264,8 @@ public class SelfInspectionController {
             SelfInspectionDocumentRepository.save(sDoc);
         }
          /*
-            返回json，前端解析code获取请求结果，解析data获取需要的数据
+            返回json，前端解析code获取请求结果，
+            解析data获取需要的数据
          */
         js.put("code",res.code);
         js.put("msg",res.msg);
@@ -312,14 +273,11 @@ public class SelfInspectionController {
         return js;
     }
     @RequestMapping(path="/modifyOneFormData",method= RequestMethod.POST)
-    /*
-        只修改某文档的文件名
-     */
+    //只修改某文档的文件名
     public @ResponseBody JSONObject modifyOneFormData(@RequestParam(value = "fileName",required = false) String fileName,
-                                     @RequestParam(value = "fileId",required = false) String fileId){
-        /*
-            前端传递参数，以字符串接受
-         */
+                                     @RequestParam(value = "fileId",required = false) String fileId)
+    {
+        //前端传递参数，以字符串接受
         JSONObject js=new JSONObject();
         //System.out.println(fileName);
         SelfInspectionDocument sDoc=SelfInspectionDocumentRepository.findByFileId(Long.parseLong(fileId));
@@ -331,9 +289,7 @@ public class SelfInspectionController {
         //System.out.println(str[str.length-1]);
         String suffix=str[str.length-1];
         File newFile=new File(filepath,fileName+"."+suffix);
-        /*
-            若存在同名文件不允许重命名
-         */
+        //若存在同名文件不允许重命名
         if(newFile.exists())
         {
             js.put("code",512);
@@ -341,19 +297,13 @@ public class SelfInspectionController {
             js.put("data",null);
             return js;
         }
-        /*
-            不存在同名文件，调用file的rename接口进行重命名
-         */
+       //不存在同名文件，调用file的rename接口进行重命名
         else
             oldFile.renameTo(newFile);
-        /*
-            重命名成功，更新数据库中的自查文档记录
-         */
+        //重命名成功，更新数据库中的自查文档记录
         sDoc.setFileName(fileName+"."+suffix);
         SelfInspectionDocumentRepository.saveAndFlush(sDoc);
-         /*
-            返回json，前端解析code获取请求结果，解析data获取需要的数据
-         */
+         //返回json，前端解析code获取请求结果，解析data获取需要的数据
         js.put("code",200);
         js.put("msg","成功");
         js.put("data",null);
@@ -361,53 +311,40 @@ public class SelfInspectionController {
     }
     @PostMapping(path = "/modifyOneFile")
     /*
-        修改文件（可以同时改文件和文件名，也可以只改文件，但是必须传递文件参数）
+        修改文件（可以同时改文件和文件名，
+        也可以只改文件，但是必须传递文件参数）
      */
     public @ResponseBody Response modifyOneFile(@RequestParam("file") MultipartFile file,
                                                 @RequestParam(value ="fileId",required = false) long fileId,
                                                 @RequestParam(value = "fileName",required = false) String fileName,
                                                 @RequestParam(value = "id",required = false) long id,
-                                                HttpServletRequest request){
+                                                HttpServletRequest request)
+    {
         FileController fileController=new FileController();
-        /*
-            获取数据库中修改前的文档记录
-         */
+        //获取数据库中修改前的文档记录
         SelfInspectionDocument tmp=SelfInspectionDocumentRepository.findByFileId(fileId);
         String oldName=tmp.getFileName();
-        /*
-            调用deleteFile接口删除旧文件（避免同名文件的判断）
-         */
+        //调用deleteFile接口删除旧文件（避免同名文件的判断）
         fileController.deletefile(oldName,tmp.getDir());
-        /*
-            获取前端传递文件的后缀
-         */
+        //获取前端传递文件的后缀
         String[] str=file.getOriginalFilename().split("\\.");
         //System.out.println(str[str.length-1]);
         String suffix=str[str.length-1];
-        /*
-            将后缀拼接到文件名中
-         */
+        //将后缀拼接到文件名中
         tmp.setId(id);
         tmp.setFileName(fileName+"."+suffix);
-        /*
-            保存新文档记录
-         */
+        //保存新文档记录
         SelfInspectionDocumentRepository.saveAndFlush(tmp);
-        /*
-            保持新文件到本地
-         */
+        //保持新文件到本地
         return  fileController.upload(file,request,tmp.getFileName(),tmp.getDir());
     }
     @PostMapping(path = "/deleteOneFile")
-    /*
-        删除某项自查文档
-     */
-    public @ResponseBody JSONObject deleteOneFile(@RequestParam(value = "fileId",required = false) long fileId){
+    //删除某项自查文档
+    public @ResponseBody JSONObject deleteOneFile(@RequestParam(value = "fileId",required = false) long fileId)
+    {
         JSONObject js=new JSONObject();
         SelfInspectionDocument s=SelfInspectionDocumentRepository.findByFileId(fileId);
-        /*
-            数据判空，如果文档记录不存在报错
-         */
+        //数据判空，如果文档记录不存在报错
         if(s==null)
         {
             js.put("code",522);
@@ -417,9 +354,7 @@ public class SelfInspectionController {
         }
         FileController fileController=new FileController();
         boolean res=fileController.deletefile(s.getFileName(), s.getDir());
-        /*
-            如果本地文件不存在报错
-         */
+        //如果本地文件不存在报错
         if(!res)
         {
             js.put("code",522);
@@ -427,37 +362,28 @@ public class SelfInspectionController {
             js.put("data",null);
             return js;
         }
-        /*
-            如果文件和文档记录均存在，正常删除
-         */
+        // 如果文件和文档记录均存在，正常删除
         SelfInspectionDocumentRepository.delete(s);
-         /*
-            返回json，前端解析code获取请求结果，解析data获取需要的数据
-         */
+         //返回json，前端解析code获取请求结果，解析data获取需要的数据
         js.put("code",200);
         js.put("msg","成功");
         js.put("data",null);
         return js;
     }
     @GetMapping(path = "/downloadFile/{fileId}")
-    /*
-        下载文件，需要自查文档编号
-     */
-    public @ResponseBody String downloadFile(@PathVariable("fileId") long fileId, HttpServletResponse response) {
+    //下载文件，需要自查文档编号
+    public @ResponseBody String downloadFile(@PathVariable("fileId") long fileId, HttpServletResponse response)
+    {
         FileController fileController=new FileController();
         //System.out.println(fileId);
-        /*
-            数据库中不存在文档记录报错
-         */
+        //数据库中不存在文档记录报错
         try{
             if(SelfInspectionDocumentRepository.findByFileId(fileId)==null)
                 throw new Exception("doesn't exist");
             SelfInspectionDocument temp=SelfInspectionDocumentRepository.findByFileId(fileId);
             String name=temp.getFileName();
             //System.out.println(name+"????");
-            /*
-                文档记录存在，调用downloadFile函数下载文件并返回
-             */
+            //文档记录存在，调用downloadFile函数下载文件并返回
             fileController.downloadFile(response,name,temp.getDir());
             return "下载成功";
         }catch(Exception e){
