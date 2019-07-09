@@ -25,15 +25,15 @@ import java.util.List;
  *            5xx→异常
  */
 @Controller
-@RequestMapping(path="/cma/CapacityVerification")
+@RequestMapping(path="/cma/CapacityVerification")//定义接口
 public class CapacityVerificationPlanController {
 
-    Long tempId;
+    Long tempId;//临时用数据
 
     @Autowired
     private CapacityVerificationPlanRepository CapacityVerificationPlanRepository;
 
-    @GetMapping(path="/getAll")
+    @GetMapping(path="/getAll")//获取所有计划信息
     public @ResponseBody JSONObject getAllPlan() throws JSONException {
         JSONObject json=new JSONObject(new LinkedHashMap());
         /*if(CapacityVerificationPlanRepository.findAll()==null)
@@ -82,7 +82,7 @@ public class CapacityVerificationPlanController {
         //return json.toString();
     }
 
-    @PostMapping(path = "/addOne")
+    @PostMapping(path = "/addOne")//添加新计划信息
     public @ResponseBody JSONObject addPlan(@RequestParam(value = "name", required = false) String name,
                    @RequestParam(value = "organizer", required = false) String organizer,
                    @RequestParam(value = "year", required = false) String year,
@@ -93,7 +93,7 @@ public class CapacityVerificationPlanController {
 
         newPlan.setYear(year);
         newPlan.setNote(note);
-        newPlan.setState(0);
+        newPlan.setState(0);//设置状态默认为0
 
         CapacityVerificationPlanRepository.save(newPlan);
 
@@ -107,7 +107,7 @@ public class CapacityVerificationPlanController {
         return json;
     }
 
-    @PostMapping(path="/deleteOne")
+    @PostMapping(path="/deleteOne")//删除计划
     public @ResponseBody JSONObject deletePlan(@RequestParam(value="id",required=false)Long planId){
         JSONObject json=new JSONObject(new LinkedHashMap());
         if(CapacityVerificationPlanRepository.findById(planId)==null)
@@ -122,15 +122,15 @@ public class CapacityVerificationPlanController {
         else
         {
             //TODO:删除分析文件,project下的Record
-            if(CapacityVerificationPlanRepository.findById(planId).get().getAnalysis()!=null){
+            if(CapacityVerificationPlanRepository.findById(planId).get().getAnalysis()!=null){//判断文件是否存在
                 FileController fileController=new FileController();
                 CapacityVerificationPlan temp=CapacityVerificationPlanRepository.findByPlanId(planId);
                 String fileName=temp.getAnalysis();
-                fileController.deletefile(fileName,temp.getDir());
-                CapacityVerificationPlanRepository.updateAnalysis(null,planId);
+                fileController.deletefile(fileName,temp.getDir());//存在文件则删除文件
+                CapacityVerificationPlanRepository.updateAnalysis(null,planId);//将文件名置为null
             }
-            CapacityVerificationPlanRepository.deleteProject(planId);
-            CapacityVerificationPlanRepository.deleteById(planId);
+            CapacityVerificationPlanRepository.deleteProject(planId);//删除计划对应的项目
+            CapacityVerificationPlanRepository.deleteById(planId);//删除计划
             try{
                 json.put("code",200);
                 json.put("msg","删除成功");
@@ -141,14 +141,14 @@ public class CapacityVerificationPlanController {
         return json;
     }
 
-    @PostMapping(path="/modifyOne")
+    @PostMapping(path="/modifyOne")//修改计划信息
     public @ResponseBody JSONObject modifyPlan(@RequestParam(value="id",required=false)Long planId,
                                          @RequestParam(value="name",required=false)String name,
                                          @RequestParam(value="organizer",required=false)String organizer,
                                          @RequestParam(value="year",required=false)String year,
                                          @RequestParam(value="note",required=false)String note){
         JSONObject json=new JSONObject(new LinkedHashMap());
-        if(CapacityVerificationPlanRepository.findById(planId)==null)
+        if(CapacityVerificationPlanRepository.findById(planId)==null)//判断是否为空
         {
             try{
                 json.put("code",500);
@@ -160,7 +160,7 @@ public class CapacityVerificationPlanController {
         else
         {
 
-            CapacityVerificationPlanRepository.updateById(planId,name,organizer,year,note);
+            CapacityVerificationPlanRepository.updateById(planId,name,organizer,year,note);//修改信息
             //content,checkDate,personInCharge,state
             //System.out.println("changed object");
             try{
@@ -175,11 +175,11 @@ public class CapacityVerificationPlanController {
         return json;
     }
 
-    @GetMapping(path="/getOne")
+    @GetMapping(path="/getOne")//获取一个信息
     public @ResponseBody JSONObject getOnePlan(@RequestParam(value="id",required=false)Long planId)throws IOException{
         JSONObject json=new JSONObject(new LinkedHashMap());
         CapacityVerificationPlan plan=new CapacityVerificationPlan();
-        if(CapacityVerificationPlanRepository.findById(planId)==null)
+        if(CapacityVerificationPlanRepository.findById(planId)==null)//判断是否为空
         {
             try{
                 json.put("code",500);
@@ -192,7 +192,7 @@ public class CapacityVerificationPlanController {
         {
             json.put("code",200);
             json.put("msg","获取成功");
-            json.put("data",CapacityVerificationPlanRepository.findById(planId));
+            json.put("data",CapacityVerificationPlanRepository.findById(planId));//返回信息
             /*plan= CapacityVerificationPlanRepository.getOne(planId);
             JSONObject data=new JSONObject(new LinkedHashMap());
             JSONArray array=new JSONArray();
@@ -221,39 +221,39 @@ public class CapacityVerificationPlanController {
         return json;
     }
 
-    @PostMapping(path="/uploadAnalysis")
+    @PostMapping(path="/uploadAnalysis")//上传文档，读取相关信息
     public @ResponseBody
     JSONObject uploadAnalysis(@RequestParam(value="id",required = false)Long id){
         JSONObject json=new JSONObject();
-        tempId=id;
+        tempId=id;//保存临时数据
         json.put("code",200);
         json.put("msg","信息获取成功");
         return json;
     }
 
-    @PostMapping(path="/uploadAnalysisFile")
+    @PostMapping(path="/uploadAnalysisFile")//上传文档
     public @ResponseBody Response addAnalysis(@RequestParam(value="file",required = false)MultipartFile file, HttpServletRequest request){
         System.out.println("Upload in");
         FileController fileController=new FileController();
         System.out.println(tempId);
         System.out.println(file.getOriginalFilename());
-        String fileName=tempId+"."+fileController.getsuffix(file.getOriginalFilename());
+        String fileName=tempId+"."+fileController.getsuffix(file.getOriginalFilename());//设置文件名
         System.out.println(fileName);
-        CapacityVerificationPlanRepository.updateAnalysis(fileName,tempId);
+        CapacityVerificationPlanRepository.updateAnalysis(fileName,tempId);//更新分析报告信息
         CapacityVerificationPlan plan=CapacityVerificationPlanRepository.findByPlanId(tempId);
         plan.setAnalysis(fileName);
-        tempId=null;
+        tempId=null;//临时数据置空
         System.out.println(plan.getAnalysis());
         System.out.println(fileName);
-        return fileController.upload(file,request,plan.getAnalysis(),plan.getDir());
+        return fileController.upload(file,request,plan.getAnalysis(),plan.getDir());//文档上传
     }
 
-    @RequestMapping(value="/downloadAnalysis/{id}",method=RequestMethod.GET)
+    @RequestMapping(value="/downloadAnalysis/{id}",method=RequestMethod.GET)//下载文档
     public @ResponseBody String downloadAnalysis(@PathVariable("id")Long id, HttpServletResponse response){
         System.out.println("Download In");
         FileController fileController=new FileController();
         try{
-            if(CapacityVerificationPlanRepository.findById(id)==null)
+            if(CapacityVerificationPlanRepository.findById(id)==null)//判断是否为空
                 throw new Exception("不存在");
             System.out.println(id);
             CapacityVerificationPlan temp=CapacityVerificationPlanRepository.findByPlanId(id);
@@ -261,17 +261,17 @@ public class CapacityVerificationPlanController {
             System.out.println(name);
             if(name==null)
                 return null;
-            return  fileController.downloadFile(response,name,temp.getDir());
+            return  fileController.downloadFile(response,name,temp.getDir());//文件下载
         }catch(Exception e){
             e.printStackTrace();
             return "下载失败";
         }
     }
 
-    @PostMapping(path="/deleteAnalysis")
+    @PostMapping(path="/deleteAnalysis")//删除分析文档
     public @ResponseBody JSONObject deleteAnalysis(@RequestParam(value="id",required =false)Long id){
         JSONObject json=new JSONObject();
-        if(CapacityVerificationPlanRepository.findById(id)==null){
+        if(CapacityVerificationPlanRepository.findById(id)==null){//判断是否为空
             json.put("code",500);
             json.put("msg","文件不存在");
         }
@@ -280,8 +280,8 @@ public class CapacityVerificationPlanController {
             FileController fileController=new FileController();
             CapacityVerificationPlan temp=CapacityVerificationPlanRepository.findByPlanId(id);
             String fileName=temp.getAnalysis();
-            fileController.deletefile(fileName,temp.getDir());
-            CapacityVerificationPlanRepository.updateAnalysis(null,id);
+            fileController.deletefile(fileName,temp.getDir());//删除文档
+            CapacityVerificationPlanRepository.updateAnalysis(null,id);//设置计划信息中的文件名为null
             json.put("code",200);
             json.put("msg","删除成功");
         }

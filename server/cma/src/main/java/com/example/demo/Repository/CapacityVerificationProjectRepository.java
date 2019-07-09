@@ -12,11 +12,11 @@ import java.util.Optional;
 
 @Transactional
 public interface CapacityVerificationProjectRepository extends JpaRepository<CapacityVerificationProject,Long>{
-    List<CapacityVerificationProject> findAllByPlanId(Long planId);
-    Optional<CapacityVerificationProject> findByPlanId(Long planId);
-    List<CapacityVerificationProject> findAllByPlanIdAndState(Long planId,long state);
+    List<CapacityVerificationProject> findAllByPlanId(Long planId);//查找所有计划对应的项目
+    Optional<CapacityVerificationProject> findByPlanId(Long planId);//查找计划对应的项目
+    List<CapacityVerificationProject> findAllByPlanIdAndState(Long planId,long state);//按计划序号和状态查找所有符合条件的项目
 
-    @Modifying
+    @Modifying//修改项目信息
 
     @Query(value="update Capacity_Verification_Project set plan_id=:planid,"+
             "name = :name," +
@@ -30,19 +30,19 @@ public interface CapacityVerificationProjectRepository extends JpaRepository<Cap
                     @Param("state")Long state,
                     @Param("note") String note);
 
-    @Modifying
+    @Modifying//修改对应的计划的状态
 
     @Query(value="update Capacity_Verification_Plan set state = :state where plan_id=:planid",nativeQuery=true)
     void updatePlanState(@Param("state")long state,
                     @Param("planid")Long planid);
 
-    @Modifying
+    @Modifying//修改项目的状态
 
     @Query(value="update Capacity_Verification_Project set state = :state where project_id=:projectid",nativeQuery=true)
     void updateProjectState(@Param("projectid")Long projectid,
                     @Param("state")Long state);
 
-    @Modifying
+    @Modifying//删除项目对应的记录
     @Query(value="delete from Capacity_Verification_Record where project_id=:projectid",nativeQuery = true)
     void deleteRecord(@Param("projectid")Long projectid);
 }

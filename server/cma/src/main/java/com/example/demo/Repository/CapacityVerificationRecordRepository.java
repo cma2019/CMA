@@ -13,8 +13,8 @@ import java.util.Optional;
 
 @Transactional
 public interface CapacityVerificationRecordRepository extends JpaRepository<CapacityVerificationRecord,Long> {
-    Optional<CapacityVerificationRecord> findAllByProjectId(Long projectId);
-    @Modifying
+    Optional<CapacityVerificationRecord> findAllByProjectId(Long projectId);//查找项目对应的记录
+    @Modifying///更新记录信息
 
     @Query(value="update Capacity_Verification_Record set project_id=:projectid,"+
             "date = :date," +
