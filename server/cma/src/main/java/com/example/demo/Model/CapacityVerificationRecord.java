@@ -26,6 +26,7 @@ public class CapacityVerificationRecord {
     private String resultDeal;//能力验证结果处理状况
     private String note;//结果的备注
 
+    //get,set方法
     public void setrecordId(long id){
         this.recordId=id;
     }

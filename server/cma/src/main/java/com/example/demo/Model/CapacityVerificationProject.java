@@ -21,6 +21,7 @@ public class CapacityVerificationProject {
     private long state;   //0即未完成，1即完成变成了记录
     private String note;//该项目的备注
 
+    //set,get方法
     public void setprojectId(long id){
         this.projectId=id;
     }

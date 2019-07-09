@@ -20,9 +20,10 @@ public class CapacityVerificationPlan {
     private long state;   //0即未完成，1的话是他设计的所有项目均执行成记录才成为记录变成1
     private String year;  //参加年度
     private String note;//计划的备注
-    private String analysis;
-    String dir="CapacityVerificationPlan";
+    private String analysis;//分析报告（文件名）
+    String dir="CapacityVerificationPlan";//保存路径
 
+    //get,set方法
     public void setplanId(long id){
         this.planId=id;
     }
@@ -68,5 +69,6 @@ public class CapacityVerificationPlan {
     public void setAnalysis(String analysis){this.analysis=analysis;}
     public String getAnalysis(){return this.analysis;}
 
+    //返回路径
     public String getDir(){return this.dir;}
 }
