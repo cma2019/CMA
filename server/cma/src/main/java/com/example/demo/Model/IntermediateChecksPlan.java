@@ -16,13 +16,14 @@ import java.sql.Date;
 public class IntermediateChecksPlan {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private long planID;
-    private String object;
-    private String content;
-    private Date checkDate;
-    private String personInCharge;
+    private long planID;//设计划id为主键，自增
+    private String object;//对象
+    private String content;//内容
+    private Date checkDate;//日期
+    private String personInCharge;//负责人
     private long state;//状态值默认为0
 
+    //给每个元素提供get,set方法
     public void setPlanId(long id){
         this.planID=id;
     }

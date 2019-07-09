@@ -19,6 +19,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * @author YXP
+ * 质量管理
+ */
 @Controller
 @RequestMapping(path="cma/QualityManual")
 public class qsmController {
@@ -59,7 +63,7 @@ public class qsmController {
             response.code=200;
             return response;
     }
-
+//添加文件
     @RequestMapping(path="addFile",method= RequestMethod.POST)
     @ResponseBody
     public Response addOneFile(@RequestParam("file") MultipartFile file, HttpServletRequest request,
@@ -103,6 +107,11 @@ public class qsmController {
         QRepository.save(temp);
         return  fileController.upload(file,request,temp.getFileName(),temp.getDir());
     }*/
+
+    /**
+     * 获取当前及其2文件
+     * @return response
+     */
     @RequestMapping(value="/getCurrent",method=RequestMethod.GET)
     @ResponseBody
     public Response getOne(){
@@ -120,6 +129,10 @@ public class qsmController {
         return response;
     }
 
+    /**
+     * 获取所有历史
+     * @return
+     */
     @RequestMapping(value="/getAllHistory",method=RequestMethod.GET)
     @ResponseBody
     public Response getAll(){
@@ -140,6 +153,14 @@ public class qsmController {
         response.msg="成功";
         return response;
     }
+
+    /**
+     * 通过id获取文件
+     * @param id
+     * @param request
+     * @param response
+     * @return
+     */
     @RequestMapping(value="/getFileById/{id}",method=RequestMethod.GET)
     @ResponseBody
     public  String getFile(@PathVariable("id") long id,HttpServletRequest request, HttpServletResponse response)
@@ -156,6 +177,12 @@ public class qsmController {
             return "下载失败";
         }
     }
+
+    /**
+     * 删除
+     * @param id
+     * @return
+     */
     @RequestMapping(value="/deleteOne/{id}",method=RequestMethod.GET)
     @ResponseBody
     public Response deleteOne(@PathVariable("id") long id)
@@ -180,6 +207,13 @@ public class qsmController {
         }
         return response;
     }
+
+    /**
+     * 审批
+     * @param id
+     * @param state
+     * @return
+     */
     @RequestMapping(value="/Approve/{id}",method = RequestMethod.POST)
     @ResponseBody
     public Response Approve(@PathVariable("id") long id,@RequestParam (value="state",required=false)Byte state){
@@ -206,6 +240,11 @@ public class qsmController {
         }
         return response;
     }
+
+    /**
+     * 获取审批
+     * @return
+     */
     @RequestMapping(value="/getApprove",method = RequestMethod.GET)
     @ResponseBody
     public Response getApprove(){

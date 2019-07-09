@@ -206,6 +206,9 @@ public class SampleReceiveController {
                 data.add(tmp);
             }
         }
+        /*
+            列表为空
+         */
         else
         {
             code=210;

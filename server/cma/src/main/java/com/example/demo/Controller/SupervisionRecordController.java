@@ -19,12 +19,18 @@ public class SupervisionRecordController {
     @Autowired
     private SupervisionRecordRepository SupervisionRecordRepository;
     @GetMapping(path = "/getAll")
+    /*
+        获取全部监督记录列表
+     */
     public @ResponseBody JSONObject getAll(@RequestParam(value = "planId",required = false) String planId){
         List<SupervisionRecord> res=SupervisionRecordRepository.findAllByPlanId(Long.parseLong(planId));
         JSONObject js=new JSONObject();
         JSONArray data=new JSONArray();
         int code=200;
         String msg="成功";
+        /*
+            将必要信息存放在data，前端用来展示
+         */
         if(res.size()>0)
         {
             for(int i=0;i<res.size();i++)
@@ -43,17 +49,26 @@ public class SupervisionRecordController {
                 data.add(tmp);
             }
         }
+        /*
+            监督记录列表为空
+         */
         else {
             code=210;
             msg="无有效信息返回";
             //data=null;
         }
+         /*
+            返回json，前端解析code获取请求结果，解析data获取需要的数据
+         */
         js.put("code",code);
         js.put("msg",msg);
         js.put("data",data);
         return js;
     }
     @PostMapping(path = "/addOne")
+    /*
+        为一项监督记录添加监督记录
+     */
     public @ResponseBody JSONObject addOne(@RequestParam(value = "planId",required = false) String planId,
                                            @RequestParam(value = "department",required = false) String department,
                                            @RequestParam(value = "supervisor",required = false) String supervisor,
@@ -68,6 +83,9 @@ public class SupervisionRecordController {
         String msg="成功";
         JSONObject js=new JSONObject();
         JSONObject data=new JSONObject();
+        /*
+            确保参数合法
+         */
         try{
             Long.parseLong(planId);
             java.sql.Date.valueOf(superviseDate);
@@ -80,6 +98,9 @@ public class SupervisionRecordController {
             js.put("data",data);
             return js;
         }
+        /*
+            确保参数非空
+         */
         if(department.equals("")||supervisor.equals("")||supervisedPerson.equals("")||
         record.equals("")||conclusion.equals("")||operator.equals(""))
         {
@@ -90,6 +111,9 @@ public class SupervisionRecordController {
             js.put("data",data);
             return js;
         }
+        /*
+            正常添加
+         */
         //System.out.println(planId);
         SupervisionRecord sr=new SupervisionRecord();
         sr.setSupervisor(supervisor);
@@ -102,12 +126,18 @@ public class SupervisionRecordController {
         sr.setDepartment(department);
         sr.setConclusion(conclusion);
         SupervisionRecordRepository.save(sr);
+         /*
+            返回json，前端解析code获取请求结果，解析data获取需要的数据
+         */
         js.put("code",code);
         js.put("msg",msg);
         js.put("data",null);
         return js;
     }
     @PostMapping(path = "/modifyOne")
+    /*
+        修改某项监督记录
+     */
     public @ResponseBody JSONObject modifyOne(@RequestParam(value = "recordId",required = false) String recordId,
                                               @RequestParam(value = "department",required = false) String department,
                                               @RequestParam(value = "supervisor",required = false) String supervisor,
@@ -122,6 +152,9 @@ public class SupervisionRecordController {
         String msg="成功";
         JSONObject js=new JSONObject();
         JSONObject data=new JSONObject();
+        /*
+            确保参数格式合法
+         */
         try{
             Long.parseLong(recordId);
             java.sql.Date.valueOf(superviseDate);
@@ -134,6 +167,9 @@ public class SupervisionRecordController {
             js.put("data",data);
             return js;
         }
+        /*
+            确保参数非空
+         */
         if(department.equals("")||supervisor.equals("")||supervisedPerson.equals("")||
                 record.equals("")||conclusion.equals("")||operator.equals(""))
         {
@@ -144,6 +180,9 @@ public class SupervisionRecordController {
             js.put("data",data);
             return js;
         }
+        /*
+            正常修改更新监督记录
+         */
         SupervisionRecord sr=SupervisionRecordRepository.findByRecordId(Long.parseLong(recordId));
         sr.setSupervisor(supervisor);
         sr.setSupervisedPerson(supervisedPerson);
@@ -154,18 +193,27 @@ public class SupervisionRecordController {
         sr.setDepartment(department);
         sr.setConclusion(conclusion);
         SupervisionRecordRepository.saveAndFlush(sr);
+         /*
+            返回json，前端解析code获取请求结果，解析data获取需要的数据
+         */
         js.put("code",code);
         js.put("msg",msg);
         js.put("data",null);
         return js;
     }
     @PostMapping(path = "/deleteOne")
+    /*
+        删除某项监督记录
+     */
     public @ResponseBody JSONObject deleteOne(@RequestParam(value = "recordId",required = false) String recordId)
     {
         int code=200;
         String msg="成功";
         JSONObject js=new JSONObject();
         JSONObject data=new JSONObject();
+        /*
+            确保参数格式合法
+         */
         try{
             Long.parseLong(recordId);
         }catch (NumberFormatException e){
@@ -177,6 +225,9 @@ public class SupervisionRecordController {
             return js;
         }
         SupervisionRecordRepository.deleteById(Long.parseLong(recordId));
+         /*
+            返回json，前端解析code获取请求结果，解析data获取需要的数据
+         */
         js.put("code",code);
         js.put("msg",msg);
         js.put("data",null);
