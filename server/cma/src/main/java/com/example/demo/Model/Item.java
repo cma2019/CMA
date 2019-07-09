@@ -14,12 +14,13 @@ import javax.persistence.Id;
 public class Item {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private long id;
-    private long year;
-    private String productionName;
-    private String ability;
-    private String referrence;
+    private long id;//唯一主键，编号
+    private long year;//年份
+    private String productionName;//产品名称
+    private String ability;//产品能力
+    private String referrence;//产品依据
 
+    //get,set方法
     public void setId(long id) { this.id = id; }
     public long getId() { return this.id; }
 

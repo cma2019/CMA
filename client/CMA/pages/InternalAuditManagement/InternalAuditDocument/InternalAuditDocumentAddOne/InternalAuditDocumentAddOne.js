@@ -32,11 +32,9 @@ Page({
         success: function (res1) {
           var mypath = res1.tempFiles[0].path
           app.wxUploadFile(myurl, mypath, null, (res) => {
-            console.log(res)
-            console.log(res.code)
-            console.log(res.msg)
-            console.log(res.id)
-            if(res.code == 200){
+            var obj = JSON.parse(res)
+            console.log(obj)
+            if(obj.code == 200){
               console.log("上传成功")
               wx.showToast({
                 title: '上传成功',

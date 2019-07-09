@@ -2,3 +2,4 @@
 .idea/
 
 server/cma/src/main/resources/application.properties
+client/CMA/project.config.json

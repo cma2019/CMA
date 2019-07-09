@@ -24,6 +24,7 @@ import org.springframework.transaction.annotation.Transactional;
 @SpringBootTest
 @WebAppConfiguration
 @Transactional
+//回滚类中各测试方法对数据库的事物操作
 public class InternalAuditManagementControllerTest {
 
     @Autowired
@@ -39,6 +40,7 @@ public class InternalAuditManagementControllerTest {
     }
 
     @Test
+    //测试getAll()方法
     public void getAll() throws Exception{
         String url = "/cma/InternalAuditManagement/getAll";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get(url, new Object[0])
@@ -51,6 +53,7 @@ public class InternalAuditManagementControllerTest {
     }
 
     @Test
+    //测试addOne()方法
     public void addOne() throws Exception{
         String url = "/cma/InternalAuditManagement/addOne";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0])

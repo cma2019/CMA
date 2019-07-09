@@ -39,11 +39,12 @@ Page({
       wx.chooseMessageFile({
         count: 1,
         type: 'all',
-        success(res) {
-          var mypath = res.tempFiles[0].path
+        success(res1) {
+          var mypath = res1.tempFiles[0].path
           app.wxUploadFile(myurl, mypath, null, (res) => {
-            console.log(res)
-            if(res.code == 200){
+            var obj = JSON.parse(res)
+            console.log(obj)
+            if(obj.code == 200){
               console.log("上传成功")
               wx.showToast({
                 title: '上传成功',

@@ -116,13 +116,13 @@ Page({
             myFilePath = res.savedFilePath
             console.log(myFilePath)
             wx.showToast({
-              title: '添加成功',
+              title: '下载成功',
               image: '/icons/ok/ok.png',
               duration: 1000
             })
           } else {
             wx.showToast({
-              title: '添加失败',
+              title: '下载失败',
               image: '/icons/warning/warning.png',
               duration: 1000
             })
