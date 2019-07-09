@@ -23,6 +23,8 @@ public class SupervisionController {
     private SupervisionRepository SupervisionRepository;
     @Autowired
     private SupervisionPlanRepository SupervisionPlanRepository;
+    @Autowired
+    private SupervisionPlanController supervisionPlanController=new SupervisionPlanController();
     @PostMapping(path="/addOne")
     /*
         新增一项监督
@@ -117,7 +119,7 @@ public class SupervisionController {
         {
             for(int i=0;i<res.size();i++)
             {
-                SupervisionPlanRepository.delete(res.get(i));
+                supervisionPlanController.deleteOne(res.get(i).getPlanID()+"");
             }
         }
         /*
