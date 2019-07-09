@@ -64,7 +64,7 @@ public class StaffTrainingController {
         JSONObject json=new JSONObject();
         List<StaffTraining> list=staffTrainingRepository.findAll();
         for(int i=0;i<list.size();i++){
-            if(list.get(i).equals((staffTraining))){
+            if(list.get(i).getTrainingId()==staffTraining.getTrainingId()){
                 json.put("code",210);
                 json.put("msg","已存在");
                 json.put("data",null);
