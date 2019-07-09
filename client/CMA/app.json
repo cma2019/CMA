@@ -1,5 +1,6 @@
 {
   "pages": [
+    
     "pages/home/home",
     "pages/Management/Management",
     "pages/login/login",
@@ -169,6 +170,10 @@
     "pages/SelfInspection/SelfInspectionDocument/SelfInspectionDocumentModifyOne/SelfInspectionDocumentModifyOne",
     "pages/InternalAuditManagement/InternalAuditDocument/InternalAuditDocumentModifyOne/InternalAuditDocumentModifyOne",
     "pages/StaffManagement/StaffFile/GetImageStaffFile/GetImageStaffFile",
+    "pages/StaffManagement/StaffFile/StaffFile",
+    "pages/StaffManagement/StaffFile/AddOneStaffFile/AddOneStaffFile",
+    "pages/StaffManagement/StaffFile/ModifyOneStaffFile/ModifyOneStaffFile",
+    "pages/StaffManagement/StaffFile/PrintOneStaffFile/PrintOneStaffFile",
     "pages/StaffManagement/StaffQualification/StaffQualification",
     "pages/StaffManagement/StaffQualification/AddOneStaffQualification/AddOneStaffQualification",
     "pages/StaffManagement/StaffQualification/DownloadOneStaffQualification/DownloadOneStaffQualification",
