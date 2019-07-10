@@ -43,7 +43,7 @@ public class TestingInstitutionInformationControllerTest {
     @Transactional
     public void add() throws Exception {
         String url = "/cma/TestingInstitutionInformation/get";
-        MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url)
+        MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get(url)
         )       .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print()).andReturn();
 

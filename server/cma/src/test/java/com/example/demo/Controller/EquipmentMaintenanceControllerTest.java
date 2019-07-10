@@ -60,7 +60,7 @@ public class EquipmentMaintenanceControllerTest {
     @Transactional
    public void getOne() throws Exception{
        String url="/cma/EquipmentMaintenance/getOne/66";
-       MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0])
+       MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get(url, new Object[0])
                .param("id","66"))
                .andExpect(MockMvcResultMatchers.status().isOk())
                .andDo(MockMvcResultHandlers.print()).andReturn();
@@ -72,7 +72,7 @@ public class EquipmentMaintenanceControllerTest {
     @Transactional
     public void getAll() throws Exception{
         String url="/cma/EquipmentMaintenance/getAll";
-        MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url))
+        MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get(url))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print()).andReturn();
         String res = mvcResult.getResponse().getContentAsString();

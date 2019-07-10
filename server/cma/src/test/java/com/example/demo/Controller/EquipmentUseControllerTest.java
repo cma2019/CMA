@@ -43,7 +43,7 @@ public class EquipmentUseControllerTest {
     @Transactional
     public void getAll() throws Exception{
         String url="/cma/EquipmentUse/getAll";
-        MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url)
+        MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get(url)
         )       .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print()).andReturn();
         String res = mvcResult.getResponse().getContentAsString();
