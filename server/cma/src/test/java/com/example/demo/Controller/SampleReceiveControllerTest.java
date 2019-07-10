@@ -23,7 +23,8 @@ import org.springframework.transaction.annotation.Transactional;
 @SpringBootTest
 @WebAppConfiguration
 @Transactional
-public class SampleReceiveControllerTest {
+public class SampleReceiveControllerTest
+{
     @Autowired
     SampleReceiveController SampleReceiveController;
     MockMvc mockMvc;
@@ -43,6 +44,7 @@ public class SampleReceiveControllerTest {
     @Transactional
     @Rollback(true)
     @Test
+    //测试addOne()接口
     public void addOne() throws Exception {
         String url = "/cma/SampleReceive/addOne";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0])
@@ -66,6 +68,7 @@ public class SampleReceiveControllerTest {
 
     @Transactional
     @Test
+    //测试deleteOne()接口
     public void deleteOne() throws Exception {
         String url = "/cma/SampleReceive/deleteOne";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0])
@@ -80,6 +83,7 @@ public class SampleReceiveControllerTest {
 
     @Transactional
     @Test
+    //测试getALL()接口
     public void findALL() throws Exception {
         String url = "/cma/SampleReceive/getAll";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get(url, new Object[0])
@@ -94,6 +98,7 @@ public class SampleReceiveControllerTest {
 
     @Transactional
     @Test
+    //测试getOne()接口
     public void findOne() throws Exception {
         String url = "/cma/SampleReceive/getOne";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get(url, new Object[0])
@@ -108,6 +113,7 @@ public class SampleReceiveControllerTest {
 
     @Transactional
     @Test
+    //测试modifyOne()接口
     public void modify() throws Exception {
         String url = "/cma/SampleReceive/modifyOne";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0])

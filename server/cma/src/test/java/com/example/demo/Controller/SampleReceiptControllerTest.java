@@ -27,7 +27,8 @@ import org.springframework.transaction.annotation.Transactional;
 @SpringBootTest
 @WebAppConfiguration
 @Transactional
-public class SampleReceiptControllerTest {
+public class SampleReceiptControllerTest
+{
     @Autowired
     SampleReceiptController sampleReceiptController;
     MockMvc mockMvc;
@@ -46,8 +47,10 @@ public class SampleReceiptControllerTest {
 
     @Transactional
     @Test
+    //测试addOne()接口
     public void addOne() throws Exception {
         String url = "/cma/SampleReceipt/addOne";
+        //请求参数的格式为json，所以先构造参数例子
         JSONObject input=new JSONObject();
         JSONArray data=new JSONArray();
         for(int i=5;i<10;i++)
@@ -72,6 +75,7 @@ public class SampleReceiptControllerTest {
         input.put("sender","hcb01");
         input.put("receiver","lb01");
         String requestJson=JSONObject.toJSONString(input);
+        //json格式的请求参数传入方式需要设定contenType和content
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0]).contentType(MediaType.APPLICATION_JSON).content(requestJson))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print()).andReturn();
@@ -83,6 +87,7 @@ public class SampleReceiptControllerTest {
 
     @Transactional
     @Test
+    //测试deleteOne接口
     public void deleteOne() throws Exception {
         String url = "/cma/SampleReceipt/deleteOne";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0])
@@ -97,6 +102,7 @@ public class SampleReceiptControllerTest {
 
     @Transactional
     @Test
+    //测试getAll（）接口
     public void findALL() throws Exception {
         String url = "/cma/SampleReceipt/getAll";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get(url, new Object[0])
@@ -111,6 +117,7 @@ public class SampleReceiptControllerTest {
 
     @Transactional
     @Test
+    //测试getOne()接口
     public void findOne() throws Exception {
         String url = "/cma/SampleReceipt/getOne";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get(url, new Object[0])
@@ -125,6 +132,7 @@ public class SampleReceiptControllerTest {
 
     @Transactional
     @Test
+    //测试modifyOne()接口
     public void modify() throws Exception {
         String url = "/cma/SampleReceipt/modifyOne";
         JSONObject input=new JSONObject();

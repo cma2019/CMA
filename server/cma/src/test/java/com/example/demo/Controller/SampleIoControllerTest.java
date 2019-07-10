@@ -22,7 +22,9 @@ import org.springframework.transaction.annotation.Transactional;
 @SpringBootTest
 @WebAppConfiguration
 @Transactional
-public class SampleIoControllerTest {
+//此注解用于回滚对数据库操作事物
+public class SampleIoControllerTest
+{
     @Autowired
     SampleIoController sampleIoController;
     MockMvc mockMvc;
@@ -41,6 +43,10 @@ public class SampleIoControllerTest {
 
     @Test
     @Transactional
+    //测试addOne()接口
+    //用mockmvc模拟post请求，需要输入url
+    //用.param设置测试参数
+    //.sataus()用于确保请求的执行状态正确
     public void addOne() throws Exception {
         String url = "/cma/SampleIo/addOne";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0])
@@ -65,6 +71,10 @@ public class SampleIoControllerTest {
 
     @Test
     @Transactional
+    //测试deleteOne()接口
+    //需要数据库中含有id=126的数据
+    //当然就算没有，只要符合controller层的逻辑
+    //设置对应的code预期值即可
     public void deleteOne() throws Exception {
         String url = "/cma/SampleIo/deleteOne";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0])
@@ -78,6 +88,8 @@ public class SampleIoControllerTest {
 
     @Test
     @Transactional
+    //测试getAll()接口
+    //用mockmvc模拟一个get请求，带入参数url
     public void findALL() throws Exception {
         String url = "/cma/SampleIo/getAll";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get(url, new Object[0])).andExpect(MockMvcResultMatchers.status().isOk()).andDo(MockMvcResultHandlers.print()).andReturn();
@@ -88,6 +100,7 @@ public class SampleIoControllerTest {
 
     @Test
     @Transactional
+    //测试getOne()接口
     public void findOne() throws Exception {
         String url = "/cma/SampleIo/getOne";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get(url, new Object[0])
@@ -95,12 +108,14 @@ public class SampleIoControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print()).andReturn();
         String res = mvcResult.getResponse().getContentAsString();
+        //剪切字符串获取请求返回的结果中的code值
         int code = Integer.parseInt(res.substring(19, 22));
         Assert.assertEquals(200L, (long)code);
     }
 
     @Test
     @Transactional
+    //测试modifyOne()接口
     public void modify() throws Exception {
         String url = "/cma/SampleIo/modifyOne";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0])

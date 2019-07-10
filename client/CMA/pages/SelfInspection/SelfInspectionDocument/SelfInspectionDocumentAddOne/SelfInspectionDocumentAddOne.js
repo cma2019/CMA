@@ -81,7 +81,15 @@ Page({
         },
         fail: function (err) {
           console.log("get file failed")
-          console.log(err)
+          wx.showToast({
+            title: '未选择文件',
+            image: '/icons/warning/warning.png',
+            duration: 500,
+            success: function () {
+              setTimeout(function () {
+              }, 500)
+            }
+          })
         }
       })
     }

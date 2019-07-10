@@ -1,4 +1,4 @@
-// pages/SampleManagement/SampleReceipt/receiptAddOne/receiptTypeAdd.js
+const app = getApp()
 Page({
 
   /**
@@ -61,11 +61,19 @@ Page({
   materialList_addone:function(e){
     console.log(this.data.materialList)
     console.log(e)
-    var that = this
-    wx.setStorage({
-      key: 'materialListinfo',
-      data: that.data.materialList
-    })
+    var that = this.data.materialList
+    for(let i =0;i<9;++i){
+      if(that[i].materialType != 0){
+        let tmp = {
+          "materialId": that[i].materialId,
+          "materialType": that[i].materialType,
+          "materialName": that[i].materialName
+        }
+        app.globalData.materialList1.push(tmp)
+      }
+    }
+    console.log(app.globalData.materialList1)
+    console.log("asfsdag")
     wx.navigateBack({
       delta: 1
     })

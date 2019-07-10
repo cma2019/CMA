@@ -24,6 +24,7 @@ import static org.junit.Assert.*;
 @SpringBootTest
 @WebAppConfiguration
 @Transactional
+//回滚类中各测试方法对数据库的事物操作
 public class SupervisionControllerTest {
 
     @Autowired
@@ -40,6 +41,7 @@ public class SupervisionControllerTest {
     }
 
     @Test
+    //测试addOne()方法
     public void addOne() throws Exception{
         String url = "/cma/Supervision/addOne";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0])
@@ -55,6 +57,7 @@ public class SupervisionControllerTest {
     }
 
     @Test
+    //测试deleteOne()方法
     public void deleteOne() throws Exception{
         String url = "/cma/Supervision/deleteOne";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0])
@@ -68,6 +71,7 @@ public class SupervisionControllerTest {
     }
 
     @Test
+    //测试getAll()方法
     public void findALL() throws Exception{
         String url = "/cma/Supervision/getAll";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get(url, new Object[0])
@@ -80,6 +84,7 @@ public class SupervisionControllerTest {
     }
 
     @Test
+    //测试approveOne()方法
     public void approveOne() throws Exception{
         String url = "/cma/Supervision/approveOne";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0])
@@ -95,6 +100,7 @@ public class SupervisionControllerTest {
     }
 
     @Test
+    //测试modifyOne()方法
     public void modify() throws Exception{
         String url = "/cma/Supervision/modifyOne";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0])
@@ -109,6 +115,7 @@ public class SupervisionControllerTest {
     }
 
     @Test
+    //测试executeOne()方法
     public void executeOne() throws Exception{
         String url = "/cma/Supervision/executeOne";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0])

@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.*;
         *            5xx→异常
         */
 @Controller
-@RequestMapping(path="/cma/TestAbility")
+@RequestMapping(path="/cma/TestAbility")//定义接口
 public class ItemController {
     @Autowired
     private ItemRepository ItemRepository;
 
-    @PostMapping(path="/addOneItem")
+    @PostMapping(path="/addOneItem")//添加信息
     public @ResponseBody JSONObject addOneItem(@RequestParam(value="year",required = false)Long year,
                           @RequestParam(value = "productionName",required = false)String productionName,
                           @RequestParam(value = "ability",required = false)String ability,
@@ -36,7 +36,7 @@ public class ItemController {
         return json;
     }
 
-    @GetMapping(path="/getAllItem")
+    @GetMapping(path="/getAllItem")//获取所有信息
     public @ResponseBody JSONObject getAllItem(@RequestParam(value="year",required = false)Long year){
         JSONObject json=new JSONObject();
         /*if(ItemRepository.findAllByYear(year)==null){
@@ -52,10 +52,10 @@ public class ItemController {
         return json;
     }
 
-    @GetMapping(path="/getOneItem")
+    @GetMapping(path="/getOneItem")//获取某个信息
     public @ResponseBody JSONObject getOneItem(@RequestParam(value = "id",required = false)Long id){
         JSONObject json=new JSONObject();
-        if(ItemRepository.findById(id)==null){
+        if(ItemRepository.findById(id)==null){//判断是否为空
             json.put("code",500);
             json.put("msg","信息不存在");
         }
@@ -67,10 +67,10 @@ public class ItemController {
         return json;
     }
 
-    @PostMapping(path="/deleteOneItem")
+    @PostMapping(path="/deleteOneItem")//删除信息
     public @ResponseBody JSONObject deleteOneItem(@RequestParam(value = "id",required = false)Long id){
         JSONObject json=new JSONObject();
-        if(ItemRepository.findById(id)==null){
+        if(ItemRepository.findById(id)==null){//判断是否为空
             json.put("code",500);
             json.put("msg","信息不存在");
         }
