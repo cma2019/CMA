@@ -213,7 +213,7 @@ Page({
         }
         app.wxRequest(url, 'POST', postdata, (res) => {
           console.log(res)
-          if (res.code == 200) {
+          if (res.data.code == 200) {
             wx.showToast({
               title: '添加成功',
               image: '/icons/ok/ok.png',

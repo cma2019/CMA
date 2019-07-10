@@ -6,8 +6,9 @@ App({
   //全局预设数据
   globalData: {
     userInfo: null,
-    url: 'http://192.168.1.104:8004/cma/',
-    username1: "admin"
+    url: 'http://192.168.1.100:8004/cma/',
+    username1: "admin",
+    materialList1:[]
   },
   //wx.request的封装接口
   wxRequest(url, method, data, callback, errfun) {

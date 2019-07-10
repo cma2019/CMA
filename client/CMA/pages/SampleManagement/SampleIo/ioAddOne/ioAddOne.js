@@ -25,6 +25,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
     if (options.id != undefined) {
       this.setData({
         receiptId: options.id
@@ -33,7 +34,7 @@ Page({
     else{
       if(options.sampleNumber !=undefined){
         this.setData({
-          receiptId: 0,
+          receiptId: options.receiptId,
           sampleNumber: options.sampleNumber,
           sampleName: options.sampleName,
           sampleAmount: options.sampleAmount,

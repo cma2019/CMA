@@ -17,10 +17,10 @@
         </view>
       </van-cell>-->
       <view wx:if="{{flag == 0}}">
-        <van-cell title="提交材料与类型" required is-link value="请输入" url="../receiptAddOne/receiptTypeAdd"/>
+        <van-cell title="提交材料与类型" required is-link label="0:没有材料,1:仅有电子文档,2:仅有书面文档,3:既有电子文档,又有书面文档"value="请输入" url="../receiptAddOne/receiptTypeAdd"/>
       </view>
       <view wx:else>
-        <van-cell title="提交材料与类型" required is-link value="已填写" url="../receiptAddOne/receiptTypeAdd"/>
+        <van-cell title="提交材料与类型" required is-link label="0:没有材料,1:仅有电子文档,2:仅有书面文档,3:既有电子文档,又有书面文档" value="已填写" url="../receiptAddOne/receiptTypeAdd"/>
       </view>
       <van-cell v-model="softwareType" name="softwareType" required title="软件类型"label="0:系统软件,1:支持软件,2:应用软件,3:其他软件">
         <van-stepper value="{{softwareType}}"  name="softwareType" integer min="0"max="3"step="1"/>
