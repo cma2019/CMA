@@ -69,6 +69,6 @@ public class ExternalReviewDocumentCoontrollerTest {
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print()).andReturn();*/
         Response res=this.capacityVerificationPlanController.addFile(firstFile,request,2018);
-        Assert.assertEquals(200L, res.code);
+        Assert.assertEquals(200, res.code);
     }
 }

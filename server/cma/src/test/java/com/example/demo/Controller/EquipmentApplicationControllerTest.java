@@ -83,7 +83,7 @@ public class EquipmentApplicationControllerTest {
     @Transactional
     public void deleteOne()throws Exception{
         String url="/cma/Equipment/deleteOne/76";
-        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(url,new Object[0])
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post(url,new Object[0])
         .param("id","76"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print())
