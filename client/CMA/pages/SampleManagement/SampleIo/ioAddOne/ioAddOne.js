@@ -233,7 +233,7 @@ Page({
         }
         app.wxRequest(url, 'POST', postdata, (res) => {
           console.log(res.data)
-          if (res.data.code == 200) {
+          if (res.code == 200) {
             wx.showToast({
               title: '添加成功',
               image: '/icons/ok/ok.png',
@@ -248,7 +248,7 @@ Page({
             })
             console.log("添加成功")
           }
-          else if (res.data.code == 511) {
+          else if (res.code == 511) {
             wx.showToast({
               title: '添加失败',
               image: '/icons/warning/warning.png',
@@ -260,7 +260,7 @@ Page({
             })
             console.log("缺少必选请求参数")
           }
-          else if (res.data.code == 512) {
+          else if (res.code == 512) {
             wx.showToast({
               title: '样品编号已存在',
               image: '/icons/warning/warning.png',
@@ -272,7 +272,7 @@ Page({
             })
             console.log("样品编号已存在")
           }
-          else if (res.data.code == 513) {
+          else if (res.code == 513) {
             wx.showToast({
               title: '某项数据错误',
               image: '/icons/warning/warning.png',
