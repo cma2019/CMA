@@ -20,12 +20,12 @@ import java.util.LinkedHashMap;
  *            5xx→异常
  */
 @Controller
-@RequestMapping(path="/cma/CapacityVerification")
+@RequestMapping(path="/cma/CapacityVerification")//定义接口
 public class CapacityVerificationRecordController {
     @Autowired
     private CapacityVerificationRecordRepository CapacityVerificationRecordRepository;
 
-    @PostMapping(path = "/addOneRecord")
+    @PostMapping(path = "/addOneRecord")//添加记录
     public @ResponseBody JSONObject addRecord(@RequestParam(value = "projectId", required = false) Long projectId,
                          @RequestParam(value = "date", required = false) Date date,
                          @RequestParam(value = "methodId", required = false) String methodId,
@@ -45,7 +45,7 @@ public class CapacityVerificationRecordController {
         newRecord.setResult(result);
         newRecord.setResultDeal(resultDeal);
         newRecord.setNote(note);
-        CapacityVerificationRecordRepository.save(newRecord);
+        CapacityVerificationRecordRepository.save(newRecord);//保存记录
 
         JSONObject json = new JSONObject(new LinkedHashMap());
         try {
@@ -58,10 +58,10 @@ public class CapacityVerificationRecordController {
     }
 
 
-    @PostMapping(path="/deleteOneRecord")
+    @PostMapping(path="/deleteOneRecord")//删除记录
     public @ResponseBody JSONObject deleteRecord(@RequestParam(value="id",required=false)Long recordId){
         JSONObject json=new JSONObject(new LinkedHashMap());
-        if(!CapacityVerificationRecordRepository.findById(recordId).isPresent())
+        if(!CapacityVerificationRecordRepository.findById(recordId).isPresent())//是否为空
         {
             try{
                 json.put("code",500);
@@ -72,7 +72,7 @@ public class CapacityVerificationRecordController {
         }
         else
         {
-            CapacityVerificationRecordRepository.deleteById(recordId);
+            CapacityVerificationRecordRepository.deleteById(recordId);//删除
             try{
                 json.put("code",200);
                 json.put("msg","删除成功");
@@ -83,7 +83,7 @@ public class CapacityVerificationRecordController {
         return json;
     }
 
-    @PostMapping(path="/modifyOneRecord")
+    @PostMapping(path="/modifyOneRecord")//修改记录
     public @ResponseBody JSONObject modifyRecord(@RequestParam(value="id",required=false)Long recordId,
                                                   @RequestParam(value="projectId",required = false)Long projectId,
                                                   @RequestParam(value="date",required=false)Date date,
@@ -95,7 +95,7 @@ public class CapacityVerificationRecordController {
                                                   @RequestParam(value="resultDeal",required=false)String resultDeal,
                                                   @RequestParam(value="note",required=false)String note){
         JSONObject json=new JSONObject(new LinkedHashMap());
-        if(!CapacityVerificationRecordRepository.findById(recordId).isPresent())
+        if(!CapacityVerificationRecordRepository.findById(recordId).isPresent())//是否为空
         {
             try{
                 json.put("code",500);
@@ -106,7 +106,7 @@ public class CapacityVerificationRecordController {
         }
         else
         {
-
+//修改信息
             CapacityVerificationRecordRepository.updateById(recordId,projectId,date,methodId,equipmentName,equipmentId,experimenter,result,resultDeal,note);
             //content,checkDate,personInCharge,state
             //System.out.println("changed object");
@@ -122,11 +122,11 @@ public class CapacityVerificationRecordController {
         return json;
     }
 
-    @GetMapping(path="/getOneRecord")
+    @GetMapping(path="/getOneRecord")//获取单个记录
     public @ResponseBody JSONObject getOneRecord(@RequestParam(value="id",required=false)Long recordId)throws IOException {
         JSONObject json=new JSONObject(new LinkedHashMap());
         CapacityVerificationRecord record=new CapacityVerificationRecord();
-        if(!CapacityVerificationRecordRepository.findById(recordId).isPresent())
+        if(!CapacityVerificationRecordRepository.findById(recordId).isPresent())//是否为空
         {
             try{
                 json.put("code",500);
@@ -139,7 +139,7 @@ public class CapacityVerificationRecordController {
         {
             json.put("code",200);
             json.put("msg","获取成功");
-            json.put("data",CapacityVerificationRecordRepository.findById(recordId));
+            json.put("data",CapacityVerificationRecordRepository.findById(recordId));//返回信息
             /*record= CapacityVerificationRecordRepository.getOne(recordId);
             JSONObject data=new JSONObject(new LinkedHashMap());
             JSONArray array=new JSONArray();
@@ -171,7 +171,7 @@ public class CapacityVerificationRecordController {
         return json;
     }
 
-    @GetMapping(path="/getRecordByProjectId")
+    @GetMapping(path="/getRecordByProjectId")//获得对应记录
     public @ResponseBody JSONObject getRecordByProjectId(@RequestParam(value="projectId",required=false)Long projectId)throws IOException{
         JSONObject json=new JSONObject(new LinkedHashMap());
         CapacityVerificationRecord record=new CapacityVerificationRecord();
@@ -188,7 +188,7 @@ public class CapacityVerificationRecordController {
         {*/
             json.put("code",200);
             json.put("msg","获取成功");
-            json.put("data",CapacityVerificationRecordRepository.findAllByProjectId(projectId));
+            json.put("data",CapacityVerificationRecordRepository.findAllByProjectId(projectId));//返回信息
             /*record= CapacityVerificationRecordRepository.findByProjectId(projectId);
             JSONObject data=new JSONObject(new LinkedHashMap());
             JSONArray array=new JSONArray();

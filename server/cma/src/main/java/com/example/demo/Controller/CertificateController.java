@@ -15,6 +15,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
+/**
+ * @author YXP
+ * 证书管理
+ */
 @Controller
 @RequestMapping(path="cma/Certificate")
 public class CertificateController {
@@ -29,6 +33,7 @@ public class CertificateController {
         CRepository.save(certificate);
         certificate.setFileName(certificate.getFileId()+".pdf");
         CRepository.save(certificate);
+        //上传证书，需要设置证书的文件夹以及文件名
         return fileController.upload(file,request,certificate.getFileName(),certificate.getDir());
     }
     @RequestMapping(value="/getOne/{id}",method=RequestMethod.GET)
@@ -84,7 +89,9 @@ public class CertificateController {
                 throw new Exception("doesn't exist");
             Certificate temp=CRepository.findByFileId(id);
             String name=temp.getFileName();
+            //删除数据
             CRepository.deleteById(id);
+            //删除文件
             fileController.deletefile(name,temp.getDir());
             response.data=null;
             response.msg="成功";
@@ -97,6 +104,13 @@ public class CertificateController {
         }
         return response;
     }
+
+    /**
+     * 下载文件
+     * @param id
+     * @param response
+     * @return
+     */
     @RequestMapping(value="/download/{id}",method = RequestMethod.GET)
     @ResponseBody
     public String downloadOne(@PathVariable("id") long id, HttpServletResponse response){

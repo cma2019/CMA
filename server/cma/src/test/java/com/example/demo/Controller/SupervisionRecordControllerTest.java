@@ -25,6 +25,7 @@ import javax.transaction.Transactional;
 @SpringBootTest
 @WebAppConfiguration
 @Transactional
+//回滚类中各测试方法对数据库的事物操作
 public class SupervisionRecordControllerTest {
 
     @Autowired
@@ -41,6 +42,7 @@ public class SupervisionRecordControllerTest {
     }
 
     @Test
+    //测试getAll()方法
     public void getAll() throws Exception{
         String url = "/cma/SupervisionRecord/getAll";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get(url, new Object[0])
@@ -54,6 +56,7 @@ public class SupervisionRecordControllerTest {
     }
 
     @Test
+    //测试addOne()方法
     public void addOne() throws Exception{
         String url = "/cma/SupervisionRecord/addOne";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0])
@@ -75,6 +78,7 @@ public class SupervisionRecordControllerTest {
     }
 
     @Test
+    //测试modifyOne()方法
     public void modifyOne() throws Exception{
         String url = "/cma/SupervisionRecord/modifyOne";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0])
@@ -96,6 +100,7 @@ public class SupervisionRecordControllerTest {
     }
 
     @Test
+    //测试deleteOne()方法
     public void deleteOne() throws Exception{
         String url = "/cma/SupervisionRecord/deleteOne";
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post(url, new Object[0])

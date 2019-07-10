@@ -6,6 +6,7 @@
         name="planId"
         label="项目序号"
         placeholder="项目序号"
+        type='number'
         required
         clearable
       />
