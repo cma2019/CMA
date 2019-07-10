@@ -25,5 +25,10 @@ Page({
     wx.navigateTo({
       url: '../login/modifypassword/modifypassword',
     })
+  } ,
+  goto(e) {
+    wx.redirectTo({
+      url: '../login/login',
+    })
   }
 })

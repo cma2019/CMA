@@ -34,7 +34,7 @@ Page({
       //console.log(res)
       //console.log(res.data1)
       this.setData({
-        mess: res.data1,
+        mess: res.data2,
         username2: app.globalData.username1
       })
       //console.log(mess)
@@ -56,7 +56,7 @@ Page({
       //console.log(res)
       //console.log(res.data1)
       this.setData({
-        mess: res.data1,
+        mess: res.data2,
         username2: app.globalData.username1
 
       })

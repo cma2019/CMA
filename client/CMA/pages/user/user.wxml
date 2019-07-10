@@ -22,3 +22,4 @@
   </van-cell-group>
 </view>
  <van-button type="info" size="small" bindtap="gotoModify">修改密码</van-button> 
+<van-button type="info" size="small" bindtap="goto">退出登录</van-button> 
