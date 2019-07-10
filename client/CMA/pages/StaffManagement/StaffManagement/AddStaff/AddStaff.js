@@ -23,6 +23,8 @@ Page({
   },
   StaffAdd: function (e) {
     var regNum = new RegExp('[0-9]', 'g');
+    console.log(e.detail.value.name)
+
     if (e.detail.value.name == ""
       || e.detail.value.gender == ""
       || e.detail.value.department == "" || e.detail.value.position == ""
@@ -30,7 +32,14 @@ Page({
       || e.detail.value.graduationSchool == ""
       || e.detail.value.graduationMajor == ""
       || e.detail.value.date == "" ||
-      e.detail.value.workingYears == "") {
+      e.detail.value.workingYears == "" || e.detail.value.name == null
+      || e.detail.value.gender == null
+      || e.detail.value.department == null || e.detail.value.position == null
+      || e.detail.value.title == null || e.detail.value.degree == null
+      || e.detail.value.graduationSchool == null
+      || e.detail.value.graduationMajor == null
+      || e.detail.value.date == null ||
+      e.detail.value.workingYears == null) {
       wx.showToast({
         title: '空白输入',
         image: '/icons/warning/warning.png',

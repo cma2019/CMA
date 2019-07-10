@@ -21,7 +21,9 @@ Page({
     
     if (e.detail.value.program == "" || e.detail.value.trainingId == ""
       || e.detail.value.trainingDate == ""
-      || e.detail.value.place == "" || e.detail.value.presenter == ""
+      || e.detail.value.place == "" || e.detail.value.presenter == "" || e.detail.value.program == null || e.detail.value.trainingId == null
+      || e.detail.value.trainingDate == null
+      || e.detail.value.place == null|| e.detail.value.presenter == null
       ) {
       wx.showToast({
         title: '空白输入',

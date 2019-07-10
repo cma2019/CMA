@@ -145,9 +145,6 @@
       <van-cell title="用户授权管理" boarder="{{false}}" is-link  center="{{true}}" bindtap="gotoAuthorityManagement"></van-cell>
     </van-collapse-item>
     </view>
-    
-    
-
   </van-collapse>
   
 </scroll-view>
